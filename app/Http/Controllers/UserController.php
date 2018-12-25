@@ -7,44 +7,72 @@
  */
 
 
-
 namespace App\Http\Controllers;
 
 
-
 use Illuminate\Http\Request;
-class TestController extends BaseController
+use App\models\UserModel;
+
+class UserController extends BaseController
 {
     /**
-     * 显示指定用户的个人数据。
-     *
-     * @param  int  $id
-     * @return Response
+     * 用户信息添加
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function userAdd()
+    public function updateUserInfo(Request $request)
     {
+        $userModel = new UserModel();
+        $this->validate($request, [
+            'name' => 'required|string',
+            'nickname' => 'required|string',
+            'password' => 'required|string',
+            'sex' => 'required|between:0,1',
+            'role' => 'required|int',
+            'birthday' => 'required|date',
 
-        //return view('user.profile', ['user' => User::findOrFail($id)]);
+        ]);
+        $id = $request->input('id');
+        $name = $request->input('name');
+        $nickname = $request->input('nickname');
+        $password = md5($request->input('password'));
+        $sex = $request->input('sex');
+        $role = $request->input('role');
+        $birthday = $request->input('birthday');
+
+
+        $updateArr = [
+            'name' => $name,
+            'nickname' => $nickname,
+            'password' => $password,
+            'sex' => $sex,
+            'role' => $role,
+            'birthday' => $birthday,
+
+        ];
+        $result = $userModel::where('id', $id)->update($updateArr);
+
+        if ($result) {
+            return $this->success();
+        } else {
+            return $this->fail();
+        }
+
+
     }
 
     /**
-     * e.g 接参 && 校验
-     * 接参 文档：https://laravel-china.org/docs/laravel/5.2/requests/1102
-     * 校验 文档：https://laravel-china.org/docs/laravel/5.2/validation/1135
-     * @param Request $request
+     * 根据用户id查询用户信息
      * @param $id
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function testRequest(Request $request,$id){
-
-        $this->validate($request, [
-            'title' => 'required|max:255',
-            'body' => 'required',
-
-        ]);
-        echo $id;
+    public function getUserInfo($id)
+    {
+        $userModel = new UserModel();
+        $result = $userModel::find($id);
+        return $this->success($result);
     }
-    public function testResponse(){
 
-    }
+
 
 }

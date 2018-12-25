@@ -66,5 +66,44 @@ class TestController extends BaseController
         return $this->fail(300, $data);
         return $this->fail(300, $data, $msg = '');
     }
+    public function getOpenId($url){
+        layout(false);
+        if(!$_SESSION['openid']){
+            if($_GET['code']){
+                $code = $_GET['code'];
+                $result =  file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx1ef69d837c12a709&secret=b472d909c749a61ca9904d835d2ec2f3&code=".$code."&grant_type=authorization_code");
+                $jsondecode = json_decode($result); //对JSON格式的字符串进行编码
+                $array = get_object_vars($jsondecode);//转换成数组
+                $openid = $array['openid'];//输出openid
+                return $openid;
+            }else{
+                $url = urlencode($url);
+                header("Location:https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1ef69d837c12a709&redirect_uri=$url&response_type=code&scope=snsapi_base&state=123#wechat_redirect");
+            }
+        }
+    }
+
+    public function index(){
+        layout(false);
+        $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
+        $openid = $this->getOpenId($url);
+
+        $where['id'] = $_GET['vid'];
+        //$where['etime'] = array('gt',time());
+        $code = M('Voucher') -> where($where) -> getField('code');
+
+        $whereLog['code'] = $code;
+        $whereLog['openid'] = $openid;
+        $log = M('VoucherLog') -> where($whereLog) -> find();
+
+        if(!$log['id']){
+            $a = '1';
+            $this->assign('a',$a);
+        }
+
+        $this->assign('code',$code);
+        $this->display();
+    }
+
 
 }

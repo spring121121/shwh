@@ -25,7 +25,7 @@ class BaseController extends Controller
         return response()->json([
             'status' => false,
             'code' => $code,
-            'message' => isset($message) ? $message : config('errorcode.code')[(int)$code],
+            'message' => isset($message) ? $message : config('errorcode.code')[$code],
             'data' => $data,
         ]);
     }

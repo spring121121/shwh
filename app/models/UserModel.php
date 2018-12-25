@@ -1,6 +1,7 @@
 <?php
 
 namespace App\models;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserModel extends BaseModel
@@ -21,15 +22,20 @@ class UserModel extends BaseModel
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'nickname', 'password', 'sex', 'photo', 'birthday', 'mobile', 'score'];
 
 //    public static function find()
 //    {
 //        self::_find();
 //    }
+
+    public function message()
+    {
+
+    }
 }

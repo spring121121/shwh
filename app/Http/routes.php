@@ -14,7 +14,30 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+/*****************UserController********************/
 Route::get('showProfile','UserController@showProfile');
 Route::get('testRequest/{id}','TestController@testRequest');
 Route::get('testResponse','TestController@testResponse');
-Route::get('userAdd','TestController@userAdd');
+Route::post('userAdd','UserController@userAdd');
+
+
+
+/*****************AddressController**********************************/
+Route::get('addressList','AddressController@addressList');
+
+
+/*****************LoginController***********************************/
+Route::get('login','LoginController@login');
+
+
+/*****************RegisterController********************************/
+
+/*****************ValidateCodeController********************************/
+Route::get('getCodeImg','ValidateCodeController@getCodeImg');
+Route::get('checkValidateCode','ValidateCodeController@checkValidateCode');
+
+
+
+
