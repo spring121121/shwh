@@ -52,6 +52,9 @@ Route::get('checkValidateCode','ValidateCodeController@checkValidateCode');
 Route::get('getAllProvinces','AreasController@getAllProvinces');
 Route::get('getCitiesByProvince/{provinceId}','AreasController@getCitiesByProvince');
 Route::get('getAreasByCityId/{cityId}','AreasController@getAllProvinces');
+Route::post('upload','UploadController@upload');
+Route::get('getMyNoteList','NoteController@getMyNoteList');
+
 
 
 
