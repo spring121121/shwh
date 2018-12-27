@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use App\models\UserModel;
 
 class RegisterController extends BaseController
 {
@@ -18,15 +19,35 @@ class RegisterController extends BaseController
     /**
      * 1.输入手机号 +验证码+密码
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request)
     {
         $this->validate($request, [
             'mobile' => 'required|regex:/^1[34578][0-9]{9}$/',
-            'password'=>'required',
-            'code'=>'required'
+            'password' => 'required',
+            'code' => 'required'
         ]);
+        $code = $request->input('code');
+        $sessionCode = $request->session()->get('validateCode');
+        if (strtolower($code) != $sessionCode) {
+            $this->fail(50000);
+        }
 
+        $userModel = new UserModel();
+        $mobile = $request->input('mobile');
+        $password = $request->input('password');
+
+        $userModel->mobile = $mobile;
+        $userModel->password = md5($password);
+
+        $re = $userModel->save();
+
+        if ($re) {
+            return $this->success();
+        }else{
+            $this->fail(50001);
+        }
 
 
     }
@@ -39,7 +60,6 @@ class RegisterController extends BaseController
     {
 
     }
-
 
 
 }

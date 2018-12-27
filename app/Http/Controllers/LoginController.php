@@ -18,11 +18,10 @@ class LoginController extends BaseController
 
     public function login(Request $request)
     {
-
-
-
         $this->validate($request, [
             'mobile' => 'required',
+            'password' => 'required',
+            'code' => 'required',
         ]);
         $mobile = $request->input('mobile');
         $password = $request->input('password');
@@ -36,8 +35,10 @@ class LoginController extends BaseController
         $userModel = new UserModel();
         $re = $userModel::where('mobile', $mobile)->where('password', $password)->first();
 
-        var_export($re);
+
         if ($re) {
+            //登录成功之后把用户信息存入session
+            $request->session()->put('userInfo',$re->toArray());
             return $this->success();
         } else {
             return $this->fail(50001);

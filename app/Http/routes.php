@@ -26,6 +26,8 @@ Route::post('userAdd','UserController@userAdd');
 
 /*****************AddressController**********************************/
 Route::get('addressList','AddressController@addressList');
+Route::post('addAddress','AddressController@addAddress');
+Route::post('updateAddress','AddressController@updateAddress');
 
 
 /*****************LoginController***********************************/
@@ -33,10 +35,26 @@ Route::get('login','LoginController@login');
 
 
 /*****************RegisterController********************************/
+Route::post('register','RegisterController@register');
+
+
+
+
+
+
 
 /*****************ValidateCodeController********************************/
 Route::get('getCodeImg','ValidateCodeController@getCodeImg');
 Route::get('checkValidateCode','ValidateCodeController@checkValidateCode');
+
+
+
+Route::get('getAllProvinces','AreasController@getAllProvinces');
+Route::get('getCitiesByProvince/{provinceId}','AreasController@getCitiesByProvince');
+Route::get('getAreasByCityId/{cityId}','AreasController@getAllProvinces');
+
+
+
 
 
 
