@@ -25,6 +25,7 @@ class AddressController extends BaseController
 
         $addressModel = new AddressModel();
         $uid = $request->session()->get('userInfo')['id'];
+        $uid = 1;
         $addressList = $addressModel::where('uid',$uid)
             ->join('provinces','address.province','=','provinces.provinceid')
             ->join('cities','address.city','=','cities.cityid')
@@ -42,6 +43,7 @@ class AddressController extends BaseController
      */
     public function addAddress(Request $request){
         $rules = [
+            'name' =>'required',
             'province' => 'required',
             'city' => 'required',
             'area' => 'required',
@@ -84,6 +86,7 @@ class AddressController extends BaseController
     public function updateAddress(Request $request){
         $rules = [
             'id'=>'required',
+            'name'=>'required',
             'province' => 'required',
             'city' => 'required',
             'area' => 'required',
