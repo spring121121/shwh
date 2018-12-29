@@ -29,7 +29,7 @@ class LoginController extends BaseController
         $sessionCode = $request->session()->get('validateCode');
 
         if (strtolower($code) != $sessionCode) {
-            $this->fail(50000);
+            return $this->fail(50000);
         }
 
         $userModel = new UserModel();

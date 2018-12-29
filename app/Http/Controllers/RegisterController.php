@@ -32,8 +32,9 @@ class RegisterController extends BaseController
 
         $code = $request->input('code');
         $sessionCode = $request->session()->get('validateCode');
+
         if (strtolower($code) != $sessionCode) {
-            $this->fail(50000);
+            return $this->fail(50000);
         }
         $mobile = $request->input('mobile');
         $password = $request->input('password');
