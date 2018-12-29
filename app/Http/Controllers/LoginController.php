@@ -24,7 +24,7 @@ class LoginController extends BaseController
             'code' => 'required',
         ]);
         $mobile = $request->input('mobile');
-        $password = $request->input('password');
+        $password = md5($request->input('password'));
         $code = $request->input('code');
         $sessionCode = $request->session()->get('validateCode');
 
