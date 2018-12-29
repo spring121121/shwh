@@ -69,6 +69,14 @@ Route::get('getMyCollectNote','CollectController@getMyCollectNote');
 
 
 
+/************************前端路由*********************************/
+Route::get('login', function () {
+    return view('personal/login');
+});
+Route::get('register', function () {
+    return view('personal/register');
+});
+
 
 
 
