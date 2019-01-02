@@ -58,6 +58,14 @@ Route::get('getMyNoteList','NoteController@getMyNoteList');
 
 
 
+/*****************InformationController********************************/
+Route::post('pubSysMessage','InformationController@pubSysMessage');
+Route::get('getSysMessage','InformationController@getSysMessage');
+Route::post('commentNote','InformationController@commentNote');
+Route::get('getCommentMessage','InformationController@getCommentMessage');
+
+
+
 
 
 
