@@ -24,12 +24,12 @@ class LoginController extends BaseController
             'code' => 'required',
         ]);
         $mobile = $request->input('mobile');
-        $password = $request->input('password');
+        $password = md5($request->input('password'));
         $code = $request->input('code');
         $sessionCode = $request->session()->get('validateCode');
 
         if (strtolower($code) != $sessionCode) {
-            $this->fail(50000);
+            return $this->fail(50000);
         }
 
         $userModel = new UserModel();

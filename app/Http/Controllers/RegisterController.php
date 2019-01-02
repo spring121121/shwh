@@ -26,18 +26,26 @@ class RegisterController extends BaseController
         $this->validate($request, [
             'mobile' => 'required|regex:/^1[34578][0-9]{9}$/',
             'password' => 'required',
+            'password_again' => 'required',
             'code' => 'required'
         ]);
+
         $code = $request->input('code');
         $sessionCode = $request->session()->get('validateCode');
-        if (strtolower($code) != $sessionCode) {
-            $this->fail(50000);
-        }
 
-        $userModel = new UserModel();
+        if (strtolower($code) != $sessionCode) {
+            return $this->fail(50000);
+        }
         $mobile = $request->input('mobile');
         $password = $request->input('password');
+        $password_again = $request->input('password_again');
 
+        if ($password != $password_again) {
+            return $this->fail(50001);
+        }
+
+
+        $userModel = new UserModel();
         $userModel->mobile = $mobile;
         $userModel->password = md5($password);
 
@@ -45,8 +53,8 @@ class RegisterController extends BaseController
 
         if ($re) {
             return $this->success();
-        }else{
-            $this->fail(50001);
+        } else {
+            return $this->fail(50001);
         }
 
 

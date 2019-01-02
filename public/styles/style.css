@@ -74,7 +74,7 @@ ul,li{
     /*display: none;*/
 /*}*/
 .ipt-cont .yzm-code{
-    width: 70%;
+    width: 55%;
     position: relative;
 }
 .ipt-cont .yzm-code .verification{
@@ -112,16 +112,24 @@ ul,li{
 .ipt-cont .btn-box{
     margin-top: 35px;
 }
+.ipt-cont .yzm-img{
+    width: 100px;
+    position: absolute;
+    top: 0;
+    right: -110px;
+}
 .ipt-cont button{
     width: 100%;
     height: 40px;
     font-size: 18px;
-    background-color: #F49710;
     border-radius: 20px;
     border: none;
     margin: 10px 0;
     color: #000;
 }
-.ipt-cont .btn-box .register{
+.ipt-cont .btn-box button:nth-child(1){
+    background-color: #F49710;
+}
+.ipt-cont .btn-box button:nth-child(2){
     background-color: #F0F1EC;
 }

@@ -31,7 +31,7 @@ Route::post('updateAddress','AddressController@updateAddress');
 
 
 /*****************LoginController***********************************/
-Route::get('login','LoginController@login');
+Route::post('login','LoginController@login');
 
 
 /*****************RegisterController********************************/
@@ -45,16 +45,26 @@ Route::post('register','RegisterController@register');
 
 /*****************ValidateCodeController********************************/
 Route::get('getCodeImg','ValidateCodeController@getCodeImg');
-Route::get('checkValidateCode','ValidateCodeController@checkValidateCode');
+Route::get('checkValidateCode/{code}','ValidateCodeController@checkValidateCode');
 
 
 
 Route::get('getAllProvinces','AreasController@getAllProvinces');
 Route::get('getCitiesByProvince/{provinceId}','AreasController@getCitiesByProvince');
 Route::get('getAreasByCityId/{cityId}','AreasController@getAllProvinces');
+
+
 Route::post('upload','UploadController@upload');
+
+
 Route::get('getMyNoteList','NoteController@getMyNoteList');
 
+Route::get('getMyCollectNote','CollectController@getMyCollectNote');
+Route::get('deleteNote','NoteController@deleteNote');
+
+
+/************************店铺*********************************/
+Route::get('getMyCollectNote','CollectController@getMyCollectNote');
 
 
 
@@ -64,6 +74,16 @@ Route::get('getSysMessage','InformationController@getSysMessage');
 Route::post('commentNote','InformationController@commentNote');
 Route::get('getCommentMessage','InformationController@getCommentMessage');
 
+
+
+
+/************************前端路由*********************************/
+Route::get('login', function () {
+    return view('personal/login');
+});
+Route::get('register', function () {
+    return view('personal/register');
+});
 
 
 

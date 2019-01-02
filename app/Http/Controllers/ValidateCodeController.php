@@ -36,12 +36,13 @@ class ValidateCodeController extends BaseController
     /**
      * 验证输入的验证码是否正确
      * @param Request $request
+     * @param $code
      * @return \Illuminate\Http\JsonResponse
      */
-    public function checkValidateCode(Request $request)
+    public function checkValidateCode(Request $request,$code)
     {
         $sessionCode = $request->session()->get('validateCode');
-        $code = $request->input('code');
+
         if ($sessionCode == $code) {
             return $this->success();
         } else {
