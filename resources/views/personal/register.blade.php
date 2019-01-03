@@ -61,9 +61,10 @@
                     success : function(data){//回调函数 和 后台返回的 数据
                         console.log(data)
                         if (data.code == 200){
-                            console.log("注册成功")
+                            alert('注册成功,去登录');
+                            window.location.href="/wap/login";
                         } else {
-                            console.log("注册失败")
+                            alert("注册失败,请重新注册")
                         }
                     }
                 });

@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use ValidateCode;
+use App\Http\Services\ValidateCodeService;
 
 class ValidateCodeController extends BaseController
 {
@@ -41,9 +42,10 @@ class ValidateCodeController extends BaseController
      */
     public function checkValidateCode(Request $request,$code)
     {
-        $sessionCode = $request->session()->get('validateCode');
 
-        if ($sessionCode == $code) {
+        $isRight = ValidateCodeService::checkValidate($request,$code);
+
+        if ($isRight) {
             return $this->success();
         } else {
            return  $this->fail(50000);

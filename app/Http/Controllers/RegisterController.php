@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\UserModel;
+use App\Http\Services\ValidateCodeService;
 
 class RegisterController extends BaseController
 {
@@ -31,9 +32,9 @@ class RegisterController extends BaseController
         ]);
 
         $code = $request->input('code');
-        $sessionCode = $request->session()->get('validateCode');
+        $isRight = ValidateCodeService::checkValidate($request,$code);
 
-        if (strtolower($code) != $sessionCode) {
+        if (!$isRight) {
             return $this->fail(50000);
         }
         $mobile = $request->input('mobile');

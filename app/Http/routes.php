@@ -83,10 +83,13 @@ Route::get('myPraise','InformationController@myPraise');
 
 
 /************************前端路由*********************************/
-Route::get('login', function () {
+Route::get('wap/login_index', function () {
+    return view('personal/login-index');
+});
+Route::get('wap/login', function () {
     return view('personal/login');
 });
-Route::get('register', function () {
+Route::get('wap/register', function () {
     return view('personal/register');
 });
 Route::get('personal', function () {

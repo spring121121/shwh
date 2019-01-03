@@ -35,7 +35,7 @@
                 <div class="tips">请输入8-16位英文和数字密码</div>
                 <div class="btn-box">
                     <button class="login" id="login">登录</button>
-                    <button class="register" id="register">注册</button>
+                    <button class="register" id="register"><a href="/wap/register">注册</a></button>
                 </div>
             </div>
         </div>

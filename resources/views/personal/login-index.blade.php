@@ -22,7 +22,7 @@
                 </div>
                 <div class="ipt-cont">
                     <div class="btn-box">
-                        <button class="login">手机号登录</button>
+                        <button class="login"><a href="/wap/login" class="login">手机号登录</a></button>
                         <button class="register">微信登录</button>
                     </div>
                 </div>
