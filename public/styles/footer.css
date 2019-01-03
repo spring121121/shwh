@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+    list-style: none;
+    height: 100%;
+}
+.footer{
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #F49710;
+    width: 100%;
+}
+.footer ul li{
+    float: left;
+    width: 33.33%;
+}
+.footer ul li .icon-box{
+    width: 30px;
+    height: 30px;
+    margin: 7px auto 0;
+}
+.footer ul li span{
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+}

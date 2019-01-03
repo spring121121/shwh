@@ -15,7 +15,7 @@
         <div class="dlzc-box dlsy-box">
             <div class="vertical-center">
                 <div class="logo-box">
-                    <img class="common-img" src="../images/logo-2x.png" alt="神奇的山洞">
+                    <img class="common-img" src="/images/logo-2x.png" alt="神奇的山洞">
                 </div>
                 <div class="chose-login fc-login">
                     <h3>由此爱上文创</h3>

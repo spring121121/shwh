@@ -1,0 +1,951 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+ul,li{
+    list-style: none;
+}
+.clear{
+    clear: both;
+}
+
+/*登录界面的样式*/
+
+.dlzc-box{
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    background: url("../images/login-bg-2x.png") no-repeat center;
+    background-size: 100%;
+}
+.vertical-center{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+}
+.dlsy-box{
+    background: unset;
+}
+.dlzc-box .logo-box{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+.dlzc-box .register-logo-box{
+    width: 60px;
+    height: 60px;
+}
+.chose-login{
+    height: 50px;
+    width: 250px;
+    margin: 50px auto 0;
+}
+.register-title{
+    margin: 0 auto 50px;
+}
+.fc-login{
+    margin: 0 auto 50px;
+}
+.chose-login h3{
+    line-height: 50px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+}
+.fc-login h3{
+    color: #000;
+}
+.chose-login ul li{
+    float: left;
+    color: #fff;
+    width: 50%;
+    line-height: 50px;
+    font-size: 16px;
+}
+.chose-login ul li:nth-child(2){
+    text-align: right;
+    color: #999;
+}
+.ipt-cont{
+    width: 250px;
+    margin: 0 auto;
+}
+.ipt-cont .ipt-box{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 10px;
+    border-bottom: 1px solid #eee;
+}
+/*.ipt-cont .pass{*/
+    /*display: none;*/
+/*}*/
+.ipt-cont .yzm-code{
+    width: 70%;
+    position: relative;
+}
+.ipt-cont .yzm-code .verification{
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    margin: 0;
+    top: 10px;
+    color: #fff;
+    right: -75px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+.ipt-cont .ipt-box input{
+    width: 100%;
+    outline: none;
+    border: none;
+    background: unset;
+    font-size: 15px;
+    letter-spacing: 0.1rem;
+    color: #fff;
+}
+.ipt-cont .ipt-box input::-webkit-input-placeholder{
+    color: #ccc;
+}
+.ipt-cont .tips{
+    float: left;
+    display: none;
+    height: 30px;
+    line-height: 30px;
+    color: #f00;
+    font-size: 12px;
+    padding: 0 10px;
+}
+.ipt-cont .btn-box{
+    margin-top: 35px;
+}
+.ipt-cont button{
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    background-color: #F49710;
+    border-radius: 20px;
+    border: none;
+    margin: 10px 0;
+    color: #000;
+}
+.ipt-cont .btn-box .register{
+    background-color: #F0F1EC;
+}
+/*遮罩*/
+.mask-box{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /*background: rgb(0,0,0,0.5);*/
+    background: url("../images/mask-bg.png");
+}
+.mask-box .weChat{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: url("../images/wechat-bg-2x.png") no-repeat center;
+    background-size: 100%;
+    width: 220px;
+    height: 295px;
+    margin-left: -110px;
+}
+.mask-box .weChat h3{
+    font-size: 18px;
+    margin: 20px 0 10px;
+    line-height: 30px;
+    height: 30px;
+    font-weight: normal;
+}
+.mask-box .weChat .head-portrait{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+.mask-box .weChat .success{
+    font-size: 15px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #d6d6d6;
+    width: 150px;
+    margin: 20px auto 0;
+}
+.mask-box .weChat span{
+    font-size: 12px;
+    width: 100%;
+    border-bottom: 1px solid #d6d6d6;
+    display: block;
+    line-height: 20px;
+    margin-top: 15px;
+}
+.mask-box .weChat .btn-mask{
+    height: 35px;
+}
+
+.mask-box .weChat .btn-mask button{
+    width: 50%;
+    height: 35px;
+    border: none;
+    outline: none;
+    float: left;
+    font-size: 16px;
+    background: unset;
+}
+.mask-box .weChat .btn-mask button:nth-child(2){
+    border-left: 1px solid #d6d6d6;
+    color: #F39710;
+}
+
+/*消息中心界面样式*/
+.massage-category{
+    position: fixed;
+    top: 45px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    z-index: 999;
+    background-color: #fff;
+}
+.massage-category ul{
+    width: 204px;
+    height: 25px;
+    margin: 10px auto;
+}
+.massage-category ul li{
+    float: left;
+    margin: 0px 10px;
+    box-sizing: border-box;
+    font-size: 12px;
+    color: #999;
+    line-height: 20px;
+}
+.massage-category ul .click-change{
+    color: #000;
+    border-bottom: 2px solid #F49610;
+}
+.massage-cont{
+    display: none;
+    margin: 100px 20px 0;
+}
+/*.discuss{*/
+    /*display: block;*/
+/*}*/
+.massage-cont ul li{
+    margin: 20px 0;
+    border-bottom: 1px solid #666;
+}
+.massage-cont ul li .massage-cont-left{
+    float: left;
+    width: 40px;
+    height: inherit;
+}
+.massage-cont ul li .massage-cont-left .icon-box{
+    width: 40px;
+    height: 40px;
+}
+.massage-cont ul li .massage-cont-right{
+    margin-left: 50px;
+}
+.massage-cont ul li .massage-cont-right .btn,.header .header-reply .btn{
+    float: right;
+    display: block;
+    width: 40px;
+    height: 20px;
+    background-color: #F49710;
+    border-radius: 5px;
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+}
+.massage-cont ul li .massage-cont-right h3,
+.content-box .note-list-box li .note-list-right h3{
+    height: 30px;
+    font-weight: 500;
+    font-size: 15px;
+    color: #000;
+}
+.massage-cont ul li .massage-cont-right h3 i,
+.tuijian-cont-box h4 i{
+    display:inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 5px 0 0 5px;
+    border-radius: 2px;
+    background-color: #999999;
+}
+.massage-cont ul li .massage-cont-right h3 span,
+.content-box .note-list-box li .note-list-right h3 span{
+    font-size: 10px;
+    color: #999999;
+    display: block;
+    font-weight: normal;
+}
+.massage-cont ul li .massage-cont-right p{
+    margin: 10px 0;
+    font-size: 14px;
+    color: #999;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.massage-cont ul li .massage-cont-right .us-massage{
+    background: #eee;
+    margin: 10px 0;
+    height: 53px;
+    width: 320px;
+    border-radius: 10px;
+}
+.massage-cont ul li .massage-cont-right .us-massage .picture-box{
+    width: 44px;
+    height: 44px;
+    float: left;
+    margin: 5px;
+}
+.massage-cont ul li .massage-cont-right .us-massage span{
+    font-size: 14px;
+    color: #666;
+}
+.massage-cont ul li .massage-cont-right .us-massage .us-text{
+    margin: 5px 0;
+    -webkit-line-clamp: 1;
+}
+.recommend ul li{
+    margin-bottom: 20px;
+}
+.recommend ul li .recommend-banner-box{
+    position: relative;
+    width: 100%;
+    height: 174px;
+    background-color: #aaa;
+}
+.recommend ul li .recommend-banner-box h3{
+    position: absolute;
+    background-color: rgb(0,0,0,0.6);
+    bottom: -0px;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-weight: normal;
+    height: 45px;
+    line-height: 45px;
+    font-size: 15px;
+    padding: 0 20px;
+}
+.recommend ul li .recommend-banner-box h3 span{
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: #999;
+}
+.system ul li{
+    border: none;
+}
+.system ul li .massage-cont-right{
+    border-bottom: 1px solid #999;
+}
+.system ul li .massage-cont-right h3 span{
+    float: right;
+    line-height: 30px;
+}
+.system ul li .massage-cont-right p{
+    margin-top: 0;
+}
+
+
+
+/*回复评论页面样式*/
+.header .header-reply{
+    width: 40px !important;
+    height: 20px !important;
+}
+.reply-cont{
+    background-color: #f8f8ff;
+    margin: 60px 20px;
+}
+.reply-cont textarea{
+    width: 100%;
+    line-height: 25px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background: unset;
+}
+
+
+/*个人中心页面样式*/
+.personal-header{
+    background: #F49710;
+    height: 200px;
+}
+.personal-header .personal-title{
+    padding: 50px 20px;
+}
+.personal-header .personal-title .portrait-box{
+    width: 66px;
+    float: left;
+    height: 66px;
+    background: #000;
+}
+.personal-header .personal-title .edit-personal{
+    height: 66px;
+    margin-left: 85px;
+}
+.personal-header .personal-title .edit-personal .btn-edit{
+    width: 24px;
+    height: 24px;
+    background: #999;
+    float: right;
+    margin-top: 8px;
+}
+.personal-header .personal-title .edit-personal h3{
+    font-size: 18px;
+    line-height: 40px;
+    color: #fff;
+    font-weight: normal;
+}
+.personal-header .personal-title .edit-personal span{
+    display: block;
+    position: relative;
+    color: #fff;
+    font-size: 15px;
+    width: 120px;
+    line-height: 18px;
+}
+.personal-header .personal-title .edit-personal span i{
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: #999;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.personal-header .personal-title .address-grade{
+    margin: 10px 30px;
+    font-size: 0;
+}
+.personal-header .personal-title .address-grade .personal-icon-box{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+}
+.personal-header .personal-title .address-grade i{
+    display: inline-block;
+    width: 2px;
+    height: 8px;
+    margin: 0 10px;
+    background: #999;
+}
+.personal-header .personal-title .address-grade span{
+    font-size: 12px;
+    color: #fff;
+}
+.personal-header .personal-title .address-grade span:last-child{
+    margin-left: 10px;
+}
+.personal-cont{
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+    top: -20px;
+}
+.personal-cont ul{
+    height: 60px;
+    width: 100%;
+    padding-top: 20px;
+}
+.personal-cont ul li{
+    float: left;
+    width: 25%;
+    height: 100%;
+    text-align: center;
+}
+.personal-cont ul li .icon-img{
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+}
+.personal-cont ul li p{
+    color: #000;
+    line-height: 25px;
+    font-size: 14px;
+}
+.personal-cont .list-box{
+    margin: 20px;
+}
+.personal-cont .list-box .list-cont{
+    padding: 0 10px;
+    height: 35px;
+    border-bottom: 1px solid #999;
+}
+.personal-cont .list-box .list-cont a{
+    color: #000;
+}
+.personal-cont .list-box .list-cont span{
+    float: left;
+    font-size: 15px;
+    line-height: 35px;
+}
+.personal-cont .list-box .list-cont i{
+    display: block;
+    float: right;
+    width: 20px;
+    height: 20px;
+    background: #999;
+    margin: 8px 0;
+}
+.personal-cont .btn-exit-login{
+    height: 30px;
+    background: url("../images/btn-bg.png") no-repeat center;
+    background-size: 100%;
+    margin: 20px;
+}
+.personal-cont .btn-exit-login button{
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    background: unset;
+}
+
+
+/*探宝笔记页面样式*/
+.header .btn-title-text{
+    font-size: 12px;
+    color: #10734F;
+    line-height: 24px;
+}
+.note-list-box{
+    margin: 20px 20px 0;
+}
+.note-list-box label{
+    position: absolute;
+    top: 40px;
+    display: none;
+}
+.note-list-box .choice{
+    width: 20px;
+    height: 20px;
+    left: -20px;
+}
+.note-list-box .choice input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+.note-list-box .btn-del{
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    right: -50px;
+    background: #d2d2d2;
+}
+.note-list-box .btn-del button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    color: #10734F;
+}
+.note-list-box li{
+    position: relative;
+    background-color: #eee;
+    border-radius: 5px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+.note-list-box li .note-img{
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin: 10px;
+}
+.note-list-box li .note-list-right{
+    margin-left: 100px;
+}
+.note-list-box li .note-list-right .btn-notes{
+    position: relative;
+    float: right;
+    color: #000;
+    font-size: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    width: 30px;
+}
+.note-list-box li .note-list-right .btn-notes i{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: #aaa;
+}
+.content-box .note-list-box li .note-list-right h3{
+    font-size: 18px;
+    padding-top: 10px;
+}
+.note-list-box li .note-list-right p{
+    font-size: 14px;
+    margin-top: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.write-note{
+    position: fixed;
+    width: 50px;
+    left: 50%;
+    margin-left: -25px;
+    bottom: 60px;
+    text-align: center;
+}
+.write-note span{
+    color: #000;
+    font-size: 14px;
+}
+.write-note .write-img-box{
+    width: 42px;
+    height: 42px;
+    margin: 10px auto 0;
+}
+.btn-del-box{
+    height: 50px;
+    position: fixed;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    font-size: 12px;
+    text-align: center;
+    line-height: 50px;
+    color: #000;
+    background: #eee;
+}
+.btn-del-box input{
+    float: left;
+    width: 20px;
+    height: 20px;
+    border: none;
+    outline: none;
+    margin: 15px 0 15px 20px;
+}
+.btn-del-box label{
+    float: left;
+    margin-left: 10px;
+}
+.btn-del-box button{
+    float: right;
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    background: #F49710;
+    color: #000;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.btn-del-box #btn-all-del{
+    margin-right: 20px;
+}
+
+
+/*编辑探宝笔记页面样式*/
+.header .qx-write{
+    width: 40px;
+    background: #ccc;
+    font-size: 12px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 5px;
+}
+.note-ipt-box{
+    position: relative;
+    overflow: hidden;
+    margin: 10px 20px 0;
+    background-color: #f9f9f9;
+    height: 372px;
+    border-radius: 10px;
+}
+.note-ipt-box .note-ipt-title{
+    border-bottom: 1px solid #999;
+    margin-top: 20px;
+    padding: 0 10px;
+    height: 40px;
+}
+.note-ipt-box .note-ipt-title input{
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    background: unset;
+    line-height: 40px;
+}
+.note-ipt-box .note-cont{
+    padding: 10px;
+}
+.note-ipt-box .note-cont textarea{
+    width: 100%;
+    outline: none;
+    border: none;
+    background: unset;
+    font-size: 14px;
+}
+.note-ipt-box ul{
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+}
+.note-ipt-box ul li{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-left: 10px;
+}
+.note-ipt-box ul li .btn-phone{
+    height: 100%;
+    background: #999;
+    border-radius: 5px;
+}
+.note-ipt-box ul li .btn-phone span{
+    margin: 0;
+    text-align: center;
+    padding-top: 50px;
+    padding-left: 0;
+}
+.note-ipt-box span{
+    font-size: 12px;
+    display: block;
+    position: relative;
+    margin: 90px 10px 0;
+    padding-left: 20px;
+}
+.note-ipt-box span i{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: #aaa;
+}
+.btn-release{
+    width: 220px;
+    height: 40px;
+    background: #F49710;
+    margin: 120px auto 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 5px;
+}
+.btn-release a{
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+/*推荐消息详情页*/
+.swiper-tuijian-box{
+    height: 240px;
+}
+.tuijian-cont-box{
+    margin: 20px;
+}
+.tuijian-cont-box .head-img{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.tuijian-cont-box h4{
+    height: 40px;
+    font-weight: normal;
+    line-height: 40px;
+    margin-left: 45px;
+}
+.tuijian-cont-box h4 .btn-gz{
+    float: right;
+    height: 20px;
+    font-size: 12px;
+    background: #f49610;
+    line-height: 20px;
+    width: 40px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.tuijian-cont-box p{
+    text-indent: 2em;
+    font-size: 15px;
+    line-height: 25px;
+    color: #aaa;
+    margin-top: 10px;
+    text-align: justify;
+}
+.btn-list-icon, .more-pl-title{
+    margin: 0 20px;
+    height: 50px;
+}
+.btn-list-icon li{
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    background: #aaa;
+    text-align: center;
+    line-height: 30px;
+    font-size: 12px;
+}
+.btn-list-icon li .pl-text{
+    color: #000;
+}
+.more-pl-title span{
+    font-size: 16px;
+    color: #999;
+    line-height: 50px;
+}
+.more-pl-title .btn-more-pl{
+    float: right;
+    width: 95px;
+    height: 20px;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #999;
+    line-height: 20px;
+    position: relative;
+}
+.more-pl-title .btn-more-pl i{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #999;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.pl-content{
+    margin: 20px 20px 0;
+}
+.pl-content ul li{
+    margin-bottom: 20px;
+}
+.pl-content ul li .pl-icon-box{
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+.pl-content ul li .pl-cont{
+    border-bottom: 1px solid #999;
+    margin-left: 50px;
+}
+.pl-content ul li .pl-cont h3{
+    position: relative;
+    height: 30px;
+    font-weight: 500;
+    font-size: 15px;
+    color: #000;
+}
+.pl-content ul li .pl-cont h3 i{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 5px 0 0 5px;
+    border-radius: 2px;
+    background-color: #999999;
+}
+.pl-content ul li .pl-cont h3 span{
+    font-size: 12px;
+    color: #999999;
+    display: block;
+    font-weight: normal;
+}
+.pl-content ul li .pl-cont h3 .dianzan{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background: #aaa;
+    text-align: center;
+    line-height: 30px;
+    font-size: 12px;
+    z-index: 11;
+}
+.pl-content ul li .pl-cont p{
+    margin: 10px 0;
+    font-size: 14px;
+    color: #999;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.share-box{
+    background: #eee;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: -150px;
+    height: 150px;
+    z-index: 12;
+    text-align: center;
+}
+.share-box span{
+    font-size: 12px;
+    color: #999;
+}
+.share-box ul{
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+    margin: 10px 20px;
+}
+.share-box ul li{
+    float: left;
+    width: 25%;
+}
+.share-box ul li .icon-box{
+    margin: 0 auto;
+    width: 44px;
+    height: 44px;
+}
+.share-box button{
+    display: block;
+    width: 80px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background: unset;
+    margin: 0 auto;
+    height: 30px;
+}
+
+/*我的收货地址*/
+.my-address-box{
+    margin: 0 20px;
+}
+.my-address-box li{
+    margin: 20px 0;
+}
+.my-address-box .icon-box{
+    width: 30px;
+    height: 30px;
+}
