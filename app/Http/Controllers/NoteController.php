@@ -105,5 +105,25 @@ class NoteController extends BaseController
         }
     }
 
+    /**
+     * 删除多个笔记
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteNoteNotOnly(Request $request)
+    {
+        $uid = UserService::getUid($request);
+        $noteIds = rtrim($request->get('note_ids'),',');
+        $noteIdArr = explode(',',$noteIds);
+//        dd($noteIdArr);
+        $noteModel = new NoteModel();
+        $re = $noteModel::where('uid', '=', $uid)->whereIn('id',$noteIdArr)->delete();
+        if ($re) {
+            return $this->success();
+        } else {
+            return $this->fail(300);
+        }
+    }
+
 
 }

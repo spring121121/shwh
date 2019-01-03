@@ -60,7 +60,8 @@ Route::post('upload','UploadController@upload');
 Route::get('getMyNoteList','NoteController@getMyNoteList');
 
 Route::get('getMyCollectNote','CollectController@getMyCollectNote');
-Route::get('deleteNote','NoteController@deleteNote');
+Route::post('deleteNote','NoteController@deleteNote');
+Route::post('deleteNoteNotOnly','NoteController@deleteNoteNotOnly');
 
 
 /************************店铺*********************************/
@@ -92,8 +93,14 @@ Route::get('wap/login', function () {
 Route::get('wap/register', function () {
     return view('personal/register');
 });
-Route::get('personal', function () {
+Route::get('wap/personal', function () {
     return view('personal/personal-center');
+});
+Route::get('wap/message-center', function () {
+    return view('personal/message-center');
+});
+Route::get('wap/my-note', function () {
+    return view('personal/my-note');
 });
 
 
