@@ -102,7 +102,6 @@
         $("input:checkbox[name=choice]:checked").each(function(){
             ids += $(this).val()+','
         })
-        alert(ids)
         $.post("/deleteNoteNotOnly", {'note_ids': ids}, function (data) {
             if (data.status) {
                 alert('删除成功')
