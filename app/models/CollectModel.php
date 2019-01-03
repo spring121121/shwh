@@ -2,15 +2,19 @@
 
 namespace App\models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class CollectModel extends Model
+class CollectModel extends BaseModel
 {
     //软删除 通过 deleted_at 字段区分是否删除，删除时调用 $table->softDeletes();
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     /**
+<<<<<<< HEAD
      * 表名
+=======
+     * 与模型关联的数据表。
+     *
+>>>>>>> dev
      * @var string
      */
     protected $table = 'collect';
@@ -18,6 +22,10 @@ class CollectModel extends Model
     /**
      * 指定是否模型应该被戳记时间。
      * 自动维护 created_at 和 updated_at字段 每个表必有的字段
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> dev
      * @var bool
      */
     public $timestamps = true;
@@ -26,4 +34,14 @@ class CollectModel extends Model
      * @var 字段在这里填写
      */
     protected $fillable =['uid','note_id'];
+
+//    public static function find()
+//    {
+//        self::_find();
+//    }
+
+    public function message()
+    {
+
+    }
 }

@@ -68,6 +68,19 @@ Route::get('getMyCollectNote','CollectController@getMyCollectNote');
 
 
 
+/*****************InformationController********************************/
+Route::post('pubSysMessage','InformationController@pubSysMessage');
+Route::get('getSysMessage','InformationController@getSysMessage');
+Route::post('commentNote','InformationController@commentNote');
+Route::get('getCommentMessage','InformationController@getCommentMessage');
+Route::get('readSysMessage','InformationController@readSysMessage');
+Route::get('myFans','InformationController@myFans');
+Route::get('myFocus','InformationController@myFocus');
+Route::get('myCollect','InformationController@myCollect');
+Route::get('myPraise','InformationController@myPraise');
+
+
+
 
 /************************前端路由*********************************/
 Route::get('login', function () {

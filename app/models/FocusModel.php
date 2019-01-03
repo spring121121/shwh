@@ -4,7 +4,7 @@ namespace App\models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class LikesModel extends BaseModel
+class FocusModel extends BaseModel
 {
     //软删除 通过 deleted_at 字段区分是否删除，删除时调用 $table->softDeletes();
     use SoftDeletes;
@@ -14,7 +14,7 @@ class LikesModel extends BaseModel
      *
      * @var string
      */
-    protected $table = 'likes';
+    protected $table = 'focus';
     protected $primaryKey = 'id';
     /**
      * 指定是否模型应该被戳记时间。
@@ -27,7 +27,7 @@ class LikesModel extends BaseModel
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['uid', 'beuid','note_id'];
+    protected $fillable = ['uid', 'beuid'];
 
 //    public static function find()
 //    {
