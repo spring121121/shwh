@@ -68,19 +68,28 @@ Route::get('getMyCollectNote','CollectController@getMyCollectNote');
 
 
 
-/*****************InformationController********************************/
-Route::post('pubSysMessage','InformationController@pubSysMessage');
-Route::get('getSysMessage','InformationController@getSysMessage');
-Route::post('commentNote','InformationController@commentNote');
-Route::get('getCommentMessage','InformationController@getCommentMessage');
-Route::get('readSysMessage','InformationController@readSysMessage');
-Route::get('myFans','InformationController@myFans');
-Route::get('myFocus','InformationController@myFocus');
-Route::get('myCollect','InformationController@myCollect');
-Route::get('myPraise','InformationController@myPraise');
+/*****************InformationController消息接口********************************/
+Route::post('pubSysMessage','InformationController@pubSysMessage');//管理员发布系统消息
+Route::get('getSysMessage','InformationController@getSysMessage');//系统消息列表
+Route::post('commentNote','InformationController@commentNote');//评论笔记
+Route::get('getCommentMessage','InformationController@getCommentMessage');//笔记列表
+Route::get('readSysMessage','InformationController@readSysMessage');//已读系统消息
 
+/*****************FansController关注，粉丝接口********************************/
+Route::get('myFans','FansController@myFans');//我的粉丝数量
+Route::get('myFansList','FansController@myFansList');//我的粉丝列表
+Route::get('beforeFansList','FansController@beforeFansList');//前几天我的粉丝列表
+Route::get('myFocus','FansController@myFocus');//我的关注数量
+Route::get('myFocusList','FansController@myFocusList');//我的关注列表
+Route::get('recommendList','FansController@recommendList');//推荐关注列表
+Route::get('myCollectList','FansController@myCollectList');//我的收藏列表
+Route::get('myPraise','FansController@myPraise');//我的获赞数量
 
-
+/*****************FeedbackController意见反馈接口********************************/
+Route::post('feedback','FeedbackController@feedback');//意见反馈
+Route::get('readFeedback','FeedbackController@readFeedback');//已读意见反馈
+Route::get('feedbackList','FeedbackController@feedbackList');//意见反馈列表
+Route::get('feedbackDetail','FeedbackController@feedbackDetail');//意见反馈列表
 
 /************************前端路由*********************************/
 Route::get('login', function () {
