@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GoodsModel extends Model
 {
+    /**
+     * 不是代理
+     */
+    const IS_AGENT_O = 0;
+    /**
+     * 是代理
+     */
+    const IS_AGENT_1 = 1;
+
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     /**

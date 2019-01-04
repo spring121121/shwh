@@ -37,6 +37,9 @@ Route::post('login','LoginController@login');
 /*****************RegisterController********************************/
 Route::post('register','RegisterController@register');
 
+/*********************分销**************************************/
+Route::post('addAgentGoods','AgentController@addAgentGoods');
+
 
 
 
