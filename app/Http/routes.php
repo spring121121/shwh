@@ -95,6 +95,14 @@ Route::get('readFeedback','FeedbackController@readFeedback');//已读意见反�
 Route::get('feedbackList','FeedbackController@feedbackList');//意见反馈列表
 Route::get('feedbackDetail','FeedbackController@feedbackDetail');//意见反馈列表
 
+/*****************StoreController店铺接口********************************/
+Route::post('addStore','StoreController@addStore');//新增店铺
+Route::post('updateStore','StoreController@updateStore');//修改店铺
+Route::get('authStore','StoreController@authStore');//认证店铺
+Route::get('storeList','StoreController@storeList');//店铺列表
+Route::get('storeDetail','StoreController@storeDetail');//店铺详情
+Route::get('uploadAuth','StoreController@uploadAuth');//上传店铺认证图
+
 /************************前端路由*********************************/
 Route::get('wap/login_index', function () {
     return view('personal/login-index');
