@@ -9,6 +9,7 @@ class StoreModel extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+    CONST IS_AUTHEN = 1;//已认证
     /**
      * 与模型关联的数据表。
      *
@@ -27,5 +28,5 @@ class StoreModel extends Model
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['name','uid','logo_pic_url','prove_url'];
+    protected $fillable = ['name','uid','introduction','logo_pic_url','prove_url','auth_id'];
 }

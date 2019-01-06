@@ -17,8 +17,9 @@ class UploadController extends BaseController
 {
 
     /**
-     * file upload
+     * 文件上传
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function upload(Request $request)
     {
@@ -28,7 +29,7 @@ class UploadController extends BaseController
             //但是在laravel里面有更好的封装好的方法，就是下面这个
             //显示的属性更多
             $fileCharater = $request->file('source');
-
+            $url_path = 'uploadimg';
             if ($fileCharater->isValid()) { //括号里面的是必须加的哦
                 //如果括号里面的不加上的话，下面的方法也无法调用的
 
@@ -36,20 +37,21 @@ class UploadController extends BaseController
                 $ext = $fileCharater->getClientOriginalExtension();
 
                 //获取文件的绝对路径
-                $path = $fileCharater->getRealPath();
+                //$path = $fileCharater->getRealPath();
 
                 //定义文件名
-                $filename = date('Y-m-d-h-i-s') . '.' . $ext;
+                $filename = date('Y-m-d-H-i-s') . '.' . $ext;
 
+                $res = $fileCharater->move($url_path, $filename);
                 //存储文件。disk里面的public。总的来说，就是调用disk模块里的public配置
-                $re = Storage::disk('public')->put($filename, file_get_contents($path));
+                //$re = Storage::disk('public')->put($filename, file_get_contents($path));
             }
         }
 
-        if ($re) {
-            $this->success('/storage/$filename');
+        if ($res) {
+            return $this->success(['url'=>'/uploadimg/'.$filename]);
         }else{
-            $this->fail(300);
+            return $this->fail(300);
         }
     }
 
