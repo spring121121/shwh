@@ -48,14 +48,16 @@ class InformationController extends BaseController
     public function getSysMessage(Request $request){
         //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
+        $list = [];
         $messageList = SysmessageModel::where('sys_message.receive_user_id',$uid)
             ->join('user','sys_message.pub_user_id','=','user.id')
             ->select('sys_message.*', 'user.photo')
             ->get()->toArray();
         $readCount = SysmessageModel::where(['receive_user_id'=>$uid,'is_read'=>0])
             ->count();
-        $messageList['is_read_count'] = $readCount;
-        return $this->success($messageList);
+        $list['data'] = $messageList;
+        $list['is_read_count'] = $readCount;
+        return $this->success($list);
     }
 
     /**
