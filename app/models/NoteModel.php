@@ -29,5 +29,5 @@ class NoteModel extends Model
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['uid','title','content','image_one_url','image_two_url','image_three_url'];
+    protected $fillable = ['uid','title','content','image_one_url','image_two_url','image_three_url','goods_id'];
 }
