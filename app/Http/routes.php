@@ -41,8 +41,8 @@ Route::post('register','RegisterController@register');
 Route::post('addAgentGoods','AgentController@addAgentGoods');
 
 
-
-
+/**************************分类获取***********************************/
+Route::get('categoryList/{isShop}','CategoryController@categoryList');
 
 
 
