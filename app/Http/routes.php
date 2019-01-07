@@ -65,6 +65,8 @@ Route::get('getMyNoteList','NoteController@getMyNoteList');
 Route::get('getMyCollectNote','CollectController@getMyCollectNote');
 Route::post('deleteNote','NoteController@deleteNote');
 Route::post('deleteNoteNotOnly','NoteController@deleteNoteNotOnly');
+Route::get('searchNote/{keyword}','NoteController@searchNote');
+Route::get('getNoteListByStoreId','NoteController@getNoteListByStoreId');
 
 
 /************************店铺*********************************/
@@ -102,6 +104,7 @@ Route::get('authStore','StoreController@authStore');//认证店铺
 Route::get('storeList','StoreController@storeList');//店铺列表
 Route::get('storeDetail','StoreController@storeDetail');//店铺详情
 Route::get('uploadAuth','StoreController@uploadAuth');//上传店铺认证图
+Route::get('getStoreListBySearch','StoreController@getStoreListBySearch');//获取相应角色的店铺列表
 
 /************************前端路由*********************************/
 Route::get('wap/login_index', function () {//登录首页
