@@ -128,8 +128,11 @@ Route::get('wap/my_note', function () {//我的笔记
 Route::get('wap/thumbs_up', function () {//点赞笔记
     return view('personal/thumbs-up');
 });
-Route::get('wap/reply_comment', function () {//点赞笔记
+Route::get('wap/reply_comment', function () {//回复评论
     return view('personal/reply-comment');
+});
+Route::get('wap/follow_interest', function () {//回复评论
+    return view('personal/follow-interest');
 });
 
 

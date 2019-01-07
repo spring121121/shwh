@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="follow-interest.html">
+                    <a href="/wap/follow_interest">
                         <div class="icon-img"><img class="common-img" src="../images/follow.png" alt="关注"></div>
                         <p>关注</p>
                     </a>
