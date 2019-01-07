@@ -31,8 +31,32 @@
                             <p>详细地址</p>
                         </div>
                     </li>
+                    <li>
+                        <div class="icon-box">
+                            <img class="common-img" src="/images/weChat-2x.png" alt="头像">
+                        </div>
+                        <div class="address-cont">
+                            <a href="edit-address.html" class="edit-address btn-bjdz">编辑</a>
+                            <h3>姓名</h3>
+                            <p>天津 详细地址</p>
+                            <p>详细地址</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-box">
+                            <img class="common-img" src="/images/weChat-2x.png" alt="头像">
+                        </div>
+                        <div class="address-cont">
+                            <a href="edit-address.html" class="edit-address btn-bjdz">编辑</a>
+                            <h3>姓名</h3>
+                            <p>天津 详细地址</p>
+                            <p>详细地址</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
-</body>
+    </body>
+    <script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/js/common.js"></script>
 </html>

@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="btn-title-text" href="personal-center.html">返回</a></div>
+            <div class="header-left"><a href="/wap/personal"></a></div>
             <h3>消息中心</h3>
         </div>
         <div class="massage-category">
@@ -26,50 +26,7 @@
 
         <!--评论消息-->
         <div class="massage-cont discuss">
-            <ul>
-                <li>
-                    <div class="massage-cont-left">
-                        <div class="icon-box">
-                            <img class="common-img" src="/images/weChat-2x.png" alt="头像">
-                        </div>
-                    </div>
-                    <div class="massage-cont-right">
-                        <a class="btn btn-reply" href="reply-comment.html">回复</a>
-                        <h3>昵称或是山洞官方小编<i></i><span>2018-12-26 16:30</span></h3>
-                        <p>评论消息的内容呈现</p>
-                        <div class="us-massage">
-                            <a href="#">
-                                <div class="picture-box">
-                                    <img class="common-img" src="/images/logo-2x.png" alt="图片">
-                                </div>
-                                <span>你的个人昵称</span>
-                                <p class="us-text">消息的内容呈现,消息的内容呈现</p>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="massage-cont-left">
-                        <div class="icon-box">
-                            <img class="common-img" src="/images/weChat-2x.png" alt="头像">
-                        </div>
-                    </div>
-                    <div class="massage-cont-right">
-                        <a class="btn btn-reply" href="#">回复</a>
-                        <h3>昵称或是山洞官方小编<i></i><span>2018-12-26 16:30</span></h3>
-                        <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
-                        <div class="us-massage">
-                            <a href="#">
-                                <div class="picture-box">
-                                    <img class="common-img" src="/images/my-picture.png" alt="图片">
-                                </div>
-                                <span>你的个人昵称</span>
-                                <p class="us-text">消息的内容呈现</p>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            <ul></ul>
         </div>
 
         <!--推荐消息-->
@@ -152,4 +109,57 @@
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
+    <script>
+        $(function () {
+            $.get("/getCommentMessage", {}, function (data) {
+                var noteHtml = '',photo;
+                if (data.status) {
+                    $.each(data.data, function (k, v) {
+                        if (v.photo == 0){
+                            photo = "/images/portrait.png"
+                        }else {
+                            photo = v.photo;
+                        }
+                        noteHtml += '<li>';
+                        noteHtml += '<div class="massage-cont-left"><div class="icon-box"><img class="common-img" src="'+ photo +'" alt="头像"></div></div>';
+                        noteHtml += '<div class="massage-cont-right">';
+                        noteHtml += '<a class="btn btn-reply" href="/wap/reply_comment">回复</a>';
+                        noteHtml += '<h3>' + v.nickname + '<i></i><span>' + v.created_at + '</span></h3>';
+                        noteHtml += '<p>' + v.content + '</p>';
+                        noteHtml += '<div class="us-massage"><a href="#">';
+                        noteHtml += '<div class="picture-box"><img class="common-img" src="' + v.image_one_url + '" alt="图片"></div>';
+                        noteHtml += '<span>' + v.title + '</span>';
+                        noteHtml += '<p class="us-text">' + v.note_content + '</p>'
+                        noteHtml += '</a></div></div></li>'
+                    })
+                    $(".discuss ul").html(noteHtml);
+                }
+            });
+            $.get("/getSysMessage", {}, function (data) {
+                var noteHtml = '',photo;
+                console.log(data)
+                if (data.status) {
+                    $.each(data.data, function (k, v) {
+                        if (v.photo == 0){
+                            photo = "/images/portrait.png"
+                        }else {
+                            photo = v.photo;
+                        }
+                        noteHtml += '<li><a href="#">';
+                        noteHtml += '<div class="massage-cont-left">';
+                        noteHtml += '<div class="icon-box"><img class="common-img" src="'+ v.photo +'" alt="头像"></div></div>';
+                        noteHtml += '<a class="btn btn-reply" href="/wap/reply_comment">回复</a>';
+                        noteHtml += '<h3>' + v.nickname + '<i></i><span>' + v.created_at + '</span></h3>';
+                        noteHtml += '<p>' + v.content + '</p>';
+                        noteHtml += '<div class="us-massage"><a href="#">';
+                        noteHtml += '<div class="picture-box"><img class="common-img" src="' + v.image_one_url + '" alt="图片"></div>';
+                        noteHtml += '<span>' + v.title + '</span>';
+                        noteHtml += '<p class="us-text">' + v.note_content + '</p>'
+                        noteHtml += '</a></div></div></li>'
+                    });
+                    $(".system ul").html(noteHtml);
+                }
+            });
+        });
+    </script>
 </html>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -104,23 +104,32 @@ Route::get('storeDetail','StoreController@storeDetail');//店铺详情
 Route::get('uploadAuth','StoreController@uploadAuth');//上传店铺认证图
 
 /************************前端路由*********************************/
-Route::get('wap/login_index', function () {
+Route::get('wap/login_index', function () {//登录首页
     return view('personal/login-index');
 });
-Route::get('wap/login', function () {
+Route::get('wap/login', function () {//手机号登陆
     return view('personal/login');
 });
-Route::get('wap/register', function () {
+Route::get('wap/register', function () {//注册页面
     return view('personal/register');
 });
-Route::get('wap/personal', function () {
+Route::get('wap/personal', function () {//个人中心
     return view('personal/personal-center');
 });
-Route::get('wap/message-center', function () {
+Route::get('wap/personal_data', function () {//个人资料
+    return view('personal/personal-data');
+ });
+Route::get('wap/message_center', function () {//消息中心
     return view('personal/message-center');
 });
-Route::get('wap/my-note', function () {
+Route::get('wap/my_note', function () {//我的笔记
     return view('personal/my-note');
+});
+Route::get('wap/thumbs_up', function () {//点赞笔记
+    return view('personal/thumbs-up');
+});
+Route::get('wap/reply_comment', function () {//点赞笔记
+    return view('personal/reply-comment');
 });
 
 
