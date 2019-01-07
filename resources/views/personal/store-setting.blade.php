@@ -14,7 +14,7 @@
     <body>
         <div class="header">
             <div>
-                <div class="header-left"><a class="btn-title-text" href="store.html">返回</a></div>
+                <div class="header-left"><a class="btn-title-text" href="/wap/store">返回</a></div>
                 <div class="header-right renzheng"><a class="btn-title-text" href="#">完成</a></div>
                 <h3 class="top-title">店铺设置</h3>
             </div>

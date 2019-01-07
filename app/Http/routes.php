@@ -134,8 +134,69 @@ Route::get('wap/thumbs_up', function () {//点赞笔记
 Route::get('wap/reply_comment', function () {//回复评论
     return view('personal/reply-comment');
 });
-Route::get('wap/follow_interest', function () {//回复评论
+Route::get('wap/follow_interest', function () {//关注页面
     return view('personal/follow-interest');
+});
+
+Route::get('wap/apply_certification', function () {//申请认证
+    return view('personal/apply-certification');
+});
+Route::get('wap/collection', function () {//收藏夹
+    return view('personal/collection');
+});
+Route::get('wap/coupon', function () {//优惠券
+    return view('personal/coupon');
+});
+Route::get('wap/edit_address', function () {//编辑收货地址
+    return view('personal/edit-address');
+});
+Route::get('wap/factory', function () {//工厂认证
+    return view('personal/factory');
+});
+Route::get('wap/feedback', function () {//意见反馈
+    return view('personal/feedback');
+});
+Route::get('wap/ID_card', function () {//身份证认证
+    return view('personal/ID-card');
+});
+Route::get('wap/museum', function () {//博物馆认证
+    return view('personal/museum');
+});
+Route::get('wap/my_address', function () {//我的收货地址
+    return view('personal/my-address');
+});
+Route::get('wap/my_order', function () {//我的订单
+    return view('personal/my-order');
+});
+Route::get('wap/new_address', function () {//新增收货地址
+    return view('personal/new-address');
+});
+Route::get('wap/order_details', function () {//订单详情
+    return view('personal/order-details');
+});
+Route::get('wap/other_home', function () {//别人的主页
+    return view('personal/other-home');
+});
+Route::get('wap/pay_order', function () {//订单详情-订单支付页面
+    return view('personal/pay-order');
+});
+Route::get('wap/pinglun_edit', function () {//评论页面
+    return view('personal/pinglun-edit');
+});
+Route::get('wap/pinglun_list', function () {//评论列表
+    return view('personal/pinglun-list');
+});
+Route::get('wap/recommend', function () {//推荐消息
+    return view('personal/recommend');
+});
+Route::get('wap/store', function () {//店铺首页
+    return view('personal/store');
+});
+Route::get('wap/store_setting', function () {//店铺设置
+    return view('personal/store-setting');
+});
+Route::get('wap/write_note', function () {//写笔记
+    return view('personal/write-note');
 });
 
 

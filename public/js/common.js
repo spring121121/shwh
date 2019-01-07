@@ -138,12 +138,12 @@ $(function () {
     });
 
     // 消息中心的回复按钮链接地址
-    $(".btn-reply").attr("href","reply-comment.html");
+    $(".btn-reply").attr("href","/wap/reply_comment");
 
 
     // 推荐消息点击li跳转页面
     $(".recommend ul li").click(function () {
-        window.location.href="recommend.html";
+        window.location.href="/wap/recommend";
     });
 
     // 消息列表的标题显示评论条数
@@ -156,14 +156,14 @@ $(function () {
     });
 
     // 点击评论跳转到评论界面
-    $(".btn-pl-list").attr("href","pinglun-edit.html?i=2");
+    $(".btn-pl-list").attr("href","/wap/pinglun_edit?i=2");
 
     //评论界面返回
     var pl_index = index.substr(3);
     if (pl_index == 1){
-        $("#btn-pl-return").attr("href","recommend.html");
+        $("#btn-pl-return").attr("href","/wap/recommend");
     }else if (pl_index == 2) {
-        $("#btn-pl-return").attr("href","my-note.html");
+        $("#btn-pl-return").attr("href","/wap/my_note");
     }
 
     //点击取消隐藏分享
@@ -211,7 +211,7 @@ $(function () {
 
     // 点击订单列表跳转到订单详情
     $(".order-cont li a").click(function () {
-        $(this).attr("href","order-details.html");
+        $(this).attr("href","/wap/order_details");
     });
 
     // 点击删除订单事件
@@ -246,7 +246,7 @@ $(function () {
         if ($(this).attr("class") == "first-title") {
             event.stopPropagation();
         }else {
-            window.location.href = "other-home.html";
+            window.location.href = "/wap/other_home";
         }
     });
     $(".gz-common").find("button").on("click",function (event) {

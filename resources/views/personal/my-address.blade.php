@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="btn-title-text" href="personal-center.html">返回</a></div>
+            <div class="header-left"><a href="/wap/personal"></a></div>
             <div class="header-right btn-title-text">新增</div>
             <h3 class="top-title">收货地址</h3>
         </div>
@@ -25,7 +25,7 @@
                             <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                         </div>
                         <div class="address-cont">
-                            <a href="edit-address.html" class="edit-address btn-bjdz">编辑</a>
+                            <a href="/wap/edit_address" class="edit-address btn-bjdz">编辑</a>
                             <h3>姓名</h3>
                             <p><span>默认</span>天津 详细地址</p>
                             <p>详细地址</p>
@@ -36,7 +36,7 @@
                             <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                         </div>
                         <div class="address-cont">
-                            <a href="edit-address.html" class="edit-address btn-bjdz">编辑</a>
+                            <a href="/wap/edit_address" class="edit-address btn-bjdz">编辑</a>
                             <h3>姓名</h3>
                             <p>天津 详细地址</p>
                             <p>详细地址</p>
@@ -47,7 +47,7 @@
                             <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                         </div>
                         <div class="address-cont">
-                            <a href="edit-address.html" class="edit-address btn-bjdz">编辑</a>
+                            <a href="/wap/edit_address" class="edit-address btn-bjdz">编辑</a>
                             <h3>姓名</h3>
                             <p>天津 详细地址</p>
                             <p>详细地址</p>

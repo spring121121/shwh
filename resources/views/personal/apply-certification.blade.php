@@ -13,13 +13,13 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="store.html"></a></div>
+            <div class="header-left"><a href="/wap/store"></a></div>
             <h3 class="top-title">申请认证</h3>
         </div>
         <div class="content-box">
             <ul class="renzheng-fenlei">
                 <li>
-                    <a href="ID-card.html">
+                    <a href="/wap/ID_card">
                         <div class="icon-box"><img src="/images/id-card.png" class="common-img"></div>
                         <div class="fenlei-right">
                             <i></i>
@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="factory.html">
+                    <a href="/wap/factory">
                         <div class="icon-box"><img src="/images/factory.png" class="common-img"></div>
                         <div class="fenlei-right">
                             <i></i>
@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="museum.html">
+                    <a href="/wap/museum">
                         <div class="icon-box"><img src="/images/museum.png" class="common-img"></div>
                         <div class="fenlei-right">
                             <i></i>

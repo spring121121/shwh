@@ -19,69 +19,15 @@
         <div class="content-box">
             <!--关注的人-->
             <div class="my-concern gz-common">
-                <ul class="tjgz-box">
+                <ul class="tjgz-box" id="recommend-gz-list">
                     <li class="first-title">
                         <button>换一批</button>
                         <span>推荐关注</span>
                     </li>
-                    <li>
-                        <div class="gz-img-box"><img src="/images/portrait.png" class="common-img"></div>
-                        <div class="gz-right">
-                            <button><i></i>关注</button>
-                            <h3>昵称</h3>
-                            <span>个人等级</span>
-                            <p>有多少人关注了她</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="gz-img-box"><img src="/images/portrait.png" class="common-img"></div>
-                        <div class="gz-right">
-                            <button><i></i>关注</button>
-                            <h3>昵称</h3>
-                            <span>个人等级</span>
-                            <p>有多少人关注了她</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="gz-img-box"><img src="/images/portrait.png" class="common-img"></div>
-                        <div class="gz-right">
-                            <button><i></i>关注</button>
-                            <h3>昵称</h3>
-                            <span>个人等级</span>
-                            <p>有多少人关注了她</p>
-                        </div>
-                    </li>
                 </ul>
-                <ul class="tjgz-box">
+                <ul class="tjgz-box" id="my-gz-list">
                     <li class="first-title">
                         <span>我的关注</span>
-                    </li>
-                    <li>
-                        <div class="gz-img-box"><img src="/images/portrait.png" class="common-img"></div>
-                        <div class="gz-right">
-                            <button><i></i>关注</button>
-                            <h3>昵称</h3>
-                            <span>个人等级</span>
-                            <p>有多少人关注了她</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="gz-img-box"><img src="/images/portrait.png" class="common-img"></div>
-                        <div class="gz-right">
-                            <button><i></i>关注</button>
-                            <h3>昵称</h3>
-                            <span>个人等级</span>
-                            <p>有多少人关注了她</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="gz-img-box"><img src="/images/portrait.png" class="common-img"></div>
-                        <div class="gz-right">
-                            <button><i></i>关注</button>
-                            <h3>昵称</h3>
-                            <span>个人等级</span>
-                            <p>有多少人关注了她</p>
-                        </div>
                     </li>
                 </ul>
             </div>
@@ -92,36 +38,9 @@
                         <span>近三天粉丝</span>
                     </li>
                 </ul>
-                <ul class="tjgz-box fans-box">
+                <ul class="tjgz-box fans-box" id="my-fans-list">
                     <li class="first-title">
                         <span>我的粉丝</span>
-                    </li>
-                    <li>
-                        <div class="gz-img-box"><img src="/images/portrait.png" class="common-img"></div>
-                        <div class="gz-right">
-                            <button><i></i>关注</button>
-                            <h3>昵称</h3>
-                            <span>个人等级</span>
-                            <p>有多少人关注了她</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="gz-img-box"><img src="/images/portrait.png" class="common-img"></div>
-                        <div class="gz-right">
-                            <button><i></i>关注</button>
-                            <h3>昵称</h3>
-                            <span>个人等级</span>
-                            <p>有多少人关注了她</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="gz-img-box"><img src="/images/portrait.png" class="common-img"></div>
-                        <div class="gz-right">
-                            <button><i></i>关注</button>
-                            <h3>昵称</h3>
-                            <span>个人等级</span>
-                            <p>有多少人关注了她</p>
-                        </div>
                     </li>
                 </ul>
             </div>
@@ -132,13 +51,23 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            myFansList();
+            //近三天粉丝列表
+            myFansList("/beforeFansList","#my-three-fans");
+            //我的粉丝列表
+            myFansList("/myFansList","#my-fans-list");
+            //我的关注列表
+            myFansList("/myFocusList","#my-gz-list");
+            //推荐关注列表
+            myFansList("/recommendList","#recommend-gz-list");
+
+
         });
-        function myFansList() {
-            $.get("/myFansList", {}, function (data) {
+        function myFansList(url,obj) {
+            $.get(url, {}, function (data) {
                 var noteHtml = '';
                 if (data.status) {
                     $.each(data.data, function (k, v) {
+                        console.log(v.photo)
                         var fans_count = getFansCount(v.id);
                         if (v.photo == 0){
                             photo = "/images/portrait.png"
@@ -154,12 +83,12 @@
                         noteHtml += '<p>有'+fans_count+'人关注了她</p>';
                         noteHtml += '</div></li>';
                     });
-                    $("#my-three-fans").append(noteHtml);
+                    $(obj).append(noteHtml);
                 }
             });
         }
 
-        function getFansCount(id){
+        function getFansCount(id){//获取粉丝数量
             var fans_count = 0;
             $.ajax({
                 url: '/myFans',

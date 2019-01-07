@@ -23,7 +23,7 @@
             </ul>
         </div>
         <div class="write-note">
-            <a href="write-note.html">
+            <a href="/wap/write_note">
                 <span>写笔记</span>
                 <div class="write-img-box"></div>
             </a>

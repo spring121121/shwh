@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="apply-certification.html"></a></div>
+            <div class="header-left"><a href="/wap/apply_certification"></a></div>
             <div class="header-right finish"><a class="btn-title-text" href="#">完成</a></div>
             <h3 class="top-title">工厂认证</h3>
         </div>

@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="personal-center.html"></a></div>
+            <div class="header-left"><a href="/wap/personal"></a></div>
             <h3 class="top-title">优惠券</h3>
         </div>
         <div class="content-box">

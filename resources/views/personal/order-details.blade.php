@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="btn-title-text" href="my-order.html">返回</a></div>
+            <div class="header-left"><a class="btn-title-text" href="/wap/my_order">返回</a></div>
             <h3 class="top-title">订单详情</h3>
         </div>
         <div class="content-box">

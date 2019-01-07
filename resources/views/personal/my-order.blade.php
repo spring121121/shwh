@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="btn-title-text" href="personal-center.html">返回</a></div>
+            <div class="header-left"><a class="btn-title-text" href="/wap/personal">返回</a></div>
             <h3 class="top-title">我的订单</h3>
         </div>
         <div class="content-box">

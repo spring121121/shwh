@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header other-header">
-            <div class="header-left"><a class="btn-title-text" href="follow-interest.html">返回</a></div>
+            <div class="header-left"><a class="btn-title-text" href="/wap/follow_interest">返回</a></div>
             <div class="other-box">
                 <div class="other-icon-box"><img src="/images/portrait.png" class="common-img"></div>
                 <h3>昵称<i></i></h3>

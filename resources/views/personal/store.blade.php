@@ -14,14 +14,14 @@
     <body>
         <div class="header store-header">
             <div>
-                <div class="header-left"><a class="btn-title-text" href="personal-center.html">返回</a></div>
-                <div class="header-right renzheng"><a class="btn-title-text" href="apply-certification.html">申请认证</a></div>
+                <div class="header-left"><a class="btn-title-text" href="/wap/personal">返回</a></div>
+                <div class="header-right renzheng"><a class="btn-title-text" href="/wap/apply_certification">申请认证</a></div>
                 <h3 class="top-title">店铺</h3>
             </div>
             <div class="store-message-box">
                 <div class="icon-box"><img src="/images/logo-2x.png" class="common-img"></div>
                 <div class="store-name">
-                    <div class="setting"><a href="store-setting.html" class="btn-title-text">设置</a></div>
+                    <div class="setting"><a href="/wap/store_setting" class="btn-title-text">设置</a></div>
                     <h2>店铺名称<span>已认证</span></h2>
                     <span><i></i>等级</span>
                     <span><i></i>粉丝人数</span>

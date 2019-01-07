@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="btn-title-text" href="my-address.html">返回</a></div>
+            <div class="header-left"><a class="btn-title-text" href="/wap/my_address">返回</a></div>
             <h3 class="top-title">增加收货地址</h3>
         </div>
         <div class="content-box">

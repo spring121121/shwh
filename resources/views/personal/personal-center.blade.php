@@ -21,7 +21,7 @@
                 <div class="edit-personal">
                     <a class="btn-edit" href="/wap/message_center"></a>
                     <h3>输入你的昵称</h3>
-                    <span>编辑你的资料 <i><a href="personal-data.html"></a></i></span>
+                    <span>编辑你的资料 <i><a href="/wap/personal_data"></a></i></span>
                 </div>
                 <div class="address-grade">
                     <div class="personal-icon-box"><img class="common-img" src="../images/location.png" /></div>
@@ -43,13 +43,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="collection.html">
+                    <a href="/wap/collection">
                         <div class="icon-img"><img class="common-img" src="../images/collection.png" alt="收藏"></div>
                         <p>收藏</p>
                     </a>
                 </li>
                 <li>
-                    <a href="store.html">
+                    <a href="/wap/store">
                         <div class="icon-img"><img class="common-img" src="../images/store.png" alt="店铺"></div>
                         <p>店铺</p>
                     </a>
@@ -63,19 +63,19 @@
             </ul>
             <div class="list-box">
                 <div class="list-cont">
-                    <a href="coupon.html">
+                    <a href="/wap/coupon">
                         <span>我的优惠券</span>
                         <i></i>
                     </a>
                 </div>
                 <div class="list-cont">
-                    <a href="my-order.html">
+                    <a href="/wap/my_order">
                         <span>我的订单</span>
                         <i></i>
                     </a>
                 </div>
                 <div class="list-cont">
-                    <a href="my-address.html">
+                    <a href="/wap/my_address">
                         <span>我的收货地址</span>
                         <i></i>
                     </a>
@@ -83,7 +83,7 @@
             </div>
             <div class="list-box">
                 <div class="list-cont">
-                    <a href="feedback.html">
+                    <a href="/wap/feedback">
                         <span>意见反馈</span>
                         <i></i>
                     </a>

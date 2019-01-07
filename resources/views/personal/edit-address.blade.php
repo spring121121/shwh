@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="my-address.html"></a></div>
+            <div class="header-left"><a href="/wap/my_address"></a></div>
             <h3 class="top-title">编辑收货地址</h3>
         </div>
         <div class="content-box">
