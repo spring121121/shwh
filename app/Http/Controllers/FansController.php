@@ -160,9 +160,8 @@ class FansController extends BaseController
             ->select(DB::raw('uid,count(id) as count'))
             ->groupBy('uid')->orderBy(DB::raw('count(id)'),'desc')->offset($offset)->limit($limit)->get()->toArray();
         $uidds = array_column($focus, 'uid');
-        $recommend = UserModel::whereIn('id',$uidds)
-            ->select('id','photo','nickname','score')
-            ->get()->toArray();
+        $recommend = UserModel::whereIn('id',$uidds)->orderByRaw("FIELD(id, " . implode(", ", $uidds) . ")")->select('id','photo','nickname','score')
+            ->get()->toArray();//按照id顺序排列
         $res = $this->getList($recommend);
         return $this->success($res);
     }
