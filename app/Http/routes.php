@@ -111,8 +111,12 @@ Route::get('getStoreListBySearch','StoreController@getStoreListBySearch');//获�
 Route::post('createOneCategory','ShopController@createOneCategory');//新增商品一级分类
 Route::post('createSonCategory','ShopController@createSonCategory');//新增商品二级分类
 Route::get('categoryOneList','ShopController@categoryOneList');//一级分类列表
-Route::get('categorySonList','ShopController@categorySonList');//二级分类列表
 Route::post('addGoods','ShopController@addGoods');//增加商品
+Route::get('categorySonList','ShopController@categorySonList');//二级分类列表
+Route::get('getGoodsList','ShopController@getGoodsList');//获取分类下的所有商品列表
+Route::get('getGoodsDetail','ShopController@getGoodsDetail');//商品详情
+Route::get('storeGoodsList','ShopController@storeGoodsList');//所属店铺下的商品列表
+Route::get('relateGoodsList','ShopController@relateGoodsList');//随机取10条商品列表
 
 /************************前端路由*********************************/
 Route::get('wap/login_index', function () {//登录首页
