@@ -33,6 +33,23 @@ class FansController extends BaseController
     }
 
     /**
+     * 关注
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function focus(Request $request){
+        //$uid = $request->session()->get('userInfo')['id'];
+        $beuid = UserService::getUid($request);
+        $uid = $request->input('uid');
+        $result = FocusModel::create(['uid'=>$uid,'beuid'=>$beuid]);
+        if ($result) {
+            return $this->success();
+        } else {
+            return $this->fail('300');
+        }
+    }
+
+    /**
      * 我的粉丝列表
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -133,13 +150,15 @@ class FansController extends BaseController
     public function recommendList(Request $request){
         //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
+        $limit = FocusModel::LIMIT;
+        $offset = $request->input('offset')*$limit;
         $ids = FocusModel::where('beuid',$uid)
             ->select('uid')
             ->get()->toArray();
         $uids = array_column($ids, 'uid');
         $focus = FocusModel::whereNotIn('uid',$uids)
             ->select(DB::raw('uid,count(id) as count'))
-            ->groupBy('uid')->orderBy(DB::raw('count(id)'),'desc')->offset(0)->limit(5)->get()->toArray();
+            ->groupBy('uid')->orderBy(DB::raw('count(id)'),'desc')->offset($offset)->limit($limit)->get()->toArray();
         $uidds = array_column($focus, 'uid');
         $recommend = UserModel::whereIn('id',$uidds)
             ->select('id','photo','nickname','score')

@@ -82,6 +82,7 @@ Route::get('getCommentMessage','InformationController@getCommentMessage');//笔�
 Route::get('readSysMessage','InformationController@readSysMessage');//已读系统消息
 
 /*****************FansController关注，粉丝接口********************************/
+Route::post('focus','FansController@focus');//关注
 Route::get('myFans','FansController@myFans');//我的粉丝数量
 Route::get('myFansList','FansController@myFansList');//我的粉丝列表
 Route::get('beforeFansList','FansController@beforeFansList');//前几天我的粉丝列表
@@ -105,6 +106,13 @@ Route::get('storeList','StoreController@storeList');//店铺列表
 Route::get('storeDetail','StoreController@storeDetail');//店铺详情
 Route::get('uploadAuth','StoreController@uploadAuth');//上传店铺认证图
 Route::get('getStoreListBySearch','StoreController@getStoreListBySearch');//获取相应角色的店铺列表
+
+/*****************ShopController商店接口********************************/
+Route::post('createOneCategory','ShopController@createOneCategory');//新增商品一级分类
+Route::post('createSonCategory','ShopController@createSonCategory');//新增商品二级分类
+Route::get('categoryOneList','ShopController@categoryOneList');//一级分类列表
+Route::get('categorySonList','ShopController@categorySonList');//二级分类列表
+Route::post('addGoods','ShopController@addGoods');//增加商品
 
 /************************前端路由*********************************/
 Route::get('wap/login_index', function () {//登录首页
