@@ -62,10 +62,10 @@
                     },
                     success : function(data){	//回调函数 和 后台返回的 数据
                         if (data.code == 200){
-                            console.log("登录成功")
-                            $("#login").attr("href","/wap/personal");
+                            alert("登录成功")
+                            window.location.href="/wap/personal";
                         } else {
-                            console.log("登录失败")
+                            alert("登录失败")
                         }
                     }
                 });
