@@ -14,16 +14,16 @@
     <body>
         <div class="header store-header">
             <div>
-                <div class="header-left"><a class="btn-title-text" href="/wap/personal">返回</a></div>
-                <div class="header-right renzheng"><a class="btn-title-text" href="/wap/apply_certification">申请认证</a></div>
+                <div class="header-left"><a href="/wap/personal"></a></div>
+                <div class="header-right renzheng"><a href="/wap/apply_certification">申请认证</a></div>
                 <h3 class="top-title">店铺</h3>
             </div>
             <div class="store-message-box">
                 <div class="icon-box"><img src="/images/logo-2x.png" class="common-img"></div>
                 <div class="store-name">
-                    <div class="setting"><a href="/wap/store_setting" class="btn-title-text">设置</a></div>
+                    <div class="setting"><a href="/wap/store_setting"></a></div>
                     <h2>店铺名称<span>已认证</span></h2>
-                    <span><i></i>等级</span>
+                    <span><i><img src="/images/grade.png" class="common-img"></i>等级</span>
                     <span><i></i>粉丝人数</span>
                 </div>
                 <div class="store-brief">
@@ -50,7 +50,7 @@
                             <p>笔记的部分内容,笔记的部分内容,笔记的部分内容,笔记的部分内容</p>
                             <a href="#" class="btn-notes btn-pl-list"><i></i>评论</a>
                             <a href="#" class="btn-notes btn-zf"><i></i>转发</a>
-                            <a href="#" class="btn-notes"><i></i>赞</a>
+                            <a href="#" class="btn-notes btn-zan"><i></i>赞</a>
                         </div>
                         <label class="btn-del"><button>删除</button></label>
                     </li>
@@ -63,7 +63,7 @@
                             <p>笔记的部分内容,笔记的部分内容,笔记的部分内容,笔记的部分内容</p>
                             <a href="#" class="btn-notes btn-pl-list"><i></i>评论</a>
                             <a href="#" class="btn-notes btn-zf"><i></i>转发</a>
-                            <a href="#" class="btn-notes"><i></i>赞</a>
+                            <a href="#" class="btn-notes btn-zan"><i></i>赞</a>
                         </div>
                         <label class="btn-del"><button>删除</button></label>
                     </li>
@@ -75,37 +75,37 @@
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img6.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img4.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img1.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                 </ul>
@@ -113,37 +113,37 @@
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img3.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img5.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img2.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                 </ul>
@@ -154,37 +154,37 @@
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img1.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img3.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img5.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                 </ul>
@@ -192,37 +192,37 @@
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img2.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img6.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img4.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
                         <div class="btn-flex-box">
-                            <span><i></i>转发</span>
-                            <span><i></i>赞</span>
+                            <span class="zf-icon"><i></i>转发</span>
+                            <span class="zan-icon"><i></i>赞</span>
                         </div>
                     </li>
                 </ul>

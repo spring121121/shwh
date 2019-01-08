@@ -242,14 +242,14 @@ $(function () {
     
     
     // 点击关注的人跳转到ta的主页
-    $(".gz-common").find("li").on("click",function (event) {
+    $(".gz-common").on("click","li",function (event) {
         if ($(this).attr("class") == "first-title") {
             event.stopPropagation();
         }else {
             window.location.href = "/wap/other_home";
         }
     });
-    $(".gz-common").find("button").on("click",function (event) {
+    $(".gz-common").on("click","button",function (event) {
         event.stopPropagation();
     });
 
@@ -274,4 +274,8 @@ $(function () {
             $(".mark-praise").siblings(".other-content").css("display","none");
         }
     });
+
+
+    var address_height = $(window).height()-300;
+    $(".personal-cont .choice-address ul").css("height",address_height+"px");
 });

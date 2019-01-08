@@ -22,7 +22,7 @@
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img1.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>5人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
@@ -34,7 +34,7 @@
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img3.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>20人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
@@ -46,7 +46,7 @@
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img5.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>100人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
@@ -60,7 +60,7 @@
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img2.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>72人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
@@ -72,7 +72,7 @@
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img6.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>36人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
@@ -84,7 +84,7 @@
                     <li>
                         <div class="flex-img-box">
                             <img src="/images/collection-img4.jpg" class="common-img">
-                            <span>浏览</span>
+                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
                         </div>
                         <h3>藏品的名称</h3>
                         <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>

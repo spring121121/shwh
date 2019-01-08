@@ -14,6 +14,7 @@
     <body>
         <div class="header">
             <div class="header-left"><a href="/wap/personal"></a></div>
+            <div class="header-right bg-add"><a href="#"></a></div>
             <ul class="follow-title flex-box"><li>关注的人</li><li>我的粉丝</li></ul>
         </div>
         <div class="content-box">

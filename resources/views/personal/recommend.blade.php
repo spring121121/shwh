@@ -15,7 +15,7 @@
     <body>
         <div class="header">
             <div class="header-left"><a href="/wap/message_center?index=2"></a></div>
-            <div class="header-right btn-title-text btn-zf">转发</div>
+            <div class="header-right btn-title-text btn-zf"></div>
             <h3 class="top-title">推荐消息的标题</h3>
         </div>
         <div class="content-box">
@@ -34,9 +34,9 @@
                 <p>消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现</p>
             </div>
             <ul class="btn-list-icon">
-                <li><a class="pl-text" href="/wap/pinglun_edit">评论</a></li>
-                <li>收藏</li>
-                <li>点赞</li>
+                <li id="pinglun"><a class="pl-text" href="/wap/pinglun_edit"></a></li>
+                <li id="shoucang"></li>
+                <li id="dianzan"></li>
             </ul>
             <div class="more-pl-title">
                 <span>七嘴八舌的探宝者</span>
@@ -50,7 +50,7 @@
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
                             <div class="pl-cont">
-                                <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span><div class="dianzan">点赞</div></h3>
+                                <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span><div class="dianzan"></div></h3>
                                 <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
                             </div>
                         </a>
@@ -61,7 +61,7 @@
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
                             <div class="pl-cont">
-                                <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span><div class="dianzan">点赞</div></h3>
+                                <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span><div class="dianzan"></div></h3>
                                 <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
                             </div>
                         </a>
@@ -72,7 +72,7 @@
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
                             <div class="pl-cont">
-                                <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span><div class="dianzan">点赞</div></h3>
+                                <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span><div class="dianzan"></div></h3>
                                 <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
                             </div>
                         </a>
@@ -83,7 +83,7 @@
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
                             <div class="pl-cont">
-                                <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span><div class="dianzan">点赞</div></h3>
+                                <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span><div class="dianzan"></div></h3>
                                 <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
                             </div>
                         </a>

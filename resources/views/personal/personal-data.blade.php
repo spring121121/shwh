@@ -14,6 +14,7 @@
     <body>
         <div class="header">
             <div class="header-left"><a href="/wap/personal"></a></div>
+            <div class="header-right finnish-edit"></div>
             <h3 class="top-title">你的资料</h3>
         </div>
         <div class="content-box">

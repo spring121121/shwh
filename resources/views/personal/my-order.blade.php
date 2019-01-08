@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="btn-title-text" href="/wap/personal">返回</a></div>
+            <div class="header-left"><a href="/wap/personal"></a></div>
             <h3 class="top-title">我的订单</h3>
         </div>
         <div class="content-box">
@@ -21,8 +21,8 @@
                 <li>
                     <a href="javascript:void(0);">
                         <div class="order-left">
-                            <p><i></i>商品的源头<i></i></p>
-                            <div class="order-img-box"><img src="" class="common-img"></div>
+                            <p><i><img src="/images/id-card.png" class="common-img"></i>商品的源头<i></i></p>
+                            <div class="order-img-box"><img src="/images/collection-img1.jpg" class="common-img"></div>
                         </div>
                         <div class="order-right">
                             <p class="order-p1">交易进行中</p>
@@ -42,8 +42,8 @@
                 <li>
                     <a href="javascript:void(0);">
                         <div class="order-left">
-                            <p><i></i>商品的源头<i></i></p>
-                            <div class="order-img-box"><img src="" class="common-img"></div>
+                            <p><i><img src="/images/shop.png" class="common-img"></i>商品的源头<i></i></p>
+                            <div class="order-img-box"><img src="/images/collection-img6.jpg" class="common-img"></div>
                         </div>
                         <div class="order-right">
                             <p class="order-p1">交易成功</p>
@@ -63,8 +63,8 @@
                 <li>
                     <a href="javascript:void(0);">
                         <div class="order-left">
-                            <p><i></i>商品的源头<i></i></p>
-                            <div class="order-img-box"><img src="" class="common-img"></div>
+                            <p><i><img src="/images/factory.png" class="common-img"></i>商品的源头<i></i></p>
+                            <div class="order-img-box"><img src="/images/collection-img4.jpg" class="common-img"></div>
                         </div>
                         <div class="order-right">
                             <p class="order-p1">交易成功</p>

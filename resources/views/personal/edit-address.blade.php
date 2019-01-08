@@ -27,8 +27,10 @@
                     <div class="ipt-box default-box"><input type="checkbox" id="default">设置为默认<label for="default"><em></em></label></div>
                 </form>
             </div>
-            <div class="btn-box"><a href="#">保存</a></div>
-            <div class="btn-box"><a class="other-color" href="#">删除</a></div>
+            <div class="btn-write-note">
+                <a href="#">保存</a>
+                <a class="other-color" href="#">删除</a>
+            </div>
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>

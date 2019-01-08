@@ -25,8 +25,10 @@
                     </ul>
                 </form>
             </div>
-            <div class="btn-box"><a href="#">提交</a></div>
-            <div class="btn-box"><a class="other-color" href="#">取消</a></div>
+            <div class="btn-write-note">
+                <a href="#">提交</a>
+                <a class="other-color" href="/wap/personal">取消</a>
+            </div>
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>

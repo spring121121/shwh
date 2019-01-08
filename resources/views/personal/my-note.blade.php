@@ -15,7 +15,7 @@
         <div class="header">
             <div class="header-left"><a href="/wap/personal"></a></div>
             <div class="header-right btn-title-text" id="edit-del"></div>
-            <div class="header-right" id="btn-dz-link"><a href="/wap/thumbs_up"></a></div>
+            <div class="header-right" id="btn-dz-link"><a href="/wap/thumbs_up">点赞</a></div>
             <h3>探宝笔记</h3>
         </div>
         <div class="content-box">

@@ -14,7 +14,7 @@
     <body>
         <div class="header">
             <div class="header-left"><a href="/wap/personal"></a></div>
-            <div class="header-right btn-title-text">新增</div>
+            <div class="header-right bg-add"><a href="/wap/new_address"></a></div>
             <h3 class="top-title">收货地址</h3>
         </div>
         <div class="content-box">
