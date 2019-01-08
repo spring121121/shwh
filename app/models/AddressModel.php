@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AddressModel extends Model
 {
     use SoftDeletes;
+    /**
+     * 不是默认的地址
+     */
+    const IS_DEFAULT_0 = 0;
+    /**
+     * 是默认的地址
+     */
+    const IS_DEFAULT_1 = 1;
     protected $dates = ['deleted_at'];
     /**
      * 与模型关联的数据表。
@@ -27,5 +35,5 @@ class AddressModel extends Model
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['uid','name','province','city','area','address_info','mobile'];
+    protected $fillable = ['uid', 'name', 'province', 'city', 'area', 'address_info', 'mobile','is_default'];
 }

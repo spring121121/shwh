@@ -28,6 +28,11 @@ class StoreController extends BaseController
         $uid = UserService::getUid($request);
         $data = $request->input('store');
         $data['uid'] = $uid;
+        $count = StoreModel::where('uid',$uid)
+            ->count();
+        if($count != 0){
+            return $this->fail('300','您已经存在店铺！');
+        }
         $rules = [
             'name' => 'required|string|min:1|max:20',
             'introduction' => 'required|string|min:1|max:200',
@@ -138,21 +143,15 @@ class StoreController extends BaseController
      */
     public function getStoreListBySearch(Request $request)
     {
-
         $roleId = $request->input('roleId');
         $keyword = $request->input('storeName',null);
         if(!empty($keyword)){
             $storeList = UserModel::where('role','=',$roleId)->where('store.name','like','%'.$keyword.'%')->where('store.status','=',StoreModel::IS_AUTHEN)->join('store','store.uid','=','user.id')
                 ->select('store.name','store.introduction','logo_pic_url')->get();
         }else{
-            $storeList = UserModel::where('role','=',$roleId)->where('store.status','=',StoreModel::IS_AUTHEN)->join('store','store.uid','=','user.id')
+            $storeList = UserModel::where('role','=',$roleId)->where('store.status','=',StoreModel::IS_AUTH)->join('store','store.uid','=','user.id')
                 ->select('store.name','store.introduction','logo_pic_url')->get();
         }
-
-
         return $this->success($storeList);
-
     }
-
-
 }
