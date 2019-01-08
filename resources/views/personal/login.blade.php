@@ -36,8 +36,8 @@
                     </form>
                     <div class="tips">请输入8-16位英文和数字密码</div>
                     <div class="btn-box">
-                        <button class="login" id="login"><a href="#">登录</a></button>
-                        <button class="register" id="register"><a href="/wap/register">注册</a></button>
+                        <a id="login" href="#">登录</a>
+                        <a id="register" href="/wap/register">注册</a>
                     </div>
                 </div>
         </div>
@@ -63,6 +63,7 @@
                     success : function(data){	//回调函数 和 后台返回的 数据
                         if (data.code == 200){
                             console.log("登录成功")
+                            $("#login").attr("href","/wap/personal");
                         } else {
                             console.log("登录失败")
                         }

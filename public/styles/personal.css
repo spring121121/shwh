@@ -126,20 +126,20 @@ ul,li{
     padding: 0 10px;
 }
 .ipt-cont .btn-box{
+    height: 40px;
+    line-height: 40px;
     margin-top: 35px;
 }
-.ipt-cont button{
-    width: 100%;
-    height: 40px;
+.ipt-cont .btn-box a{
     font-size: 18px;
-    background-color: #F49710;
     border-radius: 20px;
-    border: none;
-    margin: 10px 0;
+    text-align: center;
+    margin: 20px 0;
+    background: #F0F1EC;
     color: #000;
 }
-.ipt-cont .btn-box .register{
-    background-color: #F0F1EC;
+.ipt-cont .btn-box a:first-child{
+    background: url("../images/btn-bg.png") no-repeat center;
 }
 /*遮罩*/
 .mask-box{
@@ -452,6 +452,11 @@ ul,li{
 .personal-header .personal-title .address-grade{
     margin: 10px 30px;
     font-size: 0;
+    display: flex;
+    flex-direction: row;
+}
+.personal-header .personal-title .address-grade li{
+
 }
 .personal-header .personal-title .address-grade .personal-icon-box{
     display: inline-block;
@@ -1062,12 +1067,15 @@ ul,li{
 .ipt-address-box .default-box input:disabled + label {
     opacity: 0.5
 }
-.btn-box{
-    margin: 20px;
-}
-.btn-box a{
+.btn-new-address{
     height: 40px;
+    margin: 20px;
+    background: url("../images/btn-bg.png") no-repeat center;
     line-height: 40px;
+    border-radius: 20px;
+}
+.btn-new-address a{
+    height: 100%;
     border-radius: 20px;
     text-align: center;
     color: #000;

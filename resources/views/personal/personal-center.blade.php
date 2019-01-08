@@ -23,14 +23,20 @@
                     <h3>输入你的昵称</h3>
                     <span>编辑你的资料 <i><a href="/wap/personal_data"></a></i></span>
                 </div>
-                <div class="address-grade">
-                    <div class="personal-icon-box"><img class="common-img" src="../images/location.png" /></div>
-                    <i></i>
-                    <span>天津市 西青</span>
-                    <i></i>
-                    <div class="personal-icon-box"><img class="common-img" src="../images/grade.png" /></div>
-                    <span>个人等级</span>
-                </div>
+                <ul class="address-grade">
+                    <li>
+                        <div class="personal-icon-box"><img src="/images/man-icon-white.png" class="common-img"></div>
+                        <span>男</span>
+                    </li>
+                    <li>
+                        <div class="personal-icon-box"><img class="common-img" src="../images/location.png" /></div>
+                        <span>天津市 西青</span>
+                    </li>
+                    <li>
+                        <div class="personal-icon-box"><img class="common-img" src="../images/grade.png" /></div>
+                        <span>个人等级</span>
+                    </li>
+                </ul>
             </div>
         </div>
         <!--个人中心内容模块-->

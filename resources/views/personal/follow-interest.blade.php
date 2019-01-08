@@ -60,7 +60,7 @@
             myFansList("/myFocusList","#my-gz-list");
             //推荐关注列表
             // myFansList("/recommendList","#recommend-gz-list",num);
-            $.get("/recommendList", {offset:num}, function (data) {
+            $.get("/recommendList", {offset:0}, function (data) {
                 console.log(data);
                 var noteHtml = '';
                 if (data.status) {

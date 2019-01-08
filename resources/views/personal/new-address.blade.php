@@ -27,7 +27,7 @@
                     <div class="ipt-box default-box"><input type="checkbox" id="default">设置为默认<label for="default"><em></em></label></div>
                 </form>
             </div>
-            <div class="btn-box"><a href="#">保存</a></div>
+            <div class="btn-new-address"><a href="#">保存</a></div>
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
