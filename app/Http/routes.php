@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +41,8 @@ Route::post('register','RegisterController@register');
 Route::post('addAgentGoods','AgentController@addAgentGoods');
 
 
-
-
+/**************************分类获取***********************************/
+Route::get('categoryList/{isShop}','CategoryController@categoryList');
 
 
 
@@ -65,6 +65,8 @@ Route::get('getMyNoteList','NoteController@getMyNoteList');
 Route::get('getMyCollectNote','CollectController@getMyCollectNote');
 Route::post('deleteNote','NoteController@deleteNote');
 Route::post('deleteNoteNotOnly','NoteController@deleteNoteNotOnly');
+Route::get('searchNote/{keyword}','NoteController@searchNote');
+Route::get('getNoteListByStoreId','NoteController@getNoteListByStoreId');
 
 
 /************************店铺*********************************/
@@ -80,6 +82,7 @@ Route::get('getCommentMessage','InformationController@getCommentMessage');//笔�
 Route::get('readSysMessage','InformationController@readSysMessage');//已读系统消息
 
 /*****************FansController关注，粉丝接口********************************/
+Route::post('focus','FansController@focus');//关注
 Route::get('myFans','FansController@myFans');//我的粉丝数量
 Route::get('myFansList','FansController@myFansList');//我的粉丝列表
 Route::get('beforeFansList','FansController@beforeFansList');//前几天我的粉丝列表
@@ -102,25 +105,106 @@ Route::get('authStore','StoreController@authStore');//认证店铺
 Route::get('storeList','StoreController@storeList');//店铺列表
 Route::get('storeDetail','StoreController@storeDetail');//店铺详情
 Route::get('uploadAuth','StoreController@uploadAuth');//上传店铺认证图
+Route::get('getStoreListBySearch','StoreController@getStoreListBySearch');//获取相应角色的店铺列表
+
+/*****************ShopController商店接口********************************/
+Route::post('createOneCategory','ShopController@createOneCategory');//新增商品一级分类
+Route::post('createSonCategory','ShopController@createSonCategory');//新增商品二级分类
+Route::get('categoryOneList','ShopController@categoryOneList');//一级分类列表
+Route::get('categorySonList','ShopController@categorySonList');//二级分类列表
+Route::post('addGoods','ShopController@addGoods');//增加商品
 
 /************************前端路由*********************************/
-Route::get('wap/login_index', function () {
+Route::get('wap/login_index', function () {//登录首页
     return view('personal/login-index');
 });
-Route::get('wap/login', function () {
+Route::get('wap/login', function () {//手机号登陆
     return view('personal/login');
 });
-Route::get('wap/register', function () {
+Route::get('wap/register', function () {//注册页面
     return view('personal/register');
 });
-Route::get('wap/personal', function () {
+Route::get('wap/personal', function () {//个人中心
     return view('personal/personal-center');
 });
-Route::get('wap/message-center', function () {
+Route::get('wap/personal_data', function () {//个人资料
+    return view('personal/personal-data');
+ });
+Route::get('wap/message_center', function () {//消息中心
     return view('personal/message-center');
 });
-Route::get('wap/my-note', function () {
+Route::get('wap/my_note', function () {//我的笔记
     return view('personal/my-note');
+});
+Route::get('wap/thumbs_up', function () {//点赞笔记
+    return view('personal/thumbs-up');
+});
+Route::get('wap/reply_comment', function () {//回复评论
+    return view('personal/reply-comment');
+});
+Route::get('wap/follow_interest', function () {//关注页面
+    return view('personal/follow-interest');
+});
+
+Route::get('wap/apply_certification', function () {//申请认证
+    return view('personal/apply-certification');
+});
+Route::get('wap/collection', function () {//收藏夹
+    return view('personal/collection');
+});
+Route::get('wap/coupon', function () {//优惠券
+    return view('personal/coupon');
+});
+Route::get('wap/edit_address', function () {//编辑收货地址
+    return view('personal/edit-address');
+});
+Route::get('wap/factory', function () {//工厂认证
+    return view('personal/factory');
+});
+Route::get('wap/feedback', function () {//意见反馈
+    return view('personal/feedback');
+});
+Route::get('wap/ID_card', function () {//身份证认证
+    return view('personal/ID-card');
+});
+Route::get('wap/museum', function () {//博物馆认证
+    return view('personal/museum');
+});
+Route::get('wap/my_address', function () {//我的收货地址
+    return view('personal/my-address');
+});
+Route::get('wap/my_order', function () {//我的订单
+    return view('personal/my-order');
+});
+Route::get('wap/new_address', function () {//新增收货地址
+    return view('personal/new-address');
+});
+Route::get('wap/order_details', function () {//订单详情
+    return view('personal/order-details');
+});
+Route::get('wap/other_home', function () {//别人的主页
+    return view('personal/other-home');
+});
+Route::get('wap/pay_order', function () {//订单详情-订单支付页面
+    return view('personal/pay-order');
+});
+Route::get('wap/pinglun_edit', function () {//评论页面
+    return view('personal/pinglun-edit');
+});
+Route::get('wap/pinglun_list', function () {//评论列表
+    return view('personal/pinglun-list');
+});
+Route::get('wap/recommend', function () {//推荐消息
+    return view('personal/recommend');
+});
+Route::get('wap/store', function () {//店铺首页
+    return view('personal/store');
+});
+Route::get('wap/store_setting', function () {//店铺设置
+    return view('personal/store-setting');
+});
+Route::get('wap/write_note', function () {//写笔记
+    return view('personal/write-note');
 });
 
 

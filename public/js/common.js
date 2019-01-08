@@ -10,7 +10,8 @@ $(function () {
    //      }
    //  });
 
-
+    // content-box据顶部的距离动态设置
+    $(".content-box").css("margin-top",$(".header").height() + "px");
 
    //  登录框垂直居中
     $(".vertical-center").css("margin-top","-" + $(".vertical-center").outerHeight()/2 + "px");
@@ -19,6 +20,9 @@ $(function () {
     // 点击微信登陆显示授权
     $(".weChat-login").click(function () {
         $(".mask-box").css("display","block");
+    });
+    $("#btn-qx").click(function () {
+        $(".mask-box").css("display","none");
     });
 
     // 消息中心的消息分类切换
@@ -62,7 +66,7 @@ $(function () {
     $("#edit-del").click(function () {
         a = a+1;
         if (a%2 == 0){
-            $(this).html("完成");
+            $(this).css("background-image","url('../images/wc-icon.png')");
             $(".note-list-box li").animate({"margin":"0 55px 20px 25px"},500);
             $(".btn-del-box").animate({"bottom":"0"},500);
             $(".choice").animate({"left":"-25px"},500);
@@ -70,7 +74,7 @@ $(function () {
             $(".note-list-box li").find("label").css("display","block");
             $(".write-note").css("display","none");
         }else {
-            $(this).html("编辑");
+            $(this).css("background-image","url('../images/xzbj-icon.png')");
             $(".note-list-box li").animate({"margin":"0 0 20px 0"},500);
             $(".btn-del-box").animate({"bottom":"-50px"},500,function () {
                 $(".write-note").css("display","block");
@@ -82,7 +86,7 @@ $(function () {
     });
     $("#cancel").click(function () {
         a = a+1;
-        $("#edit-del").html("编辑");
+        $(this).css("background-image","url('../images/xzbj-icon.png')");
         $(".note-list-box li").animate({"margin":"0 0 20px 0"},500);
         $(".btn-del-box").animate({"bottom":"-50px"},500,function () {
             $(".write-note").css("display","block");
@@ -110,7 +114,7 @@ $(function () {
         }
     });
     //给name=choice的复选框绑定单击事件
-    $("input[name=choice]").click(function(){
+    $(document).on("click","input[name=choice]",function(){
         //获取选中复选框长度
         var length=$("input[name=choice]:checked").length;
         //未选中的长度
@@ -134,12 +138,12 @@ $(function () {
     });
 
     // 消息中心的回复按钮链接地址
-    $(".btn-reply").attr("href","reply-comment.html");
+    $(".btn-reply").attr("href","/wap/reply_comment");
 
 
     // 推荐消息点击li跳转页面
     $(".recommend ul li").click(function () {
-        window.location.href="recommend.html";
+        window.location.href="/wap/recommend";
     });
 
     // 消息列表的标题显示评论条数
@@ -152,19 +156,122 @@ $(function () {
     });
 
     // 点击评论跳转到评论界面
-    $(".btn-pl-list").attr("href","pinglun-edit.html?i=2");
+    $(".btn-pl-list").attr("href","/wap/pinglun_edit?i=2");
 
     //评论界面返回
     var pl_index = index.substr(3);
-    console.log(pl_index)
     if (pl_index == 1){
-        $("#btn-pl-return").attr("href","recommend.html");
+        $("#btn-pl-return").attr("href","/wap/recommend");
     }else if (pl_index == 2) {
-        $("#btn-pl-return").attr("href","my-note.html");
+        $("#btn-pl-return").attr("href","/wap/my_note");
     }
 
     //点击取消隐藏分享
     $(".share-box button").click(function () {
         $(".share-box").animate({"bottom":"-150px"},500);
+    });
+
+
+    // 店铺页面切换效果
+    $(".store-switch").css("top",$(".store-header").height() + "px");
+    // 店铺的展示切换
+    // var store_index = index.substr(7)
+    // if(store_index ==''){
+    //     message_index = 1;
+    // }
+    // if(message_index == 0) {
+    //     $(".system").css("display", "block");
+    //     $(".system").siblings(".massage-cont").css("display", "none");
+    // }else if(message_index == 1){
+    //     $(".discuss").css("display","block");
+    //     $(".discuss").siblings(".massage-cont").css("display","none");
+    // }else if(message_index == 2){
+    //     $(".recommend").css("display","block");
+    //     $(".recommend").siblings(".massage-cont").css("display","none");
+    // }
+    $(".shop-list").css("display","flex");
+    $('.store-switch li').eq(1).addClass('click-change');
+    $(".store-switch li").click(function () {
+        $(this).addClass("click-change");
+        $(this).siblings().removeClass("click-change");
+        // 0代表笔记，1代表商品，2代表收藏
+        if ($(this).index() == 0){
+            $(".notes-box").css("display","block");
+            $(".notes-box").siblings(".store-content").css("display","none");
+        }
+        if ($(this).index() == 2){
+            $(".store-list").css("display","flex");
+            $(".store-list").siblings(".store-content").css("display","none");
+        }
+        if ($(this).index() == 1){
+            $(".shop-list").css("display","flex");
+            $(".shop-list").siblings(".store-content").css("display","none");
+        }
+    });
+
+    // 点击订单列表跳转到订单详情
+    $(".order-cont li a").click(function () {
+        $(this).attr("href","/wap/order_details");
+    });
+
+    // 点击删除订单事件
+    $(".btn-del-order").click(function (event) {
+        event.stopPropagation();
+        $(".mask-box").css("display","block");
+    });
+    $("#order-return").click(function () {
+        $(".mask-box").css("display","none");
+    });
+
+    // 关注页面
+    $(".my-concern").css("display","block");
+    $('.follow-title li').eq(0).addClass('click-change');
+    $(".follow-title li").click(function () {
+        $(this).addClass("click-change");
+        $(this).siblings().removeClass("click-change");
+        // 0代表关注的人，1代表我的粉丝
+        if ($(this).index() == 0){
+            $(".my-concern").css("display","block");
+            $(".my-concern").siblings(".gz-common").css("display","none");
+        }
+        if ($(this).index() == 1){
+            $(".my-fans").css("display","block");
+            $(".my-fans").siblings(".gz-common").css("display","none");
+        }
+    });
+    
+    
+    // 点击关注的人跳转到ta的主页
+    $(".gz-common").find("li").on("click",function (event) {
+        if ($(this).attr("class") == "first-title") {
+            event.stopPropagation();
+        }else {
+            window.location.href = "/wap/other_home";
+        }
+    });
+    $(".gz-common").find("button").on("click",function (event) {
+        event.stopPropagation();
+    });
+
+
+    // 别人的主页
+    $(".treasure-note").css("display","block");
+    $('.other-switch li').eq(0).addClass('click-change');
+    $(".other-switch li").click(function () {
+        $(this).addClass("click-change");
+        $(this).siblings().removeClass("click-change");
+        // 0代表探宝笔记，1代表宝藏收藏，2代表点赞痕迹
+        if ($(this).index() == 0){
+            $(".treasure-note").css("display","block");
+            $(".treasure-note").siblings(".other-content").css("display","none");
+        }
+        if ($(this).index() == 1){
+            $(".treasure-collection").css("display","flex");
+            $(".treasure-collection").siblings(".other-content").css("display","none");
+        }
+        if ($(this).index() == 2){
+            $(".mark-praise").css("display","block");
+            $(".mark-praise").siblings(".other-content").css("display","none");
+        }
     });
 });

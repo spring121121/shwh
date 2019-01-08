@@ -13,8 +13,8 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="btn-title-text" href="my-note.html">返回</a></div>
-            <div class="header-right"><a class="btn-title-text" href="personal-center.html">我的</a></div>
+            <div class="header-left"><a href="/wap/my_note"></a></div>
+            <div class="header-right"><a class="btn-title-text" href="/wap/personal">我的</a></div>
             <div class="header-right"></div>
             <h3>点赞笔记</h3>
         </div>
@@ -45,4 +45,6 @@
             </ul>
         </div>
     </body>
+    <script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/js/common.js"></script>
 </html>

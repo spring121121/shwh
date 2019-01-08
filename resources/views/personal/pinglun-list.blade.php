@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="btn-title-text" href="recommend.html">返回</a></div>
+            <div class="header-left"><a href="/wap/recommend"></a></div>
             <h3 class="top-title" id="pl-title-text"></h3>
         </div>
         <div class="content-box">

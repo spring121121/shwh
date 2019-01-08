@@ -1,9 +1,11 @@
 a{
     display: block;
+    color: #000;
     width: 100%;
     height: 100%;
 }
 .common-img{
+    display: block;
     width: 100%;
     height: 100%;
 }
@@ -15,18 +17,20 @@ a{
     right: 0;
     z-index: 9999;
     background-color: #fff;
+    border-bottom: 1px solid #ccc;
 }
 .header-bottom{
     border-bottom: 1px solid #999;
 }
-.header .header-left{
+.header-left{
     float: left;
     width: 24px;
     height: 24px;
     margin: 10px 0 10px 20px;
-    background-color: #D2D2D2;
+    background: url("../images/return.png");
+    background-size: 100%;
 }
-.header h3{
+.header h3,.header .follow-title{
     margin: 0 90px;
     height: 100%;
     line-height: 45px;
@@ -42,30 +46,172 @@ a{
     font-size: 12px;
     color: #999;
 }
-.header .header-right{
+.header-right{
     float: right;
     width: 24px;
     height: 24px;
+    line-height: 24px;
     margin: 10px 20px 10px 0;
-    background-color: #D2D2D2;
+    background-size: 100%;
+}
+#btn-dz-link{
+    background-image: url("../images/dz-icon-red.png");
+}
+.header .btn-title-text{
+    font-size: 12px;
+    color: #000;
+    background-image: url("../images/xzbj-icon.png");
 }
 .content-box{
     overflow: hidden;
-    margin-top: 45px;
     margin-bottom: 60px;
 }
 
 
-/*footer*/
-.footer{
-    height: 60px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
+/*店铺的头部*/
+.store-header,.other-header{
+    height: auto;
+    background-color: #eee;
+    border: none;
 }
-.if-box{
-    width: 100%;
-    height: 100%;
+.renzheng,.finish{
+    width: unset;
+    padding: 0 5px;
+    background-color: #f49610;
+    border-radius: 10px;
+    text-align: center;
+}
+.finish{
+    background-color: #aaa;
+    height: 16px;
+    line-height: 16px;
+    margin: 16.5px 20px;
+}
+.store-message-box{
+    margin: 20px;
+}
+.store-message-box .icon-box{
+    width: 55px;
+    height: 55px;
+    float: left;
+    margin-left: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.store-name{
+    margin-left: 75px;
+}
+.setting{
+    width: 24px;
+    height: 24px;
+    float: right;
+    line-height: 24px;
+    background-color: #cccccc;
+}
+.store-name h2{
+    font-size: 16px;
+    font-weight: normal;
+}
+.store-name h2 span{
+    display: inline;
+    font-size: 12px;
+    width: unset;
+    height: 20px;
+    line-height: 20px;
+    background-color: #f49610;
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 0;
+}
+.store-name span{
+    display: block;
+    position: relative;
+    font-size: 13px;
+    padding-left: 15px;
+}
+.store-name span i{
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #000;
+}
+.store-brief{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.store-brief span{
+    font-size: 14px;
+}
+.store-brief p{
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: justify;
+
+}
+.header .follow-title{
+    justify-content: space-between;
+    margin: 0 130px;
+}
+.header .follow-title li{
+    margin: 11.5px 0;
+    border: none;
+    box-shadow: none;
+    background: unset;
+    font-size: 15px;
+    height: 22px;
+    border-radius: unset;
+    line-height: 22px;
+}
+
+/*别人的主页的头部样式*/
+.other-header{
+    background-color: #f49610;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.other-header .header-left{
+    margin-top: 30px;
+}
+.other-box{
+    color: #ffffff;
+    text-align: center;
+    margin-top: 45px;
+}
+.other-icon-box{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+.other-box h3{
+    position: relative;
+    color: #fff;
+    font-size: 18px;
+    line-height: 40px;
+}
+.other-box h3 i{
+    position: absolute;
+    top: 13px;
+    right: 75px;
+    display: block;
+    float: right;
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+    background: url("../images/grade.png");
+    background-size: 100%;
+}
+.other-box span{
+    display: block;
+    width: 50px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: #666;
+}
+.other-box p{
+    font-size: 12px;
+    line-height: 20px;
 }

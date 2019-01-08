@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header header-bottom">
-            <div class="header-left header-reply"><a class="btn" href="message-center.html?index=1">取消</a></div>
+            <div class="header-left header-reply"><a class="btn" href="/wap/message_center?index=1">取消</a></div>
             <div class="header-right header-reply"><a class="btn" href="#">回复</a></div>
             <h3 class="header-hf">回复评论<span>自己的昵称</span></h3>
         </div>

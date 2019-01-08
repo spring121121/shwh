@@ -7,18 +7,24 @@
         <div class="footer">
             <ul>
                 <li>
-                    <div class="icon-box"><img class="common-img" src="/images/wechat-bg-2x.png" alt="首页"></div>
+                    <div class="icon-box"><img class="common-img" src="../images/index.png" alt="首页"></div>
                     <span>首页</span>
                 </li>
                 <li>
-                    <div class="icon-box"><img class="common-img" src="/images/wechat-bg-2x.png" alt="首页"></div>
+                    <div class="icon-box"><img class="common-img" src="../images/shop.png" alt="首页"></div>
                     <span>商城</span>
                 </li>
                 <li>
-                    <div class="icon-box"><img class="common-img" src="/images/wechat-bg-2x.png" alt="首页"></div>
+                    <div class="icon-box"><img class="common-img" src="../images/mine.png" alt="首页"></div>
                     <span>我的</span>
                 </li>
             </ul>
         </div>
     </body>
+    <script src="/js/jquery-3.0.0.min.js"></script>
+    <script>
+        $("#btn-mine").click(function () {
+
+        });
+    </script>
 </html>

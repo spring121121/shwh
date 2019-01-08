@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="btn-title-text" href="message-center.html?index=2">返回</a></div>
+            <div class="header-left"><a href="/wap/message_center?index=2"></a></div>
             <div class="header-right btn-title-text btn-zf">转发</div>
             <h3 class="top-title">推荐消息的标题</h3>
         </div>
@@ -34,13 +34,13 @@
                 <p>消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现</p>
             </div>
             <ul class="btn-list-icon">
-                <li><a class="pl-text" href="pinglun-edit.html">评论</a></li>
+                <li><a class="pl-text" href="/wap/pinglun_edit">评论</a></li>
                 <li>收藏</li>
                 <li>点赞</li>
             </ul>
             <div class="more-pl-title">
                 <span>七嘴八舌的探宝者</span>
-                <a class="btn-more-pl" href="pinglun-list.html?i=1">查看更多评论<i></i></a>
+                <a class="btn-more-pl" href="/wap/pinglun_list?i=1">查看更多评论<i></i></a>
             </div>
             <div class="pl-content">
                 <ul>

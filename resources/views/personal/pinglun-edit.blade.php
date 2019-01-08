@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header header-bottom">
-            <div class="header-left header-reply"><a class="btn" id="btn-pl-return" href="recommend.html">取消</a></div>
+            <div class="header-left header-reply"><a class="btn" id="btn-pl-return" href="/wap/recommend">取消</a></div>
             <div class="header-right header-reply"><a class="btn" href="#">发送</a></div>
             <h3 class="header-hf">评论<span>自己的昵称</span></h3>
         </div>
