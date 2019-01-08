@@ -172,7 +172,7 @@
                         var noteHtml = '';
                         if (data.status){
                             $.each(data.data, function (k, v) {
-                                noteHtml += '<li>'+v.province+'</li>';
+                                noteHtml += '<li>'+v.area+'</li>';
                             });
                             $("#area").html(noteHtml);
                         }
