@@ -130,6 +130,29 @@ class AddressController extends BaseController
         }
     }
 
+    /**
+     * 设置默认地址
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function setDefaultAddress(Request $request,$id){
+        //先检测该用户是否已经存在默认地址
+        $addressModel = new AddressModel();
+        $uid = $request->session()->get('userInfo')['id'];
+        $update = ['is_default'=>AddressModel::IS_DEFAULT_0];
+        $addressModel::where('uid','=',$uid)->update($update);
+
+
+        $updateArr = ['is_default'=>AddressModel::IS_DEFAULT_1];
+
+        $re = $addressModel::where('id','=',$id)->update($updateArr);
+        if($re){
+            return $this->success();
+        }else{
+            return $this->fail(300);
+        }
+    }
+
 
 
 }

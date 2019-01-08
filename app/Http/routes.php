@@ -29,6 +29,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('addressList','AddressController@addressList');//获取我的收货地址
     Route::post('addAddress','AddressController@addAddress');//添加收货地址
     Route::post('updateAddress','AddressController@updateAddress');//修改收货地址
+    Route::post('setDefaultAddress/{id}','AddressController@setDefaultAddress');//修改收货地址
 
     /*****************UserController********************/
     Route::get('getUserInfo','UserController@getUserInfo');//获取我的个人信息
@@ -111,7 +112,7 @@ Route::get('checkValidateCode/{code}','ValidateCodeController@checkValidateCode'
 
 Route::get('getAllProvinces','AreasController@getAllProvinces');
 Route::get('getCitiesByProvince/{provinceId}','AreasController@getCitiesByProvince');
-Route::get('getAreasByCityId/{cityId}','AreasController@getAllProvinces');
+Route::get('getAreasByCityId/{cityId}','AreasController@getAreasByCityId');
 
 
 /************************前端路由*********************************/
