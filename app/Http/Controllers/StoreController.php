@@ -74,7 +74,7 @@ class StoreController extends BaseController
         $uid = UserService::getUid($request);
         $id = $request->input('id');
         $feedbackUpdate = StoreModel::where('id',$id)
-            ->update(['status'=>StoreModel::IS_AUTHEN,'auth_id'=>$uid]);
+            ->update(['status'=>StoreModel::IS_AUTH,'auth_id'=>$uid]);
         if($feedbackUpdate){
             return $this->success();
         }else{

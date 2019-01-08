@@ -5,18 +5,14 @@ namespace App\models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CategoryModel extends Model
+class CategorygoodsModel extends Model
 {
-    CONST IS_SHOP = 1;//商店
-    CONST IS_NOTE = 0;//笔记
-    use SoftDeletes;
-    protected $dates = ['deleted_at'];
     /**
      * 与模型关联的数据表。
      *
      * @var string
      */
-    protected $table = 'category';
+    protected $table = 'category_goods';
     protected $primaryKey = 'id';
     /**
      * 指定是否模型应该被戳记时间。
@@ -24,10 +20,10 @@ class CategoryModel extends Model
      *
      * @var bool
      */
-    public $timestamps = true;
+    public $timestamps = false;
 
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['category_name','pid','is_shop'];
+    protected $fillable = ['category_id','goods_id'];
 }
