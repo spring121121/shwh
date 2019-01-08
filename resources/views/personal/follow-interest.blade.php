@@ -51,6 +51,7 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
+            var num = 0;
             //近三天粉丝列表
             myFansList("/beforeFansList","#my-three-fans");
             //我的粉丝列表
@@ -58,8 +59,30 @@
             //我的关注列表
             myFansList("/myFocusList","#my-gz-list");
             //推荐关注列表
-            myFansList("/recommendList","#recommend-gz-list");
-
+            // myFansList("/recommendList","#recommend-gz-list",num);
+            $.get("/recommendList", {offset:num}, function (data) {
+                console.log(data);
+                var noteHtml = '';
+                if (data.status) {
+                    $.each(data.data, function (k, v) {
+                        var fans_count = getFansCount(v.id);
+                        if (v.photo == 0){
+                            photo = "/images/portrait.png"
+                        }else {
+                            photo = v.photo;
+                        }
+                        noteHtml += '<li>';
+                        noteHtml += '<div class="gz-img-box"><img src="'+ photo +'" class="common-img"></div>';
+                        noteHtml += '<div class="gz-right">';
+                        noteHtml += '<button><i></i>关注</button>';
+                        noteHtml += '<h3>' + v.nickname + '</h3>';
+                        noteHtml += '<span>'+v.grade_name+'</span>';
+                        noteHtml += '<p>有'+fans_count+'人关注了她</p>';
+                        noteHtml += '</div></li>';
+                    });
+                    $("#recommend-gz-list").append(noteHtml);
+                }
+            });
 
         });
         function myFansList(url,obj) {
@@ -67,7 +90,6 @@
                 var noteHtml = '';
                 if (data.status) {
                     $.each(data.data, function (k, v) {
-                        console.log(v.photo)
                         var fans_count = getFansCount(v.id);
                         if (v.photo == 0){
                             photo = "/images/portrait.png"
