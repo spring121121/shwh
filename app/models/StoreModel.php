@@ -9,7 +9,7 @@ class StoreModel extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    CONST IS_AUTHEN = 1;//已认证
+    CONST IS_AUTH = 1;//已认证
     /**
      * 与模型关联的数据表。
      *

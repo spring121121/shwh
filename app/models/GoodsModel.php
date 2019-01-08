@@ -36,5 +36,5 @@ class GoodsModel extends Model
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['store_id','goods_name','goods_info','price','image_one','image_two','image_three','	image_four','stock','is_shipping','postage','is_agent','pgoods_id',];
+    protected $fillable = ['store_id','goods_name','goods_info','price','image_one','image_two','image_three','image_four','stock','is_shipping','postage','is_agent','pgoods_id',];
 }

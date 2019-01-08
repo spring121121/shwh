@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FocusModel extends BaseModel
 {
+    CONST LIMIT = 3;
     //软删除 通过 deleted_at 字段区分是否删除，删除时调用 $table->softDeletes();
     use SoftDeletes;
     protected $dates = ['deleted_at'];
