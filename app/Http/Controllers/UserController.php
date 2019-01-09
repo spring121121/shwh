@@ -84,6 +84,7 @@ class UserController extends BaseController
         $id = UserService::getUid($request);
         $userModel = new UserModel();
         $result = $userModel::find($id);
+        $result->grade = UserService::getGrade($result->score);
         return $this->success($result);
     }
 

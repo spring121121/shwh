@@ -31,7 +31,7 @@
                     <em></em>
                     <li>
                         <div class="personal-icon-box"><img class="common-img" src="../images/grade.png" /></div>
-                        <span>个人等级</span>
+                        <span id="grade"></span>
                     </li>
                 </ul><em></em>
                 <div class="change-address">
@@ -132,6 +132,7 @@
                         $("#sex-img").attr("src","/images/man-icon-white.png")
                         $("#sex").html('男')
                     }
+                    $("#grade").html(data.data.grade);
                 }
             })
             $(".change-address").click(function () {//点击获取省

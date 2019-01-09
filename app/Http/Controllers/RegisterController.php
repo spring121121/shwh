@@ -50,7 +50,7 @@ class RegisterController extends BaseController
         $password_again = $request->input('password_again');
 
         if ($password != $password_again) {
-            return $this->fail(50004);
+            return $this->fail(50007);
         }
 
 
