@@ -31,12 +31,12 @@
                             </li>
                             <li>
                                 <div class="btn-address-choice city"></div>
-                                <div class="ipt-choice"><input id="city" type="text" disabled placeholder="市"></div>
+                                <div class="ipt-choice"><input id="city" type="text" readonly placeholder="市"></div>
                                 <div class="get-address get-city"></div>
                             </li>
                             <li>
                                 <div class="btn-address-choice area"></div>
-                                <div class="ipt-choice"><input id="area" type="text" disabled placeholder="区"></div>
+                                <div class="ipt-choice"><input id="area" type="text" readonly placeholder="区"></div>
                                 <div class="get-address get-area"></div>
                             </li>
                         </ul>
@@ -112,29 +112,24 @@
                     });
                 }
             });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             $.ajax({
                 url : "/addressDetail",	//请求url
                 type : "get",	//请求类型  post|get
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {id:address_id},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    // console.log(data)
+                    console.log(data.data[0].city);
+                    $("#shr-name").val(data.data[0].name);
+                    $("#shr-phone").val(data.data[0].mobile);
+                    $("#province").val(data.data[0].province);
+                    $("#city").val(data.data[0].city);
+                    $("#area").val(data.data[0].area);
+                    $("#xxdz").val(data.data[0].address_info);
+                    if (data.data[0].is_default ==1){
+                        $("#default").attr("checked","checked");
+                    } else {
+                        $("#default").removeAttr("checked");
+                    }
                     // var noteHtml = '';
                     // if (data.status){
                     //     $.each(data.data, function (k, v) {
