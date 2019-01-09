@@ -27,7 +27,7 @@ $(function () {
 
     // 消息中心的消息分类切换
     var index = window.location.search;
-    var message_index = index.substr(7)
+    var message_index = index.substr(7);
     if(message_index ==''){
         message_index = 1;
     }

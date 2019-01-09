@@ -39,7 +39,7 @@
                     if (data.status){
                         $.each(data.data, function (k, v) {
                             noteHtml += '<li><div class="icon-box">'+v.name.substr(0,1)+'</div>';
-                            noteHtml += '<div class="address-cont"><a href="jacascript:void(0)" class="edit-address btn-bjdz">编辑</a>';
+                            noteHtml += '<div class="address-cont"><a href="javascript:void(0)" id="'+v.id+'" class="edit-address btn-bjdz">编辑</a>';
                             noteHtml += '<h3>'+v.name+'<span>'+v.mobile+'</span></h3>';
                             noteHtml += '<p>';
                                             if(v.is_default == 1){
@@ -52,7 +52,11 @@
                     }
                 }
             });
-
+            $(document).on("click",".btn-bjdz",function () {
+                var addressId = $(this).attr("id");
+                console.log(111)
+                window.location.href = "/wap/edit_address?id="+addressId;
+            });
         });
     </script>
 </html>

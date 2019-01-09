@@ -81,13 +81,57 @@ ul,li{
     margin-top: 10px;
     border-bottom: 1px solid #eee;
 }
-.ipt-cont .ipt-address-choice{
+.ipt-cont .address-choice{
+    border: none!important;
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+.ipt-cont .address-choice label{
+    width: 115px;
+}
+.ipt-cont .address-choice ul{
     display: flex;
     flex-direction: row;
 }
-.ipt-cont .ipt-address-choice .address-box{
+.ipt-cont .address-choice ul li{
     border: 1px solid #eee;
-    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    margin: 5px 5px;
+    position: relative;
+}
+.ipt-cont .address-choice .btn-address-choice{
+    width: 12px;
+    height: 12px;
+    margin-top: 4px;
+    float: right;
+    background-image: url("../images/return.png");
+    background-size: 100%;
+}
+.ipt-cont .address-choice .ipt-choice{
+    margin-right: 20px;
+}
+.ipt-cont .address-choice .ipt-choice input{
+    font-size: 12px;
+    text-align: right;
+}
+.ipt-cont .address-choice .get-address{
+    display: none;
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    font-size: 12px;
+    border: 1px solid #eee;
+    top: 20px;
+    left: -1px;
+    height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.ipt-cont .address-choice .get-address span{
+    display: block;
+    line-height: 25px;
 }
 .ipt-cont .yzm-code{
     width: 60%;
@@ -1367,7 +1411,7 @@ ul,li{
     color: #999;
     height: 22px;
     line-height: 22px;
-    margin: 10px;
+    margin: 5px 10px;
     text-align: center;
 }
 .store-content{
@@ -1768,7 +1812,7 @@ ul,li{
 
 /*别人的主页*/
 .other-switch{
-    margin: 10px 0 0 0;
+    margin: 0;
     justify-content: center;
 }
 .other-switch li{

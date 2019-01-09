@@ -149,7 +149,6 @@
                     dataType : "json",  //返回数据的 类型 text|json|html--
                     data: {},
                     success : function(data){//回调函数 和 后台返回的 数据
-                        console.log(data.data);
                         var noteHtml = '';
                         if (data.status){
                             $.each(data.data, function (k, v) {
@@ -170,7 +169,6 @@
                     dataType : "json",  //返回数据的 类型 text|json|html--
                     data: {},
                     success : function(data){//回调函数 和 后台返回的 数据
-                        console.log(data.data);
                         var noteHtml = '';
                         if (data.status){
                             $.each(data.data, function (k, v) {
@@ -188,7 +186,6 @@
                 var text1 = $("#address-tip").find("span").eq(0).html();
                 var text2 = $("#address-tip").find("span").eq(1).html();
                 var text3 = $("#address-tip").find("span").eq(2).html();
-                console.log(text1,text2,text3)
                 if (text1==text2){
                     $(".change-address span").html("<span>"+text2+"</span><span>"+text3+"</span>");
                 }else {

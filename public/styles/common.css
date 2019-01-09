@@ -193,7 +193,7 @@ a{
 .other-box{
     color: #ffffff;
     text-align: center;
-    margin-top: 45px;
+    margin-top: 30px;
 }
 .other-icon-box{
     width: 100px;
@@ -204,11 +204,11 @@ a{
     position: relative;
     color: #fff;
     font-size: 18px;
-    line-height: 40px;
+    line-height: 30px;
 }
 .other-box h3 i{
     position: absolute;
-    top: 13px;
+    top: 8px;
     right: 75px;
     display: block;
     float: right;
@@ -227,5 +227,4 @@ a{
 }
 .other-box p{
     font-size: 12px;
-    line-height: 20px;
 }
