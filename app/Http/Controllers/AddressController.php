@@ -176,9 +176,10 @@ class AddressController extends BaseController
     {
         $id = $request->input('id');
         $addressDeail = AddressModel::where('address.id', $id)
-            ->join('provinces', 'address.province', '=', 'provinces.provinceid')
-            ->join('cities', 'address.city', '=', 'cities.cityid')
-            ->join('areas', 'address.area', '=', 'areas.areaid')
+            ->join('provinces as p', 'address.province', '=', 'p.provinceid')
+            ->join('cities as c', 'address.city', '=', 'c.cityid')
+            ->join('areas as a', 'address.area', '=', 'a.areaid')
+            ->select('address.*','p.province','c.city','a.area')
             ->get()->toArray();
         return $this->success($addressDeail);
     }
