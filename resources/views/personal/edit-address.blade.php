@@ -19,8 +19,8 @@
         <div class="content-box">
             <div class="ipt-cont ipt-address-box">
                 <form>
-                    <div class="ipt-box"><input type="text" placeholder="收货人姓名"></div>
-                    <div class="ipt-box"><input type="text" placeholder="手机号码"></div>
+                    <div class="ipt-box"><input id="shr-name" type="text" placeholder="收货人姓名"></div>
+                    <div class="ipt-box"><input id="shr-phone" type="text" placeholder="手机号码"></div>
                     <div class="ipt-box address-choice">
                         <label>收货地址</label>
                         <ul>
@@ -47,7 +47,7 @@
                 </form>
             </div>
             <div class="btn-write-note">
-                <a href="#">保存</a>
+                <a href="#" id="btn-keep">保存</a>
                 <a class="other-color" href="#">删除</a>
             </div>
         </div>
@@ -59,26 +59,96 @@
             choice_address();
             var address_url = window.location.search;
             var address_id = address_url.substr(4);
+            console.log(address_id)
+            $("#btn-keep").click(function () {
+                var shr_name = $("#shr-name").val(),
+                    shr_phone = $("#shr-phone").val(),
+                    shr_province = $("#province").val(),
+                    shr_city = $("#city").val(),
+                    shr_area = $("#area").val(),
+                    shr_xxdz = $("#xxdz").val(),
+                    default_address = $("#default").is(":checked");
+                var is_default;
+                if (default_address){
+                    is_default = 1;
+                } else {
+                    is_default = 0;
+                }
+                if(shr_name == ""){
+                    alert("请填写收货人姓名");
+                }else if (shr_phone == "") {
+                    alert("请填写收货人手机号码");
+                }else if (shr_province == '') {
+                    alert("请选择省份");
+                }else if (shr_city == '') {
+                    alert("请选择城市");
+                }else if (shr_area == '') {
+                    alert("请选择地区");
+                }else if (shr_xxdz == "") {
+                    alert("请填写详细地址");
+                }else {
+                    $.ajax({
+                        url : "/updateAddress",	//请求url
+                        type : "post",	//请求类型  post|get
+                        dataType : "json",  //返回数据的 类型 text|json|html--
+                        data: {
+                            id:address_id,
+                            name:shr_name,
+                            province:shr_province,
+                            city:shr_city,
+                            area:shr_area,
+                            address_info:shr_xxdz,
+                            mobile:shr_phone,
+                            is_default:is_default
+                        },
+                        success : function(data){//回调函数 和 后台返回的 数据
+                            console.log(data)
+                            if (data.status){
+                                alert("修改成功");
+                            }else {
+                                alert("修改失败");
+                            }
+                        }
+                    });
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             $.ajax({
-                url : "/getAllProvinces",	//请求url
+                url : "/addressDetail",	//请求url
                 type : "get",	//请求类型  post|get
                 dataType : "json",  //返回数据的 类型 text|json|html--
-                data: {},
+                data: {id:address_id},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    var noteHtml = '';
-                    if (data.status){
-                        $.each(data.data, function (k, v) {
-                            noteHtml += '<span id="'+v.provinceid+'">'+v.province+'</span>';
-                        });
-                        $(".get-province").html(noteHtml);
-                        if (flag) {
-                            $(".province").css("background-image","url('../images/down-icon.png')");
-                            $(".get-province").slideDown();
-                        }else {
-                            $(".province").css("background-image","url('../images/return.png')");
-                            $(".get-province").slideUp();
-                        }
-                    }
+                    // console.log(data)
+                    // var noteHtml = '';
+                    // if (data.status){
+                    //     $.each(data.data, function (k, v) {
+                    //         noteHtml += '<span id="'+v.provinceid+'">'+v.province+'</span>';
+                    //     });
+                    //     $(".get-province").html(noteHtml);
+                    //     if (flag) {
+                    //         $(".province").css("background-image","url('../images/down-icon.png')");
+                    //         $(".get-province").slideDown();
+                    //     }else {
+                    //         $(".province").css("background-image","url('../images/return.png')");
+                    //         $(".get-province").slideUp();
+                    //     }
+                    // }
                 }
             });
         });

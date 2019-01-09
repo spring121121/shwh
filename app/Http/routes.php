@@ -31,7 +31,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('addressList','AddressController@addressList');//获取我的收货地址
     Route::post('addAddress','AddressController@addAddress');//添加收货地址
     Route::post('updateAddress','AddressController@updateAddress');//修改收货地址
-    Route::post('setDefaultAddress/{id}','AddressController@setDefaultAddress');//修改收货地址
+    Route::post('setDefaultAddress/{id}','AddressController@setDefaultAddress');//修改默认收货地址
     Route::get('addressDetail','AddressController@addressDetail');//收货地址详情
 
     /*****************UserController********************/
