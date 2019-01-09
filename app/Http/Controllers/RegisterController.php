@@ -13,6 +13,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\models\UserModel;
 use App\Http\Services\ValidateCodeService;
+use Validator;
 
 class RegisterController extends BaseController
 {
@@ -24,15 +25,22 @@ class RegisterController extends BaseController
      */
     public function register(Request $request)
     {
-        $this->validate($request, [
-            'mobile' => 'required|regex:/^1[34578][0-9]{9}$/',
+
+        $rules = [
+            'mobile' => 'required|regex:/^1[34578][0-9]{9}$/|unique:user,mobile',
             'password' => 'required',
             'password_again' => 'required',
             'code' => 'required'
-        ]);
+        ];
+        $validator = Validator::make($request->all(), $rules, config('message.user'));
+
+        if ($validator->fails()) {
+            return $this->fail(50001, '', $validator->errors()->all()[0]);
+        }
+
 
         $code = $request->input('code');
-        $isRight = ValidateCodeService::checkValidate($request,$code);
+        $isRight = ValidateCodeService::checkValidate($request, $code);
 
         if (!$isRight) {
             return $this->fail(50000);
@@ -42,7 +50,7 @@ class RegisterController extends BaseController
         $password_again = $request->input('password_again');
 
         if ($password != $password_again) {
-            return $this->fail(50001);
+            return $this->fail(50004);
         }
 
 
