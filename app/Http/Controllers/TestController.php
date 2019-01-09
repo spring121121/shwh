@@ -14,9 +14,15 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\models\UserModel;
 use Validator;
-
+use Illuminate\Support\Facades\Cache;
 class TestController extends BaseController
 {
+
+    public function test(Request $request){
+        $ip = $request->getClientIp();
+        Cache::increment($ip);
+        dd(Cache::get($ip));
+    }
 
     /**
      * 显示指定用户的个人数据。

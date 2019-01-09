@@ -25,7 +25,6 @@ class AddressController extends BaseController
 
         $addressModel = new AddressModel();
         $uid = $request->session()->get('userInfo')['id'];
-        $uid = 1;
         $addressList = $addressModel::where('uid',$uid)
             ->join('provinces','address.province','=','provinces.provinceid')
             ->join('cities','address.city','=','cities.cityid')

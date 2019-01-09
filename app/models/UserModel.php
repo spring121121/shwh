@@ -3,6 +3,7 @@
 namespace App\models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 class UserModel extends BaseModel
 {
     //软删除 通过 deleted_at 字段区分是否删除，删除时调用 $table->softDeletes();
@@ -10,7 +11,6 @@ class UserModel extends BaseModel
     protected $dates = ['deleted_at'];
     /**
      * 与模型关联的数据表。
-
      *
      * @var string
      */
@@ -29,13 +29,4 @@ class UserModel extends BaseModel
      */
     protected $fillable = ['name', 'nickname', 'password', 'sex', 'photo', 'birthday', 'mobile', 'score'];
 
-//    public static function find()
-//    {
-//        self::_find();
-//    }
-
-    public function message()
-    {
-
-    }
 }
