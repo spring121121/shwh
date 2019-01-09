@@ -16,11 +16,7 @@ class StoreService
     {
         $storeModel = new StoreModel();
         $storeInfo = $storeModel::where('uid', '=', $uid)->first();
-        $storeId = 0;
-        if (!empty($storeInfo)) {
-            $storeId = $storeInfo->id;
-        }
-        return $storeId;
+        return $storeInfo;
     }
 
 }

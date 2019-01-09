@@ -43,11 +43,18 @@ class AgentController extends BaseController
         //2.查询用户的店铺ID
         $uid = UserService::getUid($request);
         $storeService = new StoreService();
-        $storeId = $storeService->getStoreIdByUid($uid);
+        $storeInfo = $storeService->getStoreIdByUid($uid);
 
+        if(empty($storeInfo)){
+            return $this->fail(50005);
+
+        }
+        if($storeInfo->status == 0){
+            return $this->fail(50006);
+        }
         //3.插入商品表
         $goodsService = new GoodsService();
-        $re = $goodsService->addAgentGoods($request,$goodsId,$storeId);
+        $re = $goodsService->addAgentGoods($request,$goodsId,$storeInfo->id);
 
         if($re){
             return $this->success();

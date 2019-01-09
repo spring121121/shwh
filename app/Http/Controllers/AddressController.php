@@ -25,7 +25,6 @@ class AddressController extends BaseController
 
         $addressModel = new AddressModel();
         $uid = $request->session()->get('userInfo')['id'];
-        $uid = 1;
         $addressList = $addressModel::where('uid',$uid)
             ->join('provinces','address.province','=','provinces.provinceid')
             ->join('cities','address.city','=','cities.cityid')
@@ -153,6 +152,19 @@ class AddressController extends BaseController
         }
     }
 
-
+    /**
+     * 收货地址详情
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addressDetail(Request $request){
+        $id = $request->input('id');
+        $addressDeail = AddressModel::where('address.id',$id)
+            ->join('provinces','address.province','=','provinces.provinceid')
+            ->join('cities','address.city','=','cities.cityid')
+            ->join('areas','address.area','=','areas.areaid')
+            ->get()->toArray();
+        return $this->success($addressDeail);
+    }
 
 }
