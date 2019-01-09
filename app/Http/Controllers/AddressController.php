@@ -160,12 +160,12 @@ class AddressController extends BaseController
      */
     public function addressDetail(Request $request){
         $id = $request->input('id');
-        $addressDeail = AddressModel::where('address.id',$id)
+        $addressDetail = AddressModel::where('address.id',$id)
             ->join('provinces','address.province','=','provinces.provinceid')
             ->join('cities','address.city','=','cities.cityid')
             ->join('areas','address.area','=','areas.areaid')
             ->get()->toArray();
-        return $this->success($addressDeail);
+        return $this->success($addressDetail);
     }
 
 }

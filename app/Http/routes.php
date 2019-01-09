@@ -24,7 +24,7 @@ Route::post('register','RegisterController@register');//注册
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
  */
-Route::group(['middleware'=>'checkLogin'],function(){
+//Route::group(['middleware'=>'checkLogin'],function(){
     /*****************AddressController**********************************/
     Route::get('addressList','AddressController@addressList');//获取我的收货地址
     Route::post('addAddress','AddressController@addAddress');//添加收货地址
@@ -96,7 +96,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('getGoodsNote','ShopController@getGoodsNote');//商品下笔记列表
     Route::post('addCar','ShopController@addCar');//增加商品购物车
     Route::get('myCarList','ShopController@myCarList');//我的购物车列表
-});
+//});
 
 
 

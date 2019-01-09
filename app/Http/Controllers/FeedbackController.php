@@ -22,7 +22,6 @@ class FeedbackController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function feedback(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $feedback = $request->input('feedback');
         $data['feedback'] = $feedback;
@@ -48,7 +47,6 @@ class FeedbackController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function readFeedback(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $id = $request->input('id');
         $feedbackUpdate = FeedbackModel::where('id',$id)

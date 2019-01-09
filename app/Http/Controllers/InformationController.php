@@ -24,6 +24,10 @@ class InformationController extends BaseController
      */
     public function pubSysMessage(Request $request){
         $data = $request->input('message');
+        $role = UserService::getUserRight($request);
+        if(!$role){
+            return $this->fail(50004);
+        }
         $rules = [
             'title' => 'required|string|min:1|max:200',
             'content' => 'required|string|min:1|max:200'
@@ -46,7 +50,6 @@ class InformationController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function getSysMessage(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $list = [];
         $messageList = SysmessageModel::where('sys_message.receive_user_id',$uid)
@@ -88,7 +91,6 @@ class InformationController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function getCommentMessage(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $messageList = NoteModel::where('note.uid',$uid)
             ->join('dis_message','note.id','=','dis_message.note_id')
