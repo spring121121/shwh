@@ -63,7 +63,7 @@
                     success : function(data){//回调函数 和 后台返回的数据
                         if (data.code == 200){
                             alert('注册成功,去登录');
-                            $("#register").attr("href","/wap/login");
+                            window.location.href = "/wap/login";
                         } else {
                             alert("注册失败,请重新注册")
                         }

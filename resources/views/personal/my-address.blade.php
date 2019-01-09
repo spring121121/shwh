@@ -20,43 +20,39 @@
         <div class="content-box">
             <div class="my-address-box">
                 <ul>
-                    <li>
-                        <div class="icon-box">
-                            <img class="common-img" src="/images/weChat-2x.png" alt="头像">
-                        </div>
-                        <div class="address-cont">
-                            <a href="/wap/edit_address" class="edit-address btn-bjdz">编辑</a>
-                            <h3>姓名</h3>
-                            <p><span>默认</span>天津 详细地址</p>
-                            <p>详细地址</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="icon-box">
-                            <img class="common-img" src="/images/weChat-2x.png" alt="头像">
-                        </div>
-                        <div class="address-cont">
-                            <a href="/wap/edit_address" class="edit-address btn-bjdz">编辑</a>
-                            <h3>姓名</h3>
-                            <p>天津 详细地址</p>
-                            <p>详细地址</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="icon-box">
-                            <img class="common-img" src="/images/weChat-2x.png" alt="头像">
-                        </div>
-                        <div class="address-cont">
-                            <a href="/wap/edit_address" class="edit-address btn-bjdz">编辑</a>
-                            <h3>姓名</h3>
-                            <p>天津 详细地址</p>
-                            <p>详细地址</p>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url : "/addressList",	//请求url
+                type : "get",	//请求类型  post|get
+                dataType : "json",  //返回数据的 类型 text|json|html--
+                data: {},
+                success : function(data){//回调函数 和 后台返回的 数据
+                    console.log(data)
+                    var noteHtml = '';
+                    if (data.status){
+                        $.each(data.data, function (k, v) {
+                            noteHtml += '<li><div class="icon-box">'+v.name.substr(0,1)+'</div>';
+                            noteHtml += '<div class="address-cont"><a href="jacascript:void(0)" class="edit-address btn-bjdz">编辑</a>';
+                            noteHtml += '<h3>'+v.name+'<span>'+v.mobile+'</span></h3>';
+                            noteHtml += '<p>';
+                                            if(v.is_default == 1){
+                                                noteHtml += '<span>默认</span>';
+                                            }
+                            noteHtml += v.province+' '+v.city+' '+v.area+' '+v.address_info+'</p>';
+                            noteHtml += '</div></li>';
+                        });
+                        $(".my-address-box ul").html(noteHtml);
+                    }
+                }
+            });
+
+        });
+    </script>
 </html>

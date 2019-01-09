@@ -29,16 +29,15 @@
                         <span>男</span>
                     </li>
                     <em></em>
-                    <li class="change-address">
-                        <div class="personal-icon-box"><img class="common-img" src="../images/location.png" /></div>
-                        <span>天津市 西青</span>
-                    </li>
-                    <em></em>
                     <li>
                         <div class="personal-icon-box"><img class="common-img" src="../images/grade.png" /></div>
                         <span>个人等级</span>
                     </li>
-                </ul>
+                </ul><em></em>
+                <div class="change-address">
+                    <div class="personal-icon-box"><img class="common-img" src="../images/location.png" /></div>
+                    <span>天津市 西青</span>
+                </div>
             </div>
         </div>
         <!--个人中心内容模块-->
@@ -105,7 +104,10 @@
                 <ul id="province"></ul>
                 <ul id="city"></ul>
                 <ul id="area"></ul>
-                <div class="btn-finish">确定</div>
+                <div class="btn-finish">
+                    <div class="finish-return" id="return-finish">取消</div>
+                    <div class="finish-return" id="finish-sure">确定</div>
+                </div>
             </div>
         </div>
 
@@ -172,7 +174,7 @@
                         var noteHtml = '';
                         if (data.status){
                             $.each(data.data, function (k, v) {
-                                noteHtml += '<li>'+v.province+'</li>';
+                                noteHtml += '<li>'+v.area+'</li>';
                             });
                             $("#area").html(noteHtml);
                         }
@@ -182,9 +184,28 @@
             $("#area").on("click","li",function () {
                 $("#address-tip").find("span").eq(2).html($(this).text());
             });
-            $(".btn-finish").click(function () {
-                $(".change-address span").text($("#address-tip").text());
+            $("#finish-sure").click(function () {
+                var text1 = $("#address-tip").find("span").eq(0).html();
+                var text2 = $("#address-tip").find("span").eq(1).html();
+                var text3 = $("#address-tip").find("span").eq(2).html();
+                console.log(text1,text2,text3)
+                if (text1==text2){
+                    $(".change-address span").html("<span>"+text2+"</span><span>"+text3+"</span>");
+                }else {
+                    $(".change-address span").html("<span>"+text1+"</span><span>"+text2+"</span><span>"+text3+"</span>");
+                }
                 $(".choice-address").css("display","none");
+                $("#address-tip").find("span").html("");
+                $("#province li").remove();
+                $("#city li").remove();
+                $("#area li").remove();
+            });
+            $("#return-finish").click(function () {
+                $(".choice-address").css("display","none");
+                $("#address-tip").find("span").html("");
+                $("#province li").remove();
+                $("#city li").remove();
+                $("#area li").remove();
             });
         });
     </script>

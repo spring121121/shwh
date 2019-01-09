@@ -149,7 +149,6 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('wap/follow_interest', function () {//关注页面
         return view('personal/follow-interest');
     });
-
     Route::get('wap/apply_certification', function () {//申请认证
         return view('personal/apply-certification');
     });
