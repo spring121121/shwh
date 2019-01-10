@@ -191,4 +191,23 @@ class AddressController extends BaseController
         return $this->success($addressDetail);
     }
 
+    /**
+     * 删除收货地址
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteAddress(Request $request,$id)
+    {
+        $uid = UserService::getUid($request);
+        $re = AddressModel::where('id','=',$id)->where('uid','=',$uid)->delete();
+        if($re){
+            return $this->success();
+        }else{
+
+            return $this->fail(300);
+        }
+
+    }
+
 }
