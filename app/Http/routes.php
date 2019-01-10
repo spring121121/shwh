@@ -33,6 +33,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('updateAddress','AddressController@updateAddress');//修改收货地址
     Route::post('setDefaultAddress/{id}','AddressController@setDefaultAddress');//修改默认收货地址
     Route::get('addressDetail','AddressController@addressDetail');//收货地址详情
+    Route::post('deleteAddress/{id}','AddressController@deleteAddress');//删除收货地址
 
     /*****************UserController********************/
     Route::get('getUserInfo','UserController@getUserInfo');//获取我的个人信息
