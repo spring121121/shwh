@@ -17,7 +17,7 @@ use App\models\UserModel;
 class UserController extends BaseController
 {
     /**
-     * 用户信息添加
+     * 用户信息修改
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -25,33 +25,26 @@ class UserController extends BaseController
     {
         $userModel = new UserModel();
         $this->validate($request, [
-            'name' => 'required|string',
             'nickname' => 'required|string',
-            'password' => 'required|string',
             'sex' => 'required|between:0,1',
-            'role' => 'required|int',
             'birthday' => 'required|date',
 
         ]);
-        $id = $request->input('id');
-        $name = $request->input('name');
+        $uid = UserService::getUid($request);
         $nickname = $request->input('nickname');
-        $password = md5($request->input('password'));
         $sex = $request->input('sex');
-        $role = $request->input('role');
         $birthday = $request->input('birthday');
+        $photo = $request->input('photo');
 
 
         $updateArr = [
-            'name' => $name,
             'nickname' => $nickname,
-            'password' => $password,
             'sex' => $sex,
-            'role' => $role,
             'birthday' => $birthday,
+            'photo'=>$photo,
 
         ];
-        $result = $userModel::where('id', $id)->update($updateArr);
+        $result = $userModel::where('id', $uid)->update($updateArr);
 
         if ($result) {
             return $this->success();

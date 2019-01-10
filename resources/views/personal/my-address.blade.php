@@ -34,7 +34,6 @@
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    console.log(data)
                     var noteHtml = '';
                     if (data.status){
                         $.each(data.data, function (k, v) {
@@ -49,12 +48,13 @@
                             noteHtml += '</div></li>';
                         });
                         $(".my-address-box ul").html(noteHtml);
+                    }else {
+                        alert("哎呀！出错了")
                     }
                 }
             });
             $(document).on("click",".btn-bjdz",function () {
                 var addressId = $(this).attr("id");
-                console.log(111)
                 window.location.href = "/wap/edit_address?id="+addressId;
             });
         });

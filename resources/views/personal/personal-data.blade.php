@@ -22,7 +22,10 @@
                 <form>
                     <div class="ipt-box">
                         <label>头像</label>
-                        <div class="tx-icon-box"><img src="" class="common-img"></div>
+                        <div class="tx-icon-box">
+                            <input type="file" class="up-img" id='source' name="source">
+                            <img id="btn-my-header" src="/images/portrait.png" class="common-img">
+                        </div>
                     </div>
                     <div class="ipt-box">
                         <label for="username">用户名</label>
@@ -36,25 +39,92 @@
                         <label for="birthday">生日</label>
                         <div class="ipt-cont-box"><input id="birthday" type="text" placeholder="2018-12-26"></div>
                     </div>
-                    <div class="ipt-box">
-                        <label for="region">地区</label>
-                        <div class="ipt-cont-box"><input id="region" type="text" placeholder="天津市西青区"></div>
-                    </div>
+                    {{--<div class="ipt-box">--}}
+                        {{--<label for="region">地区</label>--}}
+                        {{--<div class="ipt-cont-box"><input id="region" type="text" placeholder="天津市西青区"></div>--}}
+                    {{--</div>--}}
                     <div class="ipt-box distance-top">
                         <label for="personal-phone">手机号码</label>
-                        <div class="ipt-cont-box"><input id="personal-phone" type="text" placeholder="15625252356"></div>
+                        <div class="ipt-cont-box"><input id="personal-phone" disabled type="text" placeholder="15625252356"></div>
                     </div>
-                    <div class="ipt-box">
-                        <label for="email">电子邮箱</label>
-                        <div class="ipt-cont-box"><input id="email" type="text" placeholder="52535366526@qq.com"></div>
-                    </div>
+                    {{--<div class="ipt-box">--}}
+                        {{--<label for="email">电子邮箱</label>--}}
+                        {{--<div class="ipt-cont-box"><input id="email" type="text" placeholder="52535366526@qq.com"></div>--}}
+                    {{--</div>--}}
                 </form>
             </div>
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/js/uploadfile.js"></script>
     <script src="/js/common.js"></script>
     <script>
+    $(function () {
+        $.ajax({
+            url : "/getMyUserInfo",	//请求url
+            type : "get",	//请求类型  post|get
+            dataType : "json",  //返回数据的 类型 text|json|html--
+            data: {},
+            success : function(data){//回调函数 和 后台返回的 数据
+                if (data.status){
+                    $("#btn-my-header").attr("src",data.data.photo);
+                    $("#username").val(data.data.nickname);
+                    if (data.data.sex == 0){
+                        $("#sex").val("女");
+                    }else {
+                        $("#sex").val("男");
+                    }
+                    $("#birthday").val(data.data.birthday);
+                    $("#personal-phone").val(data.data.mobile);
+                }else {
+                    alert("哎呀！出错了")
+                }
+            }
+        });
+        $("#source").on("change",function(){
+            $.ajaxFileUpload({
+                url: '/upload', //用于文件上传的服务器端请求地址
+                secureuri: false, //是否需要安全协议，一般设置为false
+                fileElementId: 'source', //文件上传域的ID
+                dataType: 'json', //返回值类型 一般设置为json
+                success: function (data){  //服务器成功响应处理函数
+                    $('#btn-my-header').attr('src',data.data.url);
+                },
+                error: function (data, status, e){//服务器响应失败处理函数
 
+                }
+            });
+        });
+        $(".finnish-edit").on("click",function(){
+            var img_url = $('#btn-my-header').attr('src'),
+                user_name = $('#username').val(), sex,
+                birthday = $('#birthday').val();
+            if ($('#sex').val() == "男"){
+                sex = 1;
+            }
+            if ($('#sex').val() == "女"){
+                sex = 0;
+            }
+            $.ajax({
+                url : "/updateUserInfo",	//请求url
+                type : "get",	//请求类型  post|get
+                dataType : "json",  //返回数据的 类型 text|json|html--
+                data: {
+                    photo:img_url,
+                    nickname:user_name,
+                    sex:sex,
+                    birthday:birthday
+                },
+                success : function(data){//回调函数 和 后台返回的 数据
+                    if (data.status){
+                        alert("修改成功");
+                        window.location.href = "/wap/personal";
+                    }else {
+                        alert("修改失败");
+                    }
+                }
+            });
+        });
+    })
     </script>
 </html>

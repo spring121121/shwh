@@ -70,27 +70,29 @@
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {id:address_id},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    console.log(data)
-                    province_id = data.data[0].provinceId;
-                    city_id = data.data[0].cityId;
-                    area_id = data.data[0].areaId;
-                    $("#shr-name").val(data.data[0].name);
-                    $("#shr-phone").val(data.data[0].mobile);
-                    $("#"+data.data[0]['provinceId']).attr("selected",'selected');
-                    $("#city").find("option:first-child").text(data.data[0].city);
-                    $("#area").find("option:first-child").text(data.data[0].area);
-                    $("#xxdz").val(data.data[0].address_info);
-                    if (data.data[0].is_default ==1){
-                        $("#default").attr("checked","checked");
-                    } else {
-                        $("#default").removeAttr("checked");
+                    if (data.status){
+                        province_id = data.data[0].provinceId;
+                        city_id = data.data[0].cityId;
+                        area_id = data.data[0].areaId;
+                        $("#shr-name").val(data.data[0].name);
+                        $("#shr-phone").val(data.data[0].mobile);
+                        $("#"+data.data[0]['provinceId']).attr("selected",'selected');
+                        $("#city").find("option:first-child").text(data.data[0].city);
+                        $("#area").find("option:first-child").text(data.data[0].area);
+                        $("#xxdz").val(data.data[0].address_info);
+                        if (data.data[0].is_default ==1){
+                            $("#default").attr("checked","checked");
+                        } else {
+                            $("#default").removeAttr("checked");
+                        }
+                    }else {
+                        alert("哎呀！出错了")
                     }
                 }
             });
 
 
             $("#btn-keep").click(function () {
-                console.log(province_id,city_id,area_id)
                 var shr_name = $("#shr-name").val(),
                     shr_phone = $("#shr-phone").val(),
                     shr_province,
@@ -120,41 +122,41 @@
                 }else if (shr_xxdz == "") {
                     alert("请填写详细地址");
                 }else {
-                    console.log(shr_name,shr_phone,shr_province,shr_city,shr_area,shr_xxdz,is_default,default_address)
-                    // $.ajax({
-                    //     url : "/updateAddress",	//请求url
-                    //     type : "post",	//请求类型  post|get
-                    //     dataType : "json",  //返回数据的 类型 text|json|html--
-                    //     data: {
-                    //         id:address_id,
-                    //         name:shr_name,
-                    //         province:shr_province,
-                    //         city:shr_city,
-                    //         area:shr_area,
-                    //         address_info:shr_xxdz,
-                    //         mobile:shr_phone,
-                    //         is_default:is_default
-                    //     },
-                    //     success : function(data){//回调函数 和 后台返回的 数据
-                    //         console.log(data)
-                    //         if (data.status){
-                    //             alert("修改成功");
-                    //         }else {
-                    //             alert("修改失败");
-                    //         }
-                    //     }
-                    // });
+                    $.ajax({
+                        url : "/updateAddress",	//请求url
+                        type : "post",	//请求类型  post|get
+                        dataType : "json",  //返回数据的 类型 text|json|html--
+                        data: {
+                            id:address_id,
+                            name:shr_name,
+                            province:shr_province,
+                            city:shr_city,
+                            area:shr_area,
+                            address_info:shr_xxdz,
+                            mobile:shr_phone,
+                            is_default:is_default
+                        },
+                        success : function(data){//回调函数 和 后台返回的 数据
+                            if (data.status){
+                                alert("修改成功");
+                                window.location.href = "/wap/my_address";
+                            }else {
+                                alert("修改失败");
+                            }
+                        }
+                    });
                 }
             });
             $("#del-address-true").click(function () {
                 $.ajax({
-                    url : "/deleteAddress"+address_id,	//请求url
-                    type : "get",	//请求类型  post|get
+                    url : "/deleteAddress/"+address_id,	//请求url
+                    type : "post",	//请求类型  post|get
                     dataType : "json",  //返回数据的 类型 text|json|html--
                     data: {},
                     success : function(data){//回调函数 和 后台返回的 数据
                         if (data.status){
                             alert("删除成功");
+                            window.location.href = "/wap/my_address";
                         } else {
                             alert("删除失败");
                         }

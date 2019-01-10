@@ -13,24 +13,51 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left qx-write"><a class="btn-title-text" href="/wap/personal">取消</a></div>
+            <div class="header-left qx-write"><a href="/wap/personal">取消</a></div>
             <h3>意见反馈</h3>
         </div>
         <div class="content-box">
             <div class="note-ipt-box">
                 <form action="">
-                    <div class="note-cont"><textarea placeholder="写下您对山洞的意见及建议，我们会及时查看" rows="15"></textarea></div>
-                    <ul>
-                        <li><div class="btn-phone"><span>添加证据</span></div></li>
-                    </ul>
+                    <div class="note-cont"><textarea id="feedback" placeholder="写下您对山洞的意见及建议，我们会及时查看" rows="15"></textarea></div>
+                    {{--<ul>--}}
+                        {{--<li><div class="btn-phone"><span>添加证据</span></div></li>--}}
+                    {{--</ul>--}}
                 </form>
             </div>
             <div class="btn-write-note">
-                <a href="#">提交</a>
+                <a href="#" id="btn-submit">提交</a>
                 <a class="other-color" href="/wap/personal">取消</a>
             </div>
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
+    <script>
+        $(function () {
+            $("#btn-submit").click(function () {
+                var feedback = $("#feedback").val();
+                if (feedback == ""){
+                    alert("请输入你想要反馈的问题和建议");
+                }else {
+                    $.ajax({
+                        url : "/feedback",	//请求url
+                        type : "post",	//请求类型  post|get
+                        dataType : "json",  //返回数据的 类型 text|json|html--
+                        data: {
+                            feedback:feedback
+                        },
+                        success : function(data){//回调函数 和 后台返回的 数据
+                            if (data.status){
+                                alert("提交成功");
+                                window.location.href = "/wap/personal";
+                            }else {
+                                alert("哎呀！出错了");
+                            }
+                        }
+                    });
+                }
+            });
+        })
+    </script>
 </html>

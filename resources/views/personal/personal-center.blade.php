@@ -120,7 +120,6 @@
 
     <script>
         $(function () {
-            //getMyUserInfo
             $.get('/getMyUserInfo',{},function(data){
                 if (data.status){
                     $("#photo").attr("src",data.data.photo)
@@ -133,8 +132,10 @@
                         $("#sex").html('男')
                     }
                     $("#grade").html(data.data.grade);
+                }else {
+                    alert("哎呀！出错了")
                 }
-            })
+            });
             $(".change-address").click(function () {//点击获取省
                 $(".choice-address").css("display","block");
                 $.ajax({
@@ -149,6 +150,8 @@
                                 noteHtml += '<li id="'+v.provinceid+'">'+v.province+'</li>';
                             });
                             $("#province").html(noteHtml);
+                        }else {
+                            alert("哎呀！出错了")
                         }
                     }
                 });
@@ -171,6 +174,8 @@
                                 noteHtml += '<li id="'+v.cityid+'">'+v.city+'</li>';
                             });
                             $("#city").html(noteHtml);
+                        }else {
+                            alert("哎呀！出错了")
                         }
                     }
                 });
@@ -191,6 +196,8 @@
                                 noteHtml += '<li>'+v.area+'</li>';
                             });
                             $("#area").html(noteHtml);
+                        }else {
+                            alert("哎呀！出错了")
                         }
                     }
                 });

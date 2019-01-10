@@ -62,28 +62,43 @@
                 } else {
                     is_default = 0;
                 }
-                console.log(shr_name,shr_phone,shr_province,shr_city,shr_area,shr_xxdz,is_default,default_address);
-                $.ajax({
-                    url : "/addAddress",	//请求url
-                    type : "post",	//请求类型  post|get
-                    dataType : "json",  //返回数据的 类型 text|json|html--
-                    data: {
-                        name:shr_name,
-                        province:shr_province,
-                        city:shr_city,
-                        area:shr_area,
-                        address_info:shr_xxdz,
-                        mobile:shr_phone,
-                        is_default:is_default
-                    },
-                    success : function(data){//回调函数 和 后台返回的 数据
-                        if (data.status){
-                            alert("添加成功");
-                        }else {
-                            alert("添加失败");
+                if(shr_name == ""){
+                    alert("请填写收货人姓名");
+                }else if (shr_phone == "") {
+                    alert("请填写收货人手机号码");
+                }else if ($("#province option:checked").text() == "请选择省份") {
+                    alert("请选择省份");
+                }else if ($("#city option:checked").text() == "请选择城市") {
+                    alert("请选择城市");
+                }else if ($("#area option:checked").text() == "请选择地区") {
+                    alert("请选择地区");
+                }else if (shr_xxdz == "") {
+                    alert("请填写详细地址");
+                }else {
+                    console.log(shr_name,shr_phone,shr_province,shr_city,shr_area,shr_xxdz,is_default,default_address);
+                    $.ajax({
+                        url : "/addAddress",	//请求url
+                        type : "post",	//请求类型  post|get
+                        dataType : "json",  //返回数据的 类型 text|json|html--
+                        data: {
+                            name:shr_name,
+                            province:shr_province,
+                            city:shr_city,
+                            area:shr_area,
+                            address_info:shr_xxdz,
+                            mobile:shr_phone,
+                            is_default:is_default
+                        },
+                        success : function(data){//回调函数 和 后台返回的 数据
+                            if (data.status){
+                                alert("添加成功");
+                                window.location.href = "/wap/my_address";
+                            }else {
+                                alert("添加失败");
+                            }
                         }
-                    }
-                });
+                    });
+                }
             });
         });
     </script>
