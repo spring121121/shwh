@@ -10,6 +10,14 @@ $(function () {
    //      }
    //  });
 
+    // 点击删除弹出提示框
+    $(".btn-delete").click(function () {
+        $(".mask-box").css("display","block");
+    });
+    $(".btn-del-false").click(function () {
+        $(".mask-box").css("display","none");
+    });
+
     // content-box据顶部的距离动态设置
     $(".content-box").css("margin-top",$(".header").height() + "px");
 
@@ -175,20 +183,6 @@ $(function () {
     // 店铺页面切换效果
     $(".store-switch").css("top",$(".store-header").height() + "px");
     // 店铺的展示切换
-    // var store_index = index.substr(7)
-    // if(store_index ==''){
-    //     message_index = 1;
-    // }
-    // if(message_index == 0) {
-    //     $(".system").css("display", "block");
-    //     $(".system").siblings(".massage-cont").css("display", "none");
-    // }else if(message_index == 1){
-    //     $(".discuss").css("display","block");
-    //     $(".discuss").siblings(".massage-cont").css("display","none");
-    // }else if(message_index == 2){
-    //     $(".recommend").css("display","block");
-    //     $(".recommend").siblings(".massage-cont").css("display","none");
-    // }
     $(".shop-list").css("display","flex");
     $('.store-switch li').eq(1).addClass('click-change');
     $(".store-switch li").click(function () {
@@ -278,4 +272,66 @@ $(function () {
 
     var address_height = $(window).height()-300;
     $(".personal-cont .choice-address ul").css("height",address_height+"px");
+
 });
+//编辑地址页面，选择省市区的方法
+function choice_address() {
+    var province_id,city_id;
+    $.ajax({
+        url : "/getAllProvinces",	//请求url
+        type : "get",	//请求类型  post|get
+        dataType : "json",  //返回数据的 类型 text|json|html--
+        async:false,
+        data: {},
+        success : function(data){//回调函数 和 后台返回的 数据
+            var noteHtml = '';
+            if (data.status){
+                noteHtml += '<option selected>请选择省份</option>';
+                $.each(data.data, function (k, v) {
+                    noteHtml += '<option id="'+v.provinceid+'">'+v.province+'</option>';
+                });
+                $("#province").html(noteHtml);
+            }
+        }
+    });
+    $("#province").on("click",function () {
+        province_id = $(this).find("option:checked").attr("id");
+        $.ajax({
+            url : "/getCitiesByProvince/" + province_id,	//请求url
+            type : "get",	//请求类型  post|get
+            dataType : "json",  //返回数据的 类型 text|json|html--
+            data: {},
+            success : function(data){//回调函数 和 后台返回的 数据
+                var noteHtml = '';
+                if (data.status){
+                    noteHtml += '<option selected>请选择城市</option>';
+                    $.each(data.data, function (k, v) {
+                        noteHtml += '<option id="'+v.cityid+'">'+v.city+'</option>';
+                    });
+                    $("#city").html(noteHtml);
+                    $("#area").find("option:checked").text("请选择地区");
+                    $("#area").find("option:checked").siblings().remove();
+                }
+            }
+        });
+    });
+    $("#city").on("click",function () {
+        city_id = $(this).find("option:checked").attr("id");
+        $.ajax({
+            url : "/getAreasByCityId/" + city_id,	//请求url
+            type : "get",	//请求类型  post|get
+            dataType : "json",  //返回数据的 类型 text|json|html--
+            data: {},
+            success : function(data){//回调函数 和 后台返回的 数据
+                var noteHtml = '';
+                if (data.status){
+                    noteHtml += '<option selected>请选择地区</option>';
+                    $.each(data.data, function (k, v) {
+                        noteHtml += '<option id="'+v.areaid+'">'+v.area+'</option>';
+                    });
+                    $("#area").html(noteHtml);
+                }
+            }
+        });
+    });
+}

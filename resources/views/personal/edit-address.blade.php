@@ -42,7 +42,16 @@
             </div>
             <div class="btn-write-note">
                 <a href="#" id="btn-keep">保存</a>
-                <a class="other-color" href="#">删除</a>
+                <a class="other-color btn-delete" href="javascript:void(0)">删除</a>
+            </div>
+        </div>
+        <div class="mask-box">
+            <div class="weChat del-order">
+                <span>确定要删除此订单吗？</span>
+                <div class="btn-mask">
+                    <button class="btn-del-false">取消</button>
+                    <button id="del-address-true">确定</button>
+                </div>
             </div>
         </div>
     </body>
@@ -50,65 +59,24 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            choice_address();
             var address_url = window.location.search;
             var address_id = address_url.substr(4);
-            $("#btn-keep").click(function () {
-                var shr_name = $("#shr-name").val(),
-                    shr_phone = $("#shr-phone").val(),
-                    shr_province = $("#province").find("option:checked").attr("id"),
-                    shr_city = $("#city").find("option:checked").attr("id"),
-                    shr_area = $("#area").find("option:checked").attr("id"),
-                    shr_xxdz = $("#xxdz").val(),
-                    default_address = $("#default").is(":checked");
-                var is_default;
-                if (default_address){
-                    is_default = 1;
-                } else {
-                    is_default = 0;
-                }
-                console.log(shr_province,shr_city,shr_area,is_default);
-                if(shr_name == ""){
-                    alert("请填写收货人姓名");
-                }else if (shr_phone == "") {
-                    alert("请填写收货人手机号码");
-                }else if (shr_xxdz == "") {
-                    alert("请填写详细地址");
-                }else {
-                    $.ajax({
-                        url : "/updateAddress",	//请求url
-                        type : "post",	//请求类型  post|get
-                        dataType : "json",  //返回数据的 类型 text|json|html--
-                        data: {
-                            id:address_id,
-                            name:shr_name,
-                            province:shr_province,
-                            city:shr_city,
-                            area:shr_area,
-                            address_info:shr_xxdz,
-                            mobile:shr_phone,
-                            is_default:is_default
-                        },
-                        success : function(data){//回调函数 和 后台返回的 数据
-                            // console.log(data)
-                            if (data.status){
-                                alert("修改成功");
-                            }else {
-                                alert("修改失败");
-                            }
-                        }
-                    });
-                }
-            });
+            var province_id,city_id,area_id;
+            console.log(address_id)
+            choice_address();
             $.ajax({
                 url : "/addressDetail",	//请求url
                 type : "get",	//请求类型  post|get
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {id:address_id},
                 success : function(data){//回调函数 和 后台返回的 数据
+                    console.log(data)
+                    province_id = data.data[0].provinceId;
+                    city_id = data.data[0].cityId;
+                    area_id = data.data[0].areaId;
                     $("#shr-name").val(data.data[0].name);
                     $("#shr-phone").val(data.data[0].mobile);
-                    $("#province option").find("#"+data.data[0].provinceid).attr("checked","checked");
+                    $("#"+data.data[0]['provinceId']).attr("selected",'selected');
                     $("#city").find("option:first-child").text(data.data[0].city);
                     $("#area").find("option:first-child").text(data.data[0].area);
                     $("#xxdz").val(data.data[0].address_info);
@@ -119,66 +87,80 @@
                     }
                 }
             });
-        });
-        //编辑地址页面，选择省市区的方法
-        function choice_address() {
-            var province_id,city_id;
-            $.ajax({
-                url : "/getAllProvinces",	//请求url
-                type : "get",	//请求类型  post|get
-                dataType : "json",  //返回数据的 类型 text|json|html--
-                data: {},
-                success : function(data){//回调函数 和 后台返回的 数据
-                    var noteHtml = '';
-                    if (data.status){
-                        noteHtml += '<option selected>请选择省份</option>';
-                        $.each(data.data, function (k, v) {
-                            noteHtml += '<option id="'+v.provinceid+'">'+v.province+'</option>';
-                        });
-                        $("#province").html(noteHtml);
-                    }
+
+
+            $("#btn-keep").click(function () {
+                console.log(province_id,city_id,area_id)
+                var shr_name = $("#shr-name").val(),
+                    shr_phone = $("#shr-phone").val(),
+                    shr_province,
+                    shr_city,
+                    shr_area,
+                    shr_xxdz = $("#xxdz").val(),
+                    default_address = $("#default").is(":checked");
+                var is_default;
+                if ($("#city option").length <= 1){
+                    shr_province = province_id;
+                    shr_city = city_id;
+                    shr_area = area_id;
+                }else {
+                    shr_province = $("#province").find("option:checked").attr("id");
+                    shr_city = $("#city").find("option:checked").attr("id");
+                    shr_area = $("#area").find("option:checked").attr("id");
+                }
+                if (default_address){
+                    is_default = 1;
+                } else {
+                    is_default = 0;
+                }
+                if(shr_name == ""){
+                    alert("请填写收货人姓名");
+                }else if (shr_phone == "") {
+                    alert("请填写收货人手机号码");
+                }else if (shr_xxdz == "") {
+                    alert("请填写详细地址");
+                }else {
+                    console.log(shr_name,shr_phone,shr_province,shr_city,shr_area,shr_xxdz,is_default,default_address)
+                    // $.ajax({
+                    //     url : "/updateAddress",	//请求url
+                    //     type : "post",	//请求类型  post|get
+                    //     dataType : "json",  //返回数据的 类型 text|json|html--
+                    //     data: {
+                    //         id:address_id,
+                    //         name:shr_name,
+                    //         province:shr_province,
+                    //         city:shr_city,
+                    //         area:shr_area,
+                    //         address_info:shr_xxdz,
+                    //         mobile:shr_phone,
+                    //         is_default:is_default
+                    //     },
+                    //     success : function(data){//回调函数 和 后台返回的 数据
+                    //         console.log(data)
+                    //         if (data.status){
+                    //             alert("修改成功");
+                    //         }else {
+                    //             alert("修改失败");
+                    //         }
+                    //     }
+                    // });
                 }
             });
-            $("#province").on("change",function () {
-                province_id = $(this).find("option:checked").attr("id");
+            $("#del-address-true").click(function () {
                 $.ajax({
-                    url : "/getCitiesByProvince/" + province_id,	//请求url
+                    url : "/deleteAddress"+address_id,	//请求url
                     type : "get",	//请求类型  post|get
                     dataType : "json",  //返回数据的 类型 text|json|html--
                     data: {},
                     success : function(data){//回调函数 和 后台返回的 数据
-                        var noteHtml = '';
                         if (data.status){
-                            noteHtml += '<option selected>请选择城市</option>';
-                            $.each(data.data, function (k, v) {
-                                noteHtml += '<option id="'+v.cityid+'">'+v.city+'</option>';
-                            });
-                            $("#city").html(noteHtml);
-                            $("#area").find("option:checked").text("请选择地区");
-                            $("#area").find("option:checked").siblings().remove();
+                            alert("删除成功");
+                        } else {
+                            alert("删除失败");
                         }
                     }
                 });
             });
-            $("#city").on("change",function () {
-                city_id = $(this).find("option:checked").attr("id");
-                $.ajax({
-                    url : "/getAreasByCityId/" + city_id,	//请求url
-                    type : "get",	//请求类型  post|get
-                    dataType : "json",  //返回数据的 类型 text|json|html--
-                    data: {},
-                    success : function(data){//回调函数 和 后台返回的 数据
-                        var noteHtml = '';
-                        if (data.status){
-                            noteHtml += '<option selected>请选择地区</option>';
-                            $.each(data.data, function (k, v) {
-                                noteHtml += '<option id="'+v.areaid+'">'+v.area+'</option>';
-                            });
-                            $("#area").html(noteHtml);
-                        }
-                    }
-                });
-            });
-        }
+        });
     </script>
 </html>
