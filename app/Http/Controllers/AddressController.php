@@ -112,6 +112,8 @@ class AddressController extends BaseController
             return $this->fail(50001, $validator->errors()->all());
         }
 
+        $is_default = $request->input('is_default', 0);
+
         $uid = UserService::getUid($request);
 //        $uid = 1;
         $id = $request->input('id');
@@ -127,7 +129,8 @@ class AddressController extends BaseController
             'city' => $city,
             'area' => $area,
             'address_info' => $addressInfo,
-            'mobile' => $mobile
+            'mobile' => $mobile,
+            'is_default'=>$is_default
         ];
         $addressModel = new AddressModel();
 
