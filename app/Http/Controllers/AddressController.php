@@ -64,6 +64,7 @@ class AddressController extends BaseController
         $uid = UserService::getUid($request);
         $addressInfo = $request->input('address_info');
         $province = $request->input('province');
+        $name = $request->input('name');
         $city = $request->input('city');
         $area = $request->input('area');
         $mobile = $request->input('mobile');
@@ -74,6 +75,7 @@ class AddressController extends BaseController
 
         $addressModel = new AddressModel();
         $addressModel->uid = $uid;
+        $addressModel->name = $name;
         $addressModel->province = $province;
         $addressModel->city = $city;
         $addressModel->area = $area;
@@ -119,6 +121,7 @@ class AddressController extends BaseController
         $id = $request->input('id');
         $addressInfo = $request->input('address_info');
         $province = $request->input('province');
+        $name = $request->input('name');
         $city = $request->input('city');
         $area = $request->input('area');
         $mobile = $request->input('mobile');
@@ -126,6 +129,7 @@ class AddressController extends BaseController
 
         $updateArr = [
             'province' => $province,
+            'name'=>$name,
             'city' => $city,
             'area' => $area,
             'address_info' => $addressInfo,
