@@ -30,10 +30,10 @@ class InformationController extends BaseController
             return $this->fail(60000);
         }
         $rules = [
-            'title' => 'required|string|min:1|max:20',
-            'content' => 'required|string|min:1|max:200'
+            'title' => 'required|string|max:20',
+            'content' => 'required|string|max:200'
         ];
-        $validator = Validator::make($data,$rules);
+        $validator = Validator::make($data,$rules,config('message.sys_message'));
         if($validator->fails()){
             return $this->fail(50001,$validator->errors()->all());
         }

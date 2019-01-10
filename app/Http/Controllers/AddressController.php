@@ -179,7 +179,7 @@ class AddressController extends BaseController
             ->join('provinces as p', 'address.province', '=', 'p.provinceid')
             ->join('cities as c', 'address.city', '=', 'c.cityid')
             ->join('areas as a', 'address.area', '=', 'a.areaid')
-            ->select('address.*','p.province','c.city','a.area')
+            ->select('address.*','p.province','c.city','a.area','address.province as provinceId','address.city as cityId','address.area as areaId')
             ->get()->toArray();
         return $this->success($addressDetail);
     }

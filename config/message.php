@@ -30,4 +30,11 @@ return [
         'mobile.regex' => '请输入正确的手机号格式',
     ],
 
+    'sys_message' => [
+        'title.required' => '标题不能为空',
+        'title.max' => '标题最多:max个字符',
+        'content.required' => '标题不能为空',
+        'content.max' => '标题最多:max个字符',
+    ],
+
 ];
