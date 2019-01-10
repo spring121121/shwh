@@ -29,14 +29,14 @@ class FeedbackController extends BaseController
         $rules = [
             'feedback' => 'required|string|min:1|max:200'
         ];
-        $validator = Validator::make($data,$rules);
+        $validator = Validator::make($data,$rules,config('message.feedback'));
         if($validator->fails()){
             return $this->fail(50001,$validator->errors()->all());
         }
         $result = FeedbackModel::create($data);
         if ($result) {
             return $this->success();
-        } else {
+        }else{
             return $this->fail('300');
         }
     }

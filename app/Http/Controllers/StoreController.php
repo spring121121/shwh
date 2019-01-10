@@ -30,13 +30,13 @@ class StoreController extends BaseController
         $count = StoreModel::where('uid',$uid)
             ->count();
         if($count != 0){
-            return $this->fail('300','您已经存在店铺！');
+            return $this->fail(60001);//已经存在店铺
         }
         $rules = [
             'name' => 'required|string|min:1|max:20',
             'introduction' => 'required|string|min:1|max:200',
         ];
-        $validator = Validator::make($data, $rules);
+        $validator = Validator::make($data, $rules,config('message.store'));
         if ($validator->fails()) {
             return $this->fail(50001, $validator->errors()->all());
         }
@@ -60,7 +60,7 @@ class StoreController extends BaseController
             'name' => 'required|string|min:1|max:20',
             'introduction' => 'required|string|min:1|max:200',
         ];
-        $validator = Validator::make($data, $rules);
+        $validator = Validator::make($data, $rules,config('message.store'));
         if ($validator->fails()) {
             return $this->fail(50001, $validator->errors()->all());
         }
