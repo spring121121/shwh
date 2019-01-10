@@ -88,51 +88,47 @@ ul,li{
     margin-top: 40px;
 }
 .ipt-cont .address-choice label{
-    width: 115px;
+    float: left;
 }
-.ipt-cont .address-choice ul{
+.ipt-cont .address-choice .select-box{
     display: flex;
     flex-direction: row;
 }
-.ipt-cont .address-choice ul li{
+.ipt-cont .address-choice .select-box select{
+    outline: none;
     border: 1px solid #eee;
     height: 20px;
+    width: 93px;
     line-height: 20px;
     margin: 5px 5px;
-    position: relative;
 }
-.ipt-cont .address-choice .btn-address-choice{
-    width: 12px;
-    height: 12px;
-    margin-top: 4px;
-    float: right;
-    background-image: url("../images/return.png");
-    background-size: 100%;
-}
-.ipt-cont .address-choice .ipt-choice{
-    margin-right: 20px;
-}
-.ipt-cont .address-choice .ipt-choice input{
+.ipt-cont .address-choice .select-box select option{
     font-size: 12px;
-    text-align: right;
 }
-.ipt-cont .address-choice .get-address{
-    display: none;
-    position: absolute;
-    width: 100%;
-    background: #fff;
-    font-size: 12px;
-    border: 1px solid #eee;
-    top: 20px;
-    left: -1px;
-    height: 150px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-.ipt-cont .address-choice .get-address span{
-    display: block;
-    line-height: 25px;
-}
+/*.ipt-cont .address-choice .ipt-choice{*/
+    /*margin-right: 20px;*/
+/*}*/
+/*.ipt-cont .address-choice .ipt-choice input{*/
+    /*font-size: 12px;*/
+    /*text-align: right;*/
+/*}*/
+/*.ipt-cont .address-choice .get-address{*/
+    /*display: none;*/
+    /*position: absolute;*/
+    /*width: 100%;*/
+    /*background: #fff;*/
+    /*font-size: 12px;*/
+    /*border: 1px solid #eee;*/
+    /*top: 20px;*/
+    /*left: -1px;*/
+    /*height: 150px;*/
+    /*overflow-y: auto;*/
+    /*overflow-x: hidden;*/
+/*}*/
+/*.ipt-cont .address-choice .get-address span{*/
+    /*display: block;*/
+    /*line-height: 25px;*/
+/*}*/
 .ipt-cont .yzm-code{
     width: 60%;
     position: relative;
