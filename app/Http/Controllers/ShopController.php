@@ -114,7 +114,7 @@ class ShopController extends BaseController
             'is_shipping' => 'required',
             'postage' => 'required'
         ];
-        $validator = Validator::make($data,$rules);
+        $validator = Validator::make($data,$rules,config('message.goods'));
         if($validator->fails()){
             return $this->fail(50001,$validator->errors()->all());
         }

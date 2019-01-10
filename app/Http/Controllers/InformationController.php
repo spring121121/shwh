@@ -74,7 +74,7 @@ class InformationController extends BaseController
         $rules = [
             'content' => 'required|string|min:1|max:200'
         ];
-        $validator = Validator::make($data,$rules);
+        $validator = Validator::make($data,$rules,config('message.dis_message'));
         if($validator->fails()){
             return $this->fail(50001,$validator->errors()->all());
         }
