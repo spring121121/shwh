@@ -82,7 +82,7 @@ class StoreController extends BaseController
         $uid = UserService::getUid($request);
         $role = UserService::getUserRight($request);
         if(!$role){
-            return $this->fail(50004);
+            return $this->fail(60000);
         }
         $id = $request->input('id');
         $feedbackUpdate = StoreModel::where('id',$id)

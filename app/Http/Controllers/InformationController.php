@@ -14,7 +14,8 @@ use Illuminate\Http\Request;
 use App\models\DismessageModel;
 use App\models\NoteModel;
 use App\Http\Services\UserService;
-use Validator;
+use Illuminate\Support\Facades\Validator;
+//use Validator;
 class InformationController extends BaseController
 {
     /**
@@ -26,10 +27,10 @@ class InformationController extends BaseController
         $data = $request->input('message');
         $role = UserService::getUserRight($request);
         if(!$role){
-            return $this->fail(50004);
+            return $this->fail(60000);
         }
         $rules = [
-            'title' => 'required|string|min:1|max:200',
+            'title' => 'required|string|min:1|max:20',
             'content' => 'required|string|min:1|max:200'
         ];
         $validator = Validator::make($data,$rules);

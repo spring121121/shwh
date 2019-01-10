@@ -29,4 +29,5 @@ return [
         'mobile.unique' => '该手机号已被注册',
         'mobile.regex' => '请输入正确的手机号格式',
     ],
+
 ];

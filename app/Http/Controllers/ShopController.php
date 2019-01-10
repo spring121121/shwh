@@ -83,12 +83,12 @@ class ShopController extends BaseController
         $store_id = $id[0]['id'];
         $is_auth = $id[0]['status'];
         if($store_id){
-            if($is_auth == StoreModel::NO_AUTH){
-                return $this->fail(5005);//店铺未认证
+            if($is_auth == StoreModel::IS_NOT_AUTH){
+                return $this->fail(5006);//店铺未认证
             }
             $data['store_id'] = $store_id;
         }else{
-            return $this->fail(50006);//没有店铺
+            return $this->fail(50005);//没有店铺
         }
 
         if($data['is_agent'] == GoodsModel::IS_AGENT_1){//代理
