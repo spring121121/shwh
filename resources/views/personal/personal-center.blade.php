@@ -34,10 +34,10 @@
                         <span id="grade"></span>
                     </li>
                 </ul><em></em>
-                <div class="change-address">
-                    <div class="personal-icon-box"><img class="common-img" src="../images/location.png" /></div>
-                    <span>天津市 西青</span>
-                </div>
+                {{--<div class="change-address">--}}
+                    {{--<div class="personal-icon-box"><img class="common-img" src="../images/location.png" /></div>--}}
+                    {{--<span>天津市 西青</span>--}}
+                {{--</div>--}}
             </div>
         </div>
         <!--个人中心内容模块-->
@@ -69,12 +69,12 @@
                 </li>
             </ul>
             <div class="list-box">
-                <div class="list-cont">
-                    <a href="/wap/coupon">
-                        <span>我的优惠券</span>
-                        <i></i>
-                    </a>
-                </div>
+                {{--<div class="list-cont">--}}
+                    {{--<a href="/wap/coupon">--}}
+                        {{--<span>我的优惠券</span>--}}
+                        {{--<i></i>--}}
+                    {{--</a>--}}
+                {{--</div>--}}
                 <div class="list-cont">
                     <a href="/wap/my_order">
                         <span>我的订单</span>

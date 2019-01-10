@@ -33,7 +33,10 @@
                     </div>
                     <div class="ipt-box distance-top">
                         <label for="sex">性别</label>
-                        <div class="ipt-cont-box"><input id="sex" type="text" placeholder="性别"></div>
+                        <div class="ipt-cont-box">
+                            <input id="1" name="sex" class="sex-choice" type="radio"><label class="sex-tip" for="1">男</label>
+                            <input name="sex" class="sex-choice" id="0" type="radio"><label class="sex-tip" for="0">女</label>
+                        </div>
                     </div>
                     <div class="ipt-box">
                         <label for="birthday">生日</label>
@@ -66,13 +69,14 @@
             dataType : "json",  //返回数据的 类型 text|json|html--
             data: {},
             success : function(data){//回调函数 和 后台返回的 数据
+
                 if (data.status){
                     $("#btn-my-header").attr("src",data.data.photo);
                     $("#username").val(data.data.nickname);
                     if (data.data.sex == 0){
-                        $("#sex").val("女");
+                        $("#0").attr("checked","checked");
                     }else {
-                        $("#sex").val("男");
+                        $("#1").attr("checked","checked");
                     }
                     $("#birthday").val(data.data.birthday);
                     $("#personal-phone").val(data.data.mobile);
@@ -99,12 +103,14 @@
             var img_url = $('#btn-my-header').attr('src'),
                 user_name = $('#username').val(), sex,
                 birthday = $('#birthday').val();
-            if ($('#sex').val() == "男"){
+            console.log($(':radio:checked').attr("id"))
+            if ($(':radio:checked').attr("id") == 1){
                 sex = 1;
             }
-            if ($('#sex').val() == "女"){
+            if ($(':radio:checked').attr("id") == 0){
                 sex = 0;
             }
+            console.log(img_url,user_name,birthday,sex);
             $.ajax({
                 url : "/updateUserInfo",	//请求url
                 type : "get",	//请求类型  post|get
@@ -116,6 +122,7 @@
                     birthday:birthday
                 },
                 success : function(data){//回调函数 和 后台返回的 数据
+                    console.log(data)
                     if (data.status){
                         alert("修改成功");
                         window.location.href = "/wap/personal";

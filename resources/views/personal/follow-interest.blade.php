@@ -22,7 +22,7 @@
             <div class="my-concern gz-common">
                 <ul class="tjgz-box" id="recommend-gz-list">
                     <li class="first-title">
-                        <button>换一批</button>
+                        <button id="btn-change">换一批</button>
                         <span>推荐关注</span>
                     </li>
                 </ul>
@@ -60,8 +60,34 @@
             //我的关注列表
             myFansList("/myFocusList","#my-gz-list");
             //推荐关注列表
-            // myFansList("/recommendList","#recommend-gz-list",num);
-            $.get("/recommendList", {offset:0}, function (data) {
+            recommend_list(num);
+            $("#btn-change").click(function () {
+                num++;
+                recommend_list(num);
+            });
+            $(".gz-common").on("click","button",function () {
+                var user_id = $(this).attr("id");
+                $(this).html("已关注").attr("disabled","disabled");
+                $.ajax({
+                    url : "/focus",	//请求url
+                    type : "post",	//请求类型  post|get
+                    dataType : "json",  //返回数据的 类型 text|json|html--
+                    data: {
+                        uid:user_id
+                    },
+                    success : function(data){//回调函数 和 后台返回的 数据
+                        if (data.status){
+                            alert("关注成功");
+                        }else {
+                            alert("哎呀！出错了")
+                        }
+                    }
+                });
+            });
+
+        });
+        function recommend_list(num) {
+            $.get("/recommendList", {offset:num}, function (data) {
                 console.log(data);
                 var noteHtml = '';
                 if (data.status) {
@@ -75,17 +101,20 @@
                         noteHtml += '<li>';
                         noteHtml += '<div class="gz-img-box"><img src="'+ photo +'" class="common-img"></div>';
                         noteHtml += '<div class="gz-right">';
-                        noteHtml += '<button><i></i>关注</button>';
+                        noteHtml += '<button id="'+v.id+'"><i></i>关注</button>';
                         noteHtml += '<h3>' + v.nickname + '</h3>';
                         noteHtml += '<span>'+v.grade_name+'</span>';
                         noteHtml += '<p>有'+fans_count+'人关注了她</p>';
                         noteHtml += '</div></li>';
                     });
+                    $("#recommend-gz-list .first-title").siblings("li").remove();
                     $("#recommend-gz-list").append(noteHtml);
+                    if (data.data.length < 3){
+                        $("#recommend-gz-list").append("<p class='my-fans-tip'>没有更多了</p>");
+                    }
                 }
             });
-
-        });
+        }
         function myFansList(url,obj) {
             $.get(url, {}, function (data) {
                 var noteHtml = '';
@@ -100,7 +129,7 @@
                         noteHtml += '<li>';
                         noteHtml += '<div class="gz-img-box"><img src="'+ photo +'" class="common-img"></div>';
                         noteHtml += '<div class="gz-right">';
-                        noteHtml += '<button><i></i>关注</button>';
+                        noteHtml += '<button id="'+v.id+'"><i></i>关注</button>';
                         noteHtml += '<h3>' + v.nickname + '</h3>';
                         noteHtml += '<span>'+v.grade_name+'</span>';
                         noteHtml += '<p>有'+fans_count+'人关注了她</p>';

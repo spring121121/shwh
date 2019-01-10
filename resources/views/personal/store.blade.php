@@ -34,9 +34,9 @@
         </div>
         <div class="content-box">
             <ul class="flex-box store-switch">
-                <li>笔记</li>
                 <li>商品</li>
-                <li>收藏</li>
+                <li>待发货</li>
+                <li>已发货</li>
             </ul>
             <!--笔记列表-->
             <div class="note-list-box notes-box store-content">

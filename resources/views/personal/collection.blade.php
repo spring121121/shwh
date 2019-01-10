@@ -100,4 +100,26 @@
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url : "/getMyCollectNote",	//请求url
+                type : "get",	//请求类型  post|get
+                dataType : "json",  //返回数据的 类型 text|json|html--
+                data: {},
+                success : function(data){//回调函数 和 后台返回的 数据
+                    console.log(data)
+                    var noteHtml = '';
+                    if (data.status){
+                        // $.each(data.data, function (k, v) {
+                        //     noteHtml += '<li id="'+v.provinceid+'">'+v.province+'</li>';
+                        // });
+                        // $("#province").html(noteHtml);
+                    }else {
+                        alert("哎呀！出错了")
+                    }
+                }
+            });
+        });
+    </script>
 </html>
