@@ -27,5 +27,15 @@ class UserService
         }
         return $grade_name;
     }
+
+    //管理员权限
+    public static function getUserRight($request){
+        $userInfo = $request->session()->get('userInfo');
+        $role = $userInfo['role'];
+        if($role == 0){
+            return true;
+        }
+        return false;
+    }
 }
 

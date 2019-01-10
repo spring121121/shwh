@@ -16,22 +16,22 @@
         <div class="personal-header">
             <div class="personal-title">
                 <div class="portrait-box">
-                    <img class="common-img" src="../images/portrait.png" alt="头像">
+                    <img class="common-img" id = "photo" src="" alt="头像" onerror="this.src='/images/portrait.png'">
                 </div>
                 <div class="edit-personal">
                     <a class="btn-edit" href="/wap/message_center"></a>
-                    <h3>输入你的昵称</h3>
+                    <h3 id="nickname">输入你的昵称</h3>
                     <a class="edit-your-data" href="/wap/personal_data"><span>编辑你的资料 <i></i></span></a>
                 </div>
                 <ul class="address-grade">
                     <li>
-                        <div class="personal-icon-box"><img src="/images/man-icon-white.png" class="common-img"></div>
-                        <span>男</span>
+                        <div class="personal-icon-box"><img id="sex-img" src="/images/man-icon-white.png" class="common-img"></div>
+                        <span id="sex">男</span>
                     </li>
                     <em></em>
                     <li>
                         <div class="personal-icon-box"><img class="common-img" src="../images/grade.png" /></div>
-                        <span>个人等级</span>
+                        <span id="grade"></span>
                     </li>
                 </ul><em></em>
                 <div class="change-address">
@@ -117,8 +117,24 @@
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
+
     <script>
         $(function () {
+            //getMyUserInfo
+            $.get('/getMyUserInfo',{},function(data){
+                if (data.status){
+                    $("#photo").attr("src",data.data.photo)
+                    $("#nickname").html(data.data.nickname)
+                    if(data.data.sex==0){
+                        $("#sex").html('女')
+                        $("#sex-img").attr("src","/images/woman-icon-white.png")
+                    }else{
+                        $("#sex-img").attr("src","/images/man-icon-white.png")
+                        $("#sex").html('男')
+                    }
+                    $("#grade").html(data.data.grade);
+                }
+            })
             $(".change-address").click(function () {//点击获取省
                 $(".choice-address").css("display","block");
                 $.ajax({

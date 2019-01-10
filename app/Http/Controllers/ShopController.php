@@ -22,32 +22,6 @@ use Validator;
 class ShopController extends BaseController
 {
     /**
-     * 递归无线分类
-     * @param $array
-     * @param int $pid
-     * @param int $level
-     * @return array
-     */
-    public function getTree($array, $pid =0, $level = 0){
-        //声明静态数组,避免递归调用时,多次声明导致数组覆盖
-        static $list = [];
-        foreach ($array as $key => $value){
-            //第一次遍历,找到父节点为根节点的节点 也就是pid=0的节点
-            if ($value['pid'] == $pid){
-                //父节点为根节点的节点,级别为0，也就是第一级
-                $value['level'] = $level;
-                //把数组放到list中
-                $list[] = $value;
-                //把这个节点从数组中移除,减少后续递归消耗
-                unset($array[$key]);
-                //开始递归,查找父ID为该节点ID的节点,级别则为原级别+1
-                $this->getTree($array, $value['id'], $level+1);
-            }
-        }
-        return $list;
-    }
-
-    /**
      * 创建商品父级分类
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -103,19 +77,29 @@ class ShopController extends BaseController
     public function addGoods(Request $request){
         DB::beginTransaction();
         $data = $request->input('shop');
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $id = StoreModel::where('uid',$uid)
-            ->select('id')->get()->toArray();
+            ->select('id','status')->get()->toArray();
         $store_id = $id[0]['id'];
+        $is_auth = $id[0]['status'];
         if($store_id){
+            if($is_auth == StoreModel::IS_NOT_AUTH){
+                return $this->fail(5006);//店铺未认证
+            }
             $data['store_id'] = $store_id;
         }else{
-            return $this->fail('300','您还没有自己的店铺！');
+            return $this->fail(50005);//没有店铺
         }
+
         if($data['is_agent'] == GoodsModel::IS_AGENT_1){//代理
             if(empty($data['pgoods_id'])){
                 return $this->fail('300','请您选择代理的商品！');
+            }else{
+                $is_agent = GoodsModel::where('id',$data['pgoods_id'])
+                    ->select('is_agent')->get()->toArray();
+                if($is_agent[0]['is_agent'] == GoodsModel::IS_AGENT_1){
+                    return $this->fail(50003);//不允许代理此产品
+                }
             }
         }
         $rules = [
@@ -223,7 +207,6 @@ class ShopController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function myStoreDetail(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $myStoreDetail = StoreModel::where('uid',$uid)
             ->get()->toArray();
@@ -265,7 +248,6 @@ class ShopController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function addCar(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $goods_id = $request->input('id');
         $time = date("Y-m-d H:i:s",time());
@@ -283,7 +265,6 @@ class ShopController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function myCarList(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $myGoodsList = CarModel::where('car.uid',$uid)
             ->join('goods','car.goods_id','=','goods.id')

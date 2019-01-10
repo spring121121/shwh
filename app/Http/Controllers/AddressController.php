@@ -112,6 +112,8 @@ class AddressController extends BaseController
             return $this->fail(50001, $validator->errors()->all());
         }
 
+        $is_default = $request->input('is_default', 0);
+
         $uid = UserService::getUid($request);
 //        $uid = 1;
         $id = $request->input('id');
@@ -127,7 +129,8 @@ class AddressController extends BaseController
             'city' => $city,
             'area' => $area,
             'address_info' => $addressInfo,
-            'mobile' => $mobile
+            'mobile' => $mobile,
+            'is_default'=>$is_default
         ];
         $addressModel = new AddressModel();
 
@@ -175,13 +178,13 @@ class AddressController extends BaseController
     public function addressDetail(Request $request)
     {
         $id = $request->input('id');
-        $addressDeail = AddressModel::where('address.id', $id)
+        $addressDetail = AddressModel::where('address.id', $id)
             ->join('provinces as p', 'address.province', '=', 'p.provinceid')
             ->join('cities as c', 'address.city', '=', 'c.cityid')
             ->join('areas as a', 'address.area', '=', 'a.areaid')
-            ->select('address.*','p.province','c.city','a.area')
+            ->select('address.*','p.province','c.city','a.area','address.province as provinceId','address.city as cityId','address.area as areaId')
             ->get()->toArray();
-        return $this->success($addressDeail);
+        return $this->success($addressDetail);
     }
 
 }

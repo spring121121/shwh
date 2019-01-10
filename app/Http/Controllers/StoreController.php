@@ -24,7 +24,6 @@ class StoreController extends BaseController
      */
     public function addStore(Request $request)
     {
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $data = $request->input('store');
         $data['uid'] = $uid;
@@ -80,8 +79,11 @@ class StoreController extends BaseController
      */
     public function authStore(Request $request)
     {
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
+        $role = UserService::getUserRight($request);
+        if(!$role){
+            return $this->fail(60000);
+        }
         $id = $request->input('id');
         $feedbackUpdate = StoreModel::where('id',$id)
             ->update(['status'=>StoreModel::IS_AUTH,'auth_id'=>$uid]);
@@ -110,7 +112,6 @@ class StoreController extends BaseController
      */
     public function storeDetail(Request $request)
     {
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $feedbackList = StoreModel::where('uid', $uid)
             ->select('name', 'uid', 'introduction', 'logo_pic_url', 'prove_url', 'auth_id')

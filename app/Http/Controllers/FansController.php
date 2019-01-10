@@ -38,7 +38,6 @@ class FansController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function focus(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $beuid = UserService::getUid($request);
         $uid = $request->input('uid');
         $result = FocusModel::create(['uid'=>$uid,'beuid'=>$beuid]);
@@ -55,7 +54,6 @@ class FansController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function myFansList(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $fans = FocusModel::where('focus.uid',$uid)
             ->join('user','focus.beuid','=','user.id')
@@ -71,7 +69,6 @@ class FansController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function beforeFansList(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $time = date("Y-m-d H:i:s",strtotime('-3 day'));
         $fans = FocusModel::where('focus.uid','=',$uid)->where('focus.created_at','>=',$time)
@@ -104,7 +101,6 @@ class FansController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function myFocusList(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $focus = FocusModel::where('focus.beuid',$uid)
             ->join('user','focus.uid','=','user.id')
@@ -120,7 +116,6 @@ class FansController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function myCollectList(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $collectList = CollectModel::where('collect.uid',$uid)
             ->join('note','collect.note_id','=','note.id')
@@ -148,7 +143,6 @@ class FansController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function recommendList(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $limit = FocusModel::LIMIT;
         $offset = $request->input('offset')*$limit;

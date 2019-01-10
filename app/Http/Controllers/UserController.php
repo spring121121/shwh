@@ -10,6 +10,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Services\UserService;
 use Illuminate\Http\Request;
 use App\models\UserModel;
 
@@ -73,6 +74,19 @@ class UserController extends BaseController
         return $this->success($result);
     }
 
+    /**
+     * 获取我的用户信息
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getMyUserInfo(Request $request)
+    {
+        $id = UserService::getUid($request);
+        $userModel = new UserModel();
+        $result = $userModel::find($id);
+        $result->grade = UserService::getGrade($result->score);
+        return $this->success($result);
+    }
 
 
 }

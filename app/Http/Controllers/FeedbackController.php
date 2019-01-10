@@ -22,7 +22,6 @@ class FeedbackController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function feedback(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
         $feedback = $request->input('feedback');
         $data['feedback'] = $feedback;
@@ -48,8 +47,11 @@ class FeedbackController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function readFeedback(Request $request){
-        //$uid = $request->session()->get('userInfo')['id'];
         $uid = UserService::getUid($request);
+        $role = UserService::getUserRight($request);
+        if(!$role){
+            return $this->fail(60000);
+        }
         $id = $request->input('id');
         $feedbackUpdate = FeedbackModel::where('id',$id)
             ->update(['status'=>SysmessageModel::IS_READ,'read_user_id'=>$uid]);
@@ -62,7 +64,6 @@ class FeedbackController extends BaseController
 
     /**
      * 意见反馈列表
-     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function feedbackList(){
