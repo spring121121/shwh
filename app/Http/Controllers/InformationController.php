@@ -71,9 +71,11 @@ class InformationController extends BaseController
      */
     public function commentNote(Request $request){
         $data = $request->input('comment');
+        $uid = UserService::getUid($request);
         $rules = [
             'content' => 'required|string|min:1|max:200'
         ];
+        $data['uid'] = $uid;
         $validator = Validator::make($data,$rules,config('message.dis_message'));
         if($validator->fails()){
             return $this->fail(50001,$validator->errors()->all());
