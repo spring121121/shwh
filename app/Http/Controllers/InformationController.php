@@ -14,7 +14,9 @@ use Illuminate\Http\Request;
 use App\models\DismessageModel;
 use App\models\NoteModel;
 use App\Http\Services\UserService;
+use App\models\CommentModel;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 //use Validator;
 class InformationController extends BaseController
 {
@@ -70,18 +72,24 @@ class InformationController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function commentNote(Request $request){
+        DB::beginTransaction();
         $data = $request->input('comment');
+        $uid = UserService::getUid($request);
         $rules = [
             'content' => 'required|string|min:1|max:200'
         ];
+        $data['uid'] = $uid;
         $validator = Validator::make($data,$rules,config('message.dis_message'));
         if($validator->fails()){
             return $this->fail(50001,$validator->errors()->all());
         }
         $result = DismessageModel::create($data);
-        if ($result) {
+        $res = CommentModel::create($data);
+        if ($result && $res) {
+            DB::commit();
             return $this->success();
         } else {
+            DB::rollBack();
             return $this->fail('300');
         }
     }

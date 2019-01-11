@@ -59,7 +59,16 @@ class FansController extends BaseController
             ->join('user','focus.beuid','=','user.id')
             ->select('user.id','user.photo','user.nickname','user.score')
             ->get()->toArray();
-        $res = $this->getList($fans);
+        $res = $this->getList($fans);//关注我的
+        $myuid = FocusModel::where('beuid',$uid)->select('uid')->get()->toArray();//我关注的uid
+        $myuids = array_column($myuid,'uid');
+        foreach($res as &$value){
+            if(in_array($value['id'],$myuids)){
+                $value['is_focus'] = FocusModel::IS_FOCUS;//已关注
+            }else{
+                $value['is_focus'] = FocusModel::NO_FOCUS;//已关注
+            }
+        }
         return $this->success($res);
     }
 
@@ -76,6 +85,15 @@ class FansController extends BaseController
             ->select('user.id','user.photo','user.nickname','user.score')
             ->get()->toArray();
         $res = $this->getList($fans);
+        $myuid = FocusModel::where('beuid',$uid)->select('uid')->get()->toArray();//我关注的uid
+        $myuids = array_column($myuid,'uid');
+        foreach($res as &$value){
+            if(in_array($value['id'],$myuids)){
+                $value['is_focus'] = FocusModel::IS_FOCUS;//已关注
+            }else{
+                $value['is_focus'] = FocusModel::NO_FOCUS;//已关注
+            }
+        }
         return $this->success($res);
     }
 
@@ -146,8 +164,9 @@ class FansController extends BaseController
         $uid = UserService::getUid($request);
         $limit = FocusModel::LIMIT;
         $offset = $request->input('offset')*$limit;
-        $ids = FocusModel::where('beuid',$uid)
+        $ids = FocusModel::where('beuid',$uid)->orWhere('uid',$uid)
             ->select('uid')
+            ->groupBy('uid')
             ->get()->toArray();
         $uids = array_column($ids, 'uid');
         $focus = FocusModel::whereNotIn('uid',$uids)

@@ -27,6 +27,6 @@ class UserModel extends BaseModel
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['name', 'nickname', 'password', 'sex', 'photo', 'birthday', 'mobile', 'score'];
+    protected $fillable = ['name', 'nickname','wallet', 'password', 'sex', 'photo', 'birthday', 'mobile', 'score'];
 
 }

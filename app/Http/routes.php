@@ -92,6 +92,8 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('addGoods','ShopController@addGoods');//增加商品
     Route::get('getGoodsList','ShopController@getGoodsList');//获取分类下的所有商品列表
     Route::get('getGoodsDetail','ShopController@getGoodsDetail');//商品详情
+    Route::post('purchase','ShopController@purchase');//购买商品记录
+    Route::post('payment','ShopController@payment');//支付成功并结算
     Route::get('getStoreDetail','ShopController@getStoreDetail');//店铺详情
     Route::get('myStoreDetail','ShopController@myStoreDetail');//我的店铺详情
     Route::get('storeGoodsList','ShopController@storeGoodsList');//所属店铺下的商品列表

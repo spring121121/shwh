@@ -69,4 +69,15 @@ return [
         'postage.required' => '商品邮费不能为空'
     ],
 
+    'order' => [//订单表
+        'goods_id.required' => '购买商品不能为空',
+        'goods_id.numeric' => '商品类型为数字',
+        'num.required' => '购买数量不能为空',
+        'num.numeric' => '数量类型为数字',
+        'unit_price.required' => '购买单价不能为空',
+        'unit_price.numeric' => '单价类型为数字',
+        'is_agent.required' => '是否从代理购买不能为空',
+        'is_agent.numeric' => '是否从代理购买类型为数字',
+    ],
+
 ];
