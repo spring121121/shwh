@@ -169,13 +169,19 @@ class FansController extends BaseController
             ->groupBy('uid')
             ->get()->toArray();
         $uids = array_column($ids, 'uid');
-        $focus = FocusModel::whereNotIn('uid',$uids)
+        if($uids){
+            $focus = FocusModel::whereNotIn('uid',$uids)
             ->select(DB::raw('uid,count(id) as count'))
             ->groupBy('uid')->orderBy(DB::raw('count(id)'),'desc')->offset($offset)->limit($limit)->get()->toArray();
-        $uidds = array_column($focus, 'uid');
-        $recommend = UserModel::whereIn('id',$uidds)->orderByRaw("FIELD(id, " . implode(", ", $uidds) . ")")->select('id','photo','nickname','score')
-            ->get()->toArray();//按照id顺序排列
-        $res = $this->getList($recommend);
+            $uidds = array_column($focus, 'uid');
+            $recommend = UserModel::whereIn('id',$uidds)->orderByRaw("FIELD(id, " . implode(", ", $uidds) . ")")->select('id','photo','nickname','score')
+                ->get()->toArray();//按照id顺序排列
+            $res = $this->getList($recommend);
+        }else{
+            $recommend = UserModel::select('id','photo','nickname','score')->offset($offset)->limit($limit)
+                ->get()->toArray();
+            $res = $this->getList($recommend);
+        }
         return $this->success($res);
     }
 }
