@@ -27,6 +27,9 @@
             </div>
             <span class="click-tips">点击完成，此过程需三个工作日</span>
         </div>
+
+        <!--引入footer-->
+        @extends('layout.footer')
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>

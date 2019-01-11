@@ -47,6 +47,8 @@
             </div>
         </div>
 
+        <!--引入footer-->
+        @extends('layout.footer')
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
@@ -117,6 +119,7 @@
         }
         function myFansList(url,obj,focus) {
             $.get(url, {}, function (data) {
+                console.log(data)
                 var noteHtml = '';
                 if (data.status) {
                     $.each(data.data, function (k, v) {
@@ -129,7 +132,7 @@
                         noteHtml += '<li>';
                         noteHtml += '<div class="gz-img-box"><img src="'+ photo +'" class="common-img"></div>';
                         noteHtml += '<div class="gz-right">';
-                                    if(focus == 1){
+                                    if(focus == 1||v.is_focus == 1){
                                         noteHtml += '<button id="'+v.id+'" disabled class="btn-focus">已关注</button>';
                                     }else {
                                         noteHtml += '<button id="'+v.id+'" class="btn-focus"><i></i>关注</button>';

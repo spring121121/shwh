@@ -76,7 +76,7 @@ $(function () {
         if (a%2 == 0){
             $(this).css("background-image","url('../images/wc-icon.png')");
             $(".note-list-box li").animate({"margin":"0 55px 20px 25px"},500);
-            $(".btn-del-box").animate({"bottom":"0"},500);
+            $(".btn-del-box").animate({"bottom":"55px"},500);
             $(".choice").animate({"left":"-25px"},500);
             $(".btn-del").animate({"right":"-55px"},500);
             $(".note-list-box li").find("label").css("display","block");
@@ -84,7 +84,7 @@ $(function () {
         }else {
             $(this).css("background-image","url('../images/xzbj-icon.png')");
             $(".note-list-box li").animate({"margin":"0 0 20px 0"},500);
-            $(".btn-del-box").animate({"bottom":"-50px"},500,function () {
+            $(".btn-del-box").animate({"bottom":"5px"},500,function () {
                 $(".write-note").css("display","block");
             });
             $(".choice").animate({"left":"-20px"},500);
@@ -96,7 +96,7 @@ $(function () {
         a = a+1;
         $("#edit-del").css("background-image","url('../images/xzbj-icon.png')");
         $(".note-list-box li").animate({"margin":"0 0 20px 0"},500);
-        $(".btn-del-box").animate({"bottom":"-50px"},500,function () {
+        $(".btn-del-box").animate({"bottom":"5px"},500,function () {
             $(".write-note").css("display","block");
         });
         $(".choice").animate({"left":"-20px"},500);
@@ -151,7 +151,7 @@ $(function () {
 
     // 点击转发显示分享
     $(".btn-zf").click(function () {
-        $(".share-box").animate({"bottom":"0"},500);
+        $(".share-box").animate({"bottom":"55px"},500);
     });
 
     // 点击评论跳转到评论界面
@@ -167,7 +167,7 @@ $(function () {
 
     //点击取消隐藏分享
     $(".share-box button").click(function () {
-        $(".share-box").animate({"bottom":"-150px"},500);
+        $(".share-box").animate({"bottom":"-95px"},500);
     });
 
 

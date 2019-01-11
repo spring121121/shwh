@@ -20,6 +20,9 @@
         <div class="reply-cont">
             <textarea id="pl-content" placeholder="输入你想要说的话" rows="5"></textarea>
         </div>
+
+        <!--引入footer-->
+        @extends('layout.footer')
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
