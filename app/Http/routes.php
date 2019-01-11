@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+use Illuminate\Support\Facades\Cookie;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -52,6 +52,8 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('deleteNoteNotOnly','NoteController@deleteNoteNotOnly');//删除多个笔记
     Route::get('searchNote/{keyword}','NoteController@searchNote');//搜索笔记
     Route::get('getNoteListByStoreId','NoteController@getNoteListByStoreId');//根据店铺ID查询相应的笔记
+    Route::get('getMyLikeNote','LikeController@getMyLikeNote');//获取我点赞的笔记
+
 
     /*****************InformationController消息接口********************************/
     Route::post('pubSysMessage','InformationController@pubSysMessage');//管理员发布系统消息

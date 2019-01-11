@@ -71,7 +71,10 @@ class AddressController extends BaseController
         $is_default = $request->input('is_default', 0);
 
         //把其他收货地址都改为非默认
-        AddressService::updateNotDefault($uid);
+        if($is_default == AddressModel::IS_DEFAULT_1){
+            AddressService::updateNotDefault($uid);
+        }
+
 
         $addressModel = new AddressModel();
         $addressModel->uid = $uid;
@@ -126,6 +129,10 @@ class AddressController extends BaseController
         $area = $request->input('area');
         $mobile = $request->input('mobile');
 
+        //把其他收货地址都改为非默认
+        if($is_default == AddressModel::IS_DEFAULT_1){
+            AddressService::updateNotDefault($uid);
+        }
 
         $updateArr = [
             'province' => $province,
