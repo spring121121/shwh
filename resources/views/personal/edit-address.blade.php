@@ -47,7 +47,7 @@
         </div>
         <div class="mask-box">
             <div class="weChat del-order">
-                <span>确定要删除此订单吗？</span>
+                <span>确定删除此收货地址吗？</span>
                 <div class="btn-mask">
                     <button class="btn-del-false">取消</button>
                     <button id="del-address-true">确定</button>

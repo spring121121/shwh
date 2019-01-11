@@ -1379,14 +1379,15 @@ ul,li{
     height: 30px;
     line-height: 30px;
     margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
 }
 .flex-box li .btn-flex-box span{
     position: relative;
-    float: right;
     font-size: 12px;
     padding-left: 20px;
     color: #000;
-    width: 30px;
+    width: auto;
 }
 .flex-box li .btn-flex-box span i{
     display: inline-block;
@@ -1397,6 +1398,9 @@ ul,li{
     left: 0;
     top: 7px;
     background-size: 100%;
+}
+.flex-box li .btn-flex-box .pl-icon i{
+    background-image: url("../images/pl-icon.png");
 }
 .flex-box li .btn-flex-box .zf-icon i{
     background-image: url("../images/zf-icon.png");

@@ -18,82 +18,8 @@
         </div>
         <div class="content-box">
             <div class="flex-box">
-                <ul class="flex-left">
-                    <li>
-                        <div class="flex-img-box">
-                            <img src="/images/collection-img1.jpg" class="common-img">
-                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>5人</span>
-                        </div>
-                        <h3>藏品的名称</h3>
-                        <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
-                        <div class="btn-flex-box">
-                            <span class="zf-icon"><i></i>转发</span>
-                            <span class="zan-icon"><i></i>赞</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="flex-img-box">
-                            <img src="/images/collection-img3.jpg" class="common-img">
-                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>20人</span>
-                        </div>
-                        <h3>藏品的名称</h3>
-                        <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
-                        <div class="btn-flex-box">
-                            <span class="zf-icon"><i></i>转发</span>
-                            <span class="zan-icon"><i></i>赞</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="flex-img-box">
-                            <img src="/images/collection-img5.jpg" class="common-img">
-                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>100人</span>
-                        </div>
-                        <h3>藏品的名称</h3>
-                        <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
-                        <div class="btn-flex-box">
-                            <span class="zf-icon"><i></i>转发</span>
-                            <span class="zan-icon"><i></i>赞</span>
-                        </div>
-                    </li>
-                </ul>
-                <ul  class="flex-right">
-                    <li>
-                        <div class="flex-img-box">
-                            <img src="/images/collection-img2.jpg" class="common-img">
-                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>72人</span>
-                        </div>
-                        <h3>藏品的名称</h3>
-                        <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
-                        <div class="btn-flex-box">
-                            <span class="zf-icon"><i></i>转发</span>
-                            <span class="zan-icon"><i></i>赞</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="flex-img-box">
-                            <img src="/images/collection-img6.jpg" class="common-img">
-                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>36人</span>
-                        </div>
-                        <h3>藏品的名称</h3>
-                        <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
-                        <div class="btn-flex-box">
-                            <span class="zf-icon"><i></i>转发</span>
-                            <span class="zan-icon"><i></i>赞</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="flex-img-box">
-                            <img src="/images/collection-img4.jpg" class="common-img">
-                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
-                        </div>
-                        <h3>藏品的名称</h3>
-                        <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
-                        <div class="btn-flex-box">
-                            <span class="zf-icon"><i></i>转发</span>
-                            <span class="zan-icon"><i></i>赞</span>
-                        </div>
-                    </li>
-                </ul>
+                <ul class="flex-left"></ul>
+                <ul  class="flex-right"></ul>
             </div>
         </div>
 
@@ -102,6 +28,7 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
+            var leftHtml = '',rightHtml = '';
             $.ajax({
                 url : "/getMyCollectNote",	//请求url
                 type : "get",	//请求类型  post|get
@@ -109,17 +36,38 @@
                 data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
                     console.log(data)
-                    var noteHtml = '';
                     if (data.status){
-                        // $.each(data.data, function (k, v) {
-                        //     noteHtml += '<li id="'+v.provinceid+'">'+v.province+'</li>';
-                        // });
-                        // $("#province").html(noteHtml);
+                        $.each(data.data, function (k, v) {
+                            if(v.id%2 == 0){
+                                rightHtml = flex(rightHtml,v);
+                            }else {
+                                leftHtml = flex(leftHtml,v);
+                            }
+                        });
+                        $(".flex-left").html(leftHtml);
+                        $(".flex-right").html(rightHtml);
                     }else {
                         alert("哎呀！出错了")
                     }
                 }
             });
+            $(".flex-box").on("click",".pl-icon",function () {
+                var note_id = $(this).parents("li").attr("id");
+                window.location.href = "/wap/pinglun_edit?id="+note_id;
+            })
         });
+        function flex(obj,v) {
+            obj += '<li id="'+v.id+'"><div class="flex-img-box">';
+            obj += '<img src="'+v.image_one_url+'" class="common-img">';
+            obj += '<span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>';
+            obj += '</div><h3>'+v.title+'</h3>';
+            obj += '<p>'+v.content+'</p>';
+            obj += '<div class="btn-flex-box">';
+            obj += '<span class="zan-icon"><i></i>('+v.likeNum+')</span>';
+            obj += '<span class="pl-icon"><i></i>('+v.commentNum+')</span>';
+            obj += '<span class="zf-icon"><i></i>('+v.forwardNum+')</span>';
+            obj += '</div></li>';
+            return obj;
+        }
     </script>
 </html>

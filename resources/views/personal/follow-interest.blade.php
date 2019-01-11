@@ -58,14 +58,14 @@
             //我的粉丝列表
             myFansList("/myFansList","#my-fans-list");
             //我的关注列表
-            myFansList("/myFocusList","#my-gz-list");
+            myFansList("/myFocusList","#my-gz-list",1);
             //推荐关注列表
             recommend_list(num);
             $("#btn-change").click(function () {
                 num++;
                 recommend_list(num);
             });
-            $(".gz-common").on("click","button",function () {
+            $(".gz-common").on("click",".btn-focus",function () {
                 var user_id = $(this).attr("id");
                 $(this).html("已关注").attr("disabled","disabled");
                 $.ajax({
@@ -101,7 +101,7 @@
                         noteHtml += '<li>';
                         noteHtml += '<div class="gz-img-box"><img src="'+ photo +'" class="common-img"></div>';
                         noteHtml += '<div class="gz-right">';
-                        noteHtml += '<button id="'+v.id+'"><i></i>关注</button>';
+                        noteHtml += '<button id="'+v.id+'" class="btn-focus"><i></i>关注</button>';
                         noteHtml += '<h3>' + v.nickname + '</h3>';
                         noteHtml += '<span>'+v.grade_name+'</span>';
                         noteHtml += '<p>有'+fans_count+'人关注了她</p>';
@@ -115,7 +115,7 @@
                 }
             });
         }
-        function myFansList(url,obj) {
+        function myFansList(url,obj,focus) {
             $.get(url, {}, function (data) {
                 var noteHtml = '';
                 if (data.status) {
@@ -129,7 +129,11 @@
                         noteHtml += '<li>';
                         noteHtml += '<div class="gz-img-box"><img src="'+ photo +'" class="common-img"></div>';
                         noteHtml += '<div class="gz-right">';
-                        noteHtml += '<button id="'+v.id+'"><i></i>关注</button>';
+                                    if(focus == 1){
+                                        noteHtml += '<button id="'+v.id+'" disabled class="btn-focus">已关注</button>';
+                                    }else {
+                                        noteHtml += '<button id="'+v.id+'" class="btn-focus"><i></i>关注</button>';
+                                    }
                         noteHtml += '<h3>' + v.nickname + '</h3>';
                         noteHtml += '<span>'+v.grade_name+'</span>';
                         noteHtml += '<p>有'+fans_count+'人关注了她</p>';

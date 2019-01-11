@@ -94,7 +94,7 @@ $(function () {
     });
     $("#cancel").click(function () {
         a = a+1;
-        $(this).css("background-image","url('../images/xzbj-icon.png')");
+        $("#edit-del").css("background-image","url('../images/xzbj-icon.png')");
         $(".note-list-box li").animate({"margin":"0 0 20px 0"},500);
         $(".btn-del-box").animate({"bottom":"-50px"},500,function () {
             $(".write-note").css("display","block");
@@ -135,15 +135,6 @@ $(function () {
         $("#list-note").html("已选" + length + "条笔记");
     });
 
-
-    // 删除
-    $(".btn-del button").click(function () {
-        $(this).parents("li").remove();
-    });
-    // 删除全选
-    $("#btn-all-del").click(function () {
-        $("input[name=choice]:checked").parents("li").remove();
-    });
 
     // 消息中心的回复按钮链接地址
     $(".btn-reply").attr("href","/wap/reply_comment");

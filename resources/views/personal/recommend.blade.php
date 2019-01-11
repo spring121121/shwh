@@ -34,13 +34,13 @@
                 <p>消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现</p>
             </div>
             <ul class="btn-list-icon">
-                <li id="pinglun"><a class="pl-text" href="/wap/pinglun_edit"></a></li>
+                <li id="pinglun"><a class="pl-text" href="#"></a></li>
                 <li id="shoucang"></li>
                 <li id="dianzan"></li>
             </ul>
             <div class="more-pl-title">
                 <span>七嘴八舌的探宝者</span>
-                <a class="btn-more-pl" href="/wap/pinglun_list?i=1">查看更多评论<i></i></a>
+                <a class="btn-more-pl" href="#">查看更多评论<i></i></a>
             </div>
             <div class="pl-content">
                 <ul>

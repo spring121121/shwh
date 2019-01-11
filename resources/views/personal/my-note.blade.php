@@ -34,6 +34,15 @@
             <button id="cancel">取消</button>
             <span id="list-note"></span>
         </div>
+        <div class="mask-box">
+            <div class="weChat del-order">
+                <span>确定删除此收货地址吗？</span>
+                <div class="btn-mask">
+                    <button class="btn-del-false">取消</button>
+                    <button id="del-note-true">确定</button>
+                </div>
+            </div>
+        </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
@@ -55,7 +64,7 @@
                         noteHtml += '</div>';
                         noteHtml += '<label class="btn-del"><button onclick="deleteNote(' + v.id + ')">删除</button></label>'
                         noteHtml += '</li>'
-                    })
+                    });
                     $(".note-list-box").html(noteHtml)
                 }
             });
@@ -64,29 +73,40 @@
         });
 
         function deleteNote(id) {
-            $.post("/deleteNote", {'note_id': id}, function (data) {
-                if (data.status) {
-                    alert('删除成功')
-                    window.location.reload()
-                } else {
-                    alert('删除失败')
-                }
-            })
+            $(".mask-box").css("display","block");
+            $("#del-note-true").click(function () {
+                $.post("/deleteNote", {'note_id': id}, function (data) {
+                    if (data.status) {
+                        alert('删除成功')
+                        window.location.reload()
+                    } else {
+                        alert('删除失败')
+                    }
+                });
+            });
         }
 
         function deleteNoteAll(){
-            var ids = '';
-            $("input:checkbox[name=choice]:checked").each(function(){
-                ids += $(this).val()+','
-            })
-            $.post("/deleteNoteNotOnly", {'note_ids': ids}, function (data) {
-                if (data.status) {
-                    alert('删除成功')
-                    window.location.reload()
-                } else {
-                    alert('删除失败')
-                }
-            })
+            console.log($("input:checkbox[name=choice]:checked").length)
+            if ($("input:checkbox[name=choice]:checked").length == 0){
+                alert("请先选择要删除的笔记")
+            }else {
+                $(".mask-box").css("display","block");
+                $("#del-note-true").click(function () {
+                    var ids = '';
+                    $("input:checkbox[name=choice]:checked").each(function(){
+                        ids += $(this).val()+','
+                    });
+                    $.post("/deleteNoteNotOnly", {'note_ids': ids}, function (data) {
+                        if (data.status) {
+                            alert('删除成功')
+                            window.location.reload()
+                        } else {
+                            alert('删除失败')
+                        }
+                    });
+                });
+            }
         }
     </script>
 </html>

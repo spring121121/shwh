@@ -30,9 +30,9 @@ class CollectController extends BaseController
             ->join('note', 'note.id', '=', 'collect.note_id')
             ->skip($offset)->take($limit)->get();
         foreach ($collectNote as $note) {
-            $note->forwardNum = ForwardService::getForwardNum($note->id);
-            $note->likeNum = LikesService::getLikesNum($note->id);
-            $note->commentNum = CommentService::getCommentNum($note->id);
+            $note->forwardNum = ForwardService::getForwardNum($note->note_id);
+            $note->likeNum = LikesService::getLikesNum($note->note_id);
+            $note->commentNum = CommentService::getCommentNum($note->note_id);
         }
 
         if ($collectNote) {
