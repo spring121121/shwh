@@ -167,8 +167,8 @@ a{
 
 }
 .header .follow-title{
-    justify-content: space-between;
-    margin: 0 130px;
+    justify-content: space-around;
+    margin: 0 80px;
 }
 .header .follow-title li{
     margin: 11.5px 0;

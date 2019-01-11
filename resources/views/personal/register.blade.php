@@ -50,25 +50,35 @@
                 var pass = $(".password").val();
                 var passAgain = $(".password-again").val();
                 var code = $("#code").val();
-                $.ajax({
-                    url : "/register",	//请求url
-                    type : "post",	//请求类型  post|get
-                    dataType : "json",  //返回数据的 类型 text|json|html--
-                    data: {
-                        "mobile":phone,
-                        "password":pass,
-                        "password_again":passAgain,
-                        "code":code
-                    },
-                    success : function(data){//回调函数 和 后台返回的数据
-                        if (data.code == 200){
-                            alert('注册成功,去登录');
-                            window.location.href = "/wap/login";
-                        } else {
-                            alert("注册失败,请重新注册")
+                if (phone == ""){
+                    alert("请输入手机号码")
+                }else if (pass == ""){
+                    alert("请输入密码")
+                }else if (passAgain == ""){
+                    alert("请再次输入密码")
+                }else if (code == ""){
+                    alert("请输入验证码")
+                }else {
+                    $.ajax({
+                        url : "/register",	//请求url
+                        type : "post",	//请求类型  post|get
+                        dataType : "json",  //返回数据的 类型 text|json|html--
+                        data: {
+                            "mobile":phone,
+                            "password":pass,
+                            "password_again":passAgain,
+                            "code":code
+                        },
+                        success : function(data){//回调函数 和 后台返回的数据
+                            if (data.code == 200){
+                                alert('注册成功,去登录');
+                                window.location.href = "/wap/login";
+                            } else {
+                                alert("注册失败,请重新注册")
+                            }
                         }
-                    }
-                });
+                    });
+                }
             });
         });
     </script>

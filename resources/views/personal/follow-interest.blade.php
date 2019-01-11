@@ -80,6 +80,7 @@
                     success : function(data){//回调函数 和 后台返回的 数据
                         if (data.status){
                             alert("关注成功");
+                            window.location.reload();
                         }else {
                             alert("哎呀！出错了")
                         }
@@ -112,7 +113,8 @@
                     $("#recommend-gz-list .first-title").siblings("li").remove();
                     $("#recommend-gz-list").append(noteHtml);
                     if (data.data.length < 3){
-                        $("#recommend-gz-list").append("<p class='my-fans-tip'>没有更多了</p>");
+                        // $("#recommend-gz-list").append("<p class='my-fans-tip'>没有更多了</p>");
+                        num = 0;
                     }
                 }
             });

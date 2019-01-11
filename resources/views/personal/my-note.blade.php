@@ -61,8 +61,8 @@
                         noteHtml += '<div class="note-list-right">';
                         noteHtml += '<h3>' + v.title + '<span>' + v.created_at + '</span></h3>';
                         noteHtml += '<p>' + v.content + '</p>';
-                        noteHtml += '<div class="btn-notes btn-pl-list"><i></i>评论(' + v.commentNum + ')</div>';
                         noteHtml += '<div class="btn-notes btn-zf"><i></i>转发(' + v.forwardNum + ')</div>';
+                        noteHtml += '<div class="btn-notes btn-pl-list"><i></i>评论(' + v.commentNum + ')</div>';
                         noteHtml += '<div class="btn-notes btn-zan"><i></i>赞(' + v.likeNum + ')</div>';
                         noteHtml += '</div>';
                         noteHtml += '<label class="btn-del"><button onclick="deleteNote(' + v.id + ')">删除</button></label>'

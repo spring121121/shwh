@@ -202,7 +202,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
         return view('personal/pay-order');
     });
     Route::get('wap/pinglun_edit', function () {//评论页面
-        return view('personal/pinglun-edit');
+        return view('personal/pinglun-edit',Cookie::get('info'));
     });
     Route::get('wap/pinglun_list', function () {//评论列表
         return view('personal/pinglun-list');
