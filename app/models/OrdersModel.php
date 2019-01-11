@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OrdersModel extends Model
 {
+    CONST IS_PAYMENT = 2;//支付成功
+    CONST IS_RECEIVE = 4;//已签收
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     /**
@@ -27,5 +29,5 @@ class OrdersModel extends Model
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['uid','goods_id','num','unit_price','total_price','states'];
+    protected $fillable = ['uid','order_sn','trans_id','goods_id','num','unit_price','total_price','status','porder_id','is_agent'];
 }
