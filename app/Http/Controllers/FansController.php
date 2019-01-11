@@ -146,8 +146,9 @@ class FansController extends BaseController
         $uid = UserService::getUid($request);
         $limit = FocusModel::LIMIT;
         $offset = $request->input('offset')*$limit;
-        $ids = FocusModel::where('beuid',$uid)
+        $ids = FocusModel::where('beuid',$uid)->orWhere('uid',$uid)
             ->select('uid')
+            ->groupBy('uid')
             ->get()->toArray();
         $uids = array_column($ids, 'uid');
         $focus = FocusModel::whereNotIn('uid',$uids)

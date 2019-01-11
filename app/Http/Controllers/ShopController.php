@@ -9,6 +9,7 @@
 
 namespace App\Http\Controllers;
 
+use App\models\UserModel;
 use Illuminate\Http\Request;
 use App\models\CategoryModel;
 use App\models\GoodsModel;
@@ -16,6 +17,8 @@ use App\models\CategorygoodsModel;
 use App\models\StoreModel;
 use App\models\NoteModel;
 use App\models\CarModel;
+use App\models\OrdersModel;
+use App\models\SettleModel;
 use Illuminate\Support\Facades\DB;
 use App\Http\Services\UserService;
 use Validator;
@@ -157,6 +160,95 @@ class ShopController extends BaseController
         $goodsDetail = GoodsModel::where('id',$goodsId)
             ->get()->toArray();
         return $this->success($goodsDetail);
+    }
+
+    /**
+     * 购买商品记录
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function purchase(Request $request){
+        $uid = UserService::getUid($request);
+        DB::beginTransaction();
+        $data = $request->input('order');
+        $rules = [
+            'goods_id' => 'required|numeric',
+            'num' => 'required|numeric',
+            'unit_price' => 'required|numeric',
+            'is_agent' => 'required|numeric',
+            'store_id' => 'required|numeric',
+        ];
+        $validator = Validator::make($data,$rules,config('message.order'));
+        if($validator->fails()){
+            return $this->fail(50001,$validator->errors()->all());
+        }
+        $data['uid'] = $uid;
+        $data['total_price'] = $data['unit_price']*$data['num'];
+        $result = OrdersModel::create($data);
+        if($data['is_agent'] == GoodsModel::IS_AGENT_1){//代理生成两条订单
+            $data['porder_id'] = $result->id;
+            $res = OrdersModel::create($data);
+            if($result && $res){
+                DB::commit();
+                return $this->success();
+            }else{
+                DB::rollBack();
+                return $this->fail('300');
+            }
+        }else {//非代理
+            if ($result) {
+                DB::commit();
+                return $this->success();
+            } else {
+                DB::rollBack();
+                return $this->fail('300');
+            }
+        }
+    }
+
+    /**
+     * 支付成功并结算
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function payment(Request $request){
+        //支付成功（待写）
+        $uid = UserService::getUid($request);
+        $order_sn = '001';
+        $whereApply = ['order_sn'=>$order_sn,'uid'=>$uid,'status'=>OrdersModel::IS_PAYMENT,'porder_id'=>0];
+        $total_price = OrdersModel::where($whereApply)->sum('total_price');
+        //更新扣款 用户（买家）钱包
+//        $userWallet = UserModel::where('id',$uid)->select('id','wallet')->get()->toArray();
+//        if($userWallet < $total_price){
+//            return $this->fail(60002);//余额不足
+//        }
+//        $deduction = UserModel::where('id',$uid)->update(['wallet'=>$userWallet-$total_price]);
+
+
+        //更新增款 用户（店家，卖家）钱包
+
+
+        //买家确认已签收，开始结算
+        $whereReceive = ['order_sn'=>$order_sn,'uid'=>$uid,'status'=>OrdersModel::IS_RECEIVE,'porder_id'=>0,'is_agent'=>GoodsModel::IS_AGENT_1];
+        //(1)更新扣款 用户（店铺，代理商品）钱包
+
+
+
+
+        //(2)更新增款 商家（代理商家商品）钱包
+
+
+
+
+        //(3)更新结算表数据
+
+        $settle_porder = OrdersModel::where($whereReceive)->select('id as order_id','store_id','goods_id')->get()->toArray();
+        //$result = SettleModel::insert($settle_porder);
+        if ($result) {
+            return $this->success();
+        } else {
+            return $this->fail('300');
+        }
     }
 
     /**
