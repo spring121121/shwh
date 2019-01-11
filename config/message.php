@@ -80,4 +80,14 @@ return [
         'is_agent.numeric' => '是否从代理购买类型为数字',
     ],
 
+    'browse_record' => [//浏览表
+        'type.required' => '浏览类型不能为空',
+        'browse_id.required' => '浏览id为数字',
+    ],
+
+    'withdraw_cash' => [//申请取现表
+        'apply.required' => '申请金额不能为空',
+        'apply.numeric' => '申请金额为数字',
+    ],
+
 ];

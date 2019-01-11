@@ -18,6 +18,7 @@ use App\models\StoreModel;
 use App\models\NoteModel;
 use App\models\CarModel;
 use App\models\OrdersModel;
+use App\models\BrowseModel;
 use App\models\SettleModel;
 use Illuminate\Support\Facades\DB;
 use App\Http\Services\UserService;
@@ -363,5 +364,43 @@ class ShopController extends BaseController
             ->select('goods.*')
             ->get()->toArray();
         return $this->success($myGoodsList);
+    }
+
+    /**
+     * 浏览记录
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function createRecord(Request $request){
+        $uid = UserService::getUid($request);
+        $type = $request->input('type');
+        $browse_id = $request->input('browse_id');
+        $rules = [
+            'type' => 'required',
+            'browse_id' => 'required',
+        ];
+        $data = ['uid'=>$uid,'type'=>$type,'browse_id'=>$browse_id];
+        $validator = Validator::make($data,$rules,config('message.browse_record'));
+        if($validator->fails()){
+            return $this->fail(50001,$validator->errors()->all());
+        }
+        $res = BrowseModel::create($data);
+        if ($res) {
+            return $this->success();
+        } else {
+            return $this->fail('300');
+        }
+    }
+
+    /**
+     * 商品或笔记浏览次数
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function browseCount(Request $request){
+        $type = $request->input('type');
+        $browse_id = $request->input('browse_id');
+        $count = BrowseModel::where(['type'=>$type,'browse_id'=>$browse_id])->count();
+        return $this->success(['count'=>$count]);
     }
 }

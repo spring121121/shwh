@@ -147,7 +147,7 @@ class StoreController extends BaseController
         $roleId = $request->input('roleId');
         $keyword = $request->input('storeName',null);
         if(!empty($keyword)){
-            $storeList = UserModel::where('role','=',$roleId)->where('store.name','like','%'.$keyword.'%')->where('store.status','=',StoreModel::IS_AUTHEN)->join('store','store.uid','=','user.id')
+            $storeList = UserModel::where('role','=',$roleId)->where('store.name','like','%'.$keyword.'%')->where('store.status','=',StoreModel::IS_AUTH)->join('store','store.uid','=','user.id')
                 ->select('store.name','store.introduction','logo_pic_url')->get();
         }else{
             $storeList = UserModel::where('role','=',$roleId)->where('store.status','=',StoreModel::IS_AUTH)->join('store','store.uid','=','user.id')
@@ -155,4 +155,5 @@ class StoreController extends BaseController
         }
         return $this->success($storeList);
     }
+
 }

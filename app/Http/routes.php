@@ -102,6 +102,12 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('getGoodsNote','ShopController@getGoodsNote');//商品下笔记列表
     Route::post('addCar','ShopController@addCar');//增加商品购物车
     Route::get('myCarList','ShopController@myCarList');//我的购物车列表
+    Route::post('createRecord','ShopController@createRecord');//新增浏览记录信息
+    Route::get('browseCount','ShopController@browseCount');//浏览记录统计数量
+
+    /*****************CashController申请金额接口********************************/
+    Route::post('applyCash','CashController@applyCash');//申请提现
+    Route::get('checkApply','CashController@checkApply');//审核提现申请
 });
 
 
