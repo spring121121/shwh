@@ -112,7 +112,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('checkApply','CashController@checkApply');//审核提现申请
 });
 
-
+Route::get('getQiniuUploadToken','UploadController@getQiniuUploadToken');//获取七牛文件上传的token
 
 
 /**************************分类获取***********************************/
