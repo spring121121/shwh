@@ -35,6 +35,8 @@ class StoreController extends BaseController
         $rules = [
             'name' => 'required|string|min:1|max:20',
             'introduction' => 'required|string|min:1|max:200',
+            'logo_pic_url' => 'required',
+            'prove_url' => 'required',
         ];
         $validator = Validator::make($data, $rules,config('message.store'));
         if ($validator->fails()) {
@@ -85,8 +87,9 @@ class StoreController extends BaseController
             return $this->fail(60000);
         }
         $id = $request->input('id');
+        $status = $request->input('is_auth');
         $feedbackUpdate = StoreModel::where('id',$id)
-            ->update(['status'=>StoreModel::IS_AUTH,'auth_id'=>$uid]);
+            ->update(['status'=>$status,'auth_id'=>$uid]);
         if($feedbackUpdate){
             return $this->success();
         } else {
