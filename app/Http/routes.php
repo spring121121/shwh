@@ -145,7 +145,7 @@ Route::get('wap/register', function () {//注册页面
 
 Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('wap/personal', function () {//个人中心
-        return view('personal/personal-center');
+        return view('personal/personal-center',Cookie::get('info'));
     });
     Route::get('wap/personal_data', function () {//个人资料
         return view('personal/personal-data');
@@ -210,8 +210,14 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('wap/pinglun_edit', function () {//评论页面
         return view('personal/pinglun-edit',Cookie::get('info'));
     });
+    Route::get('wap/store_status', function () {//店铺状态提示
+        return view('personal/store-status',Cookie::get('info'));
+    });
     Route::get('wap/pinglun_list', function () {//评论列表
         return view('personal/pinglun-list');
+    });
+    Route::get('wap/register_store', function () {//店铺注册
+        return view('personal/register-store');
     });
     Route::get('wap/recommend', function () {//推荐消息
         return view('personal/recommend');

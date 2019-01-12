@@ -79,7 +79,7 @@ ul,li{
     height: 40px;
     line-height: 40px;
     margin-top: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f1f1;
 }
 .ipt-cont .address-choice{
     border: none!important;
@@ -96,7 +96,7 @@ ul,li{
 }
 .ipt-cont .address-choice .select-box select{
     outline: none;
-    border: 1px solid #eee;
+    border: 1px solid #f1f1f1;
     height: 20px;
     width: 93px;
     line-height: 20px;
@@ -118,7 +118,7 @@ ul,li{
     /*width: 100%;*/
     /*background: #fff;*/
     /*font-size: 12px;*/
-    /*border: 1px solid #eee;*/
+    /*border: 1px solid #f1f1f1;*/
     /*top: 20px;*/
     /*left: -1px;*/
     /*height: 150px;*/
@@ -303,7 +303,7 @@ ul,li{
 /*}*/
 .massage-cont ul li{
     margin: 20px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f1f1;
 }
 .massage-cont ul li .massage-cont-left{
     float: left;
@@ -363,7 +363,7 @@ ul,li{
     -webkit-box-orient: vertical;
 }
 .massage-cont ul li .massage-cont-right .us-massage{
-    background: #eee;
+    background: #f1f1f1;
     margin: 10px 0;
     height: 53px;
     width: 320px;
@@ -422,7 +422,7 @@ ul,li{
     border: none;
 }
 .system ul li .massage-cont-right{
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f1f1;
 }
 .system ul li .massage-cont-right h3 span{
     float: right;
@@ -539,7 +539,7 @@ ul,li{
     padding: 0 0 15px;
     box-sizing: border-box;
     float: left;
-    border-right: 1px solid #eee;
+    border-right: 1px solid #f1f1f1;
     width: 33.33%;
     display: flex;
     flex-direction: column;
@@ -552,7 +552,7 @@ ul,li{
     line-height: 40px;
     height: 40px;
     color: #000;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f1f1;
 }
 .personal-cont .choice-address p span{
     margin-right: 10px;
@@ -647,7 +647,7 @@ ul,li{
 .personal-cont .list-box .list-cont{
     padding-left: 5px;
     height: 40px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f1f1;
 }
 .personal-cont .list-box .list-cont a{
     color: #000;
@@ -720,7 +720,7 @@ ul,li{
 }
 .note-list-box li{
     position: relative;
-    background-color: #eee;
+    background-color: #f1f1f1;
     border-radius: 5px;
     height: 100px;
     margin-bottom: 10px;
@@ -807,7 +807,7 @@ ul,li{
     text-align: center;
     line-height: 50px;
     color: #000;
-    background: #eee;
+    background: #f1f1f1;
 }
 .btn-del-box input{
     float: left;
@@ -885,6 +885,7 @@ ul,li{
     position: absolute;
     left: 0;
     bottom: 40px;
+    height: auto;
 }
 .note-ipt-box ul li{
     float: left;
@@ -1097,7 +1098,7 @@ ul,li{
     -webkit-box-orient: vertical;
 }
 .share-box{
-    background: #eee;
+    background: #f1f1f1;
     position: fixed;
     left: 0;
     right: 0;
@@ -1203,7 +1204,7 @@ ul,li{
     margin: 20px;
 }
 .ipt-address-box .ipt-box,.edit-data .ipt-box{
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f1f1;
 }
 .ipt-address-box .ipt-box input,.edit-data .ipt-box input{
     color: #000;
@@ -1335,7 +1336,7 @@ ul,li{
 }
 .flex-box li{
     overflow: hidden;
-    background-color: #eee;
+    background-color: #f1f1f1;
     border-radius: 10px;
     border: 1px solid #ccc;
     box-shadow: darkgrey 1px 1px 0 0;
@@ -1414,6 +1415,106 @@ ul,li{
     background-image: url("../images/dz-icon.png");
 }
 
+/*店铺状态显示页面*/
+.store-status-tip{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tip-content{
+    text-align: center;
+    line-height: 25px;
+}
+.store-status-tip span{
+    font-size: 16px;
+    color: #999;
+}
+.store-status-tip a{
+    border-radius: 12.5px;
+    font-size: 16px;
+    background: #fa2;
+    margin-top: 20px;
+}
+
+/*店铺注册界面*/
+.store-register{
+    margin: 10px 20px;
+}
+.store-cont label{
+    line-height: 30px;
+    font-size: 15px;
+    margin: 10px 0;
+    display: block;
+}
+.ipt-name-box{
+    height: 40px;
+    border-bottom: 1px solid #f1f1f1;
+}
+.ipt-name-box input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+.ipt-brief-box{
+    border: 1px solid #f1f1f1;
+}
+.ipt-brief-box textarea{
+    line-height: 25px;
+    width: 100%;
+    font-size: 12px;
+    border: none;
+    outline: none;
+}
+.store-logo{
+    display: flex;
+    justify-content: left;
+}
+.store-logo label{
+    line-height: 40px;
+}
+.ipt-logo-box{
+    position: relative;
+    border: 1px solid #f1f1f1;
+    width: 40px;
+    height: 40px;
+    margin: 10px 0;
+    background: url("../images/jiahao-black.png") no-repeat center;
+    background-size: 50%;
+}
+.ipt-logo-box input{
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+.store-prove{
+    display: block;
+}
+.store-prove .prove-box{
+    width: 280px;
+    height: 150px;
+    margin: 0 auto;
+    background-size: 20%;
+}
+.btn-store-register{
+    height: 30px;
+    width: 200px;
+    margin: 50px auto;
+    line-height: 30px;
+}
+.btn-store-register a{
+    font-size: 15px;
+    background: #333;
+    border-radius: 15px;
+    color: #fff;
+}
+
 /*店铺页面样式*/
 .store-switch{
     margin: 0;
@@ -1462,7 +1563,7 @@ ul,li{
     margin: 20px;
 }
 .renzheng-fenlei li{
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f1f1;
     padding: 10px 0;
 }
 .renzheng-fenlei .icon-box{
@@ -1516,7 +1617,7 @@ ul,li{
 }
 .ipt-your-name{
     height: 30px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f1f1;
     margin: 30px 20px;
 }
 .ipt-your-name input{
@@ -1556,7 +1657,7 @@ ul,li{
     margin-bottom: 10px;
     padding: 0 10px;
     border-radius: 5px;
-    background-color: #eee;
+    background-color: #f1f1f1;
 }
 .order-left{
     float: left;
@@ -1640,7 +1741,7 @@ ul,li{
 }
 /*订单详情*/
 .details-cont{
-    background: #eee;
+    background: #f1f1f1;
     margin: 20px 20px 10px;
     border-radius: 8px;
     padding: 10px;
@@ -1670,7 +1771,7 @@ ul,li{
 }
 .order-details-cont{
     border-radius: 8px;
-    background: #eee;
+    background: #f1f1f1;
     margin: 0 20px;
     padding: 10px;
 }
@@ -1703,7 +1804,7 @@ ul,li{
 .order-date{
     margin: 10px 20px;
     padding: 10px;
-    background-color: #eee;
+    background-color: #f1f1f1;
     border-radius: 8px;
 }
 .order-date span{
@@ -1740,7 +1841,7 @@ ul,li{
     height: 35px;
     line-height: 35px;
     padding: 0 10px;
-    background-color: #eee;
+    background-color: #f1f1f1;
     border-radius: 8px;
     margin-top: 15px;
 }
@@ -1769,7 +1870,7 @@ ul,li{
     margin: 20px;
 }
 .tjgz-box li{
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f1f1f1;
     height: 70px;
     margin-bottom: 15px;
 }

@@ -228,3 +228,9 @@ a{
 .other-box p{
     font-size: 12px;
 }
+
+
+/*隐藏的div*/
+.get-cookie{
+    display: none;
+}

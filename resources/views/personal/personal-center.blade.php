@@ -55,8 +55,8 @@
                         <p>收藏</p>
                     </a>
                 </li>
-                <li>
-                    <a href="/wap/store">
+                <li id="personal-store">
+                    <a href="javascript:void(0)">
                         <div class="icon-img"><img class="common-img" src="../images/store.png" alt="店铺"></div>
                         <p>店铺</p>
                     </a>
@@ -114,6 +114,7 @@
     
         <!--引入footer-->
         @extends('layout.footer')
+    <div class="get-cookie">0{{--{{$store_id}}--}}</div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
@@ -136,97 +137,110 @@
                     alert("哎呀！出错了")
                 }
             });
-            $(".change-address").click(function () {//点击获取省
-                $(".choice-address").css("display","block");
-                $.ajax({
-                    url : "/getAllProvinces",	//请求url
-                    type : "get",	//请求类型  post|get
-                    dataType : "json",  //返回数据的 类型 text|json|html--
-                    data: {},
-                    success : function(data){//回调函数 和 后台返回的 数据
-                        var noteHtml = '';
-                        if (data.status){
-                            $.each(data.data, function (k, v) {
-                                noteHtml += '<li id="'+v.provinceid+'">'+v.province+'</li>';
-                            });
-                            $("#province").html(noteHtml);
-                        }else {
-                            alert("哎呀！出错了")
-                        }
-                    }
-                });
-            });
-            $("#province").on("click","li",function () {
-                $("#city li").remove();
-                $("#area li").remove();
-                $("#address-tip").find("span").eq(0).html($(this).text());
-                $("#address-tip").find("span").eq(0).siblings().html("");
-                var proviceid = $(this).attr("id");
-                $.ajax({
-                    url : "/getCitiesByProvince/" + proviceid,	//请求url
-                    type : "get",	//请求类型  post|get
-                    dataType : "json",  //返回数据的 类型 text|json|html--
-                    data: {},
-                    success : function(data){//回调函数 和 后台返回的 数据
-                        var noteHtml = '';
-                        if (data.status){
-                            $.each(data.data, function (k, v) {
-                                noteHtml += '<li id="'+v.cityid+'">'+v.city+'</li>';
-                            });
-                            $("#city").html(noteHtml);
-                        }else {
-                            alert("哎呀！出错了")
-                        }
-                    }
-                });
-            });
-            $("#city").on("click","li",function () {
-                $("#area li").remove();
-                $("#address-tip").find("span").eq(1).html($(this).text());
-                var cityid = $(this).attr("id");
-                $.ajax({
-                    url : "/getAreasByCityId/" + cityid,	//请求url
-                    type : "get",	//请求类型  post|get
-                    dataType : "json",  //返回数据的 类型 text|json|html--
-                    data: {},
-                    success : function(data){//回调函数 和 后台返回的 数据
-                        var noteHtml = '';
-                        if (data.status){
-                            $.each(data.data, function (k, v) {
-                                noteHtml += '<li>'+v.area+'</li>';
-                            });
-                            $("#area").html(noteHtml);
-                        }else {
-                            alert("哎呀！出错了")
-                        }
-                    }
-                });
-            });
-            $("#area").on("click","li",function () {
-                $("#address-tip").find("span").eq(2).html($(this).text());
-            });
-            $("#finish-sure").click(function () {
-                var text1 = $("#address-tip").find("span").eq(0).html();
-                var text2 = $("#address-tip").find("span").eq(1).html();
-                var text3 = $("#address-tip").find("span").eq(2).html();
-                if (text1==text2){
-                    $(".change-address span").html("<span>"+text2+"</span><span>"+text3+"</span>");
-                }else {
-                    $(".change-address span").html("<span>"+text1+"</span><span>"+text2+"</span><span>"+text3+"</span>");
+
+
+
+            // 点击店铺时判断进入
+            $("#personal-store").click(function () {
+                if ($(".get-cookie").html() == 0){
+                    console.log(111);
+                    window.location.href = "/wap/store_status";
+                } else {
+                    console.log(222)
+                    window.location.href = "/wap/store";
                 }
-                $(".choice-address").css("display","none");
-                $("#address-tip").find("span").html("");
-                $("#province li").remove();
-                $("#city li").remove();
-                $("#area li").remove();
             });
-            $("#return-finish").click(function () {
-                $(".choice-address").css("display","none");
-                $("#address-tip").find("span").html("");
-                $("#province li").remove();
-                $("#city li").remove();
-                $("#area li").remove();
-            });
+            // $(".change-address").click(function () {//点击获取省
+            //     $(".choice-address").css("display","block");
+            //     $.ajax({
+            //         url : "/getAllProvinces",	//请求url
+            //         type : "get",	//请求类型  post|get
+            //         dataType : "json",  //返回数据的 类型 text|json|html--
+            //         data: {},
+            //         success : function(data){//回调函数 和 后台返回的 数据
+            //             var noteHtml = '';
+            //             if (data.status){
+            //                 $.each(data.data, function (k, v) {
+            //                     noteHtml += '<li id="'+v.provinceid+'">'+v.province+'</li>';
+            //                 });
+            //                 $("#province").html(noteHtml);
+            //             }else {
+            //                 alert("哎呀！出错了")
+            //             }
+            //         }
+            //     });
+            // });
+            // $("#province").on("click","li",function () {
+            //     $("#city li").remove();
+            //     $("#area li").remove();
+            //     $("#address-tip").find("span").eq(0).html($(this).text());
+            //     $("#address-tip").find("span").eq(0).siblings().html("");
+            //     var proviceid = $(this).attr("id");
+            //     $.ajax({
+            //         url : "/getCitiesByProvince/" + proviceid,	//请求url
+            //         type : "get",	//请求类型  post|get
+            //         dataType : "json",  //返回数据的 类型 text|json|html--
+            //         data: {},
+            //         success : function(data){//回调函数 和 后台返回的 数据
+            //             var noteHtml = '';
+            //             if (data.status){
+            //                 $.each(data.data, function (k, v) {
+            //                     noteHtml += '<li id="'+v.cityid+'">'+v.city+'</li>';
+            //                 });
+            //                 $("#city").html(noteHtml);
+            //             }else {
+            //                 alert("哎呀！出错了")
+            //             }
+            //         }
+            //     });
+            // });
+            // $("#city").on("click","li",function () {
+            //     $("#area li").remove();
+            //     $("#address-tip").find("span").eq(1).html($(this).text());
+            //     var cityid = $(this).attr("id");
+            //     $.ajax({
+            //         url : "/getAreasByCityId/" + cityid,	//请求url
+            //         type : "get",	//请求类型  post|get
+            //         dataType : "json",  //返回数据的 类型 text|json|html--
+            //         data: {},
+            //         success : function(data){//回调函数 和 后台返回的 数据
+            //             var noteHtml = '';
+            //             if (data.status){
+            //                 $.each(data.data, function (k, v) {
+            //                     noteHtml += '<li>'+v.area+'</li>';
+            //                 });
+            //                 $("#area").html(noteHtml);
+            //             }else {
+            //                 alert("哎呀！出错了")
+            //             }
+            //         }
+            //     });
+            // });
+            // $("#area").on("click","li",function () {
+            //     $("#address-tip").find("span").eq(2).html($(this).text());
+            // });
+            // $("#finish-sure").click(function () {
+            //     var text1 = $("#address-tip").find("span").eq(0).html();
+            //     var text2 = $("#address-tip").find("span").eq(1).html();
+            //     var text3 = $("#address-tip").find("span").eq(2).html();
+            //     if (text1==text2){
+            //         $(".change-address span").html("<span>"+text2+"</span><span>"+text3+"</span>");
+            //     }else {
+            //         $(".change-address span").html("<span>"+text1+"</span><span>"+text2+"</span><span>"+text3+"</span>");
+            //     }
+            //     $(".choice-address").css("display","none");
+            //     $("#address-tip").find("span").html("");
+            //     $("#province li").remove();
+            //     $("#city li").remove();
+            //     $("#area li").remove();
+            // });
+            // $("#return-finish").click(function () {
+            //     $(".choice-address").css("display","none");
+            //     $("#address-tip").find("span").html("");
+            //     $("#province li").remove();
+            //     $("#city li").remove();
+            //     $("#area li").remove();
+            // });
         });
     </script>
 </html>

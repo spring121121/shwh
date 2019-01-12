@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left qx-write"><a class="btn-title-text" href="/wap/my_note">取消</a></div>
+            <div class="header-left qx-write"><a href="/wap/my_note">取消</a></div>
             <h3>编辑探宝笔记</h3>
         </div>
         <div class="content-box">
