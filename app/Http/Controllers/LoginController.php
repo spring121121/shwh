@@ -46,7 +46,7 @@ class LoginController extends BaseController
             $store_id = StoreModel::where('uid',$data['id'])->select('id','status')->first();
             if($store_id){
                 $data['store_id'] = $store_id['id'];
-                $data['status'] = $store_id['status'];
+                $data['store_status'] = $store_id['status'];
             }else{
                 $data['store_id'] = 0;
             }
