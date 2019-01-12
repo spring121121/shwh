@@ -43,9 +43,10 @@ class LoginController extends BaseController
         if ($re) {
             $data = $re->toArray();
             $data['grade_name']= UserService::getGrade($data['score']);
-            $store_id = StoreModel::where('uid',$data['id'])->select('id')->first();
+            $store_id = StoreModel::where('uid',$data['id'])->select('id','status')->first();
             if($store_id){
                 $data['store_id'] = $store_id['id'];
+                $data['store_status'] = $store_id['status'];
             }else{
                 $data['store_id'] = 0;
             }

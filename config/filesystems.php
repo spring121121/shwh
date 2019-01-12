@@ -62,6 +62,18 @@ return [
             'region' => 'your-region',
             'bucket' => 'your-bucket',
         ],
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'pl5ptbfds.bkt.clouddn.com', //你的七牛域名
+                'https'     => '',         //你的HTTPS域名
+                'custom'    => '',     //你的自定义域名
+             ],
+            'access_key'=> 'lh_TwddgnPk9WsJ9l-YCjHrqeOqhmUpgv4HYpoRP',  //AccessKey
+            'secret_key'=> 'xBhHvuU5r9xn0elZ_o7ZJ5qVF3iXAT7yh3mOrdkQ',  //SecretKey
+            'bucket'    => 'caves',  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+        ],
 
     ],
 

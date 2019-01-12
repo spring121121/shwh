@@ -52,6 +52,8 @@ return [
         'name.max' => '店铺名称最多:max个字符',
         'introduction.required' => '店铺简介不能为空',
         'introduction.max' => '店铺简介最多:max个字符',
+        'logo_pic_url' => '店铺logo不能为空',
+        'prove_url' => '店铺资质证明不能为空',
     ],
 
     'goods' => [//商品表

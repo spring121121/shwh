@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Storage;
+use zgldh\QiniuStorage\QiniuStorage;
 
 class UploadController extends BaseController
 {
@@ -53,6 +54,16 @@ class UploadController extends BaseController
         }else{
             return $this->fail(300);
         }
+    }
+
+    /**
+     * 获取七牛上传的token
+     * @return mixed
+     */
+    public function getQiniuUploadToken(){
+        $disk = QiniuStorage::disk('qiniu');
+        $token = $disk->uploadToken();
+        return $token;
     }
 
 }
