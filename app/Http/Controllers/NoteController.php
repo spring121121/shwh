@@ -91,6 +91,32 @@ class NoteController extends BaseController
     }
 
     /**
+     * get other NoteList
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getOtherNoteList(Request $request,$id)
+    {
+        $noteModel = new NoteModel();
+        $page = $request->input('page', 1);
+        $limit = $request->input('limit', 10);
+        $offset = ($page - 1) * $limit;
+        $noteList = $noteModel::where('uid', '=', $id)->skip($offset)->take($limit)->get();
+        foreach ($noteList as $note) {
+            $note->forwardNum = ForwardService::getForwardNum($note->id);
+            $note->likeNum = LikesService::getLikesNum($note->id);
+            $note->commentNum = CommentService::getCommentNum($note->id);
+        }
+
+        //note
+        if ($noteList) {
+            return $this->success($noteList);
+        } else {
+            return $this->fail(300);
+        }
+    }
+
+    /**
      * 删除笔记
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
