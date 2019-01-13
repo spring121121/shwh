@@ -10,6 +10,7 @@
 namespace App\Http\Controllers;
 
 
+use ClassPreloader\Config;
 use Illuminate\Http\Request;
 use App\models\UserModel;
 use App\models\StoreModel;
@@ -60,6 +61,15 @@ class LoginController extends BaseController
         }
         //1.输入手机号+密码+验证码
         //2.手机号+短信验证码
+    }
+
+    /**
+     * 退出登录
+     * @param Request $request
+     */
+    public function logout(Request $request){
+        $request->session()->forget('userInfo');
+        Cookie::queue(Cookie::forget("info"));
     }
 
 

@@ -43,5 +43,34 @@ class LikeController extends BaseController
 
     }
 
+    /**
+     * 获取他人点赞的笔记
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getOtherLikeNote(Request $request,$id)
+    {
+        $likeModel = new LikesModel();
+        $limit = $request->get('limit', 10);
+        $page = $request->get('page', 1);
+        $offset = ($page - 1) * $limit;
+        $collectNote = $likeModel::where('likes.uid', '=', $id)
+            ->join('note', 'note.id', '=', 'likes.note_id')
+            ->skip($offset)->take($limit)->get();
+        foreach ($collectNote as $note) {
+            $note->forwardNum = ForwardService::getForwardNum($note->note_id);
+            $note->likeNum = LikesService::getLikesNum($note->note_id);
+            $note->commentNum = CommentService::getCommentNum($note->note_id);
+        }
+
+        if ($collectNote) {
+            return $this->success($collectNote);
+        } else {
+            return $this->fail(300);
+        }
+
+    }
+
 
 }

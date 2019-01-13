@@ -27,6 +27,7 @@ Route::get('test','TestController@test');//注册
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
  */
 Route::group(['middleware'=>'checkLogin'],function(){
+    Route::get('logout','LoginController@logout');//退出登录
     /*****************AddressController**********************************/
     Route::get('addressList','AddressController@addressList');//获取我的收货地址
     Route::post('addAddress','AddressController@addAddress');//添加收货地址
@@ -36,7 +37,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('deleteAddress/{id}','AddressController@deleteAddress');//删除收货地址
 
     /*****************UserController********************/
-    Route::get('getUserInfo','UserController@getUserInfo');//获取我的个人信息
+
     Route::get('updateUserInfo','UserController@updateUserInfo');//更新我的个人信息
     Route::get('getMyUserInfo','UserController@getMyUserInfo');//获取我的个人信息
 
@@ -129,6 +130,11 @@ Route::get('checkValidateCode/{code}','ValidateCodeController@checkValidateCode'
 Route::get('getAllProvinces','AreasController@getAllProvinces');
 Route::get('getCitiesByProvince/{provinceId}','AreasController@getCitiesByProvince');
 Route::get('getAreasByCityId/{cityId}','AreasController@getAreasByCityId');
+
+Route::get('getOtherUserInfo/{id}','UserController@getUserInfo');//获取某个用户的信息
+Route::get('getOtherNoteList/{id}','NoteController@getOtherNoteList');//获取别人的原创笔记列表
+Route::get('getOtherCollectNote/{id}','CollectController@getOtherCollectNote');//获取别人收藏的笔记
+Route::get('getOtherLikeNote/{id}','LikeController@getOtherLikeNote');//获取别人点赞的笔记
 
 
 /************************前端路由*********************************/
