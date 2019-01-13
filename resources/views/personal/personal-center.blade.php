@@ -114,7 +114,7 @@
     
         <!--引入footer-->
         @extends('layout.footer')
-    <div class="get-cookie">0{{--{{$store_id}}--}}</div>
+    <div class="get-cookie" id="1">{{$store_id}}</div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
@@ -143,11 +143,13 @@
             // 点击店铺时判断进入
             $("#personal-store").click(function () {
                 if ($(".get-cookie").html() == 0){
-                    console.log(111);
                     window.location.href = "/wap/store_status";
                 } else {
-                    console.log(222)
-                    window.location.href = "/wap/store";
+                    if ($(".get-cookie").attr("id") == 1){
+                        window.location.href = "/wap/store";
+                    }else {
+                        window.location.href = "/wap/store_status";
+                    }
                 }
             });
             // $(".change-address").click(function () {//点击获取省

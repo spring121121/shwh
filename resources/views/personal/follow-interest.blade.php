@@ -101,7 +101,7 @@
                         }else {
                             photo = v.photo;
                         }
-                        noteHtml += '<li>';
+                        noteHtml += '<li class="'+v.id+'">';
                         noteHtml += '<div class="gz-img-box"><img src="'+ photo +'" class="common-img"></div>';
                         noteHtml += '<div class="gz-right">';
                         noteHtml += '<button id="'+v.id+'" class="btn-focus"><i></i>关注</button>';
@@ -131,7 +131,7 @@
                         }else {
                             photo = v.photo;
                         }
-                        noteHtml += '<li>';
+                        noteHtml += '<li class="'+v.id+'">';
                         noteHtml += '<div class="gz-img-box"><img src="'+ photo +'" class="common-img"></div>';
                         noteHtml += '<div class="gz-right">';
                                     if(focus == 1||v.is_focus == 1){

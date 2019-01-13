@@ -164,7 +164,8 @@ a{
     font-size: 12px;
     line-height: 20px;
     text-align: justify;
-
+    height: 40px;
+    overflow: hidden;
 }
 .header .follow-title{
     justify-content: space-around;

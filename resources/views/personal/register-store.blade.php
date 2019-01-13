@@ -29,11 +29,11 @@
                 </div>
                 <div class="store-cont store-logo">
                     <label>店铺logo：</label>
-                    <div class="ipt-logo-box" id="store-logo-box"><input type="file" id="store-logo" name="source"></div>
+                    <div class="ipt-logo-box" id="store-logo-box"><input type="file" class="ipt-file" id="store-logo" name="source"></div>
                 </div>
                 <div class="store-cont store-logo store-prove">
                     <label>店铺资格证件：</label>
-                    <div class="ipt-logo-box prove-box" id="store-prove-box"><input type="file" id="store-prove" name="source"></div>
+                    <div class="ipt-logo-box prove-box" id="store-prove-box"><input class="ipt-file" type="file" id="store-prove" name="source"></div>
                 </div>
                 <div class="btn-store-register"><a href="javascript:void(0);">提交信息</a></div>
             </div>

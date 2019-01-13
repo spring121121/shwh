@@ -172,25 +172,25 @@ $(function () {
 
 
     // 店铺页面切换效果
-    $(".store-switch").css("top",$(".store-header").height() + "px");
+    // $(".store-switch").css("top",$(".store-header").height() + "px");
     // 店铺的展示切换
-    $(".shop-list").css("display","flex");
+    $("#dfh-shop").css("display","block");
     $('.store-switch li').eq(1).addClass('click-change');
     $(".store-switch li").click(function () {
         $(this).addClass("click-change");
         $(this).siblings().removeClass("click-change");
-        // 0代表笔记，1代表商品，2代表收藏
+        // 0代表商品，1代表待发货，2代表已发货
+        if ($(this).index() == 1){
+            $("#dfh-shop").css("display","block");
+            $("#dfh-shop").siblings(".store-content").css("display","none");
+        }
         if ($(this).index() == 0){
-            $(".notes-box").css("display","block");
-            $(".notes-box").siblings(".store-content").css("display","none");
+            $("#ysj-shop").css("display","flex");
+            $("#ysj-shop").siblings(".store-content").css("display","none");
         }
         if ($(this).index() == 2){
-            $(".store-list").css("display","flex");
-            $(".store-list").siblings(".store-content").css("display","none");
-        }
-        if ($(this).index() == 1){
-            $(".shop-list").css("display","flex");
-            $(".shop-list").siblings(".store-content").css("display","none");
+            $("#yfh-shop").css("display","block");
+            $("#yfh-shop").siblings(".store-content").css("display","none");
         }
     });
 
@@ -231,7 +231,9 @@ $(function () {
         if ($(this).attr("class") == "first-title") {
             event.stopPropagation();
         }else {
-            window.location.href = "/wap/other_home";
+            var other_id = $(this).attr("class");
+            console.log(other_id)
+            window.location.href = "/wap/other_home?id="+other_id;
         }
     });
     $(".gz-common").on("click","button",function (event) {

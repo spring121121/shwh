@@ -223,10 +223,10 @@ Route::group(['middleware'=>'checkLogin'],function(){
         return view('personal/recommend');
     });
     Route::get('wap/store', function () {//店铺首页
-        return view('personal/store');
+        return view('personal/store',Cookie::get('info'));
     });
     Route::get('wap/store_setting', function () {//店铺设置
-        return view('personal/store-setting');
+        return view('personal/store-setting',Cookie::get('info'));
     });
     Route::get('wap/write_note', function () {//写笔记
         return view('personal/write-note');
