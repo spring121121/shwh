@@ -57,7 +57,7 @@ class FansController extends BaseController
         $uid = UserService::getUid($request);
         $fans = FocusModel::where('focus.uid',$uid)
             ->join('user','focus.beuid','=','user.id')
-            ->select('user.id','user.photo','user.nickname','user.score')
+            ->select('user.id','user.photo','user.nickname','user.score','user.sex')
             ->get()->toArray();
         $res = $this->getList($fans);//关注我的
         $myuid = FocusModel::where('beuid',$uid)->select('uid')->get()->toArray();//我关注的uid
@@ -82,7 +82,7 @@ class FansController extends BaseController
         $time = date("Y-m-d H:i:s",strtotime('-3 day'));
         $fans = FocusModel::where('focus.uid','=',$uid)->where('focus.created_at','>=',$time)
             ->join('user','focus.beuid','=','user.id')
-            ->select('user.id','user.photo','user.nickname','user.score')
+            ->select('user.id','user.photo','user.nickname','user.score','user.sex')
             ->get()->toArray();
         $res = $this->getList($fans);
         $myuid = FocusModel::where('beuid',$uid)->select('uid')->get()->toArray();//我关注的uid
@@ -122,7 +122,7 @@ class FansController extends BaseController
         $uid = UserService::getUid($request);
         $focus = FocusModel::where('focus.beuid',$uid)
             ->join('user','focus.uid','=','user.id')
-            ->select('user.id','user.photo','user.nickname','user.score')
+            ->select('user.id','user.photo','user.nickname','user.score','user.sex')
             ->get()->toArray();
         $res = $this->getList($focus);
         return $this->success($res);
@@ -178,7 +178,7 @@ class FansController extends BaseController
                 ->get()->toArray();//按照id顺序排列
             $res = $this->getList($recommend);
         }else{
-            $recommend = UserModel::select('id','photo','nickname','score')->offset($offset)->limit($limit)
+            $recommend = UserModel::select('id','photo','nickname','score','sex')->offset($offset)->limit($limit)
                 ->get()->toArray();
             $res = $this->getList($recommend);
         }

@@ -144,7 +144,7 @@ class ShopController extends BaseController
             ->select('goods_id')
             ->get()->toArray();
         $goodsIds = array_column($categoryIds, 'goods_id');
-        $goodsList = GoodsModel::whereIn('id',$goodsIds)
+        $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)->whereIn('id',$goodsIds)
             ->get()->toArray();
         $data['data'] = $goodsList;
         $data['category_id'] = $category_id;
@@ -158,19 +158,18 @@ class ShopController extends BaseController
      */
     public function getGoodsDetail(Request $request){
         $goodsId = $request->input('id');
-        $goodsDetail = GoodsModel::where('id',$goodsId)
+        $goodsDetail = GoodsModel::where(['id'=>$goodsId,'status'=>GoodsModel::NORMAL])
             ->get()->toArray();
         return $this->success($goodsDetail);
     }
 
     /**
-     * 购买商品记录
+     * 购买商品创建记录
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function purchase(Request $request){
         $uid = UserService::getUid($request);
-        DB::beginTransaction();
         $data = $request->input('order');
         $rules = [
             'goods_id' => 'required|numeric',
@@ -183,71 +182,25 @@ class ShopController extends BaseController
         if($validator->fails()){
             return $this->fail(50001,$validator->errors()->all());
         }
-        $data['uid'] = $uid;
+        $data['uid'] = $uid;//买家uid
+        $store_uid = StoreModel::where('id',$data['store_id'])->select('uid')
+            ->first()->toArray();
+        if($store_uid){
+            $data['agent_uid'] = $store_uid['uid'];
+        }
+        if($data['is_agent'] == GoodsModel::IS_AGENT_1){
+            $pgoodsid = GoodsModel::where('id',$data['goods_id'])->select('pgoods_id','price')
+                ->first()->toArray();//代理商店商品的价格和代理原商店的商品id
+            $pgoodprice = GoodsModel::where('id',$pgoodsid['pgoods_id'])->select('price')
+                ->first()->toArray();//原商店的商品价格
+            $data['agent_price'] = $pgoodsid['price'] - $pgoodprice['price'];
+        }
+        $data['order_sn'] = UserService::genOrderSn('sd_');
         $data['total_price'] = $data['unit_price']*$data['num'];
         $result = OrdersModel::create($data);
-        if($data['is_agent'] == GoodsModel::IS_AGENT_1){//代理生成两条订单
-            $data['porder_id'] = $result->id;
-            $res = OrdersModel::create($data);
-            if($result && $res){
-                DB::commit();
-                return $this->success();
-            }else{
-                DB::rollBack();
-                return $this->fail('300');
-            }
-        }else {//非代理
-            if ($result) {
-                DB::commit();
-                return $this->success();
-            } else {
-                DB::rollBack();
-                return $this->fail('300');
-            }
-        }
-    }
-
-    /**
-     * 支付成功并结算
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function payment(Request $request){
-        //支付成功（待写）
-        $uid = UserService::getUid($request);
-        $order_sn = '001';
-        $whereApply = ['order_sn'=>$order_sn,'uid'=>$uid,'status'=>OrdersModel::IS_PAYMENT,'porder_id'=>0];
-        $total_price = OrdersModel::where($whereApply)->sum('total_price');
-        //更新扣款 用户（买家）钱包
-//        $userWallet = UserModel::where('id',$uid)->select('id','wallet')->get()->toArray();
-//        if($userWallet < $total_price){
-//            return $this->fail(60002);//余额不足
-//        }
-//        $deduction = UserModel::where('id',$uid)->update(['wallet'=>$userWallet-$total_price]);
-
-
-        //更新增款 用户（店家，卖家）钱包
-
-
-        //买家确认已签收，开始结算
-        $whereReceive = ['order_sn'=>$order_sn,'uid'=>$uid,'status'=>OrdersModel::IS_RECEIVE,'porder_id'=>0,'is_agent'=>GoodsModel::IS_AGENT_1];
-        //(1)更新扣款 用户（店铺，代理商品）钱包
-
-
-
-
-        //(2)更新增款 商家（代理商家商品）钱包
-
-
-
-
-        //(3)更新结算表数据
-
-        $settle_porder = OrdersModel::where($whereReceive)->select('id as order_id','store_id','goods_id')->get()->toArray();
-        //$result = SettleModel::insert($settle_porder);
-        if ($result) {
+        if($result){
             return $this->success();
-        } else {
+        }else{
             return $this->fail('300');
         }
     }
@@ -259,7 +212,7 @@ class ShopController extends BaseController
      */
     public function getStoreDetail(Request $request){
         $storeId = $request->input('id');
-        $storeDetail = StoreModel::where('id',$storeId)
+        $storeDetail = StoreModel::where(['id'=>$storeId])
             ->get()->toArray();
         return $this->success($storeDetail);
     }

@@ -41,5 +41,14 @@ class UserService
         }
         return false;
     }
+
+    //获取订单号
+    public static function genOrderSn($letter = '') {
+        $time = explode (" ", microtime ());
+        $timeArr = explode('.',$time [0]);
+        $mtime = array_pop($timeArr);
+        $fulltime = $letter.$time[1].$mtime;
+        return $fulltime;
+    }
 }
 

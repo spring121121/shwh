@@ -54,7 +54,7 @@ class LoginController extends BaseController
             //登录成功之后把用户信息存入session
             $request->session()->put('userInfo',$data);
             //登录成功之后把用户信息存入cookie
-            Cookie::queue('info',$data,120);//120分钟
+            Cookie::queue('info',$data);
             return $this->success();
         } else {
             return $this->fail(50001);
