@@ -261,7 +261,6 @@ $(function () {
             $(".other-shoucang").siblings(".other-content").css("display","none");
         }
     });
-    other-shoucang
 
     var address_height = $(window).height()-300;
     $(".personal-cont .choice-address ul").css("height",address_height+"px");

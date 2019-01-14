@@ -40,7 +40,9 @@
                     </div>
                     <div class="ipt-box">
                         <label for="birthday">生日</label>
-                        <div class="ipt-cont-box"><input id="birthday" type="text" placeholder="2018-12-26"></div>
+                        <div class="ipt-cont-box">
+                            <input type="text" id="birthday" placeholder="2018-01-12" data-options="{'type':'YYYY-MM-DD','beginYear':1800,'endYear':2800}">
+                        </div>
                     </div>
                     {{--<div class="ipt-box">--}}
                         {{--<label for="region">地区</label>--}}
@@ -63,9 +65,11 @@
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/uploadfile.js"></script>
+    <script src="/js/jquery.date.js"></script>
     <script src="/js/common.js"></script>
     <script>
     $(function () {
+        $.date('#birthday');
         $.ajax({
             url : "/getMyUserInfo",	//请求url
             type : "get",	//请求类型  post|get

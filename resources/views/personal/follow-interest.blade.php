@@ -116,7 +116,12 @@
                             noteHtml += '<button id="'+v.id+'" class="btn-focus"><i></i>关注</button>';
                             noteHtml += '<h3>' + v.nickname + '</h3>';
                             noteHtml += '<span>'+v.grade_name+'</span>';
-                            noteHtml += '<p>有'+fans_count+'人关注了她</p>';
+                            noteHtml += '<p>有'+fans_count+'人关注了';
+                                        if (v.sex == 1){
+                                            noteHtml += '他</p>';
+                                        }else if (v.sex == 0 ){
+                                            noteHtml += '她</p>';
+                                        }
                             noteHtml += '</div></li>';
                         });
                         $("#recommend-gz-list .first-title").siblings("li").remove();
@@ -154,7 +159,12 @@
                                     }
                         noteHtml += '<h3>' + v.nickname + '</h3>';
                         noteHtml += '<span>'+v.grade_name+'</span>';
-                        noteHtml += '<p>有'+fans_count+'人关注了她</p>';
+                        noteHtml += '<p>有'+fans_count+'人关注了';
+                                    if (v.sex == 1){
+                                        noteHtml += '他</p>';
+                                    }else if (v.sex == 0 ){
+                                        noteHtml += '她</p>';
+                                    }
                         noteHtml += '</div></li>';
                     });
                     $(obj).append(noteHtml);
