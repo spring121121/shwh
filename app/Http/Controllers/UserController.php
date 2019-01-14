@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Services\UserService;
+use App\models\StoreModel;
 use Illuminate\Http\Request;
 use App\models\UserModel;
 
@@ -82,6 +83,14 @@ class UserController extends BaseController
         $userModel = new UserModel();
         $result = $userModel::find($id);
         $result->grade = UserService::getGrade($result->score);
+        $store_status = StoreModel::where('uid',$id)->select('status','id')->first()->toArray();
+        if($store_status){
+            $result->store_status = $store_status['status'];
+            $result->store_id = $store_status['id'];
+        }else{
+            $result->store_id = StoreModel::STORE_ID;
+            $result->store_status = StoreModel::STORE_STATUS;
+        }
         return $this->success($result);
     }
 
