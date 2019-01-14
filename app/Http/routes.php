@@ -105,13 +105,21 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('getGoodsNote','ShopController@getGoodsNote');//商品下笔记列表
     Route::post('addCar','ShopController@addCar');//增加商品购物车
     Route::get('myCarList','ShopController@myCarList');//我的购物车列表
+
     Route::post('createRecord','ShopController@createRecord');//新增浏览记录信息
     Route::get('browseCount','ShopController@browseCount');//浏览记录统计数量
 
+
+
+    /***********笔记评论部分**********/
     /*****************CashController申请金额接口********************************/
     Route::post('applyCash','CashController@applyCash');//申请提现
     Route::get('checkApply','CashController@checkApply');//审核提现申请
 });
+
+
+
+
 
 Route::get('getQiniuUploadToken','UploadController@getQiniuUploadToken');//获取七牛文件上传的token
 
@@ -131,10 +139,17 @@ Route::get('getAllProvinces','AreasController@getAllProvinces');
 Route::get('getCitiesByProvince/{provinceId}','AreasController@getCitiesByProvince');
 Route::get('getAreasByCityId/{cityId}','AreasController@getAreasByCityId');
 
+
 Route::get('getOtherUserInfo/{id}','UserController@getUserInfo');//获取某个用户的信息
 Route::get('getOtherNoteList/{id}','NoteController@getOtherNoteList');//获取别人的原创笔记列表
 Route::get('getOtherCollectNote/{id}','CollectController@getOtherCollectNote');//获取别人收藏的笔记
 Route::get('getOtherLikeNote/{id}','LikeController@getOtherLikeNote');//获取别人点赞的笔记
+Route::get('pay','WxpayController@pay');//支付
+Route::post('notify','WxpayController@notify');//支付回调
+
+Route::get('refund','WxpayController@weixinRefund');//支付
+Route::post('refundNotify','WxpayController@refundNotify');//支付回调
+
 
 
 /************************前端路由*********************************/
