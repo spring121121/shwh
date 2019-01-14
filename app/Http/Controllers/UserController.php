@@ -83,10 +83,10 @@ class UserController extends BaseController
         $userModel = new UserModel();
         $result = $userModel::find($id);
         $result->grade = UserService::getGrade($result->score);
-        $store_status = StoreModel::where('uid',$id)->select('status','id')->first()->toArray();
+        $store_status = StoreModel::where('uid',$id)->select('status','id')->first();
         if($store_status){
-            $result->store_status = $store_status['status'];
-            $result->store_id = $store_status['id'];
+            $result->store_status = $store_status->toArray()['status'];
+            $result->store_id = $store_status->toArray()['id'];
         }else{
             $result->store_id = StoreModel::STORE_ID;
             $result->store_status = StoreModel::STORE_STATUS;
