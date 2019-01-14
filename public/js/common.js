@@ -242,26 +242,26 @@ $(function () {
 
 
     // 别人的主页
-    $(".treasure-note").css("display","block");
+    $(".other-note").css("display","block");
     $('.other-switch li').eq(0).addClass('click-change');
     $(".other-switch li").click(function () {
         $(this).addClass("click-change");
         $(this).siblings().removeClass("click-change");
-        // 0代表探宝笔记，1代表宝藏收藏，2代表点赞痕迹
+        // 0代表探宝笔记，1代表点赞痕迹,2代表笔记收藏
         if ($(this).index() == 0){
-            $(".treasure-note").css("display","block");
-            $(".treasure-note").siblings(".other-content").css("display","none");
+            $(".other-note").css("display","block");
+            $(".other-note").siblings(".other-content").css("display","none");
         }
         if ($(this).index() == 1){
-            $(".treasure-collection").css("display","flex");
-            $(".treasure-collection").siblings(".other-content").css("display","none");
+            $(".other-dzhj").css("display","block");
+            $(".other-dzhj").siblings(".other-content").css("display","none");
         }
         if ($(this).index() == 2){
-            $(".mark-praise").css("display","block");
-            $(".mark-praise").siblings(".other-content").css("display","none");
+            $(".other-shoucang").css("display","block");
+            $(".other-shoucang").siblings(".other-content").css("display","none");
         }
     });
-
+    other-shoucang
 
     var address_height = $(window).height()-300;
     $(".personal-cont .choice-address ul").css("height",address_height+"px");

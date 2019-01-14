@@ -28,7 +28,7 @@
                         <div class="ipt-box"><input class="password-again" type="password" placeholder="请再次输入密码"></div>
                         <div class="ipt-box yzm-code"><input id="code" type="text" placeholder="请输入验证码">
                             {{--<button class="verification">验证码</button>--}}
-                            <div class="yzm-img"><img title="点击刷新" src="/getCodeImg" class="common-img" onclick="this.src='/getCodeImg'+Math.random();"></div>
+                            <div class="yzm-img"><img title="点击刷新" src="/getCodeImg" class="common-img" onclick="this.src='/getCodeImg?a='+Math.random();"></div>
                         </div>
                     </form>
                     <div class="tips">请输入8-16位英文和数字密码</div>

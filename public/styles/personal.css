@@ -1968,10 +1968,10 @@ ul,li{
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 55px;
     background: #f49610;
     color: #fff;
-    height: 60px;
+    height: 50px;
     z-index: 999;
 }
 .other-home-bottom .flex-box{
@@ -1990,9 +1990,10 @@ ul,li{
     font-size: 15px;
 }
 .btn-other .icon-box{
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    margin-top: 4px;
 }
 .btn-follow{
     border-right: 1px solid #999;

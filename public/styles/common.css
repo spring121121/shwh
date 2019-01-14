@@ -200,6 +200,7 @@ a{
     width: 100px;
     height: 100px;
     margin: 0 auto;
+    border-radius: 50%;
 }
 .other-box h3{
     position: relative;
@@ -211,20 +212,18 @@ a{
     position: absolute;
     top: 8px;
     right: 75px;
-    display: block;
-    float: right;
-    margin-left: 10px;
     width: 15px;
     height: 15px;
-    background: url("../images/grade.png");
+    background-image: url("../images/grade.png");
     background-size: 100%;
 }
-.other-box span{
-    display: block;
-    width: 50px;
-    margin: 0 auto;
+.other-box p span{
+    /* display: block; */
+    /* width: 50px; */
+    /* margin: 0 auto; */
     font-size: 12px;
-    color: #666;
+    /*color: #666;*/
+    margin: 0 10px;
 }
 .other-box p{
     font-size: 12px;
