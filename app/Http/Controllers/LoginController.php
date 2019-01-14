@@ -50,6 +50,7 @@ class LoginController extends BaseController
                 $data['store_status'] = $store_id['status'];
             } else {
                 $data['store_id'] = 0;
+                $data['store_status'] = 3;//写死
             }
             //登录成功之后把用户信息存入session
             $request->session()->put('userInfo', $data);
