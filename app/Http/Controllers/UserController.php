@@ -41,7 +41,7 @@ class UserController extends BaseController
             'nickname' => $nickname,
             'sex' => $sex,
             'birthday' => $birthday,
-            'photo'=>$photo,
+            'photo' => $photo,
 
         ];
         $result = $userModel::where('id', $uid)->update($updateArr);
@@ -60,11 +60,14 @@ class UserController extends BaseController
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getUserInfo($id)
+    public function getUserInfo(Request $request, $id)
     {
         $userModel = new UserModel();
         $result = $userModel::find($id);
         $result->grade = UserService::getGrade($result->score);
+        //查询我是否关注过这个用户
+        $isFoucus = UserService::judgeIsFocusUser($request,$id);
+        $result->is_foucus = $isFoucus;
         return $this->success($result);
     }
 

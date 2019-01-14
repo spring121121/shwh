@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 
+use App\models\FocusModel;
 use App\models\GradeModel;
 
 class UserService
@@ -40,6 +41,20 @@ class UserService
             return true;
         }
         return false;
+    }
+
+    /**
+     * 判断是否关注过某个人
+     * @param $request
+     * @param $id
+     * @return mixed
+     */
+    public static function judgeIsFocusUser($request, $id)
+    {
+        $uid = self::getUid($request);
+        $focusModel = new FocusModel();
+        $re = $focusModel::where('uid', '=', $uid)->where('beuid', '=', $id)->exists();
+        return $re;
     }
 }
 

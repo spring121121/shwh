@@ -31,7 +31,7 @@ class LoginController extends BaseController
         $mobile = $request->input('mobile');
         $password = md5($request->input('password'));
         $code = $request->input('code');
-        $isRight = ValidateCodeService::checkValidate($request,$code);
+        $isRight = ValidateCodeService::checkValidate($request, $code);
 
         if (!$isRight) {
             return $this->fail(50000);
@@ -43,18 +43,18 @@ class LoginController extends BaseController
 
         if ($re) {
             $data = $re->toArray();
-            $data['grade_name']= UserService::getGrade($data['score']);
-            $store_id = StoreModel::where('uid',$data['id'])->select('id','status')->first();
-            if($store_id){
+            $data['grade_name'] = UserService::getGrade($data['score']);
+            $store_id = StoreModel::where('uid', $data['id'])->select('id', 'status')->first();
+            if ($store_id) {
                 $data['store_id'] = $store_id['id'];
                 $data['store_status'] = $store_id['status'];
-            }else{
+            } else {
                 $data['store_id'] = 0;
             }
             //登录成功之后把用户信息存入session
-            $request->session()->put('userInfo',$data);
+            $request->session()->put('userInfo', $data);
             //登录成功之后把用户信息存入cookie
-            Cookie::queue('info',$data,120);//120分钟
+            Cookie::queue('info', $data, 120);//120分钟
             return $this->success();
         } else {
             return $this->fail(50001);
@@ -66,10 +66,17 @@ class LoginController extends BaseController
     /**
      * 退出登录
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function logout(Request $request){
-        $request->session()->forget('userInfo');
+    public function logout(Request $request)
+    {
+        $re = $request->session()->forget('userInfo');
         Cookie::queue(Cookie::forget("info"));
+        if ($re) {
+            return $this->success();
+        } else {
+            return $this->fail(300);
+        }
     }
 
 
