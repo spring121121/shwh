@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Services\UserService;
+use App\models\StoreModel;
 use Illuminate\Http\Request;
 use App\models\UserModel;
 
@@ -41,7 +42,7 @@ class UserController extends BaseController
             'nickname' => $nickname,
             'sex' => $sex,
             'birthday' => $birthday,
-            'photo'=>$photo,
+            'photo' => $photo,
 
         ];
         $result = $userModel::where('id', $uid)->update($updateArr);
@@ -60,11 +61,14 @@ class UserController extends BaseController
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getUserInfo($id)
+    public function getUserInfo(Request $request, $id)
     {
         $userModel = new UserModel();
         $result = $userModel::find($id);
         $result->grade = UserService::getGrade($result->score);
+        //查询我是否关注过这个用户
+        $isFoucus = UserService::judgeIsFocusUser($request,$id);
+        $result->is_foucus = $isFoucus;
         return $this->success($result);
     }
 
@@ -79,6 +83,14 @@ class UserController extends BaseController
         $userModel = new UserModel();
         $result = $userModel::find($id);
         $result->grade = UserService::getGrade($result->score);
+        $store_status = StoreModel::where('uid',$id)->select('status','id')->first();
+        if($store_status){
+            $result->store_status = $store_status->toArray()['status'];
+            $result->store_id = $store_status->toArray()['id'];
+        }else{
+            $result->store_id = StoreModel::STORE_ID;
+            $result->store_status = StoreModel::STORE_STATUS;
+        }
         return $this->success($result);
     }
 

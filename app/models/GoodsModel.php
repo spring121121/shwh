@@ -16,7 +16,9 @@ class GoodsModel extends Model
      */
     const IS_AGENT_1 = 1;
 
-    const RELATE_GOODS = 10;//随机相关商品条数
+    CONST RELATE_GOODS = 10;//随机相关商品条数
+    CONST UNDERCARRIAGE = 0;//商品下架
+    CONST NORMAL = 1;//商品正常
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];

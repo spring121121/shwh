@@ -11,6 +11,8 @@ class StoreModel extends Model
     protected $dates = ['deleted_at'];
     CONST IS_AUTH = 1;//已认证
     CONST IS_NOT_AUTH = 0;//未认证
+    CONST STORE_STATUS = 3;//无实际意义
+    CONST STORE_ID = 0;//store_id默认为0
     /**
      * 与模型关联的数据表。
      *
