@@ -20,28 +20,6 @@
         </div>
         <div class="content-box">
             <ul class="note-list-box" id="dianzan-box">
-                <li>
-                    <div class="note-img"><img class="common-img" src="/images/"></div>
-                    <div class="note-list-right">
-                        <a href="#" class="btn-notes"><i></i>浏览</a>
-                        <h3>探宝笔记的标题<span>2018-12-26 13:30</span></h3>
-                        <p>笔记的部分内容,笔记的部分内容,笔记的部分内容,笔记的部分内容</p>
-                        <a href="#" class="btn-notes"><i></i>赞</a>
-                        <a href="#" class="btn-notes"><i></i>评论</a>
-                        <a href="#" class="btn-notes"><i></i>转发</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="note-img"><img class="common-img" src="/images/"></div>
-                    <div class="note-list-right">
-                        <a href="#" class="btn-notes"><i></i>浏览</a>
-                        <h3>探宝笔记的标题<span>2018-12-26 13:30</span></h3>
-                        <p>笔记的部分内容,笔记的部分内容,笔记的部分内容,笔记的部分内容</p>
-                        <a href="#" class="btn-notes"><i></i>赞</a>
-                        <a href="#" class="btn-notes"><i></i>评论</a>
-                        <a href="#" class="btn-notes"><i></i>转发</a>
-                    </div>
-                </li>
             </ul>
         </div>
 

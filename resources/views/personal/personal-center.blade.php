@@ -97,16 +97,25 @@
                 </div>
             </div>
             <div class="btn-exit-login">
-                <button>退出登录</button>
+                <button class="btn-delete">退出登录</button>
             </div>
-            <div class="choice-address">
-                <p id="address-tip"><span></span><span></span><span></span></p>
-                <ul id="province"></ul>
-                <ul id="city"></ul>
-                <ul id="area"></ul>
-                <div class="btn-finish">
-                    <div class="finish-return" id="return-finish">取消</div>
-                    <div class="finish-return" id="finish-sure">确定</div>
+            {{--<div class="choice-address">--}}
+                {{--<p id="address-tip"><span></span><span></span><span></span></p>--}}
+                {{--<ul id="province"></ul>--}}
+                {{--<ul id="city"></ul>--}}
+                {{--<ul id="area"></ul>--}}
+                {{--<div class="btn-finish">--}}
+                    {{--<div class="finish-return" id="return-finish">取消</div>--}}
+                    {{--<div class="finish-return" id="finish-sure">确定</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        </div>
+        <div class="mask-box">
+            <div class="weChat del-order">
+                <span>确定退出登录吗？</span>
+                <div class="btn-mask">
+                    <button class="btn-del-false">取消</button>
+                    <button id="btn-logout-true">确定</button>
                 </div>
             </div>
         </div>
@@ -114,17 +123,24 @@
     
         <!--引入footer-->
         @extends('layout.footer')
-    <div class="get-cookie" id="1">{{$store_id}}</div>
+    {{--<div class="get-cookie" id="{{$store_status}}">{{$store_id}}</div>--}}
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
-
     <script>
         $(function () {
+            var store_id,store_status;
             $.get('/getMyUserInfo',{},function(data){
+                console.log(data)
                 if (data.status){
+                    store_id = data.data.store_id;
+                    store_status = data.data.store_status;
                     $("#photo").attr("src",data.data.photo)
-                    $("#nickname").html(data.data.nickname)
+                    if (data.data.nickname == ''){
+                        $("#nickname").html("请修改您的昵称")
+                    } else {
+                        $("#nickname").html(data.data.nickname)
+                    }
                     if(data.data.sex==0){
                         $("#sex").html('女')
                         $("#sex-img").attr("src","/images/woman-icon-white.png")
@@ -139,18 +155,27 @@
             });
 
 
-
             // 点击店铺时判断进入
             $("#personal-store").click(function () {
-                if ($(".get-cookie").html() == 0){
-                    window.location.href = "/wap/store_status";
+                console.log(store_id,store_status)
+                if (store_id == 0){
+                    window.location.href = "/wap/store_status?id="+store_status;
                 } else {
-                    if ($(".get-cookie").attr("id") == 1){
-                        window.location.href = "/wap/store";
-                    }else {
-                        window.location.href = "/wap/store_status";
+                    if (store_status < 3){
+                        if (store_status == 1) {
+                            window.location.href = "/wap/store";
+                        }else {
+                            window.location.href = "/wap/store_status?id="+store_status;
+                        }
                     }
                 }
+            });
+
+            //退出登录
+            $("#btn-logout-true").click(function () {
+                $.get('/logout',{},function(data){
+                    window.location.reload();
+                });
             });
             // $(".change-address").click(function () {//点击获取省
             //     $(".choice-address").css("display","block");

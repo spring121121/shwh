@@ -89,16 +89,11 @@
     <script>
         $(function () {
             $.get("/getCommentMessage", {}, function (data) {
-                var noteHtml = '',photo;
+                var noteHtml = '';
                 if (data.status) {
                     $.each(data.data, function (k, v) {
-                        if (v.photo == 0){
-                            photo = "/images/portrait.png"
-                        }else {
-                            photo = v.photo;
-                        }
                         noteHtml += '<li>';
-                        noteHtml += '<div class="massage-cont-left"><div class="icon-box"><img class="common-img" src="'+ photo +'" alt="头像"></div></div>';
+                        noteHtml += '<div class="massage-cont-left"><div class="icon-box"><img class="common-img" onerror="this.onerror=\'\';this.src=\'/images/portrait.png\'" src="'+ v.photo +'" alt="头像"></div></div>';
                         noteHtml += '<div class="massage-cont-right">';
                         noteHtml += '<a class="btn btn-reply" href="/wap/reply_comment">回复</a>';
                         noteHtml += '<h3>' + v.nickname + '<i></i><span>' + v.created_at + '</span></h3>';

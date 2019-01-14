@@ -7,7 +7,7 @@ ul,li{
 }
 .footer{
     height: 55px;
-    background: #F49710;
+    background: #333;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -27,5 +27,5 @@ ul,li{
     display: block;
     text-align: center;
     font-size: 14px;
-    color: #000;
+    color: #fff;
 }

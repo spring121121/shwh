@@ -74,7 +74,7 @@
                                 alert('注册成功,去登录');
                                 window.location.href = "/wap/login";
                             } else {
-                                alert("注册失败,请重新注册")
+                                alert("注册失败," + data.message);
                             }
                         }
                     });

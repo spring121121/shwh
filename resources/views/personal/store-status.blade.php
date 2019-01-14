@@ -26,17 +26,22 @@
         <!--引入footer-->
         @extends('layout.footer')
 
-        <div class="get-cookie">{{$store_status}}</div>
+        {{--<div class="get-cookie">{{$store_status}}</div>--}}
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            console.log($(".get-cookie").html())
-            if ($(".get-cookie").html() == 0){
+            var address_url = window.location.search;
+            var store_status = address_url.substr(4);
+            console.log(store_status);
+            if(store_status == 3){
+                $("#tip-text").html("你好{{$nickname}}，您还没有店铺。<br />请您先申请开店")
+                $("#register-store").html("去注册");
+            }else if(store_status == 0){
                 $("#tip-text").html("你好{{$nickname}}，您的申请正在审核。<br />请您耐心等待")
                 $("#register-store").remove();
-            }else {
+            }else if(store_status == 2){
                 $("#tip-text").html("你好{{$nickname}}，您的申请已被驳回。<br />请您确认信息真实性")
                 $("#register-store").html("去完善信息");
             }
