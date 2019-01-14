@@ -76,6 +76,8 @@ return [
         'goods_id.numeric' => '商品类型为数字',
         'num.required' => '购买数量不能为空',
         'num.numeric' => '数量类型为数字',
+        'store_id.required' => '购买商品所属商店不能为空',
+        'store_id.numeric' => '购买商品所属商店类型为数字',
         'unit_price.required' => '购买单价不能为空',
         'unit_price.numeric' => '单价类型为数字',
         'is_agent.required' => '是否从代理购买不能为空',

@@ -29,5 +29,5 @@ class OrdersModel extends Model
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['uid','order_sn','trans_id','goods_id','num','unit_price','total_price','status','porder_id','is_agent'];
+    protected $fillable = ['uid','agent_uid','store_id','agent_price','order_sn','trans_id','goods_id','num','unit_price','total_price','status','is_agent'];
 }
