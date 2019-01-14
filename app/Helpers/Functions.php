@@ -46,3 +46,10 @@ if (!function_exists('e')) {
         echo "</pre>";
     }
 }
+
+function halt($arr) {
+    echo '<pre>';
+    print_r($arr);
+    echo '</pre>';
+    die();
+}

@@ -57,7 +57,7 @@ class CashController extends BaseController
             return $this->fail(60000);
         }
         $checkUpdate = withdrawModel::where('id',$id)
-            ->update(['status'=>$status]);
+            ->update(['status'=>$status,'check_uid'=>$uid]);
         if($checkUpdate){
             return $this->success();
         }else{
