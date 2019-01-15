@@ -14,14 +14,18 @@ ul,li{
     right: 0;
     z-index: 9999;
  }
+.footer ul{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
 .footer ul li{
-    float: left;
     width: 33.33%;
 }
 .footer ul li .icon-box{
     width: 30px;
     height: 30px;
-    margin: 7px auto 0;
+    margin: 5px auto 0;
 }
 .footer ul li span{
     display: block;

@@ -8,9 +8,12 @@
         <meta name="keywords" content="神奇的山洞, 山洞, 山洞平台,文创产品">
         <title>神奇的山洞</title>
 
-        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="/styles/common.css">
     </head>
     <body>
-//
+        <h3>首页</h3>
+
+        <!--引入footer-->
+        @extends('layout.footer')
     </body>
 </html>

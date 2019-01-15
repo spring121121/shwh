@@ -1528,7 +1528,7 @@ ul,li{
     position: fixed;
     left: 0;
     right: 0;
-    /*background-color: #fff;*/
+    background-color: #fff;
     z-index: 9999;
     justify-content: center;
 }

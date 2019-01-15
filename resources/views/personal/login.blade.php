@@ -40,6 +40,7 @@
                         <a id="register" href="/wap/register">注册</a>
                     </div>
                 </div>
+            </div>
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>

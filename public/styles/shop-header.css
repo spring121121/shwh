@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.clear{
+    clear: both;
+}
+
+/*商城首页的header样式表*/
+.common-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    height: 50px;
+    border-bottom: 1px solid #f1f1f1;
+}
+.common-header-left{
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 12.5px;
+    background: url("../images/shop/shop-cart.png");
+    background-size: 100%;
+}
+.common-header-right{
+    width: 25px;
+    height: 25px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 12.5px;
+    background: url("../images/shop/classify.png");
+    background-size: 100%;
+}
+.index-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    height: 50px;
+    background-color: #fff;
+}
+.search-box{
+    overflow: hidden;
+    background-color: #eee;
+    border-radius: 15px;
+    height: 30px;
+    margin: 10px 60px;
+}
+.ipt-icon{
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 7px 0 0 10px;
+    background: url("../images/shop/search-icon.png");
+    background-size: 100%;
+}
+.ipt-search-box{
+    margin-left: 30px;
+}
+.ipt-search-box input{
+    border: none;
+    outline: none;
+    background: unset;
+    line-height: 30px;
+}
+
+/*每个页面的主要内容框*/
+.shop-content{
+
+}
