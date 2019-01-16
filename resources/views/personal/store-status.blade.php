@@ -43,7 +43,7 @@
                 $("#register-store").remove();
             }else if(store_status == 2){
                 $("#tip-text").html("你好{{$nickname}}，您的申请已被驳回。<br />请您确认信息真实性")
-                $("#register-store").html("去完善信息");
+                $("#register-store").html("去完善信息").attr("href","/wap/register_store?id="+store_status);
             }
         });
     </script>

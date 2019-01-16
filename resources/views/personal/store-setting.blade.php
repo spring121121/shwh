@@ -60,7 +60,7 @@
                 success : function(data){//回调函数 和 后台返回的 数据
                     console.log(data)
                     if (data.status){
-                        //$(".tx-icon-box").find("img").attr("src",data.data[0].logo_pic_url);
+                        $(".tx-icon-box").find("img").attr("src",data.data[0].logo_pic_url);
                         $("#setting-store-name").val(data.data[0].name);
                         $("#setting-store-brief").val(data.data[0].introduction);
                     }else {
@@ -108,7 +108,7 @@
                             console.log(data)
                             if (data.status){
                                 alert("店铺信息修改成功");
-                                //window.location.href = "/wap/personal";
+                                window.location.href = "/wap/store";
                             }else {
                                 alert("店铺信息失败，请重试");
                             }

@@ -26,12 +26,12 @@ $(function () {
     $(".weChat").css("margin-top","-" + $(".weChat").outerHeight()/2 + "px");
 
     // 点击微信登陆显示授权
-    $(".weChat-login").click(function () {
-        $(".mask-box").css("display","block");
-    });
-    $("#btn-qx").click(function () {
-        $(".mask-box").css("display","none");
-    });
+    // $(".weChat-login").click(function () {
+    //     $(".mask-box").css("display","block");
+    // });
+    // $("#btn-qx").click(function () {
+    //     $(".mask-box").css("display","none");
+    // });
 
     // 消息中心的消息分类切换
     var index = window.location.search;

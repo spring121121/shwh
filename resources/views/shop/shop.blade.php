@@ -80,8 +80,47 @@
             </div>
 
             {{--分类展示--}}
-
-
+            <div class="classify-list">
+                <div class="swiper-container classify-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><span>全部</span></div>
+                        <div class="swiper-slide"><span>饰品</span></div>
+                        <div class="swiper-slide"><span>服饰</span></div>
+                        <div class="swiper-slide"><span>文具</span></div>
+                        <div class="swiper-slide"><span>书画</span></div>
+                        <div class="swiper-slide"><span>瓷器</span></div>
+                        <div class="swiper-slide"><span>家具</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="classify-display">
+                <ul>
+                    <li>
+                        <div class="shop-img-box">
+                            <img src="/images/collection-img1.jpg" class="common-img">
+                        </div>
+                        <p><span>商品名称</span><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                        <h3><i></i><span>用户名称</span></h3>
+                        <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
+                    </li>
+                    <li>
+                        <div class="shop-img-box">
+                            <img src="/images/collection-img1.jpg" class="common-img">
+                        </div>
+                        <p><span>商品名称</span><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                        <h3><i></i><span>用户名称</span></h3>
+                        <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
+                    </li>
+                    <li>
+                        <div class="shop-img-box">
+                            <img src="/images/collection-img1.jpg" class="common-img">
+                        </div>
+                        <p><span>商品名称</span><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                        <h3><i></i><span>用户名称</span></h3>
+                        <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
+                    </li>
+                </ul>
+            </div>
 
         </div>
 
@@ -108,6 +147,10 @@
             });
             console.log($(".limit-shop-img").width())
             $(".limit-shop-img").css("height",$(".limit-shop-img").width()+"px");
+            var swiper_classify = new Swiper('.classify-swiper', {
+                slidesPerView : 6,
+                spaceBetween : 10
+            });
         });
     </script>
 </html>
