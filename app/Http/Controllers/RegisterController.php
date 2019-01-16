@@ -27,7 +27,7 @@ class RegisterController extends BaseController
     {
 
         $rules = [
-            'mobile' => 'required|regex:/^1[34578][0-9]{9}$/|unique:user,mobile',
+            'mobile' => 'required|regex:/^1[3456789][0-9]{9}$/|unique:user,mobile',
             'password' => 'required',
             'password_again' => 'required',
             'code' => 'required'
