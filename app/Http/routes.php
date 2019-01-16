@@ -162,6 +162,13 @@ Route::get('wap/login', function () {//手机号登陆
 Route::get('wap/register', function () {//注册页面
     return view('personal/register');
 });
+Route::get('wap/index', function () {//首页
+    return view('index');
+});
+
+Route::get('wap/shop', function () {//商城首页
+    return view('shop/shop');
+});
 
 Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('wap/personal', function () {//个人中心

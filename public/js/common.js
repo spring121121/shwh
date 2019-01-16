@@ -261,7 +261,6 @@ $(function () {
             $(".other-shoucang").siblings(".other-content").css("display","none");
         }
     });
-    other-shoucang
 
     var address_height = $(window).height()-300;
     $(".personal-cont .choice-address ul").css("height",address_height+"px");
@@ -287,7 +286,7 @@ function choice_address() {
             }
         }
     });
-    $("#province").on("click",function () {
+    $("#province").on("change click",function () {
         province_id = $(this).find("option:checked").attr("id");
         $.ajax({
             url : "/getCitiesByProvince/" + province_id,	//请求url
@@ -308,7 +307,7 @@ function choice_address() {
             }
         });
     });
-    $("#city").on("click",function () {
+    $("#city").on("change",function () {
         city_id = $(this).find("option:checked").attr("id");
         $.ajax({
             url : "/getAreasByCityId/" + city_id,	//请求url

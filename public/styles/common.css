@@ -209,12 +209,11 @@ a{
     line-height: 30px;
 }
 .other-box h3 i{
-    position: absolute;
-    top: 8px;
-    right: 75px;
+    display: inline-block;
+    margin-left: 5px;
     width: 15px;
     height: 15px;
-    background-image: url("../images/grade.png");
+    background-image: url(../images/grade.png);
     background-size: 100%;
 }
 .other-box p span{
