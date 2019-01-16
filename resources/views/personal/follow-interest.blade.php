@@ -111,7 +111,7 @@
                                 photo = v.photo;
                             }
                             noteHtml += '<li class="'+v.id+'">';
-                            noteHtml += '<div class="gz-img-box"><img src="'+ photo +'" class="common-img"></div>';
+                            noteHtml += '<div class="gz-img-box"><img onerror="this.src=\'/images/portrait.png\'" src="'+ photo +'" class="common-img"></div>';
                             noteHtml += '<div class="gz-right">';
                             noteHtml += '<button id="'+v.id+'" class="btn-focus"><i></i>关注</button>';
                             noteHtml += '<h3>' + v.nickname + '</h3>';
@@ -150,7 +150,7 @@
                             photo = v.photo;
                         }
                         noteHtml += '<li class="'+v.id+'">';
-                        noteHtml += '<div class="gz-img-box"><img src="'+ photo +'" class="common-img"></div>';
+                        noteHtml += '<div class="gz-img-box"><img onerror="this.src=\'/images/portrait.png\'" src="'+ photo +'" class="common-img"></div>';
                         noteHtml += '<div class="gz-right">';
                                     if(focus == 1||v.is_focus == 1){
                                         noteHtml += '<button id="'+v.id+'" disabled class="btn-focus">已关注</button>';

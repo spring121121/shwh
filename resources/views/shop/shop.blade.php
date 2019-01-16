@@ -31,10 +31,58 @@
                     </div>
                 </div>
             </div>
+            {{--限时抢购--}}
             <div class="flash-sale">
-                <h2>限时抢购</h2>
-
+                <h2><em>限时抢购</em></h2>
+                <p>
+                    <strong class="left">9:00场</strong>
+                    <span class="right">18</span>
+                    <strong class="right">:</strong>
+                    <span class="right">20</span>
+                    <strong class="right">:</strong>
+                    <span class="right">01</span>
+                    <strong class="right flash-tip">距离开始还有</strong>
+                </p>
+                <div class="flash-sale-swiper">
+                    <div class="swiper-container flash-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide flash-sale-cont">
+                                <div class="limit-shop-img">
+                                    <img src="/images/collection-img1.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
+                                </div>
+                                <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
+                                <p>￥10.00</p>
+                            </div>
+                            <div class="swiper-slide flash-sale-cont">
+                                <div class="limit-shop-img">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img">
+                                </div>
+                                <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
+                                <p>￥10.00</p>
+                            </div>
+                            <div class="swiper-slide flash-sale-cont">
+                                <div class="limit-shop-img">
+                                    <img src="/images/collection-img1.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
+                                </div>
+                                <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
+                                <p>￥10.00</p>
+                            </div>
+                            <div class="swiper-slide flash-sale-cont">
+                                <div class="limit-shop-img">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img">
+                                </div>
+                                <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
+                                <p>￥10.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            {{--分类展示--}}
+
+
+
         </div>
 
         <!--引入footer-->
@@ -50,6 +98,16 @@
                 paginationClickable: true,
                 loop: true
             });
+            var swiper_flash_sale = new Swiper('.flash-swiper', {
+                autoplay: 3000,
+                autoplayDisableOnInteraction : false,
+                slidesPerView : 4,
+                spaceBetween : 10,
+                paginationClickable: true,
+                loop: true
+            });
+            console.log($(".limit-shop-img").width())
+            $(".limit-shop-img").css("height",$(".limit-shop-img").width()+"px");
         });
     </script>
 </html>

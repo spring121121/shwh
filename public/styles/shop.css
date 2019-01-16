@@ -1,7 +1,51 @@
 .swiper-box{
     height: 250px;
 }
-.shop-index{
+.shop-index,.flash-swiper{
     width: 100%;
     height: 100%;
+}
+.flash-sale{
+    text-align: center;
+    margin: 0 20px;
+}
+.flash-sale h2{
+    margin: 20px 0;
+    line-height: 50px;
+}
+.flash-sale p{
+    height: 20px;
+    line-height: 20px;
+}
+.flash-sale span{
+    display: inline-block;
+    width: 20px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    font-size: 12px;
+    background: #ffcc33;
+    border-radius: 5px;
+    margin: 2px 5px;
+}
+.flash-sale-swiper{
+    height: auto;
+    margin-top: 20px;
+}
+.limit-shop-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.flash-sale-cont p{
+    height: auto;
+    font-size: 12px;
+    padding: 0 5px;
+    line-height: unset;
+    text-align: justify;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }

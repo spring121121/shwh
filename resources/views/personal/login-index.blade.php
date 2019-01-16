@@ -23,8 +23,8 @@
                 </div>
                 <div class="ipt-cont" style="margin-top: 150px">
                     <div class="btn-box">
-                        <button class="login"><a href="/wap/login" class="login">手机号登录</a></button>
-                        <button class="register weChat-login"><a href="#" >微信登录</a></button>
+                        <a href="/wap/login" class="login">手机号登录</a>
+                        <a href="javascript:void(0);" class="register weChat-login">微信登录</a>
                     </div>
                 </div>
             </div>

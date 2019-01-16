@@ -6,6 +6,12 @@ a{
     font-size: 12px;
     text-align: center;
 }
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
 .edit-your-data{
     height: auto;
     text-align: left;
