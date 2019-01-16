@@ -15,16 +15,16 @@
     <body>
         <div class="dlzc-box">
             <div class="vertical-center">
-                <div class="logo-box">
-                    <img class="common-img" src="/images/logo-2x.png" alt="神奇的山洞">
-                </div>
-                <div class="chose-login">
-                    <h3>手机号码登录</h3>
-                    <!--<ul>-->
-                    <!--<li>手机验证码登陆</li>-->
-                    <!--<li>账号密码登录</li>-->
-                    <!--</ul>-->
-                </div>
+                {{--<div class="logo-box">--}}
+                    {{--<img class="common-img" src="/images/logo-2x.png" alt="神奇的山洞">--}}
+                {{--</div>--}}
+                {{--<div class="chose-login">--}}
+                    {{--<h3>手机号码登录</h3>--}}
+                    {{--<!--<ul>-->--}}
+                    {{--<!--<li>手机验证码登陆</li>-->--}}
+                    {{--<!--<li>账号密码登录</li>-->--}}
+                    {{--<!--</ul>-->--}}
+                {{--</div>--}}
                 <div class="ipt-cont">
                     <form action="">
                         <div class="ipt-box"><input id="phone" class="phone" type="text" placeholder="请输入手机号码"></div>
@@ -34,7 +34,6 @@
                             <div class="yzm-img"><img title="点击刷新" src="/getCodeImg" class="common-img" onclick="this.src='/getCodeImg?a='+Math.random();"></div>
                         </div>
                     </form>
-                    <div class="tips">请输入8-16位英文和数字密码</div>
                     <div class="btn-box">
                         <a id="login" href="#">登录</a>
                         <a id="register" href="/wap/register">注册</a>
@@ -44,6 +43,7 @@
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/layer/layer.js"></script>
     <script src="/js/common.js"></script>
     <script src="/js/proving.js"></script>
     <script>

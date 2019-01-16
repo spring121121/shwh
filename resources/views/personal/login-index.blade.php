@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="/styles/personal.css">
     </head>
     <body>
-        <div class="dlzc-box dlsy-box">
+        <div class="dlzc-box">
             <div class="vertical-center">
                 <div class="logo-box">
                     <img class="common-img" src="/images/logo-2x.png" alt="神奇的山洞">
@@ -21,7 +21,7 @@
                 <div class="chose-login fc-login">
                     <h3>由此爱上文创</h3>
                 </div>
-                <div class="ipt-cont" style="margin-top: 150px">
+                <div class="ipt-cont">
                     <div class="btn-box">
                         <a href="/wap/login" class="login">手机号登录</a>
                         <a href="http://shwh.jianghairui.com/wx/auth" class="register weChat-login">微信登录</a>

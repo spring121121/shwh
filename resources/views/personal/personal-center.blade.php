@@ -33,7 +33,8 @@
                         <div class="personal-icon-box"><img class="common-img" src="../images/grade.png" /></div>
                         <span id="grade"></span>
                     </li>
-                </ul><em></em>
+                </ul>
+                {{--<em></em>--}}
                 {{--<div class="change-address">--}}
                     {{--<div class="personal-icon-box"><img class="common-img" src="../images/location.png" /></div>--}}
                     {{--<span>天津市 西青</span>--}}
