@@ -20,7 +20,7 @@ class AuthMiddleware
 
 
         if(empty($userInfo)){
-           return redirect('/wap/login');
+           return redirect('/wap/login_index');
         }
         return $next($request);
     }
