@@ -124,46 +124,41 @@
     
         <!--引入footer-->
         @extends('layout.footer')
-        <div class="get-cookie" id="{{$openid}}"></div>
-        <div>{{$openid}}</div>
-        <div>{{$nickname}}</div>
-        <div>{{$headimgurl}}</div>
-        <div>{{$sex}}</div>
-        <div>{{$grade_name}}</div>
-        <div>{{$uid}}</div>
-        <div>{{$store_id}}</div>
-        <div>{{$store_status}}</div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/layer/layer.js"></script>
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            console.log($(".get-cookie").attr("id"))
             var store_id,store_status;
-            $.get('/getMyUserInfo',{},function(data){
-                console.log(data)
-                if (data.status){
-                    store_id = data.data.store_id;
-                    store_status = data.data.store_status;
-                    $("#photo").attr("src",data.data.photo)
-                    if (data.data.nickname == ''){
-                        $("#nickname").html("请修改您的昵称")
-                    } else {
-                        $("#nickname").html(data.data.nickname)
+            $.ajax({
+                url : "/getMyUserInfo",	//请求url
+                type : "get",	//请求类型  post|get
+                dataType : "json",  //返回数据的 类型 text|json|html--
+                data: {},
+                success : function(data){//回调函数 和 后台返回的 数据
+                    if (data.status){
+                        store_id = data.data.store_id;
+                        store_status = data.data.store_status;
+                        $("#photo").attr("src",data.data.photo)
+                        if (data.data.nickname == ''){
+                            $("#nickname").html("请修改您的昵称")
+                        } else {
+                            $("#nickname").html(data.data.nickname)
+                        }
+                        if(data.data.sex==0){
+                            $("#sex").html('女')
+                            $("#sex-img").attr("src","/images/woman-icon-white.png")
+                        }else{
+                            $("#sex-img").attr("src","/images/man-icon-white.png")
+                            $("#sex").html('男')
+                        }
+                        $("#grade").html(data.data.grade);
+                    }else {
+                        alert("哎呀！出错了")
                     }
-                    if(data.data.sex==0){
-                        $("#sex").html('女')
-                        $("#sex-img").attr("src","/images/woman-icon-white.png")
-                    }else{
-                        $("#sex-img").attr("src","/images/man-icon-white.png")
-                        $("#sex").html('男')
-                    }
-                    $("#grade").html(data.data.grade);
-                }else {
-                    alert("哎呀！出错了")
                 }
             });
-
 
             // 点击店铺时判断进入
             $("#personal-store").click(function () {

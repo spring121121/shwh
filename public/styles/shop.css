@@ -52,16 +52,71 @@
 .classify-list{
     margin-top: 50px;
 }
+.classify-list span{
+    line-height: 25px;
+}
 .classify-display{
-    margin: 0 20px;
+    margin: 10px 20px 0;
 }
 .classify-display ul{
-    display: flex;
+    display: none;
     flex-direction: row;
     flex-wrap: wrap;
 }
 .classify-display li{
     width: 50%;
-    margin-right: 10px;
     margin-bottom: 10px;
+}
+.shop-list-box{
+    box-shadow: darkgrey 1px 1px 0 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #eee;
+    margin-left: 5px;
+}
+.shop-list-box p{
+    font-size: 14px;
+    color: #000;
+    margin: 5px;
+    text-align: justify;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.shop-list-box p strong{
+    border-right: 1px solid #000;
+    padding-right: 5px;
+    margin-right: 5px;
+    display: inline-block;
+    height: 13px;
+    line-height: 15px;
+}
+.shop-list-box h3{
+    margin: 5px;
+    font-size: 16px;
+    line-height: 25px;
+}
+.shop-list-box h3 i{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: #333333;
+}
+.price-box{
+    margin: 0 5px;
+    font-size: 14px;
+}
+.distribution-icon{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ffaa00;
+    float: right;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background: url("../images/shop/jiahao-fa0.png") no-repeat center;
+    background-size: 70%;
 }
