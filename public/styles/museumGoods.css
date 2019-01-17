@@ -1,0 +1,169 @@
+.goodsHead{
+	width: 100%;
+	height: 450px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	background: #a8a8a8;
+	padding-top: 50px;
+}
+.goodsHead>span{
+	font-size: 50px;
+	margin: 0 0 0 50px;
+}
+.goodsNav{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	margin:20px 10px;
+}
+.goodsImg{
+	width: 100px;
+	height:100px;
+}
+.goodsImg>img{
+	width: 100%;
+	height: 100%;
+	border-radius:50% ;
+}
+.goodstext{
+	font-size: 50px;
+	line-height: 100px;
+	margin-left: 20px;
+	font-weight: bold;
+}
+.goodsBtn{
+	width: 100px;
+	height: 40px;
+	border-radius:20px ;
+	background: #fe973d;
+	text-align: center;
+	line-height: 40px;
+	float: right;
+	color: #fff;
+	font-size: 30px;
+	margin-left: auto;
+	margin-top: 30px;
+	margin-right: 30px;
+}
+.goodsDetail{
+	width: 95%;
+	height: auto;
+	margin: 30px auto;
+	word-break: break-all;
+	word-wrap: break-word;
+	font-size: 30px;
+}
+.start{
+	position: relative;
+	width: 85px;
+	height: auto;
+}
+#yelloStart{
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.shareGoods{
+	display: flex;
+	flex-direction: row;
+	width: 260px;
+	height: auto;
+	float: right;
+}
+.icon{
+	width: 50px!important;
+	height: 50px!important;
+	margin-left: 20px;
+}
+.factory>p{
+	font-size: 30px;
+	font-weight: bold;
+	margin: 80px 0 0 20px;
+}
+.factoryDetail{
+	display: flex;
+	flex-direction: row;
+	height: auto;
+	margin: 20px;
+}
+.factoryDetail>img{
+	width: 100px;
+	height: 100px;
+	border-radius:20px ;
+}
+.factoryText{
+	margin-left: 20px;
+	
+}
+.factoryText>p:nth-child(1){
+	font-size:25px;
+}
+.factoryText>p:nth-child(2){
+	font-size: 20px;
+	margin-top: 10px;
+}
+.factoryText>p:nth-child(3){
+	font-size:20px;
+}
+.factoryBtn{
+	margin-left: auto;
+	width: 100px;
+	height: 50px;
+	border-radius: 25px;
+	background: #ff9933;
+	color: #fff;
+	font-size: 30px;
+	line-height: 50px;
+	text-align: center;
+}
+.similarity>p{
+	font-size: 25px;
+	margin-left: 20px;
+	margin-top: 50px;
+}
+.goodsList{
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+.list_left{
+	width: 50%;
+	height: auto;
+	float: left;
+}
+.list_right{
+	overflow: hidden;
+	height: auto;
+}
+.leftContent{
+	width: 90%;
+	height: auto;
+	margin: 20px auto;
+}
+.leftImg{
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+.leftImg>img{
+	width: 100%;
+}
+.start2{
+	position: absolute;
+	width: 85px;
+	height: auto;
+	top: 30px;
+	height: 30px;
+}
+.start2>svg{
+	color: #fff;
+}
+.leftText{
+	width: 180px;
+	height: auto;
+	margin: 30px;
+	word-break: break-all;
+	word-wrap: break-word;
+	font-size: 30px;
+}
