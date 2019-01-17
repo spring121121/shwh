@@ -124,12 +124,21 @@
     
         <!--引入footer-->
         @extends('layout.footer')
-    {{--<div class="get-cookie" id="{{$store_status}}">{{$store_id}}</div>--}}
+        <div class="get-cookie" id="{{$openid}}"></div>
+        <div>{{$openid}}</div>
+        <div>{{$nickname}}</div>
+        <div>{{$headimgurl}}</div>
+        <div>{{$sex}}</div>
+        <div>{{$grade_name}}</div>
+        <div>{{$uid}}</div>
+        <div>{{$store_id}}</div>
+        <div>{{$store_status}}</div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
     <script>
         $(function () {
+            console.log($(".get-cookie").attr("id"))
             var store_id,store_status;
             $.get('/getMyUserInfo',{},function(data){
                 console.log(data)
