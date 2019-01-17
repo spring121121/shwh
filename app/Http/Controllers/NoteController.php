@@ -9,15 +9,17 @@
 
 namespace App\Http\Controllers;
 
-
+use App\models\CommentModel;
+use App\models\ForwardModel;
 use App\models\GoodsModel;
+use App\models\LikesModel;
 use App\models\NoteModel;
 use Illuminate\Http\Request;
 use App\Http\Services\ForwardService;
 use App\Http\Services\LikesService;
 use App\Http\Services\CommentService;
 use App\Http\Services\UserService;
-
+use Illuminate\Support\Facades\Validator;
 
 class NoteController extends BaseController
 {
@@ -210,5 +212,91 @@ class NoteController extends BaseController
         }
     }
 
+    /**
+     * 回复评论
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function replayComment(Request $request){
+        $replyUid = UserService::getUid($request);//回复人uid
+        $data = $request->input('reply');
+        $rules = [
+            'to_cid' => 'required|numeric',
+            'note_id' => 'required|numeric',
+            'content' => 'required|max:200',
+            'comment_id' => 'required|numeric'
+        ];
+        $validator = Validator::make($data,$rules,config('message.comment'));
+        if($validator->fails()){
+            return $this->fail(50001,$validator->errors()->all());
+        }
+        $data['uid'] = $replyUid;
+        $res = CommentModel::create($data);
+        if($res){
+            return $this->success();
+        }else{
+            return $this->fail('300');
+        }
+    }
+
+    /**
+     * 笔记点赞
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function likeNote(Request $request){
+        $data = [];
+        $uid = UserService::getUid($request);
+        $note_id = $request->get('note_id');
+        $data['note_id'] = $note_id;
+        $rules = [
+            'note_id' => 'required|numeric',
+        ];
+        $validator = Validator::make($data,$rules,config('message.likes'));
+        if($validator->fails()){
+            return $this->fail(50001,$validator->errors()->all());
+        }
+        $beuid = NoteModel::where('id',$note_id)->first();
+        if($beuid){
+            $data['beuid'] = $beuid->uid;
+        }
+        $data['uid'] = $uid;
+        $res = LikesModel::create($data);
+        if($res){
+            return $this->success();
+        }else{
+            return $this->fail('300');
+        }
+    }
+
+    /**
+     * 笔记转发
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function forwardNote(Request $request){
+        $data = [];
+        $uid = UserService::getUid($request);
+        $note_id = $request->get('note_id');
+        $data['note_id'] = $note_id;
+        $rules = [
+            'note_id' => 'required|numeric',
+        ];
+        $validator = Validator::make($data,$rules,config('message.forward'));
+        if($validator->fails()){
+            return $this->fail(50001,$validator->errors()->all());
+        }
+        $beuid = NoteModel::where('id',$note_id)->first();
+        if($beuid){
+            $data['beuid'] = $beuid->uid;
+        }
+        $data['uid'] = $uid;
+        $res = ForwardModel::create($data);
+        if($res){
+            return $this->success();
+        }else{
+            return $this->fail('300');
+        }
+    }
 
 }

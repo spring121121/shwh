@@ -21,7 +21,10 @@ Route::post('login','LoginController@login');//登录
 /*****************RegisterController********************************/
 Route::post('register','RegisterController@register');//注册
 
-Route::get('test','TestController@test');//注册
+Route::get('test','TestController@test');//测试
+Route::any('sameHqAdd','AipSearchController@sameHqAdd');//相同图片检索库增加
+Route::any('sameHqSearch','AipSearchController@sameHqSearch');//相同图片检索
+
 
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
@@ -46,13 +49,18 @@ Route::group(['middleware'=>'checkLogin'],function(){
 
     Route::post('upload','UploadController@upload');//文件上传
 
+    /*********************NoteController笔记相关接口**************************************/
     Route::get('getMyNoteList','NoteController@getMyNoteList');//获取我的原创笔记列表
-
-    Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
     Route::post('deleteNote','NoteController@deleteNote');//删除笔记
     Route::post('deleteNoteNotOnly','NoteController@deleteNoteNotOnly');//删除多个笔记
     Route::get('searchNote/{keyword}','NoteController@searchNote');//搜索笔记
     Route::get('getNoteListByStoreId','NoteController@getNoteListByStoreId');//根据店铺ID查询相应的笔记
+    Route::post('replayComment','NoteController@replayComment');//笔记下对评论的回复
+    Route::post('likeNote','NoteController@likeNote');//笔记点赞
+
+
+    Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
+    Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
     Route::get('getMyLikeNote','LikeController@getMyLikeNote');//获取我点赞的笔记
 
 
@@ -117,7 +125,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
 });
 
 
-
+Route::get('test1','TestController@test1');//浏览记录统计数量
 
 
 Route::get('getQiniuUploadToken','UploadController@getQiniuUploadToken');//获取七牛文件上传的token
@@ -149,6 +157,11 @@ Route::post('notify','WxpayController@notify');//支付回调
 Route::get('refund','WxpayController@weixinRefund');//支付
 Route::post('refundNotify','WxpayController@refundNotify');//支付回调
 
+Route::get('wx/auth','WxAuthController@auth');//微信授权
+Route::get('wx/ad','WxAuthController@getAddress');//微信授权
+Route::get('wx/share','WxAuthController@share');//微信授权
+
+
 
 
 /************************前端路由*********************************/
@@ -164,6 +177,39 @@ Route::get('wap/register', function () {//注册页面
 });
 Route::get('wap/index', function () {//首页
     return view('index');
+});
+Route::get('wap/mech', function () {//文创机构展示页
+    return view('indexDetail/mechanism');
+});
+Route::get('wap/museum', function () {//博物馆展示
+    return view('indexDetail/museum');
+});
+Route::get('wap/factory', function () {//工厂展示页
+    return view('indexDetail/factory');
+});
+Route::get('wap/design', function () {//设计展示
+    return view('indexDetail/designerd');
+});
+Route::get('wap/designSerch', function () {//设计搜索
+    return view('indexDetail/designerd/designerd_serch');
+});
+Route::get('wap/designW', function () {//设计详情
+    return view('indexDetail/designerd/designerd_works');
+});
+Route::get('wap/factoryJm', function () {//工厂详情
+    return view('indexDetail/factory/factory_jm');
+});
+Route::get('wap/factoryclass', function () {//工厂分类
+    return view('indexDetail/factory/factory_classify');
+});
+Route::get('wap/musefen', function () {//博物馆分类
+    return view('indexDetail/museumDetail/museumfen');
+});
+Route::get('wap/musegoods', function () {//博物馆商品
+    return view('indexDetail/museumDetail/museumGoods');
+});
+Route::get('wap/musename', function () {//博物馆商品
+    return view('indexDetail/museumDetail/museumName');
 });
 
 Route::get('wap/shop', function () {//商城首页
