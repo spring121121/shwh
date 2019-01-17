@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserModel extends BaseModel
 {
+    CONST NORMAL_STATUS = 1;//正常
+    CONST BLACK_STATUS = 2;//拉黑
     //软删除 通过 deleted_at 字段区分是否删除，删除时调用 $table->softDeletes();
     use SoftDeletes;
     protected $dates = ['deleted_at'];
@@ -27,6 +29,6 @@ class UserModel extends BaseModel
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['name', 'nickname','wallet', 'password', 'sex', 'photo', 'birthday', 'mobile', 'score'];
+    protected $fillable = ['name','openid', 'nickname','wallet', 'password', 'sex', 'photo', 'birthday', 'mobile', 'score'];
 
 }

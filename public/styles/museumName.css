@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 550px;
+	height: 410px;
 	background: #e5e5e5;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
@@ -12,12 +12,13 @@
 	top: 14px;
 	left: 24px;
 	font-size: 25px;
-
+    width: 30px;
+    height: 30px;
 }
 .museumImg{
-	width: 200px;
-	height: 200px;
-	margin: 140px auto 0;
+	    width: 120px;
+    height: 120px;
+    margin: 90px auto 0;
 	
 }
 .museumImg>img{
@@ -28,19 +29,19 @@
 }
 .introduce{
 	width: 200px;
-	height: 50px;
+	height: 40px;
 	margin: 15px auto;
 	display: flex;
 	flex-direction: row;
 }
 .introduce>p{
-	font-size: 28px;
-	line-height: 50px;
+	font-size: 25px;
+	line-height:40px;
 	margin: 0;
 }
 .introduce>span{
 	font-size: 26px;
-	line-height: 50px;
+	line-height: 40px;
 	margin-left: 10px;
 }
 .fansCourse{
@@ -62,42 +63,43 @@
 .followBtn{
 	display: flex;
 	flex-direction: row;
-	width: 120px;
-	height: 60px;
+	width: 85px;
+	height: 40px;
 	margin: 0 auto;
 	background: #818181;
 	border-radius:30px ;
 }
 .followBtn>p:nth-child(1){
-	font-size: 50px;
+	font-size: 30px;
 	color: #fff;
 	margin: 0;
-	line-height: 50px;
+	line-height:40px;
 }
 .followBtn>p:nth-child(2){
-	font-size: 35px;
+	font-size: 23px;
 	color: #000000;
 	margin: 0;
-	line-height: 50px;
+	line-height: 40px;
 }
 .simpleText{
-	margin: 10px 0 0 40px;
+	margin: 10px 0 0 20px;
 }
 .simpleText>p{
-	font-size: 43px;
-	margin-bottom: 0;
+    font-size: 30px;
+    margin-bottom: 0;
+    font-weight: bold;
 }
 .simpleText>ul{
 	width: 100%;
-	height: 140px;
+	height: 88px;
 	overflow: hidden;
 }
 .simpleText>ul>li{
-	font-size: 35px;
+	font-size: 20px;
 }
 .icon-xiala{
 	float: right;
-	font-size: 40px!important;
+	font-size: 30px!important;
 	margin-right: 35px;
 	width: 100%;
 	text-align: right;
@@ -106,19 +108,19 @@
 	width: 100%;
 	height: auto;
 	position: relative;
-	margin-top: 80px;
+	
 }
 .contentNav>div{
 	width: 50%;
 	height: auto;
 	float: left;
-	font-size: 50px;
+	font-size: 25px;
 	text-align: center;
 	line-height: 50px;
 	font-weight: bold;
 }
 .contentNav>div>p{
-	width: 200px;
+	width: 100%;
 	height: 60px;
 	margin: 0 auto;
 }
@@ -169,7 +171,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     padding-top: 5px;
-    font-size: 25px;
+    font-size: 15px;
     letter-spacing: 3px;
 }
 .museum_shop_pic div:nth-child(2) h4{
@@ -180,9 +182,9 @@
     justify-content: space-between
 }
 .museum_shop_pic div:nth-child(2) h4 span{
-   width:50px;
-   height:50px;
-   border-radius: 25px;
+   width:45px;
+   height:45px;
+   border-radius: 50%;
    background: blueviolet;
    display: block;
    
@@ -197,6 +199,10 @@
     height:20px;
     display: block;
     float: left;
-    font-size: 25px;
+    font-size: 17px;
+        margin-top: 10px;
     /*background: blueviolet*/
+}
+.contentNum{
+	font-size: 12px!important;
 }

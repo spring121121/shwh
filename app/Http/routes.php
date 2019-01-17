@@ -42,7 +42,6 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('deleteAddress/{id}','AddressController@deleteAddress');//删除收货地址
 
     /*****************UserController********************/
-
     Route::get('updateUserInfo','UserController@updateUserInfo');//更新我的个人信息
     Route::get('getMyUserInfo','UserController@getMyUserInfo');//获取我的个人信息
 
@@ -53,25 +52,24 @@ Route::group(['middleware'=>'checkLogin'],function(){
 
     /*********************NoteController笔记相关接口**************************************/
     Route::get('getMyNoteList','NoteController@getMyNoteList');//获取我的原创笔记列表
-
-    Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
     Route::post('deleteNote','NoteController@deleteNote');//删除笔记
     Route::post('deleteNoteNotOnly','NoteController@deleteNoteNotOnly');//删除多个笔记
     Route::get('searchNote/{keyword}','NoteController@searchNote');//搜索笔记
     Route::get('getNoteListByStoreId','NoteController@getNoteListByStoreId');//根据店铺ID查询相应的笔记
-    Route::post('replayComment','NoteController@replayComment');//笔记下回复评论
-
-
+    Route::post('replayComment','NoteController@replayComment');//笔记下回复某个人评论
+    Route::post('likeNote','NoteController@likeNote');//笔记点赞
     Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
     Route::get('getMyLikeNote','LikeController@getMyLikeNote');//获取我点赞的笔记
-
+    Route::post('collectNote','CollectController@collectNote');//收藏笔记
+    Route::get('getGoodsNoteList','NoteController@getGoodsNoteList');//获取某商品下笔记列表
 
     /*****************InformationController消息接口********************************/
     Route::post('pubSysMessage','InformationController@pubSysMessage');//管理员发布系统消息
     Route::get('getSysMessage','InformationController@getSysMessage');//系统消息列表
     Route::post('commentNote','InformationController@commentNote');//评论笔记
-    Route::get('getCommentMessage','InformationController@getCommentMessage');//笔记列表
+    Route::get('getCommentMessage','InformationController@getCommentMessage');//评论笔记消息列表
     Route::get('readSysMessage','InformationController@readSysMessage');//已读系统消息
+
 
     /*****************FansController关注，粉丝接口********************************/
     Route::post('focus','FansController@focus');//关注
@@ -84,11 +82,13 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('myCollectList','FansController@myCollectList');//我的收藏列表
     Route::get('myPraise','FansController@myPraise');//我的获赞数量
 
+
     /*****************FeedbackController意见反馈接口********************************/
     Route::post('feedback','FeedbackController@feedback');//意见反馈
     Route::get('readFeedback','FeedbackController@readFeedback');//已读意见反馈
     Route::get('feedbackList','FeedbackController@feedbackList');//意见反馈列表
     Route::get('feedbackDetail','FeedbackController@feedbackDetail');//意见反馈列表
+
 
     /*****************StoreController店铺接口********************************/
     Route::post('addStore','StoreController@addStore');//新增店铺
@@ -98,6 +98,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('storeDetail','StoreController@storeDetail');//店铺详情
     Route::get('uploadAuth','StoreController@uploadAuth');//上传店铺认证图
     Route::get('getStoreListBySearch','StoreController@getStoreListBySearch');//获取相应角色的店铺列表
+
 
     /*****************ShopController商店接口********************************/
     Route::post('createOneCategory','ShopController@createOneCategory');//新增商品一级分类
@@ -114,20 +115,17 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('getGoodsNote','ShopController@getGoodsNote');//商品下笔记列表
     Route::post('addCar','ShopController@addCar');//增加商品购物车
     Route::get('myCarList','ShopController@myCarList');//我的购物车列表
-
     Route::post('createRecord','ShopController@createRecord');//新增浏览记录信息
     Route::get('browseCount','ShopController@browseCount');//浏览记录统计数量
 
 
-
-    /***********笔记评论部分**********/
     /*****************CashController申请金额接口********************************/
     Route::post('applyCash','CashController@applyCash');//申请提现
     Route::get('checkApply','CashController@checkApply');//审核提现申请
 });
 
 
-
+Route::get('test1','TestController@test1');//浏览记录统计数量
 
 
 Route::get('getQiniuUploadToken','UploadController@getQiniuUploadToken');//获取七牛文件上传的token
@@ -187,6 +185,7 @@ Route::get('wap/mech', function () {//文创机构展示页
 Route::get('wap/museumed', function () {//博物馆展示
     return view('indexDetail/museum');
 });
+
 Route::get('wap/factoryShow', function () {//工厂展示页
     return view('indexDetail/factory');
 });
@@ -217,6 +216,9 @@ Route::get('wap/musename', function () {//博物馆商品
 
 Route::get('wap/shop', function () {//商城首页
     return view('shop/shop');
+});
+Route::get('wap/shop_detail', function () {//商品详情
+    return view('shop/shop-details');
 });
 
 Route::group(['middleware'=>'checkLogin'],function(){

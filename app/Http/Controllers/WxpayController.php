@@ -56,7 +56,7 @@ class WxpayController extends BaseController {
                 'sign_type' => 'MD5',
                 'body' => '山洞-测试',
                 'out_trade_no' => $order_sn,
-                'total_fee' => 3,
+                'total_fee' => 1,
                 'spbill_create_ip' => $_SERVER['REMOTE_ADDR'],
                 'notify_url' => "http://" . $_SERVER['HTTP_HOST'] . "/notify",
                 'trade_type' => 'JSAPI',

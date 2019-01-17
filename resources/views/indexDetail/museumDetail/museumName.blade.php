@@ -20,7 +20,7 @@
 					<img src="/images/a4.jpg" />
 				</div>
 				<div class="introduce">
-					<p>博物馆名称6666666</p>
+					<p>博物馆名称</p>
 					<span class="iconfont icon-dengji"></span>
 				</div>
 				<div class="fansCourse">
@@ -108,7 +108,7 @@
 			nameList+='<h4>'
 			nameList+='<span><img src="/images/a3.jpg"/></span>'
 			nameList+='<p>'
-			nameList+='<i>152222</i>'
+			nameList+='<i class="contentNum">152222</i>'
 			nameList+='<em onclick="addcolor()" class="iconfont icon-dianzan"></em>'
 			nameList+='</p>'
 			nameList+='</h4>'

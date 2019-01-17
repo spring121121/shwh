@@ -28,7 +28,7 @@
         <div id="museum_list">
             <ul id="nav">
                 <li class="on">笔记</li>
-                <li><精选</li>
+                <li>精选</li>
                 <li>发现</li>
             </ul>
         </div>

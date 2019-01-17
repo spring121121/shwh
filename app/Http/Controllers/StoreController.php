@@ -58,15 +58,22 @@ class StoreController extends BaseController
     public function updateStore(Request $request)
     {
         $data = $request->input('store');
+        $uid = UserService::getUid($request);
         $rules = [
-            'name' => 'required|string|min:1|max:20',
-            'introduction' => 'required|string|min:1|max:200',
+            'name' => 'required|max:20',
+            'introduction' => 'required|max:200',
+            'logo_pic_url' => 'required',
         ];
         $validator = Validator::make($data, $rules,config('message.store'));
         if ($validator->fails()) {
             return $this->fail(50001, $validator->errors()->all());
         }
-        $storeUpdate = StoreModel::where('id', $data['id'])->update($data);
+        if(!empty($data['prove_url'])){
+            $data['status'] = StoreModel::STORE_ID;
+            $storeUpdate = StoreModel::where('uid', $uid)->update($data);
+        }else{
+            $storeUpdate = StoreModel::where('uid', $uid)->update($data);
+        }
         if ($storeUpdate) {
             return $this->success();
         } else {

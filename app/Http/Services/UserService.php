@@ -5,6 +5,8 @@ namespace App\Http\Services;
 
 use App\models\FocusModel;
 use App\models\GradeModel;
+use App\models\ScoreModel;
+use App\models\UserModel;
 
 class UserService
 {
@@ -64,6 +66,22 @@ class UserService
         $mtime = array_pop($timeArr);
         $fulltime = $letter.$time[1].$mtime;
         return $fulltime;
+    }
+
+    //增加积分
+    public static function addScore($request,$type,$score){
+        $data = [];
+        $uid = self::getUid($request);
+        $data['uid'] = $uid;
+        $data['type'] = $type;
+        $data['score'] = $score;
+        $res = ScoreModel::create($data);
+        $result = UserModel::where(['id'=>$uid,'status'=>UserModel::NORMAL_STATUS])->update(['score'=>$score]);
+        if($res && $result){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
 
