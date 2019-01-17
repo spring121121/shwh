@@ -86,12 +86,32 @@ return [
 
     'browse_record' => [//浏览表
         'type.required' => '浏览类型不能为空',
-        'browse_id.required' => '浏览id为数字',
+        'browse_id.required' => '浏览id类型为数字',
     ],
 
     'withdraw_cash' => [//申请取现表
         'apply.required' => '申请金额不能为空',
-        'apply.numeric' => '申请金额为数字',
+        'apply.numeric' => '申请金额类型为数字',
     ],
 
+    'comment' => [//评论表
+        'to_cid.required' => '回复的人不能为空',
+        'to_cid.numeric' => '回复的人类型为数字',
+        'note_id.required' => '笔记不能为空',
+        'note_id.numeric' => '笔记类型为数字',
+        'content.required' => '回复的内容不能为空',
+        'content.max' => '回复的内容最多:max个字符',
+        'comment_id.required' => '回复的评论id不能为空',
+        'comment_id.numeric' => '回复的评论id类型为数字',
+    ],
+
+    'likes' => [//笔记点赞表
+        'note_id.required' => '点赞笔记不能为空',
+        'note_id.numeric' => '点赞笔记类型为数字',
+    ],
+
+    'forward' => [//笔记转发表
+        'note_id.required' => '转发笔记不能为空',
+        'note_id.numeric' => '转发笔记类型为数字',
+    ],
 ];

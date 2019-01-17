@@ -27,7 +27,6 @@ Route::any('sameHqSearch','AipSearchController@sameHqSearch');//相同图片检�
 
 Route::get('getHotNote','NoteController@getHotNote');
 
-
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
  */
@@ -53,13 +52,16 @@ Route::group(['middleware'=>'checkLogin'],function(){
 
     /*********************NoteController笔记相关接口**************************************/
     Route::get('getMyNoteList','NoteController@getMyNoteList');//获取我的原创笔记列表
-
-    Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
     Route::post('deleteNote','NoteController@deleteNote');//删除笔记
     Route::post('deleteNoteNotOnly','NoteController@deleteNoteNotOnly');//删除多个笔记
     Route::get('searchNote/{keyword}','NoteController@searchNote');//搜索笔记
     Route::get('getNoteListByStoreId','NoteController@getNoteListByStoreId');//根据店铺ID查询相应的笔记
     Route::post('replayComment','NoteController@replayComment');//笔记下回复评论
+
+
+    Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
+    Route::post('replayComment','NoteController@replayComment');//笔记下对评论的回复
+    Route::post('likeNote','NoteController@likeNote');//笔记点赞
 
 
     Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
@@ -127,7 +129,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
 });
 
 
-
+Route::get('test1','TestController@test1');//浏览记录统计数量
 
 
 Route::get('getQiniuUploadToken','UploadController@getQiniuUploadToken');//获取七牛文件上传的token

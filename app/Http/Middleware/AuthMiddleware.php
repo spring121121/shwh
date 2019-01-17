@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthMiddleware
 {
@@ -17,7 +18,6 @@ class AuthMiddleware
     {
 
         $userInfo = $request->session()->get('userInfo');
-
 
         if(empty($userInfo)){
            return redirect('/wap/login_index');
