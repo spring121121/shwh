@@ -59,7 +59,8 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('likeNote','NoteController@likeNote');//笔记点赞
     Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
     Route::get('getMyLikeNote','LikeController@getMyLikeNote');//获取我点赞的笔记
-
+    Route::post('collectNote','CollectController@collectNote');//收藏笔记
+    Route::get('getGoodsNoteList','NoteController@getGoodsNoteList');//获取某商品下笔记列表
 
     /*****************InformationController消息接口********************************/
     Route::post('pubSysMessage','InformationController@pubSysMessage');//管理员发布系统消息
