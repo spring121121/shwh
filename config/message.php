@@ -114,4 +114,9 @@ return [
         'note_id.required' => '转发笔记不能为空',
         'note_id.numeric' => '转发笔记类型为数字',
     ],
+
+    'collect' => [//笔记收藏表
+        'note_id.required' => '收藏笔记不能为空',
+        'note_id.numeric' => '收藏笔记类型为数字',
+    ],
 ];
