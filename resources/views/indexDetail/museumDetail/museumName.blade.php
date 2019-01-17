@@ -20,7 +20,7 @@
 					<img src="/images/a4.jpg" />
 				</div>
 				<div class="introduce">
-					<p>博物馆名称6666666</p>
+					<p>博物馆名称</p>
 					<span class="iconfont icon-dengji"></span>
 				</div>
 				<div class="fansCourse">
