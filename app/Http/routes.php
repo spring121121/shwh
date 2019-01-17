@@ -25,6 +25,7 @@ Route::get('test','TestController@test');//测试
 Route::any('sameHqAdd','AipSearchController@sameHqAdd');//相同图片检索库增加
 Route::any('sameHqSearch','AipSearchController@sameHqSearch');//相同图片检索
 
+Route::get('getHotNote','NoteController@getHotNote');
 
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里

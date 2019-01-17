@@ -17,6 +17,7 @@ use App\Http\Services\ForwardService;
 use App\Http\Services\LikesService;
 use App\Http\Services\CommentService;
 use App\Http\Services\UserService;
+use Illuminate\Support\Facades\DB;
 
 
 class NoteController extends BaseController
@@ -95,7 +96,7 @@ class NoteController extends BaseController
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getOtherNoteList(Request $request,$id)
+    public function getOtherNoteList(Request $request, $id)
     {
         $noteModel = new NoteModel();
         $page = $request->input('page', 1);
@@ -208,6 +209,24 @@ class NoteController extends BaseController
         } else {
             return $this->fail(300);
         }
+    }
+
+    /**
+     * 根据点赞数来排名
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getHotNote(Request $request)
+    {
+        $page = $request->input('page', 1);
+        $limit = $request->input('limit', 10);
+        $offset = ($page - 1) * $limit;
+        $noteList = DB::select("SELECT count(likes.id) as num,note.* FROM `likes`,note where likes.note_id =note.id GROUP BY likes.note_id order by num desc limit :offset,:limit", ['limit' => $limit, 'offset' => $offset]);
+        foreach ($noteList as $note){
+            $note->forwardNum = ForwardService::getForwardNum($note->id);
+        }
+
+        return $this->success($noteList);
     }
 
 
