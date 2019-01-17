@@ -12,7 +12,8 @@
 	top: 14px;
 	left: 24px;
 	font-size: 25px;
-
+    width: 30px;
+    height: 30px;
 }
 .museumImg{
 	    width: 120px;
@@ -107,7 +108,7 @@
 	width: 100%;
 	height: auto;
 	position: relative;
-	margin-top: 80px;
+	
 }
 .contentNav>div{
 	width: 50%;
@@ -199,5 +200,9 @@
     display: block;
     float: left;
     font-size: 17px;
+        margin-top: 10px;
     /*background: blueviolet*/
+}
+.contentNum{
+	font-size: 12px!important;
 }
