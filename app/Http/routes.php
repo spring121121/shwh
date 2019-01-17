@@ -27,6 +27,7 @@ Route::any('sameHqSearch','AipSearchController@sameHqSearch');//相同图片检�
 
 Route::get('getHotNote','NoteController@getHotNote');
 
+
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
  */
@@ -182,10 +183,11 @@ Route::get('wap/index', function () {//首页
 Route::get('wap/mech', function () {//文创机构展示页
     return view('indexDetail/mechanism');
 });
+
 Route::get('wap/museumed', function () {//博物馆展示
     return view('indexDetail/museum');
 });
-Route::get('wap/factory123', function () {//工厂展示页
+Route::get('wap/factory', function () {//工厂展示页
     return view('indexDetail/factory');
 });
 Route::get('wap/design', function () {//设计展示
@@ -209,7 +211,7 @@ Route::get('wap/musefen', function () {//博物馆分类
 Route::get('wap/musegoods', function () {//博物馆商品
     return view('indexDetail/museumDetail/museumGoods');
 });
-Route::get('wap/musename', function () {//博物馆名称
+Route::get('wap/musename', function () {//博物馆商品
     return view('indexDetail/museumDetail/museumName');
 });
 

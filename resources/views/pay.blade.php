@@ -17,8 +17,13 @@
                     paySign:"{{$prepay['paySign']}}"
                 },
                 function(res){
-                    console.log(res)
-                    WeixinJSBridge.call('closeWindow');
+                    // alert(JSON.stringify(res));
+                    if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                        alert('支付成功');
+                    }else{
+                        alert('支付失败');
+                    }
+                    // WeixinJSBridge.call('closeWindow');
                     //document.addEventListener('WeixinJSBridgeReady', function(){ WeixinJSBridge.call('closeWindow'); }, false);
                 }
             );
