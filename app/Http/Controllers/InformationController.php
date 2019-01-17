@@ -95,7 +95,7 @@ class InformationController extends BaseController
     }
 
     /**
-     * 笔记评论列表
+     * 笔记评论消息列表
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
