@@ -108,7 +108,7 @@
 			nameList+='<h4>'
 			nameList+='<span><img src="/images/a3.jpg"/></span>'
 			nameList+='<p>'
-			nameList+='<i>152222</i>'
+			nameList+='<i class="contentNum">152222</i>'
 			nameList+='<em onclick="addcolor()" class="iconfont icon-dianzan"></em>'
 			nameList+='</p>'
 			nameList+='</h4>'

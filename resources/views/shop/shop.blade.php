@@ -46,28 +46,28 @@
                 <div class="flash-sale-swiper">
                     <div class="swiper-container flash-swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide flash-sale-cont">
+                            <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
                                 <div class="limit-shop-img">
                                     <img src="/images/collection-img1.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
                             </div>
-                            <div class="swiper-slide flash-sale-cont">
+                            <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
                                 <div class="limit-shop-img">
                                     <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
                             </div>
-                            <div class="swiper-slide flash-sale-cont">
+                            <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
                                 <div class="limit-shop-img">
                                     <img src="/images/collection-img1.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
                             </div>
-                            <div class="swiper-slide flash-sale-cont">
+                            <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
                                 <div class="limit-shop-img">
                                     <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img">
                                 </div>
@@ -151,6 +151,11 @@
                 slidesPerView : 6,
                 spaceBetween : 10
             });
+            
+            
         });
+        function handleTodetail(){
+            	window.location.href = "/wap/shop_detail";
+            }
     </script>
 </html>
