@@ -217,6 +217,9 @@ Route::get('wap/musename', function () {//博物馆商品
 Route::get('wap/shop', function () {//商城首页
     return view('shop/shop');
 });
+Route::get('wap/shop_share', function () {//商品分销
+    return view('shop/shop-share');
+});
 Route::get('wap/shop_detail', function () {//商品详情
     return view('shop/shop-details');
 });

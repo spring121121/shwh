@@ -8,7 +8,6 @@
         <title>首页-商城首页</title>
 
         <link rel="stylesheet" href="/styles/swiper.min.css">
-        <link rel="stylesheet" href="/styles/common.css">
         <link rel="stylesheet" href="/styles/shop-header.css">
         <link rel="stylesheet" href="/styles/shop.css">
     </head>
