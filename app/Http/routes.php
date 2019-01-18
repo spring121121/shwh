@@ -228,7 +228,7 @@ Route::get('wap/shop_share', function () {//商品分销
 Route::get('wap/shop_detail', function () {//商品详情
     return view('shop/shop-details');
 });
-Route::get('wap/shop_cart', function () {//商品详情
+Route::get('wap/shop_cart', function () {//购物车
     return view('shop/shop-cart');
 });
 

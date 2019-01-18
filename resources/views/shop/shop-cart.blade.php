@@ -16,7 +16,9 @@
 		<div class="index-header header">
 			<div class="common-header-left" onclick="handleToshop()"><img src="/images/fanhui.jpg"/></div>
 			<p class="zc_cartitle">购物车</p>
-			<div class="zc_right" ><img  src="/images/shop/shop-cart.png"/></div>
+			<div class="zc_right">
+				<p>管理</p>
+			</div>
 		</div>
 		<div class="zc_carGoods">
 			<div class="zc_carName">
@@ -129,11 +131,22 @@
 		</div>
 		<!--购物车底部-->
 		<div class="zc_cartbottom">
-			<input class="zc-checkbox" type="checkbox" />
-			<p>全选</p>
-			<p class="zc_cartTotal">合计<span>￥0</span></p>
-			<div class="zc_cart_Count">结算<span>(0)</span></div>
+			
+			<div class="zc_cartdiv" id="zc_cartdiv2">
+				<input class="zc-checkbox" type="checkbox" />
+				<p>全选</p>
+				<div class="zc_cart_Count ml100">取消</div>
+				<div class="zc_cart_Count">删除<span>(0)</span></div>
+			</div>
+			
+			<div class="zc_cartdiv" id="zc_cartdiv1">
+				<input class="zc-checkbox" type="checkbox" />
+				<p>全选</p>
+				<p class="zc_cartTotal">合计<span>￥0</span></p>
+				<div class="zc_cart_Count">结算<span>(0)</span></div>
+			</div>
 		</div>
+			
 	</body>
 	<script type="text/javascript" src="/js/jquery-1.11.0.js" ></script>
 	<script>
@@ -159,6 +172,18 @@
 				$(this).next().text(n)
 			}
 			console.log($(this).next().text())
+			})
+			
+			$(".zc_right>p").click(function(){
+				if($(this).text()=="管理"){
+					$(this).text("完成")
+					$("#zc_cartdiv1").hide();
+					$("#zc_cartdiv2").show();
+				}else{
+					$(this).text("管理");
+					$("#zc_cartdiv1").show();
+					$("#zc_cartdiv2").hide();
+				}
 			})
 		})
 
