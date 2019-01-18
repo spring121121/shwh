@@ -8,6 +8,7 @@
         <title>首页-商城首页</title>
 
         <link rel="stylesheet" href="/styles/swiper.min.css">
+        <link rel="stylesheet" href="/styles/common.css">
         <link rel="stylesheet" href="/styles/shop-header.css">
         <link rel="stylesheet" href="/styles/shop.css">
     </head>
@@ -17,7 +18,7 @@
             <div class="common-header-right"></div>
             <div class="search-box">
                 <div class="ipt-icon"></div>
-                <div class="ipt-search-box"><input type="text" placeholder="输入商品名称"></div>
+                <div class="ipt-search-box"><input type="text" placeholder="输入搜索内容"></div>
             </div>
         </div>
         <div class="content-box">
@@ -35,11 +36,11 @@
                 <h2><em>限时抢购</em></h2>
                 <p>
                     <strong class="left">9:00场</strong>
-                    <span class="right">18</span>
+                    <span id="count-down-s" class="right">18</span>
                     <strong class="right">:</strong>
-                    <span class="right">20</span>
+                    <span id="count-down-m" class="right">20</span>
                     <strong class="right">:</strong>
-                    <span class="right">01</span>
+                    <span id="count-down-h" class="right">01</span>
                     <strong class="right flash-tip">距离开始还有</strong>
                 </p>
                 <div class="flash-sale-swiper">
@@ -191,6 +192,7 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
+            countDown(1800)
             var swiper_shop = new Swiper('.shop-index', {
                 autoplay:3000,
                 paginationClickable: true,
@@ -226,9 +228,40 @@
                 $(".classify-display ul").eq($(this).attr("id")).siblings().css("display","none")
             });
             $(".shop-img-box").css("height",$(".shop-img-box").width()+"px");
+            $(".distribution-icon").on("click",function () {
+                window.location.href = "/wap/shop_share";
+            });
         });
         function handleTodetail(){
             window.location.href = "/wap/shop_detail";
+        }
+        function countDown(times){
+            var timer=null;
+            timer=setInterval(function(){
+                var day=0,
+                    hour=0,
+                    minute=0,
+                    second=0;//时间默认值
+                if(times > 0){
+                    day = Math.floor(times / (60 * 60 * 24));
+                    hour = Math.floor(times / (60 * 60)) - (day * 24);
+                    minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
+                    second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                }
+                if (day <= 9) day = '0' + day;
+                if (hour <= 9) hour = '0' + hour;
+                if (minute <= 9) minute = '0' + minute;
+                if (second <= 9) second = '0' + second;
+
+                //console.log(day+"天:"+hour+"小时："+minute+"分钟："+second+"秒");
+                $("#count-down-h").html(hour);
+                $("#count-down-m").html(minute);
+                $("#count-down-s").html(second);
+                times--;
+            },1000);
+            if(times<=0){
+                clearInterval(timer);
+            }
         }
     </script>
 </html>

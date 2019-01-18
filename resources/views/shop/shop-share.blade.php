@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="index-header header">
-            <div class="common-header-left share-title-text">取消</div>
+            <div class="common-header-left share-title-text"><a href="/wap/shop">取消</a></div>
             <div class="common-header-right share-title-text">确定</div>
             <h3>上货</h3>
         </div>
