@@ -32,15 +32,40 @@ class FansController extends BaseController
         return $this->success(['count'=>$fanCount]);
     }
 
+
+
     /**
      * 关注
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function focus(Request $request){
-        $beuid = UserService::getUid($request);
-        $uid = $request->input('uid');
-        $result = FocusModel::create(['uid'=>$uid,'beuid'=>$beuid]);
+        $beuid = $request->input('uid');
+        $uid = UserService::getUid($request);
+        //先查下表里是否存在某个用户关注过该用户
+        $re = FocusModel::where('uid','=',$uid)->where('beuid','=',$beuid)->withTrashed()->first();
+        if(!empty($re)){
+            $result = FocusModel::where('id','=',$re->id)->restore();//恢复软删除
+        }else{
+            $result = FocusModel::create(['uid'=>$uid,'beuid'=>$beuid]);
+        }
+
+        if ($result) {
+            return $this->success();
+        } else {
+            return $this->fail('300');
+        }
+    }
+    /**
+     * 取消关注
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function cancelFocus(Request $request){
+        $uid = UserService::getUid($request);
+        $beuid = $request->input('uid');
+
+        $result = FocusModel::where('uid','=',$uid)->where('beuid','=',$beuid)->delete();//软删除
         if ($result) {
             return $this->success();
         } else {

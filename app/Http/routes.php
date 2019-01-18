@@ -26,7 +26,9 @@ Route::any('sameHqAdd','AipSearchController@sameHqAdd');//相同图片检索库�
 Route::any('sameHqSearch','AipSearchController@sameHqSearch');//相同图片检索
 
 Route::get('getHotNote','NoteController@getHotNote');
+Route::get('getNoteInfoByNoteId/{noteId}','NoteController@getNoteInfoByNoteId');//根据笔记ID获取笔记详情
 
+Route::get('wap/noteDetail/{noteId}','NoteController@noteDetail');//笔记详情
 
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
@@ -73,6 +75,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
 
     /*****************FansController关注，粉丝接口********************************/
     Route::post('focus','FansController@focus');//关注
+    Route::post('cancelFocus','FansController@cancelFocus');//关注
     Route::get('myFans','FansController@myFans');//我的粉丝数量
     Route::get('myFansList','FansController@myFansList');//我的粉丝列表
     Route::get('beforeFansList','FansController@beforeFansList');//前几天我的粉丝列表
@@ -118,6 +121,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('createRecord','ShopController@createRecord');//新增浏览记录信息
     Route::get('browseCount','ShopController@browseCount');//浏览记录统计数量
 
+    Route::post('forwardNote','ForwardController@forwardNote');//转发
 
     /*****************CashController申请金额接口********************************/
     Route::post('applyCash','CashController@applyCash');//申请提现
@@ -185,8 +189,8 @@ Route::get('wap/mech', function () {//文创机构展示页
 Route::get('wap/museumed', function () {//博物馆展示
     return view('indexDetail/museum');
 });
-
 Route::get('wap/factoryShow', function () {//工厂展示页
+
     return view('indexDetail/factory');
 });
 Route::get('wap/design', function () {//设计展示
@@ -213,6 +217,7 @@ Route::get('wap/musegoods', function () {//博物馆商品
 Route::get('wap/musename', function () {//博物馆商品
     return view('indexDetail/museumDetail/museumName');
 });
+
 
 Route::get('wap/shop', function () {//商城首页
     return view('shop/shop');
@@ -246,9 +251,10 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('wap/reply_comment', function () {//回复评论
         return view('personal/reply-comment');
     });
-    Route::get('wap/follow_interest', function () {//关注页面
+    Route::get('wap/follow_interest',function () {//关注页面
         return view('personal/follow-interest');
     });
+
     Route::get('wap/apply_certification', function () {//申请认证
         return view('personal/apply-certification');
     });

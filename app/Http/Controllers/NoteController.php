@@ -223,7 +223,7 @@ class NoteController extends BaseController
         $page = $request->input('page', 1);
         $limit = $request->input('limit', 10);
         $offset = ($page - 1) * $limit;
-        $noteList = DB::select("SELECT count(likes.id) as num,note.* FROM `likes`,note where likes.note_id =note.id GROUP BY likes.note_id order by num desc limit :offset,:limit", ['limit' => $limit, 'offset' => $offset]);
+        $noteList = DB::select("SELECT count(likes.id) as likeNum,note.* FROM `likes`,note where likes.note_id =note.id GROUP BY likes.note_id order by likeNum desc limit :offset,:limit", ['limit' => $limit, 'offset' => $offset]);
         foreach ($noteList as $note){
             $note->forwardNum = ForwardService::getForwardNum($note->id);
         }
@@ -329,5 +329,39 @@ class NoteController extends BaseController
             ->get()->toArray();
         return $this->success($noteList);
     }
+
+    /*
+     * 根据笔记ID获取笔记详情
+     * @param $noteId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getNoteInfoByNoteId($noteId){
+        $noteModel = new NoteModel();
+        $note = $noteModel::where("id",'=',$noteId);
+        $note->forwardNum = ForwardService::getForwardNum($note->id);
+        $note->likeNum = LikesService::getLikesNum($note->id);
+        $note->commentNum = CommentService::getCommentNum($note->id);
+        return $this->success($note);
+    }
+
+    /**
+     * 笔记详情页面
+     */
+    public function noteDetail(Request $request,$noteId){
+        $noteModel = new NoteModel();
+        $note = $noteModel::find($noteId)->toArray();
+        $userInfo = UserService::getUserInfoByUid($request,$note['uid']);
+        $note['photo']= $userInfo['photo'];
+        $note['nickname']= $userInfo['nickname'];
+        $note['grade']= $userInfo['grade'];
+        $note['is_foucus']= $userInfo['is_foucus'];
+
+//        $note->forwardNum = ForwardService::getForwardNum($note['id']);
+//        $note->likeNum = LikesService::getLikesNum($note['id']);
+//        $note->commentNum = CommentService::getCommentNum($note['id']);
+
+        return view('indexDetail/noteDetail',['noteDetail'=>$note]);
+    }
+
 
 }

@@ -69,19 +69,35 @@ class UserService
     }
 
     //增加积分
-    public static function addScore($request,$type,$score){
+    public static function addScore($request,$type,$score)
+    {
         $data = [];
         $uid = self::getUid($request);
         $data['uid'] = $uid;
         $data['type'] = $type;
         $data['score'] = $score;
         $res = ScoreModel::create($data);
-        $result = UserModel::where(['id'=>$uid,'status'=>UserModel::NORMAL_STATUS])->update(['score'=>$score]);
-        if($res && $result){
+        $result = UserModel::where(['id' => $uid, 'status' => UserModel::NORMAL_STATUS])->update(['score' => $score]);
+        if ($res && $result) {
             return true;
-        }else{
+        } else {
             return false;
         }
+    }
+    /**
+     * 根据用户id获取用户信息
+     * @param $request
+     * @param $id
+     * @return mixed
+     */
+    public static function getUserInfoByUid($request,$id){
+        $userModel = new UserModel();
+        $result = $userModel::find($id);
+        $result->grade = UserService::getGrade($result->score);
+        //查询我是否关注过这个用户
+        $isFocus = UserService::judgeIsFocusUser($request,$id);
+        $result->is_foucus = $isFocus;
+        return $result->toArray();
     }
 }
 
