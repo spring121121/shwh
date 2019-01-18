@@ -58,17 +58,14 @@ class UserController extends BaseController
 
     /**
      * 根据用户id查询用户信息
+     * @param $request
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function getUserInfo(Request $request, $id)
     {
-        $userModel = new UserModel();
-        $result = $userModel::find($id);
-        $result->grade = UserService::getGrade($result->score);
-        //查询我是否关注过这个用户
-        $isFoucus = UserService::judgeIsFocusUser($request,$id);
-        $result->is_foucus = $isFoucus;
+        $result = UserService::getUserInfoByUid($request, $id);
+
         return $this->success($result);
     }
 
@@ -83,11 +80,11 @@ class UserController extends BaseController
         $userModel = new UserModel();
         $result = $userModel::find($id);
         $result->grade = UserService::getGrade($result->score);
-        $store_status = StoreModel::where('uid',$id)->select('status','id')->first();
-        if($store_status){
+        $store_status = StoreModel::where('uid', $id)->select('status', 'id')->first();
+        if ($store_status) {
             $result->store_status = $store_status->toArray()['status'];
             $result->store_id = $store_status->toArray()['id'];
-        }else{
+        } else {
             $result->store_id = StoreModel::STORE_ID;
             $result->store_status = StoreModel::STORE_STATUS;
         }

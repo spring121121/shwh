@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\models\ForwardModel;
+use App\User;
 
 class ForwardService
 {
@@ -17,11 +18,20 @@ class ForwardService
     {
         self::getForwardModel();
 
-        $fo = new ForwardModel();
-
-
         return self::$forwardModel->where('note_id', '=', $noteId)->count();
 
     }
+    //转发
+    public function forwardNote($request,$beuid,$noteId){
+        $uid = UserService::getUid($request);
+        self::getForwardModel();
+        self::$forwardModel->uid = $uid;
+        self::$forwardModel->beuid = $beuid;
+        self::$forwardModel->note_id = $noteId;
+        return self::$forwardModel->save();
+    }
+
+
+
 }
 

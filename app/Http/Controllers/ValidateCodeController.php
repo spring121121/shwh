@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use ValidateCode;
 use App\Http\Services\ValidateCodeService;
 use Illuminate\Support\Facades\Cache;
+use Carbon\Carbon;
+
 
 class ValidateCodeController extends BaseController
 {
@@ -24,9 +26,11 @@ class ValidateCodeController extends BaseController
      */
     public function getCodeImg(Request $request)
     {
+
         $ip = $request->getClientIp();
         if (!Cache::has($ip)) {
-            Cache::put($ip,0,ValidateCodeService::CODE_TIME);//缓存有效期5分钟
+            $expiresAt = Carbon::now()->addMinutes(ValidateCodeService::CODE_TIME);
+            Cache::put($ip,0,$expiresAt);//缓存有效期5分钟
         }
 
         //1.先检测一下该IP是否是频繁获取
