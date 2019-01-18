@@ -18,7 +18,7 @@
             <div class="common-header-right"></div>
             <div class="search-box">
                 <div class="ipt-icon"></div>
-                <div class="ipt-search-box"><input type="text" placeholder="输入商品名称"></div>
+                <div class="ipt-search-box"><input type="text" placeholder="输入搜索内容"></div>
             </div>
         </div>
         <div class="content-box">
@@ -36,11 +36,11 @@
                 <h2><em>限时抢购</em></h2>
                 <p>
                     <strong class="left">9:00场</strong>
-                    <span class="right">18</span>
+                    <span id="count-down-s" class="right">18</span>
                     <strong class="right">:</strong>
-                    <span class="right">20</span>
+                    <span id="count-down-m" class="right">20</span>
                     <strong class="right">:</strong>
-                    <span class="right">01</span>
+                    <span id="count-down-h" class="right">01</span>
                     <strong class="right flash-tip">距离开始还有</strong>
                 </p>
                 <div class="flash-sale-swiper">
@@ -48,7 +48,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
                                 <div class="limit-shop-img">
-                                    <img src="/images/collection-img1.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
                                 <div class="limit-shop-img">
-                                    <img src="/images/collection-img1.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
@@ -83,41 +83,101 @@
             <div class="classify-list">
                 <div class="swiper-container classify-swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span>全部</span></div>
-                        <div class="swiper-slide"><span>饰品</span></div>
-                        <div class="swiper-slide"><span>服饰</span></div>
-                        <div class="swiper-slide"><span>文具</span></div>
-                        <div class="swiper-slide"><span>书画</span></div>
-                        <div class="swiper-slide"><span>瓷器</span></div>
-                        <div class="swiper-slide"><span>家具</span></div>
+                        <div class="swiper-slide" id="0"><span>全部</span></div>
+                        <div class="swiper-slide" id="1"><span>饰品</span></div>
+                        <div class="swiper-slide" id="2"><span>服饰</span></div>
+                        <div class="swiper-slide" id="3"><span>文具</span></div>
+                        <div class="swiper-slide" id="4"><span>书画</span></div>
+                        <div class="swiper-slide" id="5"><span>瓷器</span></div>
+                        <div class="swiper-slide" id="6"><span>家具</span></div>
                     </div>
                 </div>
             </div>
             <div class="classify-display">
-                <ul>
+                <ul class="classify-all">
                     <li>
-                        <div class="shop-img-box">
-                            <img src="/images/collection-img1.jpg" class="common-img">
+                        <div class="shop-list-box">
+                            <div class="shop-img-box">
+                                <img src="/images/collection-img2.jpg" class="common-img">
+                            </div>
+                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                            <h3><i></i><span>用户名称</span></h3>
+                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
                         </div>
-                        <p><span>商品名称</span><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                        <h3><i></i><span>用户名称</span></h3>
-                        <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
                     </li>
                     <li>
-                        <div class="shop-img-box">
-                            <img src="/images/collection-img1.jpg" class="common-img">
+                        <div class="shop-list-box">
+                            <div class="shop-img-box">
+                                <img src="/images/collection-img2.jpg" class="common-img">
+                            </div>
+                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                            <h3><i></i><span>用户名称</span></h3>
+                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
                         </div>
-                        <p><span>商品名称</span><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                        <h3><i></i><span>用户名称</span></h3>
-                        <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
                     </li>
                     <li>
-                        <div class="shop-img-box">
-                            <img src="/images/collection-img1.jpg" class="common-img">
+                        <div class="shop-list-box">
+                            <div class="shop-img-box">
+                                <img src="/images/collection-img2.jpg" class="common-img">
+                            </div>
+                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                            <h3><i></i><span>用户名称</span></h3>
+                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
                         </div>
-                        <p><span>商品名称</span><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                        <h3><i></i><span>用户名称</span></h3>
-                        <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
+                    </li>
+                    <li>
+                        <div class="shop-list-box">
+                            <div class="shop-img-box">
+                                <img src="/images/collection-img2.jpg" class="common-img">
+                            </div>
+                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                            <h3><i></i><span>用户名称</span></h3>
+                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
+                        </div>
+                    </li>
+                </ul>
+
+                {{--饰品列表--}}
+                <ul class="classify-ornament">
+                    <li>
+                        <div class="shop-list-box">
+                            <div class="shop-img-box">
+                                <img src="/images/collection-img1.jpg" class="common-img">
+                            </div>
+                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                            <h3><i></i><span>用户名称</span></h3>
+                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="shop-list-box">
+                            <div class="shop-img-box">
+                                <img src="/images/collection-img1.jpg" class="common-img">
+                            </div>
+                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                            <h3><i></i><span>用户名称</span></h3>
+                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="shop-list-box">
+                            <div class="shop-img-box">
+                                <img src="/images/collection-img1.jpg" class="common-img">
+                            </div>
+                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                            <h3><i></i><span>用户名称</span></h3>
+                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="shop-list-box">
+                            <div class="shop-img-box">
+                                <img src="/images/collection-img1.jpg" class="common-img">
+                            </div>
+                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
+                            <h3><i></i><span>用户名称</span></h3>
+                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -132,6 +192,7 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
+            countDown(1800)
             var swiper_shop = new Swiper('.shop-index', {
                 autoplay:3000,
                 paginationClickable: true,
@@ -145,17 +206,62 @@
                 paginationClickable: true,
                 loop: true
             });
-            console.log($(".limit-shop-img").width())
             $(".limit-shop-img").css("height",$(".limit-shop-img").width()+"px");
             var swiper_classify = new Swiper('.classify-swiper', {
                 slidesPerView : 6,
                 spaceBetween : 10
             });
-            
-            
+
+            for (var i=0;i<$(".classify-display li").length;i++){
+                if (i%2 == 0){
+                    $(".shop-list-box").eq(i).css({"margin-left":"unset","margin-right":"5px"})
+                }
+            }
+
+            // 点击分类显示相应内容
+            $(".classify-list span").eq(0).css("border-bottom","1px solid #ffaa00");
+            $(".classify-all").css("display","flex");
+            $(".classify-list").on("click",".swiper-slide",function () {
+                $(this).find("span").css("border-bottom","1px solid #ffaa00");
+                $(this).siblings().find("span").css("border-bottom","none");
+                $(".classify-display ul").eq($(this).attr("id")).css("display","flex")
+                $(".classify-display ul").eq($(this).attr("id")).siblings().css("display","none")
+            });
+            $(".shop-img-box").css("height",$(".shop-img-box").width()+"px");
+            $(".distribution-icon").on("click",function () {
+                window.location.href = "/wap/shop_share";
+            });
         });
         function handleTodetail(){
-            	window.location.href = "/wap/shop_detail";
+            window.location.href = "/wap/shop_detail";
+        }
+        function countDown(times){
+            var timer=null;
+            timer=setInterval(function(){
+                var day=0,
+                    hour=0,
+                    minute=0,
+                    second=0;//时间默认值
+                if(times > 0){
+                    day = Math.floor(times / (60 * 60 * 24));
+                    hour = Math.floor(times / (60 * 60)) - (day * 24);
+                    minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
+                    second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                }
+                if (day <= 9) day = '0' + day;
+                if (hour <= 9) hour = '0' + hour;
+                if (minute <= 9) minute = '0' + minute;
+                if (second <= 9) second = '0' + second;
+
+                //console.log(day+"天:"+hour+"小时："+minute+"分钟："+second+"秒");
+                $("#count-down-h").html(hour);
+                $("#count-down-m").html(minute);
+                $("#count-down-s").html(second);
+                times--;
+            },1000);
+            if(times<=0){
+                clearInterval(timer);
             }
+        }
     </script>
 </html>

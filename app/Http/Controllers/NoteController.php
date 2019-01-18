@@ -266,7 +266,7 @@ class NoteController extends BaseController
     public function likeNote(Request $request){
         $data = [];
         $uid = UserService::getUid($request);
-        $note_id = $request->get('note_id');
+        $note_id = $request->input('note_id');
         $data['note_id'] = $note_id;
         $rules = [
             'note_id' => 'required|numeric',
@@ -296,7 +296,7 @@ class NoteController extends BaseController
     public function forwardNote(Request $request){
         $data = [];
         $uid = UserService::getUid($request);
-        $note_id = $request->get('note_id');
+        $note_id = $request->input('note_id');
         $data['note_id'] = $note_id;
         $rules = [
             'note_id' => 'required|numeric',
@@ -316,6 +316,18 @@ class NoteController extends BaseController
         }else{
             return $this->fail('300');
         }
+    }
+
+    /**
+     * 获取某商品下笔记列表
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getGoodsNoteList(Request $request){
+        $goods_id = $request->input('goods_id');
+        $noteList = NoteModel::where(['goods_id'=>$goods_id,'status'=>NoteModel::CHECK_STATUS])
+            ->get()->toArray();
+        return $this->success($noteList);
     }
 
 }

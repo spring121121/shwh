@@ -19,6 +19,30 @@ use App\Http\Services\CommentService;
 
 class CollectController extends BaseController
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function collectNote(Request $request){
+        $data = [];
+        $uid = UserService::getUid($request);
+        $data['note_id'] = $request->input('note_id');
+        $rules = [
+            'note_id' => 'required|numeric',
+        ];
+        $validator = Validator::make($data,$rules,config('message.collect'));
+        if($validator->fails()){
+            return $this->fail(50001,$validator->errors()->all());
+        }
+        $data['uid'] = $uid;
+        $res = CollectModel::create($data);
+        if($res){
+            return $this->success();
+        }else{
+            return $this->fail('300');
+        }
+    }
+
     public function getMyCollectNote(Request $request)
     {
         $uid = UserService::getUid($request);

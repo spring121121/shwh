@@ -27,6 +27,7 @@ Route::any('sameHqSearch','AipSearchController@sameHqSearch');//相同图片检�
 
 Route::get('getHotNote','NoteController@getHotNote');
 
+
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
  */
@@ -59,7 +60,8 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('likeNote','NoteController@likeNote');//笔记点赞
     Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
     Route::get('getMyLikeNote','LikeController@getMyLikeNote');//获取我点赞的笔记
-
+    Route::post('collectNote','CollectController@collectNote');//收藏笔记
+    Route::get('getGoodsNoteList','NoteController@getGoodsNoteList');//获取某商品下笔记列表
 
     /*****************InformationController消息接口********************************/
     Route::post('pubSysMessage','InformationController@pubSysMessage');//管理员发布系统消息
@@ -183,7 +185,8 @@ Route::get('wap/mech', function () {//文创机构展示页
 Route::get('wap/museumed', function () {//博物馆展示
     return view('indexDetail/museum');
 });
-Route::get('wap/factory', function () {//工厂展示页
+
+Route::get('wap/factoryShow', function () {//工厂展示页
     return view('indexDetail/factory');
 });
 Route::get('wap/design', function () {//设计展示
@@ -213,6 +216,9 @@ Route::get('wap/musename', function () {//博物馆商品
 
 Route::get('wap/shop', function () {//商城首页
     return view('shop/shop');
+});
+Route::get('wap/shop_share', function () {//商品分销
+    return view('shop/shop-share');
 });
 Route::get('wap/shop_detail', function () {//商品详情
     return view('shop/shop-details');

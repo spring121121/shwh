@@ -58,9 +58,9 @@ class WxAuthController extends BaseController {
 
             $user_exist = UserModel::where("openid",$openid)->get()->toArray();
             if($user_exist) {
-                $data_all['uid'] = $user_exist[0]['id'];
+                $data_all['id'] = $user_exist[0]['id'];
                 $data_all['grade_name'] = UserService::getGrade($user_exist[0]['score']);
-                $store_id = StoreModel::where('uid', $data_all['uid'])->select('id', 'status')->first();
+                $store_id = StoreModel::where('uid', $data_all['id'])->select('id', 'status')->first();
                 if ($store_id) {
                     $data_all['store_id'] = $store_id['id'];
                     $data_all['store_status'] = $store_id['status'];
@@ -71,13 +71,13 @@ class WxAuthController extends BaseController {
 
             }else {
                 $info = UserModel::create(['openid'=>$openid]);
-                $data_all['uid'] = $info->id;
+                $data_all['id'] = $info->id;
 //                $user = new UserModel();
 //                $user->openid = $openid;
 //                $user->save();
 //                $data_all['uid'] = $user->id;
                 $data_all['grade_name'] = UserService::getGrade(0);
-                $store_id = StoreModel::where('uid', $data_all['uid'])->select('id', 'status')->first();
+                $store_id = StoreModel::where('uid', $data_all['id'])->select('id', 'status')->first();
                 if ($store_id) {
                     $data_all['store_id'] = $store_id['id'];
                     $data_all['store_status'] = $store_id['status'];
