@@ -187,5 +187,8 @@
 			})
 		})
 
+      function handleToshop(){
+			window.location.href = "/wap/shop_detail";
+		}
 	</script>
 </html>
