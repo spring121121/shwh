@@ -16,7 +16,7 @@
 	<body>
 		<div class="index-header header">
 			<div class="common-header-left" onclick="handleToshop()"><img src="/images/fanhui.jpg"/></div>
-			<div class="zc_right" ><img  src="/images/shop/shop-cart.png"/></div>
+			<div class="zc_right" onclick="handletoCart()"><img  src="/images/shop/shop-cart.png"/></div>
 		</div>
 		<div class="content-box">
 			<div class="swiper-box">
@@ -117,6 +117,9 @@
 		
 		function handleToshop(){
 			window.location.href = "/wap/shop";
+		}
+		function handletoCart(){
+			window.location.href = "/wap/shop_cart";
 		}
 	</script>
 

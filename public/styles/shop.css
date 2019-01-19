@@ -332,12 +332,16 @@
    background: none!important;
 }
 .zc_right{
-	 width: 25px;
+	width: 34px;
     height: 25px;
     float: right;
     margin-right: 20px;
-    margin-top: 12.5px;
-   
+    margin-top: 20px;
+    position: relative;
+}
+.zc_right>p{
+	position: absolute;
+	top: 0;
 }
   /*购物车样式*/ 
 .zc_cartitle{
@@ -493,7 +497,7 @@
 	border-top: 1px solid #c2c2c2;
 	line-height: 40px;
 }
-.zc_cartbottom>input{
+.zc_cartdiv>input{
 	display:block;
 	margin: 10px 0 0 10px;
 }
@@ -512,3 +516,25 @@
 .zc_cartTotal{
 	margin-left: 100px;
 }
+.zc_cartdiv{
+		display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	height: 40px;
+	background: #eeeeee;
+	position: fixed;
+	bottom: 0;
+	z-index: 66;
+	border-top: 1px solid #c2c2c2;
+	line-height: 40px;
+	position: absolute;
+	top: 0;
+}
+.ml100{
+	margin-left: 100px;
+}
+
+/*#zc_cartdiv2{
+	display: none;
+}*/
