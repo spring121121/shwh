@@ -162,9 +162,10 @@ Route::post('notify','WxpayController@notify');//支付回调
 Route::get('refund','WxpayController@weixinRefund');//支付
 Route::post('refundNotify','WxpayController@refundNotify');//支付回调
 
-Route::get('wx/auth','WxAuthController@auth');//微信授权
-Route::get('wx/ad','WxAuthController@getAddress');//微信授权
-Route::get('wx/share','WxAuthController@share');//微信授权
+Route::get('wx/auth','WxAuthController@auth');//微信授权登录
+Route::get('wx/ad','WxAuthController@getAddress');//获取微信共享地址
+Route::get('wx/share','WxAuthController@share');//微信分享朋友圈
+Route::get('wx/location','WxAuthController@getLocation');//微信分享朋友圈
 
 Route::get('wap/factoryShow', 'FactoryController@fatoryList');
 

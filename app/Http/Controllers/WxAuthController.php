@@ -36,9 +36,16 @@ class WxAuthController extends BaseController {
     }
 
     public function getAddress() {
+        $jssdk = new Jssdk("wx1dc64acc9bd9eb09","18030345ebbbc089f628a5eb1db5cda3");
+        $data = $jssdk->getSignPackage();
+        return view('address',['addrSign'=>$data]);
 
-//        return view('address',['addrSign'=>$params]);
+    }
 
+    public function getLocation() {
+        $jssdk = new Jssdk("wx1dc64acc9bd9eb09","18030345ebbbc089f628a5eb1db5cda3");
+        $data = $jssdk->getSignPackage();
+        return view('location',['data'=>$data]);
     }
 
     /**
