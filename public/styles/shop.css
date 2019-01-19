@@ -7,7 +7,7 @@
 }
 .flash-sale,.classify-list{
     text-align: center;
-    margin: 0 20px;
+    margin: 0 10px;
 }
 .flash-sale h2{
     margin: 20px 0;
@@ -56,7 +56,7 @@
     line-height: 25px;
 }
 .classify-display{
-    margin: 10px 20px 0;
+    margin: 10px 5px 0;
 }
 .classify-display ul{
     display: none;
@@ -65,14 +65,14 @@
 }
 .classify-display li{
     width: 50%;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .shop-list-box{
     box-shadow: darkgrey 1px 1px 0 0;
     border-radius: 10px;
     overflow: hidden;
     background: #eee;
-    margin-left: 5px;
+    margin-left: 2.5px;
 }
 .shop-list-box p,.shop-cont-right p{
     font-size: 14px;

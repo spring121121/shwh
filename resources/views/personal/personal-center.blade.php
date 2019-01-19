@@ -78,13 +78,13 @@
                 {{--</div>--}}
                 <div class="list-cont">
                     <a href="/wap/my_order">
-                        <span>我的订单</span>
+                        <span>订单详情</span>
                         <i></i>
                     </a>
                 </div>
                 <div class="list-cont">
                     <a href="/wap/my_address">
-                        <span>我的收货地址</span>
+                        <span>收货地址</span>
                         <i></i>
                     </a>
                 </div>
@@ -134,7 +134,8 @@
             $.ajax({
                 url : "/getMyUserInfo",	//请求url
                 type : "get",	//请求类型  post|get
-                dataType : "json",  //返回数据的 类型 text|json|html--
+
+                ",  //返回数据的 类型 text|json|html--
                 data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
                     if (data.status){

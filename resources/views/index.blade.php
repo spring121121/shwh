@@ -42,18 +42,16 @@
             <div>首页</div>
             <div id="recommend" style="display:none">
                 <ul>
-                    <li><a href="#">
-
-                        </a></li>
+                    <li><a href="javascript:void(0);"></a></li>
                 </ul>
             </div>
         </div>
         <div id="search">
+            <button  onclick="contentList();"></button>
             <div class="search_style1">
                 <input type="text" placeholder="搜索你的内容与关键字" id="searchContent">
                 {{--<span class="iconfont icon-sousuo" onclick="contentList();">22222</span>--}}
             </div>
-            <button  onclick="contentList();">搜索</button>
             <!-- <input type="text" placeholder="提示信息">
             <span></span> -->
         </div>
