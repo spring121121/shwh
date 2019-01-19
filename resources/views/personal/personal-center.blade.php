@@ -21,7 +21,7 @@
                 <div class="edit-personal">
                     <a class="btn-edit" href="/wap/message_center"></a>
                     <h3 id="nickname">输入你的昵称</h3>
-                    <a class="edit-your-data" href="/wap/personal_data"><span>编辑你的资料 <i></i></span></a>
+                    <a class="edit-your-data" href="/wap/personal_data"><span>编辑资料 <i></i></span></a>
                 </div>
                 <ul class="address-grade">
                     <li>
@@ -134,8 +134,7 @@
             $.ajax({
                 url : "/getMyUserInfo",	//请求url
                 type : "get",	//请求类型  post|get
-
-                ",  //返回数据的 类型 text|json|html--
+                dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
                     if (data.status){

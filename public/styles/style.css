@@ -72,7 +72,7 @@ header{
     /*border:1px solid #e0e0e0;*/
     /*border-radius: 35px;*/
     /*position: relative*/
-    margin: 0 60px 0 15px;
+    margin: 0 40px 0 15px;
     height: 100%;
 }
 .search_style1 input{
@@ -90,12 +90,12 @@ header{
     display: block;
     color: #000;
     float: right;
-    width: 60px;
+    width: 40px;
     height: 100%;
     border: none;
     outline: none;
     background: url("../images/serch.png") no-repeat center;
-    background-size: 40%;
+    background-size: 50%;
 }
 .search_style1 span{
     width:35px;
@@ -141,7 +141,8 @@ section{
 #list ul li a{
     width:60px;
     height:60px;
-    /*border-radius: 60px;*/
+    border-radius: 60px;
+    overflow: hidden;
     display: inline-block;
     color: #000;
     font-weight: 900
@@ -158,14 +159,13 @@ section{
     justify-content: space-around;
 }
 #exhibition>div{
-    width:42%;
+    width:47%;
 }
 .exhibition_right{
-    
-    margin-right: 20px;
+    margin-right: 5px;
 }
 .exhibition_left{
-    margin-left: 20px;
+    margin-left: 5px;
 }
 .exhibition_left ul{
     width:100%;
