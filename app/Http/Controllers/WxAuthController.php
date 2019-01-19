@@ -36,9 +36,16 @@ class WxAuthController extends BaseController {
     }
 
     public function getAddress() {
+        $jssdk = new Jssdk("wx1dc64acc9bd9eb09","18030345ebbbc089f628a5eb1db5cda3");
+        $data = $jssdk->getSignPackage();
+        return view('address',['addrSign'=>$data]);
 
-//        return view('address',['addrSign'=>$params]);
+    }
 
+    public function getLocation() {
+        $jssdk = new Jssdk("wx1dc64acc9bd9eb09","18030345ebbbc089f628a5eb1db5cda3");
+        $data = $jssdk->getSignPackage();
+        return view('location',['data'=>$data]);
     }
 
     /**
@@ -70,7 +77,7 @@ class WxAuthController extends BaseController {
                 }
 
             }else {
-                $info = UserModel::create(['openid'=>$openid]);
+                $info = UserModel::create(['openid'=>$openid,'photo'=>$data_all['headimgurl']]);
                 $data_all['id'] = $info->id;
 //                $user = new UserModel();
 //                $user->openid = $openid;
@@ -146,46 +153,4 @@ class WxAuthController extends BaseController {
     }
 
 
-    //创建签名SHA1
-    private function genSha1Sign($Parameters){
-        $signPars = '';
-        ksort($Parameters);
-        foreach($Parameters as $k => $v) {
-            if("" != $v && "sign" != $k) {
-                if($signPars == '')
-                    $signPars .= $k . "=" . $v;
-                else
-                    $signPars .=  "&". $k . "=" . $v;
-            }
-        }
-        $sign = SHA1($signPars);
-        $Parameters['sign'] = $sign;
-        return $sign;
-    }
-
-    function getUrl($url){
-        $opts = array(
-            CURLOPT_TIMEOUT        => 30,
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_SSL_VERIFYHOST => false,
-        );
-        /* 根据请求类型设置特定参数 */
-        $opts[CURLOPT_URL] = $url ;
-        $ch = curl_init();
-        curl_setopt_array($ch, $opts);
-        $data  = curl_exec($ch);
-        $error = curl_error($ch);
-        curl_close($ch);
-        return $data;
-    }
-
-    private function gen_nonceStr($length) {
-        $returnStr='';
-        $pattern = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        for($i = 0; $i < $length; $i ++) {
-            $returnStr .= $pattern {mt_rand ( 0, 61 )};
-        }
-        return $returnStr;
-    }
 }
