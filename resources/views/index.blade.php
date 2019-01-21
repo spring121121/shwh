@@ -68,7 +68,7 @@
         <div id="list">
             <ul>
                 <li>
-                    <a href="/wap/museumed">
+                    <a href="/wap/museumOne">
                         <img src="/images/bwg.jpg" alt="">
                     </a>
                     <span >博物馆</span>
