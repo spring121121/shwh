@@ -70,28 +70,30 @@
                     num = -1;
                 }
             });
-            $(".gz-common").on("click",".btn-focus",function () {
-                var user_id = $(this).attr("id");
-                $(this).html("已关注").attr("disabled","disabled");
-                $.ajax({
-                    url : "/focus",	//请求url
-                    type : "post",	//请求类型  post|get
-                    dataType : "json",  //返回数据的 类型 text|json|html--
-                    data: {
-                        uid:user_id
-                    },
-                    success : function(data){//回调函数 和 后台返回的 数据
-                        if (data.status){
-                            alert("关注成功");
-                            window.location.reload();
-                        }else {
-                            alert("哎呀！出错了")
-                        }
-                    }
-                });
-            });
+            // $(".gz-common").on("click",".btn-focus",function () {
+            //     var user_id = $(this).attr("id");
+            //     // $(this).html("已关注").attr("disabled","disabled");
+            //     $.ajax({
+            //         url : "/focus",	//请求url
+            //         type : "post",	//请求类型  post|get
+            //         dataType : "json",  //返回数据的 类型 text|json|html--
+            //         data: {
+            //             uid:user_id
+            //         },
+            //         success : function(data){//回调函数 和 后台返回的 数据
+            //             if (data.status){
+            //                 alert("关注成功");
+            //                 window.location.reload();
+            //             }else {
+            //                 alert("哎呀！出错了")
+            //             }
+            //         }
+            //     });
+            // });
 
         });
+
+
         function recommend_list(num) {
             var num_init;
             $.ajax({
@@ -113,7 +115,7 @@
                             noteHtml += '<li class="'+v.id+'">';
                             noteHtml += '<div class="gz-img-box"><img onerror="this.src=\'/images/portrait.png\'" src="'+ photo +'" class="common-img"></div>';
                             noteHtml += '<div class="gz-right">';
-                            noteHtml += '<button id="'+v.id+'" class="btn-focus"><i></i>关注</button>';
+                            noteHtml += '<button id="'+v.id+'" onclick="addFocus('+v.id+')">关注</button>';
                             noteHtml += '<h3>' + v.nickname + '</h3>';
                             noteHtml += '<span>'+v.grade_name+'</span>';
                             noteHtml += '<p>有'+fans_count+'人关注了';
@@ -153,9 +155,9 @@
                         noteHtml += '<div class="gz-img-box"><img onerror="this.src=\'/images/portrait.png\'" src="'+ photo +'" class="common-img"></div>';
                         noteHtml += '<div class="gz-right">';
                                     if(focus == 1||v.is_focus == 1){
-                                        noteHtml += '<button id="'+v.id+'" disabled class="btn-focus">已关注</button>';
+                                        noteHtml += '<button id="'+v.id+'" onclick="cancelFocus('+v.id+')">取关</button>';
                                     }else {
-                                        noteHtml += '<button id="'+v.id+'" class="btn-focus"><i></i>关注</button>';
+                                        noteHtml += '<button id="'+v.id+'" onclick="addFocus('+v.id+')">关注</button>';
                                     }
                         noteHtml += '<h3>' + v.nickname + '</h3>';
                         noteHtml += '<span>'+v.grade_name+'</span>';
@@ -184,6 +186,33 @@
                 }
             });
             return fans_count;
+        }
+        //取消关注
+        function cancelFocus(uid) {
+            $.post("/cancelFocus",{'uid':uid},function(data){
+                if (data.status){
+                    alert("取关成功");
+                    $("#"+uid).onclick=addFocus(uid);
+                    $("#"+uid).html("关注")
+
+                }else {
+                    alert("哎呀！出错了")
+                }
+            })
+        }
+
+        //添加关注
+        function addFocus(uid) {
+
+            $.post("/focus",{'uid':uid},function(data){
+                if (data.status){
+                    alert("关注成功");
+                    $("#"+uid).onclick=cancelFocus(uid);
+                    $("#"+uid).html("取关")
+                }else {
+                    alert("哎呀！出错了")
+                }
+            })
         }
     </script>
 </html>

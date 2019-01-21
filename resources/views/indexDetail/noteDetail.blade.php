@@ -22,9 +22,9 @@
     <div class="swiper-tuijian-box">
         <div class="swiper-tuijian-banner swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img class="common-img" src="{{$noteDetail['image_one_url']}}"></div>
-                <div class="swiper-slide"><img class="common-img" src="{{$noteDetail['image_two_url']}}"></div>
-                <div class="swiper-slide"><img class="common-img" src="{{$noteDetail['image_three_url']}}"></div>
+                {{--<div class="swiper-slide"><img class="common-img" src="{{$noteDetail['image_one_url']}}"></div>--}}
+                {{--<div class="swiper-slide"><img class="common-img" src="{{$noteDetail['image_two_url']}}"></div>--}}
+                {{--<div class="swiper-slide"><img class="common-img" src="{{$noteDetail['image_three_url']}}"></div>--}}
             </div>
         </div>
     </div>
