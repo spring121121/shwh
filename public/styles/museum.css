@@ -24,7 +24,7 @@ html,body{
 header{
     width:100%;
     height:45px;
-    background: yellowgreen  
+    background: #303030;
 }
 header ul{
     display: flex;
@@ -35,7 +35,7 @@ header ul{
 header ul li{
     height:45px;
     line-height: 45px;
-    color: #000;
+    color: #fff;
     font-size: 16px;
     font-weight: bold
 }
@@ -56,18 +56,19 @@ header ul li span{
 /*展列*/
 #museum_list{
     width:100%;
-    height:50px;   
+    height:50px;  
+    box-shadow: -3px 4px 7px -4px #878787; 
 }
 #museum_list ul{
-    width:100%;
+       width: 91%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     line-height: 35px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    margin: 10px auto;
 }
 #museum_list ul li{
-    margin: 0 30px;
-    font-size: 20px;
+    font-size: 15px;
     height:30px;
     color: #000
 }
@@ -92,19 +93,14 @@ section{
     margin-top: 10px;
 }
 #museum_shop>div{
-    width:45%;
+    width:50%
+}
 
-}
-.museum_shop_left{
-    
-    margin-left: 10px;
-}
-.museum_shop_right{
-    margin-right: 10px;
-}
 .museum_shop_pic{
-    width:100%;
+	position: relative;
+    width: 96%;
     border-radius: 10px;
+    margin: 0 auto;
     margin-bottom: 15px;
     box-shadow: darkgrey 1px 1px 0 0;
 }
@@ -121,8 +117,10 @@ section{
 .museum_shop_pic div:nth-child(2){
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    background: #eeeeee;
-   
+    background: transparent;
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
 }
 .museum_shop_pic div:nth-child(2) h3{
     margin: 0 10px;

@@ -37,27 +37,20 @@
 <body>
 <div id="home">
     <!--头部-->
-    <header>
-        <div id="recommend">
-            <div>首页</div>
-            <div id="recommend" style="display:none">
-                <ul>
-                    <li><a href="javascript:void(0);"></a></li>
-                </ul>
-            </div>
-        </div>
+    <!--<header>        
+    </header>-->
+    <!--中间部分-->
+    <section>
+        <div class="searchContainer">	     
         <div id="search">
             <button  onclick="contentList();"></button>
             <div class="search_style1">
+            	 
                 <input type="text" placeholder="搜索你的内容与关键字" id="searchContent">
                 {{--<span class="iconfont icon-sousuo" onclick="contentList();">22222</span>--}}
             </div>
-            <!-- <input type="text" placeholder="提示信息">
-            <span></span> -->
         </div>
-    </header>
-    <!--中间部分-->
-    <section>
+       </div>
         <div id="bander">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -75,30 +68,66 @@
         <div id="list">
             <ul>
                 <li>
-                    <a href="/wap/museumed">
+                    <a href="/wap/museumOne">
                         <img src="/images/bwg.jpg" alt="">
                     </a>
-                    <span>博物馆</span>
+                    <span >博物馆</span>
                 </li>
                 <li>
                     <a href="/wap/mech">
                         <img src="/images/wcjg.jpg" alt="">
                     </a>
-                    <span>文创机构</span>
+                    <span >文创机构</span>
                 </li>
                 <li>
                     <a href="/wap/design">
                         <img src="/images/sjs.jpg" alt="">
                     </a>
-                    <span>设计师</span>
+                    <span >设计师</span>
                 </li>
                 <li>
-                    <a href="/wap/factory123">
+                    <a href="/wap/factorydd">
                         <img src="/images/gc.jpg" alt="">
                     </a>
-                    <span>工厂</span>
+                    <span >工厂</span>
                 </li>
             </ul>
+        </div>
+        <!--文创故事-->
+        <div class="culture">
+        	<p>文创故事</p>
+        	<video id="video1" autoplay="" muted="" loop="" src="/images/viode.mp4" width="100%" height="100%" type="video/mp4">
+            </video>
+        </div>
+        <!--发布需求-->
+        <div class="demand">
+        	<p></p>
+        </div>
+        
+        <div id="exhibition">
+            <div class="exhibition_left">
+                <ul></ul>
+            </div>
+            <div class="exhibition_right">
+                <ul></ul>
+            </div>
+        </div>
+        
+        <div id="exhibition">
+            <div class="exhibition_left">
+                <ul></ul>
+            </div>
+            <div class="exhibition_right">
+                <ul></ul>
+            </div>
+        </div>
+        <div id="exhibition">
+            <div class="exhibition_left">
+                <ul></ul>
+            </div>
+            <div class="exhibition_right">
+                <ul></ul>
+            </div>
         </div>
         <div id="exhibition">
             <div class="exhibition_left">
@@ -160,8 +189,6 @@
         obj += '</h3></div></li>';
         return obj;
     }
-
-
 </script>
 </html>
 <script src="/js/swiper/swiper.min.js"></script>
