@@ -9,6 +9,7 @@
 
 namespace App\Http\Controllers;
 
+use App\models\ScoreModel;
 use App\models\UserModel;
 use Illuminate\Http\Request;
 use App\models\CategoryModel;
@@ -20,6 +21,7 @@ use App\models\CarModel;
 use App\models\OrdersModel;
 use App\models\BrowseModel;
 use App\models\SettleModel;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use App\Http\Services\UserService;
 use Validator;
@@ -140,10 +142,28 @@ class ShopController extends BaseController
      */
     public function getGoodsList(Request $request){
         $category_id = $request->input('id');
-        $categoryIds = CategorygoodsModel::where('category_id',$category_id)
-            ->select('goods_id')
-            ->get()->toArray();
-        $goodsIds = array_column($categoryIds, 'goods_id');
+        $pid = $request->input('pid');
+        if($category_id == CategorygoodsModel::GOODS_ALL){
+            $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)
+                ->get()->toArray();
+            $data['data'] = $goodsList;
+            $data['category_id'] = $category_id;
+            return $this->success($data);
+        }
+        if($pid == CategorygoodsModel::ONE_CATEGORY){//一级分类
+            $pids = CategoryModel::where('pid',$category_id)
+                ->select('id')
+                ->get()->toArray();
+            $pIds = array_column($pids, 'id')?array_column($pids, 'id'):'';
+            $categoryIds = CategorygoodsModel::whereIn('category_id',$pIds)
+                ->select('goods_id')
+                ->get()->toArray();
+        }else{//二级分类
+            $categoryIds = CategorygoodsModel::where('category_id',$category_id)
+                ->select('goods_id')
+                ->get()->toArray();
+        }
+        $goodsIds = array_column($categoryIds, 'goods_id')?array_column($categoryIds, 'goods_id'):'';
         $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)->whereIn('id',$goodsIds)
             ->get()->toArray();
         $data['data'] = $goodsList;
@@ -297,6 +317,10 @@ class ShopController extends BaseController
         $uid = UserService::getUid($request);
         $goods_id = $request->input('id');
         $time = date("Y-m-d H:i:s",time());
+        $count = CarModel::where(['uid'=>$uid,'goods_id'=>$goods_id])->count();
+        if($count != 0){
+            return $this->fail('300','购物车已存在该商品！');
+        }
         $result = CarModel::create(['uid'=>$uid,'goods_id'=>$goods_id,'time'=>$time]);
         if ($result) {
             return $this->success();
@@ -312,11 +336,25 @@ class ShopController extends BaseController
      */
     public function myCarList(Request $request){
         $uid = UserService::getUid($request);
-        $myGoodsList = CarModel::where('car.uid',$uid)
+        $myGoodsList = CarModel::where('car.uid',19)
             ->join('goods','car.goods_id','=','goods.id')
             ->select('goods.*')
             ->get()->toArray();
-        return $this->success($myGoodsList);
+        $store_ids = array_unique(array_column($myGoodsList,'store_id'));
+        $resStore = StoreModel::whereIn('id',$store_ids)->orderByRaw("FIELD(id, " . implode(", ", $store_ids) . ")")
+            ->select('id','name')
+            ->get()->toArray();
+        foreach($resStore as &$store_value){
+            $key = 0;
+            foreach($myGoodsList as $goods_value){
+                $key += 0;
+                if($goods_value['store_id'] == $store_value['id']){
+                    $store_value['goods'][$key] = $goods_value;
+                    $key++;
+                }
+            }
+        }
+        return $this->success($resStore);
     }
 
     /**
