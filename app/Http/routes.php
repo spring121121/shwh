@@ -100,8 +100,6 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('storeList','StoreController@storeList');//店铺列表
     Route::get('storeDetail','StoreController@storeDetail');//店铺详情
     Route::get('uploadAuth','StoreController@uploadAuth');//上传店铺认证图
-    Route::get('getStoreListBySearch','StoreController@getStoreListBySearch');//获取相应角色的店铺列表
-
 
     /*****************ShopController商店接口********************************/
     Route::post('createOneCategory','ShopController@createOneCategory');//新增商品一级分类
@@ -130,6 +128,8 @@ Route::group(['middleware'=>'checkLogin'],function(){
 
 
 Route::get('test1','TestController@test1');//浏览记录统计数量
+
+Route::get('getStoreListBySearch','StoreController@getStoreListBySearch');//获取相应角色的店铺列表
 
 
 Route::get('getQiniuUploadToken','UploadController@getQiniuUploadToken');//获取七牛文件上传的token
@@ -210,6 +210,10 @@ Route::get('wap/factoryclass', function () {//工厂分类
 });
 Route::get('wap/musefen', function () {//博物馆分类
     return view('indexDetail/museumDetail/museumfen');
+});
+
+Route::get('wap/museumOne', function () {//博物馆一级
+    return view('indexDetail/museumOne');
 });
 Route::get('wap/musegoods', function () {//博物馆商品
     return view('indexDetail/museumDetail/museumGoods');

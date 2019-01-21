@@ -38,8 +38,8 @@
 <div id="home">
     <!--头部-->
     <header>
-        <div id="recommend">
-            <div>首页</div>
+        <!--<div id="recommend">
+            
             <div id="recommend" style="display:none">
                 <ul>
                     <li><a href="#">
@@ -47,13 +47,14 @@
                         </a></li>
                 </ul>
             </div>
-        </div>
+        </div>-->
         <div id="search">
             <div class="search_style1">
+            	 <button class="searchBtn" onclick="contentList();">搜索</button>
                 <input type="text" placeholder="搜索你的内容与关键字" id="searchContent">
                 {{--<span class="iconfont icon-sousuo" onclick="contentList();">22222</span>--}}
             </div>
-            <button  onclick="contentList();">搜索</button>
+           
             <!-- <input type="text" placeholder="提示信息">
             <span></span> -->
         </div>
@@ -77,28 +78,28 @@
         <div id="list">
             <ul>
                 <li>
-                    <a href="/wap/museumed">
+                    <a href="/wap/museumOne">
                         <img src="/images/bwg.png" alt="">
                     </a>
-                    <span>博物馆</span>
+                    <span >博物馆</span>
                 </li>
                 <li>
                     <a href="/wap/mech">
                         <img src="/images/wcjg.png" alt="">
                     </a>
-                    <span>文创机构</span>
+                    <span >文创机构</span>
                 </li>
                 <li>
                     <a href="/wap/design">
                         <img src="/images/sjs.png" alt="">
                     </a>
-                    <span>设计师</span>
+                    <span >设计师</span>
                 </li>
                 <li>
                     <a href="/wap/factory123">
                         <img src="/images/gc.png" alt="">
                     </a>
-                    <span>工厂</span>
+                    <span >工厂</span>
                 </li>
             </ul>
         </div>
@@ -142,7 +143,6 @@
     })
 
     function contentList() {
-
         var link = "/getHotNote";
         var searchContent = $("#searchContent").val();
         var contentList = "";
@@ -178,9 +178,9 @@
             })
             $(".exhibition_left>ul").html(contentList);
         })
-
     }
-
+ 
+    
 
 </script>
 </html>

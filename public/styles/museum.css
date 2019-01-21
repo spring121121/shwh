@@ -59,15 +59,15 @@ header ul li span{
     height:50px;   
 }
 #museum_list ul{
-    width:100%;
+       width: 91%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     line-height: 35px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    margin: 10px auto;
 }
 #museum_list ul li{
-    margin: 0 30px;
-    font-size: 20px;
+    font-size: 15px;
     height:30px;
     color: #000
 }
