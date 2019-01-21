@@ -73,7 +73,8 @@
 				data.data.forEach(function(i){
 					museumList+='<div class="museum_shop_pic">'
 					museumList+='<div>'
-					museumList+='<img src='+i.logo_pic_url+' alt="">'
+//					museumList+='<img src='+i.logo_pic_url+' alt="">'
+					museumList+='<img src="/images/a2.jpg"/>'
 					museumList+='</div>'
 					museumList+='<div>'
 					museumList+='<h3 >'+i.name+'</h3>'

@@ -86,7 +86,7 @@
                     <span >设计师</span>
                 </li>
                 <li>
-                    <a href="/wap/factory123">
+                    <a href="/wap/factorydd">
                         <img src="/images/gc.jpg" alt="">
                     </a>
                     <span >工厂</span>
@@ -99,7 +99,10 @@
         	<video id="video1" autoplay="" muted="" loop="" src="/images/viode.mp4" width="100%" height="100%" type="video/mp4">
             </video>
         </div>
-        
+        <!--发布需求-->
+        <div class="demand">
+        	<p></p>
+        </div>
         
         <div id="exhibition">
             <div class="exhibition_left">

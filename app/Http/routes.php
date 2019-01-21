@@ -205,6 +205,9 @@ Route::get('wap/designW', function () {//设计详情
 Route::get('wap/factoryJm', function () {//工厂详情
     return view('indexDetail/factory/factory_jm');
 });
+Route::get('wap/factorydd', function () {//工厂分类
+    return view('indexDetail/factory');
+});
 Route::get('wap/factoryclass', function () {//工厂分类
     return view('indexDetail/factory/factory_classify');
 });
