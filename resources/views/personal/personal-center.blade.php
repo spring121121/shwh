@@ -76,21 +76,29 @@
                 </li>
                 <li>
                     <a href="javascript:void(0)">
-                        <div class="icon-img"><img class="common-img" src="../images/shop/refund.png" alt="退款"></div>
+                        <div class="icon-img"><img class="common-img" src="../images/refund.png" alt="退款"></div>
                         <p>退款</p>
                     </a>
                 </li>
             </ul>
             <div class="list-box">
                 <div class="list-cont">
-                    <a href="#">
-                        <span>我的足迹</span>
-                        <i></i>
-                    </a>
+                    <span style="color: #f00;">拼团购</span>
+                    <i></i>
+                </div>
+                <div class="list-cont">
+                    <span style="color: #f00;">优惠券</span>
+                    <i></i>
                 </div>
                 <div class="list-cont">
                     <a href="/wap/my_order">
                         <span>订单详情</span>
+                        <i></i>
+                    </a>
+                </div>
+                <div class="list-cont">
+                    <a href="#">
+                        <span style="color: #f00;">我的足迹</span>
                         <i></i>
                     </a>
                 </div>
@@ -103,8 +111,18 @@
             </div>
             <div class="list-box">
                 <div class="list-cont">
+                    <span style="color: #f00;">商务合作</span>
+                    <i></i>
+                </div>
+                <div class="list-cont">
+                    <span style="color: #f00;">合伙人</span>
+                    <i></i>
+                </div>
+            </div>
+            <div class="list-box">
+                <div class="list-cont">
                     <a href="#">
-                        <span>客服与帮助</span>
+                        <span style="color: #f00;">客服与帮助</span>
                         <i></i>
                     </a>
                 </div>
@@ -116,11 +134,13 @@
                 </div>
             </div>
             <div class="list-box">
+                <div id="application-shop" class="list-cont">
+                    <span>申请店铺</span>
+                    <i></i>
+                </div>
                 <div class="list-cont">
-                    <a href="#">
-                        <span>申请店铺</span>
-                        <i></i>
-                    </a>
+                    <span style="color: #f00;">保证金</span>
+                    <i></i>
                 </div>
             </div>
             <div class="btn-exit-login">
@@ -146,8 +166,31 @@
                 </div>
             </div>
         </div>
+        {{--提示绑定手机号--}}
+        <div class="bind-mobile">
+            <div id="unbind" class="bind-header">
+                <div class="bind-header-left"></div>
+                <h3>绑定手机号</h3>
+            </div>
+            <p>您使用的是第三方登录，请先绑定手机号和设置密码之后在申请</p>
+            <div class="bind-ipt-box">
+                <div class="bind-ipt-cont">
+                    <label for="bind-mobile">手机号</label>
+                    <div class="input-cont"><input type="text" id="bind-mobile" placeholder="请输入手机号码"></div>
+                </div>
+                <div class="bind-ipt-cont">
+                    <label for="bind-code">验证码</label>
+                    <button>获取验证码</button>
+                    <div class="input-cont ipt-code"><input type="text" id="bind-code" placeholder="请输入验证码"></div>
+                </div>
+                <div class="bind-ipt-cont">
+                    <label for="bind-password">密  码</label>
+                    <div class="input-cont"><input type="password" id="bind-password" placeholder="请输入密码"></div>
+                </div>
+            </div>
+            <div class="btn-sure">确定</div>
+        </div>
 
-    
         <!--引入footer-->
         @extends('layout.footer')
     </body>
@@ -156,21 +199,28 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            var store_id,store_status;
+            var store_id,store_status,is_mobile;
             $.ajax({
                 url : "/getMyUserInfo",	//请求url
                 type : "get",	//请求类型  post|get
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
+                    console.log(data)
                     if (data.status){
                         store_id = data.data.store_id;
                         store_status = data.data.store_status;
+                        is_mobile = data.data.mobile;
                         $("#photo").attr("src",data.data.photo)
                         if (data.data.nickname == ''){
                             $("#nickname").html("请修改您的昵称")
                         } else {
                             $("#nickname").html(data.data.nickname)
+                        }
+                        if (is_mobile == ''){
+                            $("#application-shop span").html("申请店铺")
+                        } else {
+                            $("#application-shop span").html("我的店铺")
                         }
                         if(data.data.sex==0){
                             $("#sex").html('女')
@@ -187,20 +237,45 @@
             });
 
             // 点击店铺时判断进入
-            $("#personal-store").click(function () {
-                console.log(store_id,store_status)
-                if (store_id == 0){
-                    window.location.href = "/wap/store_status?id="+store_status;
+            $("#application-shop").click(function () {
+                console.log(is_mobile)
+                if (is_mobile == ""){
+                    $(".bind-mobile").animate({"height":"100%"},200);
                 } else {
-                    if (store_status < 3){
-                        if (store_status == 1) {
-                            window.location.href = "/wap/store";
-                        }else {
-                            window.location.href = "/wap/store_status?id="+store_status;
+                    if (store_id == 0){
+                        window.location.href = "/wap/store_status?id="+store_status;
+                    } else {
+                        if (store_status < 3){
+                            if (store_status == 1) {
+                                window.location.href = "/wap/store";
+                            }else {
+                                window.location.href = "/wap/store_status?id="+store_status;
+                            }
                         }
                     }
                 }
+
             });
+            $("#unbind").click(function () {
+                $(".bind-mobile").animate({"height":"0"},200);
+            });
+            $(".btn-sure").click(function () {
+                $(".bind-mobile").animate({"height":"0"},200);
+            });
+            // $("#personal-store").click(function () {
+            //     console.log(store_id,store_status)
+            //     if (store_id == 0){
+            //         window.location.href = "/wap/store_status?id="+store_status;
+            //     } else {
+            //         if (store_status < 3){
+            //             if (store_status == 1) {
+            //                 window.location.href = "/wap/store";
+            //             }else {
+            //                 window.location.href = "/wap/store_status?id="+store_status;
+            //             }
+            //         }
+            //     }
+            // });
 
             //退出登录
             $("#btn-logout-true").click(function () {
