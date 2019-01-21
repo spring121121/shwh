@@ -448,6 +448,7 @@ ul,li{
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     background-size: 100%;
+    position: relative;
 }
 .personal-header .personal-title{
     padding: 50px 20px;
@@ -482,7 +483,7 @@ ul,li{
     position: relative;
     color: #fff;
     font-size: 14px;
-    width: 105px;
+    width: 80px;
     line-height: 18px;
 }
 .personal-header .personal-title .edit-personal span i{
@@ -512,6 +513,56 @@ ul,li{
     padding: 0 10px;
     box-sizing: border-box;
     position: relative;
+}
+.vip-wallet{
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    color: #000;
+    font-size: 13px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #E6EBF5 0%, #BFCBED 100%);
+}
+.vip-box{
+    /*border-radius: 5px;*/
+    /*background: #0077aa;*/
+    width: 70%;
+}
+.vip-box i{
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 3px 5px;
+}
+.vip-box button{
+    float: right;
+    display: block;
+    border: none;
+    outline: none;
+    background: #ffcc00;
+    border-radius: 7px;
+    height: 15px;
+    width: 70px;
+    text-align: center;
+    line-height: 16px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.wallet-box{
+    /*background: #0086b3;*/
+    width: 30%;
+    border-right: 1px solid #aaa;
+    text-align: center;
+    box-sizing: border-box;
+}
+.wallet-box span{
+    margin: 0 5px;
 }
 .personal-cont .choice-address{
     display: none;
@@ -606,14 +657,13 @@ ul,li{
     left: 0;
 }
 .personal-cont{
-    background: #fff;
-    /*border-radius: 20px;*/
-    /*position: relative;*/
-    /*top: -40px;*/
+    background: #f7f7f7;
+    padding-bottom: 60px;
 }
 .personal-cont ul{
     height: 60px;
     width: 100%;
+    background: #fff;
     padding-top: 20px;
 }
 .personal-cont ul li{
@@ -633,12 +683,13 @@ ul,li{
     font-size: 14px;
 }
 .personal-cont .list-box{
-    margin: 20px;
+    margin: 7px 0;
 }
 .personal-cont .list-box .list-cont{
-    padding-left: 5px;
+    background: #fff;
     height: 40px;
-    border-bottom: 1px solid #f1f1f1;
+    margin-bottom: 2px;
+    padding: 0 10px;
 }
 .personal-cont .list-box .list-cont a{
     color: #000;
@@ -660,7 +711,7 @@ ul,li{
 .personal-cont .btn-exit-login{
     height: 40px;
     background: #333;
-    margin: 130px 60px 0;
+    margin: 30px 60px 0;
     border-radius: 20px;
 }
 .personal-cont .btn-exit-login button{
@@ -908,9 +959,10 @@ ul,li{
     height: 40px;
     line-height: 40px;
     font-size: 18px;
+    color: #fff;
     border-radius: 20px;
     margin: 20px 0;
-    background: url(../images/btn-bg.png)no-repeat center;
+    background: #333;
 }
 .note-ipt-box span{
     font-size: 12px;
@@ -1260,7 +1312,8 @@ ul,li{
     font-size: 15px;
 }
 .btn-write-note .other-color{
-    background: #ccc;
+    background: #ffcc00;
+    color: #000;
 }
 
 

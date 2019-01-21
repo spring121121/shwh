@@ -155,16 +155,19 @@ Route::get('getOtherUserInfo/{id}','UserController@getUserInfo');//获取某个�
 Route::get('getOtherNoteList/{id}','NoteController@getOtherNoteList');//获取别人的原创笔记列表
 Route::get('getOtherCollectNote/{id}','CollectController@getOtherCollectNote');//获取别人收藏的笔记
 Route::get('getOtherLikeNote/{id}','LikeController@getOtherLikeNote');//获取别人点赞的笔记
-Route::get('pay','WxpayController@pay');//支付
+Route::get('wx/pay','WxpayController@pay');//支付
+Route::get('wx/test','WxpayController@test');//微信
 Route::post('notify','WxpayController@notify');//支付回调
 
 Route::get('refund','WxpayController@weixinRefund');//支付
 Route::post('refundNotify','WxpayController@refundNotify');//支付回调
 
-Route::get('wx/auth','WxAuthController@auth');//微信授权
-Route::get('wx/ad','WxAuthController@getAddress');//微信授权
-Route::get('wx/share','WxAuthController@share');//微信授权
+Route::get('wx/auth','WxAuthController@auth');//微信授权登录
+Route::get('wx/ad','WxAuthController@getAddress');//获取微信共享地址
+Route::get('wx/share','WxAuthController@share');//微信分享朋友圈
+Route::get('wx/location','WxAuthController@getLocation');//微信分享朋友圈
 
+Route::get('wap/factoryShow', 'FactoryController@fatoryList');
 
 
 
@@ -189,10 +192,7 @@ Route::get('wap/mech', function () {//文创机构展示页
 Route::get('wap/museumed', function () {//博物馆展示
     return view('indexDetail/museum');
 });
-Route::get('wap/factoryShow', function () {//工厂展示页
 
-    return view('indexDetail/factory');
-});
 Route::get('wap/design', function () {//设计展示
     return view('indexDetail/designerd');
 });

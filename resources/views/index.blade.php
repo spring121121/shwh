@@ -37,30 +37,22 @@
 <body>
 <div id="home">
     <!--头部-->
-    <header>
-        <!--<div id="recommend">
-            
-            <div id="recommend" style="display:none">
-                <ul>
-                    <li><a href="#">
-
-                        </a></li>
-                </ul>
-            </div>
-        </div>-->
+    <!--<header>
+      
+        
+    </header>-->
+    <!--中间部分-->
+    <section>
+        <div class="searchContainer">	     
         <div id="search">
+            <button  onclick="contentList();"></button>
             <div class="search_style1">
-            	 <button class="searchBtn" onclick="contentList();">搜索</button>
+            	 
                 <input type="text" placeholder="搜索你的内容与关键字" id="searchContent">
                 {{--<span class="iconfont icon-sousuo" onclick="contentList();">22222</span>--}}
             </div>
-           
-            <!-- <input type="text" placeholder="提示信息">
-            <span></span> -->
         </div>
-    </header>
-    <!--中间部分-->
-    <section>
+       </div>
         <div id="bander">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -78,58 +70,79 @@
         <div id="list">
             <ul>
                 <li>
-                    <a href="/wap/museumOne">
-                        <img src="/images/bwg.png" alt="">
+                    <a href="/wap/museumed">
+                        <img src="/images/bwg.jpg" alt="">
                     </a>
                     <span >博物馆</span>
                 </li>
                 <li>
                     <a href="/wap/mech">
-                        <img src="/images/wcjg.png" alt="">
+                        <img src="/images/wcjg.jpg" alt="">
                     </a>
                     <span >文创机构</span>
                 </li>
                 <li>
                     <a href="/wap/design">
-                        <img src="/images/sjs.png" alt="">
+                        <img src="/images/sjs.jpg" alt="">
                     </a>
                     <span >设计师</span>
                 </li>
                 <li>
                     <a href="/wap/factory123">
-                        <img src="/images/gc.png" alt="">
+                        <img src="/images/gc.jpg" alt="">
                     </a>
                     <span >工厂</span>
                 </li>
             </ul>
         </div>
+        <!--文创故事-->
+        <div class="culture">
+        	<p>文创故事</p>
+        	<video width="100%" height="100%">
+        		<source src="/images/viode.mp4" type="video/mp4"></source>
+        		<source src="myvideo.ogv" type="video/ogg"></source>
+        		<source src="myvideo.webm" type="video/webm"></source>
+        		<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+        			<param name="movie" value="myvideo.swf" />
+        			<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+        		</object>
+        		当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+        	</video>
+        </div>
+        
+        
         <div id="exhibition">
             <div class="exhibition_left">
-                <ul class="waterfall">
-                    {{--<li>--}}
-                        {{--<div>--}}
-                            {{--<a href="#">--}}
-                                {{--<img src="/images/a4.jpg" alt="">--}}
-                            {{--</a>--}}
-                        {{--</div>--}}
-                        {{--<div class="exhibition_left_describe">--}}
-                            {{--<h1>商品名称</h1>--}}
-                            {{--<p>内容描述：内容描述：内容描述：内容描述：内容描述：内容描述：</p>--}}
-                            {{--<h3>--}}
-                                {{--<span>--}}
-                                {{--</span>--}}
-                                {{--<i>点赞</i>--}}
-                                {{--<span>--}}
-                                {{--</span>--}}
-                                {{--<i>转发</i>--}}
-                            {{--</h3>--}}
-                        {{--</div>--}}
-
-                    {{--</li>--}}
-
-                </ul>
+                <ul></ul>
             </div>
-
+            <div class="exhibition_right">
+                <ul></ul>
+            </div>
+        </div>
+        
+        <div id="exhibition">
+            <div class="exhibition_left">
+                <ul></ul>
+            </div>
+            <div class="exhibition_right">
+                <ul></ul>
+            </div>
+        </div>
+        <div id="exhibition">
+            <div class="exhibition_left">
+                <ul></ul>
+            </div>
+            <div class="exhibition_right">
+                <ul></ul>
+            </div>
+        </div>
+        <div id="exhibition">
+            <div class="exhibition_left">
+                <ul></ul>
+            </div>
+            <div class="exhibition_right">
+                <ul></ul>
+            </div>
         </div>
     </section>
 </div>
@@ -140,44 +153,48 @@
 <script>
     $(function () {
         contentList();
-    })
+    });
 
     function contentList() {
         var link = "/getHotNote";
         var searchContent = $("#searchContent").val();
-        var contentList = "";
+        var rightHtml = "",leftHtml = "";
         if (searchContent !='') {
             link = "/searchNote/" + searchContent;
         }
-
         $.get(link, {}, function (data) {
-            $.each(data.data, function (i, v) {
-                contentList += '<li >'
-                contentList += '<div>'
-                contentList += '<a href="/wap/noteDetail/' + v.id + '">'
-                contentList += '<img src="' + v.image_one_url + '">'
-                contentList += '</a>'
-                contentList += '</div>'
-                contentList += '<div class="exhibition_left_describe">'
-                contentList += '<h1>' + v.title + '</h1>'
-                contentList += '<p>' + v.content + '</p>'
-                contentList += '<h3>'
-                contentList += '<span>'
-                contentList += '<em  class="iconfont icon-dianzan"></em>'
-                contentList += '</span>'
-                contentList += '<i>点赞(' + v.likeNum + ')</i>'
-                contentList += '<span>'
-                contentList += '<svg class="icon" aria-hidden="true">'
-                contentList += '<use xlink:href="#icon-zhuanfa"></use>'
-                contentList += '</svg>'
-                contentList += '</span> '
-                contentList += '<i>转发(' + v.forwardNum + ')</i>'
-                contentList += '</h3>'
-                contentList += '</div>'
-                contentList += '</li>'
-            })
-            $(".exhibition_left>ul").html(contentList);
-        })
+            console.log(data)
+            if (data.status) {
+                $.each(data.data, function (k, v) {
+                    if(v.id%2 == 0){
+                        rightHtml = flex_index(rightHtml,v);
+                    }else {
+                        leftHtml = flex_index(leftHtml,v);
+                    }
+                });
+                $(".exhibition_left>ul").html(leftHtml);
+                $(".exhibition_right>ul").html(rightHtml);
+            }else {
+                alert("哎呀，出错了！")
+            }
+        });
+    }
+    function flex_index(obj,v) {
+        obj += '<li id="'+v.id+'"><div>';
+        obj += '<a href="/wap/noteDetail/' + v.id + '">';
+        obj += '<img src="' + v.image_one_url + '">';
+        obj += '</a></div>';
+        obj += '<div class="exhibition_left_describe">';
+        obj += '<h1>' + v.title + '</h1>';
+        obj += '<p>' + v.content + '</p><h3><span>';
+        obj += '<em  class="iconfont icon-dianzan"></em>';
+        obj += '</span><i>点赞(' + v.likeNum + ')</i><span>';
+        obj += '<svg class="icon" aria-hidden="true">';
+        obj += '<use xlink:href="#icon-zhuanfa"></use>';
+        obj += '</svg></span> ';
+        obj += '<i>转发(' + v.forwardNum + ')</i>';
+        obj += '</h3></div></li>';
+        return obj;
     }
  
     

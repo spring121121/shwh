@@ -21,7 +21,7 @@
                 <div class="edit-personal">
                     <a class="btn-edit" href="/wap/message_center"></a>
                     <h3 id="nickname">输入你的昵称</h3>
-                    <a class="edit-your-data" href="/wap/personal_data"><span>编辑你的资料 <i></i></span></a>
+                    <a class="edit-your-data" href="/wap/personal_data"><span>编辑资料 <i></i></span></a>
                 </div>
                 <ul class="address-grade">
                     <li>
@@ -40,7 +40,19 @@
                     {{--<span>天津市 西青</span>--}}
                 {{--</div>--}}
             </div>
+            <div class="vip-wallet">
+                <div class="wallet-box">
+                    <span>余额</span>
+                    <span>￥3.5</span>
+                </div>
+                <div class="vip-box">
+                    <i><img src="" onerror="this.src='../images/grade.png'" class="common-img"></i>
+                    <span>普通会员</span>
+                    <button>充值中心</button>
+                </div>
+            </div>
         </div>
+
         <!--个人中心内容模块-->
         <div class="personal-cont">
             <ul>
@@ -56,43 +68,57 @@
                         <p>收藏</p>
                     </a>
                 </li>
-                <li id="personal-store">
-                    <a href="javascript:void(0)">
-                        <div class="icon-img"><img class="common-img" src="../images/store.png" alt="店铺"></div>
-                        <p>店铺</p>
-                    </a>
-                </li>
                 <li>
                     <a href="/wap/follow_interest">
                         <div class="icon-img"><img class="common-img" src="../images/follow.png" alt="关注"></div>
                         <p>关注</p>
                     </a>
                 </li>
+                <li>
+                    <a href="javascript:void(0)">
+                        <div class="icon-img"><img class="common-img" src="../images/shop/refund.png" alt="退款"></div>
+                        <p>退款</p>
+                    </a>
+                </li>
             </ul>
             <div class="list-box">
-                {{--<div class="list-cont">--}}
-                    {{--<a href="/wap/coupon">--}}
-                        {{--<span>我的优惠券</span>--}}
-                        {{--<i></i>--}}
-                    {{--</a>--}}
-                {{--</div>--}}
+                <div class="list-cont">
+                    <a href="#">
+                        <span>我的足迹</span>
+                        <i></i>
+                    </a>
+                </div>
                 <div class="list-cont">
                     <a href="/wap/my_order">
-                        <span>我的订单</span>
+                        <span>订单详情</span>
                         <i></i>
                     </a>
                 </div>
                 <div class="list-cont">
                     <a href="/wap/my_address">
-                        <span>我的收货地址</span>
+                        <span>收货地址</span>
                         <i></i>
                     </a>
                 </div>
             </div>
             <div class="list-box">
                 <div class="list-cont">
+                    <a href="#">
+                        <span>客服与帮助</span>
+                        <i></i>
+                    </a>
+                </div>
+                <div class="list-cont">
                     <a href="/wap/feedback">
                         <span>意见反馈</span>
+                        <i></i>
+                    </a>
+                </div>
+            </div>
+            <div class="list-box">
+                <div class="list-cont">
+                    <a href="#">
+                        <span>申请店铺</span>
                         <i></i>
                     </a>
                 </div>

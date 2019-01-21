@@ -202,7 +202,7 @@
                 autoplay: 3000,
                 autoplayDisableOnInteraction : false,
                 slidesPerView : 4,
-                spaceBetween : 10,
+                spaceBetween : 5,
                 paginationClickable: true,
                 loop: true
             });
@@ -214,7 +214,7 @@
 
             for (var i=0;i<$(".classify-display li").length;i++){
                 if (i%2 == 0){
-                    $(".shop-list-box").eq(i).css({"margin-left":"unset","margin-right":"5px"})
+                    $(".shop-list-box").eq(i).css({"margin-left":"unset","margin-right":"2.5px"})
                 }
             }
 
