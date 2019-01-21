@@ -82,14 +82,7 @@
             {{--分类展示--}}
             <div class="classify-list">
                 <div class="swiper-container classify-swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" id="0"><span>全部</span></div>
-                        <div class="swiper-slide" id="1"><span>饰品</span></div>
-                        <div class="swiper-slide" id="2"><span>服饰</span></div>
-                        <div class="swiper-slide" id="3"><span>文具</span></div>
-                        <div class="swiper-slide" id="4"><span>书画</span></div>
-                        <div class="swiper-slide" id="5"><span>瓷器</span></div>
-                        <div class="swiper-slide" id="6"><span>家具</span></div>
+                    <div class="swiper-wrapper" id="category">
                     </div>
                 </div>
             </div>
@@ -115,70 +108,6 @@
                             <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
                         </div>
                     </li>
-                    <li>
-                        <div class="shop-list-box">
-                            <div class="shop-img-box">
-                                <img src="/images/collection-img2.jpg" class="common-img">
-                            </div>
-                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                            <h3><i></i><span>用户名称</span></h3>
-                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="shop-list-box">
-                            <div class="shop-img-box">
-                                <img src="/images/collection-img2.jpg" class="common-img">
-                            </div>
-                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                            <h3><i></i><span>用户名称</span></h3>
-                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
-                        </div>
-                    </li>
-                </ul>
-
-                {{--饰品列表--}}
-                <ul class="classify-ornament">
-                    <li>
-                        <div class="shop-list-box">
-                            <div class="shop-img-box">
-                                <img src="/images/collection-img1.jpg" class="common-img">
-                            </div>
-                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                            <h3><i></i><span>用户名称</span></h3>
-                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="shop-list-box">
-                            <div class="shop-img-box">
-                                <img src="/images/collection-img1.jpg" class="common-img">
-                            </div>
-                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                            <h3><i></i><span>用户名称</span></h3>
-                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="shop-list-box">
-                            <div class="shop-img-box">
-                                <img src="/images/collection-img1.jpg" class="common-img">
-                            </div>
-                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                            <h3><i></i><span>用户名称</span></h3>
-                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="shop-list-box">
-                            <div class="shop-img-box">
-                                <img src="/images/collection-img1.jpg" class="common-img">
-                            </div>
-                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                            <h3><i></i><span>用户名称</span></h3>
-                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
-                        </div>
-                    </li>
                 </ul>
             </div>
 
@@ -192,7 +121,24 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            countDown(1800)
+            var category = '';
+            $.ajax({
+                url : "/categoryList/1",	//请求url 商城分类
+                type : "get",	//请求类型  post|get
+                async: false,
+                dataType : "json",  //返回数据的 类型 text|json|html--
+                data:{},
+                success : function(data){//回调函数 和 后台返回的 数据
+                    category += '<div class="swiper-slide one" id="0"><span>全部</span></div>';
+                    $.each(data.data, function (k, v) {
+                        category += '<div class="swiper-slide one" id="'+v['id']+'">';
+                        category +='<span>'+v['category_name']+'</span>';
+                        category += '</div>';
+                    });
+                    $('#category').html(category);
+                }
+            });
+            countDown(1800);
             var swiper_shop = new Swiper('.shop-index', {
                 autoplay:3000,
                 paginationClickable: true,
@@ -219,18 +165,57 @@
             }
 
             // 点击分类显示相应内容
+            goodsList(0);
             $(".classify-list span").eq(0).css("border-bottom","1px solid #ffaa00");
             $(".classify-all").css("display","flex");
-            $(".classify-list").on("click",".swiper-slide",function () {
+            $(".one").on("click",function () {
                 $(this).find("span").css("border-bottom","1px solid #ffaa00");
                 $(this).siblings().find("span").css("border-bottom","none");
-                $(".classify-display ul").eq($(this).attr("id")).css("display","flex")
-                $(".classify-display ul").eq($(this).attr("id")).siblings().css("display","none")
+                var id = $(this).attr('id');
+                goodsList(id);
+                $(".classify-display ul").eq($(this).attr("id")).css("display","flex");
+
+                $(".classify-display ul").eq($(this).attr("id")).siblings().css("display","none");
             });
             $(".shop-img-box").css("height",$(".shop-img-box").width()+"px");
             $(".distribution-icon").on("click",function () {
                 window.location.href = "/wap/shop_share";
             });
+
+            $(".detail").on("click",function () {
+                var id = $(this).next().val();
+                window.location.href = "/wap/shop_detail?id="+id;
+            });
+
+            function goodsList(id){
+                var goodsList = '';
+                $.ajax({
+                    url : "/getGoodsList",	//请求url 商城分类
+                    type : "get",	//请求类型  post|get
+                    async: false,
+                    dataType : "json",  //返回数据的 类型 text|json|html--
+                    data:{id:id},
+                    success : function(data){//回调函数 和 后台返回的 数据
+                        console.log(data);
+                        $.each(data.data.data, function (k, v) {
+                            var image = v['image_one'];
+                            if(image == ''){
+                                image = '/images/shop/default.jpg'
+                            }
+                            goodsList += '<li>';
+                            goodsList += '<div class="shop-list-box">';
+                            goodsList += '<div class="shop-img-box">';
+                            goodsList += '<img src="'+image+'" class="common-img detail"><input type="hidden" value="'+v['id']+'">';
+                            goodsList += '</div>';
+                            goodsList += '<p><strong>'+v['goods_name']+'</strong><span>'+v['goods_info']+'</span></p>';
+                            // goodsList += '<h3><i></i><span>用户名称</span></h3>';
+                            goodsList += '<div class="price-box"><span>￥ '+v['price']+'</span>';
+                            goodsList += '<div class="distribution-icon"></div></div></div></li>';
+                        });
+                        $('.classify-all').html(goodsList);
+                    }
+                });
+            }
         });
         function handleTodetail(){
             window.location.href = "/wap/shop_detail";

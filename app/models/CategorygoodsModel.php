@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CategorygoodsModel extends Model
 {
+    CONST GOODS_ALL = 0;//所有分类，即所有商品
+    CONST ONE_CATEGORY = 0;//一级分类类
+    CONST SON_CATEGORY = 1;//二级分类
     /**
      * 与模型关联的数据表。
      *

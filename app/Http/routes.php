@@ -107,15 +107,9 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('createOneCategory','ShopController@createOneCategory');//新增商品一级分类
     Route::post('createSonCategory','ShopController@createSonCategory');//新增商品二级分类
     Route::post('addGoods','ShopController@addGoods');//增加商品
-    Route::get('getGoodsList','ShopController@getGoodsList');//获取分类下的所有商品列表
-    Route::get('getGoodsDetail','ShopController@getGoodsDetail');//商品详情
     Route::post('purchase','ShopController@purchase');//购买商品创建记录
-    Route::get('getStoreDetail','ShopController@getStoreDetail');//店铺详情
     Route::get('myStoreDetail','ShopController@myStoreDetail');//我的店铺详情
     Route::get('storeGoodsList','ShopController@storeGoodsList');//所属店铺下的商品列表
-    Route::get('relateGoodsList','ShopController@relateGoodsList');//随机取10条相关商品列表
-    Route::get('searchGoodsList','ShopController@searchGoodsList');//搜索商品
-    Route::get('getGoodsNote','ShopController@getGoodsNote');//商品下笔记列表
     Route::post('addCar','ShopController@addCar');//增加商品购物车
     Route::get('myCarList','ShopController@myCarList');//我的购物车列表
     Route::post('createRecord','ShopController@createRecord');//新增浏览记录信息
@@ -127,10 +121,18 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('applyCash','CashController@applyCash');//申请提现
     Route::get('checkApply','CashController@checkApply');//审核提现申请
 });
+/*****************ShopController商店接口********************************/
+Route::get('getStoreDetail','ShopController@getStoreDetail');//店铺详情
+Route::get('getGoodsList','ShopController@getGoodsList');//获取分类下的所有商品列表
+Route::get('getGoodsDetail','ShopController@getGoodsDetail');//商品详情
+Route::get('relateGoodsList','ShopController@relateGoodsList');//随机取10条相关商品列表
+Route::get('searchGoodsList','ShopController@searchGoodsList');//搜索商品
+Route::get('getGoodsNote','ShopController@getGoodsNote');//商品下笔记列表
+
+
 
 
 Route::get('test1','TestController@test1');//浏览记录统计数量
-
 
 Route::get('getQiniuUploadToken','UploadController@getQiniuUploadToken');//获取七牛文件上传的token
 
@@ -226,12 +228,13 @@ Route::get('wap/shop_share', function () {//商品分销
     return view('shop/shop-share');
 });
 Route::get('wap/shop_detail', function () {//商品详情
-    return view('shop/shop-details');
+    return view('shop/shop-details',Cookie::get('info')?Cookie::get('info'):['id'=>0]);
 });
-Route::get('wap/shop_cart', function () {//商品详情
-    return view('shop/shop-cart');
+Route::group(['middleware'=>'checkLogin'],function(){
+    Route::get('wap/shop_cart', function () {//购物车列表
+        return view('shop/shop-cart');
+    });
 });
-
 Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('wap/personal', function () {//个人中心
         return view('personal/personal-center',Cookie::get('info'));
