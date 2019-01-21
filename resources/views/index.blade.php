@@ -37,9 +37,7 @@
 <body>
 <div id="home">
     <!--头部-->
-    <!--<header>
-      
-        
+    <!--<header>        
     </header>-->
     <!--中间部分-->
     <section>
@@ -98,16 +96,8 @@
         <!--文创故事-->
         <div class="culture">
         	<p>文创故事</p>
-        	<video width="100%" height="100%">
-        		<source src="/images/viode.mp4" type="video/mp4"></source>
-        		<source src="myvideo.ogv" type="video/ogg"></source>
-        		<source src="myvideo.webm" type="video/webm"></source>
-        		<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
-        			<param name="movie" value="myvideo.swf" />
-        			<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
-        		</object>
-        		当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
-        	</video>
+        	<video id="video1" autoplay="" muted="" loop="" src="/images/viode.mp4" width="100%" height="100%" type="video/mp4">
+            </video>
         </div>
         
         
@@ -196,9 +186,6 @@
         obj += '</h3></div></li>';
         return obj;
     }
- 
-    
-
 </script>
 </html>
 <script src="/js/swiper/swiper.min.js"></script>
