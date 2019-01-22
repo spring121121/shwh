@@ -27,115 +27,58 @@
         </header>
         <section>   
             <div id="museum_shop">
-                <div class="museum_shop_left">
-                    <div class="museum_shop_pic">
-                        <div onclick="handletowork()">
-                           <!-- <a href="designerd/designerd_works.html">-->
-                                <img src="/images/a3.jpg" alt="">
-                            </a>      
-                        </div>
-                        <div>
-                            <h3>作品名字</h3>
-                            <h5>作品描述</h5>
-                            <h4>
-                                <span><img src="/images/a4.jpg"/></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em class="iconfont icon-dianzan"></em>
-                                </p>
-                               
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="museum_shop_pic">
-                        <div onclick="handletowork()">
-                            <img src="/images/a3.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>作品名字</h3>
-                            <h5>作品描述</h5>
-                            <h4>
-                               <span><img src="/images/a4.jpg"/></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em  class="iconfont icon-dianzan"></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="museum_shop_pic">
-                        <div onclick="handletowork()">
-                            <img src="/images/a3.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>作品名字</h3>
-                            <h5>作品描述</h5>
-                            <h4>
-                               <span><img src="/images/a4.jpg"/></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em  class="iconfont icon-dianzan"></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="museum_shop_pic">
-                        <div onclick="handletowork()">
-                            <img src="/images/a3.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>作品名字</h3>
-                            <h5>作品描述</h5>
-                            <h4>
-                               <span><img src="/images/a4.jpg"/></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em  class="iconfont icon-dianzan"></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="museum_shop_right">
-                    <div class="museum_shop_pic">
-                        <div onclick="handletowork()">
-                            <img src="/images/a1.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>作品名字</h3>
-                            <h5>作品描述</h5>
-                            <h4>
-                                <span><img src="/images/a4.jpg"/></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em  class="iconfont icon-dianzan"></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="museum_shop_pic">
-                        <div onclick="handletowork()">
-                            <img src="/images/a1.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>作品名字</h3>
-                            <h5>作品描述</h5>
-                            <h4>
-                                <span><img src="/images/a4.jpg"/></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em  class="iconfont icon-dianzan"></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>
-                    
-                </div>
+               <ul class="designList">
+               	<li class="listContent">
+               		<div class="listPeople">
+               			<div class="peopleImg" onclick="handleTodetail()">
+               				<img src="/images/people.jpg"/>
+               		    </div>
+               			<div class="peopleText">
+               			    <p class="peopleName">詹姆斯</p>
+               			    <p class="peopleDetail">设计师.<span class="span">天津</span>.粉丝:<span>666</span></p>
+               		    </div>
+               		    <div class="peopleBtn">关注</div>
+               		</div>
+               		<div class="workShow">
+               			<img src="/images/a3.jpg"/>
+               			<img src="/images/a2.jpg"/>
+               		</div>
+               	</li>
+               	
+               	<li class="listContent">
+               		<div class="listPeople">
+               			<div class="peopleImg" onclick="handleTodetail()">
+               				<img src="/images/people2.jpg"/>
+               		    </div>
+               			<div class="peopleText">
+               			    <p class="peopleName">约翰</p>
+               			    <p class="peopleDetail">设计师.<span class="span">北京</span>.粉丝:<span>1666</span></p>
+               		    </div>
+               		    <div class="peopleBtn">关注</div>
+               		</div>
+               		<div class="workShow">
+               			<img src="/images/a3.jpg"/>
+               			<img src="/images/a2.jpg"/>
+               		</div>
+               	</li>
+               	
+               	<li class="listContent">
+               		<div class="listPeople">
+               			<div class="peopleImg" onclick="handleTodetail()">
+               				<img src="/images/people3.jpg"/>
+               		    </div>
+               			<div class="peopleText">
+               			    <p class="peopleName">闰土</p>
+               			    <p class="peopleDetail">设计师•<span class="span">上海</span>•粉丝:<span>66</span></p>
+               		    </div>
+               		    <div class="peopleBtn">关注</div>
+               		</div>
+               		<div class="workShow">
+               			<img src="/images/a3.jpg"/>
+               			<img src="/images/a2.jpg"/>
+               		</div>
+               	</li>
+               </ul>  
             </div>
         </section>
     </div>
@@ -148,7 +91,7 @@
 		function gotoSerch(){
 			window.location.href = "/wap/designSerch";
 		}
-		function handletowork(){
+		function handleTodetail(){
 			window.location.href = "/wap/designW";
 			
 		}

@@ -128,7 +128,7 @@
             $(".shop-classify li:first-child").click(function () {
                 $(".upper-classify").css("z-index","2");
                 $("#upper-title").html("商品分类");
-                
+
             });
             $(".first-class").on("click","li",function () {
                $(this).css({"color":"#FF5555","background-color":"#f8f8f8"});

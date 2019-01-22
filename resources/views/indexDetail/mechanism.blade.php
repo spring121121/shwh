@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>山洞-博物馆</title>
     <link rel="stylesheet" href="/styles/museum.css">
+    <link rel="stylesheet" type="text/css" href="/styles/mechOne.css"/>
     <link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>
 </head>
 <body>
@@ -36,7 +37,7 @@
                     
                 </div>
                 <div class="museum_shop_right">
-                    
+                   
                 </div>
             </div>
         </section>
@@ -94,14 +95,10 @@
 			museumList+='<img src='+i+' alt="">'
 			museumList+='</div>'
 			museumList+='<div>'
-			museumList+='<h3 >博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆</h3>'
-			museumList+='<h4>'
-			museumList+='<span></span>'
-			museumList+='<p>'
-			museumList+='<i>152222</i>'
-			museumList+='<em onclick="addcolor()" class="iconfont icon-dianzan"></em>'
-			museumList+='</p>'
-			museumList+='</h4>'
+			museumList+='<h3 >文创机构名称</h3>'
+			museumList+='<div>'
+			
+			museumList+='</div>'
 			museumList+='</div>'
 			museumList+='</div>'                              
 		})
