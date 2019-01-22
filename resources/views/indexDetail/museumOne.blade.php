@@ -57,7 +57,7 @@
 		})
 	})
 //	 列表渲染
-	function museumList(num){
+	function museumList2(num){
 		
     	console.log(num)
     	$.ajax({
@@ -95,6 +95,53 @@
 
 		
 	}
+     function museumList() {
+         $.ajax({
+             url: "/getStoreListBySearch",
+             type: "get",
+             dataType: "json",
+             data: {
+                 roleId: 2,
+//  			storeName:"江西店"
+
+             },
+             success: function (data) {
+                 console.log(data.data)
+                 var museumListLeft = ""
+                 var museumListRight = ""
+                 $.each(data.data,function(i,v){
+                     if (i % 2 == 0) {
+                         museumListLeft+='<div class="museum_shop_pic">'
+                         museumListLeft+='<div>'
+                         museumListLeft+='<a href="/wap/musename?store_id='+v.id+'"><img src="'+v.logo_pic_url+'" onerror="this.src=\'/images/a2.jpg\'"  alt=""></a>'
+                         museumListLeft+='</div>'
+                         museumListLeft+='<div>'
+                         museumListLeft+='<h3 >'+v.name+'</h3>'
+                         museumListLeft+='</div>'
+                         museumListLeft+='</div>'
+                     }else{
+                         museumListRight+='<div class="museum_shop_pic">'
+                         museumListRight+='<div>'
+                         museumListRight+='<a href="/wap/musename?store_id='+v.id+'"><img src="'+v.logo_pic_url+'" onerror="this.src=\'/images/a2.jpg\'"  alt=""></a>'
+                         museumListRight+='</div>'
+                         museumListRight+='<div>'
+                         museumListRight+='<h3 >'+v.name+'</h3>'
+                         museumListRight+='</div>'
+                         museumListRight+='</div>'
+                     }
+                 })
+                 $(".museum_shop_left").html(museumListLeft);
+                 $(".museum_shop_right").html(museumListRight);
+
+
+             },
+             error: function (data) {
+                 console.log(222)
+             }
+         });
+
+
+     }
 	//返回首页
 	function handleToindex(){
 		window.location.href="/wap/index";

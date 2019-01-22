@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>
 </head>
 <body>
-<<<<<<< HEAD
     <div id="home">
         <header>
             <ul>
@@ -40,7 +39,6 @@
                 <div class="museum_shop_right">	
                     
                 </div>
-=======
 <div id="home">
     <header>
         <ul>
