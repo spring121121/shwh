@@ -33,120 +33,10 @@
         <section class="b">   
             <div id="museum_shop">
                 <div class="museum_shop_left">
-                    <!--<div class="museum_shop_pic">
-                        <div>
-                            <img src="../images/a3.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆</h3>
-                            <h4>
-                                <span></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="museum_shop_pic">
-                        <div>
-                            <img src="../images/a3.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆</h3>
-                            <h4>
-                                <span></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="museum_shop_pic">
-                        <div>
-                            <img src="../images/a3.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆</h3>
-                            <h4>
-                                <span></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="museum_shop_pic">
-                        <div>
-                            <img src="../images/a3.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆</h3>
-                            <h4>
-                                <span></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>-->
+                    
                 </div>
                 <div class="museum_shop_right">	
-                    <!--<div class="museum_shop_pic">
-                        <div>
-                            <img src="../images/a1.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆</h3>
-                            <h4>
-                                <span></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="museum_shop_pic">
-                        <div>
-                            <img src="../images/a1.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆</h3>
-                            <h4>
-                                <span></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>
-                    <div class="museum_shop_pic">
-                        <div>
-                            <img src="../images/a1.jpg" alt="">
-                        </div>
-                        <div>
-                            <h3>博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆</h3>
-                            <h4>
-                                <span></span>
-                                <p>
-                                    <i>152222</i>
-                                    <em></em>
-                                </p>
-                                
-                            </h4>
-                        </div>
-                    </div>-->
+                    
                 </div>
             </div>
         </section>
@@ -184,7 +74,7 @@
 					museumList+='<img src='+i.logo_pic_url+' alt="">'
 					museumList+='</div>'
 					museumList+='<div>'
-					museumList+='<h3 >博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆</h3>'
+					museumList+='<h3 >博物馆博物馆博物馆博物馆博物馆</h3>'
 					museumList+='<h4>'
 					museumList+='<span><img src="/images/a3.jpg"/></span>'
 					museumList+='<p>'

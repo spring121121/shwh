@@ -114,14 +114,14 @@ section{
     width:100%;
     
 }
-.museum_shop_pic div:nth-child(2){
+/*.museum_shop_pic div:nth-child(2){
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background: transparent;
     position: absolute;
-    bottom: 20px;
+    bottom: 0px;
     color: #fff;
-}
+}*/
 .museum_shop_pic div:nth-child(2) h3{
     margin: 0 10px;
     overflow: hidden;
@@ -157,4 +157,8 @@ section{
 }
 .addcolor{
 	color: red;
+}
+.pinlun{
+	width: 20px;
+	height: 20px;
 }

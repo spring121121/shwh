@@ -24,13 +24,14 @@
            
         </header>
         <div id="museum_list">
-            <ul id="nav">
+            <!--<ul id="nav">
                 <li class="on" onclick="museumList(1)">推荐</li>
                 <li onclick="museumList(2)">打卡圣地</li>
                 <li onclick="museumList(3)">排行榜</li>
                 <li onclick="museumList(4)">必去地点</li>
                
-            </ul>
+            </ul>-->
+            <div></div>
         </div>
         <section class="b">   
             <div id="museum_shop">

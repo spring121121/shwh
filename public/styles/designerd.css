@@ -24,7 +24,7 @@ html,body{
 header{
     width:100%;
     height:45px;
-    background: yellowgreen;
+    background: #303030;
     text-align: -webkit-center;
     line-height: 45px;  
 }
@@ -39,7 +39,7 @@ header ul{
 header ul li{
     height:45px;
     line-height: 45px;
-    color: #000;
+    color: #fff;
     font-size: 16px;
     font-weight: bold
 }
@@ -62,80 +62,64 @@ section{
     flex: 1;
     overflow-y: auto;
 }
-#museum_shop{
-    width:100%;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
+
+.museum_shop{
+	width: 100%;
+	height: auto;
 }
-#museum_shop>div{
-    width:45%;
+.listContent{
+	margin: 25px 10px;
+    box-shadow: 2px 3px 10px 0px #878787;
+    padding: 5px;
 }
-.museum_shop_left{ 
-    margin-left: 10px;
+.listPeople{
+	display: flex;
+	flex-direction: row;
 }
-.museum_shop_right{
-    margin-right: 10px;
+.peopleImg{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
 }
-.museum_shop_pic{
-    width:100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: darkgrey 1px 1px 0 0;
+.peopleImg>img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
 }
-.museum_shop_pic div:nth-child(1){
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+.peopleText{
+	margin-left: 10px;
 }
-.museum_shop_pic div:nth-child(1) img{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    width:100%;
-    
+.peopleName{
+	font-size: 16px;
+	font-weight: bold;
 }
-.museum_shop_pic div:nth-child(2){
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background: #eeeeee;
-   
+.peopleDetail{
+	font-size: 12px;
+	color: #b3b3b3;
+	margin-top: 5px;
+	letter-spacing: 2px;
 }
-.museum_shop_pic div:nth-child(2) h3{
-    margin: 0 10px;
-    padding-top: 5px;
-    font-size:16px
+.peopleBtn{
+	width: 35px;
+	height: 18px;
+	background: #cc5d41;
+	border-radius: 10px;
+	color: #fff;
+	line-height: 18px;
+	text-align: center;
+	font-size: 12px;
+	margin-left: auto;
+	margin-top: 8px;
 }
-.museum_shop_pic div:nth-child(2) h5{
-    margin: 0 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding-top: 5px;
-    font-size:14px
+.workShow{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 15px;
 }
-.museum_shop_pic div:nth-child(2) h4{
-    margin: 0 10px;
-    height:50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between
-}
-.museum_shop_pic div:nth-child(2) h4 span{
-   width:32px;
-   height:32px;
-   border-radius: 25px;
-   /*background: blueviolet;*/
-   display: block;
-   
-}
-.museum_shop_pic div:nth-child(2) h4 span>img{
-	 width:32px;
-   height:32px;
-   border-radius: 25px;
-}
-.museum_shop_pic div:nth-child(2) h4 em{
-    width:26px;
-    height:20px;
-    display: block;
-    float: left;
-    
+.workShow>img{
+	width: 49%;
+	height: 100px;
+	border-radius: 10px;
 }
