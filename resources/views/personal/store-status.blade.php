@@ -15,6 +15,18 @@
     <body>
         <div class="header">
             <div class="header-left"><a href="/wap/personal"></a></div>
+            <h3>店铺申请说明</h3>
+        </div>
+        <div class="content-box store-status-content">
+            <div class="first-box">
+                <div class="about-cave">
+                    <h3>店铺入驻</h3>
+                    <p>山洞文创生态系统平台是一个专注于做文创生态体系的平台，将中国的文化传承是为己任，是目前为止首个专为文创服务的平台。</p>
+                </div>
+                <div class="entry-advantage">
+
+                </div>
+            </div>
         </div>
         <div class="store-status-tip">
             <div class="tip-content">
