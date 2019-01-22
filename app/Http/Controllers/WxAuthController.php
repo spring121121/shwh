@@ -77,7 +77,7 @@ class WxAuthController extends BaseController {
                 }
 
             }else {
-                $info = UserModel::create(['openid'=>$openid,'photo'=>$data_all['headimgurl']]);
+                $info = UserModel::create(['openid'=>$openid,'photo'=>$data_all['headimgurl'],'nickname'=>$data_all['nickname']]);
                 $data_all['id'] = $info->id;
 //                $user = new UserModel();
 //                $user->openid = $openid;

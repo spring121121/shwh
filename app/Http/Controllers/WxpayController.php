@@ -32,7 +32,11 @@ class WxpayController extends BaseController {
         $secret = $this->config['app_secret'];
         $mch_id = $this->config['mch_id'];
         if(!isset($_GET['code'])){
-            $redirect_uri=urlencode("http://".$_SERVER['HTTP_HOST']."/pay?orderstr=" . $_GET['orderstr']);
+            $_GET['orderstr'] = 'a';
+            if(!isset($_GET['orderstr'])) {
+                exit('<script>alert("请选择要支付的订单");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
+            }
+            $redirect_uri=urlencode("http://".$_SERVER['HTTP_HOST']."/wx/pay?orderstr=" . $_GET['orderstr']);
             $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appid."&redirect_uri=".$redirect_uri."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
             header("Location:".$url);
             exit();

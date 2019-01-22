@@ -60,7 +60,7 @@ header ul li span{
     box-shadow: -3px 4px 7px -4px #878787; 
 }
 #museum_list ul{
-       width: 91%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     line-height: 35px;
