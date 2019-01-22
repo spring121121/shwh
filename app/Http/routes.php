@@ -203,12 +203,10 @@ Route::get('wap/designSerch', function () {//设计搜索
 Route::get('wap/designW', function () {//设计详情
     return view('indexDetail/designerd/designerd_works');
 });
-Route::get('wap/factoryJm', function () {//工厂详情
+Route::get('wap/factoryJm', function () {//工厂二级
     return view('indexDetail/factory/factory_jm');
 });
-Route::get('wap/factorydd', function () {//工厂分类
-    return view('indexDetail/factory');
-});
+
 Route::get('wap/factoryclass', function () {//工厂分类
     return view('indexDetail/factory/factory_classify');
 });
@@ -219,10 +217,10 @@ Route::get('wap/musefen', function () {//博物馆分类
 Route::get('wap/museumOne', function () {//博物馆一级
     return view('indexDetail/museumOne');
 });
-Route::get('wap/musegoods', function () {//博物馆商品
+Route::get('wap/musegoods', function () {//首页展示笔记的二级页面
     return view('indexDetail/museumDetail/museumGoods');
 });
-Route::get('wap/musename', function () {//博物馆商品
+Route::get('wap/musename', function () {//博物馆二级页面
     return view('indexDetail/museumDetail/museumName');
 });
 
@@ -327,6 +325,9 @@ Route::group(['middleware'=>'checkLogin'],function(){
     });
     Route::get('wap/store_setting', function () {//店铺设置
         return view('personal/store-setting',Cookie::get('info'));
+    });
+    Route::get('wap/upper_shelf', function () {//商品上架
+        return view('personal/upper-shelf');
     });
     Route::get('wap/write_note', function () {//写笔记
         return view('personal/write-note');

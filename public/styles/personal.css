@@ -73,6 +73,7 @@ ul,li{
 .ipt-cont .ipt-box{
     width: 100%;
     height: 40px;
+    background: transparent;
     line-height: 40px;
     margin-bottom: 20px;
     border-bottom: 1px solid #d2d2d2;
@@ -177,7 +178,7 @@ ul,li{
 /*遮罩*/
 .mask-box{
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -190,8 +191,7 @@ ul,li{
     position: absolute;
     top: 50%;
     left: 50%;
-    background: url("../images/wechat-bg-2x.png") no-repeat center;
-    background-size: 100%;
+    background: #fff;
     width: 220px;
     height: 295px;
     margin-left: -110px;
@@ -2155,4 +2155,158 @@ ul,li{
 }
 .btn-chat{
     border-left: 1px solid #999;
+}
+
+/*商品上架页面样式*/
+.upper-content{
+    background-color: #f8f8f8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    z-index: 1;
+}
+.upper-classify{
+    z-index: 0;
+}
+.add-photo-box{
+    background-color: #fff;
+    height: 100px;
+    overflow: auto;
+}
+.add-photo-box ul{
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+}
+.add-photo-box ul li{
+    position: relative;
+    margin: 10px 0 10px 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 80px;
+    width: 80px;
+}
+.add-photo-box ul li .del-photo-list{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 15px;
+    width: 15px;
+    background: rgba(0, 0, 0, 0.5) url(../images/del-icon.png) no-repeat center;
+    background-size: 100%;
+}
+.add-photo-box ul li input{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+}
+.add-photo-box ul .btn-add-photo{
+    position: relative;
+    background: #eee url(../images/bg-add-photo.png) no-repeat center 10px;
+    background-size: 50%;
+}
+.btn-add-photo span{
+    display: block;
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    top: 50px;
+    position: absolute;
+    color: #666;
+}
+.ipt-box,.shop-classify{
+    background: #fff;
+    margin: 5px 0;
+}
+.ipt-title{
+    margin: 0 10px 10px;
+    height: 30px;
+    padding-top: 10px;
+    line-height: 30px;
+    border-bottom: 1px solid #b2b2b2;
+}
+.ipt-title input{
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+.ipt-shop-brief{
+    margin: 0 10px;
+}
+.ipt-shop-brief textarea{
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+.shop-classify ul{
+    margin: 0 10px;
+}
+.shop-classify ul li{
+    display: flex;
+    height: 35px;
+    justify-content: space-between;
+    line-height: 35px;
+    border-bottom: 1px solid #e7e7e7;
+    font-size: 14px;
+}
+.shop-classify-right span{
+    color: #999;
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+}
+.shop-classify-right span input{
+    width: 100%;
+    font-size: 14px;
+    text-align: right;
+    border: none;
+    outline: none;
+}
+.shop-classify-right i{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(../images/right.png) no-repeat center;
+    background-size: 100%;
+    float: right;
+    margin-left: 10px;
+    margin-top: 8px;
+}
+.upper-classify .first-class{
+    width: 30%;
+    height: 100%;
+    float: left;
+    background: #fff;
+}
+.upper-classify .first-class li,
+.upper-classify .second-class li{
+    height: 35px;
+    line-height: 35px;
+    padding-left: 20px;
+    font-size: 14px;
+}
+.upper-classify .second-class{
+    display: none;
+    height: 100%;
+    margin-left: 30%;
+}
+.btn-upper-release{
+    margin: 5px 10px;
+    color: #fff;
+    background: #FF5555;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
