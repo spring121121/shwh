@@ -26,7 +26,7 @@ html,body{
 header{
     width:100%;
     height:45px;
-    background: yellowgreen;
+   background: #303030;
     text-align: -webkit-center;
     line-height: 45px;  
 }
@@ -41,7 +41,7 @@ header ul{
 header ul li{
     height:45px;
     line-height: 45px;
-    color: #000;
+    color: #fff;
     font-size: 16px;
     font-weight: bold
 }
@@ -58,83 +58,54 @@ header ul li span{
 }
 section{
     overflow-y: auto;
-    margin: 25px 0;
+    width: 100%;
+    height: 280px;
+    /*margin: 25px 0;*/
+   background: url(../images/backggg.jpg);
+   background-repeat: no-repeat;
+   background-size: 100% 100% ;
 }
 
 /*介绍*/
-#designerd_abstract{
-    margin: 0 25px;
-}
-.designerd_abstract_top{
-    height:90px;
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center
 
+.myContent{
+	margin: 15px;
 }
-.designerd_abstract_chart{
-    width:56px;
-    height:56px;
-    border-radius: 56px;
-    /*background: #000;*/
-    margin-right: 10px;
+.myImg{
+	width: 50px;
+	height: 50px;
 }
-.designerd_abstract_chart>img{
-	width:56px;
-    height:56px;
-    border-radius: 50%;
-}
-.designerd_abstract_top>div:nth-child(1){
-    display: flex;
-    align-items: center;
-    width:70%;
-}
-.designerd_abstract_top>div:nth-child(2){
-    width:70px;
-    height:30px;
-    text-align: center;
-    line-height: 30px;
-    font-size: 14px;
-    border-radius: 30px;
-    background: #aaa;
-
-}
-.designerd_abstract_locn{
-    width:30%;
-    display: flex;
-   justify-content: space-between;
-}
-.designerd_abstract_locn div{
-    width:25px;
-    height:25px;
-    /*background: blue;*/
-}
-.designerd_abstract_locn div>img{
+.myImg>img{
 	width: 100%;
 	height: 100%;
+	border-radius: 50%;
 }
-.designerd_abstract_bottom{
-    font-size: 18px;
+
+.myName{
+	margin-top: 15px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff;
 }
-.designerd_abstract_bottom div{
-    font-weight: 600;
-    font-size: 22px;
-    margin: 10px 0;
+.myaddress{
+	margin-top: 10px;
+	font-size: 14px;
+	color: #c2c2c2;
 }
-.designerd_abstract_bottom p{
-    margin-bottom:10px;
+.myWorks{
+	margin-top: 10px;
+	font-size: 14px;
+	color: #c2c2c2;
+	 word-break: break-all; 
+     word-wrap: break-word; 
+     white-space: pre-wrap
 }
-#designerd_pic{
-    width:100%;
+.myBtn{
+	width: 100%div.;
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
 }
-#designerd_pic div{
-    width:100%;
-    height:250px;
-    box-shadow: darkgray 0 1px 0 0;
-    margin-bottom: 10px;
-}
-#designerd_pic div img{
-    width:100%;
-    height:100%;
+.myFans{
+	color: #fff;
 }

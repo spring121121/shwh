@@ -24,29 +24,27 @@
             </ul>
         </header>
         <section>
-            <div id="designerd_abstract">
-                <div class="designerd_abstract_top">
-                    <div>
-                        <div class="designerd_abstract_chart"><img src="/images/a3.jpg"/></div>
-                        <div class="designerd_abstract_locn">
-                            <div><img src="/images/woman.jpg"/></div>
-                            <div><img src="/images/dengji.jpg"/></div>
-                        </div>
-                    </div>
-                    <div>+关注</div>
-                </div>
-                <div class="designerd_abstract_bottom">
-                    <div>描述:</div>
-                    <p>刷卡积分撒娇凡是剩女的思考啊好烦士大夫v教案vs你傻瓜i是假发加法v啊季帕塞jfk色弱价格i手机发啊是几个v皮卡发我批哦时间嘎我姐夫哦事件发生纠纷就没v你既然接受接收哦啊释迦佛啊价格哦减肥啊就</p>
-                </div>
-            </div>
-            <div id="designerd_pic">
-                <div>
-                    <img src="/images/004.jpg" alt="">
-                </div>
-                <div>
-                    <img src="/images/004.jpg" alt="">
-                </div>
+        	<div class="myContent">
+	            <div class="myImg">
+	            	<img src="/images/people.jpg"/>
+	            </div>
+	            <p class="myName">詹姆斯</p>
+	            <p class="myaddress">设计•北京</p>
+	            <p class="myWorks">代表作:<span>《清明上河图》</span></p>
+	            
+	            <div class="myBtn">
+	            	<div class="myFans">
+	            		<p>994</p>
+	            		<p>粉丝</p>
+	            	</div>
+	            	<div class="myFans">
+	            		<p>99</p>
+	            		<p>关注</p>
+	            	</div>
+	            	<div class="">
+	            		
+	            	</div>
+	            </div>
             </div>
         </section>
     </div>
