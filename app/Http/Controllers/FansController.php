@@ -226,4 +226,18 @@ class FansController extends BaseController
         }
         return $this->success($res);
     }
+
+    /**
+     * 判断当前登录的用户是否关注过此用户
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function judgeFocus(Request $request)
+    {
+        $uid = UserService::getUid($request);
+        $beuid = $request->input("beuid");
+        $isFocus = FocusModel::where('uid', $uid)->where('beuid', $beuid)->exists();
+
+        return $this->success(['is_focus'=>$isFocus]);
+    }
 }
