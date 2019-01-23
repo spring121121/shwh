@@ -40,6 +40,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('logout','LoginController@logout');//退出登录
     /*****************AddressController**********************************/
     Route::get('addressList','AddressController@addressList');//获取我的收货地址
+    Route::get('defaultAddress','AddressController@defaultAddress');//获取我的默认收货地址
     Route::post('addAddress','AddressController@addAddress');//添加收货地址
     Route::post('updateAddress','AddressController@updateAddress');//修改收货地址
     Route::post('setDefaultAddress/{id}','AddressController@setDefaultAddress');//修改默认收货地址
@@ -114,6 +115,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('storeGoodsList','ShopController@storeGoodsList');//所属店铺下的商品列表
     Route::post('addCar','ShopController@addCar');//增加商品购物车
     Route::get('myCarList','ShopController@myCarList');//我的购物车列表
+    Route::get('myOrderList','ShopController@myOrderList');//我的购物车列表
     Route::post('createRecord','ShopController@createRecord');//新增浏览记录信息
     Route::get('browseCount','ShopController@browseCount');//浏览记录统计数量
 
@@ -251,6 +253,9 @@ Route::get('wap/shop_detail', function () {//商品详情
 Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('wap/shop_cart', function () {//购物车列表
         return view('shop/shop-cart');
+    });
+    Route::get('wap/shop_purchase', function () {//购买
+        return view('shop/shop-purchase');
     });
 });
 Route::group(['middleware'=>'checkLogin'],function(){
