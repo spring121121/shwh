@@ -17,33 +17,45 @@
             <div class="header-left"><a href="/wap/personal"></a></div>
             <h3>店铺申请说明</h3>
         </div>
-        <div class="content-box store-status-content">
-            <div class="first-box">
-                <div class="about-cave">
-                    <h3>店铺入驻</h3>
-                    <p>山洞文创生态系统平台是一个专注于做文创生态体系的平台，将中国的文化传承是为己任，是目前为止首个专为文创服务的平台。</p>
-                </div>
-                <div class="entry-advantage">
 
-                </div>
+        {{--申请店铺流程第一步--}}
+        <div class="content-box store-apply-box store-apply-first">
+            <div class="about-cave">
+                <h3>店铺入驻</h3>
+                <p>山洞文创生态系统平台是一个专注于做文创生态体系的平台，将中国的文化传承是为己任，是目前为止首个专为文创服务的平台。</p>
             </div>
+            <div class="role-classify">
+                <h4>入驻角色（四类角色）</h4>
+                <ul>
+                    <li>博物馆</li>
+                    <li>文创机构</li>
+                    <li>设计师</li>
+                    <li>工厂</li>
+                </ul>
+            </div>
+            <div class="btn-next-page" id="first-page">查看店铺入驻须知</div>
         </div>
-        <div class="store-status-tip">
+
+        {{--申请店铺流程第二步--}}
+        <div class="content-box store-apply-box">
+
+            <div class="btn-next-page">店铺入住</div>
+        </div>
+        <div class="store-first-tip">
             <div class="tip-content">
                 <span id="tip-text">你好{{$nickname}}，您还没有店铺。<br />请您先申请开店</span>
                 <a id="register-store" href="/wap/register_store">去注册</a>
             </div>
         </div>
 
-        <!--引入footer-->
-        @extends('layout.footer')
-
-        {{--<div class="get-cookie">{{$store_status}}</div>--}}
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
     <script>
         $(function () {
+            $("#first-page").click(function () {
+                
+            });
             var address_url = window.location.search;
             var store_status = address_url.substr(4);
             console.log(store_status);

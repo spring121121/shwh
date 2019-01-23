@@ -1550,9 +1550,23 @@ ul,li{
 }
 
 /*店铺状态显示页面*/
-.store-status-content{
-    height: 100%;
+.store-apply-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
     background-color: #f7f7f7;
+}
+.store-apply-first{
+    z-index: 1;
+}
+.store-apply-second{
+    z-index: 2;
+}
+.store-apply-three{
+    z-index: 3;
 }
 .about-cave{
     background: url(../images/bg-personal-title.png) no-repeat center;
@@ -1573,7 +1587,47 @@ ul,li{
     margin: 0 40px;
     text-align: justify;
 }
-.store-status-tip{
+.role-classify{
+    margin: 10px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+}
+.role-classify h4{
+    line-height: 50px;
+    border-bottom: 1px solid #b2b2b2;
+    font-weight: normal;
+    font-size: 14px;
+    color: #000;
+}
+.role-classify ul{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.role-classify ul li{
+    font-size: 14px;
+    width: 100px;
+    text-align: center;
+    line-height: 50px;
+    border: 1px solid #b2b2b2;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin: 15px;
+}
+.btn-next-page{
+    position: absolute;
+    background: #333;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
+    bottom: 20px;
+    left: 30px;
+    right: 30px;
+    border-radius: 20px;
+}
+.store-first-tip{
     width: 100%;
     height: 100%;
     display: flex;
@@ -1584,11 +1638,11 @@ ul,li{
     text-align: center;
     line-height: 25px;
 }
-.store-status-tip span{
+.store-first-tip span{
     font-size: 16px;
     color: #999;
 }
-.store-status-tip a{
+.store-first-tip a{
     border-radius: 12.5px;
     font-size: 16px;
     color: #fff;
