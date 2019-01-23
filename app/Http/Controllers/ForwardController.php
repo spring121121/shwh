@@ -12,11 +12,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\ForwardService;
 use Illuminate\Http\Request;
+use App\Http\Services\UserService;
 
 class ForwardController extends BaseController
 {
     public function forwardNote(Request $request)
     {
+        //1.先检测是否登录了
+        $uid = UserService::getUid($request);
+        if($uid == 0){
+            return $this->fail(50009);
+        }
         $forwardService = new ForwardService();
         $noteId = $request->input('note_id');
         $beuid = $request->input('beuid');

@@ -33,6 +33,9 @@ Route::get('getNoteByStoreId/{storeId}','NoteController@getNoteByStoreId');//笔
 Route::get('getStoreDetail','ShopController@getStoreDetail');//店铺详情
 Route::get('myFans','FansController@myFans');//粉丝数量
 
+Route::post('focus','FansController@focus');//关注
+Route::post('forwardNote','ForwardController@forwardNote');//转发
+
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
  */
@@ -64,6 +67,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('getNoteListByStoreId','NoteController@getNoteListByStoreId');//根据店铺ID查询相应的笔记
     Route::post('replayComment','NoteController@replayComment');//笔记下回复某个人评论
     Route::post('likeNote','NoteController@likeNote');//笔记点赞
+    Route::post('addNote','NoteController@addNote');//发布笔记
     Route::get('getMyCollectNote','CollectController@getMyCollectNote');//获取我收藏的笔记
     Route::get('getMyLikeNote','LikeController@getMyLikeNote');//获取我点赞的笔记
     Route::post('collectNote','CollectController@collectNote');//收藏笔记
@@ -79,7 +83,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
 
     /*****************FansController关注，粉丝接口********************************/
     Route::post('focus','FansController@focus');//关注
-    Route::post('cancelFocus','FansController@cancelFocus');//关注
+    Route::post('cancelFocus','FansController@cancelFocus');//取消关注
 
     Route::get('judgeFocus','FansController@judgeFocus');//判断当前登录的用户是否关注过此用户
     Route::get('myFansList','FansController@myFansList');//我的粉丝列表
@@ -119,7 +123,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('createRecord','ShopController@createRecord');//新增浏览记录信息
     Route::get('browseCount','ShopController@browseCount');//浏览记录统计数量
 
-    Route::post('forwardNote','ForwardController@forwardNote');//转发
+
 
     /*****************CashController申请金额接口********************************/
     Route::post('applyCash','CashController@applyCash');//申请提现

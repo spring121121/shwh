@@ -68,13 +68,13 @@
         <div id="list">
             <ul>
                 <li>
-                    <a href="/wap/museumOne">
+                    <a href="/wap/museumOne?roleId=2">
                         <img src="/images/bwg.jpg" alt="">
                     </a>
                     <span >博物馆</span>
                 </li>
                 <li>
-                    <a href="/wap/mech">
+                    <a href="/wap/museumOne?roleId=3">
                         <img src="/images/wcjg.jpg" alt="">
                     </a>
                     <span >文创机构</span>
@@ -86,7 +86,7 @@
                     <span >设计师</span>
                 </li>
                 <li>
-                    <a href="/wap/factoryJm">
+                    <a href="/wap/museumOne?roleId=5">
                         <img src="/images/gc.jpg" alt="">
                     </a>
                     <span >工厂</span>
@@ -112,31 +112,6 @@
                 <ul></ul>
             </div>
         </div>
-        
-        {{--<div id="exhibition">--}}
-            {{--<div class="exhibition_left">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-            {{--<div class="exhibition_right">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div id="exhibition">--}}
-            {{--<div class="exhibition_left">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-            {{--<div class="exhibition_right">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div id="exhibition">--}}
-            {{--<div class="exhibition_left">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-            {{--<div class="exhibition_right">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
     </section>
 </div>
 <!--引入footer-->

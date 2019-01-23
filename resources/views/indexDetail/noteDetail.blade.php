@@ -65,32 +65,7 @@
                     </div>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <div class="pl-icon-box">
-                        <img class="common-img" src="/images/weChat-2x.png" alt="头像">
-                    </div>
-                    <div class="pl-cont">
-                        <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span>
-                            <div class="dianzan"></div>
-                        </h3>
-                        <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="pl-icon-box">
-                        <img class="common-img" src="/images/weChat-2x.png" alt="头像">
-                    </div>
-                    <div class="pl-cont">
-                        <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span>
-                            <div class="dianzan"></div>
-                        </h3>
-                        <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
-                    </div>
-                </a>
-            </li>
+
             <li>
                 <a href="#">
                     <div class="pl-icon-box">
@@ -172,7 +147,8 @@
             if (data.status){
                 alert("转发成功");
             }else {
-                alert("哎呀！出错了")
+                alert(data.message)
+                window.location.href="/wap/login_index"
             }
         })
     }

@@ -13,8 +13,12 @@ class UserService
     public static function getUid($request)
     {
         $userInfo = $request->session()->get('userInfo');
-        $uid = $userInfo['id'];
-//        $uid = 1;
+        if(empty($userInfo)){
+            $uid = 0;
+        }else{
+            $uid = $userInfo['id'];
+        }
+
         return $uid;
     }
 

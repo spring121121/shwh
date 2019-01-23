@@ -21,6 +21,7 @@ use App\Http\Services\CommentService;
 use App\Http\Services\UserService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Output\NullOutput;
 
 class NoteController extends BaseController
 {
@@ -223,7 +224,9 @@ class NoteController extends BaseController
         $page = $request->input('page', 1);
         $limit = $request->input('limit', 10);
         $offset = ($page - 1) * $limit;
-        $noteList = DB::select("SELECT count(likes.id) as likeNum,note.* FROM `likes`,note where likes.note_id =note.id GROUP BY likes.note_id order by likeNum desc limit :offset,:limit", ['limit' => $limit, 'offset' => $offset]);
+        $noteList = DB::select("SELECT count(likes.id) as likeNum,note.* FROM note left join `likes` on likes.note_id =note.id where note.deleted_at is null GROUP BY note.id  order by likeNum desc limit :offset,:limit", ['limit' => $limit, 'offset' => $offset]);
+
+
         foreach ($noteList as $note) {
             $note->forwardNum = ForwardService::getForwardNum($note->id);
         }
@@ -334,7 +337,7 @@ class NoteController extends BaseController
         return $this->success($noteList);
     }
 
-    /*
+    /**
      * 根据笔记ID获取笔记详情
      * @param $noteId
      * @return \Illuminate\Http\JsonResponse
@@ -378,11 +381,10 @@ class NoteController extends BaseController
     public function getNoteByStoreId($storeId)
     {
         $goodsModel = new GoodsModel();
-        $noteList = $goodsModel::where('goods.store_id', '=',$storeId)
-            ->select("note.id","note.title","note.content","note.image_one_url","user.photo")
-
-            ->join("note",'note.goods_id','=','goods.id')
-            ->join("user","user.id","=",'note.uid')->get();
+        $noteList = $goodsModel::where('goods.store_id', '=', $storeId)
+            ->select("note.id","note.uid", "note.title", "note.content", "note.image_one_url", "user.photo")
+            ->join("note", 'note.goods_id', '=', 'goods.id')
+            ->join("user", "user.id", "=", 'note.uid')->get();
         foreach ($noteList as $note) {
             $note->likeNum = LikesService::getLikesNum($note->id);
         }
