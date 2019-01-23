@@ -23,7 +23,7 @@
             </div>
             <div class="nameHeadRight">
                 <div class="introduce">
-                    <p>博物馆名称</p>
+                    <p id="name"></p>
                     <span class="iconfont icon-dengji"></span>
                 </div>
                 <div class="fansCourse">
@@ -109,6 +109,7 @@
             if (data.code == 200) {
                 $("#muse_logo").attr("src", data.data[0].logo_pic_url)
                 $("#info").html(data.data[0].introduction)
+                $("#name").html(data.data[0].name)
                 getFansNum(data.data[0].uid)
                 if($("#uid").val()!=0){
                     judgeFocus(data.data[0].uid);
@@ -154,12 +155,12 @@
                     if (i % 2 == 0) {
                         nameListLeft += '<div class="museum_shop_pic">'
                         nameListLeft += '<div>'
-                        nameListLeft += '<img src="' + v.image_one_url + '" onerror="this.src=\'/images/note.jpg\'">'
+                        nameListLeft += '<a href="/wap/noteDetail/'+v.id+'"><img src="' + v.image_one_url + '" onerror="this.src=\'/images/note.jpg\'"></a>'
                         nameListLeft += '</div>'
                         nameListLeft += '<div>'
                         nameListLeft += '<h3 >' + v.title + '</h3>'
                         nameListLeft += '<h4>'
-                        nameListLeft += '<span><img src="' + v.photo + '" onerror="this.src=\'/images/photo.png\'"/></span>'
+                        nameListLeft += '<a href="/wap/other_home?id='+v.uid+'"><span><img src="' + v.photo + '" onerror="this.src=\'/images/photo.png\'"/></span></a>'
                         nameListLeft += '<p>'
                         nameListLeft += '<i class="contentNum">152222</i>'
                         nameListLeft += '<em onclick="addcolor()" class="iconfont icon-dianzan"></em>'
@@ -170,12 +171,12 @@
                     } else {
                         nameListRight += '<div class="museum_shop_pic">'
                         nameListRight += '<div>'
-                        nameListRight += '<img src="' + v.image_one_url + '" onerror="this.src=\'/images/note.jpg\'">'
+                        nameListRight += '<a href="/wap/noteDetail/'+v.id+'"><img src="' + v.image_one_url + '" onerror="this.src=\'/images/note.jpg\'"></a>'
                         nameListRight += '</div>'
                         nameListRight += '<div>'
                         nameListRight += '<h3 >' + v.title + '</h3>'
                         nameListRight += '<h4>'
-                        nameListRight += '<span><img src="' + v.photo + '" onerror="this.src=\'/images/photo.png\'"/></span>'
+                        nameListRight += '<a href="/wap/other_home?id='+v.uid+'"><span><img src="' + v.photo + '" onerror="this.src=\'/images/photo.png\'"/></span></a>'
                         nameListRight += '<p>'
                         nameListRight += '<i class="contentNum">' + v.likeNum + '</i>'
                         nameListRight += '<em onclick="addcolor()" class="iconfont icon-dianzan"></em>'

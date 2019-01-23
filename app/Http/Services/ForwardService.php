@@ -21,7 +21,14 @@ class ForwardService
         return self::$forwardModel->where('note_id', '=', $noteId)->count();
 
     }
-    //转发
+
+    /**
+     * 转发
+     * @param $request
+     * @param $beuid
+     * @param $noteId
+     * @return mixed
+     */
     public function forwardNote($request,$beuid,$noteId){
         $uid = UserService::getUid($request);
         self::getForwardModel();

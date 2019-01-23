@@ -68,13 +68,13 @@
         <div id="list">
             <ul>
                 <li>
-                    <a href="/wap/museumOne">
+                    <a href="/wap/museumOne?roleId=2">
                         <img src="/images/bwg.jpg" alt="">
                     </a>
                     <span >博物馆</span>
                 </li>
                 <li>
-                    <a href="/wap/mech">
+                    <a href="/wap/museumOne?roleId=3">
                         <img src="/images/wcjg.jpg" alt="">
                     </a>
                     <span >文创机构</span>
@@ -86,7 +86,7 @@
                     <span >设计师</span>
                 </li>
                 <li>
-                    <a href="/wap/factoryJm">
+                    <a href="/wap/museumOne?roleId=5">
                         <img src="/images/gc.jpg" alt="">
                     </a>
                     <span >工厂</span>
@@ -112,37 +112,13 @@
                 <ul></ul>
             </div>
         </div>
-        
-        {{--<div id="exhibition">--}}
-            {{--<div class="exhibition_left">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-            {{--<div class="exhibition_right">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div id="exhibition">--}}
-            {{--<div class="exhibition_left">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-            {{--<div class="exhibition_right">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div id="exhibition">--}}
-            {{--<div class="exhibition_left">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-            {{--<div class="exhibition_right">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
     </section>
 </div>
 <!--引入footer-->
 @extends('layout.footer')
 </body>
 <script type="text/javascript" src="/js/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
 <script>
     $(function () {
         contentList();
@@ -180,12 +156,14 @@
         obj += '<div class="exhibition_left_describe">';
         obj += '<h1>' + v.title + '</h1>';
         obj += '<p>' + v.content + '</p><h3><span>';
-        obj += '<em  class="iconfont icon-dianzan"></em>';
-        obj += '</span><i>点赞(' + v.likeNum + ')</i><span>';
+        obj += '<em  id=dianzan-'+v.id+' class="iconfont icon-dianzan" onclick="addLikes('+v.id+')"></em>';
+        obj += '</span><i>点赞(<i id="likeNum-'+v.id+'">'+ v.likeNum +' </i>)</i>';
+        obj += '<span onclick="addForward('+v.uid+','+v.id+')">';
         obj += '<svg class="icon" aria-hidden="true">';
         obj += '<use xlink:href="#icon-zhuanfa"></use>';
-        obj += '</svg></span> ';
-        obj += '<i>转发(' + v.forwardNum + ')</i>';
+        obj += '</svg> ';
+        obj += '</span>';
+        obj += '<i>转发(<i id="forward-'+v.id+'">' + v.forwardNum + '</i>)</i>';
         obj += '</h3></div></li>';
         return obj;
     }
@@ -193,3 +171,6 @@
 </html>
 <script src="/js/swiper/swiper.min.js"></script>
 <script src="/js/swiper/swiper.js"></script>
+<script>
+
+</script>

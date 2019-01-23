@@ -84,7 +84,8 @@ class WxpayController extends BaseController {
                 'sign_type' => 'MD5',
                 'body' => '山洞-支付',
                 'out_trade_no' => $pay_order_sn,
-                'total_fee' => floatval($total_price)*100,
+                'total_fee' => 1,
+//                'total_fee' => floatval($total_price)*100,
                 'spbill_create_ip' => $_SERVER['REMOTE_ADDR'],
                 'notify_url' => "http://" . $_SERVER['HTTP_HOST'] . "/notify",
                 'trade_type' => 'JSAPI',
@@ -97,9 +98,9 @@ class WxpayController extends BaseController {
 //            halt($result);
             /*--------------微信统一下单--------------*/
             if ($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS') {
-                $res = OrdersModel::whereIn('order_sn',$order_arr)->update(['pay_order_sn'=>$pay_order_sn,'openid'=>$openid]);
+                $res = OrdersModel::whereIn('order_sn',$order_arr)->update(['pay_order_sn'=>$pay_order_sn,'openid'=>$openid,'prepay_time'=>time()]);
                 if($res !== count($order_arr)) {
-                    exit('<script>alert("支付系统错误,请联系管理员");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');;
+                    exit('<script>alert("支付系统错误,请联系管理员");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
                 }
                 DB::table('pay_log')->insert(['pay_order_sn'=>$pay_order_sn,'order_sn'=>serialize($order_arr),'uid'=>$userinfo['id']]);
 
@@ -155,42 +156,27 @@ class WxpayController extends BaseController {
         if($data) {
             $this->log('notify',var_export($data,true));
             if($data['return_code'] == 'SUCCESS' && $data['result_code'] == 'SUCCESS') {
-//                $map = [
-//                    ['order_sn','=',$data['out_trade_no']],
-//                    ['pay_status','=',0],
-//                ];
-//                $exist = Db::table('mp_req')->where($map)->find();
-//                if($exist) {
-//                    $update_data = [
-//                        'pay_status' => 1,
-//                        'trans_id' => $data['transaction_id'],
-//                        'pay_time' => time(),
-//                    ];
-//                    try {
-//                        Db::table('mp_req')->where('order_sn','=',$data['out_trade_no'])->update($update_data);
-//                    } catch (\Exception $e) {
-//                        $this->log('notify',$e->getMessage());
-//                    }
-//                }
-
+                $pay_order_sn = $data['out_trade_no'];
+                $map = [
+                    'pay_order_sn'=>$pay_order_sn,
+                    'status' => 0
+                ];
+                try {
+                    OrdersModel::where($map)->update(['trans_id'=>$data['transaction_id'],'status'=>1,'pay_time'=>time()]);
+                }catch (\Exception $e) {
+                    $this->excep('wx/notify:2',$e->getMessage());
+                    exit($this->array2xml(['return_code'=>'SUCCESS','return_msg'=>'OK']));
+                }
             }else if($data['return_code'] == 'SUCCESS' && $data['result_code'] != 'SUCCESS'){
-                $data['out_trade_no'] = '支付失败';
+                try {
+                    DB::table('pay_error')->insert(['title'=>'pay failed','content'=>json_encode($data)]);
+                }catch (\Exception $e) {
+                    $this->excep('wx/notify:3',$e->getMessage());
+                }
             }
-//            try {
-//                $order_sn = isset($data['out_trade_no']) ? $data['out_trade_no'] : '';
-//                Db::table('paylog')->insert(['order_sn'=>$order_sn,'detail'=>json_encode($data),'type'=>1]);
-//            }catch (\Exception $e) {
-//                $this->log($e->getMessage());
-//            }
+
         }
         exit($this->array2xml(['return_code'=>'SUCCESS','return_msg'=>'OK']));
-//        $file= 'notify.txt';
-//        $text='[Time ' . date('Y-m-d H:i:s') ."] ".var_export(['username'=>'姜海蕤','age'=>27,'gender'=>1],true)."\n---END---" . "\n";
-//        if(false !== fopen($file,'a+')){
-//            file_put_contents($file,$text,FILE_APPEND);
-//        }else{
-//            echo '创建失败';
-//        }
     }
 
     public function refundNotify() {
@@ -204,36 +190,21 @@ class WxpayController extends BaseController {
     }
 
     public function test(Request $request) {
-        $str = 'sd_154744799037798100#sd_154744801511829400#sd_154744805078563900';
-        $userinfo = $request->session()->get('userInfo');
-        if(!$userinfo) {
-            exit('<script>alert("请用微信登录");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
-        }
-        $order_arr = explode('#',$str);
-        $total_price = 0;
-        foreach ($order_arr as $order_sn) {
-            $exist = OrdersModel::where([
-                'order_sn'=>$order_sn,
-                'uid'=>$userinfo['id'],
-                'status' => 0
-            ])->get()->toArray();
-            if(!$exist) {
-                exit('<script>alert("无效的订单'.$order_sn.'");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
-            }
-            $total_price += $exist[0]['total_price'];
-        }
-        halt($total_price);
-        $pay_order_sn = $this->genOrderSn('');
 
-        $res = OrdersModel::whereIn('order_sn',$order_arr)->update(['pay_order_sn'=>$pay_order_sn]);
-        if($res !== count($order_arr)) {
-            exit('<script>alert("支付系统错误,请联系管理员");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');;
-        }
-        halt($res);
     }
 
     private function log($cmd = '',$msg = '') {
         $file= 'notify.txt';
+        $text='[Time ' . date('Y-m-d H:i:s') ."]  cmd:".$cmd."\n".$msg."\n---END---" . "\n";
+        if(false !== fopen($file,'a+')){
+            file_put_contents($file,$text,FILE_APPEND);
+        }else{
+            echo '创建失败';
+        }
+    }
+
+    private function excep($cmd = '',$msg = '') {
+        $file= 'exception.txt';
         $text='[Time ' . date('Y-m-d H:i:s') ."]  cmd:".$cmd."\n".$msg."\n---END---" . "\n";
         if(false !== fopen($file,'a+')){
             file_put_contents($file,$text,FILE_APPEND);
@@ -335,7 +306,7 @@ class WxpayController extends BaseController {
         $time = explode (" ", microtime ());
         $timeArr = explode('.',$time [0]);
         $mtime = array_pop($timeArr);
-        $fulltime = $letter.$time[1].$mtime;
+        $fulltime = $letter.$time[1] . $mtime . mt_rand(100,999);
         return $fulltime;
     }
 

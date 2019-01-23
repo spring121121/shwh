@@ -43,8 +43,14 @@ class FansController extends BaseController
      */
     public function focus(Request $request)
     {
-        $beuid = $request->input('uid');
+        //1.先检测是否登录了
         $uid = UserService::getUid($request);
+        if($uid == 0){
+            return $this->fail(50009);
+        }
+
+        $beuid = $request->input('uid');
+
         //先查下表里是否存在某个用户关注过该用户
         $re = FocusModel::where('uid', '=', $uid)->where('beuid', '=', $beuid)->withTrashed()->first();
         if (!empty($re)) {
