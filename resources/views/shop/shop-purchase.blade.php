@@ -224,18 +224,19 @@
                     });
                     $(".my-address-box ul").html(defaultAddress);
                 }else {
-                    alert("哎呀！出错了")
+                    alert("哎呀！出错了");
                 }
             }
         });
         var goodsid = getUrlParam('goods_id');
+        var num = getUrlParam('num');
         var car = '';
         $.ajax({
             url : "/myOrderList",	//请求url 商城分类
             type : "get",	//请求类型  post|get
             async: false,
             dataType : "json",  //返回数据的 类型 text|json|html--
-            data:{goods_id:goodsid},
+            data:{goods_id:goodsid,num:num},
             success : function(data){//回调函数 和 后台返回的 数据
                 console.log(data);
                 $.each(data.data, function (k, v) {
@@ -255,7 +256,7 @@
                         car += '<p>'+goods['goods_info'].substr(0,5)+'...</p>';
                         car += '<p class="car_"></p>';
                         car += '<p class="car_price">￥'+goods['price']+'</p></div>';
-                        car += '<div class="zc_btngroup car_num">x11</div></div>';
+                        car += '<div class="zc_btngroup car_num">x&nbsp;'+goods['num']+'</div></div>';
                     });
                     car += '</div></div><div class="hr"></div>';
                 });

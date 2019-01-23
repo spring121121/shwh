@@ -366,15 +366,20 @@ class ShopController extends BaseController
         $uid = UserService::getUid($request);
         $goods_ids = $request->input('goods_id');
         $goodsIds = explode(',',$goods_ids);
-        $resStore = $this->getMyOrderList($uid,$goodsIds);
+        $num = $request->input('num');
+        $nums = explode(',',$num);
+        $resStore = $this->getMyOrderList($uid,$goodsIds,$nums);
         return $this->success($resStore);
     }
 
-    public function getMyOrderList($uid,$goodsIds){
+    public function getMyOrderList($uid,$goodsIds,$nums){
         $myGoodsList = CarModel::where('car.uid',$uid)->whereIn('car.goods_id',$goodsIds)
             ->join('goods','car.goods_id','=','goods.id')
             ->select('goods.*')
             ->get()->toArray();
+        foreach($myGoodsList as $key=>$goods_value){
+            $myGoodsList[$key]['num'] = $nums[$key];
+        }
         $store_ids = array_unique(array_column($myGoodsList,'store_id'));
         $resStore = StoreModel::whereIn('id',$store_ids)->orderByRaw("FIELD(id, " . implode(", ", $store_ids) . ")")
             ->select('id','name')

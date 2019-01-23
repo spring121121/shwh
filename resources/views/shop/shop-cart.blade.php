@@ -151,10 +151,12 @@
 
             $('.zc_cart_Count').on('click',function(){
  				var goods_ids = [];
+ 				var num = [];
                 $.each($('input[name="goods_id"]:checked'),function(){
                     goods_ids.push($(this).val());
+                    num.push($(this).parent().siblings('.car_num').find('.zc_btnmin').text());
                 });
-				window.location.href = '/wap/shop_purchase?goods_id='+goods_ids;
+				window.location.href = '/wap/shop_purchase?goods_id='+goods_ids+'&num='+num;
 			});
 			$(".zc_btnright").click(function(){
 				n++;
