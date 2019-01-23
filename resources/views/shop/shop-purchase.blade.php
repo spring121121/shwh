@@ -24,7 +24,7 @@
             padding:0 10px;
         }
         .select_b{
-            margin-top:45px;
+            margin-top:55px;
             background: #fff;
             margin-left:5px;
             margin-right:5px;
@@ -188,21 +188,23 @@
         </div>
 
         <div class="select_way total">
-            <div>商品金额</div>
-            <div class="price">￥228.00</div>
-            <div style="margin-top:10px;">运费</div>
-            <div class="price post">+&nbsp;￥6.00</div>
+            {{--<div>商品金额</div>--}}
+            {{--<div class="price">￥228.00</div>--}}
+            {{--<div style="margin-top:10px;">运费</div>--}}
+            {{--<div class="price post">+&nbsp;￥6.00</div>--}}
         </div>
     </section>
     <footer class="select_submit">
-        <div class="total_price t_price">￥228.00</div>
-        <div class="total_price total_submit">提交订单</div>
+        {{--<div class="total_price t_price">￥228.00</div>--}}
+        {{--<div class="total_price total_submit">提交订单</div>--}}
     </footer>
 </body>
 <script src="/js/jquery-3.0.0.min.js"></script>
 <script>
     $(function(){
         var id = getUrlParam('id');
+        var goodsid = getUrlParam('goods_id');
+        var num = getUrlParam('num');
         $.ajax({
             url : "/defaultAddress",	//请求url
             type : "get",	//请求类型  post|get
@@ -213,7 +215,7 @@
                 if (data.status){
                     $.each(data.data, function (k, v) {
                         defaultAddress += '<li><div class="icon-box">'+v.name.substr(0,1)+'</div>';
-                        defaultAddress += '<div class="address-cont"><a href="/wap/my_address?flag=1" id="'+v.id+'" class="open-address btn-bjdz">></a>';
+                        defaultAddress += '<div class="address-cont"><a href="/wap/my_address?flag=1'+'&goods_id='+goodsid+'&num='+num+'" id="'+v.id+'" class="open-address btn-bjdz">></a>';
                         defaultAddress += '<h3>'+v.name+'<span>'+v.mobile+'</span></h3>';
                         defaultAddress += '<p>';
                         if(v.is_default == 1){
@@ -228,9 +230,7 @@
                 }
             }
         });
-        var goodsid = getUrlParam('goods_id');
-        var num = getUrlParam('num');
-        var car = '';
+        var car = '',goods='',settle='';
         $.ajax({
             url : "/myOrderList",	//请求url 商城分类
             type : "get",	//请求类型  post|get
@@ -239,7 +239,8 @@
             data:{goods_id:goodsid,num:num},
             success : function(data){//回调函数 和 后台返回的 数据
                 console.log(data);
-                $.each(data.data, function (k, v) {
+                var record = data.data;
+                $.each(record.data, function (k, v) {
                     car += '<div class="store_parent">';
                     car += '<div class="store_div">';
                     car += '<div class="store_height"></div>';
@@ -261,6 +262,16 @@
                     car += '</div></div><div class="hr"></div>';
                 });
                 $('.zc_carGoods').html(car);
+
+                goods += '<div>商品金额</div>';
+                goods += '<div class="price">￥'+record['total']+'</div>';
+                goods += '<div style="margin-top:10px;">运费</div>';
+                goods += '<div class="price post">+&nbsp;￥'+record['postage']+'</div>';
+                $('.total').html(goods);
+
+                settle += '<div class="total_price t_price">￥'+record['total_price']+'</div>';
+                settle += '<div class="total_price total_submit">提交订单</div>';
+                $('.select_submit').html(settle);
             }
         });
 
@@ -273,6 +284,22 @@
             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
             if (r != null) return unescape(r[2]); return null; //返回参数值
         }
+
+        $('.total_submit').on('click',function(){
+            var address_id = $('.btn-bjdz').attr('id');
+            $.ajax({
+                url : "/purchase",	//请求url 商城分类
+                type : "post",	//请求类型  post|get
+                async: false,
+                dataType : "json",  //返回数据的 类型 text|json|html--
+                data:{address_id:address_id,goods_id:goodsid,num:num},
+                success : function(data){//回调函数 和 后台返回的 数据
+                    if(data.status){
+                        alert('提交成功');
+                    }
+                }
+            });
+        });
     });
 </script>
 </html>
