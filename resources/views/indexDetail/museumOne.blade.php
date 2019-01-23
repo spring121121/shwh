@@ -23,7 +23,7 @@
             </ul>
            
         </header>
-        <p class="museumCourse">博物馆总览</p>
+        
         <section class="b">   
             <div id="museum_shop">
                 <div class="museum_shop_left">

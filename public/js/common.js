@@ -377,3 +377,31 @@ function getCookie(cookie_name) {
     return value;
 }
 
+//对笔记点赞
+function addLikes(note_id) {
+    var likeNum = parseInt($("#likeNum-"+note_id).html());
+    $.post("/likeNote", {'note_id': note_id}, function (data) {
+        if (data.status) {
+            $("#dianzan-"+note_id).css("color","red");
+            $("#likeNum-"+note_id).html(likeNum+1);
+        } else {
+            alert(data.message)
+            window.location.href = "/wap/login_index"
+        }
+    })
+}
+
+//转发笔记
+function addForward(uid, note_id) {
+    var forwardNum = parseInt($("#forward-"+note_id).html());
+    $.post("/forwardNote", {'beuid': uid, 'note_id': note_id}, function (data) {
+        if (data.status) {
+            alert("转发成功");
+            $("#forward-"+note_id).html(forwardNum+1);
+        } else {
+            alert(data.message)
+            window.location.href = "/wap/login_index"
+        }
+    })
+}
+
