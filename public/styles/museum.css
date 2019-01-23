@@ -57,7 +57,12 @@ header ul li span{
 #museum_list{
     width:100%;
     height:50px;  
-    box-shadow: -3px 4px 7px -4px #878787; 
+    /*box-shadow: -3px 4px 7px -4px #878787; */
+}
+.museumCourse{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 0 10px;
 }
 #museum_list ul{
     width: 80%;

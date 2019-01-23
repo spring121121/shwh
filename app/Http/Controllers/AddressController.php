@@ -41,6 +41,29 @@ class AddressController extends BaseController
     }
 
     /**
+     * 默认地址
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function defaultAddress(Request $request){
+        $uid = UserService::getUid($request);
+        $id = $request->input('id');
+        if(!empty($id)){
+            $where = ['address.id'=>$id,'address.uid'=>$uid];
+        }else{
+            $where = ['address.uid'=>$uid,'address.is_default'=>AddressModel::IS_DEFAULT_1];
+        }
+        $defaultAddress = AddressModel::where($where)
+            ->join('provinces as p', 'address.province', '=', 'p.provinceid')
+            ->join('cities as c', 'address.city', '=', 'c.cityid')
+            ->join('areas as a', 'address.area', '=', 'a.areaid')
+            ->select('address.*','p.province','c.city','a.area')
+            ->get()->toArray();
+        return $this->success($defaultAddress);
+
+    }
+
+    /**
      * 添加收货地址
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse

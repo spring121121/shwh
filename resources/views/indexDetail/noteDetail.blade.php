@@ -20,16 +20,16 @@
 </div>
 <div class="content-box">
     <div class="swiper-tuijian-box">
-        <div class="swiper-tuijian-banner swiper-container">
+        <div class="swiper-tuijian-banner swiper-container" style="height: 250px">
             <div class="swiper-wrapper">
-                {{--<div class="swiper-slide"><img class="common-img" src="{{$noteDetail['image_one_url']}}"></div>--}}
-                {{--<div class="swiper-slide"><img class="common-img" src="{{$noteDetail['image_two_url']}}"></div>--}}
-                {{--<div class="swiper-slide"><img class="common-img" src="{{$noteDetail['image_three_url']}}"></div>--}}
+                <div class="swiper-slide" style="background-image: url('{{$noteDetail['image_one_url']}}');background-position: center;background-size: 100%"></div>
+                <div class="swiper-slide" style="background-image: url('{{$noteDetail['image_two_url']}}');background-position: center;background-size: 100%"></div>
+                <div class="swiper-slide" style="background-image: url('{{$noteDetail['image_three_url']}}');background-position: center;background-size: 100%"></div>
             </div>
         </div>
     </div>
     <div class="tuijian-cont-box">
-        <div class="head-img"><img class="common-img" src="{{$noteDetail['photo']}}"
+        <div class="head-img"><img style="border-radius: 50%" class="common-img" src="{{$noteDetail['photo']}}"
                                    onerror="this.src='/images/portrait.png'"/></div>
         <h4>{{$noteDetail['nickname']}}<i></i>
             @if($noteDetail['is_foucus'])
@@ -38,7 +38,7 @@
                 <div class="btn-gz" onclick="addFocus({{$noteDetail['uid']}})">关注</div>
             @endif
         </h4>
-        <p>笔记的标题：{{$noteDetail['title']}}</p>
+        <p style="font-weight: bold">{{$noteDetail['title']}}</p>
         <p>{{$noteDetail['content']}}</p>
     </div>
     <ul class="btn-list-icon">

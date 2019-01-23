@@ -31,14 +31,17 @@
                 <li onclick="museumList(3)">最热</li>
             </ul>
         </div>
-        <section class="b">   
-            <div id="museum_shop">
+        <section class="b">
+        <div id="museum_shop">
                 <div class="museum_shop_left">
                     
                 </div>
                 <div class="museum_shop_right">	
                     
                 </div>
+        </div>
+        </section>
+    </div>
 <div id="home">
     <header>
         <ul>

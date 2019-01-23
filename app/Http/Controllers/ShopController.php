@@ -336,7 +336,7 @@ class ShopController extends BaseController
      */
     public function myCarList(Request $request){
         $uid = UserService::getUid($request);
-        $myGoodsList = CarModel::where('car.uid',19)
+        $myGoodsList = CarModel::where('car.uid',$uid)
             ->join('goods','car.goods_id','=','goods.id')
             ->select('goods.*')
             ->get()->toArray();
@@ -355,6 +355,46 @@ class ShopController extends BaseController
             }
         }
         return $this->success($resStore);
+    }
+
+    /**
+     * 我的订单列表
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function myOrderList(Request $request){
+        $uid = UserService::getUid($request);
+        $goods_ids = $request->input('goods_id');
+        $goodsIds = explode(',',$goods_ids);
+        $num = $request->input('num');
+        $nums = explode(',',$num);
+        $resStore = $this->getMyOrderList($uid,$goodsIds,$nums);
+        return $this->success($resStore);
+    }
+
+    public function getMyOrderList($uid,$goodsIds,$nums){
+        $myGoodsList = CarModel::where('car.uid',$uid)->whereIn('car.goods_id',$goodsIds)
+            ->join('goods','car.goods_id','=','goods.id')
+            ->select('goods.*')
+            ->get()->toArray();
+        foreach($myGoodsList as $key=>$goods_value){
+            $myGoodsList[$key]['num'] = $nums[$key];
+        }
+        $store_ids = array_unique(array_column($myGoodsList,'store_id'));
+        $resStore = StoreModel::whereIn('id',$store_ids)->orderByRaw("FIELD(id, " . implode(", ", $store_ids) . ")")
+            ->select('id','name')
+            ->get()->toArray();
+        foreach($resStore as &$store_value){
+            $key = 0;
+            foreach($myGoodsList as $goods_value){
+                $key += 0;
+                if($goods_value['store_id'] == $store_value['id']){
+                    $store_value['goods'][$key] = $goods_value;
+                    $key++;
+                }
+            }
+        }
+        return $resStore;
     }
 
     /**

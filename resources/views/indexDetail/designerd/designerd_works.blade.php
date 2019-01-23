@@ -17,13 +17,13 @@
                
                     <span onclick="handleTodesi()" class="iconfont icon-ffanhui-"></span>
                 </li>
-                <li>作品名称</li>
+                <li>作品展示</li>
                 <li>
                     <span></span>
                 </li>
             </ul>
         </header>
-        <section>
+        <div class="headNext">
         	<div class="myContent">
 	            <div class="myImg">
 	            	<img src="/images/people.jpg"/>
@@ -41,12 +41,44 @@
 	            		<p>99</p>
 	            		<p>关注</p>
 	            	</div>
-	            	<div class="">
-	            		
+	            	<div class="myclick">
+                        <img src="/images/volod.png" alt="">
+                        <div class="">关注</div>
 	            	</div>
 	            </div>
             </div>
-        </section>
+        </div>
+        <p class="worksText">经典艺术</p>
+        <div class="worksList">
+            <div class="worksImg">
+                <img src="/images/collection-img6.jpg" alt="">
+            </div>
+            <div class="worksZs">
+                <p>景德镇青花瓷</p>
+                <img src="/images/dianzan.png" alt="">
+                <p>1666</p>
+            </div>
+        </div>
+        <div class="worksList">
+            <div class="worksImg">
+                <img src="/images/collection-img5.jpg" alt="">
+            </div>
+            <div class="worksZs">
+                <p>景德镇青花瓷</p>
+                <img src="/images/dianzan.png" alt="">
+                <p>1666</p>
+            </div>
+        </div>
+        <div class="worksList">
+            <div class="worksImg">
+                <img src="/images/collection-img4.jpg" alt="">
+            </div>
+            <div class="worksZs">
+                <p>景德镇青花瓷</p>
+                <img src="/images/dianzan.png" alt="">
+                <p>1666</p>
+            </div>
+        </div>
     </div>
 </body>
  <script type="text/javascript" src="/js/jquery-1.11.0.js" ></script>

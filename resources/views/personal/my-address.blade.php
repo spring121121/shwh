@@ -10,10 +10,23 @@
 
         <link rel="stylesheet" href="/styles/common.css">
         <link rel="stylesheet" href="/styles/personal.css">
+        <style>
+            .address-cont{
+                width:70%;
+            }
+            .edit-address{
+                width:10%;
+                float:right;
+                margin-top:-35px;
+                background: #ffcc00;
+                color:#fff;
+                border-radius:6px;
+            }
+        </style>
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/personal"></a></div>
+            <div class="header-left"><a class="goback"></a></div>
             <div class="header-right bg-add"><a href="/wap/new_address"></a></div>
             <h3 class="top-title">收货地址</h3>
         </div>
@@ -41,14 +54,14 @@
                     if (data.status){
                         $.each(data.data, function (k, v) {
                             noteHtml += '<li><div class="icon-box">'+v.name.substr(0,1)+'</div>';
-                            noteHtml += '<div class="address-cont"><a href="javascript:void(0)" id="'+v.id+'" class="edit-address btn-bjdz">编辑</a>';
+                            noteHtml += '<div class="address-cont address"><input type="hidden" value="'+v['id']+'">';
                             noteHtml += '<h3>'+v.name+'<span>'+v.mobile+'</span></h3>';
                             noteHtml += '<p>';
                                             if(v.is_default == 1){
                                                 noteHtml += '<span>默认</span>';
                                             }
                             noteHtml += v.province+' '+v.city+' '+v.area+' '+v.address_info+'</p>';
-                            noteHtml += '</div></li>';
+                            noteHtml += '</div><a href="javascript:void(0)" id="'+v.id+'" class="edit-address btn-bjdz">编辑</a></li>';
                         });
                         $(".my-address-box ul").html(noteHtml);
                     }else {
@@ -56,10 +69,26 @@
                     }
                 }
             });
+            $('.goback').on('click',function(){
+                window.history.go(-1);
+            });
             $(document).on("click",".btn-bjdz",function () {
                 var addressId = $(this).attr("id");
                 window.location.href = "/wap/edit_address?id="+addressId;
             });
+            $(document).on("click",".address",function () {
+                var flag = getUrlParam('flag');
+                var addressId = $(this).find('input').val();
+                if(flag != null){
+                    window.location.href = "/wap/shop_purchase?id="+addressId;
+                    return false;
+                }
+            });
+            function getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                if (r != null) return unescape(r[2]); return null; //返回参数值
+            }
         });
     </script>
 </html>
