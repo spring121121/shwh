@@ -184,48 +184,6 @@ class ShopController extends BaseController
     }
 
     /**
-     * 购买商品创建记录
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function purchase(Request $request){
-        $uid = UserService::getUid($request);
-        $data = $request->input('order');
-        $rules = [
-            'goods_id' => 'required|numeric',
-            'num' => 'required|numeric',
-            'unit_price' => 'required|numeric',
-            'is_agent' => 'required|numeric',
-            'store_id' => 'required|numeric',
-        ];
-        $validator = Validator::make($data,$rules,config('message.order'));
-        if($validator->fails()){
-            return $this->fail(50001,$validator->errors()->all());
-        }
-        $data['uid'] = $uid;//买家uid
-        $store_uid = StoreModel::where('id',$data['store_id'])->select('uid')
-            ->first()->toArray();
-        if($store_uid){
-            $data['agent_uid'] = $store_uid['uid'];
-        }
-        if($data['is_agent'] == GoodsModel::IS_AGENT_1){
-            $pgoodsid = GoodsModel::where('id',$data['goods_id'])->select('pgoods_id','price')
-                ->first()->toArray();//代理商店商品的价格和代理原商店的商品id
-            $pgoodprice = GoodsModel::where('id',$pgoodsid['pgoods_id'])->select('price')
-                ->first()->toArray();//原商店的商品价格
-            $data['agent_price'] = $pgoodsid['price'] - $pgoodprice['price'];
-        }
-        $data['order_sn'] = UserService::genOrderSn('sd_');
-        $data['total_price'] = $data['unit_price']*$data['num'];
-        $result = OrdersModel::create($data);
-        if($result){
-            return $this->success();
-        }else{
-            return $this->fail('300');
-        }
-    }
-
-    /**
      * 店铺详情
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -340,20 +298,7 @@ class ShopController extends BaseController
             ->join('goods','car.goods_id','=','goods.id')
             ->select('goods.*')
             ->get()->toArray();
-        $store_ids = array_unique(array_column($myGoodsList,'store_id'));
-        $resStore = StoreModel::whereIn('id',$store_ids)->orderByRaw("FIELD(id, " . implode(", ", $store_ids) . ")")
-            ->select('id','name')
-            ->get()->toArray();
-        foreach($resStore as &$store_value){
-            $key = 0;
-            foreach($myGoodsList as $goods_value){
-                $key += 0;
-                if($goods_value['store_id'] == $store_value['id']){
-                    $store_value['goods'][$key] = $goods_value;
-                    $key++;
-                }
-            }
-        }
+        $resStore = $this->getMyOrderList($myGoodsList);
         return $this->success($resStore);
     }
 
@@ -368,18 +313,26 @@ class ShopController extends BaseController
         $goodsIds = explode(',',$goods_ids);
         $num = $request->input('num');
         $nums = explode(',',$num);
-        $resStore = $this->getMyOrderList($uid,$goodsIds,$nums);
-        return $this->success($resStore);
-    }
-
-    public function getMyOrderList($uid,$goodsIds,$nums){
         $myGoodsList = CarModel::where('car.uid',$uid)->whereIn('car.goods_id',$goodsIds)
             ->join('goods','car.goods_id','=','goods.id')
             ->select('goods.*')
             ->get()->toArray();
+        $total = 0;
+        $postage = 0;
         foreach($myGoodsList as $key=>$goods_value){
             $myGoodsList[$key]['num'] = $nums[$key];
+            $total += $goods_value['price']*$nums[$key];
+            $postage += $goods_value['postage'];
         }
+        $total = sprintf("%.2f",$total);
+        $postage = sprintf("%.2f",$postage);
+        $total_price = sprintf("%.2f",$postage+$total);
+        $resStore = $this->getMyOrderList($myGoodsList);
+        $data = ['data'=>$resStore,'total'=>$total,'postage'=>$postage,'total_price'=>$total_price];
+        return $this->success($data);
+    }
+
+    public function getMyOrderList($myGoodsList){
         $store_ids = array_unique(array_column($myGoodsList,'store_id'));
         $resStore = StoreModel::whereIn('id',$store_ids)->orderByRaw("FIELD(id, " . implode(", ", $store_ids) . ")")
             ->select('id','name')
@@ -395,6 +348,86 @@ class ShopController extends BaseController
             }
         }
         return $resStore;
+    }
+
+    /**
+     * 购买商品创建记录
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function purchase(Request $request){
+        $uid = UserService::getUid($request);
+        $address_id = $request->input('address_id');
+        $goods_ids = $request->input('goods_id');
+        $goodsIds = explode(',',$goods_ids);
+        $num = $request->input('num');
+        $nums = explode(',',$num);
+        $myGoodsList = CarModel::where('car.uid',$uid)->whereIn('car.goods_id',$goodsIds)
+            ->join('goods','car.goods_id','=','goods.id')
+            ->select('goods.*')
+            ->get()->toArray();
+        //查询店铺所属uid
+        $array = [];//包含商品id,店铺id,店铺所属uid
+        array_walk($myGoodsList, function($value, $key) use (&$array ){
+            $array[$key]['id'] = $value['id'];
+            $array[$key]['store_id'] = $value['store_id'];
+            $array[$key]['is_agent'] = $value['is_agent'];
+        });
+        $store_ids = array_unique(array_column($array,'store_id'));
+        $store_uid = StoreModel::whereIn('id',$store_ids)->select('uid','id')
+            ->get()->toArray();
+        foreach($array as &$value){
+            foreach($store_uid as $store_uid_value){
+                if($value['store_id'] == $store_uid_value['id']){
+                    $value['agent_uid'] = $store_uid_value['uid'];
+                }
+            }
+            if($value['is_agent'] == GoodsModel::IS_AGENT_1){//查询计算代理费用
+                $value['agent_price'] = $this->agentPrice($value['id']);
+            }else{
+                $value['agent_price'] = '0.00';
+            }
+        }
+        //数组组装
+        $orderArr = [];
+        $order = [];
+        foreach($myGoodsList as $key=>$goods_value){
+            $orderArr['uid'] = $uid;//用户id
+            $orderArr['num'] = $nums[$key];//购买数量
+            $orderArr['address_id'] = $address_id;//地址id
+            $orderArr['goods_id'] = $goods_value['id'];//商品id
+            $orderArr['order_sn'] = UserService::genOrderSn('sd_');//订单号
+            $orderArr['total_price'] = $goods_value['price']*$nums[$key]+$goods_value['postage'];//总价含邮费
+            $orderArr['store_id'] = $goods_value['store_id'];//店铺id
+            $orderArr['goods_id'] = $goods_value['id'];//商品id
+            $orderArr['unit_price'] = $goods_value['price'];//单价
+            $orderArr['created_at'] = date("Y-m-d H:i:s",time());
+            $orderArr['updated_at'] = date("Y-m-d H:i:s",time());
+            foreach($array as $array_value){
+                if($goods_value['id'] == $array_value['id']){
+                    $orderArr['agent_uid'] = $array_value['agent_uid'];//代理商或商家id
+                    $orderArr['is_agent'] = $array_value['is_agent'];//是否是代理
+                    $orderArr['agent_price'] = $array_value['agent_price'];//代理商或商家id
+                }
+            }
+            array_push($order,$orderArr);
+        }
+        $result = OrdersModel::insert($order);
+        if($result){
+            return $this->success();
+        }else{
+            return $this->fail('300');
+        }
+    }
+
+    //计算代理费用
+    public function agentPrice($goods_id){
+        $pgoodsid = GoodsModel::where('id',$goods_id)->select('pgoods_id','price')
+            ->first()->toArray();//代理商店商品的价格和代理原商店的商品id
+        $pgoodprice = GoodsModel::where('id',$pgoodsid['pgoods_id'])->select('price')
+            ->first()->toArray();//原商店的商品价格
+        $agent_price = $pgoodsid['price'] - $pgoodprice['price'];
+        return $agent_price;
     }
 
     /**
