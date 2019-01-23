@@ -2,8 +2,10 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 410px;
-	background: #e5e5e5;
+	height: 280px;
+	background: url(../images/backggg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100% ;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
 }
@@ -14,11 +16,12 @@
 	font-size: 25px;
     width: 30px;
     height: 30px;
+	color: #fff;
 }
 .museumImg{
-	    width: 120px;
-    height: 120px;
-    margin: 90px auto 0;
+	width: 80px;
+	height: 80px;
+	margin: 40px auto 0;
 	
 }
 .museumImg>img{
@@ -29,73 +32,82 @@
 }
 .introduce{
 	width: 200px;
-	height: 40px;
+	height: 30px;
 	margin: 15px auto;
 	display: flex;
 	flex-direction: row;
+	width: 130px;
 }
 .introduce>p{
-	font-size: 25px;
+	font-size: 20px;
 	line-height:40px;
 	margin: 0;
+	color: #fff;
 }
 .introduce>span{
-	font-size: 26px;
+	font-size: 20px;
 	line-height: 40px;
 	margin-left: 10px;
+	color: #fff;
 }
 .fansCourse{
 	display: flex;
 	flex-direction: row;
-	width: 200px;
+	width: 160px;
 	height: 50px;
 	margin: 0 auto;
-	
+	color: #fff;
 }
 .fansCourse>p{
-	font-size: 19px;
+	font-size: 15px;
 	margin: 0;
 	padding-left: 5px;
 }
 .fansCourse>div{
-	font-size: 20px;
+	font-size: 15px;
 }
 .followBtn{
 	display: flex;
 	flex-direction: row;
-	width: 85px;
-	height: 40px;
+	width: 70px;
+	height: 30px;
 	margin: 0 auto;
 	background: #818181;
 	border-radius:30px ;
 }
 .followBtn>p:nth-child(1){
-	font-size: 30px;
+	font-size: 25px;
 	color: #fff;
 	margin: 0;
-	line-height:40px;
+	line-height: 32px;
 }
 .followBtn>p:nth-child(2){
-	font-size: 23px;
-	color: #000000;
+	font-size: 20px;
+	color: #fff;
 	margin: 0;
-	line-height: 40px;
+	line-height: 33px;
 }
 .simpleText{
-	margin: 10px 0 0 20px;
+	/* margin: 10px 10px; */
+	margin-top: 10px;
+	padding: 5px;
+	box-shadow: 0px 1px 2px 0px #878787;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 .simpleText>p{
-    font-size: 30px;
+    font-size: 22px;
     margin-bottom: 0;
     font-weight: bold;
 }
 .simpleText>ul{
 	width: 100%;
-	height: 88px;
+	height: auto;
 	overflow: hidden;
+	margin: 10px 0;
 }
 .simpleText>ul>li{
-	font-size: 20px;
+	font-size: 15px;
 }
 .icon-xiala{
 	float: right;
@@ -114,14 +126,14 @@
 	width: 50%;
 	height: auto;
 	float: left;
-	font-size: 25px;
+	font-size: 22px;
 	text-align: center;
 	line-height: 50px;
 	font-weight: bold;
 }
 .contentNav>div>p{
 	width: 100%;
-	height: 60px;
+	height: 55px;
 	margin: 0 auto;
 }
 .navboder{
@@ -130,10 +142,10 @@
 .nameList{
   width: 100%;
   position: relative;
-  margin-top: 20px;
+
 }
 .list_left{
-	width: 48%;
+	width: 50%;
 	float: left;
 	height: auto;
 }
@@ -143,11 +155,11 @@
 }
 /*拿过来的*/
 .museum_shop_pic{
-    width:90%;
-    margin: 15px auto;
+    width:95%;
+    margin: 10px auto;
     border-radius: 10px;
     box-shadow: darkgrey 1px 1px 0 0;
-    padding-bottom: 20px;
+
 }
 .museum_shop_pic div:nth-child(1){
     border-top-left-radius: 10px;
@@ -157,7 +169,7 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     width:100%;
-    
+	max-height: 240px;
 }
 .museum_shop_pic div:nth-child(2){
     border-bottom-left-radius: 10px;
@@ -166,7 +178,7 @@
    
 }
 .museum_shop_pic div:nth-child(2) h3{
-    margin: 15px 10px;
+    margin: 0 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -182,8 +194,8 @@
     justify-content: space-between
 }
 .museum_shop_pic div:nth-child(2) h4 span{
-   width:45px;
-   height:45px;
+   width:35px;
+   height:35px;
    border-radius: 50%;
    background: blueviolet;
    display: block;
@@ -200,7 +212,7 @@
     display: block;
     float: left;
     font-size: 17px;
-        margin-top: 10px;
+
     /*background: blueviolet*/
 }
 .contentNum{

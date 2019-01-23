@@ -37,11 +37,9 @@
 			<div class="simpleText">
 				<p>简介</p>
 				<ul>
-					<li>博物馆</li>
-					<li>博物馆博物馆</li>
-					<li>博物馆博物馆博物馆</li>
+					<li>保时捷少女使肌肤及时解决就使肌肤及时解决是否考虑两个</li>
 				</ul>
-				<span class="iconfont icon-xiala"></span>
+
 			</div>
 			<div class="nameContent">
 				<div class="contentNav clearfix">
@@ -67,7 +65,7 @@
 			nameList();
 		}
 		function handleTofen() {
-			window.location.href = "/wap/museumed";
+			window.location.href = "/wap/museumOne";
 		}
 		  
 		  var arrlist=["/images/a1.jpg",
@@ -104,7 +102,7 @@
 			nameList+='<img src='+i+' alt="">'
 			nameList+='</div>'
 			nameList+='<div>'
-			nameList+='<h3 >博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆博物馆</h3>'
+			nameList+='<h3 >博物馆博物馆博</h3>'
 			nameList+='<h4>'
 			nameList+='<span><img src="/images/a3.jpg"/></span>'
 			nameList+='<p>'

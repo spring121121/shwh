@@ -86,7 +86,7 @@
                     <span >设计师</span>
                 </li>
                 <li>
-                    <a href="/wap/factorydd">
+                    <a href="/wap/factoryJm">
                         <img src="/images/gc.jpg" alt="">
                     </a>
                     <span >工厂</span>

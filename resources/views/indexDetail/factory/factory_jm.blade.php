@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=devic-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>山洞-工厂_精美文具</title>
-    <link rel="stylesheet" href="/styles/factory-1.css">
+    <link rel="stylesheet" href="/styles/factory.css">
 </head>
 <body>
     <div id="home">

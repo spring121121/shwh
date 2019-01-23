@@ -23,16 +23,7 @@
             </ul>
            
         </header>
-        <div id="museum_list">
-            <!--<ul id="nav">
-                <li class="on" onclick="museumList(1)">推荐</li>
-                <li onclick="museumList(2)">打卡圣地</li>
-                <li onclick="museumList(3)">排行榜</li>
-                <li onclick="museumList(4)">必去地点</li>
-               
-            </ul>-->
-            <div></div>
-        </div>
+        <p class="museumCourse">博物馆总览</p>
         <section class="b">   
             <div id="museum_shop">
                 <div class="museum_shop_left">
@@ -75,7 +66,7 @@
 					museumList+='<div class="museum_shop_pic">'
 					museumList+='<div>'
 //					museumList+='<img src='+i.logo_pic_url+' alt="">'
-					museumList+='<img src="/images/a2.jpg"/>'
+					museumList+='<img onclick="handleTodetail()" src="/images/a2.jpg"/>'
 					museumList+='</div>'
 					museumList+='<div>'
 					museumList+='<h3 >'+i.name+'</h3>'
@@ -103,7 +94,9 @@
 	function handleTofen(){
 		window.location.href="/wap/musefen";
 	}
-	
+	 function  handleTodetail() {
+         window.location.href="/wap/musename";
+     }
 
 </script>
 </html>

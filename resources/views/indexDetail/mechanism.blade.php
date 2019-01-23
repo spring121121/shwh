@@ -24,14 +24,15 @@
             </ul>
            
         </header>
-        <div id="museum_list">
-            <ul id="nav">
-                <li class="on" onclick="museumList(1)">综合</li>
-                <li onclick="museumList(2)">最新</li>
-                <li onclick="museumList(3)">最热</li>
-            </ul>
-        </div>
-        <section class="b">   
+        {{--<div id="museum_list">--}}
+            {{--<ul id="nav">--}}
+                {{--<li class="on" onclick="museumList(1)">综合</li>--}}
+                {{--<li onclick="museumList(2)">最新</li>--}}
+                {{--<li onclick="museumList(3)">最热</li>--}}
+            {{--</ul>--}}
+        {{--</div>--}}
+        <section class="b">
+            <p class="mechTitle">文创机构总览</p>
             <div id="museum_shop">
                 <div class="museum_shop_left">
                     

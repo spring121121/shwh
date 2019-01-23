@@ -85,7 +85,11 @@ section{
 .b{
     display: block
 }
-
+.mechTitle{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 0 15px;
+}
 #museum_shop{
     width:100%;
     display: flex;

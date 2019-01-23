@@ -45,7 +45,9 @@
             <div id="designerd_abstract">
                 <div class="designerd_abstract_top">
                     <div>
-                        <div class="designerd_abstract_chart"></div>
+                        <div class="designerd_abstract_chart">
+                            <img src="/images/people3.jpg" alt="">
+                        </div>
                         <div class="designerd_abstract_locn">
                             <div><img src="/images/man.jpg"/></div>
                             <div><img src="/images/dengji.jpg"/></div>
@@ -70,7 +72,7 @@
 								</div>
                             </div>
                             <div>
-                                作品名字
+                                设计师名字
                             </div>
                         </li>
                         <li>
@@ -86,7 +88,7 @@
 								</div>
                             </div>
                             <div>
-                                作品名字
+                                设计师名字
                             </div>
                         </li>
                     </ul>
@@ -106,7 +108,7 @@
 								</div>
                             </div>
                             <div>
-                                作品名字
+                                设计师名字
                             </div>
                         </li>
                         <li>
@@ -122,7 +124,7 @@
 								</div>
                             </div>
                             <div>
-                                作品名字
+                                设计师名字
                             </div>
                         </li>
                     </ul>
