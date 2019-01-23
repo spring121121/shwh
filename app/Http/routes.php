@@ -226,19 +226,16 @@ Route::get('wap/museumOne', function () {//博物馆一级
 Route::get('wap/musegoods', function () {//首页展示笔记的二级页面
     return view('indexDetail/museumDetail/museumGoods');
 });
-<<<<<<< HEAD
 Route::get('wap/musename', function () {//博物馆二级页面
     return view('indexDetail/museumDetail/museumName');
-=======
+});
 Route::get('wap/musename', function () {//博物馆商品
     $arr = ['id'=>0];
     if(Cookie::has('info')){
         $arr = Cookie::get('info');
     }
     return view('indexDetail/museumDetail/museumName',$arr);
->>>>>>> c2b00e0a0d98d7d888127a14eef0b5d37b35da4d
 });
-
 
 Route::get('wap/shop', function () {//商城首页
     return view('shop/shop');

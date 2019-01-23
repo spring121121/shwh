@@ -60,6 +60,7 @@ class WxpayController extends BaseController {
                 }
                 $total_price += $exist[0]['total_price'];
             }
+//            halt($total_price);
             /*--------------验证订单号结束---------------*/
             /*-------------获取OPENID开始-------------*/
             $code = $_GET["code"];
@@ -83,7 +84,7 @@ class WxpayController extends BaseController {
                 'sign_type' => 'MD5',
                 'body' => '山洞-支付',
                 'out_trade_no' => $pay_order_sn,
-                'total_fee' => floatval($total_price),
+                'total_fee' => floatval($total_price)*100,
                 'spbill_create_ip' => $_SERVER['REMOTE_ADDR'],
                 'notify_url' => "http://" . $_SERVER['HTTP_HOST'] . "/notify",
                 'trade_type' => 'JSAPI',
@@ -93,6 +94,7 @@ class WxpayController extends BaseController {
             $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
             $result = $this->curl_post_data($url, $this->array2xml($arr));
             $result = $this->xml2array($result);
+//            halt($result);
             /*--------------微信统一下单--------------*/
             if ($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS') {
                 $res = OrdersModel::whereIn('order_sn',$order_arr)->update(['pay_order_sn'=>$pay_order_sn,'openid'=>$openid]);
@@ -112,7 +114,7 @@ class WxpayController extends BaseController {
                 return view('pay',['prepay'=>$arr2]);
 
             } else {
-                echo '<script>alert("sys error");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>';
+                echo '<script>alert("'.$result['return_msg'].'");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>';
             }
         }
     }
