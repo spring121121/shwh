@@ -91,7 +91,7 @@
 				<div class="zc_cart_Count ml100">取消</div>
 				<div class="zc_cart_Count">删除<span>(0)</span></div>
 			</div>
-			
+
 			<div class="zc_cartdiv" id="zc_cartdiv1">
 				<input class="zc-checkbox" type="checkbox" />
 				<p style="margin-left:-35px;">全选</p>
@@ -122,7 +122,7 @@
                         car += '<div class="store_checkbox">';
                         car += '<input class="zc-checkbox" type="checkbox" />';
                         car += '</div>';
-                        car += '<div class="store_name">'+v['name']+'...</div>';
+                        car += '<div class="store_name">'+v['name']+'</div>';
                         car += '<div class="store_img">';
                         car += '<img class="store_image" src="/images/right.png"/>';
                         car += '</div>';
@@ -131,7 +131,7 @@
                             car += '<div class="car_div">';
                             car += '<div class="store_checkbox">';
                             car += '<div class="img_height"></div>';
-                            car += '<input class="zc-checkbox" type="checkbox" />';
+                            car += '<input class="zc-checkbox" name="goods_id" type="checkbox" value="'+goods['id']+'"/>';
                             car += '</div>';
                             car += '<div class="car_img">';
                             car += '<img class="car_image" src="'+goods['image_one']+'"/>';
@@ -139,7 +139,7 @@
                             car += '<div class="store_checkbox">';
                             car += '<p>'+goods['goods_name'].substr(0,5)+'...</p>';
                             car += '<p>'+goods['goods_info'].substr(0,5)+'...</p>';
-                            car += '<p class="car_">175cm,88公斤</p>';
+                            car += '<p class="car_"></p>';
                             car += '<p class="car_price">￥'+goods['price']+'</p></div>';
                             car += '<div class="zc_btngroup car_num"><div class="zc_btnleft">-</div><div class="zc_btnmin">1</div> <div class="zc_btnright" >+</div></div></div>';
 						});
@@ -148,6 +148,14 @@
                     $('.zc_carGoods').html(car);
                 }
             });
+
+            $('.zc_cart_Count').on('click',function(){
+ 				var goods_ids = [];
+                $.each($('input[name="goods_id"]:checked'),function(){
+                    goods_ids.push($(this).val());
+                });
+				window.location.href = '/wap/shop_purchase?goods_id='+goods_ids;
+			});
 			$(".zc_btnright").click(function(){
 				n++;
 			if(n<1){
