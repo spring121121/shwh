@@ -220,7 +220,17 @@
                         if (is_mobile == ''){
                             $("#application-shop span").html("申请店铺")
                         } else {
-                            $("#application-shop span").html("我的店铺")
+                            if (store_id == 0){
+                                $("#application-shop span").html("申请店铺")
+                            } else {
+                                if (store_status < 3){
+                                    if (store_status == 1) {
+                                        $("#application-shop span").html("我的店铺")
+                                    }else {
+                                        $("#application-shop span").html("申请店铺")
+                                    }
+                                }
+                            }
                         }
                         if(data.data.sex==0){
                             $("#sex").html('女')

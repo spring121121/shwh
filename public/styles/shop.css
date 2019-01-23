@@ -10,7 +10,7 @@
     margin: 0 10px;
 }
 .flash-sale h2{
-    margin: 20px 0;
+    /*margin: 20px 0;*/
     line-height: 50px;
 }
 .flash-sale p{
@@ -52,6 +52,9 @@
 .classify-list{
     margin-top: 50px;
 }
+.classify-swiper{
+	height: auto;
+}
 .classify-list span{
     line-height: 25px;
 }
@@ -78,6 +81,7 @@
     font-size: 14px;
     color: #000;
     margin: 5px;
+	height: 40px;
     text-align: justify;
     overflow: hidden;
     display: -webkit-box;

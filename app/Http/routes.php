@@ -29,6 +29,9 @@ Route::get('getHotNote','NoteController@getHotNote');
 Route::get('getNoteInfoByNoteId/{noteId}','NoteController@getNoteInfoByNoteId');//根据笔记ID获取笔记详情
 
 Route::get('wap/noteDetail/{noteId}','NoteController@noteDetail');//笔记详情
+Route::get('getNoteByStoreId/{storeId}','NoteController@getNoteByStoreId');//笔记详情
+Route::get('getStoreDetail','ShopController@getStoreDetail');//店铺详情
+Route::get('myFans','FansController@myFans');//粉丝数量
 
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
@@ -76,7 +79,8 @@ Route::group(['middleware'=>'checkLogin'],function(){
     /*****************FansController关注，粉丝接口********************************/
     Route::post('focus','FansController@focus');//关注
     Route::post('cancelFocus','FansController@cancelFocus');//关注
-    Route::get('myFans','FansController@myFans');//我的粉丝数量
+
+    Route::get('judgeFocus','FansController@judgeFocus');//判断当前登录的用户是否关注过此用户
     Route::get('myFansList','FansController@myFansList');//我的粉丝列表
     Route::get('beforeFansList','FansController@beforeFansList');//前几天我的粉丝列表
     Route::get('myFocus','FansController@myFocus');//我的关注数量
@@ -220,8 +224,17 @@ Route::get('wap/museumOne', function () {//博物馆一级
 Route::get('wap/musegoods', function () {//首页展示笔记的二级页面
     return view('indexDetail/museumDetail/museumGoods');
 });
+<<<<<<< HEAD
 Route::get('wap/musename', function () {//博物馆二级页面
     return view('indexDetail/museumDetail/museumName');
+=======
+Route::get('wap/musename', function () {//博物馆商品
+    $arr = ['id'=>0];
+    if(Cookie::has('info')){
+        $arr = Cookie::get('info');
+    }
+    return view('indexDetail/museumDetail/museumName',$arr);
+>>>>>>> c2b00e0a0d98d7d888127a14eef0b5d37b35da4d
 });
 
 
@@ -325,6 +338,9 @@ Route::group(['middleware'=>'checkLogin'],function(){
     });
     Route::get('wap/store_setting', function () {//店铺设置
         return view('personal/store-setting',Cookie::get('info'));
+    });
+    Route::get('wap/upper_shelf', function () {//商品上架
+        return view('personal/upper-shelf');
     });
     Route::get('wap/write_note', function () {//写笔记
         return view('personal/write-note');

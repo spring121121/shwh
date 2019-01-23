@@ -113,30 +113,30 @@
             </div>
         </div>
         
-        <div id="exhibition">
-            <div class="exhibition_left">
-                <ul></ul>
-            </div>
-            <div class="exhibition_right">
-                <ul></ul>
-            </div>
-        </div>
-        <div id="exhibition">
-            <div class="exhibition_left">
-                <ul></ul>
-            </div>
-            <div class="exhibition_right">
-                <ul></ul>
-            </div>
-        </div>
-        <div id="exhibition">
-            <div class="exhibition_left">
-                <ul></ul>
-            </div>
-            <div class="exhibition_right">
-                <ul></ul>
-            </div>
-        </div>
+        {{--<div id="exhibition">--}}
+            {{--<div class="exhibition_left">--}}
+                {{--<ul></ul>--}}
+            {{--</div>--}}
+            {{--<div class="exhibition_right">--}}
+                {{--<ul></ul>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div id="exhibition">--}}
+            {{--<div class="exhibition_left">--}}
+                {{--<ul></ul>--}}
+            {{--</div>--}}
+            {{--<div class="exhibition_right">--}}
+                {{--<ul></ul>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div id="exhibition">--}}
+            {{--<div class="exhibition_left">--}}
+                {{--<ul></ul>--}}
+            {{--</div>--}}
+            {{--<div class="exhibition_right">--}}
+                {{--<ul></ul>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </section>
 </div>
 <!--引入footer-->

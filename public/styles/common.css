@@ -49,6 +49,7 @@ a{
     text-align: center;
     font-weight: normal;
     font-size: 16px;
+    overflow: hidden;
 }
 .header .header-hf{
     line-height: 23px;

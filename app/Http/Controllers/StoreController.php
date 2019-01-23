@@ -158,10 +158,10 @@ class StoreController extends BaseController
         $keyword = $request->input('storeName',null);
         if(!empty($keyword)){
             $storeList = UserModel::where('role','=',$roleId)->where('store.name','like','%'.$keyword.'%')->where('store.status','=',StoreModel::IS_AUTH)->join('store','store.uid','=','user.id')
-                ->select('store.name','store.introduction','logo_pic_url')->get();
+                ->select('store.id','store.name','store.introduction','store.logo_pic_url','user.photo','store.uid')->get();
         }else{
             $storeList = UserModel::where('role','=',$roleId)->where('store.status','=',StoreModel::IS_AUTH)->join('store','store.uid','=','user.id')
-                ->select('store.name','store.introduction','logo_pic_url')->get();
+                ->select('store.id','store.name','store.introduction','store.logo_pic_url','user.photo','store.uid')->get();
         }
         return $this->success($storeList);
     }

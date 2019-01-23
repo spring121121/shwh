@@ -15,7 +15,7 @@
         <div class="header store-header">
             <div>
                 <div class="header-left"><a href="/wap/personal"></a></div>
-                <div class="header-right renzheng"><a href="/wap/apply_certification">申请认证</a></div>
+                <div class="header-right renzheng"><a href="/wap/upper_shelf">商品上架</a></div>
                 <h3 class="top-title">店铺首页</h3>
             </div>
             <div class="store-message-box">

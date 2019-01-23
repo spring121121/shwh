@@ -158,12 +158,6 @@
                 spaceBetween : 10
             });
 
-            for (var i=0;i<$(".classify-display li").length;i++){
-                if (i%2 == 0){
-                    $(".shop-list-box").eq(i).css({"margin-left":"unset","margin-right":"2.5px"})
-                }
-            }
-
             // 点击分类显示相应内容
             goodsList(0);
             $(".classify-list span").eq(0).css("border-bottom","1px solid #ffaa00");
@@ -186,6 +180,13 @@
                 var id = $(this).next().val();
                 window.location.href = "/wap/shop_detail?id="+id;
             });
+
+
+            for (var i=0;i<$(".classify-display li").length;i++){
+                if (i%2 == 0){
+                    $(".classify-display").find(".shop-list-box").eq(i).css({"margin-left":"unset","margin-right":"2.5px"})
+                }
+            }
 
             function goodsList(id){
                 var goodsList = '';

@@ -224,7 +224,7 @@ class NoteController extends BaseController
         $limit = $request->input('limit', 10);
         $offset = ($page - 1) * $limit;
         $noteList = DB::select("SELECT count(likes.id) as likeNum,note.* FROM `likes`,note where likes.note_id =note.id GROUP BY likes.note_id order by likeNum desc limit :offset,:limit", ['limit' => $limit, 'offset' => $offset]);
-        foreach ($noteList as $note){
+        foreach ($noteList as $note) {
             $note->forwardNum = ForwardService::getForwardNum($note->id);
         }
 
@@ -236,7 +236,8 @@ class NoteController extends BaseController
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function replayComment(Request $request){
+    public function replayComment(Request $request)
+    {
         $replyUid = UserService::getUid($request);//回复人uid
         $data = $request->input('reply');
         $rules = [
@@ -245,15 +246,15 @@ class NoteController extends BaseController
             'content' => 'required|max:200',
             'comment_id' => 'required|numeric'
         ];
-        $validator = Validator::make($data,$rules,config('message.comment'));
-        if($validator->fails()){
-            return $this->fail(50001,$validator->errors()->all());
+        $validator = Validator::make($data, $rules, config('message.comment'));
+        if ($validator->fails()) {
+            return $this->fail(50001, $validator->errors()->all());
         }
         $data['uid'] = $replyUid;
         $res = CommentModel::create($data);
-        if($res){
+        if ($res) {
             return $this->success();
-        }else{
+        } else {
             return $this->fail('300');
         }
     }
@@ -263,7 +264,8 @@ class NoteController extends BaseController
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function likeNote(Request $request){
+    public function likeNote(Request $request)
+    {
         $data = [];
         $uid = UserService::getUid($request);
         $note_id = $request->input('note_id');
@@ -271,19 +273,19 @@ class NoteController extends BaseController
         $rules = [
             'note_id' => 'required|numeric',
         ];
-        $validator = Validator::make($data,$rules,config('message.likes'));
-        if($validator->fails()){
-            return $this->fail(50001,$validator->errors()->all());
+        $validator = Validator::make($data, $rules, config('message.likes'));
+        if ($validator->fails()) {
+            return $this->fail(50001, $validator->errors()->all());
         }
-        $beuid = NoteModel::where('id',$note_id)->first();
-        if($beuid){
+        $beuid = NoteModel::where('id', $note_id)->first();
+        if ($beuid) {
             $data['beuid'] = $beuid->uid;
         }
         $data['uid'] = $uid;
         $res = LikesModel::create($data);
-        if($res){
+        if ($res) {
             return $this->success();
-        }else{
+        } else {
             return $this->fail('300');
         }
     }
@@ -293,7 +295,8 @@ class NoteController extends BaseController
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function forwardNote(Request $request){
+    public function forwardNote(Request $request)
+    {
         $data = [];
         $uid = UserService::getUid($request);
         $note_id = $request->input('note_id');
@@ -301,19 +304,19 @@ class NoteController extends BaseController
         $rules = [
             'note_id' => 'required|numeric',
         ];
-        $validator = Validator::make($data,$rules,config('message.forward'));
-        if($validator->fails()){
-            return $this->fail(50001,$validator->errors()->all());
+        $validator = Validator::make($data, $rules, config('message.forward'));
+        if ($validator->fails()) {
+            return $this->fail(50001, $validator->errors()->all());
         }
-        $beuid = NoteModel::where('id',$note_id)->first();
-        if($beuid){
+        $beuid = NoteModel::where('id', $note_id)->first();
+        if ($beuid) {
             $data['beuid'] = $beuid->uid;
         }
         $data['uid'] = $uid;
         $res = ForwardModel::create($data);
-        if($res){
+        if ($res) {
             return $this->success();
-        }else{
+        } else {
             return $this->fail('300');
         }
     }
@@ -323,9 +326,10 @@ class NoteController extends BaseController
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getGoodsNoteList(Request $request){
+    public function getGoodsNoteList(Request $request)
+    {
         $goods_id = $request->input('goods_id');
-        $noteList = NoteModel::where(['goods_id'=>$goods_id,'status'=>NoteModel::CHECK_STATUS])
+        $noteList = NoteModel::where(['goods_id' => $goods_id, 'status' => NoteModel::CHECK_STATUS])
             ->get()->toArray();
         return $this->success($noteList);
     }
@@ -335,9 +339,10 @@ class NoteController extends BaseController
      * @param $noteId
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getNoteInfoByNoteId($noteId){
+    public function getNoteInfoByNoteId($noteId)
+    {
         $noteModel = new NoteModel();
-        $note = $noteModel::where("id",'=',$noteId);
+        $note = $noteModel::where("id", '=', $noteId);
         $note->forwardNum = ForwardService::getForwardNum($note->id);
         $note->likeNum = LikesService::getLikesNum($note->id);
         $note->commentNum = CommentService::getCommentNum($note->id);
@@ -347,20 +352,42 @@ class NoteController extends BaseController
     /**
      * 笔记详情页面
      */
-    public function noteDetail(Request $request,$noteId){
+    public function noteDetail(Request $request, $noteId)
+    {
         $noteModel = new NoteModel();
         $note = $noteModel::find($noteId)->toArray();
-        $userInfo = UserService::getUserInfoByUid($request,$note['uid']);
-        $note['photo']= $userInfo['photo'];
-        $note['nickname']= $userInfo['nickname'];
-        $note['grade']= $userInfo['grade'];
-        $note['is_foucus']= $userInfo['is_foucus'];
+        $userInfo = UserService::getUserInfoByUid($request, $note['uid']);
+        $note['photo'] = $userInfo['photo'];
+        $note['nickname'] = $userInfo['nickname'];
+        $note['grade'] = $userInfo['grade'];
+        $note['is_foucus'] = $userInfo['is_foucus'];
 
 //        $note->forwardNum = ForwardService::getForwardNum($note['id']);
 //        $note->likeNum = LikesService::getLikesNum($note['id']);
 //        $note->commentNum = CommentService::getCommentNum($note['id']);
 
-        return view('indexDetail/noteDetail',['noteDetail'=>$note]);
+        return view('indexDetail/noteDetail', ['noteDetail' => $note]);
+    }
+
+
+    /**
+     * 根据店铺id查询该店铺下相应的笔记
+     * @param $storeId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getNoteByStoreId($storeId)
+    {
+        $goodsModel = new GoodsModel();
+        $noteList = $goodsModel::where('goods.store_id', '=',$storeId)
+            ->select("note.id","note.title","note.content","note.image_one_url","user.photo")
+
+            ->join("note",'note.goods_id','=','goods.id')
+            ->join("user","user.id","=",'note.uid')->get();
+        foreach ($noteList as $note) {
+            $note->likeNum = LikesService::getLikesNum($note->id);
+        }
+
+        return $this->success($noteList);
     }
 
 
