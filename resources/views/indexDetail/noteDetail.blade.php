@@ -32,11 +32,13 @@
         <div class="head-img"><img style="border-radius: 50%" class="common-img" src="{{$noteDetail['photo']}}"
                                    onerror="this.src='/images/portrait.png'"/></div>
         <h4>{{$noteDetail['nickname']}}<i></i>
-            @if($noteDetail['is_foucus'])
-                <div class="btn-gz" onclick="cancelFocus({{$noteDetail['uid']}})">取关</div>
-            @else
-                <div class="btn-gz" onclick="addFocus({{$noteDetail['uid']}})">关注</div>
-            @endif
+            <span id="focus">
+                @if($noteDetail['is_foucus'])
+                    <div class="btn-gz" onclick="cancelFocus({{$noteDetail['uid']}})">取关</div>
+                @else
+                    <div class="btn-gz" onclick="addFocus({{$noteDetail['uid']}})">关注</div>
+                @endif
+            </span>
         </h4>
         <p style="font-weight: bold">{{$noteDetail['title']}}</p>
         <p>{{$noteDetail['content']}}</p>
@@ -52,45 +54,6 @@
     </div>
     <div class="pl-content">
         <ul>
-            <li>
-                <a href="#">
-                    <div class="pl-icon-box">
-                        <img class="common-img" src="/images/weChat-2x.png" alt="头像">
-                    </div>
-                    <div class="pl-cont">
-                        <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span>
-                            <div class="dianzan"></div>
-                        </h3>
-                        <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="pl-icon-box">
-                        <img class="common-img" src="/images/weChat-2x.png" alt="头像">
-                    </div>
-                    <div class="pl-cont">
-                        <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span>
-                            <div class="dianzan"></div>
-                        </h3>
-                        <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="pl-icon-box">
-                        <img class="common-img" src="/images/weChat-2x.png" alt="头像">
-                    </div>
-                    <div class="pl-cont">
-                        <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span>
-                            <div class="dianzan"></div>
-                        </h3>
-                        <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
-                    </div>
-                </a>
-            </li>
             <li>
                 <a href="#">
                     <div class="pl-icon-box">
@@ -139,43 +102,55 @@
 <script src="/js/myswiper.js"></script>
 <script src="/js/common.js"></script>
 <script>
-    //添加关注
-    function addFocus(uid) {
-        $.post("/focus",{'uid':uid},function(data){
-            if (data.status){
-                alert("关注成功");
-                $(".btn-gz").onclick=cancelFocus(uid);
-                $(".btn-gz").html("取关")
-            }else {
-                alert("哎呀！出错了")
+        var isclick = true;
+        //添加关注
+        function addFocus(uid) {
+            if(isclick) {
+                isclick = false;
+                $.post("/focus",{'uid':uid},function(data){
+                    if (data.status){
+                        $("#focus").html('<div class="btn-gz" onclick="cancelFocus('+uid+')">取关</div>');
+                        isclick = true;
+                    }else {
+                        alert("哎呀！出错了")
+                        isclick = true;
+                    }
+                })
             }
-        })
-    }
 
-    //取消关注
-    function cancelFocus(uid) {
-        $.post("/cancelFocus",{'uid':uid},function(data){
-            if (data.status){
-                alert("取关成功");
-                $(".btn-gz").onclick=addFocus(uid);
-                $(".btn-gz").html("关注")
+        }
 
-            }else {
-                alert("哎呀！出错了")
+        //取消关注
+        function cancelFocus(uid) {
+            if(isclick) {
+                isclick = false;
+                $.post("/cancelFocus", {'uid': uid}, function (data) {
+                    if (data.status) {
+                        $("#focus").html('<div class="btn-gz" onclick="addFocus(' + uid + ')">关注</div>');
+                        isclick = true;
+                    } else {
+                        alert("哎呀！出错了")
+                        isclick = true;
+                    }
+                })
             }
-        })
-    }
-
-    //转发笔记
-    function addForward(uid,note_id) {
-        $.post("/forwardNote",{'beuid':uid,'note_id':note_id},function(data){
-            if (data.status){
-                alert("转发成功");
-            }else {
-                alert("哎呀！出错了")
+        }
+        //转发笔记
+        function addForward(uid,note_id) {
+            if(isclick) {
+                isclick = false;
+                $.post("/forwardNote",{'beuid':uid,'note_id':note_id},function(data){
+                    if (data.status){
+                        alert("转发成功");
+                        isclick = true;
+                    }else {
+                        alert("哎呀！出错了")
+                        isclick = true;
+                    }
+                })
             }
-        })
-    }
+
+        }
 
 </script>
 </html>

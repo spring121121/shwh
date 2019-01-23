@@ -362,6 +362,8 @@ class NoteController extends BaseController
         $note['grade'] = $userInfo['grade'];
         $note['is_foucus'] = $userInfo['is_foucus'];
 
+        $comment_list = [];
+
 //        $note->forwardNum = ForwardService::getForwardNum($note['id']);
 //        $note->likeNum = LikesService::getLikesNum($note['id']);
 //        $note->commentNum = CommentService::getCommentNum($note['id']);
