@@ -66,7 +66,7 @@
 	/*padding-left: 5px;*/
 }
 .fansCourse>div{
-	font-size: 17px;
+	font-size: 14px;
 	margin: 0 5px;
 }
 .followBtn{
@@ -166,7 +166,6 @@
     border-top-right-radius: 10px;
     width:100%;
 	display: block;
-    
 }
 .museum_shop_pic div:nth-child(2){
     border-bottom-left-radius: 10px;

@@ -1849,6 +1849,7 @@ ul,li{
     margin-left: 120px;
 }
 .order-right p{
+    text-align: left;
     font-size: 12px;
     line-height: 20px;
 }
@@ -2160,16 +2161,20 @@ ul,li{
 /*商品上架页面样式*/
 .upper-content{
     background-color: #f8f8f8;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    margin: 0;
+    height: auto;
+    margin-bottom: 40px;
     z-index: 1;
 }
 .upper-classify{
+    position: fixed;
     z-index: 0;
+    bottom: 0;
+    opacity: 0;
+    margin: 0;
 }
 .add-photo-box{
     background-color: #fff;
@@ -2221,7 +2226,7 @@ ul,li{
 }
 .ipt-box,.shop-classify{
     background: #fff;
-    margin: 5px 0;
+    margin: 5px 0 0;
 }
 .ipt-title{
     margin: 0 10px 10px;
@@ -2256,7 +2261,7 @@ ul,li{
     border-bottom: 1px solid #e7e7e7;
     font-size: 14px;
 }
-.shop-classify-right span{
+.shop-classify-right span,.choice-classify{
     color: #999;
     display: inline-block;
     width: 60px;
@@ -2300,7 +2305,7 @@ ul,li{
 .btn-upper-release{
     margin: 5px 10px;
     color: #fff;
-    background: #FF5555;
+    background: #333;
     height: 30px;
     line-height: 30px;
     text-align: center;

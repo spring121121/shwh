@@ -66,7 +66,7 @@
                             alert("登录成功");
                             window.location.href = "/wap/personal";
                         } else {
-                            alert("登录失败");
+                            alert(data.message);
                         }
                     }
                 });

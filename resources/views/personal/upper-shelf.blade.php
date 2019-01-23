@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/personal"></a></div>
+            <div class="header-left" id="upper-return"></div>
             <h3 class="top-title" id="upper-title">商品上架</h3>
         </div>
         <div class="content-box upper-content">
@@ -30,7 +30,7 @@
             </div>
             <div class="ipt-box">
                 <div class="ipt-title">
-                    <input type="text" id="shop-title" placeholder="商品标题">
+                    <input type="text" id="shop-title" placeholder="商品名称">
                 </div>
                 <div class="ipt-shop-brief">
                     <textarea id="shop-brief" placeholder="请描述一下您的商品" rows="4"></textarea>
@@ -40,57 +40,38 @@
                 <ul>
                     <li>
                         <label>分类</label>
-                        <div class="shop-classify-right"><span id="classify-name">选择分类</span><i></i></div>
+                        <div class="shop-classify-right">
+                            <div class="choice-classify" id="classify-name">选择分类</div>
+                            <i></i>
+                        </div>
                     </li>
                     {{--<li>--}}
                         {{--<label>原价</label>--}}
                         {{--<div class="shop-classify-right">￥<span><input placeholder="95.00" type="number"></span><i></i></div>--}}
                     {{--</li>--}}
                     <li>
-                        <label>零售价</label>
-                        <div class="shop-classify-right">￥<span><input placeholder="95.00" type="number"></span><i></i></div>
+                        <label>售价</label>
+                        <div class="shop-classify-right">￥<span><input placeholder="95.00" id="shop-price" type="number"></span><i></i></div>
                     </li>
                     <li>
                         <label>运费</label>
-                        <div class="shop-classify-right">￥<span><input placeholder="95.00" type="number"></span><i></i></div>
+                        <div class="shop-classify-right">￥<span><input placeholder="95.00" id="shop-freight" type="number"></span><i></i></div>
                     </li>
                     <li>
                         <label>商品库存</label>
-                        <div class="shop-classify-right"><span><input placeholder="3352" type="number"></span><i></i></div>
+                        <div class="shop-classify-right"><span><input placeholder="3352" id="shop-stock" type="number"></span><i></i></div>
                     </li>
                 </ul>
             </div>
-            <div class="btn-upper-release">发布</div>
+            <div class="btn-upper-release">确定上架</div>
         </div>
         <div class="content-box upper-content upper-classify">
             <ul class="first-class">
-                <li>手机</li>
-                <li>图书</li>
-                <li>数码</li>
-                <li>服装鞋帽</li>
-                <li>交通工具</li>
-                <li>母婴用品</li>
-                <li>手机</li>
-                <li>图书</li>
-                <li>数码</li>
-                <li>服装鞋帽</li>
-                <li>交通工具</li>
-                <li>母婴用品</li>
+                {{--<li>手机</li>--}}
+                {{--<li>图书</li>--}}
+                {{--<li>数码</li>--}}
             </ul>
-            <ul class="second-class">
-                <li>手机</li>
-                <li>图书</li>
-                <li>数码</li>
-                <li>服装鞋帽</li>
-                <li>交通工具</li>
-                <li>母婴用品</li>
-                <li>手机</li>
-                <li>图书</li>
-                <li>数码</li>
-                <li>服装鞋帽</li>
-                <li>交通工具</li>
-                <li>母婴用品</li>
-            </ul>
+            <ul class="second-class"></ul>
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
@@ -126,18 +107,128 @@
 
             // 点击选择分类
             $(".shop-classify li:first-child").click(function () {
-                $(".upper-classify").css("z-index","2");
+                var category = '';
+                $.ajax({
+                    url : "/categoryList/1",	//请求url 商城分类
+                    type : "get",	//请求类型  post|get
+                    async: false,
+                    dataType : "json",  //返回数据的 类型 text|json|html--
+                    data:{},
+                    success : function(data){//回调函数 和 后台返回的 数据
+                        $.each(data.data, function (k, v) {
+                            category += '<li id="'+v.id+'">'+v.category_name+'</li>';
+                        });
+                        $('.first-class').html(category);
+                    }
+                });
+                $(".upper-classify").css({"z-index":"2","opacity":"1"});
                 $("#upper-title").html("商品分类");
-
             });
+
+            // 点击一级分类列表加载二级分类
             $(".first-class").on("click","li",function () {
+                var category = '',first_id = $(this).attr("id");
+                $.ajax({
+                    url : "/categoryList/1",	//请求url 商城分类
+                    type : "get",	//请求类型  post|get
+                    async: false,
+                    dataType : "json",  //返回数据的 类型 text|json|html--
+                    data:{pid:first_id},
+                    success : function(data){//回调函数 和 后台返回的 数据
+                        $.each(data.data, function (k, v) {
+                            category += '<li id="'+v.id+'">'+v.category_name+'</li>';
+                        });
+                        $('.second-class').html(category);
+                    }
+                });
                $(this).css({"color":"#FF5555","background-color":"#f8f8f8"});
                $(this).siblings().css({"color":"#000","background-color":"#fff"});
                $(".second-class").css({"display":"block"});
             });
+
+            // 点击二级分类时响应的事件
             $(".second-class").on("click","li",function () {
-                $("#classify-name").html($(this).html());
-                $(".upper-classify").css({"z-index":"0"});
+                $("#classify-name").html('<span id="'+$(this).attr("id")+'">'+$(this).html()+'</span>');
+                $(".upper-classify").css({"z-index":"0","opacity":"0"});
+            });
+
+
+            // 点击确认上架按钮时响应的事件
+            $(".btn-upper-release").click(function () {
+                var img_list = $("#shop-img-list").find("img"),
+                    shop_img_one = $(img_list[0]).attr("src"),
+                    shop_img_two = $(img_list[1]).attr("src"),
+                    shop_img_three = $(img_list[2]).attr("src"),
+                    shop_img_four = $(img_list[3]).attr("src"),
+                    shop_title = $("#shop-title").val(),
+                    shop_brief = $("#shop-brief").val(),
+                    shop_classify = $("#classify-name").find("span").attr("id"),
+                    shop_price = $("#shop-price").val(),
+                    shop_freight = $("#shop-freight").val(),
+                    shop_stock = $("#shop-stock").val(),free_shipping;
+                if (shop_freight == 0){
+                    free_shipping = 0;
+                }else {
+                    free_shipping = 1;
+                }
+                if (img_list.length != 4){
+                    alert("请上传4张商品的照片")
+                } else if (shop_title == "") {
+                    alert("请输入商品名称")
+                }else if (shop_brief == ""){
+                    alert("请输入商品简介")
+                }else if ($("#classify-name").find("span").length == 0){
+                    alert("请选择商品分类")
+                }else if (shop_price == ""){
+                    alert("请输入商品售价")
+                }else if (shop_freight == ""){
+                    alert("请输入运费")
+                }else if (shop_stock == ""){
+                    alert("请输入商品的库存数量")
+                }else if (shop_stock < 0){
+                    alert("商品的库存数量不能为负数")
+                }else {
+                    $.ajax({
+                        url : "/addGoods",	//请求url 商城分类
+                        type : "post",	//请求类型  post|get
+                        dataType : "json",  //返回数据的 类型 text|json|html--
+                        data:{
+                            "shop[category_id]":shop_classify,
+                            "shop[goods_name]":shop_title,
+                            "shop[goods_info]":shop_brief,
+                            "shop[price]":shop_price,
+                            "shop[image_one]":shop_img_one,
+                            "shop[image_two]":shop_img_two,
+                            "shop[image_three]":shop_img_three,
+                            "shop[image_four]":shop_img_four,
+                            "shop[stock]":shop_stock,
+                            "shop[is_shipping]":free_shipping,
+                            "shop[postage]":shop_freight,
+                            "shop[is_agent]": 0
+                        },
+                        success : function(data){//回调函数 和 后台返回的 数据
+                            if (data.status){
+                                alert(data.message);
+                                window.location.href = "/wap/store";
+                            }else {
+                                alert(data.message);
+                            }
+                        }
+                    });
+                }
+
+            });
+            
+            // 点击返回按钮触发的事件
+            $("#upper-return").click(function () {
+                var z_index = $(".upper-classify").css("z-index");
+                console.log(z_index);
+                if (z_index == 2){
+                    $("#upper-title").html("商品上架");
+                    $(".upper-classify").css({"z-index":"0"});
+                }else {
+                    window.location.href = "/wap/store";
+                }
             });
         });
     </script>
