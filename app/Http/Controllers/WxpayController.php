@@ -32,7 +32,6 @@ class WxpayController extends BaseController {
         $secret = $this->config['app_secret'];
         $mch_id = $this->config['mch_id'];
         if(!isset($_GET['code'])){
-            $_GET['pay_order_sn'] = 'a';
             if(!isset($_GET['pay_order_sn'])) {
                 exit('<script>alert("请选择要支付的订单");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
             }
@@ -42,7 +41,7 @@ class WxpayController extends BaseController {
             exit();
         }else {
             /*--------------验证订单号开始---------------*/
-            $pay_order_sn = '154830751878482100512';
+            $pay_order_sn = $_GET['pay_order_sn'];
             $userinfo = $request->session()->get('userInfo');
             if(!$userinfo) {
                 exit('<script>alert("请用微信登录后操作");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
@@ -74,7 +73,6 @@ class WxpayController extends BaseController {
             $openid = $json_obj['openid'];
             /*-------------获取OPENID结束-------------*/
 
-            $pay_order_sn = $this->genOrderSn('');
             $arr = [
                 'appid' => $appid,
                 'mch_id' => $mch_id,
@@ -82,8 +80,8 @@ class WxpayController extends BaseController {
                 'sign_type' => 'MD5',
                 'body' => '山洞-支付',
                 'out_trade_no' => $pay_order_sn,
-//                'total_fee' => 1,
-                'total_fee' => floatval($total_price)*100,
+                'total_fee' => 1,
+//                'total_fee' => floatval($total_price)*100,
                 'spbill_create_ip' => $_SERVER['REMOTE_ADDR'],
                 'notify_url' => "http://" . $_SERVER['HTTP_HOST'] . "/notify",
                 'trade_type' => 'JSAPI',
@@ -187,7 +185,7 @@ class WxpayController extends BaseController {
     }
 
     public function test(Request $request) {
-
+        return view('test',[]);
     }
 
     private function log($cmd = '',$msg = '') {

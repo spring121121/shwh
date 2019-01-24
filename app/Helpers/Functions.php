@@ -47,6 +47,18 @@ if (!function_exists('e')) {
     }
 }
 
+function check_post($postArray) {
+    if(empty($postArray)) {
+        return false;
+    }
+    foreach ($postArray as $value) {
+        if (is_null($value) || $value === '') {
+            return false;
+        }
+    }
+    return true;
+}
+
 function halt($arr) {
     echo '<pre>';
     print_r($arr);
