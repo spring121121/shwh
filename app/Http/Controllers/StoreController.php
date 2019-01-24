@@ -25,21 +25,8 @@ class StoreController extends BaseController
      */
     public function addStore(Request $request)
     {
-        $uid = UserService::getUid($request);
-        $data = $request->input('store');
-        $data['uid'] = $uid;
-        $data['name'] = $request->input('name');
-        $data['prove_url'] = $request->input('prove_url');
-        $data['introduction'] =  $request->input('introduction');
-        $data['logo_pic_url'] =  $request->input('logo_pic_url');
-        $data['id_card_num'] =  $request->input('id_card_num');
-        $data['id_card_front'] =  $request->input('id_card_front');
-        $data['id_card_backend'] =  $request->input('id_card_backend');
-        $count = StoreModel::where('uid', $uid)
-            ->count();
-        if ($count != 0) {
-            return $this->fail(60001);//已经存在店铺
-        }
+
+        //1.校验各个参数
         $rules = [
             'name' => 'required|string|min:1|max:20',
             'introduction' => 'required|string|min:1|max:200',
@@ -55,7 +42,26 @@ class StoreController extends BaseController
             return $this->fail(50001, '', $validator->errors()->all()[0]);
         }
 
+        //2.检测该用户是不是已经有一个店铺
+        $uid = UserService::getUid($request);
+        $data = $request->input('store');
+        $data['uid'] = $uid;
+        $data['name'] = $request->input('name');
+        $data['prove_url'] = $request->input('prove_url','');
+        $data['introduction'] = $request->input('introduction');
+        $data['logo_pic_url'] = $request->input('logo_pic_url');
+        $data['id_card_num'] = $request->input('id_card_num');
+        $data['id_card_front'] = $request->input('id_card_front');
+        $data['id_card_backend'] = $request->input('id_card_backend');
+        $count = StoreModel::where('uid', $uid)->count();
+        if ($count != 0) {
+            return $this->fail(60001);//已经存在店铺
+        }
         $result = StoreModel::create($data);
+        //4.修改用户表里该用户的角色
+        $userData['role'] = $request->input('role_id');
+        UserModel::where('id','=',$uid)->update($userData);
+
         if ($result) {
             return $this->success();
         } else {
@@ -213,9 +219,9 @@ class StoreController extends BaseController
         ];
         $userModel = new UserModel();
         $re = $userModel::where('openid', '=', $openId)->update($updateArr);
-        if($re!=0){
+        if ($re != 0) {
             return $this->success();
-        }else{
+        } else {
             return $this->fail(300);
         }
 
