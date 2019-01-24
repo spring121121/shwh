@@ -72,15 +72,21 @@
             $('.goback').on('click',function(){
                 window.history.go(-1);
             });
+            var goods_ids = getUrlParam('goods_id');
+            var num = getUrlParam('num');
+            var flag = getUrlParam('flag');
             $(document).on("click",".btn-bjdz",function () {
                 var addressId = $(this).attr("id");
+                if(flag != null){
+                    window.location.href = "/wap/edit_address?id="+addressId+'&flag=1&goods_id='+goods_ids+'&num='+num;
+                    return false;
+                }
                 window.location.href = "/wap/edit_address?id="+addressId;
             });
             $(document).on("click",".address",function () {
-                var flag = getUrlParam('flag');
                 var addressId = $(this).find('input').val();
                 if(flag != null){
-                    window.location.href = "/wap/shop_purchase?id="+addressId;
+                    window.location.href = "/wap/shop_purchase?id="+addressId+'&goods_id='+goods_ids+'&num='+num;
                     return false;
                 }
             });

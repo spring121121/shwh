@@ -14,7 +14,7 @@
                     <div class="icon-box"><img class="common-img" src="/images/dc-icon.png" alt="洞藏"></div>
                     <span>洞藏</span>
                 </li>
-                <li onclick="window.location.href = '/wap/my_note';">
+                <li onclick="window.location.href = '/wap/studyIndex';">
                     <div class="icon-box"><img class="common-img" src="/images/dx-icon.png" alt="洞学"></div>
                     <span>洞学</span>
                 </li>

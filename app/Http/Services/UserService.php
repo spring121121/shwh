@@ -72,6 +72,15 @@ class UserService
         return $fulltime;
     }
 
+    //获取支付订单号
+    public static function genPayOrderSn($letter = '') {
+        $time = explode (" ", microtime ());
+        $timeArr = explode('.',$time [0]);
+        $mtime = array_pop($timeArr);
+        $fulltime = $letter.$time[1].$mtime.mt_rand(100,999);
+        return $fulltime;
+    }
+
     //增加积分
     public static function addScore($request,$type,$score)
     {

@@ -104,6 +104,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
 
     /*****************StoreController店铺接口********************************/
     Route::post('addStore','StoreController@addStore');//新增店铺
+    Route::post('bindMobile/{openId}','StoreController@bindMobile');//绑定手机号
     Route::post('updateStore','StoreController@updateStore');//修改店铺
     Route::get('authStore','StoreController@authStore');//认证店铺
     Route::get('storeList','StoreController@storeList');//店铺列表
@@ -166,6 +167,11 @@ Route::get('getOtherUserInfo/{id}','UserController@getUserInfo');//获取某个�
 Route::get('getOtherNoteList/{id}','NoteController@getOtherNoteList');//获取别人的原创笔记列表
 Route::get('getOtherCollectNote/{id}','CollectController@getOtherCollectNote');//获取别人收藏的笔记
 Route::get('getOtherLikeNote/{id}','LikeController@getOtherLikeNote');//获取别人点赞的笔记
+
+
+Route::post('sendSms','SmsController@sendSms');//发送短信
+Route::post('bindTel','SmsController@bindTel');//绑定手机号
+
 Route::get('wx/pay','WxpayController@pay');//支付
 Route::get('wx/test','WxpayController@test');//微信
 Route::post('notify','WxpayController@notify');//支付回调
@@ -230,6 +236,10 @@ Route::get('wap/museumOne', function () {//博物馆一级
 Route::get('wap/musegoods', function () {//首页展示笔记的二级页面
     return view('indexDetail/museumDetail/museumGoods');
 });
+
+Route::get('wap/studyIndex', function () {//洞学首页
+    return view('indexDetail/caveStudy/studyIndex');
+});
 Route::get('wap/musename', function () {//博物馆商品
     $arr = ['id'=>0];
     if(Cookie::has('info')){
@@ -239,7 +249,7 @@ Route::get('wap/musename', function () {//博物馆商品
 });
 
 Route::get('wap/shop', function () {//商城首页
-    return view('shop/shop');
+    return view('shop/shop',Cookie::get('info')?Cookie::get('info'):['id'=>0]);
 });
 Route::get('wap/shop_share', function () {//商品分销
     return view('shop/shop-share');

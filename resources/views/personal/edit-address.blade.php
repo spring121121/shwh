@@ -62,10 +62,13 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            var address_url = window.location.search;
-            var address_id = address_url.substr(4);
+            var goods_ids = getUrlParam('goods_id');
+            var num = getUrlParam('num');
+            var flag = getUrlParam('flag');
+            // var address_url = window.location.search;
+            var address_id = getUrlParam('id');
             var province_id,city_id,area_id;
-            console.log(address_id)
+            console.log(address_id);
             choice_address();
             $.ajax({
                 url : "/addressDetail",	//请求url
@@ -142,6 +145,10 @@
                         success : function(data){//回调函数 和 后台返回的 数据
                             if (data.status){
                                 alert("修改成功");
+                                if(flag != null){
+                                    window.location.href = "/wap/my_address?flag=1&goods_id="+goods_ids+'&num='+num;
+                                    return false;
+                                }
                                 window.location.href = "/wap/my_address";
                             }else {
                                 alert("修改失败");
@@ -159,6 +166,10 @@
                     success : function(data){//回调函数 和 后台返回的 数据
                         if (data.status){
                             alert("删除成功");
+                            if(flag != null){
+                                window.location.href = "/wap/my_address?flag=1&goods_id="+goods_ids+'&num='+num;
+                                return false;
+                            }
                             window.location.href = "/wap/my_address";
                         } else {
                             alert("删除失败");
@@ -166,6 +177,12 @@
                     }
                 });
             });
+
+            function getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                if (r != null) return unescape(r[2]); return null; //返回参数值
+            }
         });
     </script>
 </html>

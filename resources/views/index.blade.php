@@ -154,7 +154,7 @@
         obj += '<img src="' + v.image_one_url + '">';
         obj += '</a></div>';
         obj += '<div class="exhibition_left_describe">';
-        obj += '<h1>' + v.title + '</h1>';
+        obj += '<p class="indexTitle">' + v.title + '</p>';
         obj += '<p>' + v.content + '</p><h3><span>';
         obj += '<em  id=dianzan-'+v.id+' class="iconfont icon-dianzan" onclick="addLikes('+v.id+')"></em>';
         obj += '</span><i>点赞(<i id="likeNum-'+v.id+'">'+ v.likeNum +' </i>)</i>';

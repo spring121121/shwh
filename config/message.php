@@ -54,6 +54,10 @@ return [
         'introduction.max' => '店铺简介最多:max个字符',
         'logo_pic_url' => '店铺logo不能为空',
         'prove_url' => '店铺资质证明不能为空',
+        'real_name.required'=>"请输入店主的真实姓名",
+        'id_card_num.required'=>"请输入身份证号",
+        'id_card_front.required'=>"请上传身份证正面",
+        'id_card_backend.required'=>"请上传身份证背面",
     ],
 
     'goods' => [//商品表

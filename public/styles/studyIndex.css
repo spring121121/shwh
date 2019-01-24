@@ -1,0 +1,108 @@
+.container{
+    width: 100%;
+    height: auto;
+}
+header{
+    width:100%;
+    height:35px;
+    background: #272727;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    padding-top: 10px;
+}
+header>ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+header>ul>li img{
+    width: 20px;
+    height: 20px;
+}
+header>ul>li>p{
+    font-size: 16px;
+    color: #fff;
+
+    font-weight: bold;
+}
+.styleTitle{
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    height: 100%;
+    justify-content: space-between;
+}
+.addcolor{
+    color: #e83c45;
+}
+#bander{
+    width:100%;
+    overflow: hidden;
+    margin-top: 45px;
+}
+#bander img{
+    width:95%;
+    height:96%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 2px 0px 14px 0px #878787
+}
+.swiper-container{
+    height: 180px!important;
+}
+.bannerTitle{
+   font-size: 18px;
+    font-weight: bold;
+    margin: 5px 0 0 10px;
+}
+.studyPeople{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+}
+.studyPeople>img{
+    width: 20px!important;
+    height: 20px!important;
+    margin:0 0 0  18px!important;
+}
+.studyPeople>p{
+    font-size: 12px;
+    color: #9e9e9e;
+    margin: 2px 0 0 10px;
+}
+.souinp{
+    width: 280px;
+    height: 27px;
+    border-radius: 10px;
+    background: #555555;
+    margin-left: 55px;
+    display: flex;
+    flex-direction: row;
+}
+.souinp>img{
+    width: 20px;
+    height: 20px;
+    margin: 5px 0  0 5px;
+}
+.souinp>input{
+    background: transparent;
+    height: 100%;
+    color: #fff;
+    outline: none;
+    border: none;
+}
+.styleSou{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.styleSou>p{
+    color: #fff;
+    font-size: 16px;
+    margin-right: 20px;
+}
