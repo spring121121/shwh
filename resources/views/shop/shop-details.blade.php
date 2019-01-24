@@ -175,7 +175,6 @@
             //我的购物车页面
             var uid = $('#uid').val();
 			$('.zc_right').on('click',function(){
-                var uid = $('#uid').val();
                 if(uid == 0){
                     window.location.href = "/wap/login_index";
                     return false;
