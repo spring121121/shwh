@@ -230,6 +230,10 @@ Route::get('wap/museumOne', function () {//博物馆一级
 Route::get('wap/musegoods', function () {//首页展示笔记的二级页面
     return view('indexDetail/museumDetail/museumGoods');
 });
+
+Route::get('wap/studyIndex', function () {//洞学首页
+    return view('indexDetail/caveStudy/studyIndex');
+});
 Route::get('wap/musename', function () {//博物馆商品
     $arr = ['id'=>0];
     if(Cookie::has('info')){

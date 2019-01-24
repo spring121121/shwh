@@ -347,3 +347,7 @@ footer ul li a em{
 footer ul li a i{
     font-size:15px;
 }
+.indexTitle{
+    font-size: 16px!important;
+    font-weight: bold!important;
+}
