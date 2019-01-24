@@ -104,6 +104,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
 
     /*****************StoreController店铺接口********************************/
     Route::post('addStore','StoreController@addStore');//新增店铺
+    Route::post('bindMobile/{openId}','StoreController@bindMobile');//绑定手机号
     Route::post('updateStore','StoreController@updateStore');//修改店铺
     Route::get('authStore','StoreController@authStore');//认证店铺
     Route::get('storeList','StoreController@storeList');//店铺列表
