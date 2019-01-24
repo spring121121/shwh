@@ -208,6 +208,7 @@
         $.ajax({
             url : "/defaultAddress",	//请求url
             type : "get",	//请求类型  post|get
+            async:true,
             dataType : "json",  //返回数据的 类型 text|json|html--
             data: {id:id},
             success : function(data){//回调函数 和 后台返回的 数据
@@ -234,7 +235,7 @@
         $.ajax({
             url : "/myOrderList",	//请求url 商城分类
             type : "get",	//请求类型  post|get
-            async: false,
+            async: true,
             dataType : "json",  //返回数据的 类型 text|json|html--
             data:{goods_id:goodsid,num:num},
             success : function(data){//回调函数 和 后台返回的 数据
@@ -285,7 +286,7 @@
             if (r != null) return unescape(r[2]); return null; //返回参数值
         }
 
-        $('.total_submit').on('click',function(){
+        $(document).on('click','.total_submit',function(){
             var address_id = $('.btn-bjdz').attr('id');
             $.ajax({
                 url : "/purchase",	//请求url 商城分类

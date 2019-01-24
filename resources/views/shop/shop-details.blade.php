@@ -173,7 +173,6 @@
 				$(this).hide().siblings().show()
 			});
             //我的购物车页面
-            var uid = $('#uid').val();
 			$('.zc_right').on('click',function(){
                 var uid = $('#uid').val();
                 if(uid == 0){
@@ -184,6 +183,7 @@
             });
             //加入购入车
             $('.addCar').on('click',function(){
+                var uid = $('#uid').val();
                 var goods_id = $('#goods_id').val();
                 if(uid == 0){
                     window.location.href = "/wap/login_index";

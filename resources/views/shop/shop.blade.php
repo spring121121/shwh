@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="index-header header">
-            <div class="common-header-left"></div>
+            <div class="common-header-left car"></div>
             <div class="common-header-right"></div>
             <div class="search-box">
                 <div class="ipt-icon"></div>
@@ -112,7 +112,7 @@
             </div>
 
         </div>
-
+        <input type="hidden" value="{{$id}}" id="uid">
         <!--引入footer-->
         @extends('layout.footer')
     </body>
@@ -187,6 +187,16 @@
                     $(".classify-display").find(".shop-list-box").eq(i).css({"margin-left":"unset","margin-right":"2.5px"})
                 }
             }
+
+            //我的购物车页面
+            var uid = $('#uid').val();
+            $('.car').on('click',function(){
+                if(uid == 0){
+                    window.location.href = "/wap/login_index";
+                    return false;
+                }
+                window.location.href = "/wap/shop_cart";
+            });
 
             function goodsList(id){
                 var goodsList = '';
