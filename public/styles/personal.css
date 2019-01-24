@@ -1559,14 +1559,13 @@ ul,li{
     margin: 0;
     background-color: #f7f7f7;
 }
+.first-cont {
+    height: 100%;
+    overflow: auto;
+}
 .store-apply-first{
     z-index: 1;
-}
-.store-apply-second{
-    z-index: 2;
-}
-.store-apply-three{
-    z-index: 3;
+    /*display: none;*/
 }
 .about-cave{
     background: url(../images/bg-personal-title.png) no-repeat center;
@@ -1577,24 +1576,31 @@ ul,li{
     line-height: 30px;
     overflow: hidden;
 }
+.second-title{
+    height: 140px;
+}
 .about-cave h3{
     font-size: 18px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 15px;
     font-weight: normal;
 }
 .about-cave p{
     margin: 0 40px;
     text-align: justify;
+    line-height: 25px;
+}
+.about-cave .second-text{
+    text-align: center;
 }
 .role-classify{
-    margin: 10px;
-    padding: 10px;
+    margin: 5px 10px;
+    padding: 0 10px;
     background: #fff;
     border-radius: 10px;
 }
 .role-classify h4{
-    line-height: 50px;
+    line-height: 40px;
     border-bottom: 1px solid #b2b2b2;
     font-weight: normal;
     font-size: 14px;
@@ -1609,24 +1615,131 @@ ul,li{
     font-size: 14px;
     width: 100px;
     text-align: center;
-    line-height: 50px;
+    line-height: 40px;
     border: 1px solid #b2b2b2;
     box-sizing: border-box;
     border-radius: 8px;
-    margin: 15px;
+    margin: 10px 15px;
+}
+.role-classify ul .choice-role-color{
+    background: #4c9da0;
+    color: #fff;
+}
+.role-classify p{
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 20px;
+}
+.role-classify #one-tip{
+    margin-top: 10px;
+}
+.role-classify #three-tip{
+    padding-bottom: 10px;
 }
 .btn-next-page{
-    position: absolute;
+    /*position: absolute;*/
     background: #333;
     color: #fff;
     font-size: 16px;
     text-align: center;
     line-height: 40px;
-    bottom: 20px;
-    left: 30px;
-    right: 30px;
+    /*bottom: 20px;*/
+    /*left: 30px;*/
+    /*right: 30px;*/
+    margin: 20px;
     border-radius: 20px;
 }
+.apply-process{
+    /*position: absolute;*/
+    /*top: 90px;*/
+    /*left: 15px;*/
+    /*right: 15px;*/
+    margin: -30px 10px 0;
+    background: #ececec;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.apply-process ul{
+    display: flex;
+    justify-content: center;
+}
+.apply-process ul li{
+    width: 70px;
+    text-align: center;
+    font-size: 12px;
+    height: 80px;
+    color: #aaa;
+    position: relative;
+}
+.apply-process ul li em{
+    position: absolute;
+    width: 174%;
+    height: 4px;
+    top: 46px;
+    background: #aaa;
+    left: -26px;
+}
+.apply-process ul li span{
+    display: block;
+    margin-top: 10px;
+    line-height: 30px;
+}
+.circle-dot{
+    width: 15px;
+    height: 15px;
+    margin: 0 auto;
+    background: #aaa;
+    border-radius: 50%;
+}
+.apply-process ul .active-color{
+    color: #4c9da0;
+}
+.apply-process ul .active-color em,.active-color .circle-dot{
+    background: #4c9da0;
+}
+.apply-tip{
+    font-size: 12px;
+    padding: 10px 20px;
+    background: #fff;
+    line-height: 17px;
+    text-align: justify;
+}
+.apply-tip span{
+    line-height: 30px;
+}
+.choice-role{
+    background: #fff;
+    border-radius: 10px;
+    margin: 120px 15px 0;
+}
+.choice-role h3{
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 45px;
+    padding-left: 10px;
+    border-bottom: 1px solid #b2b2b2;
+}
+.choice-role ul{
+}
+.choice-role ul li{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #b2b2b2;
+    border-radius: 8px;
+    height: 50px;
+    margin: 0 20px;
+}
+
+
+
+
+
+
+
+
+
+
 .store-first-tip{
     width: 100%;
     height: 100%;
@@ -1649,29 +1762,99 @@ ul,li{
     background: #333;
     margin-top: 20px;
 }
+.protocol-box{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.5);
+}
+.protocol{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 0;
+    padding-bottom: 50px;
+    overflow: auto;
+    background: #fff;
+    font-size: 14px;
+}
+.protocol h3{
+    font-size: 16px;
+    line-height: 30px;
+    padding: 10px 10px 0;
+    border-bottom: 2px solid #333;
+    text-align: center;
+    font-weight: normal;
+}
+.protocol p{
+    line-height: 25px;
+    text-align: justify;
+    margin: 10px 20px 0;
+}
+.btn-is-Agree{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    height: 0;
+    justify-content: space-between;
+}
+.btn-is-Agree span{
+    color: #666;
+    margin: 15px 20px;
+    border-radius: 15px;
+    border: 1px solid #f1f1f1;
+    box-shadow: darkgrey 1px 1px 0 0;
+    font-size: 13px;
+    display: block;
+    padding: 0 20px;
+    height: 25px;
+    line-height: 25px;
+}
+.btn-is-Agree #btn-agree{
+    color: #fff;
+    background: #333;
+}
 
 /*店铺注册界面*/
 .store-register{
-    margin: 10px 20px;
+    height: 100%;
+    overflow: hidden;
+    padding: 0 20px;
+    background: #fff;
+}
+.store-register input::-webkit-input-placeholder{
+    color: #DCE0E3;
+}
+.store-cont{
+    border: 1px solid #f1f1f1;
+    margin-top: 10px;
 }
 .store-cont label{
-    line-height: 30px;
-    font-size: 15px;
-    margin: 10px 0;
+    font-size: 12px;
+    margin: 6px 10px 0;
     display: block;
 }
 .ipt-name-box{
-    height: 40px;
-    border-bottom: 1px solid #f1f1f1;
+    height: 30px;
+    margin: 0 10px;
 }
 .ipt-name-box input{
     width: 100%;
     height: 100%;
+    font-size: 14px;
     border: none;
     outline: none;
 }
 .ipt-brief-box{
-    border: 1px solid #f1f1f1;
+    margin-left: 10px;
 }
 .ipt-brief-box textarea{
     line-height: 25px;
@@ -1683,6 +1866,7 @@ ul,li{
 .store-logo{
     display: flex;
     justify-content: left;
+    border: none;
 }
 .store-logo label{
     line-height: 40px;
@@ -1692,7 +1876,7 @@ ul,li{
     border: 1px solid #f1f1f1;
     width: 40px;
     height: 40px;
-    margin: 10px 0;
+    margin: 5px 0;
     background: url("../images/jiahao-black.png") no-repeat center;
     background-size: 50%;
 }
@@ -1711,7 +1895,7 @@ ul,li{
 .store-prove .prove-box{
     width: 280px;
     height: 150px;
-    margin: 0 auto;
+    margin: 10px auto;
     background-size: 20%;
 }
 .btn-store-register{
@@ -2368,4 +2552,5 @@ ul,li{
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 999;
 }

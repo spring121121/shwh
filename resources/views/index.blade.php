@@ -96,7 +96,7 @@
         <!--文创故事-->
         <div class="culture">
         	<p>文创故事</p>
-        	<video id="video1" autoplay="" muted="" loop="" src="/images/viode.mp4" width="100%" height="100%" type="video/mp4">
+        	<video id="video1" autoplay="" preload="auto" muted="" loop="" src="/images/viode.mp4" width="100%" height="100%" type="video/mp4">
             </video>
         </div>
         <!--发布需求-->

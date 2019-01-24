@@ -209,7 +209,7 @@ section{
 .exhibition_left ul li{
     width:100%;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-top: 7px;
     box-shadow: darkgrey 1px 1px 0 0;
     overflow: hidden
 }
@@ -234,7 +234,8 @@ section{
 }
 .exhibition_left_describe h1{
     padding: 5px 0 0 5px;
-    font-weight: bold
+    font-weight: bold;
+    font-size: 16px;
 }
 .exhibition_left_describe p{
     padding:0 5px 5px 5px;
@@ -282,7 +283,7 @@ section{
 .exhibition_right ul li{
     width:100%;
     border-radius: 15px;
-    margin-bottom: 20px;
+    margin-top: 7px;
     box-shadow: darkgrey 1px 1px 0 0;
   
     overflow: hidden
