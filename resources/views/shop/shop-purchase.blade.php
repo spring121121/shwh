@@ -294,8 +294,10 @@
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data:{address_id:address_id,goods_id:goodsid,num:num},
                 success : function(data){//回调函数 和 后台返回的 数据
+                    console.log(data);
                     if(data.status){
-                        alert('提交成功');
+                        var order = data.data.pay_order_sn;
+                        window.location.href="http://shwh.jianghairui.com/wx/pay?pay_order_sn="+order;
                     }
                 }
             });

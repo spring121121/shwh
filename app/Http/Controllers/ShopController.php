@@ -391,12 +391,14 @@ class ShopController extends BaseController
         //数组组装
         $orderArr = [];
         $order = [];
+        $pay = UserService::genPayOrderSn();//支付订单号
         foreach($myGoodsList as $key=>$goods_value){
             $orderArr['uid'] = $uid;//用户id
             $orderArr['num'] = $nums[$key];//购买数量
             $orderArr['address_id'] = $address_id;//地址id
             $orderArr['goods_id'] = $goods_value['id'];//商品id
             $orderArr['order_sn'] = UserService::genOrderSn('sd_');//订单号
+            $orderArr['pay_order_sn'] = $pay;//支付订单号
             $orderArr['total_price'] = $goods_value['price']*$nums[$key]+$goods_value['postage'];//总价含邮费
             $orderArr['store_id'] = $goods_value['store_id'];//店铺id
             $orderArr['goods_id'] = $goods_value['id'];//商品id
@@ -414,7 +416,7 @@ class ShopController extends BaseController
         }
         $result = OrdersModel::insert($order);
         if($result){
-            return $this->success();
+            return $this->success(['pay_order_sn'=>$pay]);
         }else{
             return $this->fail('300');
         }
