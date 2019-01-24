@@ -416,7 +416,7 @@ class ShopController extends BaseController
         }
         $result = OrdersModel::insert($order);
         if($result){
-            return $this->success();
+            return $this->success(['pay_order_sn'=>$pay]);
         }else{
             return $this->fail('300');
         }
