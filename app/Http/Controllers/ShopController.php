@@ -192,7 +192,7 @@ class ShopController extends BaseController
         $storeId = $request->input('id');
         $storeDetail = StoreModel::where('store.id', $storeId)
             ->join('user','store.uid','=','user.id')
-            ->select('user.role','store*')
+            ->select('user.role','store.*')
             ->get()->toArray();
         return $this->success($storeDetail);
     }

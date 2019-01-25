@@ -139,7 +139,7 @@ class StoreController extends BaseController
         $uid = UserService::getUid($request);
         $myStoreList = StoreModel::where('store.uid', $uid)
             ->join('user','store.uid','=','user.id')
-            ->select('user.role','store*')
+            ->select('user.role','store.*')
             ->get()->toArray();
         return $this->success($myStoreList);
     }
