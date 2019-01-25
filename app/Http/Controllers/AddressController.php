@@ -28,13 +28,7 @@ class AddressController extends BaseController
 
         $addressModel = new AddressModel();
         $uid = UserService::getUid($request);
-        $addressList = $addressModel::where('uid', $uid)
-            ->join('provinces as p', 'address.province', '=', 'p.provinceid')
-            ->join('cities as c', 'address.city', '=', 'c.cityid')
-            ->join('areas as a', 'address.area', '=', 'a.areaid')
-            ->select('address.*','p.province','c.city','a.area')
-
-            ->get()->toArray();
+        $addressList = $addressModel::where('uid', $uid)->get()->toArray();
 
         return $this->success($addressList);
 
@@ -54,10 +48,6 @@ class AddressController extends BaseController
             $where = ['address.uid'=>$uid,'address.is_default'=>AddressModel::IS_DEFAULT_1];
         }
         $defaultAddress = AddressModel::where($where)
-            ->join('provinces as p', 'address.province', '=', 'p.provinceid')
-            ->join('cities as c', 'address.city', '=', 'c.cityid')
-            ->join('areas as a', 'address.area', '=', 'a.areaid')
-            ->select('address.*','p.province','c.city','a.area')
             ->get()->toArray();
         return $this->success($defaultAddress);
 
@@ -213,10 +203,6 @@ class AddressController extends BaseController
     {
         $id = $request->input('id');
         $addressDetail = AddressModel::where('address.id', $id)
-            ->join('provinces as p', 'address.province', '=', 'p.provinceid')
-            ->join('cities as c', 'address.city', '=', 'c.cityid')
-            ->join('areas as a', 'address.area', '=', 'a.areaid')
-            ->select('address.*','p.province','c.city','a.area','address.province as provinceId','address.city as cityId','address.area as areaId')
             ->get()->toArray();
         return $this->success($addressDetail);
     }

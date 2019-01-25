@@ -54,9 +54,9 @@
             $("#btn-new-keep").click(function () {
                 var shr_name = $("#shr-name").val(),
                     shr_phone = $("#shr-phone").val(),
-                    shr_province = $("#province").find("option:checked").attr("id"),
-                    shr_city = $("#city").find("option:checked").attr("id"),
-                    shr_area = $("#area").find("option:checked").attr("id"),
+                    shr_province = $("#province option:selected").text(),
+                    shr_city = $("#city option:selected").text(),
+                    shr_area = $("#area option:selected").text(),
                     shr_xxdz = $("#shr-address-info").val(),
                     default_address = $("#default").is(":checked");
                 var is_default;

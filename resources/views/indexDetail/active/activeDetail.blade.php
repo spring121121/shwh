@@ -16,20 +16,20 @@
     <header>
         <div class="activeTitle">
             <div class="goIndex" onclick="toIndex()"><img src="/images/fanhui.png" alt=""></div>
-            <p>2019evn我的青春</p>
+            <p class="btn1">2019evn我的青春</p>
             <span></span>
         </div>
     </header>
        <div class="de_navActive">
            <ul>
-               <li class="addcolor">需求说明</li>
-               <li>奖项设置</li>
+               <li class="addcolor c" >需求说明</li>
+               <li class="d" >奖项设置</li>
 
-               <li>获奖作品</li>
+               <li class="e">获奖作品</li>
            </ul>
        </div>
      <div class="addtTopheight"></div>
-    <div class="de_activeRule">
+    <div class="de_activeRule" id="activeRule">
         <p class="de_ruleOne">竞赛说明</p>
         <p class="de_ruleTwo">早晨醒来，习惯性地打开微信朋友圈，看一下微信好友们的见闻，心得和生活。
 
@@ -57,7 +57,7 @@
              <p class="de_ruleTwo">5.次愕然看到有人午夜痛苦的说说："人活着到底为了什么……"</p>
          </div>
     </div>
-    <div class="de_activeGold">
+    <div class="de_activeGold" id="activeGold">
         <p class="de_ruleOne">奖项设置</p>
         <div class="de_myGold">
             <p class="de_ruleTwo">一等奖</p>
@@ -73,52 +73,55 @@
         </div>
     </div>
     
-    <div class="de_activeList">
+    <div class="de_activeList" id="activeList">
         <p class="de_ruleOne">获奖作品</p>
         <ul class="de_ListGode clearfix">
             <li>
                 <img src="/images/collection-img3.jpg" alt="">
-                <p>杯子蛋糕</p>
-                <p>作者:<span>大伟</span></p>
+                <p class="de_workName">杯子蛋糕</p>
+                <p class="de_workPeople">作者:<span>大伟</span></p>
+            </li>
+            <li>
+                <img src="/images/collection-img2.jpg" alt="">
+                <p class="de_workName">情调广场</p>
+                <p class="de_workPeople">作者:<span>大伟</span></p>
+            </li>
+            <li>
+                <img src="/images/collection-img4.jpg" alt="">
+                <p class="de_workName">杯子蛋糕</p>
+                <p class="de_workPeople">作者:<span>大伟</span></p>
+            </li>
+            <li>
+                <img src="/images/collection-img5.jpg" alt="">
+                <p class="de_workName">咖啡蛋挞</p>
+                <p class="de_workPeople">作者:<span>大伟</span></p>
             </li>
             <li>
                 <img src="/images/collection-img3.jpg" alt="">
-                <p>杯子蛋糕</p>
-                <p>作者:<span>大伟</span></p>
+                <p class="de_workName">杯子蛋糕</p>
+                <p class="de_workPeople">作者:<span>大伟</span></p>
+            </li>
+            <li>
+                <img src="/images/collection-img6.jpg" alt="">
+                <p class="de_workName">茄子黄瓜</p>
+                <p class="de_workPeople">作者:<span>大伟</span></p>
             </li>
             <li>
                 <img src="/images/collection-img3.jpg" alt="">
-                <p>杯子蛋糕</p>
-                <p>作者:<span>大伟</span></p>
+                <p class="de_workName">杯子蛋糕</p>
+                <p class="de_workPeople">作者:<span>大伟</span></p>
             </li>
             <li>
-                <img src="/images/collection-img3.jpg" alt="">
-                <p>杯子蛋糕</p>
-                <p>作者:<span>大伟</span></p>
-            </li>
-            <li>
-                <img src="/images/collection-img3.jpg" alt="">
-                <p>杯子蛋糕</p>
-                <p>作者:<span>大伟</span></p>
-            </li>
-            <li>
-                <img src="/images/collection-img3.jpg" alt="">
-                <p>杯子蛋糕</p>
-                <p>作者:<span>大伟</span></p>
-            </li>
-            <li>
-                <img src="/images/collection-img3.jpg" alt="">
-                <p>杯子蛋糕</p>
-                <p>作者:<span>大伟</span></p>
-            </li>
-            <li>
-                <img src="/images/collection-img3.jpg" alt="">
-                <p>杯子蛋糕</p>
-                <p>作者:<span>大伟</span></p>
+                <img src="/images/collection-img5.jpg" alt="">
+                <p class="de_workName">银狐</p>
+                <p class="de_workPeople">作者:<span>大伟</span></p>
             </li>
 
         </ul>
     </div>
+    <div class="de_addheight"></div>
+
+
     <!--引入footer-->
     @extends('layout.footer')
 </div>
@@ -128,10 +131,32 @@
 <script type="text/javascript" src="/js/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
 <script>
-    function toIndex(){
+    $(function(){
+        $(document).scroll(function(){
+            var wheight=$(window).height();
+            var stop=$(document).scrollTop();
+            var m=$("#activeRule").offset().top;
+
+
+            var n=$("#activeGold").offset().top
+            var k=$("#activeList").offset().top
+          console.log(m+100+"px")
+            if (stop>(m-200)) {
+                $(".c").addClass("addcolor").siblings().removeClass("addcolor");
+            }
+            if (stop>(n-200)) {
+                $(".d").addClass("addcolor").siblings().removeClass("addcolor");
+            }
+            if (stop>(k-200)) {
+                $(".e").addClass("addcolor").siblings().removeClass("addcolor");
+            }
+        })
+
+    })
+
+    function toIndex() {
         window.location.href = "/wap/activeList";
     }
-
 
 </script>
 </html>

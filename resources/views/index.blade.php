@@ -96,22 +96,24 @@
         <!--文创故事-->
         <div class="culture">
         	<p>文创故事</p>
-        	<video id="video1" autoplay="" preload="auto" muted="" loop="" src="/images/viode.mp4" width="100%" height="100%" type="video/mp4">
-            </video>
-        </div>
+                <video src="/images/viode.mp4" controls="controls" width="100%" height="100%">
+                    your browser does not support the video tag
+                </video>
+            </div>
+
         <!--发布需求-->
         <div class="demand">
         	<p></p>
         </div>
         
-        <div id="exhibition">
-            <div class="exhibition_left">
-                <ul></ul>
-            </div>
-            <div class="exhibition_right">
-                <ul></ul>
-            </div>
-        </div>
+        {{--<div id="exhibition">--}}
+            {{--<div class="exhibition_left">--}}
+                {{--<ul></ul>--}}
+            {{--</div>--}}
+            {{--<div class="exhibition_right">--}}
+                {{--<ul></ul>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </section>
 </div>
 <!--引入footer-->
