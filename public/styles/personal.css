@@ -1335,7 +1335,8 @@ ul,li{
 /*新增收货地址*/
 .ipt-address-box,.edit-data{
     width: unset;
-    margin: 20px;
+    padding: 20px;
+    background: #fff;
 }
 .ipt-address-box .ipt-box,.edit-data .ipt-box{
     border-bottom: 1px solid #f1f1f1;
@@ -1386,8 +1387,8 @@ ul,li{
 }
 .btn-new-address{
     height: 40px;
-    margin: 20px;
-    background: url("../images/btn-bg.png") no-repeat center;
+    margin: 35px 20px;
+    background: #333;
     line-height: 40px;
     border-radius: 20px;
 }
@@ -1395,10 +1396,10 @@ ul,li{
     height: 100%;
     border-radius: 20px;
     text-align: center;
-    color: #000;
+    color: #fff;
     font-size: 15px;
 }
-.btn-write-note .other-color{
+.btn-write-note .other-color,.new-other-color a{
     background: #ffcc00;
     color: #000;
 }

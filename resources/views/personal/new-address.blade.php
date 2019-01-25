@@ -10,6 +10,40 @@
 
         <link rel="stylesheet" href="/styles/common.css">
         <link rel="stylesheet" href="/styles/personal.css">
+
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+        <script type="text/javascript">
+            wx.config({
+                debug: false,
+                appId: "{{$addrSign["appId"]}}",
+                timestamp: "{{$addrSign["timestamp"]}}",
+                nonceStr: "{{$addrSign["nonceStr"]}}",
+                signature: "{{$addrSign["signature"]}}",
+                jsApiList: [
+                    'checkJsApi',
+                    'openAddress'
+                ]
+            });
+            wx.ready(function () {});
+            function getaddr() {
+                wx.openAddress({
+                    success: function (res) {
+                        // 用户成功拉出地址
+                        //alert(JSON.stringify(res));
+                        document.getElementById("shr-name").value=   res.userName;
+                        document.getElementById("shr-address-info").value = res.provinceName + res.cityName + res.countryName + res.detailInfo;
+                        document.getElementById("shr-phone").value = res.telNumber;
+                        document.getElementById("province").innerHTML = '<option>'+res.provinceName+'</option>';
+                        document.getElementById("city").innerHTML = '<option>'+res.cityName+'</option>';
+                        document.getElementById("area").innerHTML = '<option>'+res.countryName+'</option>';
+                    },
+                    cancel: function (errMsg) {
+                        // 用户取消拉出地址 //
+                        alert(JSON.stringify(errMsg));
+                    }
+                });
+            }
+        </script>
     </head>
     <body>
         <div class="header">
@@ -39,8 +73,10 @@
                     <div class="ipt-box"><input id="shr-address-info" type="text" placeholder="小区名称xx号楼xx门门牌号"></div>
                     <div class="ipt-box default-box"><input type="checkbox" id="default">设置为默认<label for="default"><em></em></label></div>
                 </form>
+                <div class="btn-new-address"><a href="javascript:void(0);" id="btn-new-keep">保存</a></div>
+                <div class="btn-new-address new-other-color"><a href="javascript:void(0);" onclick="getaddr()" id="btn-wx-address">获取微信地址</a></div>
             </div>
-            <div class="btn-new-address"><a href="#" id="btn-new-keep">保存</a></div>
+
         </div>
 
         <!--引入footer-->
@@ -97,12 +133,13 @@
                                 alert("添加成功");
                                 window.location.href = "/wap/my_address";
                             }else {
-                                alert("添加失败");
+                                alert(data.message);
                             }
                         }
                     });
                 }
             });
+            $
         });
     </script>
 </html>

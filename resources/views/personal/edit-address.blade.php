@@ -39,10 +39,10 @@
                     <div class="ipt-box"><input type="text" id="xxdz" placeholder="小区名称xx号楼xx门门牌号"></div>
                     <div class="ipt-box default-box"><input type="checkbox" id="default">设置为默认<label for="default"><em></em></label></div>
                 </form>
-            </div>
-            <div class="btn-write-note">
-                <a href="#" id="btn-keep">保存</a>
-                <a class="other-color btn-delete" href="javascript:void(0)">删除</a>
+                <div class="btn-write-note">
+                    <a href="#" id="btn-keep">保存</a>
+                    <a class="other-color btn-delete" href="javascript:void(0)">删除</a>
+                </div>
             </div>
         </div>
         <div class="mask-box">
