@@ -24,7 +24,7 @@ class WxAuthController extends BaseController {
     public function getAddress() {
         $jssdk = new Jssdk($this->config['appid'], $this->config['app_secret']);
         $data = $jssdk->getSignPackage();
-        return view('address',['addrSign'=>$data]);
+        return view('personal/new-address',['addrSign'=>$data]);
     }
 
     public function getLocation() {
