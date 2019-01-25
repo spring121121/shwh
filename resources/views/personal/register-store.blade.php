@@ -136,7 +136,7 @@
                         alert("请上传您的身份证正面")
                     }else if ($("#sfz-back-box").find("img").length == 0) {
                         alert("请上传您的身份证反面")
-                    }else if ($("#store-prove-box").find("img").length == 0){
+                    }else if ($("#store-prove-box").find("img").length == 0 && role_id != 3){
                         alert("请上传营业执照")
                     }else {
                         $.ajax({
