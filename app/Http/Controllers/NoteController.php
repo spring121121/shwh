@@ -224,7 +224,11 @@ class NoteController extends BaseController
         $page = $request->input('page', 1);
         $limit = $request->input('limit', 100);
         $offset = ($page - 1) * $limit;
-        $noteList = DB::select("SELECT count(likes.id) as likeNum,note.* FROM note left join `likes` on likes.note_id =note.id where note.deleted_at is null GROUP BY note.id  order by likeNum desc limit :offset,:limit", ['limit' => $limit, 'offset' => $offset]);
+        $noteList = DB::select("SELECT count(likes.id) as likeNum,note.* 
+                            FROM note left join `likes` on likes.note_id =note.id 
+                            where note.deleted_at is null 
+                            GROUP BY note.id  
+                            order by likeNum desc limit :offset,:limit", ['limit' => $limit, 'offset' => $offset]);
 
 
         foreach ($noteList as $note) {

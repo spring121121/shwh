@@ -281,7 +281,7 @@ function choice_address() {
             if (data.status) {
                 noteHtml += '<option selected>请选择省份</option>';
                 $.each(data.data, function (k, v) {
-                    noteHtml += '<option id="' + v.provinceid + '">' + v.province + '</option>';
+                    noteHtml += '<option class="'+v.province+'" id="' + v.provinceid + '">' + v.province + '</option>';
                 });
                 $("#province").html(noteHtml);
             }
@@ -299,7 +299,7 @@ function choice_address() {
                 if (data.status) {
                     noteHtml += '<option selected>请选择城市</option>';
                     $.each(data.data, function (k, v) {
-                        noteHtml += '<option id="' + v.cityid + '">' + v.city + '</option>';
+                        noteHtml += '<option class="'+v.city+'" id="' + v.cityid + '">' + v.city + '</option>';
                     });
                     $("#city").html(noteHtml);
                     $("#area").find("option:checked").text("请选择地区");
@@ -320,7 +320,7 @@ function choice_address() {
                 if (data.status) {
                     noteHtml += '<option selected>请选择地区</option>';
                     $.each(data.data, function (k, v) {
-                        noteHtml += '<option id="' + v.areaid + '">' + v.area + '</option>';
+                        noteHtml += '<option class="'+v.area+'"id="' + v.areaid + '">' + v.area + '</option>';
                     });
                     $("#area").html(noteHtml);
                 }
