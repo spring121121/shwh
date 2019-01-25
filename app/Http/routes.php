@@ -115,7 +115,6 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('createSonCategory','ShopController@createSonCategory');//新增商品二级分类
     Route::post('addGoods','ShopController@addGoods');//增加商品
     Route::post('purchase','ShopController@purchase');//购买商品创建记录
-    Route::get('myStoreDetail','ShopController@myStoreDetail');//我的店铺详情
     Route::get('storeGoodsList','ShopController@storeGoodsList');//所属店铺下的商品列表
     Route::post('addCar','ShopController@addCar');//增加商品购物车
     Route::get('myCarList','ShopController@myCarList');//我的购物车列表

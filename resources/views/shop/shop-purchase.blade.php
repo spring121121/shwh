@@ -18,7 +18,7 @@
         }
         .select{
             height:auto;
-            background: #FAFAFA;
+            background: #F2F2F2;
         }
         .select_b li{
             padding:0 10px;
@@ -155,7 +155,7 @@
             margin-left:-10px;
             width:106%;
             height:10px;
-            background: #FAFAFA;
+            background: #F2F2F2;
         }
         header ul {
             margin: 0 10px;

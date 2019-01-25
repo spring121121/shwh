@@ -15,21 +15,22 @@
 
 		<style>
 			.store_parent{
-				background: #eeeeee;
+				background: #fff;
 				border-radius:10px;
-				margin-bottom:15px;
+				margin-bottom:10px;
 			}
 			.store_div{
 				margin-left:10px;
 			}
 			.store_height{
-				height:15px;
+				height:10px;
 			}
 			.store_nameDiv{
 				height:30px;
 			}
 			.store_checkbox{
 				float:left;
+				margin-top:3px;
 			}
 			.store_name{
 				float:left;
@@ -63,6 +64,7 @@
 			}
 			.car_price{
 				font-size:12px;
+				color:red;
 			}
 			.car_num{
 				float:right;
@@ -77,6 +79,37 @@
 			}
 			.settle{
 				margin-right:3%;
+			}
+			.select{
+				background: #F2F2F2;
+			}
+			.payment{
+				margin-left:20px;
+				width:80px;
+				height:30px;
+				float:right;
+				text-align:center;
+				background: red;
+				border-radius:15px;
+				color:#fff;
+				line-height:30px;
+				vertical-align: middle;
+				margin-top:10px;
+				margin-right:10px;
+			}
+			.check{
+				float:left;
+				margin-top:5px;
+			}
+			.all{
+				float:left;
+				margin-left:5px;
+				color:#878787;
+			}
+			.zc_btnmin{
+				line-height:25px;
+				vertical-align: middle;
+				font-size:12px;
 			}
 		</style>
 	</head>
@@ -102,26 +135,29 @@
 		<section class="b select">
 			<div class="zc_carGoods">
 			</div>
-			<div style="height:50px;">
+			<div style="height:100px;">
 			</div>
 		</section>
 		<!--购物车底部-->
 		<div class="zc_cartbottom">
-			<div class="zc_cartdiv" id="zc_cartdiv2">
-				<input class="zc-checkbox" type="checkbox" />
-				<p style="margin-left:-35px;">全选</p>
-				<div class="zc_cart_Count ml100">取消</div>
-				<div class="zc_cart_Count">删除<span>(0)</span></div>
+			<div>
+				<div class="check">
+					<input class="zc-checkbox" type="checkbox">
+				</div>
+				<div class="all">
+					<span>全选</span>
+				</div>
 			</div>
-
-			<div class="zc_cartdiv" id="zc_cartdiv1">
-				<input class="zc-checkbox" type="checkbox" />
-				<p style="margin-left:-35px;">全选</p>
-				<p class="zc_cartTotal">合计<span>￥0</span></p>
-				<div class="zc_cart_Count">结算<span>(0)</span></div>
+			<div>
+				<span>合计:</span><span class="car_price">￥300</span>
+				<div class="payment">
+					<span>结&nbsp;算</span><span>(100)</span>
+				</div>
 			</div>
 		</div>
 
+		<!--引入footer-->
+		@extends('layout.footer')
 	</body>
 	<script type="text/javascript" src="/js/jquery-1.11.0.js" ></script>
 	<script>
@@ -171,7 +207,7 @@
                 }
             });
 
-            $('.zc_cart_Count').on('click',function(){
+            $('.payment').on('click',function(){
  				var goods_ids = [];
  				var num = [];
                 $.each($('input[name="goods_id"]:checked'),function(){
@@ -217,9 +253,5 @@
 				}
 			})
 		});
-
-      function handleToshop(){
-          window.history.go(-1);
-		}
 	</script>
 </html>
