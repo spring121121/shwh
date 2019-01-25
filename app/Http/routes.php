@@ -234,6 +234,12 @@ Route::get('wap/musegoods', function () {//首页展示笔记的二级页面
 Route::get('wap/studyIndex', function () {//洞学首页
     return view('indexDetail/caveStudy/studyIndex');
 });
+Route::get('wap/activeList', function () {//需求列表页
+    return view('indexDetail/active/activeList');
+});
+Route::get('wap/activeDetail', function () {//需求详情页
+    return view('indexDetail/active/activeDetail');
+});
 Route::get('wap/musename', function () {//博物馆商品
     $arr = ['id'=>0];
     if(Cookie::has('info')){

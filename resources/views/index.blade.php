@@ -51,7 +51,7 @@
             </div>
         </div>
        </div>
-        <div id="bander">
+        <div id="bander" onclick="toActive()">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="/images/banner1.jpg" alt=""></div>
@@ -166,6 +166,10 @@
         obj += '<i>转发(<i id="forward-'+v.id+'">' + v.forwardNum + '</i>)</i>';
         obj += '</h3></div></li>';
         return obj;
+    }
+
+    function toActive() {
+        window.location.href = "/wap/activeList";
     }
 </script>
 </html>
