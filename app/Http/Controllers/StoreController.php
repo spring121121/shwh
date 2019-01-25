@@ -82,12 +82,8 @@ class StoreController extends BaseController
         if ($validator->fails()) {
             return $this->fail(50001, $validator->errors()->all());
         }
-        if (!empty($data['prove_url'])) {
-            $data['status'] = StoreModel::STORE_ID;
-            $storeUpdate = StoreModel::where('uid', $uid)->update($data);
-        } else {
-            $storeUpdate = StoreModel::where('uid', $uid)->update($data);
-        }
+        $data['status'] = StoreModel::STORE_ID;
+        $storeUpdate = StoreModel::where('uid', $uid)->update($data);
         if ($storeUpdate) {
             return $this->success();
         } else {
