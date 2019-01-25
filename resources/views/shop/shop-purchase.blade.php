@@ -157,6 +157,9 @@
             height:10px;
             background: #FAFAFA;
         }
+        header ul {
+            margin: 0 10px;
+        }
     </style>
 </head>
 <body>
