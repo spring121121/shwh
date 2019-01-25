@@ -59,9 +59,12 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            var address_url = window.location.search;
-            var role_id = address_url.substr(4);
-            console.log(role_id);
+            var store_status = getUrlParam('store_status');
+            var role_id = getUrlParam('role_id');
+            // alert(store_status);
+            // alert(role_id);
+
+            //上传图片
             $("#store-logo").on("change",function(){
                 store_upload("store-logo");
             });
@@ -74,29 +77,27 @@
             $("#store-prove").on("change",function(){
                 store_upload("store-prove");
             });
-            if (role_id == 3){
-                $("#store-prove-tip").css("display","none")
-                $("#store-prove-box").css("display","none")
-                // $("#store-title").html("完善店铺信息");
-                // $.ajax({
-                //     url : "/storeDetail",	//请求url
-                //     type : "get",	//请求类型  post|get
-                //     dataType : "json",  //返回数据的 类型 text|json|html--
-                //     data: {
-                //         id:$(".get-cookie").html()
-                //     },
-                //     success : function(data){//回调函数 和 后台返回的 数据
-                //         console.log(data)
-                //         if (data.status){
-                //             console.log(data.data[0].name)
-                //             $("#store-logo-box").append('<img class="common-img" src="'+data.data[0].logo_pic_url+'">');
-                //             $("#store-name").val(data.data[0].name);
-                //             $("#store-brief").val(data.data[0].introduction);
-                //         }else {
-                //             alert("哎呀！出错了");
-                //         }
-                //     }
-                // });
+
+            //判断是不是被驳回的店铺申请
+            if (store_status == 2){
+                $("#store-title").html("完善店铺信息");
+                $.ajax({
+                    url : "/storeDetail",	//请求url
+                    type : "get",	//请求类型  post|get
+                    dataType : "json",  //返回数据的 类型 text|json|html--
+                    data: {},
+                    success : function(data){//回调函数 和 后台返回的 数据
+                        alert(JSON.stringify(data))
+                        // if (data.status){
+                        //     console.log(data.data[0].name)
+                        //     $("#store-logo-box").append('<img class="common-img" src="'+data.data[0].logo_pic_url+'">');
+                        //     $("#store-name").val(data.data[0].name);
+                        //     $("#store-brief").val(data.data[0].introduction);
+                        // }else {
+                        //     alert(data.message);
+                        // }
+                    }
+                });
                 // $(".btn-store-register").click(function () {
                 //     var store_name = $("#store-name").val(),
                 //         store_brief = $("#store-brief").val(),
@@ -134,6 +135,10 @@
                 //         });
                 //     }
                 // });
+            }
+            if (role_id == 3){
+                $("#store-prove-tip").css("display","none")
+                $("#store-prove-box").css("display","none")
             }
             $(".btn-store-register").click(function () {
                 var store_name = $("#store-name").val(),
@@ -189,6 +194,14 @@
                 }
             });
         });
+
+
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+
         function store_upload(id) {
             $.ajaxFileUpload({
                 url: '/upload', //用于文件上传的服务器端请求地址
@@ -196,12 +209,11 @@
                 fileElementId: id, //文件上传域的ID
                 dataType: 'json', //返回值类型 一般设置为json
                 success: function (data){  //服务器成功响应处理函数
-                    console.log(data)
+                    // console.log(data)
                     $("#" + id).parent().find("img").remove();
                     $("#" + id).parent().append('<img class="common-img" src="'+data.data.url+'">');
                 },
                 error: function (data, status, e){//服务器响应失败处理函数
-
                 }
             });
         }
