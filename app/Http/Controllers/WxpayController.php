@@ -77,7 +77,6 @@ class WxpayController extends BaseController {
             $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
             $result = $this->curl_post_data($url, $this->array2xml($arr));
             $result = $this->xml2array($result);
-//            halt($result);
             /*--------------微信统一下单--------------*/
             if ($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS') {
                 try {
@@ -93,7 +92,7 @@ class WxpayController extends BaseController {
                 $arr2['package'] = 'prepay_id=' . $result['prepay_id'];
                 $arr2['paySign'] = $this->getSign($arr2);
 
-                return view('pay',['prepay'=>$arr2]);
+                return view('weixin/pay',['prepay'=>$arr2]);
 
             } else {
                 exit('<script>alert("'.$result['return_msg'].'");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
