@@ -38,7 +38,7 @@
                         </li>
                         <li><em></em></li>
                         <li>
-                            <span>申请成功</span>
+                            <span>申请结果</span>
                             <div class="circle-dot"></div>
                         </li>
                     </ul>
@@ -73,40 +73,32 @@
                 <p class="second-text">看得见的文创孵化</p>
             </div>
             <div class="apply-process">
-                <ul>
+                <ul class="audit-progress">
                     <li class="active-color">
                         <span>填写信息</span>
                         <div class="circle-dot"></div>
                     </li>
                     <li><em></em></li>
                     <li>
-                        <span>审核</span>
+                        <span id="sh-text">审核</span>
                         <div class="circle-dot"></div>
                     </li>
                     <li><em></em></li>
                     <li>
-                        <span>申请成功</span>
+                        <span id="sqjg-text">申请结果</span>
                         <div class="circle-dot"></div>
                     </li>
                 </ul>
             </div>
-            <div class="choice-role">
-                <h3>选择你的入驻角色</h3>
-                <ul>
-                    <li><span>博物馆</span><label><input type="radio" name="ch"><i>✓</i>单选框</label></li>
-                    <li><span>文创机构</span><label><input type="radio" name="abc"><i>✓</i>单选框</label></li>
-                    <li><span>设计师</span><label><input type="radio" name="abc"><i>✓</i>单选框</label></li>
-                    <li><span>工厂</span><label><input type="radio" name="abc"><i>✓</i>单选框</label></li>
-                </ul>
+            <div class="store-first-tip">
+                <div class="tip-content">
+                    <span id="tip-text">你好{{$nickname}}，您还没有店铺。<br />请您先申请开店</span>
+                    <a id="register-store" href="/wap/register_store">去注册</a>
+                </div>
             </div>
             <div class="btn-next-page">店铺入驻</div>
         </div>
-        <div class="store-first-tip">
-            <div class="tip-content">
-                <span id="tip-text">你好{{$nickname}}，您还没有店铺。<br />请您先申请开店</span>
-                <a id="register-store" href="/wap/register_store">去注册</a>
-            </div>
-        </div>
+
 
         <div class="protocol-box">
             <div class="protocol">
@@ -134,20 +126,27 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            var address_url = window.location.search;
-            var store_status = address_url.substr(4);
+            var store_status = getUrlParam("store_status");
             var role_id;
-
+            alert(store_status)
             //判断当前的店铺处于什么阶段的状态
-            if(store_status == 3){
-                $("#tip-text").html("你好{{$nickname}}，您还没有店铺。<br />请您先申请开店")
-                $("#register-store").html("去注册");
-            }else if(store_status == 0){
+            if(store_status == 0){
                 $("#tip-text").html("你好{{$nickname}}，您的申请正在审核。<br />请您耐心等待")
+                $(".store-apply-second").css("z-index","2");
                 $("#register-store").remove();
+                $(".audit-progress li").eq(1).addClass("active-color");
+                $("#sh-text").html("审核中");
+                $(".audit-progress li").eq(2).addClass("active-color");
             }else if(store_status == 2){
+                $(".store-apply-second").css("z-index","2");
+                $(".audit-progress li").eq(1).addClass("active-color");
+                $("#sh-text").html("审核中");
+                $(".audit-progress li").eq(2).addClass("active-color");
+                $(".audit-progress li").eq(3).addClass("active-color");
+                $("#sqjg-text").html("申请失败");
+                $(".audit-progress li").eq(4).addClass("active-color");
                 $("#tip-text").html("你好{{$nickname}}，您的申请已被驳回。<br />请您确认信息真实性")
-                $("#register-store").html("去完善信息").attr("href","/wap/register_store?id="+store_status);
+               $("#register-store").html("去完善信息").attr("href","/wap/register_store?store_status="+store_status);
             }
 
             $("#choice-role").on("click","li",function () {
@@ -197,11 +196,16 @@
             });
             $("#btn-agree").click(function () {
                 console.log(role_id)
-                window.location.href = "/wap/register_store?id="+role_id;
+                window.location.href = "/wap/register_store?role_id="+role_id;
                 $(".protocol-box").css("display","none");
                 $(".protocol").css({"height":"0"});
                 $(".btn-is-Agree").css({"height":"0"});
             });
         });
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
     </script>
 </html>

@@ -18,7 +18,7 @@
         }
         .select{
             height:auto;
-            background: #FAFAFA;
+            background: #F2F2F2;
         }
         .select_b li{
             padding:0 10px;
@@ -155,7 +155,7 @@
             margin-left:-10px;
             width:106%;
             height:10px;
-            background: #FAFAFA;
+            background: #F2F2F2;
         }
         header ul {
             margin: 0 10px;
@@ -217,6 +217,7 @@
             success : function(data){//回调函数 和 后台返回的 数据
                 var defaultAddress = '';
                 if (data.status){
+                    console.log(data);
                     $.each(data.data, function (k, v) {
                         defaultAddress += '<li><div class="icon-box">'+v.name.substr(0,1)+'</div>';
                         defaultAddress += '<div class="address-cont"><a href="/wap/my_address?flag=1'+'&goods_id='+goodsid+'&num='+num+'" id="'+v.id+'" class="open-address btn-bjdz">></a>';
@@ -242,7 +243,6 @@
             dataType : "json",  //返回数据的 类型 text|json|html--
             data:{goods_id:goodsid,num:num},
             success : function(data){//回调函数 和 后台返回的 数据
-                console.log(data);
                 var record = data.data;
                 $.each(record.data, function (k, v) {
                     car += '<div class="store_parent">';
@@ -291,6 +291,10 @@
 
         $(document).on('click','.total_submit',function(){
             var address_id = $('.btn-bjdz').attr('id');
+            if(address_id == undefined){
+                alert('请您前往去添加收货地址！');
+                return false;
+            }
             $.ajax({
                 url : "/purchase",	//请求url 商城分类
                 type : "post",	//请求类型  post|get

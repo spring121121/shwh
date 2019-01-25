@@ -123,4 +123,16 @@ return [
         'note_id.required' => '收藏笔记不能为空',
         'note_id.numeric' => '收藏笔记类型为数字',
     ],
+    'demand'=>[
+        'demand_url.required'=>'需求首图不能为空',
+        'title.required'=>'需求标题不能为空',
+        'content.required'=>'需求内容不能为空',
+        'bonus.required'=>'奖金不能为空',
+        'bonus.numeric'=>'奖金格式不正确',
+        'start_time.required'=>'需求开始时间不能为空',
+        'start_time.date_format'=>'需求开始时间格式不正确',
+        'end_time.required'=>'需求结束时间不能为空',
+        'end_time.date_format'=>'需求结束时间格式不正确',
+        'end_time.after'=>'需求结束时间必须晚于开始时间',
+    ]
 ];

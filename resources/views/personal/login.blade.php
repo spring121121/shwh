@@ -63,7 +63,7 @@
                     },
                     success : function(data){	//回调函数 和 后台返回的 数据
                         if (data.code == 200){
-                            alert("登录成功");
+                            alert(data.message);
                             window.location.href = "/wap/personal";
                         } else {
                             alert(data.message);

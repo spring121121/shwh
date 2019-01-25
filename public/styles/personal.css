@@ -318,6 +318,7 @@ ul,li{
     font-size: 16px;
 }
 .btn-sure{
+    cursor: pointer;
     color: #000;
     font-size: 16px;
     text-align: center;

@@ -26,6 +26,7 @@ class StoreController extends BaseController
     public function addStore(Request $request)
     {
 
+        $data = $request->input('store');
         //1.校验各个参数
         $rules = [
             'name' => 'required|string|min:1|max:20',
@@ -36,7 +37,7 @@ class StoreController extends BaseController
             'id_card_front' => 'required',
             'id_card_backend' => 'required',
         ];
-        $validator = Validator::make($request->all(), $rules, config('message.store'));
+        $validator = Validator::make($data, $rules, config('message.store'));
 
         if ($validator->fails()) {
             return $this->fail(50001, '', $validator->errors()->all()[0]);
@@ -44,22 +45,16 @@ class StoreController extends BaseController
 
         //2.检测该用户是不是已经有一个店铺
         $uid = UserService::getUid($request);
-        $data = $request->input('store');
-        $data['uid'] = $uid;
-        $data['name'] = $request->input('name');
-        $data['prove_url'] = $request->input('prove_url','');
-        $data['introduction'] = $request->input('introduction');
-        $data['logo_pic_url'] = $request->input('logo_pic_url');
-        $data['id_card_num'] = $request->input('id_card_num');
-        $data['id_card_front'] = $request->input('id_card_front');
-        $data['id_card_backend'] = $request->input('id_card_backend');
         $count = StoreModel::where('uid', $uid)->count();
         if ($count != 0) {
             return $this->fail(60001);//已经存在店铺
         }
+
+        $data['uid'] = $uid;
+        $data['status'] = StoreModel::IS_NOT_AUTH;
         $result = StoreModel::create($data);
         //4.修改用户表里该用户的角色
-        $userData['role'] = $request->input('role_id');
+        $userData['role'] = $data['role_id'];
         UserModel::where('id','=',$uid)->update($userData);
 
         if ($result) {
@@ -87,12 +82,8 @@ class StoreController extends BaseController
         if ($validator->fails()) {
             return $this->fail(50001, $validator->errors()->all());
         }
-        if (!empty($data['prove_url'])) {
-            $data['status'] = StoreModel::STORE_ID;
-            $storeUpdate = StoreModel::where('uid', $uid)->update($data);
-        } else {
-            $storeUpdate = StoreModel::where('uid', $uid)->update($data);
-        }
+        $data['status'] = StoreModel::STORE_ID;
+        $storeUpdate = StoreModel::where('uid', $uid)->update($data);
         if ($storeUpdate) {
             return $this->success();
         } else {
@@ -135,16 +126,18 @@ class StoreController extends BaseController
     }
 
     /**
-     * 店铺详情
+     * 我的店铺详情
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function myStoreDetail(Request $request)
     {
         $uid = UserService::getUid($request);
-        $feedbackList = StoreModel::where('uid', $uid)
+        $myStoreList = StoreModel::where('store.uid', $uid)
+            ->join('user','store.uid','=','user.id')
+            ->select('user.role','store.*')
             ->get()->toArray();
-        return $this->success($feedbackList);
+        return $this->success($myStoreList);
     }
 
     /**

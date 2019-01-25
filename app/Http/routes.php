@@ -34,11 +34,20 @@ Route::get('myFans','FansController@myFans');//粉丝数量
 
 Route::post('focus','FansController@focus');//关注
 Route::post('forwardNote','ForwardController@forwardNote');//转发
+Route::get('getDemandListByUid/{uid}','DemandController@getDemandListByUid');//获取某个用户的需求列表
+Route::get('getDemandDetail/{demandId}','DemandController@getDemandDetail');//获取某个需求详情
+Route::get('getDemandList','DemandController@getDemandList');//获取需求列表
 
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
  */
 Route::group(['middleware'=>'checkLogin'],function(){
+    //需求相关功能
+    Route::post('addDemand','DemandController@addDemand');//发布需求
+    Route::get('getMyDemandList','DemandController@getMyDemandList');//获取我的需求列表
+
+
+
     Route::get('logout','LoginController@logout');//退出登录
     /*****************AddressController**********************************/
     Route::get('addressList','AddressController@addressList');//获取我的收货地址
@@ -115,7 +124,6 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('createSonCategory','ShopController@createSonCategory');//新增商品二级分类
     Route::post('addGoods','ShopController@addGoods');//增加商品
     Route::post('purchase','ShopController@purchase');//购买商品创建记录
-    Route::get('myStoreDetail','ShopController@myStoreDetail');//我的店铺详情
     Route::get('storeGoodsList','ShopController@storeGoodsList');//所属店铺下的商品列表
     Route::post('addCar','ShopController@addCar');//增加商品购物车
     Route::get('myCarList','ShopController@myCarList');//我的购物车列表
