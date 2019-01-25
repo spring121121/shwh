@@ -352,15 +352,13 @@
 	position: absolute;
 	top: 20px;
 	left: 45%;
-	
 }
 .zc_carGoods{
-	width: 90%;
+	width: 97%;
 	height: auto;
 	margin: 0 auto;
-
 	border-radius: 15px;
-	margin-top: 75px;
+	margin-top: 50px;
 }
 .zc_carName{
 	padding: 10px;
@@ -377,10 +375,9 @@
 	background:#1673ff
 }
 .zc-checkbox {
-	width:25px;
-	height:25px;
-	background-color:#aaaaaa;
-	border:solid 1px #dddddd;
+	width:20px;
+	height:20px;
+	border:1px solid #C9C9C9;
 	-webkit-border-radius:50%;
 	border-radius:50%;
 	font-size:0.8rem;
@@ -388,7 +385,6 @@
 	padding:0;
 	position:relative;
 	display:inline-block;
-	vertical-align:top;
 	cursor:default;
 	-webkit-appearance:none;
 	-webkit-user-select:none;
@@ -400,8 +396,8 @@
 }
 .zc-checkbox:checked::after {
 	content:'';
-	top:5px;
-	left:5px;
+	top:3px;
+	left:3px;
 	position:absolute;
 	background:transparent;
 	border:#fff solid 2px;
@@ -491,15 +487,17 @@
 .zc_cartbottom{
 	display: flex;
 	flex-direction: row;
+	padding-left:10px;
 	justify-content: space-between;
-	width: 100%;
-	height: 40px;
-	background: #eeeeee;
+	width: 97%;
+	height: 50px;
+	background: #fff;
 	position: fixed;
-	bottom: 0;
+	bottom: 50px;
 	z-index: 66;
-	border-top: 1px solid #c2c2c2;
-	line-height: 40px;
+	border-top: 1px solid #DEDEDE;
+	border-bottom: 1px solid #DEDEDE;
+	line-height: 50px;
 }
 .zc_cartdiv>input{
 	display:block;
@@ -515,22 +513,21 @@
 	color: #fff;
 	line-height: 25px;
 	text-align: center;
-	padding: 0px 3px;
+	padding: 0 3px;
 }
 .zc_cartTotal{
 	margin-left: 100px;
 }
 .zc_cartdiv{
-		display: flex;
+	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	width: 100%;
-	height: 40px;
-	background: #eeeeee;
+	height: 50px;
+	background: #fff;
 	position: fixed;
 	bottom: 0;
 	z-index: 66;
-	border-top: 1px solid #c2c2c2;
 	line-height: 40px;
 	position: absolute;
 	top: 0;

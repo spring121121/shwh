@@ -190,7 +190,9 @@ class ShopController extends BaseController
      */
     public function otherStoreDetail(Request $request){
         $storeId = $request->input('id');
-        $storeDetail = StoreModel::where(['id'=>$storeId])
+        $storeDetail = StoreModel::where('store.id', $storeId)
+            ->join('user','store.uid','=','user.id')
+            ->select('user.role','store*')
             ->get()->toArray();
         return $this->success($storeDetail);
     }
@@ -223,18 +225,6 @@ class ShopController extends BaseController
                 ->take(GoodsModel::RELATE_GOODS)
                 ->get()->toArray();
         return $this->success($goodsList);
-    }
-
-    /**
-     * 我的店铺详情
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function myStoreDetail(Request $request){
-        $uid = UserService::getUid($request);
-        $myStoreDetail = StoreModel::where('uid',$uid)
-            ->get()->toArray();
-        return $this->success($myStoreDetail);
     }
 
     /**

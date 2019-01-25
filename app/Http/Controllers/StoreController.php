@@ -135,16 +135,18 @@ class StoreController extends BaseController
     }
 
     /**
-     * 店铺详情
+     * 我的店铺详情
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function myStoreDetail(Request $request)
     {
         $uid = UserService::getUid($request);
-        $feedbackList = StoreModel::where('uid', $uid)
+        $myStoreList = StoreModel::where('store.uid', $uid)
+            ->join('user','store.uid','=','user.id')
+            ->select('user.role','store*')
             ->get()->toArray();
-        return $this->success($feedbackList);
+        return $this->success($myStoreList);
     }
 
     /**
