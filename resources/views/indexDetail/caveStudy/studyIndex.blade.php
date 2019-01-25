@@ -91,6 +91,9 @@
                <p class="bannerName">约翰</p>
            </div>
        </div>
+         <div class="addhight"></div>
+       <!--引入footer-->
+       @extends('layout.footer')
    </div>
 </body>
 <script type="text/javascript" src="/js/jquery-1.11.0.js"></script>

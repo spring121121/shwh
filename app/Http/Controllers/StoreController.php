@@ -134,11 +134,10 @@ class StoreController extends BaseController
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function storeDetail(Request $request)
+    public function myStoreDetail(Request $request)
     {
         $uid = UserService::getUid($request);
         $feedbackList = StoreModel::where('uid', $uid)
-            ->select('name', 'uid', 'introduction', 'logo_pic_url', 'prove_url', 'auth_id')
             ->get()->toArray();
         return $this->success($feedbackList);
     }
