@@ -21,7 +21,6 @@ use App\Http\Services\CommentService;
 use App\Http\Services\UserService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\Console\Output\NullOutput;
 
 class NoteController extends BaseController
 {
