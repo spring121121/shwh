@@ -18,15 +18,15 @@ class SmsController extends BaseController
         $sms = new Sendsms();
         $post = $request->all();
         if(!isset($post['tel'])) {
-            return $this->fail(300,'手机号不能为空');
+            return $this->fail(70000,'手机号不能为空');
         }
         $tel = $post['tel'];
         if(!preg_match('/^1[34578]\d{9}$/',$tel)) {
-            return $this->fail(300,'手机号不合法');
+            return $this->fail(70005,'手机号不合法');
         }
         $exist = Db::table('verify')->where('tel',$tel)->first();
         if($exist && (time() - $exist->create_time) < 60) {
-            return $this->fail(300,'1分钟内不可重复发送');
+            return $this->fail(70006,'1分钟内不可重复发送');
         }
         $param = [
             'tel' => $tel,
@@ -57,7 +57,7 @@ class SmsController extends BaseController
             return $this->fail(70000,$data);
         }
         if(!preg_match('/^1[34578]\d{9}$/',$data['tel'])) {
-            return $this->fail(300,'手机号不合法');
+            return $this->fail(70005,'手机号不合法');
         }
         $userinfo = $request->session()->get('userInfo');
         if(!$userinfo) {

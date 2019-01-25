@@ -15,35 +15,20 @@ use App\Http\Services\UserService;
 use Jssdk;
 class WxAuthController extends BaseController {
 
-    public $config = [];
-
-    public function __construct()
-    {
-        $this->config = [
-            'appid' => 'wx1dc64acc9bd9eb09',
-            'app_secret' => '18030345ebbbc089f628a5eb1db5cda3',
-            'mch_id' => '1490402642',
-            'appkey' => 'TIANJINTAOCIYUAN20190111SHWHCOPY',
-            'sslcert_path' => '/var/www/html/public/cert/apiclient_cert.pem',
-            'sslkey_path' => '/var/www/html/public/cert/apiclient_key.pem'
-        ];
-    }
-
     public function share() {
-        $jssdk = new Jssdk("wx1dc64acc9bd9eb09", "18030345ebbbc089f628a5eb1db5cda3");
+        $jssdk = new Jssdk($this->config['appid'], $this->config['app_secret']);
         $data = $jssdk->getSignPackage();
         return view('share',['data'=>$data]);
     }
 
     public function getAddress() {
-        $jssdk = new Jssdk("wx1dc64acc9bd9eb09","18030345ebbbc089f628a5eb1db5cda3");
+        $jssdk = new Jssdk($this->config['appid'], $this->config['app_secret']);
         $data = $jssdk->getSignPackage();
-        return view('address',['addrSign'=>$data]);
-
+        return view('personal/new-address',['addrSign'=>$data]);
     }
 
     public function getLocation() {
-        $jssdk = new Jssdk("wx1dc64acc9bd9eb09","18030345ebbbc089f628a5eb1db5cda3");
+        $jssdk = new Jssdk($this->config['appid'], $this->config['app_secret']);
         $data = $jssdk->getSignPackage();
         return view('location',['data'=>$data]);
     }
