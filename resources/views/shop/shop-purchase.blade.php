@@ -286,7 +286,7 @@
             if (r != null) return unescape(r[2]); return null; //返回参数值
         }
 
-        $('.total_submit').on('click',function(){
+        $(document).on('click','.total_submit',function(){
             var address_id = $('.btn-bjdz').attr('id');
             $.ajax({
                 url : "/purchase",	//请求url 商城分类

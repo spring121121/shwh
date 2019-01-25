@@ -31,5 +31,5 @@ class StoreModel extends Model
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['name','uid','introduction','logo_pic_url','prove_url','auth_id'];
+    protected $fillable = ['name','uid','introduction','logo_pic_url','prove_url','real_name','id_card_num','id_card_front','id_card_backend','	auth_id','auth_id'];
 }

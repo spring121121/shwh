@@ -248,7 +248,6 @@
 
             // 点击店铺时判断进入
             $("#application-shop").click(function () {
-                console.log(is_mobile)
                 if (is_mobile == ""){
                     $(".bind-mobile").animate({"height":"100%"},200);
                 } else {

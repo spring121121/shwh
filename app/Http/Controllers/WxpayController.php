@@ -32,35 +32,32 @@ class WxpayController extends BaseController {
         $secret = $this->config['app_secret'];
         $mch_id = $this->config['mch_id'];
         if(!isset($_GET['code'])){
-            $_GET['orderstr'] = 'a';
-            if(!isset($_GET['orderstr'])) {
+            if(!isset($_GET['pay_order_sn'])) {
                 exit('<script>alert("请选择要支付的订单");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
             }
-            $redirect_uri=urlencode("http://".$_SERVER['HTTP_HOST']."/wx/pay?orderstr=" . $_GET['orderstr']);
+            $redirect_uri=urlencode("http://".$_SERVER['HTTP_HOST']."/wx/pay?pay_order_sn=" . $_GET['pay_order_sn']);
             $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appid."&redirect_uri=".$redirect_uri."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
             header("Location:".$url);
             exit();
         }else {
             /*--------------验证订单号开始---------------*/
-            $orderstr = 'sd_154744799037798100#sd_154744801511829400#sd_154744805078563900';
+            $pay_order_sn = $_GET['pay_order_sn'];
             $userinfo = $request->session()->get('userInfo');
             if(!$userinfo) {
-                exit('<script>alert("请用微信登录");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
+                exit('<script>alert("请用微信登录后操作");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
             }
-            $order_arr = explode('#',$orderstr);
             $total_price = 0;
-            foreach ($order_arr as $order_sn) {
-                $exist = OrdersModel::where([
-                    'order_sn'=>$order_sn,
-                    'uid'=>$userinfo['id'],
-                    'status' => 0
-                ])->get()->toArray();
-                if(!$exist) {
-                    exit('<script>alert("无效的订单'.$order_sn.'");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
-                }
-                $total_price += $exist[0]['total_price'];
+            $exist = OrdersModel::where([
+                'pay_order_sn'=>$pay_order_sn,
+                'uid'=>$userinfo['id'],
+                'status' => 0
+            ])->get()->toArray();
+            if(!$exist) {
+                exit('<script>alert("无效的订单'.$pay_order_sn.'");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
             }
-//            halt($total_price);
+            foreach ($exist as $v) {
+                $total_price += $v['total_price'];
+            }
             /*--------------验证订单号结束---------------*/
             /*-------------获取OPENID开始-------------*/
             $code = $_GET["code"];
@@ -76,7 +73,6 @@ class WxpayController extends BaseController {
             $openid = $json_obj['openid'];
             /*-------------获取OPENID结束-------------*/
 
-            $pay_order_sn = $this->genOrderSn('');
             $arr = [
                 'appid' => $appid,
                 'mch_id' => $mch_id,
@@ -98,12 +94,11 @@ class WxpayController extends BaseController {
 //            halt($result);
             /*--------------微信统一下单--------------*/
             if ($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS') {
-                $res = OrdersModel::whereIn('order_sn',$order_arr)->update(['pay_order_sn'=>$pay_order_sn,'openid'=>$openid,'prepay_time'=>time()]);
-                if($res !== count($order_arr)) {
-                    exit('<script>alert("支付系统错误,请联系管理员");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
+                try {
+                    OrdersModel::where('pay_order_sn',$pay_order_sn)->update(['pay_order_sn'=>$pay_order_sn,'openid'=>$openid,'prepay_time'=>time()]);
+                }catch (\Exception $e) {
+                    exit('<script>alert("'.$e->getMessage().'");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
                 }
-                DB::table('pay_log')->insert(['pay_order_sn'=>$pay_order_sn,'order_sn'=>serialize($order_arr),'uid'=>$userinfo['id']]);
-
                 $result['timestamp'] = time();
                 $arr2['appId'] = $arr['appid'];
                 $arr2['timeStamp'] = $result['timestamp'];
@@ -115,7 +110,7 @@ class WxpayController extends BaseController {
                 return view('pay',['prepay'=>$arr2]);
 
             } else {
-                echo '<script>alert("'.$result['return_msg'].'");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>';
+                exit('<script>alert("'.$result['return_msg'].'");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
             }
         }
     }
@@ -190,7 +185,7 @@ class WxpayController extends BaseController {
     }
 
     public function test(Request $request) {
-
+        return view('test',[]);
     }
 
     private function log($cmd = '',$msg = '') {
