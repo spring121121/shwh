@@ -30,7 +30,6 @@ Route::get('getNoteInfoByNoteId/{noteId}','NoteController@getNoteInfoByNoteId');
 
 Route::get('wap/noteDetail/{noteId}','NoteController@noteDetail');//笔记详情
 Route::get('getNoteByStoreId/{storeId}','NoteController@getNoteByStoreId');//笔记详情
-Route::get('getStoreDetail','ShopController@getStoreDetail');//店铺详情
 Route::get('myFans','FansController@myFans');//粉丝数量
 
 Route::post('focus','FansController@focus');//关注
@@ -108,7 +107,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('updateStore','StoreController@updateStore');//修改店铺
     Route::get('authStore','StoreController@authStore');//认证店铺
     Route::get('storeList','StoreController@storeList');//店铺列表
-    Route::get('storeDetail','StoreController@storeDetail');//店铺详情
+    Route::get('myStoreDetail','StoreController@myStoreDetail');//我的店铺详情
     Route::get('uploadAuth','StoreController@uploadAuth');//上传店铺认证图
 
     /*****************ShopController商店接口********************************/
@@ -131,7 +130,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('checkApply','CashController@checkApply');//审核提现申请
 });
 /*****************ShopController商店接口********************************/
-Route::get('getStoreDetail','ShopController@getStoreDetail');//店铺详情
+Route::get('otherStoreDetail','ShopController@otherStoreDetail');//别人的店铺详情
 Route::get('getGoodsList','ShopController@getGoodsList');//获取分类下的所有商品列表
 Route::get('getGoodsDetail','ShopController@getGoodsDetail');//商品详情
 Route::get('relateGoodsList','ShopController@relateGoodsList');//随机取10条相关商品列表

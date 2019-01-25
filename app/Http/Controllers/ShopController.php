@@ -184,11 +184,11 @@ class ShopController extends BaseController
     }
 
     /**
-     * 店铺详情
+     * 获取别人的店铺详情
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getStoreDetail(Request $request){
+    public function otherStoreDetail(Request $request){
         $storeId = $request->input('id');
         $storeDetail = StoreModel::where(['id'=>$storeId])
             ->get()->toArray();

@@ -10,6 +10,8 @@
 		<link rel="stylesheet" href="/styles/common.css">
 		<link rel="stylesheet" href="/styles/shop-header.css">
 		<link rel="stylesheet" href="/styles/shop.css">
+		<link rel="stylesheet" type="text/css" href="/font/iconfont3.css">
+		<link rel="stylesheet" href="/styles/museum.css">
 
 		<style>
 			.store_parent{
@@ -70,19 +72,39 @@
 			.img_height{
 				height:25px;
 			}
+			header ul {
+				margin: 0 10px;
+			}
+			.settle{
+				margin-right:3%;
+			}
 		</style>
 	</head>
 	<body>
-		<div class="index-header header">
-			<div class="common-header-left" onclick="handleToshop()"><img src="/images/fanhui.jpg"/></div>
-			<p class="zc_cartitle">购物车</p>
-			<div class="zc_right">
-				<p>管理</p>
+		<header class="head" style="position: fixed;z-index:999;">
+			<ul>
+				<li>
+					<span class="iconfont icon-ffanhui- back"></span>
+				</li>
+				<li class="title">购物车</li>
+				<li class="settle">
+					管理
+				</li>
+			</ul>
+		</header>
+		{{--<div class="index-header header">--}}
+			{{--<div class="" onclick="handleToshop()"><span style="color:#fff;" class="iconfont icon-ffanhui- "></span></div>--}}
+			{{--<p class="zc_cartitle">购物车</p>--}}
+			{{--<div class="zc_right">--}}
+				{{--<p>管理</p>--}}
+			{{--</div>--}}
+		{{--</div>--}}
+		<section class="b select">
+			<div class="zc_carGoods">
 			</div>
-		</div>
-		<div class="zc_carGoods">
-
-		</div>
+			<div style="height:50px;">
+			</div>
+		</section>
 		<!--购物车底部-->
 		<div class="zc_cartbottom">
 			<div class="zc_cartdiv" id="zc_cartdiv2">
@@ -99,7 +121,7 @@
 				<div class="zc_cart_Count">结算<span>(0)</span></div>
 			</div>
 		</div>
-			
+
 	</body>
 	<script type="text/javascript" src="/js/jquery-1.11.0.js" ></script>
 	<script>
@@ -158,6 +180,9 @@
                 });
 				window.location.href = '/wap/shop_purchase?goods_id='+goods_ids+'&num='+num;
 			});
+            $('.back').on('click',function(){
+                window.history.go(-1);
+            });
 			$(".zc_btnright").click(function(){
 				n++;
 			if(n<1){
@@ -178,11 +203,11 @@
 				$(this).next().text(n)
 			}
 			console.log($(this).next().text())
-			})
+			});
 			
-			$(".zc_right>p").click(function(){
+			$(".settle").click(function(){
 				if($(this).text()=="管理"){
-					$(this).text("完成")
+					$(this).text("完成");
 					$("#zc_cartdiv1").hide();
 					$("#zc_cartdiv2").show();
 				}else{
@@ -191,10 +216,10 @@
 					$("#zc_cartdiv2").hide();
 				}
 			})
-		})
+		});
 
       function handleToshop(){
-			window.location.href = "/wap/shop_detail";
+          window.history.go(-1);
 		}
 	</script>
 </html>
