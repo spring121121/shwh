@@ -80,119 +80,154 @@
 
             //判断是不是被驳回的店铺申请
             if (store_status == 2){
+                var role_id;
                 $("#store-title").html("完善店铺信息");
                 $.ajax({
-                    url : "/storeDetail",	//请求url
+                    url : "/myStoreDetail",	//请求url
                     type : "get",	//请求类型  post|get
                     dataType : "json",  //返回数据的 类型 text|json|html--
                     data: {},
                     success : function(data){//回调函数 和 后台返回的 数据
                         alert(JSON.stringify(data))
-                        // if (data.status){
-                        //     console.log(data.data[0].name)
-                        //     $("#store-logo-box").append('<img class="common-img" src="'+data.data[0].logo_pic_url+'">');
-                        //     $("#store-name").val(data.data[0].name);
-                        //     $("#store-brief").val(data.data[0].introduction);
-                        // }else {
-                        //     alert(data.message);
-                        // }
+                        if (data.status){
+                            role_id = data.data[0].role;
+                            $("#store-logo-box").append('<img class="common-img" src="'+data.data[0].logo_pic_url+'">');
+                            $("#store-name").val(data.data[0].name);
+                            $("#store-brief").val(data.data[0].introduction);
+                            $("#store-id-name").val(data.data[0].real_name);
+                            $("#store-id-card").val(data.data[0].id_card_num);
+                            $("#sfz-just-box").append('<img class="common-img" src="'+data.data[0].id_card_front+'">');
+                            $("#sfz-back-box").append('<img class="common-img" src="'+data.data[0].id_card_backend+'">');
+                            if (data.data[0].prove_url != ""){
+                                $("#store-prove-box").append('<img class="common-img" src="'+data.data[0].prove_url+'">');
+                            }else {
+                                $("#store-prove-tip").css("display","none");
+                                $("#store-prove-box").css("display","none");
+                            }
+                        }else {
+                            alert(data.message);
+                        }
                     }
                 });
-                // $(".btn-store-register").click(function () {
-                //     var store_name = $("#store-name").val(),
-                //         store_brief = $("#store-brief").val(),
-                //         store_logo = $("#store-logo-box").find("img").attr("src"),
-                //         store_prove = $("#store-prove-box").find("img").attr("src");
-                //     console.log(store_name,store_brief,store_logo,store_prove)
-                //     if (store_name == ""){
-                //         alert("店铺名不能为空")
-                //     }else if (store_brief == ""){
-                //         alert("请简单介绍一下自己的店铺吧")
-                //     }else if (store_logo == undefined) {
-                //         alert("请上传店铺logo")
-                //     }else if (store_prove == undefined){
-                //         alert("请上传营业执照")
-                //     }else {
-                //         $.ajax({
-                //             url : "/updateStore",	//请求url
-                //             type : "post",	//请求类型  post|get
-                //             dataType : "json",  //返回数据的 类型 text|json|html--
-                //             data: {
-                //                 'store[name]':store_name,
-                //                 'store[introduction]':store_brief,
-                //                 'store[logo_pic_url]':store_logo,
-                //                 'store[prove_url]':store_prove
-                //             },
-                //             success : function(data){//回调函数 和 后台返回的 数据
-                //                 console.log(data)
-                //                 if (data.status){
-                //                     alert("店铺信息重新提交成功");
-                //                     window.location.href = "/wap/personal";
-                //                 }else {
-                //                     alert("店铺信息提交失败，请重试");
-                //                 }
-                //             }
-                //         });
-                //     }
-                // });
-            }
-            if (role_id == 3){
-                $("#store-prove-tip").css("display","none")
-                $("#store-prove-box").css("display","none")
-            }
-            $(".btn-store-register").click(function () {
-                var store_name = $("#store-name").val(),
-                    store_brief = $("#store-brief").val(),
-                    store_logo = $("#store-logo-box").find("img").attr("src"),
-                    store_id_name = $("#store-id-name").val(),
-                    store_id_card = $("#store-id-card").val(),
-                    store_id_just = $("#sfz-just-box").find("img").attr("src"),
-                    store_id_back = $("#sfz-back-box").find("img").attr("src"),
-                    store_prove = $("#store-prove-box").find("img").attr("src");
-                if (store_name == ""){
-                    alert("店铺名不能为空")
-                }else if (store_brief == ""){
-                    alert("请简单介绍一下自己的店铺吧")
-                }else if ($("#store-logo-box").find("img").length == 0) {
-                    alert("请上传店铺logo")
-                }else if (store_id_name == "") {
-                    alert("请输入您的真实姓名")
-                }else if (store_id_card == "") {
-                    alert("请输入您的身份证号")
-                }else if ($("#sfz-just-box").find("img").length == 0) {
-                    alert("请上传您的身份证正面")
-                }else if ($("#sfz-back-box").find("img").length == 0) {
-                    alert("请上传您的身份证反面")
-                }else if ($("#store-prove-box").find("img").length == 0 && role_id != 3){
-                    alert("请上传营业执照")
-                }else {
-                    console.log(store_name,store_brief,store_logo,store_id_name,store_id_card,store_id_just,store_id_back,store_prove)
-                    $.ajax({
-                        url : "/addStore",	//请求url
-                        type : "post",	//请求类型  post|get
-                        dataType : "json",  //返回数据的 类型 text|json|html--
-                        data: {
-                            'store[name]':store_name,
-                            'store[introduction]':store_brief,
-                            'store[logo_pic_url]':store_logo,
-                            'store[real_name]':store_id_name,
-                            'store[id_card_num]':store_id_card,
-                            'store[id_card_front]':store_id_just,
-                            'store[id_card_backend]':store_id_back,
-                            'store[role_id]':role_id,
-                            'store[prove_url]':store_prove
-                        },
-                        success : function(data){//回调函数 和 后台返回的 数据
-                            if (data.status){
-                                alert("信息提交成功，请静心等待3-5个工作日");
-                                window.location.href = "/wap/personal";
-                            }else {
-                                alert(data.message);
+                $(".btn-store-register").click(function () {
+                    var store_name = $("#store-name").val(),
+                        store_brief = $("#store-brief").val(),
+                        store_logo = $("#store-logo-box").find("img").attr("src"),
+                        store_id_name = $("#store-id-name").val(),
+                        store_id_card = $("#store-id-card").val(),
+                        store_id_just = $("#sfz-just-box").find("img").attr("src"),
+                        store_id_back = $("#sfz-back-box").find("img").attr("src"), store_prove;
+                    if (role_id == 3){
+                        store_prove = "";
+                    } else {
+                        store_prove = $("#store-prove-box").find("img").attr("src")
+                    }
+                    if (store_name == ""){
+                        alert("店铺名不能为空")
+                    }else if (store_brief == ""){
+                        alert("请简单介绍一下自己的店铺吧")
+                    }else if ($("#store-logo-box").find("img").length == 0) {
+                        alert("请上传店铺logo")
+                    }else if (store_id_name == "") {
+                        alert("请输入您的真实姓名")
+                    }else if (store_id_card == "") {
+                        alert("请输入您的身份证号")
+                    }else if ($("#sfz-just-box").find("img").length == 0) {
+                        alert("请上传您的身份证正面")
+                    }else if ($("#sfz-back-box").find("img").length == 0) {
+                        alert("请上传您的身份证反面")
+                    }else if ($("#store-prove-box").find("img").length == 0){
+                        alert("请上传营业执照")
+                    }else {
+                        $.ajax({
+                            url : "/updateStore",	//请求url
+                            type : "post",	//请求类型  post|get
+                            dataType : "json",  //返回数据的 类型 text|json|html--
+                            data: {
+                                'store[name]':store_name,
+                                'store[introduction]':store_brief,
+                                'store[logo_pic_url]':store_logo,
+                                'store[real_name]':store_id_name,
+                                'store[id_card_num]':store_id_card,
+                                'store[id_card_front]':store_id_just,
+                                'store[id_card_backend]':store_id_back,
+                                'store[prove_url]':store_prove
+                            },
+                            success : function(data){//回调函数 和 后台返回的 数据
+                                console.log(data)
+                                if (data.status){
+                                    alert("店铺信息重新提交成功");
+                                    window.location.href = "/wap/personal";
+                                }else {
+                                    alert(data.message);
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
+                });
+            }else {
+                if (role_id == 3){
+                    $("#store-prove-tip").css("display","none");
+                    $("#store-prove-box").css("display","none");
                 }
-            });
+                $(".btn-store-register").click(function () {
+                    var store_name = $("#store-name").val(),
+                        store_brief = $("#store-brief").val(),
+                        store_logo = $("#store-logo-box").find("img").attr("src"),
+                        store_id_name = $("#store-id-name").val(),
+                        store_id_card = $("#store-id-card").val(),
+                        store_id_just = $("#sfz-just-box").find("img").attr("src"),
+                        store_id_back = $("#sfz-back-box").find("img").attr("src"), store_prove;
+                    if (role_id == 3){
+                        store_prove = "";
+                    } else {
+                        store_prove = $("#store-prove-box").find("img").attr("src")
+                    }
+                    if (store_name == ""){
+                        alert("店铺名不能为空")
+                    }else if (store_brief == ""){
+                        alert("请简单介绍一下自己的店铺吧")
+                    }else if ($("#store-logo-box").find("img").length == 0) {
+                        alert("请上传店铺logo")
+                    }else if (store_id_name == "") {
+                        alert("请输入您的真实姓名")
+                    }else if (store_id_card == "") {
+                        alert("请输入您的身份证号")
+                    }else if ($("#sfz-just-box").find("img").length == 0) {
+                        alert("请上传您的身份证正面")
+                    }else if ($("#sfz-back-box").find("img").length == 0) {
+                        alert("请上传您的身份证反面")
+                    }else if ($("#store-prove-box").find("img").length == 0 && role_id != 3){
+                        alert("请上传营业执照")
+                    }else {
+                        console.log(store_name,store_brief,store_logo,store_id_name,store_id_card,store_id_just,store_id_back,store_prove)
+                        $.ajax({
+                            url : "/addStore",	//请求url
+                            type : "post",	//请求类型  post|get
+                            dataType : "json",  //返回数据的 类型 text|json|html--
+                            data: {
+                                'store[name]':store_name,
+                                'store[introduction]':store_brief,
+                                'store[logo_pic_url]':store_logo,
+                                'store[real_name]':store_id_name,
+                                'store[id_card_num]':store_id_card,
+                                'store[id_card_front]':store_id_just,
+                                'store[id_card_backend]':store_id_back,
+                                'store[role_id]':role_id,
+                                'store[prove_url]':store_prove
+                            },
+                            success : function(data){//回调函数 和 后台返回的 数据
+                                if (data.status){
+                                    alert("信息提交成功，请静心等待3-5个工作日");
+                                    window.location.href = "/wap/personal";
+                                }else {
+                                    alert(data.message);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
         });
 
 
