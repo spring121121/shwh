@@ -293,6 +293,7 @@
             var address_id = $('.btn-bjdz').attr('id');
             if(address_id == undefined){
                 alert('请您前往去添加收货地址！');
+                window.location.href="http://shwh.jianghairui.com/wx/ad";
                 return false;
             }
             $.ajax({
