@@ -855,7 +855,6 @@ ul,li{
     height: 100px;
 }
 .store-content li{
-    padding: 0 5px;
     height: auto;
 }
 .note-list-box li .note-img{
@@ -1520,9 +1519,9 @@ ul,li{
 .flex-box li .btn-flex-box{
     height: 30px;
     line-height: 30px;
-    margin-top: 10px;
+    margin: 10px 5px 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .flex-box li .btn-flex-box span{
     position: relative;

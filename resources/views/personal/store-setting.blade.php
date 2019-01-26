@@ -16,7 +16,7 @@
             <div>
                 <div class="header-left"><a href="/wap/store"></a></div>
                 <div class="header-right"><a href="javascript:void(0);" id="finish-set-store">完成</a></div>
-                <h3 class="top-title">店铺设置</h3>
+                <h3 class="top-title">店铺信息修改</h3>
             </div>
         </div>
         <div class="content-box">

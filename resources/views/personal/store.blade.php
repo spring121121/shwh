@@ -23,16 +23,16 @@
                 <div class="store-name">
                     <div class="setting"><a href="/wap/store_setting"></a></div>
                     <h2 id="store-index-name">店铺名称<span>已认证</span></h2>
-                    <span><i><img src="/images/grade.png" class="common-img"></i>等级</span>
-                    <span><i><img src="/images/fans-num.png" class="common-img"></i>粉丝人数</span>
+                    <span id="store-grade"><i><img src="/images/grade.png" class="common-img"></i>等级</span>
+                    <span id="store-fans"><i><img src="/images/fans-num.png" class="common-img"></i>粉丝人数</span>
                 </div>
                 <div class="store-brief">
                     <span>简介</span>
-                    <p id="store-index-brief">店铺的简介或是对店铺想说的话店铺的简介或是对店铺想说的话店铺的简介或是对店铺想说的话店铺的简介或是对店铺想说的话</p>
+                    <p id="store-index-brief">店铺的简介</p>
                 </div>
             </div>
             <ul class="flex-box store-switch">
-                <li>商品</li>
+                <li id="my-shop">商品</li>
                 <li>待发货</li>
                 <li>已发货</li>
             </ul>
@@ -42,32 +42,32 @@
             <!--商品展示-->
             <div class="flex-box store-content" id="ysj-shop">
                 <ul class="flex-left">
-                    <li>
-                        <div class="flex-img-box">
-                            <img src="/images/collection-img6.jpg" class="common-img">
-                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
-                        </div>
-                        <h3>藏品的名称</h3>
-                        <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
-                        <div class="btn-flex-box">
-                            <span class="zf-icon"><i></i>转发</span>
-                            <span class="zan-icon"><i></i>赞</span>
-                        </div>
-                    </li>
+                    {{--<li>--}}
+                        {{--<div class="flex-img-box">--}}
+                            {{--<img src="/images/collection-img6.jpg" class="common-img">--}}
+                            {{--<span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>--}}
+                        {{--</div>--}}
+                        {{--<h3>藏品的名称</h3>--}}
+                        {{--<p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>--}}
+                        {{--<div class="btn-flex-box">--}}
+                            {{--<span class="zf-icon"><i></i>转发</span>--}}
+                            {{--<span class="zan-icon"><i></i>赞</span>--}}
+                        {{--</div>--}}
+                    {{--</li>--}}
                 </ul>
                 <ul  class="flex-right">
-                    <li>
-                        <div class="flex-img-box">
-                            <img src="/images/collection-img3.jpg" class="common-img">
-                            <span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>
-                        </div>
-                        <h3>藏品的名称</h3>
-                        <p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>
-                        <div class="btn-flex-box">
-                            <span class="zf-icon"><i></i>转发</span>
-                            <span class="zan-icon"><i></i>赞</span>
-                        </div>
-                    </li>
+                    {{--<li>--}}
+                        {{--<div class="flex-img-box">--}}
+                            {{--<img src="/images/collection-img3.jpg" class="common-img">--}}
+                            {{--<span><div class="ll-icon-box"><img src="/images/liulan-icon.png" class="common-img"></div>96人</span>--}}
+                        {{--</div>--}}
+                        {{--<h3>藏品的名称</h3>--}}
+                        {{--<p>内容的描述，内容的描述，内容的描述，内容的描述内容的描述内容的描述内容的描述</p>--}}
+                        {{--<div class="btn-flex-box">--}}
+                            {{--<span class="zf-icon"><i></i>转发</span>--}}
+                            {{--<span class="zan-icon"><i></i>赞</span>--}}
+                        {{--</div>--}}
+                    {{--</li>--}}
 
                 </ul>
             </div>
@@ -129,7 +129,7 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            var store_id;
+            var store_id,user_id;
             $.ajax({
                 url : "/myStoreDetail",	//请求url
                 type : "get",	//请求类型  post|get
@@ -141,6 +141,7 @@
                     console.log(data)
                     if (data.status){
                         store_id = data.data[0].id;
+                        user_id = data.data[0].uid;
                         $("#store-index-logo").find("img").attr("src",data.data[0].logo_pic_url);
                         $("#store-index-name").html(data.data[0].name+'<span>已认证</span>');
                         $("#store-index-brief").html(data.data[0].introduction);
@@ -150,8 +151,23 @@
                 }
             });
 
+            $.ajax({
+                url : "/myFans",	//请求url
+                type : "get",	//请求类型  post|get
+                dataType : "json",  //返回数据的 类型 text|json|html--
+                async: false,
+                data: {uid:user_id},
+                success : function(data){//回调函数 和 后台返回的 数据
+                    //alert(JSON.stringify(data));
+                    console.log(data)
+                    if (data.status){
+                        $("#store-fans").html('<i><img src="/images/fans-num.png" class="common-img"></i>有'+data.data.count+'人关注了店主');
+                    }else {
+                        alert(data.message);
+                    }
+                }
+            });
 
-            console.log(store_id)
             $.ajax({
                 url : "/storeGoodsList",	//请求url
                 type : "get",	//请求类型  post|get

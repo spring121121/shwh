@@ -90,7 +90,7 @@
                             $("#default").removeAttr("checked");
                         }
                     }else {
-                        alert("哎呀！出错了")
+                        alert(data.message)
                     }
                 }
             });
@@ -150,7 +150,7 @@
                                 }
                                 window.location.href = "/wap/my_address";
                             }else {
-                                alert("修改失败");
+                                alert(data.message);
                             }
                         }
                     });

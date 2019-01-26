@@ -215,6 +215,9 @@ class ShopController extends BaseController
         $storeId = $request->input('id');
         $storeGoodsList = GoodsModel::where('store_id',$storeId)
             ->get()->toArray();
+        foreach($storeGoodsList as &$item){
+            $item['image_url'] = unserialize($item['image_url']);
+        }
         return $this->success($storeGoodsList);
     }
 
