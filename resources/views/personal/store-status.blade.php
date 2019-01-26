@@ -96,7 +96,7 @@
                     <a id="register-store" href="/wap/register_store">去注册</a>
                 </div>
             </div>
-            <div class="btn-next-page">店铺入驻</div>
+            {{--<div class="btn-next-page">店铺入驻</div>--}}
         </div>
 
 
@@ -128,7 +128,7 @@
         $(function () {
             var store_status = getUrlParam("store_status");
             var role_id;
-            alert(store_status)
+            // alert(store_status)
             //判断当前的店铺处于什么阶段的状态
             if(store_status == 0){
                 $("#tip-text").html("你好{{$nickname}}，您的申请正在审核。<br />请您耐心等待")

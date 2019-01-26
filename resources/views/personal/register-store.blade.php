@@ -18,6 +18,9 @@
             <h3 id="store-title">店铺注册</h3>
         </div>
         <div class="content-box">
+            <div class="reason-box">你好{{$nickname}}，
+                <span class="reason-tip"></span>
+            </div>
             <div class="store-register">
                 <div class="store-cont">
                     <label for="store-name">店铺名称</label>
@@ -52,7 +55,6 @@
 
         <!--引入footer-->
         @extends('layout.footer')
-    <div class="get-cookie">{{$store_id}}</div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/uploadfile.js"></script>
@@ -91,6 +93,8 @@
                         alert(JSON.stringify(data))
                         if (data.status){
                             role_id = data.data[0].role;
+                            $(".reason-tip").html(data.data[0].reject_reason);
+                            $(".reason-box").css("display","block");
                             $("#store-logo-box").append('<img class="common-img" src="'+data.data[0].logo_pic_url+'">');
                             $("#store-name").val(data.data[0].name);
                             $("#store-brief").val(data.data[0].introduction);
