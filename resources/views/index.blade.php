@@ -68,7 +68,7 @@
         <div id="list">
             <ul>
                 <li>
-                    <a href="/wap/museumOne?roleId=2">
+                    <a href="/wap/museumOne">
                         <img src="/images/bwg.jpg" alt="">
                     </a>
                     <span >博物馆</span>
@@ -96,10 +96,28 @@
         <!--文创故事-->
         <div class="culture">
         	<p>文创故事</p>
-                <video src="/images/viode.mp4" controls="controls" width="100%" height="100%">
+                <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
                     your browser does not support the video tag
                 </video>
             </div>
+        <div class="culture">
+            <p>文创故事</p>
+            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+        <div class="culture">
+            <p>文创故事</p>
+            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+        <div class="culture">
+            <p>文创故事</p>
+            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
 
         <!--发布需求-->
         <div class="demand">
@@ -122,6 +140,7 @@
 <script type="text/javascript" src="/js/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
 <script>
+
     $(function () {
         contentList();
     });

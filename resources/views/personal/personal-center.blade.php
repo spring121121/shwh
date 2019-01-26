@@ -108,6 +108,11 @@
                         <i></i>
                     </a>
                 </div>
+
+                <div class="list-cont">
+                    <span>个人需求</span>
+                    <i onclick="toworksDetail()"></i>
+                </div>
             </div>
             <div class="list-box">
                 <div class="list-cont">
@@ -384,5 +389,9 @@
             //     $("#area li").remove();
             // });
         });
+
+        function toworksDetail() {
+            window.location.href = "/wap/myworksDetail";
+        }
     </script>
 </html>
