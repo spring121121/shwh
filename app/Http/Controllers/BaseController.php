@@ -9,6 +9,19 @@ namespace App\Http\Controllers;
  */
 class BaseController extends Controller
 {
+    public $config = [];
+
+    public function __construct()
+    {
+        $this->config = [
+            'appid' => 'wx1dc64acc9bd9eb09',
+            'app_secret' => '18030345ebbbc089f628a5eb1db5cda3',
+            'mch_id' => '1490402642',
+            'appkey' => 'TIANJINTAOCIYUAN20190111SHWHCOPY',
+            'sslcert_path' => '/var/www/html/public/cert/apiclient_cert.pem',
+            'sslkey_path' => '/var/www/html/public/cert/apiclient_key.pem'
+        ];
+    }
 
     public function success($data = [])
     {

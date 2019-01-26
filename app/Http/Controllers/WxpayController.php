@@ -13,20 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class WxpayController extends BaseController {
 
-    public $config = [];
-
-    public function __construct()
-    {
-        $this->config = [
-            'appid' => 'wx1dc64acc9bd9eb09',
-            'app_secret' => '18030345ebbbc089f628a5eb1db5cda3',
-            'mch_id' => '1490402642',
-            'appkey' => 'TIANJINTAOCIYUAN20190111SHWHCOPY',
-            'sslcert_path' => '/var/www/html/public/cert/apiclient_cert.pem',
-            'sslkey_path' => '/var/www/html/public/cert/apiclient_key.pem'
-        ];
-    }
-
     public function pay(Request $request) {
         $appid = $this->config['appid'];
         $secret = $this->config['app_secret'];
@@ -91,11 +77,10 @@ class WxpayController extends BaseController {
             $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
             $result = $this->curl_post_data($url, $this->array2xml($arr));
             $result = $this->xml2array($result);
-//            halt($result);
             /*--------------微信统一下单--------------*/
             if ($result['return_code'] == 'SUCCESS' && $result['result_code'] == 'SUCCESS') {
                 try {
-                    OrdersModel::where('pay_order_sn',$pay_order_sn)->update(['pay_order_sn'=>$pay_order_sn,'openid'=>$openid,'prepay_time'=>time()]);
+                    OrdersModel::where('pay_order_sn',$pay_order_sn)->update(['openid'=>$openid,'prepay_time'=>time()]);
                 }catch (\Exception $e) {
                     exit('<script>alert("'.$e->getMessage().'");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
                 }
@@ -107,7 +92,7 @@ class WxpayController extends BaseController {
                 $arr2['package'] = 'prepay_id=' . $result['prepay_id'];
                 $arr2['paySign'] = $this->getSign($arr2);
 
-                return view('pay',['prepay'=>$arr2]);
+                return view('weixin/pay',['prepay'=>$arr2]);
 
             } else {
                 exit('<script>alert("'.$result['return_msg'].'");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');

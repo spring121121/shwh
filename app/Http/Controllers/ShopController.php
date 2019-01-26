@@ -9,6 +9,7 @@
 
 namespace App\Http\Controllers;
 
+use App\models\AddressModel;
 use App\models\ScoreModel;
 use App\models\UserModel;
 use Illuminate\Http\Request;
@@ -190,7 +191,9 @@ class ShopController extends BaseController
      */
     public function otherStoreDetail(Request $request){
         $storeId = $request->input('id');
-        $storeDetail = StoreModel::where(['id'=>$storeId])
+        $storeDetail = StoreModel::where('store.id', $storeId)
+            ->join('user','store.uid','=','user.id')
+            ->select('user.role','store.*')
             ->get()->toArray();
         return $this->success($storeDetail);
     }
@@ -223,18 +226,6 @@ class ShopController extends BaseController
                 ->take(GoodsModel::RELATE_GOODS)
                 ->get()->toArray();
         return $this->success($goodsList);
-    }
-
-    /**
-     * 我的店铺详情
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function myStoreDetail(Request $request){
-        $uid = UserService::getUid($request);
-        $myStoreDetail = StoreModel::where('uid',$uid)
-            ->get()->toArray();
-        return $this->success($myStoreDetail);
     }
 
     /**
@@ -315,6 +306,7 @@ class ShopController extends BaseController
         $nums = explode(',',$num);
         $myGoodsList = CarModel::where('car.uid',$uid)->whereIn('car.goods_id',$goodsIds)
             ->join('goods','car.goods_id','=','goods.id')
+            ->orderByRaw("FIELD(car.goods_id, " . implode(", ", $goodsIds) . ")")
             ->select('goods.*')
             ->get()->toArray();
         $total = 0;
@@ -392,10 +384,13 @@ class ShopController extends BaseController
         $orderArr = [];
         $order = [];
         $pay = UserService::genPayOrderSn();//支付订单号
+        $address = AddressModel::where('id',$address_id)->select('name','mobile','province','city','area','address_info')->first();
         foreach($myGoodsList as $key=>$goods_value){
             $orderArr['uid'] = $uid;//用户id
             $orderArr['num'] = $nums[$key];//购买数量
-            $orderArr['address_id'] = $address_id;//地址id
+            $orderArr['address'] = $address['province'].' '.$address['city'].' '.$address['area'];//详细地址地址
+            $orderArr['tel'] = $address['mobile'];//联系方式
+            $orderArr['name'] = $address['name'];//联系人姓名
             $orderArr['goods_id'] = $goods_value['id'];//商品id
             $orderArr['order_sn'] = UserService::genOrderSn('sd_');//订单号
             $orderArr['pay_order_sn'] = $pay;//支付订单号

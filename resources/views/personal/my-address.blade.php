@@ -27,7 +27,7 @@
     <body>
         <div class="header">
             <div class="header-left"><a class="goback"></a></div>
-            <div class="header-right bg-add"><a href="/wap/new_address"></a></div>
+            <div class="header-right bg-add"><a href="/wx/ad"></a></div>
             <h3 class="top-title">收货地址</h3>
         </div>
         <div class="content-box">

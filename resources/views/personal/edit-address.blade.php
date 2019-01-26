@@ -39,10 +39,10 @@
                     <div class="ipt-box"><input type="text" id="xxdz" placeholder="小区名称xx号楼xx门门牌号"></div>
                     <div class="ipt-box default-box"><input type="checkbox" id="default">设置为默认<label for="default"><em></em></label></div>
                 </form>
-            </div>
-            <div class="btn-write-note">
-                <a href="#" id="btn-keep">保存</a>
-                <a class="other-color btn-delete" href="javascript:void(0)">删除</a>
+                <div class="btn-write-note">
+                    <a href="#" id="btn-keep">保存</a>
+                    <a class="other-color btn-delete" href="javascript:void(0)">删除</a>
+                </div>
             </div>
         </div>
         <div class="mask-box">
@@ -76,13 +76,11 @@
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {id:address_id},
                 success : function(data){//回调函数 和 后台返回的 数据
+                    console.log(data)
                     if (data.status){
-                        province_id = data.data[0].provinceId;
-                        city_id = data.data[0].cityId;
-                        area_id = data.data[0].areaId;
                         $("#shr-name").val(data.data[0].name);
                         $("#shr-phone").val(data.data[0].mobile);
-                        $("#"+data.data[0]['provinceId']).attr("selected",'selected');
+                        $("#province").find("option:first-child").text(data.data[0].province);
                         $("#city").find("option:first-child").text(data.data[0].city);
                         $("#area").find("option:first-child").text(data.data[0].area);
                         $("#xxdz").val(data.data[0].address_info);
@@ -101,21 +99,22 @@
             $("#btn-keep").click(function () {
                 var shr_name = $("#shr-name").val(),
                     shr_phone = $("#shr-phone").val(),
-                    shr_province,
-                    shr_city,
-                    shr_area,
+                    shr_province = $("#province option:selected").text(),
+                    shr_city=$("#city option:selected").text(),
+                    shr_area=$("#area option:selected").text(),
+
                     shr_xxdz = $("#xxdz").val(),
                     default_address = $("#default").is(":checked");
                 var is_default;
-                if ($("#city option").length <= 1){
-                    shr_province = province_id;
-                    shr_city = city_id;
-                    shr_area = area_id;
-                }else {
-                    shr_province = $("#province").find("option:checked").attr("id");
-                    shr_city = $("#city").find("option:checked").attr("id");
-                    shr_area = $("#area").find("option:checked").attr("id");
-                }
+                // if ($("#city option").length <= 1){
+                //     shr_province = province_id;
+                //     shr_city = city_id;
+                //     shr_area = area_id;
+                // }else {
+                //     shr_province = $("#province").find("option:checked").attr("class");
+                //     shr_city = $("#city").find("option:checked").attr("class");
+                //     shr_area = $("#area").find("option:checked").attr("class");
+                // }
                 if (default_address){
                     is_default = 1;
                 } else {
