@@ -145,9 +145,9 @@ class ShopController extends BaseController
         if($category_id == CategorygoodsModel::GOODS_ALL){
             $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)
                 ->get()->toArray();
-            array_walk($goodsList, function($value, $key) use (&$goodsList ){
-                $array[$key]['image_url'] = unserialize($value['image_url']);
-            });
+            foreach($goodsList as &$item){
+                $item['image_url'] = unserialize($item['image_url']);
+            }
             $data['data'] = $goodsList;
             $data['category_id'] = $category_id;
             return $this->success($data);
@@ -171,6 +171,9 @@ class ShopController extends BaseController
         array_walk($goodsList, function($value, $key) use (&$goodsList ){
             $array[$key]['image_url'] = unserialize($value['image_url']);
         });
+        foreach($goodsList as &$item){
+            $item['image_url'] = unserialize($item['image_url']);
+        }
         $data['data'] = $goodsList;
         $data['category_id'] = $category_id;
         return $this->success($data);
@@ -184,7 +187,8 @@ class ShopController extends BaseController
     public function getGoodsDetail(Request $request){
         $goodsId = $request->input('id');
         $goodsDetail = GoodsModel::where(['id'=>$goodsId,'status'=>GoodsModel::NORMAL])
-            ->get()->toArray();
+            ->first()->toArray();
+        $goodsDetail['image_url'] = unserialize($goodsDetail['image_url']);
         return $this->success($goodsDetail);
     }
 
