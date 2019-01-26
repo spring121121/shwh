@@ -22,10 +22,16 @@ class WxAuthController extends BaseController {
     }
 
     public function getAddress(Request $request) {
-//        halt($request->url());
+        $param = $request->all();
+        if(isset($param['goods_id']) && isset($param['num'])) {
+            $query = http_build_query($param);
+            $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/shop_purchase?' . $query;
+        }else {
+            $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/my_address';
+        }
         $jssdk = new Jssdk($this->config['appid'], $this->config['app_secret']);
         $data = $jssdk->getSignPackage();
-        return view('personal/new-address',['addrSign'=>$data,'origin'=>$request->url()]);
+        return view('personal/new-address',['addrSign'=>$data,'origin'=>$url]);
     }
 
     public function getLocation() {
