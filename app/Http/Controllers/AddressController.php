@@ -52,8 +52,12 @@ class AddressController extends BaseController
                 ->get()->toArray();
         }
         if(!$defaultAddress){
-            $defaultAddress = AddressModel::where('uid',$uid)
-                ->first()->toArray();
+            $res = AddressModel::where('uid',$uid)->first();
+            if($res){
+                $defaultAddress = $res->toArray();
+            }else{
+                $defaultAddress = [];
+            }
         }
         return $this->success($defaultAddress);
 
