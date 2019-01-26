@@ -108,24 +108,23 @@
                 data:{id:id},
                 success : function(data){//回调函数 和 后台返回的 数据
                     console.log(data);
-                    $.each(data.data, function (k, v) {
+                    var v = data.data;
                         //轮播图
-                        splideImg += '<div class="swiper-slide"><img class="common-img" src="'+v['image_one']+'"></div>';
-                        splideImg += '<div class="swiper-slide"><img class="common-img" src="'+v['image_two']+'"></div>';
-                        splideImg += '<div class="swiper-slide"><img class="common-img" src="'+v['image_three']+'"></div>';
-                        splideImg += '<div class="swiper-slide"><img class="common-img" src="'+v['image_four']+'"></div>';
-                        //详情
-						categoryDetail += '<input type="hidden" id="goods_id" value="'+v['id']+'">';
-                        categoryDetail += '<p class="zc_price">￥'+v['price']+'</p>';
-                        categoryDetail += '<del class="zc_del">价格'+v['price']+'</del>';
-                        categoryDetail += '<div class="zc_goodsDetail">';
-                        categoryDetail += '<p>'+v['goods_name']+'</p><div></div><p></p>';
-                        categoryDetail += '</div>';
-                        categoryDetail += '<div class="zc_detail">'+v['goods_info']+'</div>';
-                        categoryDetail += '<div class="zc_business"><p>快递:<span>￥'+v['postage']+'</span></p> <p>月销:<span>29650</span></p> <p>天津静海</p></div>';
-
-                        $('#store_id').val(v['store_id']);
+                    $.each(v.image_url, function (k, v) {
+                        splideImg += '<div class="swiper-slide"><img class="common-img" src="' + v + '"></div>';
                     });
+					//详情
+					categoryDetail += '<input type="hidden" id="goods_id" value="'+v['id']+'">';
+					categoryDetail += '<p class="zc_price">￥'+v['price']+'</p>';
+					categoryDetail += '<del class="zc_del">价格'+v['price']+'</del>';
+					categoryDetail += '<div class="zc_goodsDetail">';
+					categoryDetail += '<p>'+v['goods_name']+'</p><div></div><p></p>';
+					categoryDetail += '</div>';
+					categoryDetail += '<div class="zc_detail">'+v['goods_info']+'</div>';
+					categoryDetail += '<div class="zc_business"><p>快递:<span>￥'+v['postage']+'</span></p> <p>月销:<span>29650</span></p> <p>天津静海</p></div>';
+
+					$('#store_id').val(v['store_id']);
+
                     $('.swiper-wrapper').html(splideImg);
                     $('#sp_detail').html(categoryDetail);
                 }
@@ -138,7 +137,6 @@
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data:{id:storeId},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    console.log(data);
                     $.each(data.data, function (k, v) {
                         store += '<img src="'+v['logo_pic_url']+'" />';
                         store += '<div class="zc_businRank">';
