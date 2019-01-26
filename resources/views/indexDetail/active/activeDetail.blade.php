@@ -119,6 +119,86 @@
 
         </ul>
     </div>
+      <div class="de_liuyan">
+     <p class="de_activeTell">留言区</p>
+     <div class="de_activePublish">
+         <textarea id="textar"></textarea>
+         <div class="de_tellBtn" onclick="addPlList()">发布</div>
+     </div>
+      </div>
+    <div class="de_activeNext">
+    <div class="de_fansSay">
+        <div class="de_fansOne">
+           <div class="de_fansHead">
+               <img src="/images/people2.jpg" alt="">
+               <p>微微乖</p>
+
+           </div>
+            <div class="de_fansTwo">落实到啦机构并及时报告收款福克斯V领马克上来看看过考试科目在没在看大</div>
+            <div class="de_follow">
+               <div class="de_followTime">
+                   <img src="/images/time.png" alt="">
+                   <p>2019.01.05</p>
+               </div>
+                <div class="de_followDz">
+                    <img src="/images/dz-icon.png" alt="">
+                    <p>666</p>
+                </div>
+                <div class="de_followPl">
+                    <img src="/images/pl-icon.png" alt="">
+                    <p>回复</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="de_fansSay">
+        <div class="de_fansOne">
+            <div class="de_fansHead">
+                <img src="/images/people3.jpg" alt="">
+                <p>雨翩翩</p>
+
+            </div>
+            <div class="de_fansTwo">妲己陪你玩</div>
+            <div class="de_follow">
+                <div class="de_followTime">
+                    <img src="/images/time.png" alt="">
+                    <p>2019.01.05</p>
+                </div>
+                <div class="de_followDz">
+                    <img src="/images/dz-icon.png" alt="">
+                    <p>666</p>
+                </div>
+                <div class="de_followPl">
+                    <img src="/images/pl-icon.png" alt="">
+                    <p>回复</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="de_fansSay">
+        <div class="de_fansOne">
+            <div class="de_fansHead">
+                <img src="/images/people.jpg" alt="">
+                <p>史莱克</p>
+            </div>
+            <div class="de_fansTwo">落实到啦机构并及时报告收款福克斯V领马克上来看看过考试科目在没在看大</div>
+            <div class="de_follow">
+                <div class="de_followTime">
+                    <img src="/images/time.png" alt="">
+                    <p>2019.01.05</p>
+                </div>
+                <div class="de_followDz">
+                    <img src="/images/dz-icon.png" alt="">
+                    <p>666</p>
+                </div>
+                <div class="de_followPl">
+                    <img src="/images/pl-icon.png" alt="">
+                    <p>回复</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     <div class="de_addheight"></div>
 
 
@@ -132,6 +212,8 @@
 <script type="text/javascript" src="/js/common.js"></script>
 <script>
     $(function(){
+        getPeopleList();
+        // 滚轴时间
         $(document).scroll(function(){
             var wheight=$(window).height();
             var stop=$(document).scrollTop();
@@ -157,8 +239,55 @@
     function toIndex() {
         window.location.href = "/wap/activeList";
     }
+   // 添加评论
+    function addPlList() {
+        var plList="";
+        var text=$("#textar").val();
+        console.log(text)
+        plList+='<div class="de_fansSay">'
+        plList+='<div class="de_fansOne">'
+        plList+='<div class="de_fansHead">'
+        plList+='<img src="/images/people.jpg" alt="">'
+        plList+='<p>史莱克</p>'
+        plList+='</div>'
+        plList+='<div class="de_fansTwo">'+text+'</div>'
+        plList+='<div class="de_follow">'
+        plList+='<div class="de_followTime">'
+        plList+='<img src="/images/time.png" alt="">'
+        plList+=' <p>2019.01.05</p>'
+        plList+='</div>'
+        plList+='<div class="de_followDz">'
+        plList+='<img src="/images/dz-icon.png" alt="">'
+        plList+='<p>666</p>'
+        plList+='</div>'
+        plList+='<div class="de_followPl">'
+        plList+=' <img src="/images/pl-icon.png" alt="">'
+        plList+='<p>回复</p>'
+        plList+='</div>'
+        plList+='</div>'
+        plList+=' </div>'
+        plList+='</div>'
+       $(".de_activeNext").append(plList)
+    }
 
+    // 需求详情
+    function getPeopleList() {
+            $.ajax({
+                type: "get",
+                url: "/getDemandDetail/1",
+                data: {
+
+                },
+                async: true,
+                success: function(data) {
+                    console.log(data)
+
+                    // $(".activeMidden").html(middenList)
+                }
+            });
+    }
 </script>
+
 </html>
 <script src="/js/swiper/swiper.min.js"></script>
 <script src="/js/swiper/swiper.js"></script>

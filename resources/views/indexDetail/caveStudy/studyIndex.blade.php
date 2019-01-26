@@ -49,6 +49,13 @@
            <div class="studyPeople">
                <img src="/images/people2.jpg" alt="">
                <p class="bannerName">詹姆斯</p>
+               <div class="studyDz">
+                   <div class="dzimg">
+                   <img src="/images/dz-icon.png" alt="">
+                   <img src="/images/dz-icon-red.png" alt="" class="redDz">
+                   </div>
+                   <p>65656</p>
+               </div>
            </div>
        </div>
 
@@ -69,6 +76,13 @@
            <div class="studyPeople">
                <img src="/images/people3.jpg" alt="">
                <p class="bannerName">闰土</p>
+               <div class="studyDz">
+                   <div class="dzimg">
+                       <img src="/images/dz-icon.png" alt="">
+                       <img src="/images/dz-icon-red.png" alt="" class="redDz">
+                   </div>
+                   <p>65656</p>
+               </div>
            </div>
        </div>
 
@@ -89,6 +103,13 @@
            <div class="studyPeople">
                <img src="/images/people.jpg" alt="">
                <p class="bannerName">约翰</p>
+               <div class="studyDz">
+                   <div class="dzimg">
+                       <img src="/images/dz-icon.png" alt="">
+                       <img src="/images/dz-icon-red.png" alt="" class="redDz">
+                   </div>
+                   <p>65656</p>
+               </div>
            </div>
        </div>
          <div class="addhight"></div>
@@ -103,6 +124,10 @@
     $(function () {
         $(".styleTitle>p").click(function () {
             $(this).addClass("addcolor").siblings().removeClass("addcolor")
+        })
+
+        $(".dzimg>img").click(function () {
+            $(this).hide().siblings().show();
         })
 
 
