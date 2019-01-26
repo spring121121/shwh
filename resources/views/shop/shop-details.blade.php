@@ -132,7 +132,7 @@
             });
             var storeId = $('#store_id').val();
             $.ajax({
-                url : "/getStoreDetail",	//请求url 商城分类
+                url : "/otherStoreDetail",	//请求url 商城分类
                 type : "get",	//请求类型  post|get
                 async: false,
                 dataType : "json",  //返回数据的 类型 text|json|html--
