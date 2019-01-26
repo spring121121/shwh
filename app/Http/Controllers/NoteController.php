@@ -24,8 +24,6 @@ use Illuminate\Support\Facades\Validator;
 
 class NoteController extends BaseController
 {
-
-
     /**
      * add note
      * @param Request $request

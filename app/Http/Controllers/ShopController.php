@@ -168,9 +168,6 @@ class ShopController extends BaseController
         $goodsIds = array_column($categoryIds, 'goods_id')?array_column($categoryIds, 'goods_id'):'';
         $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)->whereIn('id',$goodsIds)
             ->get()->toArray();
-        array_walk($goodsList, function($value, $key) use (&$goodsList ){
-            $array[$key]['image_url'] = unserialize($value['image_url']);
-        });
         foreach($goodsList as &$item){
             $item['image_url'] = unserialize($item['image_url']);
         }

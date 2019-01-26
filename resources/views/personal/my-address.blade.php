@@ -27,7 +27,7 @@
     <body>
         <div class="header">
             <div class="header-left"><a class="goback"></a></div>
-            <div class="header-right bg-add"><a href="/wx/ad"></a></div>
+            <div class="header-right bg-add"><a class="add_address" href="javascript:void(0);"></a></div>
             <h3 class="top-title">收货地址</h3>
         </div>
         <div class="content-box">
@@ -89,6 +89,14 @@
                     window.location.href = "/wap/shop_purchase?id="+addressId+'&goods_id='+goods_ids+'&num='+num;
                     return false;
                 }
+            });
+            //新增地址
+            $('.add_address').on('click',function(){
+                if(flag != null){
+                    window.location.href = "/wx/ad?flag=1&goods_id="+goods_ids+'&num='+num;
+                    return false;
+                }
+                window.location.href = "/wx/ad";
             });
             function getUrlParam(name) {
                 var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象

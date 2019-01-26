@@ -2665,8 +2665,11 @@ header>ul>li>p{
 
 }
 .zc_contentList>span{
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 25px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 15px;
 }
 .zc_contentList>span>img{
     width: 100%;
@@ -2726,4 +2729,20 @@ header>ul>li>p{
 }
 .zc_windTwo>div:nth-child(2){
     background: #f33e4f;
+}
+.zc_actionBtn{
+    width: 60%;
+    height: 30px;
+    margin: 30px auto;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #bd2c00;
+}
+.well{
+    box-shadow: none!important;
+    background: #eee;
 }
