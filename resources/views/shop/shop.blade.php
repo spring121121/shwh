@@ -209,7 +209,7 @@
                     success : function(data){//回调函数 和 后台返回的 数据
                         console.log(data);
                         $.each(data.data.data, function (k, v) {
-                            var image = v['image_one'];
+                            var image = v['image_url'][0];
                             if(image == ''){
                                 image = '/images/shop/default.jpg'
                             }
