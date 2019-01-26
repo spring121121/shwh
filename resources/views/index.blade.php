@@ -52,7 +52,7 @@
         </div>
        </div>
         <div id="bander" onclick="toActive()">
-            <div class="swiper-container">
+            <div class="swiper-container swiper-add">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="/images/banner1.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="/images/banner2.jpg" alt=""></div>

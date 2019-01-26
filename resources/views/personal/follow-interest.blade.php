@@ -107,13 +107,8 @@
                     if (data.status) {
                         $.each(data.data, function (k, v) {
                             var fans_count = getFansCount(v.id);
-                            if (v.photo == 0){
-                                photo = "/images/portrait.png"
-                            }else {
-                                photo = v.photo;
-                            }
                             noteHtml += '<li class="'+v.id+'">';
-                            noteHtml += '<div class="gz-img-box"><img onerror="this.src=\'/images/portrait.png\'" src="'+ photo +'" class="common-img"></div>';
+                            noteHtml += '<div class="gz-img-box"><img onerror="this.src=\'/images/portrait.png\'" src="'+ v.photo +'" class="common-img"></div>';
                             noteHtml += '<div class="gz-right">';
                             noteHtml += '<button id="'+v.id+'" onclick="addFocus('+v.id+')">关注</button>';
                             noteHtml += '<h3>' + v.nickname + '</h3>';
@@ -146,13 +141,8 @@
                 if (data.status) {
                     $.each(data.data, function (k, v) {
                         var fans_count = getFansCount(v.id);
-                        if (v.photo == 0){
-                            photo = "/images/portrait.png"
-                        }else {
-                            photo = v.photo;
-                        }
                         noteHtml += '<li class="'+v.id+'">';
-                        noteHtml += '<div class="gz-img-box"><img onerror="this.src=\'/images/portrait.png\'" src="'+ photo +'" class="common-img"></div>';
+                        noteHtml += '<div class="gz-img-box"><img onerror="this.src=\'/images/portrait.png\'" src="'+ v.photo +'" class="common-img"></div>';
                         noteHtml += '<div class="gz-right">';
                                     if(focus == 1||v.is_focus == 1){
                                         noteHtml += '<button id="'+v.id+'" onclick="cancelFocus('+v.id+')">取关</button>';
@@ -179,7 +169,7 @@
             $.ajax({
                 url: '/myFans',
                 async: false,//同步方式发送请求，true为异步发送
-                type: "GET",
+                type: "get",
                 data: {uid:id},
                 success: function (data) {
                     fans_count = data.data.count;
@@ -191,8 +181,11 @@
         function cancelFocus(uid) {
             $.post("/cancelFocus",{'uid':uid},function(data){
                 if (data.status){
-                    alert("取关成功");
-                    $("#"+uid).onclick=addFocus(uid);
+                    alert("已取消关注");
+                    window.location.reload();
+                    $("#"+uid).bind('click',function(){
+                        addFocus(uid);
+                    });
                     $("#"+uid).html("关注")
 
                 }else {
@@ -203,12 +196,14 @@
 
         //添加关注
         function addFocus(uid) {
-
             $.post("/focus",{'uid':uid},function(data){
                 if (data.status){
                     alert("关注成功");
-                    $("#"+uid).onclick=cancelFocus(uid);
-                    $("#"+uid).html("取关")
+                    window.location.reload();
+                    $("#"+uid).bind('click',function(){
+                        cancelFocus(uid);
+                    });
+                    $("#"+uid).html("取消关注")
                 }else {
                     alert("哎呀！出错了")
                 }

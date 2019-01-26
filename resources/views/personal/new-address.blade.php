@@ -86,6 +86,7 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
+            //alert(decodeURIComponent("{{$origin}}"))
             choice_address();
             $("#btn-new-keep").click(function () {
                 var shr_name = $("#shr-name").val(),
@@ -131,7 +132,7 @@
                         success : function(data){//回调函数 和 后台返回的 数据
                             if (data.status){
                                 alert("添加成功");
-                                window.location.href = "/wap/my_address";
+                                window.location.href = decodeURIComponent("{{$origin}}");
                             }else {
                                 alert(data.message);
                             }
@@ -139,7 +140,6 @@
                     });
                 }
             });
-            $
         });
     </script>
 </html>

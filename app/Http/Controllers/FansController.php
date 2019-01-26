@@ -222,11 +222,15 @@ class FansController extends BaseController
                 ->select(DB::raw('uid,count(id) as count'))
                 ->groupBy('uid')->orderBy(DB::raw('count(id)'), 'desc')->offset($offset)->limit($limit)->get()->toArray();
             $uidds = array_column($focus, 'uid');
-            $recommend = UserModel::whereIn('id', $uidds)->orderByRaw("FIELD(id, " . implode(", ", $uidds) . ")")->select('id', 'photo', 'nickname', 'score', 'sex')
-                ->get()->toArray();//按照id顺序排列
+            if($uidds){
+                $recommend = UserModel::whereIn('id', $uidds)->orderByRaw("FIELD(id, " . implode(", ", $uidds) . ")")->select('id', 'photo', 'nickname', 'score', 'sex')
+                    ->get()->toArray();//按照id顺序排列
+            }else{
+                $recommend = [];
+            }
             $res = $this->getList($recommend);
         } else {
-            $recommend = UserModel::select('id', 'photo', 'nickname', 'score', 'sex')->offset($offset)->limit($limit)
+            $recommend = UserModel::select('id', 'photo', 'nickname', 'score', 'sex')->whereNotIn('id',[$uid])->offset($offset)->limit($limit)
                 ->get()->toArray();
             $res = $this->getList($recommend);
         }
