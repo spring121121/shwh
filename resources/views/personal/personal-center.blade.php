@@ -312,6 +312,7 @@
                             if (data.code == 200){
                                 layer.msg(data.message);
                                 $(".bind-mobile").animate({"height":"0"},200);
+                                window.location.reload();
                             }else {
                                 layer.msg(data.message);
                             }
