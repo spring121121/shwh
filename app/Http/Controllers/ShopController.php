@@ -113,10 +113,7 @@ class ShopController extends BaseController
             'goods_name' => 'required|string|min:1|max:100',
             'goods_info' => 'required|string|min:1|max:240',
             'price' => 'required',
-            'image_one' => 'required',
-            'image_two' => 'required',
-            'image_three' => 'required',
-            'image_four' => 'required',
+            'image_url' => 'required',
             'stock' => 'required',
             'is_shipping' => 'required',
             'postage' => 'required'
@@ -125,6 +122,7 @@ class ShopController extends BaseController
         if($validator->fails()){
             return $this->fail(50001,$validator->errors()->all());
         }
+        $data['image_url'] = serialize(explode(',',$data['image_url']));
         $result = GoodsModel::create($data);
         $res = CategorygoodsModel::create(['category_id'=>$data['category_id'],'goods_id'=>$result->id]);
         if($result && $res){
@@ -147,6 +145,9 @@ class ShopController extends BaseController
         if($category_id == CategorygoodsModel::GOODS_ALL){
             $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)
                 ->get()->toArray();
+            array_walk($goodsList, function($value, $key) use (&$goodsList ){
+                $array[$key]['image_url'] = unserialize($value['image_url']);
+            });
             $data['data'] = $goodsList;
             $data['category_id'] = $category_id;
             return $this->success($data);
@@ -167,6 +168,9 @@ class ShopController extends BaseController
         $goodsIds = array_column($categoryIds, 'goods_id')?array_column($categoryIds, 'goods_id'):'';
         $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)->whereIn('id',$goodsIds)
             ->get()->toArray();
+        array_walk($goodsList, function($value, $key) use (&$goodsList ){
+            $array[$key]['image_url'] = unserialize($value['image_url']);
+        });
         $data['data'] = $goodsList;
         $data['category_id'] = $category_id;
         return $this->success($data);

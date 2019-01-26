@@ -66,10 +66,7 @@ return [
         'goods_info.required' => '商品简介不能为空',
         'goods_info.max' => '商品简介最多:max个字符',
         'price.required' => '商品价格不能为空',
-        'image_one.required' => '商品第一张图不能为空',
-        'image_two.required' => '商品第二张图不能为空',
-        'image_three.required' => '商品第三张图不能为空',
-        'image_four.required' => '商品第四张图不能为空',
+        'image_url.required' => '商品图不能为空',
         'stock.required' => '商品库存不能为空',
         'is_shipping.required' => '商品是否包邮不能为空',
         'postage.required' => '商品邮费不能为空'
