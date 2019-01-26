@@ -335,6 +335,10 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('wap/new_address', function () {//新增收货地址
         return view('personal/new-address');
     });
+
+    Route::get('wap/myworksDetail', function () {//发布需求
+        return view('personal/myworksDetail');
+    });
     Route::get('wap/order_details', function () {//订单详情
         return view('personal/order-details');
     });

@@ -306,6 +306,7 @@ class ShopController extends BaseController
         $nums = explode(',',$num);
         $myGoodsList = CarModel::where('car.uid',$uid)->whereIn('car.goods_id',$goodsIds)
             ->join('goods','car.goods_id','=','goods.id')
+            ->orderByRaw("FIELD(car.goods_id, " . implode(", ", $goodsIds) . ")")
             ->select('goods.*')
             ->get()->toArray();
         $total = 0;
@@ -383,11 +384,11 @@ class ShopController extends BaseController
         $orderArr = [];
         $order = [];
         $pay = UserService::genPayOrderSn();//支付订单号
-        $address = AddressModel::where('id',$address_id)->select('name','mobile','address_info')->first();
+        $address = AddressModel::where('id',$address_id)->select('name','mobile','province','city','area','address_info')->first();
         foreach($myGoodsList as $key=>$goods_value){
             $orderArr['uid'] = $uid;//用户id
             $orderArr['num'] = $nums[$key];//购买数量
-            $orderArr['address'] = $address['address_info'];//详细地址地址
+            $orderArr['address'] = $address['province'].' '.$address['city'].' '.$address['area'];//详细地址地址
             $orderArr['tel'] = $address['mobile'];//联系方式
             $orderArr['name'] = $address['name'];//联系人姓名
             $orderArr['goods_id'] = $goods_value['id'];//商品id

@@ -2560,3 +2560,171 @@ ul,li{
     right: 0;
     z-index: 999;
 }
+
+/*发布需求*/
+header{
+    width:100%;
+    height:35px;
+    background: #272727;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    padding-top: 10px;
+}
+header>ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+header>ul>li img{
+    width: 20px;
+    height: 20px;
+}
+header>ul>li>p{
+    font-size: 16px;
+    color: #fff;
+
+    font-weight: bold;
+}
+.zc_addheight{
+    width: 100%;
+    height: 45px;
+}
+.zc_upImg{
+    width: 55%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+}
+#file0{
+    opacity: 0;
+}
+.zc_upinp{
+    margin: 15px auto 0;
+    background-image: url("/images/upload.png");
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 35px;
+}
+.zc_worksText{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+}
+.zc_worksText>input:nth-child(1){
+    font-size: 16px;
+    color: #a8a8a8;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.zc_line{
+    width: 100%;
+    height: 1px;
+    background: #2E2D3C;
+    margin-top: 10px;
+}
+.zc_worksText>textarea:nth-child(3){
+    font-size: 12px;
+    color: #a8a8a8;
+     margin-top: 5px;
+    width: 100%;
+    height: 65px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.zc_workContent{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+}
+.zc_contentList{
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom:1px solid #cdcfd2;
+    margin-top: 5px;
+}
+.zc_worksStart{
+    font-size: 14px;
+    line-height: 30px;
+}
+.zc_contentList>ul{
+    width: 35px;
+    height: 20px;
+    overflow: auto;
+    margin-top: 10px;
+}
+.zc_contentList>ul>li{
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+
+}
+.zc_contentList>span{
+    width: 20px;
+    height: 20px;
+}
+.zc_contentList>span>img{
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
+}
+.zc_windDet{
+    width: 100%;
+    height: 200px;
+    position: fixed;
+    top: 100px;
+    background: #9a6e3a;
+    left:0;
+    background: transparent;
+    display: none;
+}
+.zc_windDetail{
+    width: 80%;
+    height: 85%;
+    padding-top: 30px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #fff;
+}
+.zc_windOne{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 0 auto;
+}
+.zc_windOne>p{
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 10px;
+    line-height: 20px;
+}
+.zc_windTwo{
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.zc_windTwo>div{
+    width: 65px;
+    height: 30px;
+    border-radius: 10px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+}
+.zc_windTwo>div:nth-child(1){
+    background: #3ed3f3;
+}
+.zc_windTwo>div:nth-child(2){
+    background: #f33e4f;
+}
