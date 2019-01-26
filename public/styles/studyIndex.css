@@ -43,7 +43,7 @@ header>ul>li>p{
     overflow: hidden;
     margin-top: 45px;
 }
-#bander img{
+.swiper-wrapper img{
     width:95%;
     height:96%;
     display: block;
@@ -109,4 +109,34 @@ header>ul>li>p{
 .addhight{
     width: 100%;
     height:60px;
+}
+.studyDz{
+    width: 67px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: 20px;
+}
+.dzimg{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+.dzimg>img{
+    width: 20px!important;
+    height: 20px!important;
+    border-radius: 0 !important;
+    box-shadow: none!important;
+}
+.redDz{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+
+}
+.studyDz>p{
+    font-size: 14px;
+     margin-left: 5px;
 }
