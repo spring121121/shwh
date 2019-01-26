@@ -23,7 +23,7 @@
             <div class="note-cont"><textarea placeholder="输入你的笔记内容" rows="11" id="content"></textarea></div>
 
         </form>
-        <div class="add-photo-box">
+        <div class="add-photo-box write-note-photo">
             <ul id="shop-img-list">
                 <li class="btn-add-photo">
                     <input type="file" id="add-photo" name="source">
@@ -49,26 +49,33 @@
 
 <script>
     $(function () {
-        var photo_list = $("#shop-img-list li").length;
-        if (photo_list == 1) {
-            $("#shop-img-list").css({"justify-content": "center", "width": "auto"});
-            $(".btn-add-photo").css({"background-color": "transparent"});
-        }
+        // var photo_list = $("#shop-img-list li").length;
+        // if (photo_list == 1) {
+        //     $("#shop-img-list").css({"justify-content": "center", "width": "auto"});
+        //     $(".btn-add-photo").css({"background-color": "transparent"});
+        // }
         $("#add-photo").on("change", function () {
-            $.ajaxFileUpload({
-                url: '/upload', //用于文件上传的服务器端请求地址
-                secureuri: false, //是否需要安全协议，一般设置为false
-                fileElementId: 'add-photo', //文件上传域的ID
-                dataType: 'json', //返回值类型 一般设置为json
-                success: function (data) {  //服务器成功响应处理函数
-                    $('#shop-img-list').append('<li><div class="del-photo-list"></div><img src="' + data.data.url + '" class="common-img"></li>');
-                    $("#shop-img-list").css({"justify-content": "unset", "width": "max-content"});
-                    $(".btn-add-photo").css({"background-color": "#eee"});
-                },
-                error: function (data, status, e) {//服务器响应失败处理函数
+            var img_size = $("input[type=file]").get(0).files[0].size;
+            console.log(img_size);
+            //alert(img_size);
+            if (img_size > 1000000){
+                alert("上传图片过大，请上传小于1M的图片");
+            }else {
+                $.ajaxFileUpload({
+                    url: '/upload', //用于文件上传的服务器端请求地址
+                    secureuri: false, //是否需要安全协议，一般设置为false
+                    fileElementId: 'add-photo', //文件上传域的ID
+                    dataType: 'json', //返回值类型 一般设置为json
+                    success: function (data) {  //服务器成功响应处理函数
+                        $('#shop-img-list').append('<li><div class="del-photo-list"></div><img src="' + data.data.url + '" class="common-img"></li>');
+                        $("#shop-img-list").css({"justify-content": "unset", "width": "max-content"});
+                        $(".btn-add-photo").css({"background-color": "#eee"});
+                    },
+                    error: function (data, status, e) {//服务器响应失败处理函数
 
-                }
-            });
+                    }
+                });
+            }
         });
         $('#shop-img-list').on("click", ".del-photo-list", function () {
             $(this).parent().remove();
@@ -95,7 +102,7 @@
                 alert("发布成功")
                 window.location.href="/wap/index"
             }else{
-                alert("哎呀，出错了")
+                alert(data.message)
             }
         })
     }

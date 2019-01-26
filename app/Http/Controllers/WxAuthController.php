@@ -21,10 +21,20 @@ class WxAuthController extends BaseController {
         return view('share',['data'=>$data]);
     }
 
-    public function getAddress() {
+    public function getAddress(Request $request) {
+        $param = $request->all();
+        if(isset($param['goods_id']) && isset($param['num'])) {
+            $query = http_build_query($param);
+            $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/shop_purchase?' . $query;
+            if(isset($param['flag'])) {
+                $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/my_address?' . $query;
+            }
+        }else {
+            $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/my_address';
+        }
         $jssdk = new Jssdk($this->config['appid'], $this->config['app_secret']);
         $data = $jssdk->getSignPackage();
-        return view('personal/new-address',['addrSign'=>$data]);
+        return view('personal/new-address',['addrSign'=>$data,'origin'=>urlencode($url)]);
     }
 
     public function getLocation() {

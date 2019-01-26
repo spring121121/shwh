@@ -75,8 +75,10 @@
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/layer/layer.js"></script>
     <script src="/js/uploadfile.js"></script>
     <script src="/js/common.js"></script>
+    <script src="/js/proving.js"></script>
     <script>
         $(function () {
             var photo_list = $("#shop-img-list li").length;
@@ -85,20 +87,27 @@
                 $(".btn-add-photo").css({"background-color":"transparent"});
             }
             $("#add-photo").on("change",function(){
-                $.ajaxFileUpload({
-                    url: '/upload', //用于文件上传的服务器端请求地址
-                    secureuri: false, //是否需要安全协议，一般设置为false
-                    fileElementId: 'add-photo', //文件上传域的ID
-                    dataType: 'json', //返回值类型 一般设置为json
-                    success: function (data){  //服务器成功响应处理函数
-                        $('#shop-img-list').append('<li><div class="del-photo-list"></div><img src="'+data.data.url+'" class="common-img"></li>');
-                        $("#shop-img-list").css({"justify-content":"unset","width":"max-content"});
-                        $(".btn-add-photo").css({"background-color":"#eee"});
-                    },
-                    error: function (data, status, e){//服务器响应失败处理函数
+                var img_size = $("input[type=file]").get(0).files[0].size;
+                console.log(img_size);
+                //alert(img_size);
+                if (img_size > 1000000){
+                    alert("上传图片过大，请上传小于1M的图片")
+                } else {
+                    $.ajaxFileUpload({
+                        url: '/upload', //用于文件上传的服务器端请求地址
+                        secureuri: false, //是否需要安全协议，一般设置为false
+                        fileElementId: 'add-photo', //文件上传域的ID
+                        dataType: 'json', //返回值类型 一般设置为json
+                        success: function (data){  //服务器成功响应处理函数
+                            $('#shop-img-list').append('<li><div class="del-photo-list"></div><img src="'+data.data.url+'" class="common-img"></li>');
+                            $("#shop-img-list").css({"justify-content":"unset","width":"max-content"});
+                            $(".btn-add-photo").css({"background-color":"#eee"});
+                        },
+                        error: function (data, status, e){//服务器响应失败处理函数
 
-                    }
-                });
+                        }
+                    });
+                }
             });
             $('#shop-img-list').on("click",".del-photo-list",function () {
                 $(this).parent().remove();
@@ -152,15 +161,14 @@
                 $(".upper-classify").css({"z-index":"0","opacity":"0"});
             });
 
-
             // 点击确认上架按钮时响应的事件
             $(".btn-upper-release").click(function () {
-                var img_list = $("#shop-img-list").find("img"),
-                    shop_img_one = $(img_list[0]).attr("src"),
-                    shop_img_two = $(img_list[1]).attr("src"),
-                    shop_img_three = $(img_list[2]).attr("src"),
-                    shop_img_four = $(img_list[3]).attr("src"),
-                    shop_title = $("#shop-title").val(),
+                var array_list = $("#shop-img-list").find("img"),array_img=[],array_img_url = "";
+                for (var i = 0;i<array_list.length; i++){
+                    array_img.push($("#shop-img-list").find("img").eq(i).attr("src"));
+                }
+                array_img_url = array_img.join(",");
+                var shop_title = $("#shop-title").val(),
                     shop_brief = $("#shop-brief").val(),
                     shop_classify = $("#classify-name").find("span").attr("id"),
                     shop_price = $("#shop-price").val(),
@@ -171,8 +179,8 @@
                 }else {
                     free_shipping = 1;
                 }
-                if (img_list.length != 4){
-                    alert("请上传4张商品的照片")
+                if (array_img_url == ""){
+                    alert("请上传至少一张商品的照片")
                 } else if (shop_title == "") {
                     alert("请输入商品名称")
                 }else if (shop_brief == ""){
@@ -185,8 +193,8 @@
                     alert("请输入运费")
                 }else if (shop_stock == ""){
                     alert("请输入商品的库存数量")
-                }else if (shop_stock < 0){
-                    alert("商品的库存数量不能为负数")
+                }else if (shop_stock < 1){
+                    alert("商品的库存数量至少为1")
                 }else {
                     $.ajax({
                         url : "/addGoods",	//请求url 商城分类
@@ -197,10 +205,7 @@
                             "shop[goods_name]":shop_title,
                             "shop[goods_info]":shop_brief,
                             "shop[price]":shop_price,
-                            "shop[image_one]":shop_img_one,
-                            "shop[image_two]":shop_img_two,
-                            "shop[image_three]":shop_img_three,
-                            "shop[image_four]":shop_img_four,
+                            "shop[image_url]":array_img_url,
                             "shop[stock]":shop_stock,
                             "shop[is_shipping]":free_shipping,
                             "shop[postage]":shop_freight,

@@ -165,7 +165,7 @@
                 $(".exhibition_left>ul").html(leftHtml);
                 $(".exhibition_right>ul").html(rightHtml);
             }else {
-                alert("哎呀，出错了！")
+                alert(data.message);
             }
         });
     }

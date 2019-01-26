@@ -51,12 +51,10 @@
     <script>
         $(function () {
             $.ajax({
-                url : "/storeDetail",	//请求url
+                url : "/myStoreDetail",	//请求url
                 type : "get",	//请求类型  post|get
                 dataType : "json",  //返回数据的 类型 text|json|html--
-                data: {
-                    id:$(".get-cookie").html()
-                },
+                data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
                     console.log(data)
                     if (data.status){
@@ -69,7 +67,13 @@
                 }
             });
             $("#setting-store-logo").on("change",function(){
-                $.ajaxFileUpload({
+                var img_size = $("input[type=file]").get(0).files[0].size;
+                console.log(img_size);
+                //alert(img_size);
+                if (img_size > 1000000){
+                    alert("上传图片过大，请上传小于1M的图片")
+                }else {
+                    $.ajaxFileUpload({
                     url: '/upload', //用于文件上传的服务器端请求地址
                     secureuri: false, //是否需要安全协议，一般设置为false
                     fileElementId: "setting-store-logo", //文件上传域的ID
@@ -82,6 +86,7 @@
 
                     }
                 });
+                }
             });
             $("#finish-set-store").click(function () {
                 var store_logo = $(".tx-icon-box").find("img").attr("src");

@@ -218,22 +218,22 @@
                 var defaultAddress = '';
                 if (data.status){
                     console.log(data);
-                    $.each(data.data, function (k, v) {
-                        defaultAddress += '<li><div class="icon-box">'+v.name.substr(0,1)+'</div>';
-                        defaultAddress += '<div class="address-cont"><a href="/wap/my_address?flag=1'+'&goods_id='+goodsid+'&num='+num+'" id="'+v.id+'" class="open-address btn-bjdz">></a>';
-                        defaultAddress += '<h3>'+v.name+'<span>'+v.mobile+'</span></h3>';
-                        defaultAddress += '<p>';
-                        if(v.is_default == 1){
-                            defaultAddress += '<span>默认</span>';
-                        }
-                        defaultAddress += v.province+' '+v.city+' '+v.area+' '+v.address_info+'</p>';
-                        defaultAddress += '</div></li>';
-                    });
+                    var v = data.data;
+                    defaultAddress += '<li><div class="icon-box">'+v.name.substr(0,1)+'</div>';
+                    defaultAddress += '<div class="address-cont"><a href="/wap/my_address?flag=1'+'&goods_id='+goodsid+'&num='+num+'" id="'+v.id+'" class="open-address btn-bjdz">></a>';
+                    defaultAddress += '<h3>'+v.name+'<span>'+v.mobile+'</span></h3>';
+                    defaultAddress += '<p>';
+                    if(v.is_default == 1){
+                        defaultAddress += '<span>默认</span>';
+                    }
+                    defaultAddress += v.province+' '+v.city+' '+v.area+' '+v.address_info+'</p>';
+                    defaultAddress += '</div></li>';
                     $(".my-address-box ul").html(defaultAddress);
                 }else {
                     alert("哎呀！出错了");
                 }
             }
+
         });
         var car = '',goods='',settle='';
         $.ajax({
@@ -293,6 +293,7 @@
             var address_id = $('.btn-bjdz').attr('id');
             if(address_id == undefined){
                 alert('请您前往去添加收货地址！');
+                window.location.href="http://shwh.jianghairui.com/wx/ad"+window.location.search;
                 return false;
             }
             $.ajax({

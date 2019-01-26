@@ -20,7 +20,7 @@
                 </li>
                 <li onclick="window.location.href = '/wap/personal';">
                     <div class="icon-box"><img class="common-img" src="/images/mine-icon1.png" alt="我的"></div>
-                    <span>我</span>
+                    <span>洞主</span>
                 </li>
             </ul>
         </div>

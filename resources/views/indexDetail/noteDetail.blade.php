@@ -119,7 +119,6 @@
             }
 
         }
-
         //取消关注
         function cancelFocus(uid) {
             if(isclick) {
