@@ -108,10 +108,9 @@
                         <i></i>
                     </a>
                 </div>
-
-                <div class="list-cont">
+                <div class="list-cont" onclick="toworksDetail()">
                     <span>个人需求</span>
-                    <i onclick="toworksDetail()"></i>
+                    <i></i>
                 </div>
             </div>
             <div class="list-box">

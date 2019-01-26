@@ -178,7 +178,7 @@
     <script>
         $(function () {
             $.ajax({
-                url : "/storeDetail",	//请求url
+                url : "/myStoreDetail",	//请求url
                 type : "get",	//请求类型  post|get
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {

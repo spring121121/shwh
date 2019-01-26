@@ -57,8 +57,10 @@
         @extends('layout.footer')
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/layer/layer.js"></script>
     <script src="/js/uploadfile.js"></script>
     <script src="/js/common.js"></script>
+    <script src="/js/proving.js"></script>
     <script>
         $(function () {
             var store_status = getUrlParam('store_status');
@@ -68,16 +70,44 @@
 
             //上传图片
             $("#store-logo").on("change",function(){
-                store_upload("store-logo");
+                var img_size = $("input[type=file]").get(0).files[0].size;
+                console.log(img_size);
+                //alert(img_size);
+                if (img_size > 1000000){
+                    alert("上传图片过大，请上传小于1M的图片")
+                }else {
+                    store_upload("store-logo");
+                }
             });
             $("#sfz-just").on("change",function(){
-                store_upload("sfz-just");
+                var img_size = $("input[type=file]").get(0).files[0].size;
+                console.log(img_size);
+                //alert(img_size);
+                if (img_size > 1000000){
+                    alert("上传图片过大，请上传小于1M的图片")
+                }else {
+                    store_upload("sfz-just");
+                }
             });
             $("#sfz-back").on("change",function(){
-                store_upload("sfz-back");
+                var img_size = $("input[type=file]").get(0).files[0].size;
+                console.log(img_size);
+                //alert(img_size);
+                if (img_size > 1000000){
+                    alert("上传图片过大，请上传小于1M的图片")
+                }else {
+                    store_upload("sfz-back");
+                }
             });
             $("#store-prove").on("change",function(){
-                store_upload("store-prove");
+                var img_size = $("input[type=file]").get(0).files[0].size;
+                console.log(img_size);
+                //alert(img_size);
+                if (img_size > 1000000){
+                    alert("上传图片过大，请上传小于1M的图片")
+                }else {
+                    store_upload("store-prove");
+                }
             });
 
             //判断是不是被驳回的店铺申请
