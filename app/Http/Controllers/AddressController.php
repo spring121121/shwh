@@ -63,7 +63,6 @@ class AddressController extends BaseController
             $defaultAddress = $res->toArray();
         }
         return $this->success($defaultAddress);
-
     }
 
     /**
