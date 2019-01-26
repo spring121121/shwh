@@ -212,16 +212,25 @@ class FansController extends BaseController
         $uid = UserService::getUid($request);
         $limit = FocusModel::LIMIT;
         $offset = $request->input('offset') * $limit;
-        $ids = FocusModel::where('beuid', $uid)->orWhere('uid', $uid)
-            ->select('uid')
-            ->groupBy('uid')
+        //用于排除我已经关注过的人
+        $ids = FocusModel::where('uid', $uid)
+            ->select('beuid')
+            ->groupBy('beuid')
             ->get()->toArray();
-        $uids = array_column($ids, 'uid');
+        $uids = array_column($ids, 'beuid');
         if ($uids) {
-            $focus = FocusModel::whereNotIn('uid', $uids)
-                ->select(DB::raw('uid,count(id) as count'))
-                ->groupBy('uid')->orderBy(DB::raw('count(id)'), 'desc')->offset($offset)->limit($limit)->get()->toArray();
-            $uidds = array_column($focus, 'uid');
+
+            $focus = FocusModel::whereNotIn('beuid', $uids)->whereNotIn('beuid',[$uid])
+                ->select(DB::raw('beuid,count(id) as count'))
+                ->groupBy('beuid')
+                ->orderBy('count', 'desc')
+                ->offset($offset)
+                ->limit($limit)
+                ->get()
+                ->toArray();
+
+            $uidds = array_column($focus, 'beuid');
+
             if($uidds){
                 $recommend = UserModel::whereIn('id', $uidds)->orderByRaw("FIELD(id, " . implode(", ", $uidds) . ")")->select('id', 'photo', 'nickname', 'score', 'sex')
                     ->get()->toArray();//按照id顺序排列
