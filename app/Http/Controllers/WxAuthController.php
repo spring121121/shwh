@@ -31,7 +31,7 @@ class WxAuthController extends BaseController {
         }
         $jssdk = new Jssdk($this->config['appid'], $this->config['app_secret']);
         $data = $jssdk->getSignPackage();
-        return view('personal/new-address',['addrSign'=>$data,'origin'=>$url]);
+        return view('personal/new-address',['addrSign'=>$data,'origin'=>urlencode($url)]);
     }
 
     public function getLocation() {

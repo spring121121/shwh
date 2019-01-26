@@ -44,16 +44,23 @@ class AddressController extends BaseController
         $id = $request->input('id');
         if(!empty($id)){
             $where = ['id'=>$id,'uid'=>$uid];
-            $defaultAddress = AddressModel::where($where)
-                ->get()->toArray();
+            $res = AddressModel::where($where)
+                ->first();
         }else{
             $where = ['uid'=>$uid,'is_default'=>AddressModel::IS_DEFAULT_1];
-            $defaultAddress = AddressModel::where($where)
-                ->get()->toArray();
+            $res = AddressModel::where($where)
+                ->first();
         }
-        if(!$defaultAddress){
-            $defaultAddress = AddressModel::where('uid',$uid)
-                ->first()->toArray();
+        if(!$res){
+            $resFirst = AddressModel::where('uid',$uid)
+                ->first();
+            if($resFirst){
+                $defaultAddress = $resFirst->toArray();
+            }else{
+                $defaultAddress = [];
+            }
+        }else{
+            $defaultAddress = $res->toArray();
         }
         return $this->success($defaultAddress);
 
