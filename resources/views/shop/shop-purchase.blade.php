@@ -219,7 +219,6 @@
                 if (data.status){
                     console.log(data);
                     var v = data.data;
-                    alert(JSON.stringify(v));
                     defaultAddress += '<li><div class="icon-box">'+v.name.substr(0,1)+'</div>';
                     defaultAddress += '<div class="address-cont"><a href="/wap/my_address?flag=1'+'&goods_id='+goodsid+'&num='+num+'" id="'+v.id+'" class="open-address btn-bjdz">></a>';
                     defaultAddress += '<h3>'+v.name+'<span>'+v.mobile+'</span></h3>';
