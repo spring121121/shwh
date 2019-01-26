@@ -171,7 +171,6 @@
 
         <!--引入footer-->
         @extends('layout.footer')
-        <div class="get-cookie">{{$store_id}}</div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/js/common.js"></script>
@@ -181,18 +180,16 @@
                 url : "/myStoreDetail",	//请求url
                 type : "get",	//请求类型  post|get
                 dataType : "json",  //返回数据的 类型 text|json|html--
-                data: {
-                    id:$(".get-cookie").html()
-                },
+                data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    console.log(data)
+                    //alert(JSON.stringify(data));
                     if (data.status){
                         console.log(data.data[0].name)
                         $("#store-index-logo").find("img").attr("src",data.data[0].logo_pic_url);
                         $("#store-index-name").html(data.data[0].name+'<span>已认证</span>');
                         $("#store-index-brief").html(data.data[0].introduction);
                     }else {
-                        alert("哎呀！出错了");
+                        alert(data.message);
                     }
                 }
             });
