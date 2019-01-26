@@ -28,5 +28,5 @@ class CommentModel extends Model
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['uid','note_id','content'];
+    protected $fillable = ['uid','note_id','content','to_cid','to_uid'];
 }

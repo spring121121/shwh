@@ -21,10 +21,11 @@ class WxAuthController extends BaseController {
         return view('share',['data'=>$data]);
     }
 
-    public function getAddress() {
+    public function getAddress(Request $request) {
+//        halt($request->url());
         $jssdk = new Jssdk($this->config['appid'], $this->config['app_secret']);
         $data = $jssdk->getSignPackage();
-        return view('personal/new-address',['addrSign'=>$data]);
+        return view('personal/new-address',['addrSign'=>$data,'origin'=>$request->url()]);
     }
 
     public function getLocation() {
