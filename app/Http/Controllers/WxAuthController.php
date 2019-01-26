@@ -26,6 +26,9 @@ class WxAuthController extends BaseController {
         if(isset($param['goods_id']) && isset($param['num'])) {
             $query = http_build_query($param);
             $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/shop_purchase?' . $query;
+            if(isset($param['flag'])) {
+                $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/my_address?' . $query;
+            }
         }else {
             $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/my_address';
         }
