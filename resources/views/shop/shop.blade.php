@@ -88,26 +88,7 @@
             </div>
             <div class="classify-display">
                 <ul class="classify-all">
-                    <li>
-                        <div class="shop-list-box">
-                            <div class="shop-img-box">
-                                <img src="/images/collection-img2.jpg" class="common-img">
-                            </div>
-                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                            <h3><i></i><span>用户名称</span></h3>
-                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="shop-list-box">
-                            <div class="shop-img-box">
-                                <img src="/images/collection-img2.jpg" class="common-img">
-                            </div>
-                            <p><strong>商品名称</strong><span>内容详情内容详情内容详情内容详情内容详情内容详情</span></p>
-                            <h3><i></i><span>用户名称</span></h3>
-                            <div class="price-box"><span>￥20.00</span><div class="distribution-icon"></div></div>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
 
@@ -120,6 +101,9 @@
     <script src="/js/swiper.min.js"></script>
     <script src="/js/common.js"></script>
     <script>
+        function agentGoods(goodsId){
+            window.location.href = "/wap/shop_share?goods_id="+goodsId;
+        }
         $(function () {
             var category = '';
             $.ajax({
@@ -172,9 +156,10 @@
                 $(".classify-display ul").eq($(this).attr("id")).siblings().css("display","none");
             });
             $(".shop-img-box").css("height",$(".shop-img-box").width()+"px");
-            $(".distribution-icon").on("click",function () {
-                window.location.href = "/wap/shop_share";
-            });
+            // $(".distribution-icon").on("click",function () {
+            //     window.location.href = "/wap/shop_share";
+            // });
+
 
             $(".detail").on("click",function () {
                 var id = $(this).next().val();
@@ -221,7 +206,10 @@
                             goodsList += '<p><strong>'+v['goods_name']+'</strong><span>'+v['goods_info']+'</span></p>';
                             // goodsList += '<h3><i></i><span>用户名称</span></h3>';
                             goodsList += '<div class="price-box"><span>￥ '+v['price']+'</span>';
-                            goodsList += '<div class="distribution-icon"></div></div></div></li>';
+                            if(v.pgoods_id==0){
+                                goodsList += '<div class="distribution-icon" onclick="agentGoods('+v.id+')"></div></div></div></li>';
+                            }
+
                         });
                         $('.classify-all').html(goodsList);
                     }

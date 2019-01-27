@@ -26,10 +26,7 @@ class GoodsService
         $goodsModel->goods_name = $request->input('goods_name');
         $goodsModel->goods_info = $pgoodsInfo->goods_info;
         $goodsModel->price = $request->input('price') ;
-        $goodsModel->image_one = $pgoodsInfo->image_one;
-        $goodsModel->image_two = $pgoodsInfo->image_two;
-        $goodsModel->image_three = $pgoodsInfo->image_three;
-        $goodsModel->image_four = $pgoodsInfo->image_four;
+        $goodsModel->image_url = $pgoodsInfo->image_url;
         $goodsModel->stock = $pgoodsInfo->stock;
         $goodsModel->is_shipping = $pgoodsInfo->is_shipping;
         $goodsModel->postage = $pgoodsInfo->postage;
