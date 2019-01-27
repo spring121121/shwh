@@ -11,6 +11,13 @@
         <link rel="stylesheet" href="/styles/common.css">
         <link rel="stylesheet" href="/styles/shop-header.css">
         <link rel="stylesheet" href="/styles/shop.css">
+        <style>
+            .common-img1{
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
     </head>
     <body>
         <div class="index-header header">
@@ -18,16 +25,16 @@
             <div class="common-header-right"></div>
             <div class="search-box">
                 <div class="ipt-icon"></div>
-                <div class="ipt-search-box"><input type="text" placeholder="输入搜索内容"></div>
+                <div class="ipt-search-box"><input type="text" value="" id="key" placeholder="输入搜索内容"></div>
             </div>
         </div>
         <div class="content-box">
             <div class="swiper-box">
                 <div class="swiper-container shop-index">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img class="common-img" src="/images/test.jpg"></div>
-                        <div class="swiper-slide"><img class="common-img" src="/images/2.jpg"></div>
-                        <div class="swiper-slide"><img class="common-img" src="/images/test1.jpg"></div>
+                        <div class="swiper-slide"><img class="common-img1" src="/images/test.jpg"></div>
+                        <div class="swiper-slide"><img class="common-img1" src="/images/2.jpg"></div>
+                        <div class="swiper-slide"><img class="common-img1" src="/images/test1.jpg"></div>
                     </div>
                 </div>
             </div>
@@ -48,28 +55,28 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
                                 <div class="limit-shop-img">
-                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img1">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
                             </div>
                             <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
                                 <div class="limit-shop-img">
-                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img1">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
                             </div>
                             <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
                                 <div class="limit-shop-img">
-                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img1">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
                             </div>
                             <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
                                 <div class="limit-shop-img">
-                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img1">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
@@ -143,14 +150,14 @@
             });
 
             // 点击分类显示相应内容
-            goodsList(0);
+            goodsList("/getGoodsList",0);
             $(".classify-list span").eq(0).css("border-bottom","1px solid #ffaa00");
             $(".classify-all").css("display","flex");
             $(".one").on("click",function () {
                 $(this).find("span").css("border-bottom","1px solid #ffaa00");
                 $(this).siblings().find("span").css("border-bottom","none");
                 var id = $(this).attr('id');
-                goodsList(id);
+                goodsList("/getGoodsList",id);
                 $(".classify-display ul").eq($(this).attr("id")).css("display","flex");
 
                 $(".classify-display ul").eq($(this).attr("id")).siblings().css("display","none");
@@ -182,15 +189,22 @@
                 }
                 window.location.href = "/wap/shop_cart";
             });
-
-            function goodsList(id){
+            //搜索
+            $('.ipt-icon').on('click',function(){
+                var goods_key = $('#key').val();
+                goodsList('/searchList','',goods_key);
+                $(".one span").eq(0).css("border-bottom","1px solid #ffaa00");
+                $(".one").eq(0).css("display","flex");
+                $(".one").eq(0).siblings().find('span').css("border-bottom","1px solid #fff");
+            });
+            function goodsList(url,id,goods_key){
                 var goodsList = '';
                 $.ajax({
-                    url : "/getGoodsList",	//请求url 商城分类
+                    url : url,	//请求url 商城分类
                     type : "get",	//请求类型  post|get
                     async: false,
                     dataType : "json",  //返回数据的 类型 text|json|html--
-                    data:{id:id},
+                    data:{id:id,goods_key:goods_key},
                     success : function(data){//回调函数 和 后台返回的 数据
                         console.log(data);
                         $.each(data.data.data, function (k, v) {
@@ -201,12 +215,12 @@
                             goodsList += '<li>';
                             goodsList += '<div class="shop-list-box">';
                             goodsList += '<div class="shop-img-box">';
-                            goodsList += '<img src="'+image+'" class="common-img detail"><input type="hidden" value="'+v['id']+'">';
+                            goodsList += '<img src="'+image+'" class="common-img1 detail"><input type="hidden" value="'+v['id']+'">';
                             goodsList += '</div>';
                             goodsList += '<p><strong>'+v['goods_name']+'</strong><span>'+v['goods_info']+'</span></p>';
                             // goodsList += '<h3><i></i><span>用户名称</span></h3>';
                             goodsList += '<div class="price-box"><span>￥ '+v['price']+'</span>';
-                            if(v.pgoods_id==0){
+                            if(v['be_agent']==0){
                                 goodsList += '<div class="distribution-icon" onclick="agentGoods('+v.id+')"></div></div></div></li>';
                             }
 

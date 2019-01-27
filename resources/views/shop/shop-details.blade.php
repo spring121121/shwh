@@ -11,13 +11,43 @@
 		<link rel="stylesheet" href="/styles/common.css">
 		<link rel="stylesheet" href="/styles/shop-header.css">
 		<link rel="stylesheet" href="/styles/shop.css">
+		<link rel="stylesheet" type="text/css" href="/font/iconfont3.css">
+		<link rel="stylesheet" href="/styles/museum.css">
+		<style>
+			header ul {
+				margin: 0 10px;
+			}
+			.settle{
+				margin-right:3%;
+			}
+			.settle img{
+				width:25px;
+				height:25px;
+				margin-top:10px;
+			}
+			.swiper-box {
+				margin-top: 45px;
+			}
+		</style>
 	</head>
 
 	<body>
-		<div class="index-header header">
-			<div class="common-header-left" onclick="handleToshop()"><img src="/images/fanhui.jpg"/></div>
-			<div class="zc_right" onclick="handletoCart()"><img  src="/images/shop/shop-cart.png"/></div>
-		</div>
+		<header class="head" style="position: fixed;z-index:999;">
+			<ul>
+				<li>
+					<span class="iconfont icon-ffanhui- back"></span>
+				</li>
+				<li class="title">详&nbsp;情</li>
+				<li class="settle" onclick="handletoCart()">
+					<img src="/images/shop/detail-cart.png"/>
+				</li>
+			</ul>
+		</header>
+
+		{{--<div class="index-header header">--}}
+			{{--<div class="common-header-left" onclick="handleToshop()"><img src="/images/fanhui.jpg"/></div>--}}
+			{{--<div class="zc_right" onclick="handletoCart()"><img  src="/images/shop/detail-cart.png"/></div>--}}
+		{{--</div>--}}
 		<div class="content-box">
 			<div class="swiper-box">
 				<div class="swiper-container shop-index">
@@ -62,7 +92,7 @@
 					<p>宝贝描述:<span>4.9</span></p>
 					<p>买卖服务:<span>4.5</span></p>
 					<p>物流服务:
-						<pan>4.8</pan>
+						<span>4.8</span>
 					</p>
 				</div>
 				<div class="zc_line"></div>
@@ -71,24 +101,24 @@
 
 			{{--商品详情图--}}
 			<div class="zc_goodsimg">
-				<img src="/images/1.jpg" />
+
 			</div>
 			<div class="zc_contentBottom">
 				<img class="zc_bussimg" src="/images/a4.jpg"/>
-				<div class="zc_Collection">
-					<img src="/images/dz-icon.png"/>
+				{{--<div class="zc_Collection">--}}
+					{{--<img src="/images/dz-icon.png"/>--}}
 					{{--<img src="/images/dz-icon-red.png"/>--}}
-				</div>
+				{{--</div>--}}
 				<div class="zc_btn">
 					<div class="addCar">加入购物车</div>
-					<div class="">立即购买</div>
+					<div class="purchase">立即购买</div>
 				</div>
 			</div>
 
 		</div>
 		<input type="hidden" value="{{$id}}" id="uid">
 		<!--引入footer-->
-		
+		@extends('layout.footer')
 	</body>
 	<script src="/js/jquery-3.0.0.min.js"></script>
 	<script src="/js/swiper.min.js"></script>
@@ -98,7 +128,8 @@
 
             var categoryDetail = '';
             var store = '';
-            var splideImg = '';
+            var splideImg = '';//轮播图
+			var detailImg = '';//商品详情图
             var id = getUrlParam('id');
             $.ajax({
                 url : "/getGoodsDetail",	//请求url 商城分类
@@ -112,6 +143,7 @@
                         //轮播图
                     $.each(v.image_url, function (k, v) {
                         splideImg += '<div class="swiper-slide"><img class="common-img" src="' + v + '"></div>';
+                        detailImg += '<img style="height:250px;" src="'+v+'" />';
                     });
 					//详情
 					categoryDetail += '<input type="hidden" id="goods_id" value="'+v['id']+'">';
@@ -121,11 +153,13 @@
 					categoryDetail += '<p>'+v['goods_name']+'</p><div></div><p></p>';
 					categoryDetail += '</div>';
 					categoryDetail += '<div class="zc_detail">'+v['goods_info']+'</div>';
-					categoryDetail += '<div class="zc_business"><p>快递:<span>￥'+v['postage']+'</span></p> <p>月销:<span>29650</span></p> <p>天津静海</p></div>';
+					// categoryDetail += '<div class="zc_business"><p>快递:<span>￥'+v['postage']+'</span></p> <p>月销:<span>29650</span></p><p>天津静海</p></div>';
+                    categoryDetail += '<div class="zc_business"><p>快递:<span>￥'+v['postage']+'</span></p></div>';
 
 					$('#store_id').val(v['store_id']);
 
                     $('.swiper-wrapper').html(splideImg);
+                    $('.zc_goodsimg').html(detailImg);
                     $('#sp_detail').html(categoryDetail);
                 }
             });
@@ -141,7 +175,7 @@
                         store += '<img src="'+v['logo_pic_url']+'" />';
                         store += '<div class="zc_businRank">';
                         store += '<p>'+v['name']+'</p>';
-                        store += '</div><div class="zc_allbusi">进店逛逛</div>';
+                        store += '</div><div class="store_all"><div class="zc_allbusi">全部商品</div><div class="zc_all">进店逛逛</div></div>';
 
                         $('.zc_bussimg').attr('src',v['logo_pic_url']);
                     });
@@ -202,6 +236,19 @@
                     }
                 });
             });
+            $('.purchase').on('click',function(){
+                var uid = $('#uid').val();
+                var goods_id = $('#goods_id').val();
+                if(uid == 0){
+                    window.location.href = "/wap/login_index";
+                    return false;
+                }
+                window.location.href = '/wap/shop_purchase?goods_id='+goods_id+'&num=1';
+            });
+            $('.back').on('click',function(){
+                window.history.go(-1);
+            });
+
 		});
         function getUrlParam(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象

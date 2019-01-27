@@ -145,6 +145,7 @@ Route::get('getGoodsList','ShopController@getGoodsList');//获取分类下的所
 Route::get('getGoodsDetail','ShopController@getGoodsDetail');//商品详情
 Route::get('relateGoodsList','ShopController@relateGoodsList');//随机取10条相关商品列表
 Route::get('searchGoodsList','ShopController@searchGoodsList');//搜索商品
+Route::get('searchList','ShopController@searchList');//搜索商品（不按照分类）
 Route::get('getGoodsNote','ShopController@getGoodsNote');//商品下笔记列表
 
 

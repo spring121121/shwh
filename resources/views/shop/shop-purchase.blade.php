@@ -157,6 +157,10 @@
             height:10px;
             background: #F2F2F2;
         }
+        header{
+            height:45px;
+            padding-top: 0;
+        }
         header ul {
             margin: 0 10px;
         }
@@ -217,18 +221,26 @@
             success : function(data){//回调函数 和 后台返回的 数据
                 var defaultAddress = '';
                 if (data.status){
-                    console.log(data);
                     var v = data.data;
-                    defaultAddress += '<li><div class="icon-box">'+v.name.substr(0,1)+'</div>';
-                    defaultAddress += '<div class="address-cont"><a href="/wap/my_address?flag=1'+'&goods_id='+goodsid+'&num='+num+'" id="'+v.id+'" class="open-address btn-bjdz">></a>';
-                    defaultAddress += '<h3>'+v.name+'<span>'+v.mobile+'</span></h3>';
-                    defaultAddress += '<p>';
-                    if(v.is_default == 1){
-                        defaultAddress += '<span>默认</span>';
+                    if(v != ''){
+                        defaultAddress += '<li><div class="icon-box">'+v.name+'</div>';
+                        defaultAddress += '<div class="address-cont"><a href="/wap/my_address?flag=1'+'&goods_id='+goodsid+'&num='+num+'" id="'+v.id+'" class="open-address btn-bjdz">></a>';
+                        defaultAddress += '<h3>'+v.name+'<span>'+v.mobile+'</span></h3>';
+                        defaultAddress += '<p>';
+                        if(v.is_default == 1){
+                            defaultAddress += '<span>默认</span>';
+                        }
+                        defaultAddress += v.province+' '+v.city+' '+v.area+' '+v.address_info+'</p>';
+                        defaultAddress += '</div></li>';
+                        $(".my-address-box ul").html(defaultAddress);
+                    }else{
+                        var address_id = $('.btn-bjdz').attr('id');
+                        if(address_id == undefined){
+                            alert('请您前往去添加收货地址！');
+                            window.location.href="http://shwh.jianghairui.com/wx/ad"+window.location.search;
+                            return false;
+                        }
                     }
-                    defaultAddress += v.province+' '+v.city+' '+v.area+' '+v.address_info+'</p>';
-                    defaultAddress += '</div></li>';
-                    $(".my-address-box ul").html(defaultAddress);
                 }else {
                     alert("哎呀！出错了");
                 }
@@ -252,13 +264,21 @@
                     car += '<div class="store_name">'+v['name']+'</div>';
                     car += '</div>';
                     $.each(v.goods, function (k, goods) {
+                        var goods_name = goods['goods_name'];
+                        var goods_info = goods['goods_info'];
+                        if(goods_name.length>5){
+                            goods_name = goods_name.substr(0,5)+'...';
+                        }
+                        if(goods_info.length>10){
+                            goods_info = goods_info.substr(0,10)+'...';
+                        }
                         car += '<div class="car_div">';
                         car += '<div class="car_img">';
                         car += '<img class="car_image" src="'+goods['image_one']+'"/>';
                         car += '</div>';
                         car += '<div class="store_checkbox">';
-                        car += '<p>'+goods['goods_name']+'</p>';
-                        car += '<p>'+goods['goods_info'].substr(0,5)+'...</p>';
+                        car += '<p>'+goods_name+'</p>';
+                        car += '<p>'+goods_info+'</p>';
                         car += '<p class="car_"></p>';
                         car += '<p class="car_price">￥'+goods['price']+'</p></div>';
                         car += '<div class="zc_btngroup car_num">x&nbsp;'+goods['num']+'</div></div>';
@@ -278,12 +298,6 @@
                 $('.select_submit').html(settle);
 
                 $('.total_submit').bind('click',function(){
-                    var address_id = $('.btn-bjdz').attr('id');
-                    if(address_id == undefined){
-                        alert('请您前往去添加收货地址！');
-                        window.location.href="http://shwh.jianghairui.com/wx/ad"+window.location.search;
-                        return false;
-                    }
                     $.ajax({
                         url : "/purchase",	//请求url 商城分类
                         type : "post",	//请求类型  post|get
@@ -303,9 +317,9 @@
         });
 
         $('.back').on('click',function(){
-            window.location.href="/wap/shop_cart";
+            window.history.go(-1);
         });
-
+        //获取url参数
         function getUrlParam(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
