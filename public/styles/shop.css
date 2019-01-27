@@ -1,5 +1,5 @@
 .swiper-box{
-    height: 250px;
+    height: 150px;
 }
 .shop-index,.flash-swiper{
     width: 100%;
@@ -82,11 +82,13 @@
     color: #000;
     margin: 5px;
 	height: 40px;
-    text-align: justify;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    /*text-align: justify;*/
+    /*overflow: hidden;*/
+    /*display: -webkit-box;*/
+    /*-webkit-line-clamp: 2;*/
+    /*-webkit-box-orient: vertical;*/
+	overflow: hidden;
+	text-overflow:ellipsis;
 }
 .shop-list-box p strong,.shop-cont-right p strong{
     border-right: 1px solid #000;
@@ -177,12 +179,12 @@
 
 /*商品详情的样式*/
 .zc_detailContent{
-	width: 90%;
-	height: 300px;
-	margin: 25px auto;
+	width: 95%;
+	margin:15px auto;
 }
 .zc_price{
-	font-size: 16px;
+	font-size: 18px;
+	color:red;
 }
 .zc_del{
 	font-size: 14px;
@@ -214,15 +216,17 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin: 20px 0;
+	margin-top: 20px;
+	margin-bottom:10px;
 }
 .zc_business{
 	font-size: 12px;
 }
 .zc_line{
-	width: 100%;
-	height: 2px;
-	background: #d2d2d2;
+	margin-left: -10px;
+	width: 106%;
+	height: 10px;
+	background: #F2F2F2;
 }	
 .zc_businehref{
 	width: 100%;
@@ -232,39 +236,53 @@
 	margin-top: 20px;
 }
 .zc_businehref>img{
-	
 	width: 60px;
 	height: 60px;
-	border-radius: 20px;
+	border-radius: 10px;
 }
 .zc_businRank{
 	margin-left: 10px;
+	margin-top:5%;
+	width:40%;
 }
 .zc_businRank>p:nth-child(1){
-	font-size: 18px;
+	font-size: 16px;
 	color: #000000;
 }
 .zc_businRank>p:nth-child(2){
 	font-size: 16px;
 	color: #a7a7a7;
 }
-.zc_allbusi{
-	width: 52px;
-	height: 28px;
-	border-radius: 10px;
-	background: #fa9930;
-	line-height: 28px;
+.store_all{
+	float:right;
+	width:40%;
+}
+.zc_allbusi,.zc_all{
+	width: 55px;
+	height: 25px;
+	border-radius: 20px;
+	line-height: 23px;
 	text-align: center;
 	color: #fff;
 	font-size: 12px;
-	margin-left: auto;
-	margin-top: 10px;
+	margin-top: 15px;
+}
+.zc_all{
+	background: #fa9930;
+	float:right;
+}
+.zc_allbusi{
+	border:1px #DD0E44 solid;
+	height: 23px;
+	color:red;
+	float:left;
 }
 .zc_contentNext{
 	display: block;
 	width: 100%;
 	height: auto;
 	text-align: center;
+	margin:20px 0;
 }
 .zc_goodsimg{
 	width: 100%;
@@ -275,22 +293,24 @@
 	height: auto;
 }
 .zc_contentBottom{
-	  position: fixed;
-    bottom: 0;
-    z-index: 66;
-    display: flex;
-    flex-direction: row;
-    width: 93%;
-    height: 30px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 23px 15px;
-    box-shadow: 0px 0 10px 0px #555555;
+	position: fixed;
+	bottom: 50px;
+	z-index: 999;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 50px;
+	margin: 0 auto;
+	background: #fff;
+	/* padding: 23px 15px; */
+	box-shadow: 0px 0 10px 0px #555555;
 }
 .zc_bussimg{
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
+	margin-top:2%;
+	margin-left:5%;
 }
 .zc_Collection{
 	width: 20px;
@@ -312,20 +332,27 @@
 	display: flex;
 	flex-direction: row;
 	margin-left:auto;
+	margin-right:2%;
+	margin-top:2%;
 }
-.zc_btn>div{
+.zc_btn .addCar,.zc_btn .purchase{
 	margin-left: 15px;
-	width:65px;
+	width:80px;
 	height: 30px;
+	background: #fe993d;
 	border-radius: 15px;
-	border: 2px solid #fe993d;
+	/*border: 2px solid #fe993d;*/
 	text-align: center;
 	line-height: 30px;
 	font-size: 12px;
-}	
-.zc_btn>div:hover{
-	background: #ff9935;
+	color:#fff;
 }
+.zc_btn .purchase{
+	background: red;
+}
+/*.zc_btn>div:hover{*/
+	/*background: #ff9935;*/
+/*}*/
 .common-header-left>img{
 	width: 130%;
 	height: 130%;
@@ -336,11 +363,11 @@
    background: none!important;
 }
 .zc_right{
-	width: 34px;
+	width: 25px;
     height: 25px;
     float: right;
     margin-right: 20px;
-    margin-top: 20px;
+    margin-top: 13px;
     position: relative;
 }
 .zc_right>p{
@@ -495,8 +522,9 @@
 	position: fixed;
 	bottom: 50px;
 	z-index: 66;
-	border-top: 1px solid #DEDEDE;
-	border-bottom: 1px solid #DEDEDE;
+	/*border-top: 1px solid #DEDEDE;*/
+	/*border-bottom: 1px solid #DEDEDE;*/
+	box-shadow: 0 0 10px 0 #555555;
 	line-height: 50px;
 }
 .zc_cartdiv>input{
