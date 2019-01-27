@@ -17,10 +17,12 @@
                     paySign:"{{$prepay['paySign']}}"
                 },
                 function(res){
-                    // alert(JSON.stringify(res));
                     if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-                        alert('支付成功');
-                    }else{
+                        // alert('支付成功');
+                        window.location.href = "/wap/my_order";
+                    }else if(res.err_msg == "get_brand_wcpay_request:cancel" ){
+                        window.location.href = "/wap/my_order";
+                    }else {
                         alert('支付失败');
                     }
                     // WeixinJSBridge.call('closeWindow');
