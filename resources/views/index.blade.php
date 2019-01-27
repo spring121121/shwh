@@ -68,13 +68,13 @@
         <div id="list">
             <ul>
                 <li>
-                    <a href="/wap/museumOne">
+                    <a href="/wap/museumOne?roleId=2">
                         <img src="/images/bwg.jpg" alt="">
                     </a>
                     <span >博物馆</span>
                 </li>
                 <li>
-                    <a href="/wap/museumOne?roleId=3">
+                    <a href="/wap/museumOne?roleId=4">
                         <img src="/images/wcjg.jpg" alt="">
                     </a>
                     <span >文创机构</span>

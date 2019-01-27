@@ -45,6 +45,8 @@ Route::group(['middleware'=>'checkLogin'],function(){
     //需求相关功能
     Route::post('addDemand','DemandController@addDemand');//发布需求
     Route::get('getMyDemandList','DemandController@getMyDemandList');//获取我的需求列表
+    Route::post('addDemandCreation','DemandCreationController@addDemandCreation');//获取我的需求列表
+
 
 
 
