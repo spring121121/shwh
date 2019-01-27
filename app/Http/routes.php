@@ -45,6 +45,8 @@ Route::group(['middleware'=>'checkLogin'],function(){
     //需求相关功能
     Route::post('addDemand','DemandController@addDemand');//发布需求
     Route::get('getMyDemandList','DemandController@getMyDemandList');//获取我的需求列表
+    Route::post('addDemandCreation','DemandCreationController@addDemandCreation');//获取我的需求列表
+
 
 
 
@@ -143,6 +145,7 @@ Route::get('getGoodsList','ShopController@getGoodsList');//获取分类下的所
 Route::get('getGoodsDetail','ShopController@getGoodsDetail');//商品详情
 Route::get('relateGoodsList','ShopController@relateGoodsList');//随机取10条相关商品列表
 Route::get('searchGoodsList','ShopController@searchGoodsList');//搜索商品
+Route::get('searchList','ShopController@searchList');//搜索商品（不按照分类）
 Route::get('getGoodsNote','ShopController@getGoodsNote');//商品下笔记列表
 
 
@@ -193,7 +196,7 @@ Route::get('wx/location','WxAuthController@getLocation');//微信分享朋友圈
 
 Route::get('wap/factoryShow', 'FactoryController@fatoryList');
 
-Route::post('note/reply','CommentController@test');
+Route::post('note/reply','CommentController@reply');
 Route::get('tt','CommentController@tt');
 
 

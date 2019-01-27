@@ -5,21 +5,9 @@ namespace App\models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class GoodsModel extends Model
+class DemandCreationModel extends Model
 {
-    /**
-     * 不是代理
-     */
-    const IS_AGENT_O = 0;
-    /**
-     * 是代理
-     */
-    const IS_AGENT_1 = 1;
-
-    CONST RELATE_GOODS = 10;//随机相关商品条数
-    CONST UNDERCARRIAGE = 0;//商品下架
-    CONST NORMAL = 1;//商品正常
-
+    //软删除 通过 deleted_at 字段区分是否删除，删除时调用 $table->softDeletes();
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     /**
@@ -27,7 +15,7 @@ class GoodsModel extends Model
      *
      * @var string
      */
-    protected $table = 'goods';
+    protected $table = 'demand_creation';
     protected $primaryKey = 'id';
     /**
      * 指定是否模型应该被戳记时间。
@@ -40,5 +28,6 @@ class GoodsModel extends Model
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['store_id','goods_name','goods_info','price','image_url','stock','is_shipping','postage','is_agent','pgoods_id','be_agent'];
+    protected $fillable = ['uid','creation_urls','demand_id','introduction','is_choice'];
+
 }

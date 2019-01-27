@@ -21,7 +21,7 @@ use App\Http\Services\CommentService;
 use App\Http\Services\UserService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-
+use PDO;
 class NoteController extends BaseController
 {
     /**
@@ -366,13 +366,22 @@ class NoteController extends BaseController
         $note['grade'] = $userInfo['grade'];
         $note['is_foucus'] = $userInfo['is_foucus'];
 
-        $comment_list = [];
-
+        try {
+            DB::setFetchMode(PDO::FETCH_ASSOC);
+            $list = DB::select("SELECT c.id,c.note_id,c.uid,c.to_cid,c.to_uid,c.content,c.root_cid,c.created_at,u.photo,u.nickname,u2.nickname AS to_nickname 
+FROM comment c 
+LEFT JOIN user u ON c.uid=u.id 
+LEFT JOIN user u2 ON c.to_uid=u2.id 
+WHERE c.note_id=?",[$noteId]);
+        }catch (\Exception $e) {
+            exit($e->getMessage());
+        }
+        $list = $this->recursion($list);
 //        $note->forwardNum = ForwardService::getForwardNum($note['id']);
 //        $note->likeNum = LikesService::getLikesNum($note['id']);
 //        $note->commentNum = CommentService::getCommentNum($note['id']);
 
-        return view('indexDetail/noteDetail', ['noteDetail' => $note]);
+        return view('indexDetail/noteDetail', ['noteDetail' => $note,'commentList'=>$list]);
     }
 
 
@@ -393,6 +402,18 @@ class NoteController extends BaseController
         }
 
         return $this->success($noteList);
+    }
+
+
+    private function recursion($array,$to_cid=0) {
+        $to_array = [];
+        foreach ($array as $v) {
+            if($v['root_cid'] == $to_cid) {
+                $v['child'] = $this->recursion($array,$v['id']);
+                $to_array[] = $v;
+            }
+        }
+        return $to_array;
     }
 
 

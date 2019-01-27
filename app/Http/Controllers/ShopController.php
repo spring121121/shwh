@@ -242,17 +242,46 @@ class ShopController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      */
     public function searchGoodsList(Request $request){
-        $category_id = $request->input('category_id');
-        $goods_name = $request->input('goods_name');
+        $category_id = $request->input('category_id');//搜索二级分类的goods
+        $goods_name = $request->input('goods_name');//搜索二级分类的goods
+        //二级分类
         $categoryIds = CategorygoodsModel::where('category_id',$category_id)
             ->select('goods_id')
             ->get()->toArray();
         $goodsIds = array_column($categoryIds, 'goods_id');
         $searchList = GoodsModel::whereIn('id',$goodsIds)->where('goods_name','like','%'.$goods_name.'%')
+            ->where('status',GoodsModel::NORMAL)
             ->get()->toArray();
-        return $this->success($searchList);
+        foreach($searchList as &$item){
+            $item['image_url'] = unserialize($item['image_url']);
+        }
+        $data['data'] = $searchList;
+        $data['category_id'] = $category_id;
+        return $this->success($data);
     }
 
+    /**
+     * 搜索商品无分类
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function searchList(Request $request){
+        $goods_key = $request->input('goods_key');//搜索一级分类
+        if(!empty($goods_key)){
+            $searchList = GoodsModel::where('goods_name','like','%'.$goods_key.'%')
+                ->where('status',GoodsModel::NORMAL)
+                ->get()->toArray();
+        }else{
+            $searchList = GoodsModel::where('status',GoodsModel::NORMAL)
+                ->get()->toArray();
+        }
+        foreach($searchList as &$item){
+            $item['image_url'] = unserialize($item['image_url']);
+        }
+        $data['data'] = $searchList;
+        $data['category_id'] = CategorygoodsModel::GOODS_ALL;
+        return $this->success($data);
+    }
     /**
      * 商品下笔记列表
      * @param Request $request

@@ -28,7 +28,7 @@ a{
     left: 0;
     right: 0;
     z-index: 9999;
-    background-color: #fff;
+    background-color:#303030;
     border-bottom: 1px solid #eee;
 }
 .header-bottom{
@@ -39,7 +39,7 @@ a{
     width: 24px;
     height: 24px;
     margin: 10px 0 10px 20px;
-    background: url("../images/return.png");
+    background: url("/images/fanhui.png");
     background-size: 100%;
 }
 .header h3,.header .follow-title{
@@ -187,6 +187,7 @@ a{
     height: 22px;
     border-radius: unset;
     line-height: 22px;
+    color: #fff;
 }
 
 /*别人的主页的头部样式*/
@@ -194,9 +195,10 @@ a{
     background-color: #f49610;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    background: url("/images/backggg.jpg");
 }
 .other-header .header-left{
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .other-box{
     color: #ffffff;

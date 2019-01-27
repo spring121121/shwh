@@ -188,6 +188,14 @@
                         car += '</div>';
                         car += '</div>';
                         $.each(v.goods, function (k, goods) {
+                            var goods_name = goods['goods_name'];
+                            var goods_info = goods['goods_info'];
+                            if(goods_name.length>5){
+                                goods_name = goods_name.substr(0,5)+'...';
+                            }
+                            if(goods_info.length>6){
+                                goods_info = goods_info.substr(0,6)+'...';
+                            }
                             car += '<div class="car_div">';
                             car += '<div class="store_checkbox">';
                             car += '<div class="img_height"></div>';
@@ -197,8 +205,8 @@
                             car += '<img class="car_image" src="'+goods['image_one']+'"/>';
                             car += '</div>';
                             car += '<div class="store_checkbox">';
-                            car += '<p>'+goods['goods_name'].substr(0,5)+'...</p>';
-                            car += '<p>'+goods['goods_info'].substr(0,5)+'...</p>';
+                            car += '<p>'+goods_name+'</p>';
+                            car += '<p>'+goods_info+'</p>';
                             car += '<p class="car_"></p>';
                             car += '<p class="car_price">￥<span>'+goods['price']+'</span></p></div>';
                             car += '<div class="zc_btngroup car_num"><div class="zc_btnleft">-</div><div class="zc_btnmin">1</div> <div class="zc_btnright" >+</div></div></div>';
@@ -216,6 +224,10 @@
                     goods_ids.push($(this).val());
                     num.push($(this).parent().siblings('.car_num').find('.zc_btnmin').text());
                 });
+                if(goods_ids == ''){
+                    alert('您还没有选择商品哦！');
+                    return false;
+				}
 				window.location.href = '/wap/shop_purchase?goods_id='+goods_ids+'&num='+num;
 			});
             $('.back').on('click',function(){
@@ -307,8 +319,16 @@
                 var parentEle = $(this).parent().parent().siblings('.store_nameDiv').find('.store_checkbox').find('.zc-checkbox');
                 var ele = $(this).parent().parent().siblings('.car_div').find('.store_checkbox').find('.zc-checkbox');
                 if(check){
-                    if(ele.is(':checked') || ele.length<1){
-						parentEle.prop("checked",true);
+                    var isChecked = 0;
+                    ele.each(function() {
+                        if (!$(this).is(":checked")) {
+                            isChecked = 1;//存在没有选中的
+                        }
+                    });
+                    if(isChecked == 1){
+						parentEle.prop("checked",false);
+					}else{
+                        parentEle.prop("checked",true);
 					}
 				}else{
                     parentEle.prop("checked",false);

@@ -131,5 +131,10 @@ return [
         'end_time.required'=>'需求结束时间不能为空',
         'end_time.date_format'=>'需求结束时间格式不正确',
         'end_time.after'=>'需求结束时间必须晚于开始时间',
+    ],
+    'demandCreation'=>[
+        'creation_urls.required'=>'请上传您的作品',
+        'demand_id.required'=>'需求id不能为空',
+        'introduction.required'=>'作品介绍不能为空',
     ]
 ];
