@@ -221,9 +221,10 @@ class NoteController extends BaseController
         $page = $request->input('page', 1);
         $limit = $request->input('limit', 100);
         $offset = ($page - 1) * $limit;
+        $total = NoteModel::where('status','!=',NoteModel::CHECK_STATUS_2)->count();
         $noteList = DB::select("SELECT count(likes.id) as likeNum,note.* 
                             FROM note left join `likes` on likes.note_id =note.id 
-                            where note.deleted_at is null 
+                            where note.deleted_at is null and status !=2
                             GROUP BY note.id  
                             order by likeNum desc limit :offset,:limit", ['limit' => $limit, 'offset' => $offset]);
 
@@ -232,7 +233,7 @@ class NoteController extends BaseController
             $note->forwardNum = ForwardService::getForwardNum($note->id);
         }
 
-        return $this->success($noteList);
+        return $this->success($noteList,$total);
     }
 
     /**

@@ -44,6 +44,7 @@
 @extends('layout.footer')
 </body>
 <script src="/js/jquery-3.0.0.min.js"></script>
+<script src="/layer/layer.js"></script>
 <script src="/js/common.js"></script>
 <script src="/js/uploadfile.js"></script>
 
@@ -56,10 +57,12 @@
         // }
         $("#add-photo").on("change", function () {
             var img_size = $("input[type=file]").get(0).files[0].size;
-            console.log(img_size);
+            //console.log(img_size);
             //alert(img_size);
             if (img_size > 1000000){
-                alert("上传图片过大，请上传小于1M的图片");
+                layer.tips("上传图片过大，请上传小于1M的图片", '.write-note-photo', {
+                    tips: 3
+                });
             }else {
                 $.ajaxFileUpload({
                     url: '/upload', //用于文件上传的服务器端请求地址

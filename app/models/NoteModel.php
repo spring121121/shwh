@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class NoteModel extends Model
 {
     CONST CHECK_STATUS = 1;//通过审核
+    CONST CHECK_STATUS_2 = 2;//通过不通过
     //软删除 通过 deleted_at 字段区分是否删除，删除时调用 $table->softDeletes();
     use SoftDeletes;
     protected $dates = ['deleted_at'];

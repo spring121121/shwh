@@ -9,15 +9,40 @@
     <link rel="stylesheet" href="/styles/swiper.min.css">
     <link rel="stylesheet" href="/styles/common.css">
     <link rel="stylesheet" href="/styles/active.css">
+    <style>
+        .write-note{
+            position: fixed;
+            width: 50px;
+            left: 50%;
+            margin-left: -25px;
+            bottom: 60px;
+            text-align: center;
+        }
+        .write-note span{
+            color: #000;
+            font-size: 14px;
+        }
+        .write-note .write-img-box{
+            width: 42px;
+            height: 42px;
+            margin: 0 auto;
+            background-image: url("../images/jiahao-white.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%;
+            background-color: #333;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <header>
         <div class="activeTitle">
-            <div class="goIndex" onclick="toIndex()"><img src="/images/fanhui.png" alt=""></div>
+            <div class="goIndex" onclick="history.back()"><img src="/images/fanhui.png" alt=""></div>
             <div class="activeNav">
                 {{--<p class="addcolor" onclick="getSginList()">全部需求</p>--}}
-                <p onclick="getWorkList()" >需求列表</p>
+                <p onclick="getWorkList()" >我的需求列表</p>
             </div>
             <span onclick="changeHead()"><img src="/images/serch.png" alt=""></span>
         </div>
@@ -28,6 +53,11 @@
 
     </div>
     <div class="addhight"></div>
+    <div class="write-note">
+        <a href="/wap/myworksDetail">
+            <div class="write-img-box"></div>
+        </a>
+    </div>
 
     <!--引入footer-->
     @extends('layout.footer')
@@ -51,13 +81,12 @@
         var searchContent = $("#searchContent").val();
         $.ajax({
             type: "get",
-            url: "/getDemandList",
+            url: "/getMyDemandList",
             data: {
                 "searchContent": searchContent,
             },
             async: true,
             success: function (data) {
-                console.log(data)
                 var middenList = "";
                 data.data.forEach(function (i) {
                     middenList += ' <div class="activeContent">'
@@ -78,9 +107,7 @@
 
 
 
-    function toIndex() {
-        window.location.href = "/wap/index";
-    }
+
     function toOtherHome(otherUid) {
         window.location.href = "/wap/other_home?id="+otherUid;
     }
@@ -108,10 +135,10 @@
 
         var headList = ""
         headList += '<div class="activeTitle">'
-        headList += '<div class="goIndex" onclick="toIndex()"><img src="/images/fanhui.png" alt=""></div>'
+        headList += '<div class="goIndex" onclick="history.back()"><img src="/images/fanhui.png" alt=""></div>'
 
         headList += '<div class="activeNav">'
-        headList += '<p>需求列表</p>'
+        headList += '<p>我的需求列表</p>'
         headList += ' </div>'
         headList += ' <span onclick="changeHead()"><img src="/images/serch.png" alt=""></span>'
         headList += ' </div>'

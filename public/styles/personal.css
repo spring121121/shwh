@@ -366,6 +366,7 @@ ul,li{
 }
 .massage-category ul .click-change,
 .store-switch .click-change,
+.other-shop-classify .click-change,
 .header .follow-title .click-change{
     color:#F49610;
     border-bottom: 2px solid #F49610;
@@ -814,7 +815,7 @@ ul,li{
 
 /*探宝笔记页面样式*/
 .note-list-box{
-    margin: 10px 20px 0;
+    margin: 10px 10px 0;
 }
 .note-list-box label{
     position: absolute;
@@ -852,6 +853,7 @@ ul,li{
     background-color: #f1f1f1;
     border-radius: 5px;
     margin-bottom: 10px;
+    padding: 0 10px;
     height: 100px;
 }
 .store-content li{
@@ -861,10 +863,10 @@ ul,li{
     width: 80px;
     height: 80px;
     float: left;
-    margin: 10px;
+    margin: 10px 0;
 }
 .note-list-box li .note-list-right{
-    margin-left: 100px;
+    margin-left: 90px;
 }
 .note-list-box li .note-list-right .btn-notes{
     position: relative;
@@ -1069,7 +1071,7 @@ ul,li{
 .btn-release{
     width: 270px;
     height: 40px;
-    background: #F49710;
+    background: #333;
     margin: 120px auto 0;
     text-align: center;
     line-height: 40px;
@@ -1332,9 +1334,20 @@ ul,li{
     margin-right: 10px;
 }
 /*新增收货地址*/
+.wx-address{
+    height: 30px;
+    line-height: 30px;
+    padding-top: 20px;
+    background-color: #fff;
+}
+.wx-address a{
+    font-size: 16px;
+    text-align: center;
+    color: #f00;
+}
 .ipt-address-box,.edit-data{
     width: unset;
-    padding: 20px;
+    padding: 0 20px;
     background: #fff;
 }
 .ipt-address-box .ipt-box,.edit-data .ipt-box{
@@ -1916,7 +1929,7 @@ ul,li{
 }
 
 /*店铺页面样式*/
-.store-switch{
+.store-switch,.other-shop-classify{
     margin: 0;
     position: fixed;
     left: 0;
@@ -1925,7 +1938,8 @@ ul,li{
     z-index: 9999;
     justify-content: center;
 }
-.store-switch li,.other-switch li{
+.store-switch li,.other-switch li,
+.other-shop-classify li{
     border: none;
     box-shadow: unset;
     background: unset;
@@ -1940,6 +1954,18 @@ ul,li{
     display: none;
     margin-top: 50px;
 }
+.other-store-shop{
+    margin-top: 35px;
+}
+.other-shop-classify{
+    justify-content: start;
+    background-color: transparent;
+}
+.other-shop-classify li{
+    color: #fff;
+}
+
+
 /*店铺设置页面*/
 .edit-data .store-brief-box{
     height: 120px;
@@ -2576,7 +2602,7 @@ header>ul{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 header>ul>li img{

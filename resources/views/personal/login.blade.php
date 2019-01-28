@@ -35,7 +35,7 @@
                         </div>
                     </form>
                     <div class="btn-box">
-                        <a id="login" href="#">登录</a>
+                        <a id="login" href="javascript:void(0);">登录</a>
                         <a id="register" href="/wap/register">注册</a>
                     </div>
                 </div>
@@ -63,10 +63,10 @@
                     },
                     success : function(data){	//回调函数 和 后台返回的 数据
                         if (data.code == 200){
-                            alert(data.message);
+                            layer.msg(data.message);
                             window.location.href = "/wap/personal";
                         } else {
-                            alert(data.message);
+                            layer.msg(data.message);
                         }
                     }
                 });

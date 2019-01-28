@@ -23,11 +23,12 @@ class BaseController extends Controller
         ];
     }
 
-    public function success($data = [])
+    public function success($data = [],$total='')
     {
         return response()->json([
             'status' => true,
             'code' => 200,
+            'total'=>$total,
             'message' => config('errorcode.code')[200],
             'data' => $data,
         ]);

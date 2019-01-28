@@ -65,7 +65,7 @@
                         });
                         $(".my-address-box ul").html(noteHtml);
                     }else {
-                        alert("哎呀！出错了")
+                        layer.msg(data.message)
                     }
                 }
             });

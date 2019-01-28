@@ -36,14 +36,15 @@ a{
 }
 .header-left{
     float: left;
-    width: 24px;
-    height: 24px;
-    margin: 10px 0 10px 20px;
+    width: 20px;
+    height: 20px;
+    margin: 14px 0 10px 20px;
     background: url("/images/fanhui.png");
     background-size: 100%;
 }
 .header h3,.header .follow-title{
     margin: 0 90px;
+    color: #fff;
     height: 100%;
     line-height: 45px;
     text-align: center;
@@ -68,20 +69,28 @@ a{
     background-size: 100%;
 }
 .finnish-edit{
-    background: url("../images/wc-icon.png");
-    background-size: 100%;
+    text-align: center;
+    height: 45px;
+    line-height: 45px;
+    background: #333;
+    margin: 0 30px;
+    border-radius: 30px;
+    color: #fff;
 }
 #btn-dz-link{
     width: auto;
     font-size: 12px;
 }
+.header-right a{
+    color: #fff;
+}
 .header .btn-title-text{
     font-size: 12px;
     color: #000;
-    background-image: url("../images/xzbj-icon.png");
+    background-image: url("../images/xzbj-icon-fff.png");
 }
 .header .bg-add{
-    background-image: url("../images/jiahao-black.png");
+    background-image: url("../images/jiahao-white.png");
 }
 .content-box{
     overflow: hidden;
@@ -92,8 +101,15 @@ a{
 /*店铺的头部*/
 .store-header,.other-header{
     height: auto;
-    background-color: #eee;
+    background: url("../images/bg-personal-title.png") no-repeat center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-size: 100%;
     border: none;
+}
+.other-store-header{
+    border-radius: unset;
+    padding-bottom: 30px;
 }
 .renzheng,.finish{
     width: unset;
@@ -109,6 +125,10 @@ a{
 }
 .store-message-box{
     margin: 20px;
+    color: #FFF;
+}
+.other-store-box {
+    margin: 0 20px;
 }
 .store-message-box .icon-box{
     width: 55px;
@@ -118,8 +138,19 @@ a{
     border-radius: 5px;
     overflow: hidden;
 }
+.other-store-box .icon-box{
+    width: 30px;
+    height: 30px;
+}
 .store-name{
     margin-left: 75px;
+}
+.other-store-box .store-name{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    line-height: 30px;
 }
 .setting{
     width: 24px;
@@ -142,7 +173,8 @@ a{
     background-color: #f49610;
     margin-left: 10px;
     border-radius: 5px;
-    padding: 0;
+    padding: 0 5px;
+    color: #000;
 }
 .store-name span{
     display: block;
@@ -157,7 +189,12 @@ a{
     left: 0;
     width: 12px;
     height: 12px;
-    background-color: #000;
+}
+.other-store-box .store-name span{
+    margin-left: 10px;
+}
+.other-store-box .store-name span i{
+    top: 9px;
 }
 .store-brief{
     margin-left: 10px;
@@ -192,10 +229,9 @@ a{
 
 /*别人的主页的头部样式*/
 .other-header{
-    background-color: #f49610;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    background: url("/images/backggg.jpg");
+    background: #f49610 url("/images/backggg.jpg");
 }
 .other-header .header-left{
     margin-top: 20px;
