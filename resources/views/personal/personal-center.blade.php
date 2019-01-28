@@ -443,7 +443,7 @@
         });
 
         function toworksDetail() {
-            window.location.href = "/wap/myworksDetail";
+            window.location.href = "/wap/myActiveList";
         }
     </script>
 </html>
