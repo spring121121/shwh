@@ -15,6 +15,15 @@ class GoodsModel extends Model
      * 是代理
      */
     const IS_AGENT_1 = 1;
+    /**
+     * 允许被代理默认0
+     */
+    const CAN_BE_AGENT = 0;
+
+    /**
+     * 不允许被代理
+     */
+    const DONT_BE_AGENT = 1;
 
     CONST RELATE_GOODS = 10;//随机相关商品条数
     CONST UNDERCARRIAGE = 0;//商品下架
@@ -40,5 +49,6 @@ class GoodsModel extends Model
     /**
      * @var 字段在这里填写
      */
-    protected $fillable = ['store_id','goods_name','goods_info','price','image_url','stock','is_shipping','postage','is_agent','pgoods_id','be_agent'];
+    protected $fillable = ['store_id','goods_name','goods_info','price','image_url','stock','is_shipping','postage','is_agent','be_agent','pgoods_id',];
+
 }

@@ -31,6 +31,7 @@ class GoodsService
         $goodsModel->is_shipping = $pgoodsInfo->is_shipping;
         $goodsModel->postage = $pgoodsInfo->postage;
         $goodsModel->is_agent = GoodsModel::IS_AGENT_1;
+        $goodsModel->be_agent = GoodsModel::DONT_BE_AGENT;
         $goodsModel->pgoods_id = $pgoodsId;
         if($goodsModel->save()){
             return true;
