@@ -307,7 +307,7 @@
                         url : "/purchase",	//请求url 商城分类
                         type : "POST",	//请求类型  post|get
                         dataType : "json",  //返回数据的 类型 text|json|html--
-                        data:{address_id:address_id,goods_id:goodsid,num:num},
+                        data:{address_id:address_id,goods_id:goodsid,num:num,detail:detail},
                         success : function(data){//回调函数 和 后台返回的 数据
                             if(data.status){
                                 var order = data.data.pay_order_sn;
