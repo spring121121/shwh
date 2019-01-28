@@ -173,7 +173,7 @@ section{
 	position: relative;
 	width: 95%;
 	height: auto;
-    margin: 0 auto 16px;
+    margin: 10px auto 16px;
 	box-shadow: 2px 1px 13px 3px #bcbebc;
     background: transparent;
     border-radius: 10px;
@@ -358,4 +358,100 @@ footer ul li a i{
 .indexTitle{
     font-size: 16px!important;
     font-weight: bold!important;
+}
+.groomNuseum{
+    width: 100%;
+    height: auto;
+}
+.groomHead{
+    width: 90%;
+    margin: 0 auto 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.groomHead>p{
+    font-size: 16px;
+    font-weight: bold;
+}
+.groomHead>a{
+    font-size: 12px;
+    display: block;
+    width: 50px;
+}
+.groomContent{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.groomList{
+    width: 50%;
+    height: auto;
+    float: left;
+}
+.groomList>img{
+    width: 96%;
+    height: 110px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.groomInfo{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+.groomInfo>img{
+    width: 35px;
+    height: 35px;
+    border-radius:50% ;
+}
+.groomInfo>p{
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+    line-height: 35px;
+}
+.wrapDiv{
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+
+}
+
+.wrapDiv>img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.wrapTitle{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.wrapTitle>p:nth-child(1){
+    font-size: 14px;
+    font-weight: bold;
+}
+.wrapTitle>p:nth-child(2){
+    font-size: 12px;
+    /*font-weight: bold;*/
+    color: #929492;
+}
+.wrapImg{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between ;
+    margin: 0 auto 10px;
+
+}
+.wrapImg>img{
+    width: 49%;
+    height: 80px;
+    border-radius: 5px;
+}
+.addbox{
+    box-shadow: 2px 1px 13px 3px #bcbebc;
 }

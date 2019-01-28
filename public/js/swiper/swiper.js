@@ -67,3 +67,15 @@ var swiper = new Swiper('.swiper-add', {
         prevEl: '.swiper-button-prev',
     },
 });
+
+var swiper = new Swiper('.swiper-addList', {
+    // loop : true,
+    spaceBetween:5,
+    slidesPerView:1.4,
+    // centeredSlides: true,
+    // autoplay: {
+    //     delay: 5000,
+    //     disableOnInteraction: false,
+    // },
+
+});
