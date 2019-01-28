@@ -28,6 +28,9 @@
 			.swiper-box {
 				margin-top: 45px;
 			}
+			#sp_detail{
+				padding:5% 2% 0 2%;
+			}
 		</style>
 	</head>
 
@@ -148,7 +151,7 @@
 					//详情
 					categoryDetail += '<input type="hidden" id="goods_id" value="'+v['id']+'">';
 					categoryDetail += '<p class="zc_price">￥'+v['price']+'</p>';
-					categoryDetail += '<del class="zc_del">价格'+v['price']+'</del>';
+					categoryDetail += '<del class="zc_del">价格￥'+v['price']+'</del>';
 					categoryDetail += '<div class="zc_goodsDetail">';
 					categoryDetail += '<p>'+v['goods_name']+'</p><div></div><p></p>';
 					categoryDetail += '</div>';
