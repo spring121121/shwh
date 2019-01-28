@@ -394,6 +394,7 @@ class ShopController extends BaseController
         $uid = UserService::getUid($request);
         $address_id = $request->input('address_id');
         $goods_ids = $request->input('goods_id');
+//        return $this->success($goods_ids);
         $goodsIds = explode(',',$goods_ids);
         $num = $request->input('num');
         $nums = explode(',',$num);
