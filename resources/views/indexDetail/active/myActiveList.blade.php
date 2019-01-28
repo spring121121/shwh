@@ -108,9 +108,7 @@
 
 
 
-    function toOtherHome(otherUid) {
-        window.location.href = "/wap/other_home?id="+otherUid;
-    }
+
 
     function toDetail(demandId) {
         window.location.href = "/active/detail/"+demandId;

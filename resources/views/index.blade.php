@@ -7,12 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>山洞文化</title>
     <link rel="stylesheet" href="/styles/swiper.min.css">
-    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="/styles/base.css">
     <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/font/iconfont.css">
-    <link rel="stylesheet" href="/font/iconfont2.css"/>
-    <script type="text/javascript" src="/js/iconfont.js"></script>
-    <link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>
+    {{--<script type="text/javascript" src="/js/iconfont.js"></script>--}}
+    {{--<link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>--}}
     <style>
         .icon {
             width: 1em;
@@ -58,11 +56,9 @@
                     <div class="swiper-slide" style="overflow: hidden"><img src="/images/banner2.jpg" alt=""></div>
                     <div class="swiper-slide" style="overflow: hidden"><img src="/images/004.jpg" alt=""></div>
                 </div>
-                <!-- Add Pagination -->
+
                 <div class="swiper-pagination"></div>
-                <!-- Add Arrows -->
-                <!-- <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div> -->
+
             </div>
         </div>
         <div id="list">
@@ -106,6 +102,43 @@
                 your browser does not support the video tag
             </video>
         </div>
+        {{--推荐博物馆--}}
+        <div class="groomNuseum">
+            <div class="groomHead">
+                <p>相关推荐</p>
+                <a href="/wap/museumOne?roleId=2">查看更多</a>
+            </div>
+            <div class="groomContent clearfix">
+                <div class="groomList ">
+                    <img src="/images/wemyi2.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people2.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+                <div class="groomList ">
+                    <img src="/images/wenyi3.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+                <div class="groomList ">
+                    <img src="/images/wenyi4.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people3.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+                <div class="groomList ">
+                    <img src="/images/wenyi5.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people2.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="culture">
             <p>文创故事</p>
             <video src="/images/viode.mp4" loop controls="controls" width="100%" height="100%" >
@@ -119,19 +152,155 @@
             </video>
         </div>
 
-        <!--发布需求-->
-        <div class="demand">
-        	<p></p>
+        <div class="groomHead">
+            <p>相关推荐</p>
+            <a href="/wap/designW">查看更多</a>
         </div>
-        
-        {{--<div id="exhibition">--}}
-            {{--<div class="exhibition_left">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-            {{--<div class="exhibition_right">--}}
-                {{--<ul></ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
+        <div class="swiper-container swiper-addList">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide addbox" >
+                    <div class="wrapDiv">
+                        <img src="/images/people.jpg" alt="">
+                        <div class="wrapTitle">
+                            <p>一程贰清</p>
+                            <p>设计·天津</p>
+                        </div>
+
+                    </div>
+                    <div class="wrapImg">
+                        <img src="/images/haibao2.jpg" alt="">
+                        <img src="/images/haibao3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide addbox">
+                    <div class="wrapDiv">
+                        <img src="/images/people.jpg" alt="">
+                        <div class="wrapTitle">
+                            <p>一程贰清</p>
+                            <p>设计·天津</p>
+                        </div>
+
+                    </div>
+                    <div class="wrapImg">
+                        <img src="/images/haibao2.jpg" alt="">
+                        <img src="/images/haibao3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide addbox">
+                    <div class="wrapDiv">
+                        <img src="/images/people.jpg" alt="">
+                        <div class="wrapTitle">
+                            <p>一程贰清</p>
+                            <p>设计·天津</p>
+                        </div>
+                    </div>
+                    <div class="wrapImg">
+                        <img src="/images/haibao2.jpg" alt="">
+                        <img src="/images/haibao3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="culture">
+            <p>文创故事</p>
+            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+        <div class="culture">
+            <p>文创故事</p>
+            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+        {{--文创机构推荐--}}
+        <div class="groomNuseum">
+            <div class="groomHead">
+                <p>相关推荐</p>
+                <a href="/wap/museumOne?roleId=2">查看更多</a>
+            </div>
+            <div class="groomContent clearfix">
+                <div class="groomList ">
+                    <img src="/images/wemyi2.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people2.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+                <div class="groomList ">
+                    <img src="/images/wenyi3.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+                <div class="groomList ">
+                    <img src="/images/wenyi4.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people3.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+                <div class="groomList ">
+                    <img src="/images/wenyi5.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people2.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="culture">
+            <p>文创故事</p>
+            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+        <div class="culture">
+            <p>文创故事</p>
+            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+        {{--工厂推荐--}}
+        <div class="groomNuseum">
+            <div class="groomHead">
+                <p>相关推荐</p>
+                <a href="/wap/museumOne?roleId=2">查看更多</a>
+            </div>
+            <div class="groomContent clearfix">
+                <div class="groomList ">
+                    <img src="/images/wemyi2.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people2.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+                <div class="groomList ">
+                    <img src="/images/wenyi3.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+                <div class="groomList ">
+                    <img src="/images/wenyi4.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people3.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+                <div class="groomList ">
+                    <img src="/images/wenyi5.jpg" alt="">
+                    <div class="groomInfo">
+                        <img src="/images/people2.jpg" alt="">
+                        <p>小鸟依人</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 </div>
 <!--引入footer-->

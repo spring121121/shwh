@@ -20,7 +20,7 @@ use PDO;
 class CommentController extends BaseController
 {
 
-    public function reply(Request $request)
+    public function noteReply(Request $request)
     {
         $data['note_id'] = $request->input('note_id');
         $data['content'] = $request->input('content');
@@ -43,6 +43,7 @@ class CommentController extends BaseController
         $comment = new CommentModel();
 
         $comment->uid = $userinfo['id'];
+        $comment->type = 1;
 
         if($to_cid) {
             $comment_exist = $comment->where('id',$to_cid)->first();
@@ -69,6 +70,75 @@ class CommentController extends BaseController
 
         return $this->success();
 
+    }
+
+    public function activeReply(Request $request)
+    {
+        $data['note_id'] = $request->input('note_id');
+        $data['content'] = $request->input('content');
+        if(!check_post($data)) {
+            return $this->fail(70000,$data);
+        }
+        $data['to_cid'] = $request->input('to_cid');
+        $userinfo = $request->session()->get('userInfo');
+        if(!$userinfo) {
+            return $this->fail(50009);
+        }
+
+        $note_id = $data['note_id'];
+        $to_cid = $data['to_cid'];
+        $content = $data['content'];
+        $exist = NoteModel::where('id',$note_id)->first();
+        if(!$exist) {
+            return $this->fail(70007);
+        }
+        $comment = new CommentModel();
+
+        $comment->uid = $userinfo['id'];
+        $comment->type = 2;
+
+        if($to_cid) {
+            $comment_exist = $comment->where('id',$to_cid)->first();
+            if(!$comment_exist) {
+                return $this->fail(70008);
+            }
+            $comment->to_cid = $to_cid;
+            $comment->to_uid = $comment_exist->uid;
+            if($comment_exist->to_cid == 0) {
+                $comment->root_cid = $comment_exist->id;
+            }else {
+                $comment->root_cid = $comment_exist->root_cid;
+            }
+        }else {
+            $comment->root_cid = 0;
+        }
+        $comment->note_id = $note_id;
+        $comment->content = $content;
+        try {
+            $comment->save();
+        }catch (\Exception $e) {
+            return $this->fail(300,$e->getMessage());
+        }
+
+        return $this->success();
+
+    }
+
+    public function getNoteCommentList(Request $request) {
+        $noteId = $request->input('note_id','');
+        $list = [];
+        try {
+            DB::setFetchMode(PDO::FETCH_ASSOC);
+            $list = DB::select("SELECT c.id,c.note_id,c.uid,c.to_cid,c.to_uid,c.content,c.root_cid,c.created_at,u.photo,u.nickname,u2.nickname AS to_nickname 
+FROM comment c 
+LEFT JOIN user u ON c.uid=u.id 
+LEFT JOIN user u2 ON c.to_uid=u2.id 
+WHERE c.note_id=?",[$noteId]);
+        }catch (\Exception $e) {
+            exit($e->getMessage());
+        }
+        $list = $this->recursion($list);
+        return $this->success($list);
     }
 
     public function tt(Request $request) {
@@ -101,6 +171,18 @@ class CommentController extends BaseController
 //            return $this->fail(300,$e->getMessage());
 //        }
 //        halt('ITS OKOK!');
+    }
+
+
+    private function recursion($array,$to_cid=0) {
+        $to_array = [];
+        foreach ($array as $v) {
+            if($v['root_cid'] == $to_cid) {
+                $v['child'] = $this->recursion($array,$v['id']);
+                $to_array[] = $v;
+            }
+        }
+        return $to_array;
     }
 
 

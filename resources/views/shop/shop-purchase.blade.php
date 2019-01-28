@@ -214,6 +214,7 @@
         var id = getUrlParam('id');
         var goodsid = getUrlParam('goods_id');
         var num = getUrlParam('num');
+        var detail = getUrlParam('detail');//从立即购买进来
         $.ajax({
             url : "/defaultAddress",	//请求url
             type : "get",	//请求类型  post|get
@@ -253,10 +254,10 @@
         $.ajax({
             url : "/myOrderList",	//请求url 商城分类
             type : "get",	//请求类型  post|get
-            async: true,
             dataType : "json",  //返回数据的 类型 text|json|html--
-            data:{goods_id:goodsid,num:num},
+            data:{goods_id:goodsid,num:num,detail:detail},
             success : function(data){//回调函数 和 后台返回的 数据
+                console.log(data);
                 var record = data.data;
                 $.each(record.data, function (k, v) {
                     car += '<div class="store_parent">';
@@ -297,17 +298,17 @@
 
                 settle += '<div class="total_price t_price">￥'+record['total_price']+'</div>';
                 settle += '<div class="total_price total_submit">提交订单</div>';
+
                 $('.select_submit').html(settle);
 
                 $('.total_submit').bind('click',function(){
+                    var address_id = $('.btn-bjdz').attr('id');
                     $.ajax({
                         url : "/purchase",	//请求url 商城分类
-                        type : "post",	//请求类型  post|get
-                        async: false,
+                        type : "POST",	//请求类型  post|get
                         dataType : "json",  //返回数据的 类型 text|json|html--
-                        data:{address_id:address_id,goods_id:goodsid,num:num},
+                        data:{address_id:address_id,goods_id:goodsid,num:num,detail:detail},
                         success : function(data){//回调函数 和 后台返回的 数据
-                            console.log(data);
                             if(data.status){
                                 var order = data.data.pay_order_sn;
                                 window.location.href="http://shwh.jianghairui.com/wx/pay?pay_order_sn="+order;
@@ -315,11 +316,15 @@
                         }
                     });
                 });
+
             }
         });
-
         $('.back').on('click',function(){
-            window.location.href="/wap/shop_cart"
+            if(detail !=null){
+                window.location.href="/wap/shop_detail?id="+goodsid;
+                return false;
+            }
+            window.location.href="/wap/shop_cart";
         });
         //获取url参数
         function getUrlParam(name) {
