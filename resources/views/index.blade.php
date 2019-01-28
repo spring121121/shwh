@@ -8,12 +8,9 @@
     <title>山洞文化</title>
     <link rel="stylesheet" href="/styles/swiper.min.css">
     <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" href="/styles/common.css">
     <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/font/iconfont.css">
-    <link rel="stylesheet" href="/font/iconfont2.css"/>
-    <script type="text/javascript" src="/js/iconfont.js"></script>
-    <link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>
+    {{--<script type="text/javascript" src="/js/iconfont.js"></script>--}}
+    {{--<link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>--}}
     <style>
         .icon {
             width: 1em;
