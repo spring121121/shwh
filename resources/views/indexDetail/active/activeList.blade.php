@@ -16,8 +16,8 @@
         <div class="activeTitle">
             <div class="goIndex" onclick="toIndex()"><img src="/images/fanhui.png" alt=""></div>
             <div class="activeNav">
-                <p class="addcolor" onclick="getSginList()">全部需求</p>
-                <p onclick="getWorkList()">我的需求</p>
+                {{--<p class="addcolor" onclick="getSginList()">全部需求</p>--}}
+                <p onclick="getWorkList()" >需求列表</p>
             </div>
             <span onclick="changeHead()"><img src="/images/serch.png" alt=""></span>
         </div>
