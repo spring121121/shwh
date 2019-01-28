@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/styles/swiper.min.css">
     <link rel="stylesheet" href="/styles/common.css">
     <link rel="stylesheet" href="/styles/personal.css">
+    <link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>
     <style>
         .pl-content ul li .pl-cont h3 .dianzan{
             position: absolute;
@@ -92,7 +93,7 @@
     <ul class="btn-list-icon">
         <li id="pinglun" onclick="pinglun(0,'')"></li>
         <li id="shoucang" onclick="addForward({{$noteDetail['uid']}},{{$noteDetail['id']}})"></li>
-        <li id="dianzan"></li>
+        <li><em  id="dianzan-{{$noteDetail['id']}}" class="iconfont icon-dianzan" onclick="addLikes({{$noteDetail['id']}})"></em></li>
     </ul>
     <div class="more-pl-title" style="width: 100%;">
         <div class="note-cont" style="width:100%">
@@ -114,7 +115,7 @@
                     <div class="pl-cont">
 
                         <h3>{{$li['nickname']}}<i></i><span>{{$li['created_at']}}</span>
-                            <div class="dianzan"></div>
+                            {{--<div class="dianzan"></div>--}}
                             <div class="pinglun" onclick="pinglun({{$li['id']}},'{{$li['nickname']}}')"></div>
                         </h3>
                         <p>{{$li['content']}}</p>
@@ -130,7 +131,7 @@
                                     </div>
                                     <div class="pl-cont">
                                         <h3>{{$lii['nickname']}}<i></i><span>@<b>{{$lii['to_nickname']}}</b></span>
-                                            <div class="dianzan"></div>
+                                            {{--<div class="dianzan"></div>--}}
                                             <div class="pinglun" onclick="pinglun({{$lii['id']}},'{{$lii['nickname']}}')"></div>
                                         </h3>
                                         <p>{{$lii['content']}}</p>
