@@ -222,9 +222,9 @@ class NoteController extends BaseController
         $limit = $request->input('limit', 100);
         $offset = ($page - 1) * $limit;
         $total = NoteModel::where('status','!=',NoteModel::CHECK_STATUS_2)->count();
-        $noteList = DB::select("SELECT count(likes.id) as likeNum,note.* 
-                            FROM note left join `likes` on likes.note_id =note.id 
-                            where note.deleted_at is null and status !=2
+        $noteList = DB::select("SELECT count(likes.id) as likeNum,note.*,user.photo,user.nickname
+                            FROM note left join `likes` on likes.note_id =note.id left join user on note.uid=user.id
+                            where note.deleted_at is null and note.status !=2
                             GROUP BY note.id  
                             order by likeNum desc limit :offset,:limit", ['limit' => $limit, 'offset' => $offset]);
 
@@ -373,7 +373,7 @@ class NoteController extends BaseController
 FROM comment c 
 LEFT JOIN user u ON c.uid=u.id 
 LEFT JOIN user u2 ON c.to_uid=u2.id 
-WHERE c.note_id=?",[$noteId]);
+WHERE c.note_id=? AND c.type=1",[$noteId]);
         }catch (\Exception $e) {
             exit($e->getMessage());
         }

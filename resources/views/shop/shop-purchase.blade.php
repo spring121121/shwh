@@ -163,7 +163,7 @@
             padding-top: 0;
         }
         header ul {
-            margin: 0 10px;
+            margin: 0 10px 0 5px;
         }
     </style>
 </head>
@@ -253,7 +253,6 @@
         $.ajax({
             url : "/myOrderList",	//请求url 商城分类
             type : "get",	//请求类型  post|get
-            async: true,
             dataType : "json",  //返回数据的 类型 text|json|html--
             data:{goods_id:goodsid,num:num},
             success : function(data){//回调函数 和 后台返回的 数据
@@ -297,29 +296,38 @@
 
                 settle += '<div class="total_price t_price">￥'+record['total_price']+'</div>';
                 settle += '<div class="total_price total_submit">提交订单</div>';
+
                 $('.select_submit').html(settle);
 
                 $('.total_submit').bind('click',function(){
+                    var address_id = $('.btn-bjdz').attr('id');
                     $.ajax({
                         url : "/purchase",	//请求url 商城分类
-                        type : "post",	//请求类型  post|get
-                        async: false,
+                        type : "POST",	//请求类型  post|get
                         dataType : "json",  //返回数据的 类型 text|json|html--
                         data:{address_id:address_id,goods_id:goodsid,num:num},
                         success : function(data){//回调函数 和 后台返回的 数据
                             console.log(data);
+                            // alert(JSON.stringify(data))
                             if(data.status){
                                 var order = data.data.pay_order_sn;
                                 window.location.href="http://shwh.jianghairui.com/wx/pay?pay_order_sn="+order;
                             }
+                        },
+                        error:function (res) {
+                            alert('error')
                         }
+
                     });
                 });
+
             }
         });
 
+
+
         $('.back').on('click',function(){
-            window.history.go(-1);
+            window.location.href="/wap/shop_cart"
         });
         //获取url参数
         function getUrlParam(name) {

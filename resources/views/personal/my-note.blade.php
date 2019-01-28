@@ -35,7 +35,7 @@
         </div>
         <div class="mask-box">
             <div class="weChat del-order">
-                <span>确定删除此收货地址吗？</span>
+                <span>确定删除这条笔记吗？</span>
                 <div class="btn-mask">
                     <button class="btn-del-false">取消</button>
                     <button id="del-note-true">确定</button>
@@ -82,7 +82,7 @@
                         alert('删除成功')
                         window.location.reload()
                     } else {
-                        alert('删除失败')
+                        alert(data.message)
                     }
                 });
             });
@@ -91,7 +91,7 @@
         function deleteNoteAll(){
             console.log($("input:checkbox[name=choice]:checked").length)
             if ($("input:checkbox[name=choice]:checked").length == 0){
-                alert("请先选择要删除的笔记")
+                layer.msg("请先选择要删除的笔记")
             }else {
                 $(".mask-box").css("display","block");
                 $("#del-note-true").click(function () {
@@ -104,7 +104,7 @@
                             alert('删除成功')
                             window.location.reload()
                         } else {
-                            alert('删除失败')
+                            alert(data.message)
                         }
                     });
                 });

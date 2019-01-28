@@ -74,7 +74,7 @@ $(function () {
     $("#edit-del").click(function () {
         a = a + 1;
         if (a % 2 == 0) {
-            $(this).css("background-image", "url('../images/wc-icon.png')");
+            $(this).css("background-image", "url('../images/wc-icon-ffcc00.png')");
             $(".note-list-box li").animate({"margin": "0 55px 20px 25px"}, 500);
             $(".btn-del-box").animate({"bottom": "55px"}, 500);
             $(".choice").animate({"left": "-25px"}, 500);
@@ -82,7 +82,7 @@ $(function () {
             $(".note-list-box li").find("label").css("display", "block");
             $(".write-note").css("display", "none");
         } else {
-            $(this).css("background-image", "url('../images/xzbj-icon.png')");
+            $(this).css("background-image", "url('../images/xzbj-icon-fff.png')");
             $(".note-list-box li").animate({"margin": "0 0 20px 0"}, 500);
             $(".btn-del-box").animate({"bottom": "5px"}, 500, function () {
                 $(".write-note").css("display", "block");
@@ -104,6 +104,10 @@ $(function () {
         $(".note-list-box li").find("label").css("display", "none");
     });
 
+    // 返回上一级页面
+    $('.goback').on('click',function(){
+        window.history.go(-1);
+    });
 
     //给全选的复选框添加事件
     $("#all-check").click(function () {
@@ -377,6 +381,9 @@ function getCookie(cookie_name) {
     return value;
 }
 
+function toOtherHome(otherUid) {
+    window.location.href = "/wap/other_home?id="+otherUid;
+}
 //对笔记点赞
 function addLikes(note_id) {
     var likeNum = parseInt($("#likeNum-"+note_id).html());

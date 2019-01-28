@@ -196,8 +196,13 @@ Route::get('wx/location','WxAuthController@getLocation');//微信分享朋友圈
 
 Route::get('wap/factoryShow', 'FactoryController@fatoryList');
 
-Route::post('note/reply','CommentController@reply');
+Route::post('note/reply','CommentController@noteReply');
+Route::post('note/commentList','CommentController@getNoteCommentList');
 Route::get('tt','CommentController@tt');
+
+Route::get('active/detail/{active_id}','ActiveController@detail');
+Route::post('active/reply','CommentController@activeReply');
+
 
 
 
@@ -272,6 +277,9 @@ Route::get('wap/shop', function () {//商城首页
 });
 Route::get('wap/shop_share', function () {//商品分销
     return view('shop/shop-share');
+});
+Route::get('wap/other_store', function () {//他人的店铺，进店逛逛
+    return view('shop/other-store');
 });
 Route::get('wap/shop_detail', function () {//商品详情
     return view('shop/shop-details',Cookie::get('info')?Cookie::get('info'):['id'=>0]);

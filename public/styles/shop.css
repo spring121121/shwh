@@ -179,8 +179,8 @@
 
 /*商品详情的样式*/
 .zc_detailContent{
-	width: 95%;
-	margin:15px auto;
+	width: 100%;
+	background: #fff;
 }
 .zc_price{
 	font-size: 18px;
@@ -211,13 +211,13 @@
 	margin-top: 8px;
 }
 .zc_business{
-	width: 100%;
 	height: auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	margin-top: 20px;
 	margin-bottom:10px;
+	padding:0 2%;
 }
 .zc_business{
 	font-size: 12px;
@@ -229,11 +229,11 @@
 	background: #F2F2F2;
 }	
 .zc_businehref{
-	width: 100%;
 	height: auto;
 	display: flex;
 	flex-direction: row;
 	margin-top: 20px;
+	padding:0 2%;
 }
 .zc_businehref>img{
 	width: 60px;
@@ -283,6 +283,7 @@
 	height: auto;
 	text-align: center;
 	margin:20px 0;
+	background: #fff;
 }
 .zc_goodsimg{
 	width: 100%;

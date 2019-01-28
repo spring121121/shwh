@@ -457,9 +457,9 @@ class ShopController extends BaseController
     //计算代理费用
     public function agentPrice($goods_id){
         $pgoodsid = GoodsModel::where('id',$goods_id)->select('pgoods_id','price')
-            ->first()->toArray();//代理商店商品的价格和代理原商店的商品id
+            ->get()->toArray();//代理商店商品的价格和代理原商店的商品id
         $pgoodprice = GoodsModel::where('id',$pgoodsid['pgoods_id'])->select('price')
-            ->first()->toArray();//原商店的商品价格
+            ->get()->toArray();//原商店的商品价格
         $agent_price = $pgoodsid['price'] - $pgoodprice['price'];
         return $agent_price;
     }

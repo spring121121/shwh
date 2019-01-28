@@ -280,21 +280,29 @@
                 if (mobile == ""){
                     layer.msg("请输入手机号码");
                 }else {
-                    $.ajax({
-                        url : "http://shwh.jianghairui.com/sendSms",	//请求url
-                        type : "post",	//请求类型  post|get
-                        dataType : "json",  //返回数据的 类型 text|json|html--
-                        data: {tel:mobile},
-                        success : function(data){//回调函数 和 后台返回的 数据
-                            //alert(JSON.stringify(data))
-                            if (data.code == 200){
-                                settime();
-                                layer.msg(data.message);
-                            }else {
-                                layer.msg(data.message);
+                    if(isclick) {
+                        isclick = false;
+                        $.ajax({
+                            url : "http://shwh.jianghairui.com/sendSms",	//请求url
+                            type : "post",	//请求类型  post|get
+                            dataType : "json",  //返回数据的 类型 text|json|html--
+                            data: {tel:mobile},
+                            success : function(data){//回调函数 和 后台返回的 数据
+                                //alert(JSON.stringify(data))
+                                if (data.code == 200){
+                                    settime();
+                                    layer.msg(data.message);
+                                }else {
+                                    layer.msg(data.message);
+                                    isclick = true;
+                                }
+                            },
+                            error:function () {
+                                isclick = true;
                             }
-                        }
-                    });
+                        });
+                    }
+
                 }
             });
             $(".btn-sure").click(function () {
@@ -428,12 +436,12 @@
             //倒计时
             function settime() {
                 if (countdown == 0) {
-                    $("#btn-get-code").removeAttr('disabled').html("获取验证码")
+                    $("#btn-get-code").html("获取验证码")
                     countdown = 60;
                     isclick = true;
                     return false;
                 } else {
-                    $("#btn-get-code").attr('disabled','disabled').html("重新发送(" + countdown + ")");
+                    $("#btn-get-code").html("重新发送(" + countdown + ")");
                     countdown--;
                 }
                 setTimeout(function () {

@@ -15,8 +15,8 @@
 <div class="container">
     <header>
         <div class="activeTitle">
-            <div class="goIndex" onclick="toIndex()"><img src="/images/fanhui.png" alt=""></div>
-            <p class="btn1">2019evn我的青春</p>
+            <div class="goIndex" onclick="toIndex()"><img src="{{$active['demand_url']}}" alt=""></div>
+            <p class="btn1">{{$active['title']}}</p>
             <span></span>
         </div>
     </header>
@@ -24,38 +24,15 @@
            <ul>
                <li class="addcolor c" >需求说明</li>
                <li class="d" >奖项设置</li>
-
                <li class="e">获奖作品</li>
            </ul>
        </div>
      <div class="addtTopheight"></div>
     <div class="de_activeRule" id="activeRule">
         <p class="de_ruleOne">竞赛说明</p>
-        <p class="de_ruleTwo">早晨醒来，习惯性地打开微信朋友圈，看一下微信好友们的见闻，心得和生活。
-
-            　　 又一次愕然看到有人午夜痛苦的说说："人活着到底为了什么……"
-
-            　　 当越来越多的人在讨论人到底为什么而活着的时候，我想，在物欲横流的今天，
-            是更多的人迷失了，甚至忽略了这个问题。
-
-            　　 这个被物质冲昏头脑的社会，让世人活得也很累，究其原因，是我们被迫追逐得太多。
-
-            　　 是啊，我们到底为什么活着呢？物质的最大化，还是梦想的美好？或是为爱我的人和我爱的人，
-            还是那些莫名奇妙的执着与眷恋……
-
-            　　 好像对于每个人而言都有不下一万种答案，但总的来讲只是我们要快乐富足的活着。
-            因为没有谁会甘心情愿生活在困苦之中，承受身
-            心煎熬。谁都不希望在追寻梦想的道路上自己是下一个凡・高。必竟人活着离不开物质，
-            你所追求的艺术与梦想也都需要物质做铺垫。
+        <p class="de_ruleTwo">
+            {{$active['content']}}
         </p>
-        <p class="de_ruleOne">规则说明</p>
-         <div class="">
-             <p class="de_ruleTwo">1.次愕然看到有人午夜痛苦的说说："人活着到底为了什么……"</p>
-             <p class="de_ruleTwo">2. 好像对于每个人而言都有不下一万种答案，但总的来讲"</p>
-             <p class="de_ruleTwo">3.次愕然看到有人午夜痛苦的说说："人活着到底为了什么……"</p>
-             <p class="de_ruleTwo">4. 好像对于每个人而言都有不下一万种答案，但总的来讲"</p>
-             <p class="de_ruleTwo">5.次愕然看到有人午夜痛苦的说说："人活着到底为了什么……"</p>
-         </div>
     </div>
     <div class="de_activeGold" id="activeGold">
         <p class="de_ruleOne">奖项设置</p>
@@ -122,83 +99,68 @@
       <div class="de_liuyan">
      <p class="de_activeTell">留言区</p>
      <div class="de_activePublish">
-         <textarea id="textar"></textarea>
-         <div class="de_tellBtn" onclick="addPlList()">发布</div>
+         <textarea id="textar" placeholder="输入评论内容"></textarea>
+         <div class="de_tellBtn" id="reply-btn">发布</div>
      </div>
       </div>
-    <div class="de_activeNext">
-    <div class="de_fansSay">
-        <div class="de_fansOne">
-           <div class="de_fansHead">
-               <img src="/images/people2.jpg" alt="">
-               <p>微微乖</p>
+    @foreach ($commentList as $li)
+        <div class="de_activeNext">
+            <div class="de_fansSay">
+                <div class="de_fansOne">
+                    <div class="de_fansHead">
+                        <img src="{{$li['photo']}}" alt="">
+                        <p>{{$li['nickname']}}</p>
 
-           </div>
-            <div class="de_fansTwo">落实到啦机构并及时报告收款福克斯V领马克上来看看过考试科目在没在看大</div>
-            <div class="de_follow">
-               <div class="de_followTime">
-                   <img src="/images/time.png" alt="">
-                   <p>2019.01.05</p>
-               </div>
-                <div class="de_followDz">
-                    <img src="/images/dz-icon.png" alt="">
-                    <p>666</p>
-                </div>
-                <div class="de_followPl">
-                    <img src="/images/pl-icon.png" alt="">
-                    <p>回复</p>
+                    </div>
+                    <div class="de_fansTwo">{{$li['content']}}</div>
+                    <div class="de_follow">
+                        <div class="de_followTime">
+                            <img src="/images/time.png" alt="">
+                            <p>{{$li['created_at']}}</p>
+                        </div>
+                        <div class="de_followDz">
+                            <img src="/images/dz-icon.png" alt="">
+                            <p>666</p>
+                        </div>
+                        <div class="de_followPl">
+                            <img src="/images/pl-icon.png" alt="">
+                            <p onclick="pinglun({{$li['id']}},'{{$li['nickname']}}')">回复</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="de_fansSay">
-        <div class="de_fansOne">
-            <div class="de_fansHead">
-                <img src="/images/people3.jpg" alt="">
-                <p>雨翩翩</p>
+        @if(!empty($li['child']))
+                @foreach ($li['child'] as $lii)
+                    <div class="de_activeNext" style="margin-left: 20px">
+                        <div class="de_fansSay">
+                            <div class="de_fansOne">
+                                <div class="de_fansHead">
+                                    <img src="{{$lii['photo']}}" alt="">
+                                    <p>{{$lii['nickname']}}</p>
 
-            </div>
-            <div class="de_fansTwo">妲己陪你玩</div>
-            <div class="de_follow">
-                <div class="de_followTime">
-                    <img src="/images/time.png" alt="">
-                    <p>2019.01.05</p>
-                </div>
-                <div class="de_followDz">
-                    <img src="/images/dz-icon.png" alt="">
-                    <p>666</p>
-                </div>
-                <div class="de_followPl">
-                    <img src="/images/pl-icon.png" alt="">
-                    <p>回复</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="de_fansSay">
-        <div class="de_fansOne">
-            <div class="de_fansHead">
-                <img src="/images/people.jpg" alt="">
-                <p>史莱克</p>
-            </div>
-            <div class="de_fansTwo">落实到啦机构并及时报告收款福克斯V领马克上来看看过考试科目在没在看大</div>
-            <div class="de_follow">
-                <div class="de_followTime">
-                    <img src="/images/time.png" alt="">
-                    <p>2019.01.05</p>
-                </div>
-                <div class="de_followDz">
-                    <img src="/images/dz-icon.png" alt="">
-                    <p>666</p>
-                </div>
-                <div class="de_followPl">
-                    <img src="/images/pl-icon.png" alt="">
-                    <p>回复</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+                                </div>
+                                <div class="de_fansTwo">@<b>{{$lii['to_nickname']}}</b> {{$lii['content']}}</div>
+                                <div class="de_follow">
+                                    <div class="de_followTime">
+                                        <img src="/images/time.png" alt="">
+                                        <p>{{$lii['created_at']}}</p>
+                                    </div>
+                                    <div class="de_followDz">
+                                        <img src="/images/dz-icon.png" alt="">
+                                        <p>666</p>
+                                    </div>
+                                    <div class="de_followPl">
+                                        <img src="/images/pl-icon.png" alt="">
+                                        <p onclick="pinglun({{$lii['id']}},'{{$lii['nickname']}}')">回复</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+        @endif
+    @endforeach
     <div class="de_addheight"></div>
 
 
@@ -233,6 +195,51 @@
                 $(".e").addClass("addcolor").siblings().removeClass("addcolor");
             }
         })
+    })
+    var isclick = true,activeId = "{{$active['id']}}",to_cid=0;
+
+    function pinglun(cid,to_nickname) {
+        if(cid != to_cid) {
+            $("#textar").val('');
+        }
+        to_cid = cid;
+        $("#textar").attr("placeholder","回复" + to_nickname + " : ")
+        $("#textar").focus()
+    }
+
+    $("#reply-btn").click(function () {
+        var content = $("#textar").val();
+        if(content.length === 0) {
+            alert('请输入回复内容');
+            return;
+        }
+        if(isclick) {
+            isclick = false;
+            $.ajax({
+                url:"/active/reply",
+                type:"POST",
+                dataType:"json",
+                data:{note_id:activeId,to_cid:to_cid,content:content},
+                success: function (res) {
+                    // alert(JSON.stringify(res))
+                    if(res.code == 200) {
+                        alert('评论成功')
+                        $("#textar").val('')
+                        to_cid = 0;
+                    }else if(res.code == 50009){
+                        alert(res.message)
+                        window.location.href = "/wx/auth";
+                    }else {
+                        alert(res.message)
+                    }
+                    isclick = true;
+                },
+                error:  function (res) {
+                    alert('服务器异常')
+                    isclick = true;
+                }
+            })
+        }
 
     })
 
@@ -269,7 +276,6 @@
         plList+='</div>'
        $(".de_activeNext").append(plList)
     }
-
     // 需求详情
     function getPeopleList() {
             $.ajax({
@@ -286,6 +292,8 @@
                 }
             });
     }
+
+
 </script>
 
 </html>
