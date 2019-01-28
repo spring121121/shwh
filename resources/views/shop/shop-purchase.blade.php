@@ -19,6 +19,7 @@
         .select{
             height:auto;
             background: #F2F2F2;
+            margin-bottom:50px;
         }
         .select_b li{
             padding:0 10px;
@@ -78,7 +79,7 @@
             margin-left:65%;
         }
         .total{
-            height:120px;
+            height:70px;
             background: #fff;
             padding-top:10px;
             padding-right:19px;
@@ -200,6 +201,7 @@
             {{--<div style="margin-top:10px;">运费</div>--}}
             {{--<div class="price post">+&nbsp;￥6.00</div>--}}
         </div>
+        <div class="hr" style="width:100%;"></div>
     </section>
     <footer class="select_submit">
         {{--<div class="total_price t_price">￥228.00</div>--}}

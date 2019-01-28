@@ -69,9 +69,6 @@
                     }
                 }
             });
-            $('.goback').on('click',function(){
-                window.history.go(-1);
-            });
             var goods_ids = getUrlParam('goods_id');
             var num = getUrlParam('num');
             var flag = getUrlParam('flag');
@@ -89,6 +86,13 @@
                     window.location.href = "/wap/shop_purchase?id="+addressId+'&goods_id='+goods_ids+'&num='+num;
                     return false;
                 }
+            });
+            $('.goback').on('click',function(){
+                if(flag != null){
+                    window.location.href = "/wap/shop_purchase?goods_id="+goods_ids+'&num='+num;
+                    return false;
+                }
+                window.location.href = "/wap/personal";
             });
             //新增地址
             $('.add_address').on('click',function(){
