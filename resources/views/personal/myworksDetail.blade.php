@@ -54,32 +54,13 @@
     <div class="zc_worksText">
         <input type="text" placeholder="需求标题" id="worksTitle"></input>
         <div class="zc_line"></div>
-        <div style="width:100%;height:300px;">
-           <script id="editor" type="text/plain" style="width:100%;height:300px;"></script>
-         </div>
+        {{--<div>--}}
+            {{--<script id="editor" type="text/plain" style="width:100%;height:300px;"></script>--}}
+        {{--</div>--}}
+        <textarea placeholder="请描述你的需求" id="worksTexar"></textarea>
     </div>
     <div class="zc_workContent">
-        {{--<div class="zc_contentList">--}}
-            {{--<p class="zc_worksStart">开始时间</p>--}}
-            {{--<section id="form">--}}
-                {{--<form action="">--}}
-                    {{--<input type="text" name="startStime" id="USER_AGE" readonly class="input" placeholder="开始时间" />--}}
 
-                    {{--<!--<input type="submit" id="tj" class="submit" value="提交" />-->--}}
-                {{--</form>--}}
-            {{--</section>--}}
-        {{--</div>--}}
-
-        {{--<div class="zc_contentList">--}}
-            {{--<p class="zc_worksStart">结束时间</p>--}}
-            {{--<section id="form">--}}
-                {{--<form action="">--}}
-                    {{--<input type="text" name="startStime" id="USER_AOE"  readonly class="input" placeholder="开始时间" />--}}
-
-                    {{--<!--<input type="submit" id="tj" class="submit" value="提交" />-->--}}
-                {{--</form>--}}
-            {{--</section>--}}
-        {{--</div>--}}
         <div class="container well">
             <div class="row">
                 <div class="col-md-6">

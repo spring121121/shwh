@@ -119,6 +119,8 @@
 <script src="/js/swiper/swiper.js"></script>
 <script>
     $(function () {
+        getNote();
+
         $(".styleTitle>p").click(function () {
             $(this).addClass("addcolor").siblings().removeClass("addcolor")
         })
@@ -175,20 +177,20 @@
    		success:function(data){
    			console.log(data)
    			var liList = "";
-			data.list.forEach(function(i) {
+			data.data.forEach(function(i) {
                liList+='<div id="bander">'
                liList+='<div class="swiper-container swiper-addone">'
 			   liList+='<div class="swiper-wrapper">'
-			   liList+='<div class="swiper-slide"><img src="/images/wenyi1.jpg" alt=""></div>'
-			   liList+='<div class="swiper-slide"><img src="/images/wemyi2.jpg" alt=""></div>'
-			   liList+='<div class="swiper-slide"><img src="/images/wenyi3.jpg" alt=""></div>'
+			   liList+='<div class="swiper-slide"><img src="'+i.image_one_url+'" alt=""></div>'
+			   liList+='<div class="swiper-slide"><img src="'+i.image_three_url+'" alt=""></div>'
+			   liList+='<div class="swiper-slide"><img src="'+i.image_two_url+'" alt=""></div>'
 			   liList+='</div>'
 			   liList+='<div class="swiper-pagination"></div>'
 			   liList+='</div>'	
-			   liList+='<p class="bannerTitle">"星辰大海&nbsp远方与爱"</p>'
+			   liList+='<p class="bannerTitle">"'+i.content+'"</p>'
 			   liList+='<div class="studyPeople">'
 			   liList+='<img src="/images/people2.jpg" alt="">'
-			   liList+='<p class="bannerName">詹姆斯</p>'
+			   liList+='<p class="bannerName">'+i.title+'</p>'
 			   liList+='<div class="studyDz">'
 			   liList+='<div class="dzimg">'
 			   liList+='<img src="/images/dz-icon.png" alt="">'
