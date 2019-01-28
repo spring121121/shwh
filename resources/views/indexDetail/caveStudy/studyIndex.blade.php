@@ -160,7 +160,7 @@
                 data.data.forEach(function (i) {
                     liList += '<div id="bander">'
                     liList += '<div class="swiper-container swiper-addone">'
-                    liList += '<div class="swiper-wrapper">'
+                    liList += '<div class="swiper-wrapper" onclick="toNoteDetail('+i.id+')">'
                     liList += '<div class="swiper-slide"><img src="' + i.image_one_url + '" alt=""></div>'
                     liList += '<div class="swiper-slide"><img src="' + i.image_three_url + '" alt=""></div>'
                     liList += '<div class="swiper-slide"><img src="' + i.image_two_url + '" alt=""></div>'
@@ -189,8 +189,8 @@
     }
 
 
-    function toNoteDetail() {
-        window.location.href = "/wap/noteDetail/{noteId}";
+    function toNoteDetail(noteId) {
+        window.location.href = "/wap/noteDetail/"+noteId;
     }
 </script>
 </html>
