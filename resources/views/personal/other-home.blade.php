@@ -25,6 +25,7 @@
                 <li>探宝笔记</li>
                 <li>点赞痕迹</li>
                 <li>笔记收藏</li>
+                <li>个人需求</li>
             </ul>
         </div>
         <div class="content-box">
