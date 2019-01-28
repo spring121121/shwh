@@ -91,8 +91,8 @@
         var titleList = ""
         titleList += '<div class="styleSou">',
             titleList += ' <div class="souinp">',
-            titleList += '<img src="/images/serch.png" alt="" onclick="getSginList()">',
-            titleList += ' <input type="text" value="666" id="searchContent" placeholder="请输入作品,店铺">',
+            titleList += '<img src="/images/serch.png" alt="" onclick="getWorkList()">',
+            titleList += ' <input type="text"  id="searchContent" onblur="getWorkList()" placeholder="请输入作品,店铺">',
             titleList += '</div>',
             titleList += '<p onclick="changeHead2()">取消</p>',
             titleList += '</div>'
@@ -101,12 +101,15 @@
     }
 
     function changeHead2() {
+        //清空搜索框
+        $("#searchContent").val('');
+
         var headList = ""
         headList += '<div class="activeTitle">'
         headList += '<div class="goIndex" onclick="toIndex()"><img src="/images/fanhui.png" alt=""></div>'
 
         headList += '<div class="activeNav">'
-        headList += '<p class="addcolor" onclick="getSginList()">全部需求</p>'
+        headList += '<p class="addcolor" onclick="getWorkList()">全部需求</p>'
 
         headList += '<p onclick="getWorkList()">我的需求</p>'
         headList += ' </div>'
@@ -115,6 +118,7 @@
         headList += ''
 
         $("header").html(headList)
+        getWorkList();
 
     }
 </script>
