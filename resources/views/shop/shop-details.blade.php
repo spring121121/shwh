@@ -148,7 +148,7 @@
 					//详情
 					categoryDetail += '<input type="hidden" id="goods_id" value="'+v['id']+'">';
 					categoryDetail += '<p class="zc_price">￥'+v['price']+'</p>';
-					categoryDetail += '<del class="zc_del">价格'+v['price']+'</del>';
+					categoryDetail += '<del class="zc_del">价格 ￥'+v['price']+'</del>';
 					categoryDetail += '<div class="zc_goodsDetail">';
 					categoryDetail += '<p>'+v['goods_name']+'</p><div></div><p></p>';
 					categoryDetail += '</div>';
@@ -175,7 +175,7 @@
                         store += '<img src="'+v['logo_pic_url']+'" />';
                         store += '<div class="zc_businRank">';
                         store += '<p>'+v['name']+'</p>';
-                        store += '</div><div class="store_all"><div class="zc_allbusi">全部商品</div><div class="zc_all">进店逛逛</div></div>';
+                        store += '</div><div class="store_all"><div onclick="goToStore('+storeId+');" class="zc_allbusi">全部商品</div><div onclick="goToStore('+storeId+');" class="zc_all">进店逛逛</div></div>';
 
                         $('.zc_bussimg').attr('src',v['logo_pic_url']);
                     });
@@ -183,6 +183,9 @@
                 }
             });
 
+            $(".zc_bussimg").click(function () {
+				goToStore(storeId);
+			});
 			var swiper_shop = new Swiper('.shop-index', {
 				autoplay: 3000,
 				paginationClickable: true,
@@ -261,6 +264,10 @@
 		}
 		function handletoCart(){
 			window.location.href = "/wap/shop_cart";
+		}
+		//进店逛逛
+		function goToStore(id){
+			window.location.href = "/wap/other_store?store_id="+id;
 		}
 	</script>
 

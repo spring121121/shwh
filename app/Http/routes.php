@@ -273,6 +273,9 @@ Route::get('wap/shop', function () {//商城首页
 Route::get('wap/shop_share', function () {//商品分销
     return view('shop/shop-share');
 });
+Route::get('wap/other_store', function () {//他人的店铺，进店逛逛
+    return view('shop/other-store');
+});
 Route::get('wap/shop_detail', function () {//商品详情
     return view('shop/shop-details',Cookie::get('info')?Cookie::get('info'):['id'=>0]);
 });

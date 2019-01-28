@@ -366,6 +366,7 @@ ul,li{
 }
 .massage-category ul .click-change,
 .store-switch .click-change,
+.other-shop-classify .click-change,
 .header .follow-title .click-change{
     color:#F49610;
     border-bottom: 2px solid #F49610;
@@ -1928,7 +1929,7 @@ ul,li{
 }
 
 /*店铺页面样式*/
-.store-switch{
+.store-switch,.other-shop-classify{
     margin: 0;
     position: fixed;
     left: 0;
@@ -1937,7 +1938,8 @@ ul,li{
     z-index: 9999;
     justify-content: center;
 }
-.store-switch li,.other-switch li{
+.store-switch li,.other-switch li,
+.other-shop-classify li{
     border: none;
     box-shadow: unset;
     background: unset;
@@ -1952,6 +1954,18 @@ ul,li{
     display: none;
     margin-top: 50px;
 }
+.other-store-shop{
+    margin-top: 35px;
+}
+.other-shop-classify{
+    justify-content: start;
+    background-color: transparent;
+}
+.other-shop-classify li{
+    color: #fff;
+}
+
+
 /*店铺设置页面*/
 .edit-data .store-brief-box{
     height: 120px;

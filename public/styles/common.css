@@ -36,9 +36,9 @@ a{
 }
 .header-left{
     float: left;
-    width: 24px;
-    height: 24px;
-    margin: 10px 0 10px 20px;
+    width: 20px;
+    height: 20px;
+    margin: 14px 0 10px 20px;
     background: url("/images/fanhui.png");
     background-size: 100%;
 }
@@ -107,6 +107,10 @@ a{
     background-size: 100%;
     border: none;
 }
+.other-store-header{
+    border-radius: unset;
+    padding-bottom: 30px;
+}
 .renzheng,.finish{
     width: unset;
     padding: 0 5px;
@@ -123,6 +127,9 @@ a{
     margin: 20px;
     color: #FFF;
 }
+.other-store-box {
+    margin: 0 20px;
+}
 .store-message-box .icon-box{
     width: 55px;
     height: 55px;
@@ -131,8 +138,19 @@ a{
     border-radius: 5px;
     overflow: hidden;
 }
+.other-store-box .icon-box{
+    width: 30px;
+    height: 30px;
+}
 .store-name{
     margin-left: 75px;
+}
+.other-store-box .store-name{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    line-height: 30px;
 }
 .setting{
     width: 24px;
@@ -171,6 +189,12 @@ a{
     left: 0;
     width: 12px;
     height: 12px;
+}
+.other-store-box .store-name span{
+    margin-left: 10px;
+}
+.other-store-box .store-name span i{
+    top: 9px;
 }
 .store-brief{
     margin-left: 10px;
