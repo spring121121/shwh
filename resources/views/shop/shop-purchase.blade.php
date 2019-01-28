@@ -313,11 +313,7 @@
                                 var order = data.data.pay_order_sn;
                                 window.location.href="http://shwh.jianghairui.com/wx/pay?pay_order_sn="+order;
                             }
-                        },
-                        error:function (res) {
-                            alert('error')
                         }
-
                     });
                 });
 
