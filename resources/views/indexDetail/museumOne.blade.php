@@ -55,7 +55,7 @@
              $("#ti").html("山洞-博物馆")
              $("#role").html("博物馆")
 
-         }else if(roleId==3){
+         }else if(roleId==4){
              $("#ti").html("山洞-文创机构")
              $("#role").html("文创机构")
          }else{

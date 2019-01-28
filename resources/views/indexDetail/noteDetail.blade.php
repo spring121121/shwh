@@ -11,12 +11,58 @@
     <link rel="stylesheet" href="/styles/swiper.min.css">
     <link rel="stylesheet" href="/styles/common.css">
     <link rel="stylesheet" href="/styles/personal.css">
+    <style>
+        .pl-content ul li .pl-cont h3 .dianzan{
+            position: absolute;
+            right: 30px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: url("/images/dz-icon.png");
+            background-size: 100%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            z-index: 11;
+        }
+
+        .pl-content ul li .pl-cont h3 .pinglun{
+            position: absolute;
+            right: 0px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: url("/images/pl-icon.png");
+            background-size: 100%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            z-index: 11;
+        }
+
+        .btn-list-icon #pinglun{
+            background-image: url("/images/pl-icon.png");
+            width: 20px;
+            height: 20px;
+        }
+        .btn-list-icon #shoucang{
+            background-image: url("/images/zf-icon.png");
+            width: 20px;
+            height: 20px;
+        }
+        .btn-list-icon #dianzan{
+            background-image: url("/images/dz-icon.png");
+            width: 20px;
+            height: 20px;
+        }
+
+    </style>
 </head>
 <body>
 <div class="header">
     <div class="header-left"><a onclick="history.back()"></a></div>
     <div class="header-right btn-title-text btn-zf"></div>
-    <h3 class="top-title">笔记详情页</h3>
+    <h3 class="top-title" style="color:#fff">笔记详情页</h3>
 </div>
 <div class="content-box">
     <div class="swiper-tuijian-box">
@@ -44,29 +90,57 @@
         <p>{{$noteDetail['content']}}</p>
     </div>
     <ul class="btn-list-icon">
-        <li id="pinglun"><a class="pl-text" href="#"></a></li>
+        <li id="pinglun" onclick="pinglun(0,'')"></li>
         <li id="shoucang" onclick="addForward({{$noteDetail['uid']}},{{$noteDetail['id']}})"></li>
         <li id="dianzan"></li>
     </ul>
-    <div class="more-pl-title">
+    <div class="more-pl-title" style="width: 100%;">
+        <div class="note-cont" style="width:100%">
+            <textarea placeholder="输入评论内容" rows="3" id="content" style="width: 90%;resize: none"></textarea>
+            <button id="reply-btn" style="width: 20%">回复</button>
+        </div>
+    </div>
+    <div class="more-pl-title" style="margin-top: 30px">
         <span>七嘴八舌的探宝者</span>
         <a class="btn-more-pl" href="#">查看更多评论<i></i></a>
     </div>
     <div class="pl-content">
         <ul>
-            <li>
-                <a href="#">
+            @foreach ($commentList as $li)
+                <li>
                     <div class="pl-icon-box">
-                        <img class="common-img" src="/images/weChat-2x.png" alt="头像">
+                        <img class="common-img" src="{{$li['photo']}}" alt="头像">
                     </div>
                     <div class="pl-cont">
-                        <h3>昵称或是山洞官方小编<i></i><span>发布的时间</span>
+
+                        <h3>{{$li['nickname']}}<i></i><span>{{$li['created_at']}}</span>
                             <div class="dianzan"></div>
+                            <div class="pinglun" onclick="pinglun({{$li['id']}},'{{$li['nickname']}}')"></div>
                         </h3>
-                        <p>评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现评论消息的内容呈现</p>
+                        <p>{{$li['content']}}</p>
                     </div>
-                </a>
-            </li>
+                </li>
+                @if(!empty($li['child']))
+                    <li>
+                        <ul style="margin-left: 30px">
+                            @foreach ($li['child'] as $lii)
+                                <li>
+                                    <div class="pl-icon-box">
+                                        <img class="common-img" src="{{$lii['photo']}}" alt="头像">
+                                    </div>
+                                    <div class="pl-cont">
+                                        <h3>{{$lii['nickname']}}<i></i><span>@<b>{{$lii['to_nickname']}}</b></span>
+                                            <div class="dianzan"></div>
+                                            <div class="pinglun" onclick="pinglun({{$lii['id']}},'{{$lii['nickname']}}')"></div>
+                                        </h3>
+                                        <p>{{$lii['content']}}</p>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                @endif
+            @endforeach
         </ul>
     </div>
 </div>
@@ -102,7 +176,7 @@
 <script src="/js/myswiper.js"></script>
 <script src="/js/common.js"></script>
 <script>
-        var isclick = true;
+        var isclick = true,noteId = "{{$noteDetail['id']}}",to_cid=0;
         //添加关注
         function addFocus(uid) {
             if(isclick) {
@@ -149,6 +223,50 @@
                 })
             }
         }
+
+        function pinglun(cid,to_nickname) {
+            if(cid != to_cid) {
+                $("#content").val('');
+            }
+            to_cid = cid;
+            $("#content").attr("placeholder","回复" + to_nickname + " : ")
+            $("#content").focus()
+        }
+
+        $("#reply-btn").click(function () {
+            var content = $("#content").val();
+            if(content.length === 0) {
+                alert('请输入回复内容');
+                return;
+            }
+            if(isclick) {
+                isclick = false;
+                $.ajax({
+                    url:"/note/reply",
+                    type:"POST",
+                    dataType:"json",
+                    data:{note_id:noteId,to_cid:to_cid,content:content},
+                    success: function (res) {
+                        // alert(JSON.stringify(res))
+                        if(res.code == 200) {
+                            alert('评论成功')
+                            $("#content").val('')
+                        }else if(res.code == 50009){
+                            alert(res.message)
+                            window.location.href = "/wx/auth";
+                        }else {
+                            alert(res.message)
+                        }
+                        isclick = true;
+                    },
+                    error:  function (res) {
+                        alert('服务器异常')
+                        isclick = true;
+                    }
+                })
+            }
+
+        })
 
 
 

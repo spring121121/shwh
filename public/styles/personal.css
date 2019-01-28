@@ -367,7 +367,7 @@ ul,li{
 .massage-category ul .click-change,
 .store-switch .click-change,
 .header .follow-title .click-change{
-    color: #000;
+    color:#F49610;
     border-bottom: 2px solid #F49610;
 }
 .massage-cont{
@@ -855,7 +855,6 @@ ul,li{
     height: 100px;
 }
 .store-content li{
-    padding: 0 5px;
     height: auto;
 }
 .note-list-box li .note-img{
@@ -1520,9 +1519,9 @@ ul,li{
 .flex-box li .btn-flex-box{
     height: 30px;
     line-height: 30px;
-    margin-top: 10px;
+    margin: 10px 5px 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .flex-box li .btn-flex-box span{
     position: relative;
@@ -2280,6 +2279,7 @@ ul,li{
     border: none;
     height: 30px;
     line-height: 30px;
+    border-bottom: 1px solid #6e6e6e;
 }
 .first-title span{
     font-size: 15px;
@@ -2358,7 +2358,8 @@ ul,li{
     font-size: 15px;
 }
 .other-switch .click-change{
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #ea2e4d;
+    color: #ea2e4d;
 }
 .other-content{
     display: none;
@@ -2368,7 +2369,7 @@ ul,li{
     left: 0;
     right: 0;
     bottom: 55px;
-    background: #f49610;
+    background: #48afd2;
     color: #fff;
     height: 50px;
     z-index: 999;
@@ -2746,4 +2747,36 @@ header>ul>li>p{
 .well{
     box-shadow: none!important;
     background: #eee;
+}
+.activeGo>img{
+    width: 95%;
+    margin: 0 auto;
+    height: 200px;
+    display: block;
+    border-radius: 10px;
+}
+.listTitle{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 0 15px;
+}
+.listTime{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+.listTime>img{
+    width: 20px;
+    height: 20px;
+}
+.listTime>p{
+    font-size: 12px;
+    color: #a2a2a2;
+    margin-left: 10px;
+}
+.activeGo{
+    width: 100;
+    height: auto;
+    margin-top: 10px;
 }
