@@ -397,10 +397,16 @@ class ShopController extends BaseController
         $goodsIds = explode(',',$goods_ids);
         $num = $request->input('num');
         $nums = explode(',',$num);
-        $myGoodsList = CarModel::where('car.uid',$uid)->whereIn('car.goods_id',$goodsIds)
-            ->join('goods','car.goods_id','=','goods.id')
-            ->select('goods.*')
-            ->get()->toArray();
+        $detail = $request->input('detail');//从购物车下单
+        if(!empty($detail)){
+            $myGoodsList = GoodsModel::whereIn('id',$goodsIds)
+                ->get()->toArray();
+        }else{
+            $myGoodsList = CarModel::where('car.uid',$uid)->whereIn('car.goods_id',$goodsIds)
+                ->join('goods','car.goods_id','=','goods.id')
+                ->select('goods.*')
+                ->get()->toArray();
+        }
         //查询店铺所属uid
         $array = [];//包含商品id,店铺id,店铺所属uid
         array_walk($myGoodsList, function($value, $key) use (&$array ){
