@@ -189,7 +189,7 @@
                     $("#"+uid).html("关注")
 
                 }else {
-                    alert("哎呀！出错了")
+                    alert(data.message)
                 }
             })
         }
@@ -203,9 +203,9 @@
                     $("#"+uid).bind('click',function(){
                         cancelFocus(uid);
                     });
-                    $("#"+uid).html("取消关注")
+                    $("#"+uid).html("取关")
                 }else {
-                    alert("哎呀！出错了")
+                    alert(data.message)
                 }
             })
         }

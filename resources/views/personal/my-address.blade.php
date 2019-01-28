@@ -65,12 +65,9 @@
                         });
                         $(".my-address-box ul").html(noteHtml);
                     }else {
-                        alert("哎呀！出错了")
+                        layer.msg(data.message)
                     }
                 }
-            });
-            $('.goback').on('click',function(){
-                window.history.go(-1);
             });
             var goods_ids = getUrlParam('goods_id');
             var num = getUrlParam('num');

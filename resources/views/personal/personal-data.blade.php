@@ -14,7 +14,6 @@
     <body>
         <div class="header">
             <div class="header-left"><a href="/wap/personal"></a></div>
-            <div class="header-right finnish-edit"></div>
             <h3 class="top-title">你的资料</h3>
         </div>
         <div class="content-box">
@@ -50,7 +49,7 @@
                     {{--</div>--}}
                     <div class="ipt-box distance-top">
                         <label for="personal-phone">手机号码</label>
-                        <div class="ipt-cont-box"><input id="personal-phone" disabled type="text" placeholder="15625252356"></div>
+                        <div class="ipt-cont-box"><input id="personal-phone" disabled type="text" placeholder="未绑定手机号码"></div>
                     </div>
                     {{--<div class="ipt-box">--}}
                         {{--<label for="email">电子邮箱</label>--}}
@@ -58,12 +57,14 @@
                     {{--</div>--}}
                 </form>
             </div>
+            <div class="finnish-edit">保存</div>
         </div>
 
         <!--引入footer-->
         @extends('layout.footer')
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/layer/layer.js"></script>
     <script src="/js/uploadfile.js"></script>
     <script src="/js/jquery.date.js"></script>
     <script src="/js/common.js"></script>
@@ -90,7 +91,7 @@
                     $("#birthday").val(data.data.birthday);
                     $("#personal-phone").val(data.data.mobile);
                 }else {
-                    alert("哎呀！出错了")
+                    layer.msg(data.message);
                 }
             }
         });
@@ -99,7 +100,9 @@
             console.log(img_size);
             //alert(img_size);
             if (img_size > 1000000){
-                alert("上传图片过大，请上传小于1M的图片")
+                layer.tips("上传图片过大，请上传小于1M的图片", '.tx-icon-box', {
+                    tips: 4
+                });
             }else {
                 $.ajaxFileUpload({
                     url: '/upload', //用于文件上传的服务器端请求地址
@@ -119,7 +122,7 @@
             var img_url = $('#btn-my-header').attr('src'),
                 user_name = $('#username').val(), sex,
                 birthday = $('#birthday').val();
-            console.log($(':radio:checked').attr("id"))
+            //console.log($(':radio:checked').attr("id"))
             if ($(':radio:checked').attr("id") == 1){
                 sex = 1;
             }
@@ -138,12 +141,12 @@
                     birthday:birthday
                 },
                 success : function(data){//回调函数 和 后台返回的 数据
-                    console.log(data)
+                    //console.log(data)
                     if (data.status){
                         alert("修改成功");
                         window.location.href = "/wap/personal";
                     }else {
-                        alert("修改失败");
+                        layer.msg(data.message);
                     }
                 }
             });
