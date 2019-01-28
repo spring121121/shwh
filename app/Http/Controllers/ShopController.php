@@ -341,11 +341,17 @@ class ShopController extends BaseController
         $goodsIds = explode(',',$goods_ids);
         $num = $request->input('num');
         $nums = explode(',',$num);
-        $myGoodsList = CarModel::where('car.uid',$uid)->whereIn('car.goods_id',$goodsIds)
-            ->join('goods','car.goods_id','=','goods.id')
-            ->orderByRaw("FIELD(car.goods_id, " . implode(", ", $goodsIds) . ")")
-            ->select('goods.*')
-            ->get()->toArray();
+        $detail = $request->input('detail');
+        if(!empty($detail)){
+            $myGoodsList = GoodsModel::whereIn('id',$goodsIds)
+                ->get()->toArray();
+        }else{
+            $myGoodsList = CarModel::where('car.uid',$uid)->whereIn('car.goods_id',$goodsIds)
+                ->join('goods','car.goods_id','=','goods.id')
+                ->orderByRaw("FIELD(car.goods_id, " . implode(", ", $goodsIds) . ")")
+                ->select('goods.*')
+                ->get()->toArray();
+        }
         $total = 0;
         $postage = 0;
         foreach($myGoodsList as $key=>$goods_value){
@@ -457,10 +463,17 @@ class ShopController extends BaseController
     //计算代理费用
     public function agentPrice($goods_id){
         $pgoodsid = GoodsModel::where('id',$goods_id)->select('pgoods_id','price')
-            ->first()->toArray();//代理商店商品的价格和代理原商店的商品id
-        $pgoodprice = GoodsModel::where('id',$pgoodsid['pgoods_id'])->select('price')
-            ->first()->toArray();//原商店的商品价格
-        $agent_price = $pgoodsid['price'] - $pgoodprice['price'];
+            ->first();//代理商店商品的价格和代理原商店的商品id
+        $agent_price = '0.00';
+        if($pgoodsid){
+            $goods = $pgoodsid->toArray();//代理商品价格
+            $pgoodprice = GoodsModel::where('id',$goods['pgoods_id'])->select('price')
+                ->first();//原商店的商品价格
+            if($pgoodprice){
+                $p_goods = $pgoodprice->toArray();//原商品价格
+                $agent_price = $goods['price'] - $p_goods['price'];
+            }
+        }
         return $agent_price;
     }
 
