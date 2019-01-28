@@ -52,9 +52,9 @@
         <div id="bander" onclick="toActive()">
             <div class="swiper-container swiper-add">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="/images/banner1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/images/banner2.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/images/banner3.jpg" alt=""></div>
+                    <div class="swiper-slide" style="overflow: hidden"><img src="/images/banner1.jpg" alt=""></div>
+                    <div class="swiper-slide" style="overflow: hidden"><img src="/images/banner2.jpg" alt=""></div>
+                    <div class="swiper-slide" style="overflow: hidden"><img src="/images/004.jpg" alt=""></div>
                 </div>
 
                 <div class="swiper-pagination"></div>
@@ -92,13 +92,13 @@
         <!--文创故事-->
         <div class="culture">
         	<p>文创故事</p>
-                <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+                <video id="video" src="/images/viode.mp4" loop controls="controls" width="100%" height="100%" >
                     your browser does not support the video tag
                 </video>
             </div>
         <div class="culture">
             <p>文创故事</p>
-            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+            <video src="/images/viode.mp4" loop controls="controls" width="100%" height="100%" >
                 your browser does not support the video tag
             </video>
         </div>
@@ -141,13 +141,13 @@
         </div>
         <div class="culture">
             <p>文创故事</p>
-            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+            <video src="/images/viode.mp4" loop controls="controls" width="100%" height="100%" >
                 your browser does not support the video tag
             </video>
         </div>
         <div class="culture">
             <p>文创故事</p>
-            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
+            <video src="/images/viode.mp4" loop controls="controls" width="100%" height="100%" >
                 your browser does not support the video tag
             </video>
         </div>

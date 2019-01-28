@@ -1,4 +1,4 @@
-.container{
+﻿.container{
     width: 100%;
     height: auto;
 }
@@ -42,8 +42,8 @@ header{
 .activeNav>p{
     color: #fff;
     font-size: 15px;
+     text-align: center;
     width: 100%;
-
 }
 .navTitle{
     width: 80%;

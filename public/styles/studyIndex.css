@@ -16,7 +16,7 @@ header>ul{
     flex-direction: row;
     justify-content: space-between;
     width: 90%;
-    margin: 0 auto;
+    margin: 5px auto;
 }
 header>ul>li img{
     width: 20px;
@@ -34,6 +34,10 @@ header>ul>li>p{
     width: 100px;
     height: 100%;
     justify-content: space-between;
+}
+.styleTitle>p{
+    width: 100%;
+    text-align: center;
 }
 .addcolor{
     color: #e83c45;
