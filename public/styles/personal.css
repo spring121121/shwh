@@ -1657,17 +1657,10 @@ ul,li{
     font-size: 16px;
     text-align: center;
     line-height: 40px;
-    /*bottom: 20px;*/
-    /*left: 30px;*/
-    /*right: 30px;*/
     margin: 20px;
     border-radius: 20px;
 }
 .apply-process{
-    /*position: absolute;*/
-    /*top: 90px;*/
-    /*left: 15px;*/
-    /*right: 15px;*/
     margin: -30px 10px 0;
     background: #ececec;
     border-radius: 10px;
@@ -1958,8 +1951,17 @@ ul,li{
     margin-top: 35px;
 }
 .other-shop-classify{
+    height: 30px;
     justify-content: start;
+    overflow-y: hidden;
+    overflow-x: auto;
     background-color: transparent;
+}
+.other-shop-classify ul{
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    width: max-content;
 }
 .other-shop-classify li{
     color: #fff;
