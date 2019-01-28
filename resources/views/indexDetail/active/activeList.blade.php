@@ -62,10 +62,10 @@
                 data.data.forEach(function (i) {
                     middenList += ' <div class="activeContent">'
                     middenList += '<div class="activeGo">'
-                    middenList += '<img src="' + i.demand_url + '" alt="" onclick="toDetail()">'
+                    middenList += '<img src="' + i.demand_url + '" alt="" onclick="toDetail('+i.id+')">'
                     middenList += ' <p class="listTitle">' + i.title + '</p>'
                     middenList += '<div class="listTime">'
-                    middenList += '<img src="'+i.photo+'" alt="">'
+                    middenList += '<img src="'+i.photo+'" alt="" onclick="toOtherHome('+i.uid+')">'
                     middenList += '<p>' + i.start_time + '-' + i.end_time + '</p>'
                     middenList += '</div>'
                     middenList += '</div>'
@@ -81,9 +81,12 @@
     function toIndex() {
         window.location.href = "/wap/index";
     }
+    function toOtherHome(otherUid) {
+        window.location.href = "/wap/other_home?id="+otherUid;
+    }
 
-    function toDetail() {
-        window.location.href = "/wap/activeDetail";
+    function toDetail(demandId) {
+        window.location.href = "/wap/activeDetail?demand_id="+demandId;
     }
 
     // 头部切换
