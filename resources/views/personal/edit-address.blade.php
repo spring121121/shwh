@@ -65,6 +65,7 @@
             var goods_ids = getUrlParam('goods_id');
             var num = getUrlParam('num');
             var flag = getUrlParam('flag');
+            var detail = getUrlParam('detail');
             // var address_url = window.location.search;
             var address_id = getUrlParam('id');
             var province_id,city_id,area_id;
@@ -95,7 +96,7 @@
                 }
             });
 
-
+            var com_url = 'goods_id='+goods_ids+'&num='+num;
             $("#btn-keep").click(function () {
                 var shr_name = $("#shr-name").val(),
                     shr_phone = $("#shr-phone").val(),
@@ -145,8 +146,13 @@
                             if (data.status){
                                 alert("修改成功");
                                 if(flag != null){
-                                    window.location.href = "/wap/my_address?flag=1&goods_id="+goods_ids+'&num='+num;
-                                    return false;
+                                    if(detail !=null){
+                                        window.location.href = "/wap/my_address?flag=1&"+com_url+'&detail=1';
+                                        return false;
+                                    }else{
+                                        window.location.href = "/wap/my_address?flag=1&"+com_url;
+                                        return false;
+                                    }
                                 }
                                 window.location.href = "/wap/my_address";
                             }else {
@@ -166,8 +172,13 @@
                         if (data.status){
                             alert("删除成功");
                             if(flag != null){
-                                window.location.href = "/wap/my_address?flag=1&goods_id="+goods_ids+'&num='+num;
-                                return false;
+                                if(detail !=null){
+                                    window.location.href = "/wap/my_address?flag=1&"+com_url+'&detail=1';
+                                    return false;
+                                }else{
+                                    window.location.href = "/wap/my_address?flag=1&"+com_url;
+                                    return false;
+                                }
                             }
                             window.location.href = "/wap/my_address";
                         } else {
