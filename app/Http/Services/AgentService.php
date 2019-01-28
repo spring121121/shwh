@@ -16,7 +16,7 @@ class AgentService
 
         $goodsModel = new GoodsModel();
         //is_agent = 0  说明该商品是原产品，允许被代理
-        $goodsInfo = $goodsModel::where('is_agent', '=', GoodsModel::IS_AGENT_O)->find($goodsId);
+        $goodsInfo = $goodsModel::where('be_agent', '=', GoodsModel::CAN_BE_AGENT)->find($goodsId);
 //        dd($goodsInfo);
         $flag = false;
         if (!empty($goodsInfo)) {

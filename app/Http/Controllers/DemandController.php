@@ -66,10 +66,11 @@ class DemandController extends BaseController
     {
         $page = $request->input('page',1);
         $limit = $request->input('limit',20);
+        $searchContent = $request->input("searchContent",'');
         $skip = ($page-1)*$limit;
         $uid = UserService::getUid($request);
         $demandService = new DemandService();
-        $demandList = $demandService->getDemandList($uid,'',$skip,$limit);
+        $demandList = $demandService->getDemandList($uid,$searchContent,$skip,$limit);
 
         return $this->success($demandList);
     }

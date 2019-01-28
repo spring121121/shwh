@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="/styles/bootstrap-material-datetimepicker.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/styles/default.css">
+    <script type="text/javascript" charset="utf-8" src="/js/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="/js/lang/zh-cn/zh-cn.js"></script>
 
 </head>
 <body>
@@ -49,30 +54,13 @@
     <div class="zc_worksText">
         <input type="text" placeholder="需求标题" id="worksTitle"></input>
         <div class="zc_line"></div>
-        <textarea  placeholder="请描述你的需求" id="worksTexar"></textarea>
+        {{--<div>--}}
+            {{--<script id="editor" type="text/plain" style="width:100%;height:300px;"></script>--}}
+        {{--</div>--}}
+        <textarea placeholder="请描述你的需求" id="worksTexar"></textarea>
     </div>
     <div class="zc_workContent">
-        {{--<div class="zc_contentList">--}}
-            {{--<p class="zc_worksStart">开始时间</p>--}}
-            {{--<section id="form">--}}
-                {{--<form action="">--}}
-                    {{--<input type="text" name="startStime" id="USER_AGE" readonly class="input" placeholder="开始时间" />--}}
 
-                    {{--<!--<input type="submit" id="tj" class="submit" value="提交" />-->--}}
-                {{--</form>--}}
-            {{--</section>--}}
-        {{--</div>--}}
-
-        {{--<div class="zc_contentList">--}}
-            {{--<p class="zc_worksStart">结束时间</p>--}}
-            {{--<section id="form">--}}
-                {{--<form action="">--}}
-                    {{--<input type="text" name="startStime" id="USER_AOE"  readonly class="input" placeholder="开始时间" />--}}
-
-                    {{--<!--<input type="submit" id="tj" class="submit" value="提交" />-->--}}
-                {{--</form>--}}
-            {{--</section>--}}
-        {{--</div>--}}
         <div class="container well">
             <div class="row">
                 <div class="col-md-6">
@@ -252,6 +240,17 @@
                     }
                 }
             });
+    }
+    
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+   function getContent() {
+        var arr = [];
+        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+        arr.push("内容为：");
+        arr.push(UE.getEditor('editor').getContent());
+        alert(arr.join("\n"));
     }
 </script>
 </html>

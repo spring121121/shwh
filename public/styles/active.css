@@ -304,3 +304,37 @@ header{
 .de_followPl{
     margin-left: auto;
 }
+/*头部切换样式*/
+.souinp{
+    width: 240px;
+    height: 27px;
+    border-radius: 10px;
+    background: #555555;
+    margin-left: 55px;
+    display: flex;
+    flex-direction: row;
+}
+.souinp>img{
+    width: 20px;
+    height: 20px;
+    margin: 5px 0  0 5px;
+}
+.souinp>input{
+    background: transparent;
+    height: 100%;
+    color: #fff;
+    outline: none;
+    border: none;
+}
+.styleSou{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+.styleSou>p{
+    color: #fff;
+    font-size: 16px;
+    margin-right: 20px;
+}

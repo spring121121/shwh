@@ -75,13 +75,14 @@
 				height:25px;
 			}
 			header ul {
-				margin: 0 10px;
+				margin: 0 10px 0 5px;
 			}
 			.settle{
 				margin-right:3%;
 			}
 			.select{
 				background: #F2F2F2;
+                margin-bottom:100px;
 			}
 			.payment{
 				margin-left:20px;
@@ -134,8 +135,6 @@
 		{{--</div>--}}
 		<section class="b select">
 			<div class="zc_carGoods">
-			</div>
-			<div style="height:100px;">
 			</div>
 		</section>
 		<!--购物车底部-->

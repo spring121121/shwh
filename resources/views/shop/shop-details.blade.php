@@ -28,6 +28,9 @@
 			.swiper-box {
 				margin-top: 45px;
 			}
+			#sp_detail{
+				padding:5% 2% 0 2%;
+			}
 		</style>
 	</head>
 

@@ -289,6 +289,9 @@ Route::group(['middleware'=>'checkLogin'],function(){
     });
 });
 Route::group(['middleware'=>'checkLogin'],function(){
+    Route::get('wap/myActiveList', function () {//我的需求列表页
+        return view('indexDetail/active/myActiveList');
+    });
     Route::get('wap/personal', function () {//个人中心
         return view('personal/personal-center',Cookie::get('info'));
     });

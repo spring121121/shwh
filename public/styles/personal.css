@@ -2602,7 +2602,7 @@ header>ul{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 header>ul>li img{
@@ -2806,3 +2806,4 @@ header>ul>li>p{
     height: auto;
     margin-top: 10px;
 }
+
