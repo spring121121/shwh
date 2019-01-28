@@ -2591,7 +2591,7 @@ ul,li{
 /*发布需求*/
 header{
     width:100%;
-    height:35px;
+    height:40px;
     background: #272727;
     position: fixed;
     top: 0;
@@ -2608,6 +2608,7 @@ header>ul{
 header>ul>li img{
     width: 20px;
     height: 20px;
+    margin-left: 10px;
 }
 header>ul>li>p{
     font-size: 16px;
@@ -2693,7 +2694,7 @@ header>ul>li>p{
 
 }
 .zc_contentList>span{
-    width: 35px;
+    width: 60px;
     height: 25px;
     line-height: 30px;
     text-align: center;

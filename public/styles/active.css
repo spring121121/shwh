@@ -41,7 +41,8 @@ header{
 .activeNav>p{
     color: #fff;
     font-size: 15px;
-
+     text-align: center;
+    width: 100%;
 }
 .navTitle{
     width: 80%;

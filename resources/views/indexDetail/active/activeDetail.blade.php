@@ -132,7 +132,7 @@
         </div>
         @if(!empty($li['child']))
                 @foreach ($li['child'] as $lii)
-                    <div class="de_activeNext" style="margin-left: 20px">
+                    <div class="de_activeNext" >
                         <div class="de_fansSay">
                             <div class="de_fansOne">
                                 <div class="de_fansHead">
