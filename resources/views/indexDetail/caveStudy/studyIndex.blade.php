@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/styles/studyIndex.css">
     <link rel="stylesheet" href="/styles/base.css">
     <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>
     <style>
         p {
             /*border: 1px solid #ccc;*/
@@ -155,7 +156,6 @@
             },
             async: true,
             success: function (data) {
-                console.log(data)
                 var liList = "";
                 data.data.forEach(function (i) {
                     liList += '<div id="bander">'
@@ -169,14 +169,14 @@
                     liList += '</div>'
                     liList += '<p class="bannerTitle">"' + i.content + '"</p>'
                     liList += '<div class="studyPeople">'
-                    liList += '<img src="/images/people2.jpg" alt="">'
-                    liList += '<p class="bannerName">' + i.title + '</p>'
+                    liList += '<img src="'+i.photo+'" onclick="toOtherHome('+i.uid+')" alt="">'
+                    liList += '<p class="bannerName">' + i.nickname + '</p>'
                     liList += '<div class="studyDz">'
                     liList += '<div class="dzimg">'
-                    liList += '<img src="/images/dz-icon.png" alt="">'
+                    liList += '<em  id=dianzan-'+i.id+' class="iconfont icon-dianzan" onclick="addLikes('+i.id+')"></em>';
                     liList += '<img src="/images/dz-icon-red.png" alt="" class="redDz">'
                     liList += '</div>'
-                    liList += '<p>65656</p>'
+                    liList += '<p id="likeNum-'+i.id+'">'+i.likeNum+'</p>'
                     liList += '</div>'
                     liList += '</div>'
                     liList += '</div>'

@@ -381,6 +381,9 @@ function getCookie(cookie_name) {
     return value;
 }
 
+function toOtherHome(otherUid) {
+    window.location.href = "/wap/other_home?id="+otherUid;
+}
 //对笔记点赞
 function addLikes(note_id) {
     var likeNum = parseInt($("#likeNum-"+note_id).html());
