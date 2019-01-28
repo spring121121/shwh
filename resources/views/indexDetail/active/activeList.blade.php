@@ -86,7 +86,7 @@
     }
 
     function toDetail(demandId) {
-        window.location.href = "/wap/activeDetail?demand_id="+demandId;
+        window.location.href = "/active/detail/"+demandId;
     }
 
     // 头部切换
