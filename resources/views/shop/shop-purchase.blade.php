@@ -297,22 +297,25 @@
 
                 settle += '<div class="total_price t_price">￥'+record['total_price']+'</div>';
                 settle += '<div class="total_price total_submit">提交订单</div>';
+
                 $('.select_submit').html(settle);
 
                 $('.total_submit').bind('click',function(){
                     $.ajax({
                         url : "/purchase",	//请求url 商城分类
                         type : "post",	//请求类型  post|get
-                        async: false,
+                        // async: false,
                         dataType : "json",  //返回数据的 类型 text|json|html--
                         data:{address_id:address_id,goods_id:goodsid,num:num},
                         success : function(data){//回调函数 和 后台返回的 数据
                             console.log(data);
+                            alert(JSON.stringify(data))
                             if(data.status){
                                 var order = data.data.pay_order_sn;
                                 window.location.href="http://shwh.jianghairui.com/wx/pay?pay_order_sn="+order;
                             }
                         }
+
                     });
                 });
             }

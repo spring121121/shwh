@@ -372,7 +372,7 @@ class NoteController extends BaseController
 FROM comment c 
 LEFT JOIN user u ON c.uid=u.id 
 LEFT JOIN user u2 ON c.to_uid=u2.id 
-WHERE c.note_id=?",[$noteId]);
+WHERE c.note_id=? AND c.type=1",[$noteId]);
         }catch (\Exception $e) {
             exit($e->getMessage());
         }

@@ -196,8 +196,13 @@ Route::get('wx/location','WxAuthController@getLocation');//微信分享朋友圈
 
 Route::get('wap/factoryShow', 'FactoryController@fatoryList');
 
-Route::post('note/reply','CommentController@reply');
+Route::post('note/reply','CommentController@noteReply');
+Route::post('note/commentList','CommentController@getNoteCommentList');
 Route::get('tt','CommentController@tt');
+
+Route::get('active/detail/{active_id}','ActiveController@detail');
+Route::post('active/reply','CommentController@activeReply');
+
 
 
 
