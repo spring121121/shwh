@@ -15,39 +15,24 @@
 <div class="container">
     <header>
         <div class="activeTitle">
-            <div class="goIndex" onclick="toIndex()"><img src="{{$active['demand_url']}}" alt=""></div>
+            <div class="goIndex" onclick="history.back()"><img src="/images/fanhui.png" alt=""></div>
+            {{--{{$active['demand_url']}}--}}
             <p class="btn1">{{$active['title']}}</p>
             <span></span>
         </div>
     </header>
        <div class="de_navActive">
            <ul>
-               <li class="addcolor c" >需求说明</li>
-               <li class="d" >奖项设置</li>
-               <li class="e">获奖作品</li>
+               <li class="addcolor c" ><a href="#activeRule">需求说明</a></li>
+               <li class="e"><a href="#activeList">获奖作品</a></li>
            </ul>
        </div>
      <div class="addtTopheight"></div>
     <div class="de_activeRule" id="activeRule">
-        <p class="de_ruleOne">竞赛说明</p>
+        <p class="de_ruleOne">需求说明</p>
         <p class="de_ruleTwo">
             {{$active['content']}}
         </p>
-    </div>
-    <div class="de_activeGold" id="activeGold">
-        <p class="de_ruleOne">奖项设置</p>
-        <div class="de_myGold">
-            <p class="de_ruleTwo">一等奖</p>
-            <img src="/images/collection-img1.jpg" alt="">
-        </div>
-        <div class="de_myGold">
-            <p class="de_ruleTwo">二等奖</p>
-            <img src="/images/collection-img1.jpg" alt="">
-        </div>
-        <div class="de_myGold">
-            <p class="de_ruleTwo">三等奖</p>
-            <img src="/images/collection-img1.jpg" alt="">
-        </div>
     </div>
     
     <div class="de_activeList" id="activeList">
@@ -59,40 +44,11 @@
                 <p class="de_workPeople">作者:<span>大伟</span></p>
             </li>
             <li>
-                <img src="/images/collection-img2.jpg" alt="">
-                <p class="de_workName">情调广场</p>
-                <p class="de_workPeople">作者:<span>大伟</span></p>
-            </li>
-            <li>
-                <img src="/images/collection-img4.jpg" alt="">
-                <p class="de_workName">杯子蛋糕</p>
-                <p class="de_workPeople">作者:<span>大伟</span></p>
-            </li>
-            <li>
-                <img src="/images/collection-img5.jpg" alt="">
-                <p class="de_workName">咖啡蛋挞</p>
-                <p class="de_workPeople">作者:<span>大伟</span></p>
-            </li>
-            <li>
                 <img src="/images/collection-img3.jpg" alt="">
                 <p class="de_workName">杯子蛋糕</p>
                 <p class="de_workPeople">作者:<span>大伟</span></p>
             </li>
-            <li>
-                <img src="/images/collection-img6.jpg" alt="">
-                <p class="de_workName">茄子黄瓜</p>
-                <p class="de_workPeople">作者:<span>大伟</span></p>
-            </li>
-            <li>
-                <img src="/images/collection-img3.jpg" alt="">
-                <p class="de_workName">杯子蛋糕</p>
-                <p class="de_workPeople">作者:<span>大伟</span></p>
-            </li>
-            <li>
-                <img src="/images/collection-img5.jpg" alt="">
-                <p class="de_workName">银狐</p>
-                <p class="de_workPeople">作者:<span>大伟</span></p>
-            </li>
+
 
         </ul>
     </div>
@@ -118,10 +74,10 @@
                             <img src="/images/time.png" alt="">
                             <p>{{$li['created_at']}}</p>
                         </div>
-                        <div class="de_followDz">
-                            <img src="/images/dz-icon.png" alt="">
-                            <p>666</p>
-                        </div>
+                        {{--<div class="de_followDz">--}}
+                            {{--<img src="/images/dz-icon.png" alt="">--}}
+                            {{--<p>666</p>--}}
+                        {{--</div>--}}
                         <div class="de_followPl">
                             <img src="/images/pl-icon.png" alt="">
                             <p onclick="pinglun({{$li['id']}},'{{$li['nickname']}}')">回复</p>
@@ -146,10 +102,10 @@
                                         <img src="/images/time.png" alt="">
                                         <p>{{$lii['created_at']}}</p>
                                     </div>
-                                    <div class="de_followDz">
-                                        <img src="/images/dz-icon.png" alt="">
-                                        <p>666</p>
-                                    </div>
+                                    {{--<div class="de_followDz">--}}
+                                        {{--<img src="/images/dz-icon.png" alt="">--}}
+                                        {{--<p>666</p>--}}
+                                    {{--</div>--}}
                                     <div class="de_followPl">
                                         <img src="/images/pl-icon.png" alt="">
                                         <p onclick="pinglun({{$lii['id']}},'{{$lii['nickname']}}')">回复</p>
