@@ -75,7 +75,7 @@
 				height:25px;
 			}
 			header ul {
-				margin: 0 10px;
+				margin: 0 10px 0 5px;
 			}
 			.settle{
 				margin-right:3%;

@@ -163,7 +163,7 @@
             padding-top: 0;
         }
         header ul {
-            margin: 0 10px;
+            margin: 0 10px 0 5px;
         }
     </style>
 </head>
@@ -319,7 +319,7 @@
         });
 
         $('.back').on('click',function(){
-            window.history.go(-1);
+            window.location.href="/wap/shop_cart"
         });
         //获取url参数
         function getUrlParam(name) {
