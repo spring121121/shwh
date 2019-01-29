@@ -316,6 +316,22 @@ class ShopController extends BaseController
     }
 
     /**
+     * 删除我的购物车商品
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delCar(Request $request){
+        $uid = UserService::getUid($request);
+        $goods_ids = $request->input('goods_id');
+        $result = CarModel::where('uid',$uid)->whereIn('goods_id',$goods_ids)->delete();
+        if ($result) {
+            return $this->success();
+        } else {
+            return $this->fail('300');
+        }
+    }
+
+    /**
      * 我的购物车列表
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
