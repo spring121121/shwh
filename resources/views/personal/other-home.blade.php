@@ -49,7 +49,9 @@
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
+                    console.log(666+444+"666")
                     console.log(data)
+                    console.log(666+444+"666")
                     if (data.status){
                         $("#other-nick").html(data.data.nickname);
                         $("#other-grade").html(data.data.grade);
@@ -61,9 +63,10 @@
                         }
                         if (data.data.role == 0){
                             $("#other-role").html("管理员");
+                            changeLi2();
                         }else if (data.data.role == 1){
                             $("#other-role").html("普通用户");
-                            console.log(666+444+"666")
+
                             changeLi2();
                         }else if (data.data.role == 2){
                             $("#other-role").html("博物馆");
@@ -131,14 +134,14 @@
             gongList+=' <li>点赞痕迹</li>'
             gongList+='<li>作品展示</li>'
             gongList+='<li>个人需求</li>'
-            $(".other-content").html(gongList)
+            $(".other-switch").html(gongList)
         }
         function changeLi2() {
             var gongList="";
             gongList+='<li class="click-change">探宝笔记</li>'
             gongList+=' <li>点赞痕迹</li>'
             gongList+='<li>个人需求</li>'
-            $(".other-content").html(gongList)
+            $(".other-switch").html(gongList)
         }
     </script>
 </html>
