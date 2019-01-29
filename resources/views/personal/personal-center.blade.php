@@ -214,9 +214,7 @@
                 console.log(img_size);
                 //alert(img_size);
                 if (img_size > 1000000){
-                    layer.tips("上传图片过大，请上传小于1M的图片", '.tx-icon-box', {
-                        tips: 3
-                    });
+                    layer.tips("上传图片过大，请上传小于1M的图片", '.portrait-box');
                 }else {
                     $.ajaxFileUpload({
                         url: '/upload', //用于文件上传的服务器端请求地址
