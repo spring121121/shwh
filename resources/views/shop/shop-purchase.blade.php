@@ -201,7 +201,7 @@
             {{--<div style="margin-top:10px;">运费</div>--}}
             {{--<div class="price post">+&nbsp;￥6.00</div>--}}
         </div>
-        <div class="hr" style="width:100%;"></div>
+        <div class="hr" style="width:100%;background: #f0f0f0"></div>
     </section>
     <footer class="select_submit">
         {{--<div class="total_price t_price">￥228.00</div>--}}
@@ -227,7 +227,7 @@
                     var v = data.data;
                     if(v != ''){
                         defaultAddress += '<li><div class="icon-box">'+v.name+'</div>';
-                        defaultAddress += '<div class="address-cont"><a href="/wap/my_address?flag=1'+'&goods_id='+goodsid+'&num='+num+'" id="'+v.id+'" class="open-address btn-bjdz">></a>';
+                        defaultAddress += '<div class="address-cont"><a href="/wap/my_address?flag=1'+'&goods_id='+goodsid+'&num='+num+'&detail='+detail+'" id="'+v.id+'" class="open-address btn-bjdz">></a>';
                         defaultAddress += '<h3>'+v.name+'<span>'+v.mobile+'</span></h3>';
                         defaultAddress += '<p>';
                         if(v.is_default == 1){

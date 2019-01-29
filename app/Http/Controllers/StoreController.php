@@ -167,13 +167,18 @@ class StoreController extends BaseController
     {
         $roleId = $request->input('roleId');
         $keyword = $request->input('storeName', null);
+        $page = $request->input('page', 1);
+        $limit = $request->input('limit', 10);
+        $offset = ($page-1)*$limit;
+        $sql= UserModel::where('role', '=', $roleId)->where('store.status', '=', StoreModel::IS_AUTH);
         if (!empty($keyword)) {
-            $storeList = UserModel::where('role', '=', $roleId)->where('store.name', 'like', '%' . $keyword . '%')->where('store.status', '=', StoreModel::IS_AUTH)->join('store', 'store.uid', '=', 'user.id')
-                ->select('store.id', 'store.name', 'store.introduction', 'store.logo_pic_url', 'user.photo', 'store.uid')->get();
-        } else {
-            $storeList = UserModel::where('role', '=', $roleId)->where('store.status', '=', StoreModel::IS_AUTH)->join('store', 'store.uid', '=', 'user.id')
-                ->select('store.id', 'store.name', 'store.introduction', 'store.logo_pic_url', 'user.photo', 'store.uid')->get();
+            $sql = $sql->where('store.name', 'like', '%' . $keyword . '%');
+
         }
+        $storeList = $sql->join('store', 'store.uid', '=', 'user.id')
+            ->select('store.id', 'store.name', 'store.introduction', 'store.logo_pic_url', 'user.photo','user.nickname', 'store.uid')
+            ->orderBy('commend_level','desc')
+            ->skip($offset)->take($limit)->get();
         return $this->success($storeList);
     }
 

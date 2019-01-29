@@ -24,7 +24,7 @@
            
         </header>
 
-        <section class="b">   
+        <div class="b">
             <div id="museum_shop">
                 <div class="museum_shop_left">
                     
@@ -33,10 +33,11 @@
                     
                 </div>
             </div>
-        </section>
+        </div>
         
     </div>
 </body>
+@extends('layout.footer')
 <script type="text/javascript" src="/js/jquery-1.11.0.js" ></script>
 <script type="text/javascript" src="/js/common.js" ></script>
 <script>

@@ -25,7 +25,7 @@
                 </li>
             </ul>
         </header>
-        <section>   
+        <div class="bigContainer">
             <div id="museum_shop">
                <ul class="designList">
                	<li class="listContent">
@@ -80,7 +80,7 @@
                	</li>
                </ul>  
             </div>
-        </section>
+        </div>
     </div>
 </body>
 <script type="text/javascript" src="/js/jquery-1.11.0.js" ></script>

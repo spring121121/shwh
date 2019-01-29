@@ -62,6 +62,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
 
     /*****************UserController********************/
     Route::get('updateUserInfo','UserController@updateUserInfo');//更新我的个人信息
+    Route::post('updatePhoto','UserController@updatePhoto');//修改我的头像
     Route::get('getMyUserInfo','UserController@getMyUserInfo');//获取我的个人信息
 
     /*********************分销**************************************/
@@ -128,6 +129,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('purchase','ShopController@purchase');//购买商品创建记录
     Route::get('storeGoodsList','ShopController@storeGoodsList');//所属店铺下的商品列表
     Route::post('addCar','ShopController@addCar');//增加商品购物车
+    Route::get('delCar','ShopController@delCar');//删除我的购物车商品
     Route::get('myCarList','ShopController@myCarList');//我的购物车列表
     Route::get('myOrderList','ShopController@myOrderList');//我的购物车列表
     Route::post('createRecord','ShopController@createRecord');//新增浏览记录信息

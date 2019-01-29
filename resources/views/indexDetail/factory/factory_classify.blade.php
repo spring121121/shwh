@@ -21,7 +21,7 @@
                 </li>
             </ul>
         </header>
-        <section>
+        <div class="bigContainer">
             <ul id="section_classify">
                 <li class="section_classify">
                     <a href="#">
@@ -112,7 +112,7 @@
                         </a>
                     </li> -->
             </ul>
-        </section>
+        </div>
     </div>
 </body>
 </html>

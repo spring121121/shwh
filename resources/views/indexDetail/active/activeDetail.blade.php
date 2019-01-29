@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/styles/common.css">
     <link rel="stylesheet" href="/styles/active.css">
     <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>
 </head>
 <body>
 <div class="container">
@@ -61,6 +62,7 @@
       </div>
     @foreach ($commentList as $li)
         <div class="de_activeNext">
+
             <div class="de_fansSay">
                 <div class="de_fansOne">
                     <div class="de_fansHead">
@@ -79,12 +81,14 @@
                             {{--<p>666</p>--}}
                         {{--</div>--}}
                         <div class="de_followPl">
-                            <img src="/images/pl-icon.png" alt="">
+                            {{--<img src="/images/pl-icon.png" alt="">--}}
+                            <span class="iconfont icon-pinglun"></span>
                             <p onclick="pinglun({{$li['id']}},'{{$li['nickname']}}')">回复</p>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         @if(!empty($li['child']))
                 @foreach ($li['child'] as $lii)
@@ -107,7 +111,7 @@
                                         {{--<p>666</p>--}}
                                     {{--</div>--}}
                                     <div class="de_followPl">
-                                        <img src="/images/pl-icon.png" alt="">
+                                        <span class="iconfont icon-pinglun"></span>
                                         <p onclick="pinglun({{$lii['id']}},'{{$lii['nickname']}}')">回复</p>
                                     </div>
                                 </div>
@@ -152,6 +156,7 @@
             }
         })
     })
+
     var isclick = true,activeId = "{{$active['id']}}",to_cid=0;
 
     function pinglun(cid,to_nickname) {
@@ -179,7 +184,8 @@
                 success: function (res) {
                     // alert(JSON.stringify(res))
                     if(res.code == 200) {
-                        alert('评论成功')
+                        alert('评论成功');
+                        addPlList()
                         $("#textar").val('')
                         to_cid = 0;
                     }else if(res.code == 50009){
@@ -224,7 +230,7 @@
         plList+='<p>666</p>'
         plList+='</div>'
         plList+='<div class="de_followPl">'
-        plList+=' <img src="/images/pl-icon.png" alt="">'
+        plList+=' <span class="iconfont icon-pinglun"></span>'
         plList+='<p>回复</p>'
         plList+='</div>'
         plList+='</div>'

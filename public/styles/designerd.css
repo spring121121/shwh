@@ -58,7 +58,7 @@ header ul li span{
 }
 
 /*中间*/
-section{
+.bigContainer{
     flex: 1;
     overflow-y: auto;
 }

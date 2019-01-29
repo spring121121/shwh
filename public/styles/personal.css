@@ -1089,7 +1089,8 @@ ul,li{
     height: 240px;
 }
 .tuijian-cont-box{
-    margin: 20px;
+    margin: 0 20px;
+    box-shadow: 3px 1px 8px 0px #878787;
 }
 .tuijian-cont-box .head-img{
     width: 40px;
@@ -1112,18 +1113,24 @@ ul,li{
     text-align: center;
     border-radius: 5px;
     margin-top: 10px;
+    margin-right: 10px;
 }
 .tuijian-cont-box p{
     text-indent: 2em;
     font-size: 15px;
     line-height: 25px;
     color: #aaa;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     text-align: justify;
 }
 .btn-list-icon, .more-pl-title{
     margin: 0 20px;
     height: 50px;
+    position: relative;
+}
+.guHeight{
+    height: 30px!important;
+
 }
 .btn-list-icon li{
     float: right;
@@ -1135,15 +1142,15 @@ ul,li{
     font-size: 12px;
     background-size: 100%;
 }
-.btn-list-icon #pinglun{
-    background-image: url("../images/pl-icon.png");
-}
-.btn-list-icon #shoucang{
-    background-image: url("../images/zf-icon.png");
-}
-.btn-list-icon #dianzan{
-    background-image: url("../images/dz-icon.png");
-}
+/*.btn-list-icon #pinglun{*/
+    /*background-image: url("../images/pl-icon.png");*/
+/*}*/
+/*.btn-list-icon #shoucang{*/
+    /*background-image: url("../images/zf-icon.png");*/
+/*}*/
+/*.btn-list-icon #dianzan{*/
+    /*background-image: url("../images/dz-icon.png");*/
+/*}*/
 .btn-list-icon li .pl-text{
     color: #000;
 }
@@ -1209,6 +1216,7 @@ ul,li{
     color: #999999;
     display: block;
     font-weight: normal;
+
 }
 .pl-content ul li .pl-cont h3 .dianzan{
     position: absolute;
@@ -2711,7 +2719,8 @@ header>ul>li>p{
     width: 100%;
     height: 200px;
     position: fixed;
-    top: 100px;
+    z-index: 10000;
+    top: 200px;
     background: #9a6e3a;
     left:0;
     background: transparent;
@@ -2724,6 +2733,7 @@ header>ul>li>p{
     margin: 0 auto;
     border-radius: 5px;
     background: #fff;
+    box-shadow: 2px 2px 2px 2px #878787;
 }
 .zc_windOne{
     display: flex;
@@ -2808,5 +2818,12 @@ header>ul>li>p{
     width: 100;
     height: auto;
     margin-top: 10px;
+}
+.huif{
+    border-radius: 5px;
+    background: #f43d53;
+    color: #fff;
+    outline: none;
+    border: none;
 }
 

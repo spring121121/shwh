@@ -32,7 +32,7 @@
                     <p>粉丝&nbsp;&nbsp;<span id="fans"></span></p>
                 </div>
                 <div class="followBtn" id="focus">
-
+                    +关注
                 </div>
             </div>
         </div>
@@ -43,13 +43,14 @@
 
         </div>
     </div>
-    <input  value="{{$id}}" id="uid" type="hidden">
+    <input value="{{$id}}" id="uid" type="hidden">
 
     <div class="nameContent">
         <div class="contentNav clearfix">
             <div class=""><p class="navboder" onclick="nameList(1)">探宝笔记</p></div>
             <div class=""><p onclick="nameList(2)">文创宝藏</p></div>
         </div>
+
         <div class="nameList">
             <div class="list_left">
 
@@ -59,6 +60,7 @@
     </div>
 </div>
 </body>
+@extends('layout.footer')
 <script type="text/javascript" src="/js/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
 <script>
@@ -77,7 +79,7 @@
         $.post("/focus", {'uid': uid}, function (data) {
             if (data.status) {
                 alert("关注成功");
-                $("#focus").bind('click',function(){
+                $("#focus").bind('click', function () {
                     cancelFocus(beuid);
                 });
                 $("#focus").html('<span>-</span><span>取关</span>')
@@ -92,7 +94,7 @@
         $.post("/cancelFocus", {'uid': uid}, function (data) {
             if (data.status) {
                 alert("取关成功");
-                $("#focus").bind('click',function(){
+                $("#focus").bind('click', function () {
                     addFocus(uid);
                 });
                 $("#focus").html('<span>+</span><span>关注</span>')
@@ -105,15 +107,15 @@
 
     function getStoreInfo() {
         var storeId = GetUrlParam("store_id");
-        $.get("/getStoreDetail", {'id': storeId}, function (data) {
+        $.get("/otherStoreDetail", {'id': storeId}, function (data) {
             if (data.code == 200) {
                 $("#muse_logo").attr("src", data.data[0].logo_pic_url)
                 $("#info").html(data.data[0].introduction)
                 $("#name").html(data.data[0].name)
                 getFansNum(data.data[0].uid)
-                if($("#uid").val()!=0){
+                if ($("#uid").val() != 0) {
                     judgeFocus(data.data[0].uid);
-                }else{
+                } else {
                     $("#focus").html('<span>+</span><span><a style="text-decoration:none;color:inherit;" href="/wap/login_index">关注</a></span>')
                 }
 
@@ -123,14 +125,14 @@
     }
 
     function judgeFocus(beuid) {
-        $.get('/judgeFocus', {'beuid':beuid}, function (data) {
+        $.get('/judgeFocus', {'beuid': beuid}, function (data) {
             if (data.data.is_focus) {
-                $("#focus").bind('click',function () {
+                $("#focus").bind('click', function () {
                     cancelFocus(beuid);
                 })
                 $("#focus").html('<span>-</span><span>取关</span>')
-            }else{
-                $("#focus").bind('click',function () {
+            } else {
+                $("#focus").bind('click', function () {
                     addFocus(beuid);
                 })
                 $("#focus").html('<span>+</span><span>关注</span>')
@@ -148,51 +150,44 @@
         var storeId = GetUrlParam("store_id");
 
         $.get('/getNoteByStoreId/' + storeId, {}, function (data) {
-            var nameListLeft = "";
-            var nameListRight = "";
+            var noteListLeft = "";
+            var noteListRight = "";
             if (data.status) {
                 $.each(data.data, function (i, v) {
                     if (i % 2 == 0) {
-                        nameListLeft += '<div class="museum_shop_pic">'
-                        nameListLeft += '<div>'
-                        nameListLeft += '<a href="/wap/noteDetail/'+v.id+'"><img src="' + v.image_one_url + '" onerror="this.src=\'/images/note.jpg\'"></a>'
-                        nameListLeft += '</div>'
-                        nameListLeft += '<div>'
-                        nameListLeft += '<h3 >' + v.title + '</h3>'
-                        nameListLeft += '<h4>'
-                        nameListLeft += '<a href="/wap/other_home?id='+v.uid+'"><span><img src="' + v.photo + '" onerror="this.src=\'/images/photo.png\'"/></span></a>'
-                        nameListLeft += '<p>'
-                        nameListLeft += '<i class="contentNum">152222</i>'
-                        nameListLeft += '<em onclick="addcolor()" class="iconfont icon-dianzan"></em>'
-                        nameListLeft += '</p>'
-                        nameListLeft += '</h4>'
-                        nameListLeft += '</div>'
-                        nameListLeft += '</div>'
+                        noteListLeft = getNoteList(noteListLeft, v);
+
                     } else {
-                        nameListRight += '<div class="museum_shop_pic">'
-                        nameListRight += '<div>'
-                        nameListRight += '<a href="/wap/noteDetail/'+v.id+'"><img src="' + v.image_one_url + '" onerror="this.src=\'/images/note.jpg\'"></a>'
-                        nameListRight += '</div>'
-                        nameListRight += '<div>'
-                        nameListRight += '<h3 >' + v.title + '</h3>'
-                        nameListRight += '<h4>'
-                        nameListRight += '<a href="/wap/other_home?id='+v.uid+'"><span><img src="' + v.photo + '" onerror="this.src=\'/images/photo.png\'"/></span></a>'
-                        nameListRight += '<p>'
-                        nameListRight += '<i class="contentNum">' + v.likeNum + '</i>'
-                        nameListRight += '<em onclick="addcolor()" class="iconfont icon-dianzan"></em>'
-                        nameListRight += '</p>'
-                        nameListRight += '</h4>'
-                        nameListRight += '</div>'
-                        nameListRight += '</div>'
+                        noteListRight = getNoteList(noteListRight, v);
+
                     }
 
                 })
-                $(".list_left").html(nameListLeft)
-                $(".list_right").html(nameListRight)
+                $(".list_left").html(noteListLeft)
+                $(".list_right").html(noteListRight)
             }
 
         })
 
+    }
+
+    function getNoteList(noteList, v) {
+        noteList += '<div class="museum_shop_pic">'
+        noteList += '<div>'
+        noteList += '<a href="/wap/noteDetail/' + v.id + '"><img src="' + v.image_one_url + '" onerror="this.src=\'/images/note.jpg\'"></a>'
+        noteList += '</div>'
+        noteList += '<div>'
+        noteList += '<h3 >' + v.title + '</h3>'
+        noteList += '<h4>'
+        noteList += '<a href="/wap/other_home?id=' + v.uid + '"><span><img src="' + v.photo + '" onerror="this.src=\'/images/photo.png\'"/></span></a>'
+        noteList += '<p>'
+        noteList += '<i class="contentNum" id="likeNum-' + v.id + '" >' + v.likeNum + '</i>'
+        noteList += '<em class="iconfont icon-dianzan" onclick="addLikes(' + v.id + ')" id="dianzan-' + v.id + '"></em>'
+        noteList += '</p>'
+        noteList += '</h4>'
+        noteList += '</div>'
+        noteList += '</div>'
+        return noteList;
     }
 
 

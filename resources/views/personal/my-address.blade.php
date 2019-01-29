@@ -72,32 +72,52 @@
             var goods_ids = getUrlParam('goods_id');
             var num = getUrlParam('num');
             var flag = getUrlParam('flag');
+            var detail = getUrlParam('detail');
+            //编辑地址
+            var com_url = 'goods_id='+goods_ids+'&num='+num;
             $(document).on("click",".btn-bjdz",function () {
                 var addressId = $(this).attr("id");
                 if(flag != null){
-                    window.location.href = "/wap/edit_address?id="+addressId+'&flag=1&goods_id='+goods_ids+'&num='+num;
-                    return false;
+                    if(detail !=null){
+                        window.location.href = "/wap/edit_address?id="+addressId+'&flag=1&'+com_url+'&detail=1';
+                        return false;
+                    }else{
+                        window.location.href = "/wap/edit_address?id="+addressId+'&flag=1&'+com_url;
+                        return false;
+                    }
                 }
                 window.location.href = "/wap/edit_address?id="+addressId;
             });
+            //选择地址
             $(document).on("click",".address",function () {
                 var addressId = $(this).find('input').val();
                 if(flag != null){
-                    window.location.href = "/wap/shop_purchase?id="+addressId+'&goods_id='+goods_ids+'&num='+num;
-                    return false;
+                    if(detail !=null){
+                        window.location.href = "/wap/shop_purchase?id="+addressId+'&'+com_url+'&detail=1';
+                        return false;
+                    }else{
+                        window.location.href = "/wap/shop_purchase?id="+addressId+'&'+com_url;
+                        return false;
+                    }
                 }
             });
+            //返回
             $('.goback').on('click',function(){
                 if(flag != null){
-                    window.location.href = "/wap/shop_purchase?goods_id="+goods_ids+'&num='+num;
-                    return false;
+                    if(detail !=null){
+                        window.location.href = "/wap/shop_purchase?"+com_url+'&detail=1';
+                        return false;
+                    }else{
+                        window.location.href = "/wap/shop_purchase?"+com_url;
+                        return false;
+                    }
                 }
                 window.location.href = "/wap/personal";
             });
             //新增地址
             $('.add_address').on('click',function(){
                 if(flag != null){
-                    window.location.href = "/wx/ad?flag=1&goods_id="+goods_ids+'&num='+num;
+                    window.location.href = "/wx/ad?flag=1&"+com_url;
                     return false;
                 }
                 window.location.href = "/wx/ad";

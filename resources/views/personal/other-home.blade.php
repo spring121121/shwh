@@ -24,7 +24,7 @@
             <ul class="flex-box other-switch">
                 <li>探宝笔记</li>
                 <li>点赞痕迹</li>
-                <li>笔记收藏</li>
+                <li>作品展示</li>
                 <li>个人需求</li>
             </ul>
         </div>
@@ -49,16 +49,16 @@
                 <ul>
                 </ul>
             </div>
-            <div class="other-home-bottom">
-                <div class="btn-other btn-follow">
-                    <div class="icon-box"><img src="/images/jiahao-fff.png" class="common-img"></div>
-                    <span>关注</span>
-                </div>
-                <div class="btn-other btn-chat">
-                    <div class="icon-box"><img src="/images/message.png" class="common-img"></div>
-                    <span>私聊</span>
-                </div>
-            </div>
+            {{--<div class="other-home-bottom">--}}
+                {{--<div class="btn-other btn-follow">--}}
+                    {{--<div class="icon-box"><img src="/images/jiahao-fff.png" class="common-img"></div>--}}
+                    {{--<span>关注</span>--}}
+                {{--</div>--}}
+                {{--<div class="btn-other btn-chat">--}}
+                    {{--<div class="icon-box"><img src="/images/message.png" class="common-img"></div>--}}
+                    {{--<span>私聊</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
 
         <!--引入footer-->

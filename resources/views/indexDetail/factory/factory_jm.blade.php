@@ -21,7 +21,7 @@
                 </li>
             </ul>
         </header>
-        <section>
+        <div class="bigContainer">
             <ul id="factory_exhibition">
                 <li>
                     <div class="factory_exhibition_pic">
@@ -57,7 +57,7 @@
                     <div>进入工厂</div>
                 </li>
             </ul>
-        </section>
+        </div>
     </div>
 </body>
 </html>

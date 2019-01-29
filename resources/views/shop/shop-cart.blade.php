@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>首页-商城首页</title>
+		<title>首页-商城购物车</title>
 
 		<link rel="stylesheet" href="/styles/swiper.min.css">
 		<link rel="stylesheet" href="/styles/common.css">
@@ -95,7 +95,7 @@
 				color:#fff;
 				line-height:30px;
 				vertical-align: middle;
-				margin-top:10px;
+				margin-top:8px;
 				margin-right:10px;
 			}
 			.check{
@@ -112,6 +112,36 @@
 				vertical-align: middle;
 				font-size:12px;
 			}
+			.del_goods{
+				margin-left: 20px;
+				height: 30px;
+				float: right;
+				text-align: center;
+				border-radius: 15px;
+				line-height: 30px;
+				vertical-align: middle;
+				margin-top: 8px;
+				margin-right: 10px;
+				background: #fff;
+				color:red;
+				border:1px solid #DD0E44;
+				width:50px;
+			}
+			.car_empty{
+				margin-top:100px;
+				padding:40% 10% 0 25%;
+			}
+			.car_empty img{
+				width:45px;
+				height:45px;
+			}
+			.car_font{
+				float:left;
+				margin-top:10px;
+				margin-left:10px;
+				color:#dbdbdb;
+				letter-spacing: 2px;
+			}
 		</style>
 	</head>
 	<body>
@@ -121,9 +151,7 @@
 					<span class="iconfont icon-ffanhui- back"></span>
 				</li>
 				<li class="title">购物车</li>
-				<li class="settle">
-					管理
-				</li>
+				<li class="settle">管理</li>
 			</ul>
 		</header>
 		{{--<div class="index-header header">--}}
@@ -147,13 +175,18 @@
 					<span>全选</span>
 				</div>
 			</div>
-			<div>
-				<span>合计:</span><span class="car_price">￥<span class="settle_price">0.00</span></span>
-				<div class="payment">
-					<span>结&nbsp;算</span>
-					<span>(</span>
-					<span class="settle_num">0</span>
-					<span>)</span>
+			<div class="submit">
+				<div class="set">
+					<span>合计:</span><span class="car_price">￥<span class="settle_price">0.00</span></span>
+					<div class="payment">
+						<span>结&nbsp;算</span>
+						<span>(</span>
+						<span class="settle_num">0</span>
+						<span>)</span>
+					</div>
+				</div>
+				<div class="del_goods">
+					<span>删&nbsp;除</span>
 				</div>
 			</div>
 		</div>
@@ -173,6 +206,12 @@
                 data:{},
                 success : function(data){//回调函数 和 后台返回的 数据
                     console.log(data.data);
+                    if(data.data == ''){
+                        $('.select').html('<div class="car_empty"><div style="float:left;"><img src="/images/shop/gouwuche.png"></div><div class="car_font">购物车空空如也！</div></div>');
+                        $('.select').css('background','#f0f0f0');
+                        $('.zc_cartbottom').hide();
+                        return false;
+					}
                     $.each(data.data, function (k, v) {
                         car += '<div class="store_parent">';
                         car += '<div class="store_div">';
@@ -215,7 +254,7 @@
                     $('.zc_carGoods').html(car);
                 }
             });
-
+			//结算
             $('.payment').on('click',function(){
  				var goods_ids = [];
  				var num = [];
@@ -229,8 +268,47 @@
 				}
 				window.location.href = '/wap/shop_purchase?goods_id='+goods_ids+'&num='+num;
 			});
+            //右上角管理按钮
+			$(".del_goods").hide();
+            $(".settle").on('click',function(){
+                var settle = $(this).text();
+                if(settle == "管理"){
+                    $(this).text("完成");
+                    $(".set").hide();
+                    $(".del_goods").show();
+                }else if(settle == "完成"){
+                    $(this).text("管理");
+                    $(".set").show();
+                    $(".del_goods").hide();
+                }
+            });
+            //删除商品
+            $('.del_goods').on('click',function(){
+                var goods_ids = [];
+                $.each($('input[name="goods_id"]:checked'),function(){
+                    goods_ids.push($(this).val());
+                });
+                if(goods_ids == ''){
+                    alert('您还没有选择商品哦！');
+                    return false;
+                }
+                $.ajax({
+                    url: "/delCar",	//请求url 商城分类
+                    type: "get",	//请求类型  post|get
+                    async: false,
+                    dataType: "json",  //返回数据的 类型 text|json|html--
+                    data: {goods_id:goods_ids},
+                    success: function (data) {//回调函数 和 后台返回的 数据
+						if(data.status){
+						    alert('删除成功！');
+                            window.location.reload();
+						}
+                    }
+                });
+			});
+                //返回
             $('.back').on('click',function(){
-                window.history.go(-1);
+                window.location.href="/wap/shop"
             });
             var n=1;
 			$(".zc_btnright").click(function(){
@@ -263,18 +341,6 @@
                     }
 				}
                 price();
-			});
-			
-			$(".settle").click(function(){
-				if($(this).text()=="管理"){
-					$(this).text("完成");
-					$("#zc_cartdiv1").hide();
-					$("#zc_cartdiv2").show();
-				}else{
-					$(this).text("管理");
-					$("#zc_cartdiv1").show();
-					$("#zc_cartdiv2").hide();
-				}
 			});
 			//全选
             $('.check').on('click',function(){
