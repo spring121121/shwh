@@ -37,6 +37,7 @@
         
     </div>
 </body>
+@extends('layout.footer')
 <script type="text/javascript" src="/js/jquery-1.11.0.js" ></script>
 <script type="text/javascript" src="/js/common.js" ></script>
 <script>

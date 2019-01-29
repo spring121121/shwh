@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>首页-商城首页</title>
+		<title>首页-商城购物车</title>
 
 		<link rel="stylesheet" href="/styles/swiper.min.css">
 		<link rel="stylesheet" href="/styles/common.css">
@@ -127,6 +127,21 @@
 				border:1px solid #DD0E44;
 				width:50px;
 			}
+			.car_empty{
+				margin-top:100px;
+				padding:40% 10% 0 25%;
+			}
+			.car_empty img{
+				width:45px;
+				height:45px;
+			}
+			.car_font{
+				float:left;
+				margin-top:10px;
+				margin-left:10px;
+				color:#dbdbdb;
+				letter-spacing: 2px;
+			}
 		</style>
 	</head>
 	<body>
@@ -191,6 +206,12 @@
                 data:{},
                 success : function(data){//回调函数 和 后台返回的 数据
                     console.log(data.data);
+                    if(data.data == ''){
+                        $('.select').html('<div class="car_empty"><div style="float:left;"><img src="/images/shop/gouwuche.png"></div><div class="car_font">购物车空空如也！</div></div>');
+                        $('.select').css('background','#f0f0f0');
+                        $('.zc_cartbottom').hide();
+                        return false;
+					}
                     $.each(data.data, function (k, v) {
                         car += '<div class="store_parent">';
                         car += '<div class="store_div">';
@@ -287,7 +308,7 @@
 			});
                 //返回
             $('.back').on('click',function(){
-                window.history.go(-1);
+                window.location.href="/wap/shop"
             });
             var n=1;
 			$(".zc_btnright").click(function(){
