@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/styles/common.css">
     <link rel="stylesheet" href="/styles/active.css">
     <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>
 </head>
 <body>
 <div class="container">
@@ -79,7 +80,8 @@
                             {{--<p>666</p>--}}
                         {{--</div>--}}
                         <div class="de_followPl">
-                            <img src="/images/pl-icon.png" alt="">
+                            {{--<img src="/images/pl-icon.png" alt="">--}}
+                            <span class="iconfont icon-pinglun"></span>
                             <p onclick="pinglun({{$li['id']}},'{{$li['nickname']}}')">回复</p>
                         </div>
                     </div>
@@ -107,7 +109,7 @@
                                         {{--<p>666</p>--}}
                                     {{--</div>--}}
                                     <div class="de_followPl">
-                                        <img src="/images/pl-icon.png" alt="">
+                                        <span class="iconfont icon-pinglun"></span>
                                         <p onclick="pinglun({{$lii['id']}},'{{$lii['nickname']}}')">回复</p>
                                     </div>
                                 </div>
@@ -224,7 +226,7 @@
         plList+='<p>666</p>'
         plList+='</div>'
         plList+='<div class="de_followPl">'
-        plList+=' <img src="/images/pl-icon.png" alt="">'
+        plList+=' <span class="iconfont icon-pinglun"></span>'
         plList+='<p>回复</p>'
         plList+='</div>'
         plList+='</div>'

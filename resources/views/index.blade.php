@@ -90,18 +90,18 @@
             </ul>
         </div>
         <!--文创故事-->
-        <div class="culture">
-        	<p>文创故事</p>
-                <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
-                    your browser does not support the video tag
-                </video>
-            </div>
-        <div class="culture">
-            <p>文创故事</p>
-            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
-                your browser does not support the video tag
-            </video>
-        </div>
+        {{--<div class="culture">--}}
+        	{{--<p>文创故事</p>--}}
+                {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
+                    {{--your browser does not support the video tag--}}
+                {{--</video>--}}
+            {{--</div>--}}
+        {{--<div class="culture">--}}
+            {{--<p>文创故事</p>--}}
+            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
+                {{--your browser does not support the video tag--}}
+            {{--</video>--}}
+        {{--</div>--}}
         {{--推荐博物馆--}}
         <div class="groomNuseum">
             <div class="groomHead">
@@ -139,18 +139,18 @@
                 </div>
             </div>
         </div>
-        <div class="culture">
-            <p>文创故事</p>
-            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
-                your browser does not support the video tag
-            </video>
-        </div>
-        <div class="culture">
-            <p>文创故事</p>
-            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
-                your browser does not support the video tag
-            </video>
-        </div>
+        {{--<div class="culture">--}}
+            {{--<p>文创故事</p>--}}
+            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
+                {{--your browser does not support the video tag--}}
+            {{--</video>--}}
+        {{--</div>--}}
+        {{--<div class="culture">--}}
+            {{--<p>文创故事</p>--}}
+            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
+                {{--your browser does not support the video tag--}}
+            {{--</video>--}}
+        {{--</div>--}}
 
         <div class="groomHead">
             <p>相关推荐</p>
@@ -202,18 +202,18 @@
             </div>
 
         </div>
-        <div class="culture">
-            <p>文创故事</p>
-            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
-                your browser does not support the video tag
-            </video>
-        </div>
-        <div class="culture">
-            <p>文创故事</p>
-            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
-                your browser does not support the video tag
-            </video>
-        </div>
+        {{--<div class="culture">--}}
+            {{--<p>文创故事</p>--}}
+            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
+                {{--your browser does not support the video tag--}}
+            {{--</video>--}}
+        {{--</div>--}}
+        {{--<div class="culture">--}}
+            {{--<p>文创故事</p>--}}
+            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
+                {{--your browser does not support the video tag--}}
+            {{--</video>--}}
+        {{--</div>--}}
         {{--文创机构推荐--}}
         <div class="groomNuseum">
             <div class="groomHead">
@@ -251,18 +251,18 @@
                 </div>
             </div>
         </div>
-        <div class="culture">
-            <p>文创故事</p>
-            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
-                your browser does not support the video tag
-            </video>
-        </div>
-        <div class="culture">
-            <p>文创故事</p>
-            <video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >
-                your browser does not support the video tag
-            </video>
-        </div>
+        {{--<div class="culture">--}}
+            {{--<p>文创故事</p>--}}
+            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
+                {{--your browser does not support the video tag--}}
+            {{--</video>--}}
+        {{--</div>--}}
+        {{--<div class="culture">--}}
+            {{--<p>文创故事</p>--}}
+            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
+                {{--your browser does not support the video tag--}}
+            {{--</video>--}}
+        {{--</div>--}}
         {{--工厂推荐--}}
         <div class="groomNuseum">
             <div class="groomHead">
