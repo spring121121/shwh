@@ -17,6 +17,7 @@
             <div class="personal-title">
                 <div class="portrait-box">
                     <img class="common-img" id = "photo" src="" alt="头像" onerror="this.src='/images/portrait.png'">
+                    <input type="file" id="personal-photo" name="source">
                 </div>
                 <div class="edit-personal">
                     <a class="btn-edit" href="/wap/message_center"></a>
@@ -200,12 +201,53 @@
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/layer/layer.js"></script>
+    <script src="/js/uploadfile.js"></script>
     <script src="/js/common.js"></script>
     <script src="/js/proving.js"></script>
     <script>
         $(function () {
             var store_id,store_status,is_mobile;
             var countdown = 60, isclick = true;
+
+            $("#personal-photo").on("change",function(){
+                var img_size = $("input[type=file]").get(0).files[0].size;
+                console.log(img_size);
+                //alert(img_size);
+                if (img_size > 1000000){
+                    layer.tips("上传图片过大，请上传小于1M的图片", '.tx-icon-box', {
+                        tips: 3
+                    });
+                }else {
+                    $.ajaxFileUpload({
+                        url: '/upload', //用于文件上传的服务器端请求地址
+                        secureuri: false, //是否需要安全协议，一般设置为false
+                        fileElementId: 'personal-photo', //文件上传域的ID
+                        dataType: 'json', //返回值类型 一般设置为json
+                        success: function (data){  //服务器成功响应处理函数
+                            console.log(data)
+                            $('#photo').attr('src',data.data.url);
+                            $.ajax({
+                                url : "/updatePhoto",	//请求url
+                                type : "post",	//请求类型  post|get
+                                dataType : "json",  //返回数据的 类型 text|json|html--
+                                data: {photo:data.data.url},
+                                success : function(data){//回调函数 和 后台返回的 数据
+                                    if (data.status){
+                                        layer.msg(data.message);
+                                    }else {
+                                        layer.msg(data.message);
+                                    }
+                                }
+                            });
+                        },
+                        error: function (data, status, e){//服务器响应失败处理函数
+
+                        }
+                    });
+                }
+            });
+
+
             $.ajax({
                 url : "/getMyUserInfo",	//请求url
                 type : "get",	//请求类型  post|get

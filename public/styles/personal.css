@@ -548,6 +548,7 @@ ul,li{
     height: 50px;
     border-radius: 50%;
     overflow: hidden;
+    position: relative;
 }
 .personal-header .personal-title .edit-personal{
     height: 50px;
@@ -1434,14 +1435,6 @@ ul,li{
     position: relative;
     margin-right: 10px;
     float: right;
-}
-.edit-data .tx-icon-box .up-img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
 }
 .edit-data .distance-top{
     margin-top: 40px;
