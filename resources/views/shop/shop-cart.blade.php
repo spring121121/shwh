@@ -145,8 +145,10 @@
 			.classify-all{
 				display:flex;
 			}
-			.classify-display {
-				margin-bottom: 55px;
+			.recommend{
+				text-align: center;
+				margin-bottom:10px;
+				color:#ffaa00;
 			}
 		</style>
 	</head>
@@ -173,7 +175,7 @@
 		</section>
 
 		<div class="classify-display">
-			<h2 style="text-align: center;margin-bottom:10px;">为&nbsp;你&nbsp;推&nbsp;荐</h2>
+			<h2 class="recommend">为&nbsp;你&nbsp;推&nbsp;荐</h2>
 			<ul class="classify-all">
 
 			</ul>
@@ -224,6 +226,7 @@
                         $('.select').html('<div class="car_empty"><div style="float:left;"><img src="/images/shop/gouwuche.png"></div><div class="car_font">购物车空空如也！</div></div>');
                         $('.select').css('background','#f0f0f0');
                         $('.zc_cartbottom').hide();
+                    	$('.classify-display').css('margin-bottom','55px');
                         return false;
 					}
                     $.each(data.data, function (k, v) {
@@ -265,10 +268,11 @@
 						});
                         car += '</div></div>';
                     });
+                    $('.classify-display').css('margin-bottom','105px');
                     $('.zc_carGoods').html(car);
                 }
             });
-            goodsList("/getGoodsList",0);
+            goodsList("/recommendGoodsList");
 			//结算
             $('.payment').on('click',function(){
  				var goods_ids = [];
@@ -416,6 +420,16 @@
                 all();
                 price();
 			});
+            //详情
+            $(".detail").on("click",function () {
+                var id = $(this).next().val();
+                window.location.href = "/wap/shop_detail?id="+id;
+            });
+
+            $(".agent").on("click",function () {
+                var goodsId = $(this).attr('id');
+                window.location.href = "/wap/shop_share?goods_id="+goodsId;
+            });
             //店铺，商品都选中
 			function all(){
                 var allStore_id = $("input[name='store_id']").length;//所有个数
@@ -443,17 +457,17 @@
                 $('.settle_price').text(total.toFixed(2));
                 $('.settle_num').text(settle_num);
 			}
-            function goodsList(url,id,goods_key){
+            function goodsList(url){
                 var goodsList = '';
                 $.ajax({
                     url : url,	//请求url 商城分类
                     type : "get",	//请求类型  post|get
                     async: false,
                     dataType : "json",  //返回数据的 类型 text|json|html--
-                    data:{id:id,goods_key:goods_key},
+                    data:{},
                     success : function(data){//回调函数 和 后台返回的 数据
                         console.log(data);
-                        $.each(data.data.data, function (k, v) {
+                        $.each(data.data, function (k, v) {
                             var image = v['image_url'][0];
                             if(image == ''){
                                 image = '/images/shop/default.jpg'
@@ -467,7 +481,7 @@
                             // goodsList += '<h3><i></i><span>用户名称</span></h3>';
                             goodsList += '<div class="price-box"><span>￥ '+v['price']+'</span>';
                             if(v['be_agent']==0){
-                                goodsList += '<div class="distribution-icon" onclick="agentGoods('+v.id+')"></div></div></div></li>';
+                                goodsList += '<div class="distribution-icon agent" id="'+v.id+'"></div></div></div></li>';
                             }
 
                         });
