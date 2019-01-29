@@ -110,7 +110,7 @@ header ul li input{
     height:100%;
     
 }
-section{
+.bigContainer{
     overflow-y: auto;
 }
 

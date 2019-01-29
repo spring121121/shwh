@@ -41,7 +41,7 @@
                 </li>
             </ul>
         </header>
-        <section>
+        <div class="bigContainer">
             <div id="designerd_abstract">
                 <div class="designerd_abstract_top">
                     <div>
@@ -130,7 +130,7 @@
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 </body>
  <script type="text/javascript" src="/js/jquery-1.11.0.js" ></script>

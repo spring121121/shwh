@@ -62,6 +62,7 @@
       </div>
     @foreach ($commentList as $li)
         <div class="de_activeNext">
+
             <div class="de_fansSay">
                 <div class="de_fansOne">
                     <div class="de_fansHead">
@@ -87,6 +88,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         @if(!empty($li['child']))
                 @foreach ($li['child'] as $lii)
@@ -154,6 +156,7 @@
             }
         })
     })
+
     var isclick = true,activeId = "{{$active['id']}}",to_cid=0;
 
     function pinglun(cid,to_nickname) {
@@ -181,7 +184,8 @@
                 success: function (res) {
                     // alert(JSON.stringify(res))
                     if(res.code == 200) {
-                        alert('评论成功')
+                        alert('评论成功');
+                        addPlList()
                         $("#textar").val('')
                         to_cid = 0;
                     }else if(res.code == 50009){
