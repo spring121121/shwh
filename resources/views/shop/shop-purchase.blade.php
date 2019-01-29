@@ -201,7 +201,7 @@
             {{--<div style="margin-top:10px;">运费</div>--}}
             {{--<div class="price post">+&nbsp;￥6.00</div>--}}
         </div>
-        <div class="hr" style="width:100%;"></div>
+        <div class="hr" style="width:100%;background: #f0f0f0"></div>
     </section>
     <footer class="select_submit">
         {{--<div class="total_price t_price">￥228.00</div>--}}

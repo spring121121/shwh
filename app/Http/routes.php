@@ -62,6 +62,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
 
     /*****************UserController********************/
     Route::get('updateUserInfo','UserController@updateUserInfo');//更新我的个人信息
+    Route::post('updatePhoto','UserController@updatePhoto');//修改我的头像
     Route::get('getMyUserInfo','UserController@getMyUserInfo');//获取我的个人信息
 
     /*********************分销**************************************/
