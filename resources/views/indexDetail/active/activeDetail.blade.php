@@ -59,14 +59,13 @@
          <div class="de_tellBtn" id="reply-btn">发布</div>
      </div>
       </div>
+    <div class="de_activeNext comment0">
     @foreach ($commentList as $li)
-        <div class="de_activeNext">
             <div class="de_fansSay">
                 <div class="de_fansOne">
                     <div class="de_fansHead">
                         <img src="{{$li['photo']}}" alt="">
                         <p>{{$li['nickname']}}</p>
-
                     </div>
                     <div class="de_fansTwo">{{$li['content']}}</div>
                     <div class="de_follow">
@@ -74,10 +73,6 @@
                             <img src="/images/time.png" alt="">
                             <p>{{$li['created_at']}}</p>
                         </div>
-                        {{--<div class="de_followDz">--}}
-                            {{--<img src="/images/dz-icon.png" alt="">--}}
-                            {{--<p>666</p>--}}
-                        {{--</div>--}}
                         <div class="de_followPl">
                             <img src="/images/pl-icon.png" alt="">
                             <p onclick="pinglun({{$li['id']}},'{{$li['nickname']}}')">回复</p>
@@ -85,41 +80,35 @@
                     </div>
                 </div>
             </div>
-        </div>
-        @if(!empty($li['child']))
+        {{--子集评论--}}
+            <div class="de_activeNext comment{{$li['id']}}" style="margin-left: 30px">
                 @foreach ($li['child'] as $lii)
-                    <div class="de_activeNext" >
-                        <div class="de_fansSay">
-                            <div class="de_fansOne">
-                                <div class="de_fansHead">
-                                    <img src="{{$lii['photo']}}" alt="">
-                                    <p>{{$lii['nickname']}}</p>
+                <div class="de_fansSay">
+                    <div class="de_fansOne">
+                        <div class="de_fansHead">
+                            <img src="{{$lii['photo']}}" alt="">
+                            <p>{{$lii['nickname']}}</p>
 
-                                </div>
-                                <div class="de_fansTwo">@<b>{{$lii['to_nickname']}}</b> {{$lii['content']}}</div>
-                                <div class="de_follow">
-                                    <div class="de_followTime">
-                                        <img src="/images/time.png" alt="">
-                                        <p>{{$lii['created_at']}}</p>
-                                    </div>
-                                    {{--<div class="de_followDz">--}}
-                                        {{--<img src="/images/dz-icon.png" alt="">--}}
-                                        {{--<p>666</p>--}}
-                                    {{--</div>--}}
-                                    <div class="de_followPl">
-                                        <img src="/images/pl-icon.png" alt="">
-                                        <p onclick="pinglun({{$lii['id']}},'{{$lii['nickname']}}')">回复</p>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="de_fansTwo">@<b>{{$lii['to_nickname']}}</b> {{$lii['content']}}</div>
+                        <div class="de_follow">
+                            <div class="de_followTime">
+                                <img src="/images/time.png" alt="">
+                                <p>{{$lii['created_at']}}</p>
+                            </div>
+                            <div class="de_followPl">
+                                <img src="/images/pl-icon.png" alt="">
+                                <p onclick="pinglun({{$lii['id']}},'{{$lii['nickname']}}')">回复</p>
                             </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
-        @endif
+            </div>
     @endforeach
-    <div class="de_addheight"></div>
+    </div>
 
-
+        <div class="de_addheight"></div>
     <!--引入footer-->
     @extends('layout.footer')
 </div>
@@ -154,15 +143,6 @@
     })
     var isclick = true,activeId = "{{$active['id']}}",to_cid=0;
 
-    function pinglun(cid,to_nickname) {
-        if(cid != to_cid) {
-            $("#textar").val('');
-        }
-        to_cid = cid;
-        $("#textar").attr("placeholder","回复" + to_nickname + " : ")
-        $("#textar").focus()
-    }
-
     $("#reply-btn").click(function () {
         var content = $("#textar").val();
         if(content.length === 0) {
@@ -173,25 +153,25 @@
             isclick = false;
             $.ajax({
                 url:"/active/reply",
-                type:"POST",
-                dataType:"json",
+                // url:"http://f.jianghairui.com/index/test/test",
+                type:"POST", dataType:"json",
                 data:{note_id:activeId,to_cid:to_cid,content:content},
                 success: function (res) {
-                    // alert(JSON.stringify(res))
+                    // alert(JSON.stringify(res));
                     if(res.code == 200) {
-                        alert('评论成功')
-                        $("#textar").val('')
-                        to_cid = 0;
+                        // alert('评论成功');
+                        $("#textar").val('');to_cid = 0;$("#textar").attr('placeholder','');
+                        addPlList(res.data);
                     }else if(res.code == 50009){
-                        alert(res.message)
+                        alert(res.message);
                         window.location.href = "/wx/auth";
                     }else {
-                        alert(res.message)
+                        alert(res.message);
                     }
                     isclick = true;
                 },
                 error:  function (res) {
-                    alert('服务器异常')
+                    alert('服务器异常');
                     isclick = true;
                 }
             })
@@ -202,35 +182,44 @@
     function toIndex() {
         window.location.href = "/wap/activeList";
     }
+
+    function pinglun(cid,to_nickname) {
+        // alert(cid);
+        if(cid != to_cid) {
+            $("#textar").val('');
+        }
+        to_cid = cid;
+        $("#textar").attr("placeholder","回复" + to_nickname + " : ")
+        $("#textar").focus()
+    }
    // 添加评论
-    function addPlList() {
+    function addPlList(data) {
         var plList="";
-        var text=$("#textar").val();
-        console.log(text)
-        plList+='<div class="de_fansSay">'
-        plList+='<div class="de_fansOne">'
-        plList+='<div class="de_fansHead">'
-        plList+='<img src="/images/people.jpg" alt="">'
-        plList+='<p>史莱克</p>'
-        plList+='</div>'
-        plList+='<div class="de_fansTwo">'+text+'</div>'
-        plList+='<div class="de_follow">'
-        plList+='<div class="de_followTime">'
-        plList+='<img src="/images/time.png" alt="">'
-        plList+=' <p>2019.01.05</p>'
-        plList+='</div>'
-        plList+='<div class="de_followDz">'
-        plList+='<img src="/images/dz-icon.png" alt="">'
-        plList+='<p>666</p>'
-        plList+='</div>'
-        plList+='<div class="de_followPl">'
-        plList+=' <img src="/images/pl-icon.png" alt="">'
-        plList+='<p>回复</p>'
-        plList+='</div>'
-        plList+='</div>'
-        plList+=' </div>'
-        plList+='</div>'
-       $(".de_activeNext").append(plList)
+        plList+='<div class="de_fansSay">';
+        plList+='<div class="de_fansOne">';
+        plList+='<div class="de_fansHead">';
+        plList+='<img src="'+data.photo+'" alt="">';
+        plList+='<p>'+data.nickname+'</p>';
+        plList+='</div>';
+        if(data.to_nickname !== '') {
+            plList+='<div class="de_fansTwo">@<b>'+data.to_nickname+'</b> '+data.content+'</div>';
+        }else {
+            plList+='<div class="de_fansTwo"> '+data.content+'</div>';
+        }
+        plList+='<div class="de_follow">';
+        plList+='<div class="de_followTime">';
+        plList+='<img src="/images/time.png" alt="">';
+        plList+=' <p>'+data.created_at+'</p>';
+        plList+='</div>';
+        plList+='<div class="de_followPl">';
+        plList+=' <img src="/images/pl-icon.png" alt="">';
+        plList+='<p onclick="pinglun('+data.id+',\''+data.nickname+'\')">回复</p>';
+        plList+='</div></div></div></div>';
+        if(data.root_cid == 0) {
+            plList+='<div class="de_activeNext comment'+data.id+'" style="margin-left: 30px">';
+        }
+        $(".comment"+data.root_cid).append(plList)
+
     }
     // 需求详情
     function getPeopleList() {
