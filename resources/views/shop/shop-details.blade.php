@@ -252,7 +252,7 @@
                 window.location.href = '/wap/shop_purchase?goods_id='+goods_id+'&num=1&detail=1';
             });
             $('.back').on('click',function(){
-                window.history.go(-1);
+                window.location.href = '/wap/shop';
             });
 
 		});

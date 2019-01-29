@@ -52,9 +52,9 @@
         <div id="bander" onclick="toActive()">
             <div class="swiper-container swiper-add">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="/images/banner1.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/images/banner2.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="/images/banner3.jpg" alt=""></div>
+                    <div class="swiper-slide" style="overflow: hidden"><img src="/images/banner1.jpg" alt=""></div>
+                    <div class="swiper-slide" style="overflow: hidden"><img src="/images/banner2.jpg" alt=""></div>
+                    <div class="swiper-slide" style="overflow: hidden"><img src="/images/004.jpg" alt=""></div>
                 </div>
 
                 <div class="swiper-pagination"></div>
@@ -90,6 +90,7 @@
             </ul>
         </div>
         <!--文创故事-->
+
         {{--<div class="culture">--}}
         	{{--<p>文创故事</p>--}}
                 {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
@@ -102,10 +103,24 @@
                 {{--your browser does not support the video tag--}}
             {{--</video>--}}
         {{--</div>--}}
+
+        <div class="culture">
+        	<p>文创故事</p>
+                <video id="video" src="/images/viode.mp4" loop controls="controls" width="100%" height="100%" >
+                    your browser does not support the video tag
+                </video>
+            </div>
+        <div class="culture">
+            <p>宗教</p>
+            <video src="/video/ren.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+
         {{--推荐博物馆--}}
         <div class="groomNuseum">
             <div class="groomHead">
-                <p>相关推荐</p>
+                <p>推荐博物馆</p>
                 <a href="/wap/museumOne?roleId=2">查看更多</a>
             </div>
             <div class="groomContent clearfix">
@@ -139,6 +154,7 @@
                 </div>
             </div>
         </div>
+
         {{--<div class="culture">--}}
             {{--<p>文创故事</p>--}}
             {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
@@ -152,8 +168,22 @@
             {{--</video>--}}
         {{--</div>--}}
 
+        <div class="culture">
+            <p>生活故事</p>
+            <video src="/video/tong.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+        <div class="culture">
+            <p>地标建筑</p>
+            <video src="/video/jianzhu.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+
+
         <div class="groomHead">
-            <p>相关推荐</p>
+            <p>优秀设计师</p>
             <a href="/wap/designW">查看更多</a>
         </div>
         <div class="swiper-container swiper-addList">
@@ -202,6 +232,7 @@
             </div>
 
         </div>
+
         {{--<div class="culture">--}}
             {{--<p>文创故事</p>--}}
             {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
@@ -214,11 +245,25 @@
                 {{--your browser does not support the video tag--}}
             {{--</video>--}}
         {{--</div>--}}
+
+        <div class="culture">
+            <p>风车</p>
+            <video src="/video/fen.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+        <div class="culture">
+            <p>生活故事</p>
+            <video src="/video/phone.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+
         {{--文创机构推荐--}}
         <div class="groomNuseum">
             <div class="groomHead">
-                <p>相关推荐</p>
-                <a href="/wap/museumOne?roleId=2">查看更多</a>
+                <p>五星文创机构</p>
+                <a href="/wap/museumOne?roleId=4">查看更多</a>
             </div>
             <div class="groomContent clearfix">
                 <div class="groomList ">
@@ -251,6 +296,7 @@
                 </div>
             </div>
         </div>
+
         {{--<div class="culture">--}}
             {{--<p>文创故事</p>--}}
             {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
@@ -263,11 +309,25 @@
                 {{--your browser does not support the video tag--}}
             {{--</video>--}}
         {{--</div>--}}
+
+        <div class="culture">
+            <p>工厂故事</p>
+            <video src="/video/huo.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+        <div class="culture">
+            <p>动物世界</p>
+            <video src="/video/bird.mp4" controls="controls" width="100%" height="100%" >
+                your browser does not support the video tag
+            </video>
+        </div>
+
         {{--工厂推荐--}}
         <div class="groomNuseum">
             <div class="groomHead">
-                <p>相关推荐</p>
-                <a href="/wap/museumOne?roleId=2">查看更多</a>
+                <p>优质工厂</p>
+                <a href="/wap/museumOne?roleId=5">查看更多</a>
             </div>
             <div class="groomContent clearfix">
                 <div class="groomList ">
