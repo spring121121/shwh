@@ -24,7 +24,7 @@
            
         </header>
 
-        <section class="b">   
+        <div class="b">
             <div id="museum_shop">
                 <div class="museum_shop_left">
                     
@@ -33,7 +33,7 @@
                     
                 </div>
             </div>
-        </section>
+        </div>
         
     </div>
 </body>
