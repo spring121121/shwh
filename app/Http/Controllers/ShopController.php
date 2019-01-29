@@ -247,6 +247,22 @@ class ShopController extends BaseController
     }
 
     /**
+     * 为你推荐商品
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function recommendGoodsList(Request $request){
+        $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)
+            ->orderBy(DB::raw('RAND()'))
+            ->take(GoodsModel::RELATE_GOODS)
+            ->get()->toArray();
+        foreach($goodsList as &$item){
+            $item['image_url'] = unserialize($item['image_url']);
+        }
+        return $this->success($goodsList);
+    }
+
+    /**
      * 搜索商品
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
