@@ -100,9 +100,6 @@
                  })
                  $(".museum_shop_left").html(museumListLeft);
                  $(".museum_shop_right").html(museumListRight);
-                 museumListLeft +=museumListRight
-                 $(".museum_shop_left").html(museumListLeft);
-                 $(".museum_shop_right").html(museumListRight);
 
 
              },
