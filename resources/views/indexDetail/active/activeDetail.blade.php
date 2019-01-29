@@ -66,7 +66,7 @@
             <div class="de_fansSay">
                 <div class="de_fansOne">
                     <div class="de_fansHead">
-                        <img src="{{$li['photo']}}" alt="">
+                        <img src="{{$li['photo']}}" alt="" onclick="toOtherHome({{$li['uid']}})">
                         <p>{{$li['nickname']}}</p>
 
                     </div>
@@ -96,7 +96,7 @@
                         <div class="de_fansSay">
                             <div class="de_fansOne">
                                 <div class="de_fansHead">
-                                    <img src="{{$lii['photo']}}" alt="">
+                                    <img src="{{$lii['photo']}}" alt="" onclick="toOtherHome({{$li['uid']}})">
                                     <p>{{$lii['nickname']}}</p>
 
                                 </div>
