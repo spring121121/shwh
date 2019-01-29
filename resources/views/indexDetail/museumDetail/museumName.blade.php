@@ -32,7 +32,7 @@
                     <p>粉丝&nbsp;&nbsp;<span id="fans"></span></p>
                 </div>
                 <div class="followBtn" id="focus">
-
+                    +关注
                 </div>
             </div>
         </div>

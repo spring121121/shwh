@@ -132,7 +132,7 @@
 
         <div class="groomHead">
             <p>优秀设计师</p>
-            <a href="/wap/designW">查看更多</a>
+            <a href="/wap/design">查看更多</a>
         </div>
         <div class="swiper-container swiper-addList">
             <div class="swiper-wrapper">

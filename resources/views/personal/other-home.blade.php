@@ -24,7 +24,7 @@
             <ul class="flex-box other-switch">
                 <li>探宝笔记</li>
                 <li>点赞痕迹</li>
-                <li>笔记收藏</li>
+                <li>作品展示</li>
                 <li>个人需求</li>
             </ul>
         </div>
