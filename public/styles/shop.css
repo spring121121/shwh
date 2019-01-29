@@ -64,7 +64,6 @@
 	background: #fff;
 }
 .classify-display ul{
-    display: none;
     flex-direction: row;
     flex-wrap: wrap;
 }
