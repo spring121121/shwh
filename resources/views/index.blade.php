@@ -39,7 +39,7 @@
     <!--<header>        
     </header>-->
     <!--中间部分-->
-    <section>
+    <div class="bigContainer">
         <div class="searchContainer">
             <div id="search">
                 <button onclick="contentList();"></button>
@@ -92,19 +92,6 @@
         </div>
         <!--文创故事-->
 
-        {{--<div class="culture">--}}
-        	{{--<p>文创故事</p>--}}
-                {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
-                    {{--your browser does not support the video tag--}}
-                {{--</video>--}}
-            {{--</div>--}}
-        {{--<div class="culture">--}}
-            {{--<p>文创故事</p>--}}
-            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
-                {{--your browser does not support the video tag--}}
-            {{--</video>--}}
-        {{--</div>--}}
-
         <div class="culture">
             <p>文创故事</p>
             <video id="video" src="/images/viode.mp4" loop controls="controls" width="100%" height="100%">
@@ -125,49 +112,9 @@
                 <a href="/wap/museumOne?roleId=2">查看更多</a>
             </div>
             <div class="groomContent clearfix" id="museum">
-                <div class="groomList ">
-                    <img src="/images/wemyi2.jpg" alt="">
-                    <div class="groomInfo">
-                        <img src="/images/people2.jpg" alt="">
-                        <p>小鸟依人</p>
-                    </div>
-                </div>
-                <div class="groomList ">
-                    <img src="/images/wenyi3.jpg" alt="">
-                    <div class="groomInfo">
-                        <img src="/images/people.jpg" alt="">
-                        <p>小鸟依人</p>
-                    </div>
-                </div>
-                <div class="groomList ">
-                    <img src="/images/wenyi4.jpg" alt="">
-                    <div class="groomInfo">
-                        <img src="/images/people3.jpg" alt="">
-                        <p>小鸟依人</p>
-                    </div>
-                </div>
-                <div class="groomList ">
-                    <img src="/images/wenyi5.jpg" alt="">
-                    <div class="groomInfo">
-                        <img src="/images/people2.jpg" alt="">
-                        <p>小鸟依人</p>
-                    </div>
-                </div>
+
             </div>
         </div>
-
-        {{--<div class="culture">--}}
-            {{--<p>文创故事</p>--}}
-            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
-                {{--your browser does not support the video tag--}}
-            {{--</video>--}}
-        {{--</div>--}}
-        {{--<div class="culture">--}}
-            {{--<p>文创故事</p>--}}
-            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
-                {{--your browser does not support the video tag--}}
-            {{--</video>--}}
-        {{--</div>--}}
 
         <div class="culture">
             <p>生活故事</p>
@@ -234,19 +181,6 @@
 
         </div>
 
-        {{--<div class="culture">--}}
-            {{--<p>文创故事</p>--}}
-            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
-                {{--your browser does not support the video tag--}}
-            {{--</video>--}}
-        {{--</div>--}}
-        {{--<div class="culture">--}}
-            {{--<p>文创故事</p>--}}
-            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
-                {{--your browser does not support the video tag--}}
-            {{--</video>--}}
-        {{--</div>--}}
-
         <div class="culture">
             <p>风车</p>
             <video src="/video/fen.mp4" controls="controls" width="100%" height="100%">
@@ -270,19 +204,6 @@
             </div>
         </div>
 
-        {{--<div class="culture">--}}
-            {{--<p>文创故事</p>--}}
-            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
-                {{--your browser does not support the video tag--}}
-            {{--</video>--}}
-        {{--</div>--}}
-        {{--<div class="culture">--}}
-            {{--<p>文创故事</p>--}}
-            {{--<video src="/images/viode.mp4" controls="controls" width="100%" height="100%" >--}}
-                {{--your browser does not support the video tag--}}
-            {{--</video>--}}
-        {{--</div>--}}
-
         <div class="culture">
             <p>工厂故事</p>
             <video src="/video/huo.mp4" controls="controls" width="100%" height="100%">
@@ -303,17 +224,10 @@
                 <a href="/wap/museumOne?roleId=5">查看更多</a>
             </div>
             <div class="groomContent clearfix" id="factory">
-                {{--<div class="groomList ">--}}
-                    {{--<img src="/images/wenyi5.jpg" alt="">--}}
-                    {{--<div class="groomInfo">--}}
-                        {{--<img src="/images/people2.jpg" alt="">--}}
-                        {{--<p>小鸟依人</p>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
             </div>
         </div>
 
-    </section>
+    </div>
 </div>
 <!--引入footer-->
 @extends('layout.footer')

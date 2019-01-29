@@ -24,7 +24,7 @@
            
         </header>
 
-        <section class="b">   
+        <div class="b">
             <div id="museum_shop">
                 <div class="museum_shop_left">
                     
@@ -33,7 +33,7 @@
                     
                 </div>
             </div>
-        </section>
+        </div>
         
     </div>
 </body>
@@ -98,6 +98,9 @@
                          museumListRight+='</div>'
                      }
                  })
+                 $(".museum_shop_left").html(museumListLeft);
+                 $(".museum_shop_right").html(museumListRight);
+                 museumListLeft +=museumListRight
                  $(".museum_shop_left").html(museumListLeft);
                  $(".museum_shop_right").html(museumListRight);
 
