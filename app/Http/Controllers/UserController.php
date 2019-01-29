@@ -54,12 +54,18 @@ class UserController extends BaseController
 
     //修改头像
     public function updatePhoto(Request $request){
+        $data = [];
         $photo = $request->input('photo');
-        $this->validate($request, [
-            'photo' => $photo,
-        ]);
+        $rules = [
+            'photo' => 'required'
+        ];
+        $data['photo'] = $photo;
+        $validator = Validator::make($data,$rules);
+        if($validator->fails()){
+            return $this->fail(50001,$validator->errors()->all());
+        }
         $uid = UserService::getUid($request);
-        $result = UserModel::where('id', $uid)->update(['photo'=>$photo]);
+        $result = UserModel::where('id', $uid)->update($data);
         if ($result) {
             return $this->success();
         } else {

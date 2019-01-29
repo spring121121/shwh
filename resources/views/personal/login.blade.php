@@ -64,7 +64,9 @@
                     success : function(data){	//回调函数 和 后台返回的 数据
                         if (data.code == 200){
                             layer.msg(data.message);
-                            window.location.href = "/wap/personal";
+                            setTimeout(function () {
+                                window.location.href = "/wap/personal";
+                            },2000);
                         } else {
                             layer.msg(data.message);
                         }

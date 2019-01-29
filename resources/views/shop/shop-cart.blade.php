@@ -82,7 +82,6 @@
 			}
 			.select{
 				background: #F2F2F2;
-                margin-bottom:100px;
 			}
 			.payment{
 				margin-left:20px;
@@ -128,8 +127,9 @@
 				width:50px;
 			}
 			.car_empty{
-				margin-top:100px;
-				padding:40% 10% 0 25%;
+				height:70px;
+				margin-top:20%;
+				margin-left:30%;
 			}
 			.car_empty img{
 				width:45px;
@@ -141,6 +141,12 @@
 				margin-left:10px;
 				color:#dbdbdb;
 				letter-spacing: 2px;
+			}
+			.classify-all{
+				display:flex;
+			}
+			.classify-display {
+				margin-bottom: 55px;
 			}
 		</style>
 	</head>
@@ -165,6 +171,14 @@
 			<div class="zc_carGoods">
 			</div>
 		</section>
+
+		<div class="classify-display">
+			<h2 style="text-align: center;margin-bottom:10px;">为&nbsp;你&nbsp;推&nbsp;荐</h2>
+			<ul class="classify-all">
+
+			</ul>
+		</div>
+
 		<!--购物车底部-->
 		<div class="zc_cartbottom">
 			<div>
@@ -254,6 +268,7 @@
                     $('.zc_carGoods').html(car);
                 }
             });
+            goodsList("/getGoodsList",0);
 			//结算
             $('.payment').on('click',function(){
  				var goods_ids = [];
@@ -428,6 +443,38 @@
                 $('.settle_price').text(total.toFixed(2));
                 $('.settle_num').text(settle_num);
 			}
+            function goodsList(url,id,goods_key){
+                var goodsList = '';
+                $.ajax({
+                    url : url,	//请求url 商城分类
+                    type : "get",	//请求类型  post|get
+                    async: false,
+                    dataType : "json",  //返回数据的 类型 text|json|html--
+                    data:{id:id,goods_key:goods_key},
+                    success : function(data){//回调函数 和 后台返回的 数据
+                        console.log(data);
+                        $.each(data.data.data, function (k, v) {
+                            var image = v['image_url'][0];
+                            if(image == ''){
+                                image = '/images/shop/default.jpg'
+                            }
+                            goodsList += '<li>';
+                            goodsList += '<div class="shop-list-box">';
+                            goodsList += '<div class="shop-img-box">';
+                            goodsList += '<img src="'+image+'" class="common-img1 detail"><input type="hidden" value="'+v['id']+'">';
+                            goodsList += '</div>';
+                            goodsList += '<p><strong>'+v['goods_name']+'</strong><span>'+v['goods_info']+'</span></p>';
+                            // goodsList += '<h3><i></i><span>用户名称</span></h3>';
+                            goodsList += '<div class="price-box"><span>￥ '+v['price']+'</span>';
+                            if(v['be_agent']==0){
+                                goodsList += '<div class="distribution-icon" onclick="agentGoods('+v.id+')"></div></div></div></li>';
+                            }
+
+                        });
+                        $('.classify-all').html(goodsList);
+                    }
+                });
+            }
 		});
 	</script>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport"
-          content="width=devic-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>山洞-工厂</title>
     <link rel="stylesheet" href="/styles/swiper.min.css">
@@ -38,9 +38,7 @@
                 {{--<p>关注</p>--}}
             </li>
             <li>
-                    <span onclick="changeHead()">
-                        <img src="/images/serch.png" alt="">
-                    </span>
+                <span onclick="changeHead()"><img src="/images/serch.png" alt=""></span>
             </li>
         </ul>
 
@@ -71,7 +69,7 @@
         {{--</div>--}}
     </div>
     <div class="caseud" page="1" total="10">
-        <a href="javascript:;">加载更多</a>
+        <a href="javascript:void(0);">加载更多</a>
     </div>
     <div class="addhight"></div>
     <!--引入footer-->
@@ -84,9 +82,11 @@
 <script src="/js/common.js"></script>
 <script>
     $(function () {
-        var limit =10;
+        var limit =5;
         // getNote();
         getNote(1, limit);
+
+
         $(".styleTitle>p").click(function () {
             $(this).addClass("addcolor").siblings().removeClass("addcolor")
         })
@@ -105,7 +105,7 @@
 
             }
         });
-    })
+    });
 
     function handleToindex() {
         window.location.href = "/wap/index";
@@ -161,37 +161,29 @@
             success: function (data) {
                 var liList = "";
                 data.data.forEach(function (i) {
-                    liList += '<div id="bander">'
-                    liList += '<div class="swiper-container swiper-addone">'
-                    liList += '<div class="swiper-wrapper" onclick="toNoteDetail('+i.id+')">'
-                    liList += '<div class="swiper-slide"><img src="' + i.image_one_url + '" alt=""></div>'
-                    liList += '<div class="swiper-slide"><img src="' + i.image_three_url + '" alt=""></div>'
-                    liList += '<div class="swiper-slide"><img src="' + i.image_two_url + '" alt=""></div>'
-                    liList += '</div>'
-                    liList += '<div class="swiper-pagination"></div>'
-                    liList += '</div>'
-                    liList += '<p class="bannerTitle">"' + i.content + '"</p>'
-                    liList += '<div class="studyPeople">'
-                    liList += '<img src="'+i.photo+'" onclick="toOtherHome('+i.uid+')" alt="">'
-                    liList += '<p class="bannerName">' + i.nickname + '</p>'
-                    liList += '<div class="studyDz">'
-                    liList += '<div class="dzimg">'
+                    liList += '<div class="bander">';
+                    liList += '<div class="swiper-container swiper-addone">';
+                    liList += '<div class="swiper-wrapper" onclick="toNoteDetail('+i.id+')">';
+                    liList += '<div class="swiper-slide dx-img-box"><img src="' + i.image_one_url + '" alt=""></div>';
+                    // liList += '<div class="swiper-slide"><img src="' + i.image_three_url + '" alt=""></div>';
+                    // liList += '<div class="swiper-slide"><img src="' + i.image_two_url + '" alt=""></div></div>';
+                    liList += '</div></div>';
+                    liList += '<p class="bannerTitle">' + i.content + '</p>';
+                    liList += '<div class="studyPeople">';
+                    liList += '<img src="'+i.photo+'" onclick="toOtherHome('+i.uid+')" alt="">';
+                    liList += '<p class="bannerName">' + i.nickname + '</p>';
+                    liList += '<div class="studyDz"><div class="dzimg">';
                     liList += '<em  id=dianzan-'+i.id+' class="iconfont icon-dianzan" onclick="addLikes('+i.id+')"></em>';
-                    liList += '<img src="/images/dz-icon-red.png" alt="" class="redDz">'
-                    liList += '</div>'
-                    liList += '<p id="likeNum-'+i.id+'">'+i.likeNum+'</p>'
-                    liList += '</div>'
-                    liList += '</div>'
-                    liList += '</div>'
-                })
-                $(".noteList").append(liList)
+                    liList += '<img src="/images/dz-icon-red.png" alt="" class="redDz"></div>';
+                    liList += '<p id="likeNum-'+i.id+'">'+i.likeNum+'</p>';
+                    liList += '</div></div></div>';
+                });
+                $(".noteList").append(liList);
 
                 $(".caseud").attr('page', parseInt(page) + 1)
             }
         });
     }
-
-
     function toNoteDetail(noteId) {
         window.location.href = "/wap/noteDetail/"+noteId;
     }

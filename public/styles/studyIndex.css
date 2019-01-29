@@ -42,26 +42,44 @@ header>ul>li>p{
 .addcolor{
     color: #e83c45;
 }
-#bander{
-    width:100%;
+.noteList{
+    margin-top: 50px;
+    background: #eee;
+}
+.bander{
+    /*width:100%;*/
     overflow: hidden;
-    margin-top: 45px;
+    margin: 30px 10px 0;
+    background: #fff;
+    padding-bottom: 11px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px #878787;
+}
+.swiper-addone{
+    border-radius: 10px;
+}
+.dx-img-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 .swiper-wrapper img{
-    width:95%;
-    height:96%;
+    width:100%;
+    /*height:96%;*/
     display: block;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 2px 0px 14px 0px #878787
+    /*margin: 0 auto;*/
+    /*border-radius: 10px;*/
+    /*box-shadow: 2px 0px 14px 0px #878787*/
 }
 .swiper-container{
     height: 180px!important;
 }
 .bannerTitle{
-   font-size: 18px;
-    font-weight: bold;
-    margin: 5px 0 0 10px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: justify;
+    margin: 10px 5px;
 }
 .studyPeople{
     display: flex;
@@ -71,12 +89,20 @@ header>ul>li>p{
 .studyPeople>img{
     width: 20px!important;
     height: 20px!important;
-    margin:0 0 0  18px!important;
+    margin:0 0 0 10px!important;
 }
 .studyPeople>p{
     font-size: 12px;
-    color: #9e9e9e;
+    color: #666;
     margin: 2px 0 0 10px;
+}
+.caseud{
+    line-height: 30px;
+    background: #eee;
+}
+.caseud a{
+    font-size: 14px;
+    color: #999;
 }
 .souinp{
     width: 240px;
@@ -113,14 +139,15 @@ header>ul>li>p{
 .addhight{
     width: 100%;
     height:60px;
+    background: #eee;
 }
 .studyDz{
-    width: 67px;
+    width: auto;
     height: 20px;
     display: flex;
     flex-direction: row;
     margin-left: auto;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 .dzimg{
     position: relative;
