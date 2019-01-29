@@ -1091,6 +1091,7 @@ ul,li{
 .tuijian-cont-box{
     margin: 0 20px;
     box-shadow: 3px 1px 8px 0px #878787;
+    padding: 5px;
 }
 .tuijian-cont-box .head-img{
     width: 40px;
@@ -1914,9 +1915,9 @@ ul,li{
     width: 280px;
     height: 150px;
     margin: 10px auto;
-    background-size: 20%;
-}
+    background-size: 20%;}
 .btn-store-register{
+
     height: 30px;
     width: 200px;
     margin: 50px auto;
@@ -2398,7 +2399,8 @@ ul,li{
     color: #ea2e4d;
 }
 .other-content{
-    display: none;
+    /*display: none;*/
+    margin-top: 40px;
 }
 .other-home-bottom{
     position: fixed;

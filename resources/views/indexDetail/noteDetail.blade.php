@@ -77,7 +77,7 @@
         </div>
     </div>
     <div class="tuijian-cont-box">
-        <div class="head-img"><img style="border-radius: 50%" class="common-img" src="{{$noteDetail['photo']}}"
+        <div class="head-img" onclick="toOther()"><img style="border-radius: 50%" class="common-img" src="{{$noteDetail['photo']}}"
                                    onerror="this.src='/images/portrait.png'"/></div>
         <h4>{{$noteDetail['nickname']}}
             <span id="focus">
@@ -279,7 +279,9 @@
 
         })
 
-
+     function toOther() {
+         window.location.href = "/wap/noteDetail";
+     }
 
 </script>
 </html>
