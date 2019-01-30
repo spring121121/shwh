@@ -79,10 +79,7 @@
         $.post("/focus", {'uid': uid}, function (data) {
             if (data.status) {
                 alert("关注成功");
-                $("#focus").bind('click', function () {
-                    cancelFocus(beuid);
-                });
-                $("#focus").html('<span>-</span><span>取关</span>')
+                $("#focus").html('<span>-</span><span onclick="cancelFocus('+uid+');">取关</span>')
             } else {
                 alert("哎呀！出错了")
             }
@@ -94,10 +91,7 @@
         $.post("/cancelFocus", {'uid': uid}, function (data) {
             if (data.status) {
                 alert("取关成功");
-                $("#focus").bind('click', function () {
-                    addFocus(uid);
-                });
-                $("#focus").html('<span>+</span><span>关注</span>')
+                $("#focus").html('<span>+</span><span onclick="addFocus('+uid+')">关注</span>')
 
             } else {
                 alert("哎呀！出错了")
@@ -127,15 +121,9 @@
     function judgeFocus(beuid) {
         $.get('/judgeFocus', {'beuid': beuid}, function (data) {
             if (data.data.is_focus) {
-                $("#focus").bind('click', function () {
-                    cancelFocus(beuid);
-                })
-                $("#focus").html('<span>-</span><span>取关</span>')
+                $("#focus").html('<span>-</span><span onclick="cancelFocus('+beuid+')">取关</span>')
             } else {
-                $("#focus").bind('click', function () {
-                    addFocus(beuid);
-                })
-                $("#focus").html('<span>+</span><span>关注</span>')
+                $("#focus").html('<span>+</span><span onclick="addFocus('+beuid+')">关注</span>')
             }
         })
     }

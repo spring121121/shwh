@@ -14,6 +14,14 @@ input[type=file]{
     bottom: 0;
     opacity: 0;
 }
+.caseud{
+    line-height: 30px;
+    background: #eee;
+}
+.caseud a{
+    font-size: 14px;
+    color: #999;
+}
 .right{
     float: right;
 }
@@ -136,7 +144,12 @@ input[type=file]{
     color: #FFF;
 }
 .other-store-box {
-    margin: 0 20px;
+    margin: 10px 0 0;
+}
+.other-store-flex{
+    display: flex;
+    justify-content: center;
+    margin: 0 50px;
 }
 .store-message-box .icon-box{
     width: 55px;
@@ -149,16 +162,18 @@ input[type=file]{
 .other-store-box .icon-box{
     width: 30px;
     height: 30px;
+    margin: 0;
+    border-radius: 50%;
 }
-.store-name{
-    margin-left: 75px;
-}
+/*.store-name{*/
+    /*margin-left: 75px;*/
+/*}*/
 .other-store-box .store-name{
-    margin-left: 50px;
     display: flex;
     flex-direction: row;
     height: 30px;
     line-height: 30px;
+    margin-left: 10px;
 }
 .setting{
     width: 24px;
@@ -205,19 +220,20 @@ input[type=file]{
     top: 9px;
 }
 .store-brief{
-    margin-left: 10px;
-    margin-top: 10px;
+    margin: 0 25px;
 }
 .store-brief span{
     font-size: 14px;
 }
 .store-brief p{
-    margin-top: 10px;
-    font-size: 12px;
+    margin-top: 5px;
+    font-size: 13px;
     line-height: 20px;
     text-align: justify;
-    height: 40px;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .header .follow-title{
     justify-content: space-around;
@@ -285,4 +301,18 @@ input[type=file]{
 /*隐藏的div*/
 .get-cookie{
     display: none;
+}
+
+
+/*图片只显示垂直方向的中间部分*/
+.img-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.img-flex img{
+    width: 100%;
+    height: auto;
+    display: block;
 }

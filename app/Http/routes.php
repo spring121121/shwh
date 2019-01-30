@@ -239,9 +239,9 @@ Route::get('wap/museumed', function () {//博物馆展示
 Route::get('wap/design', function () {//设计展示
     return view('indexDetail/designerd');
 });
-Route::get('wap/designSerch', function () {//设计搜索
-    return view('indexDetail/designerd/designerd_serch');
-});
+//Route::get('wap/designSerch', function () {//设计搜索
+//    return view('indexDetail/designerd/designerd_serch');
+//});
 Route::get('wap/designW', function () {//设计详情
     return view('indexDetail/designerd/designerd_works');
 });

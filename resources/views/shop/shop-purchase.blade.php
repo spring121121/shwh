@@ -321,6 +321,7 @@
         });
         $('.back').on('click',function(){
             if(detail !=null){
+                browseNum("/createRecord",goodsid,"post");
                 window.location.href="/wap/shop_detail?id="+goodsid;
                 return false;
             }

@@ -145,8 +145,14 @@ class ShopController extends BaseController
         $store_id = $request->input('store_id');//进入其他人店铺需要传递此参数
         //所有商品
         if($category_id == CategorygoodsModel::GOODS_ALL){
-            $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)
-                ->get()->toArray();
+            if(empty($store_id)){
+                $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)
+                    ->get()->toArray();
+            }else{
+                //其他店铺下的商品列表
+                $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)->where('store_id',$store_id)
+                    ->get()->toArray();
+            }
             foreach($goodsList as &$item){
                 $item['image_url'] = unserialize($item['image_url']);
             }

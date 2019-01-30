@@ -70,40 +70,40 @@
 
             //上传图片
             $("#store-logo").on("change",function(){
-                var img_size = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size);
+                var img_size_one = $("input[type=file]").get(0).files[0].size;
+                console.log(img_size_one);
                 //alert(img_size);
-                if (img_size > 1000000){
+                if (img_size_one > 1000000){
                     alert("上传图片过大，请上传小于1M的图片")
                 }else {
                     store_upload("store-logo");
                 }
             });
             $("#sfz-just").on("change",function(){
-                var img_size = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size);
+                var img_size_two = $("input[type=file]").get(1).files[0].size;
+                console.log(img_size_two);
                 //alert(img_size);
-                if (img_size > 1000000){
+                if (img_size_two > 1000000){
                     alert("上传图片过大，请上传小于1M的图片")
                 }else {
                     store_upload("sfz-just");
                 }
             });
             $("#sfz-back").on("change",function(){
-                var img_size = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size);
+                var img_size_three = $("input[type=file]").get(2).files[0].size;
+                console.log(img_size_three);
                 //alert(img_size);
-                if (img_size > 1000000){
+                if (img_size_three > 1000000){
                     alert("上传图片过大，请上传小于1M的图片")
                 }else {
                     store_upload("sfz-back");
                 }
             });
             $("#store-prove").on("change",function(){
-                var img_size = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size);
+                var img_size_four = $("input[type=file]").get(3).files[0].size;
+                console.log(img_size_four);
                 //alert(img_size);
-                if (img_size > 1000000){
+                if (img_size_four > 1000000){
                     alert("上传图片过大，请上传小于1M的图片")
                 }else {
                     store_upload("store-prove");

@@ -11,13 +11,8 @@
         <link rel="stylesheet" href="/styles/common.css">
         <link rel="stylesheet" href="/styles/shop-header.css">
         <link rel="stylesheet" href="/styles/shop.css">
-        <style>
-            .common-img1{
-                display: block;
-                width: 100%;
-                height: 100%;
-            }
-        </style>
+
+
     </head>
     <body>
         <div class="index-header header">
@@ -32,9 +27,9 @@
             <div class="swiper-box">
                 <div class="swiper-container shop-index">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img class="common-img1" src="/images/test.jpg"></div>
-                        <div class="swiper-slide"><img class="common-img1" src="/images/2.jpg"></div>
-                        <div class="swiper-slide"><img class="common-img1" src="/images/test1.jpg"></div>
+                        <div class="swiper-slide img-flex"><img class="common-img" src="/images/test.jpg"></div>
+                        <div class="swiper-slide img-flex"><img class="common-img" src="/images/2.jpg"></div>
+                        <div class="swiper-slide img-flex"><img class="common-img" src="/images/test1.jpg"></div>
                     </div>
                 </div>
             </div>
@@ -53,30 +48,30 @@
                 <div class="flash-sale-swiper">
                     <div class="swiper-container flash-swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
+                            <div class="swiper-slide flash-sale-cont" onclick="browseNum()">
                                 <div class="limit-shop-img">
-                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img1">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
                             </div>
-                            <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
+                            <div class="swiper-slide flash-sale-cont" onclick="browseNum()">
                                 <div class="limit-shop-img">
-                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img1">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
                             </div>
-                            <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
+                            <div class="swiper-slide flash-sale-cont" onclick="browseNum()">
                                 <div class="limit-shop-img">
-                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img1">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img1.jpg'" class="common-img">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
                             </div>
-                            <div class="swiper-slide flash-sale-cont" onclick="handleTodetail()">
+                            <div class="swiper-slide flash-sale-cont" onclick="browseNum()">
                                 <div class="limit-shop-img">
-                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img1">
+                                    <img src="/images/collection-img2.jpg" onerror="this.src='/images/collection-img2.jpg'" class="common-img">
                                 </div>
                                 <p>商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情商品详情</p>
                                 <p>￥10.00</p>
@@ -133,6 +128,7 @@
             var swiper_shop = new Swiper('.shop-index', {
                 autoplay:3000,
                 paginationClickable: true,
+                autoplayDisableOnInteraction : false,
                 loop: true
             });
             var swiper_flash_sale = new Swiper('.flash-swiper', {
@@ -170,6 +166,7 @@
 
             $(".detail").on("click",function () {
                 var id = $(this).next().val();
+                browseNum("/createRecord",id,"post");
                 window.location.href = "/wap/shop_detail?id="+id;
             });
 
@@ -215,7 +212,7 @@
                             goodsList += '<li>';
                             goodsList += '<div class="shop-list-box">';
                             goodsList += '<div class="shop-img-box">';
-                            goodsList += '<img src="'+image+'" class="common-img1 detail"><input type="hidden" value="'+v['id']+'">';
+                            goodsList += '<img src="'+image+'" class="common-img detail"><input type="hidden" value="'+v['id']+'">';
                             goodsList += '</div>';
                             goodsList += '<p><strong>'+v['goods_name']+'</strong><span>'+v['goods_info']+'</span></p>';
                             // goodsList += '<h3><i></i><span>用户名称</span></h3>';
@@ -230,9 +227,7 @@
                 });
             }
         });
-        function handleTodetail(){
-            window.location.href = "/wap/shop_detail";
-        }
+
         function countDown(times){
             var timer=null;
             timer=setInterval(function(){

@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\models\CreationModel;
 use Illuminate\Support\Facades\DB;
+use App\models\FocusModel;
 
 class CreationService
 {
@@ -20,7 +21,8 @@ class CreationService
     {
         $skip = ($page - 1) * $take;
 
-        $sql = DB::table('creation')->join("user","user.id","=","creation.uid");
+        $sql = DB::table('creation')->join("user", "user.id", "=", "creation.uid")
+            ->join('focus', 'focus.beuid', '=', 'creation.uid');
 
         if (!empty($uid)) {//查询某个用户的需求列表
             $sql = $sql->where('creation.uid', '=', $uid);
@@ -30,7 +32,22 @@ class CreationService
             $sql = $sql->where('introduction', 'like', $searchContent . "%");
         }
 
-        $creationList = $sql->select("creation.*", "user.photo")->skip($skip)->take($take)->get();
+        $creationList = $sql->select("creation.*", "user.photo", "user.nickname", DB::raw('count(focus.id) as num'))
+            ->groupBy("focus.beuid")->orderBy('num', 'desc')->skip($skip)->take($take)->get();
+
+
+
+            $beFocusArr = FocusModel::where('uid', $uid)->get()->toArray();
+            foreach ($creationList as $info){
+                if (!empty($uid)&&in_array($info.uid,$beFocusArr)) {
+                    //查询登录的用户是否关注了这个设计师
+                    $info->is_focus = true;
+                }else{
+                    $info->is_focus = false;
+                }
+
+            }
+
 
         return $creationList;
     }
@@ -40,10 +57,11 @@ class CreationService
      * @param $creationId
      * @return mixed
      */
-    public function getCreationDetail($creationId){
+    public function getCreationDetail($creationId)
+    {
         $creationModel = new CreationModel();
         $creationInfo = $creationModel->join('user', 'user.id', '=', 'creation.uid')
-            ->select("creation.*", "user.photo")->find($creationId);
+            ->select("creation.*", "user.photo", "user.nickname")->find($creationId);
 
         return $creationInfo;
     }
@@ -53,9 +71,10 @@ class CreationService
      * @param $demandId
      * @return mixed
      */
-    public function getChoiceCreationList($demandId){
+    public function getChoiceCreationList($demandId)
+    {
         $creationModel = new CreationModel();
-        $creationInfo = $creationModel::where('demand_id',$demandId)->where('is_choice',CreationModel::IS_CHOICE_1)->get();
+        $creationInfo = $creationModel::where('demand_id', $demandId)->where('is_choice', CreationModel::IS_CHOICE_1)->get();
 
         return $creationInfo;
     }
