@@ -19,11 +19,11 @@
     <link rel="stylesheet" href="/styles/bootstrap-material-datetimepicker.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/styles/default.css">
-    <script type="text/javascript" charset="utf-8" src="/js/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/js/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-    <script type="text/javascript" charset="utf-8" src="/js/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 
 </head>
 <body>
@@ -54,32 +54,17 @@
     <div class="zc_worksText">
         <input type="text" placeholder="需求标题" id="worksTitle"></input>
         <div class="zc_line"></div>
-        {{--<div>--}}
-            {{--<script id="editor" type="text/plain" style="width:100%;height:300px;"></script>--}}
-        {{--</div>--}}
+        {{--<div id="editor" type="text/plain" style="width:350px;height:300px;"></div>--}}
+        {{--<button onclick="getContent()">获得内容</button>--}}
         <textarea placeholder="请描述你的需求" id="worksTexar"></textarea>
     </div>
     <div class="zc_workContent">
 
-        <div class="container well">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-control-wrapper">
-                                <input type="text" id="date-start" class="form-control floating-label" placeholder="开始时间">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-control-wrapper">
-                                <input type="text" id="date-end" class="form-control floating-label" placeholder="结束时间">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="container_time">
 
+
+            <input type="text" id="birthday" placeholder="开始时间" data-options="{'type':'YYYY-MM-DD hh:mm:ss','beginYear':1800,'endYear':2800,'location':'before'}">
+            <input type="text" id="birthday1" placeholder="结束时间" data-options="{'type':'YYYY-MM-DD hh:mm:ss','beginYear':1800,'endYear':2800,'location':'before'}">
             </div>
         </div>
 
@@ -105,6 +90,7 @@
 
         <div class="zc_actionBtn" onclick="postWorks()">提交</div>
     </div>
+    <div class="addhight1"></div>
 
 <!--引入footer-->
 @extends('layout.footer')
@@ -113,15 +99,21 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/mobiscroll_date.js" charset="gb2312"></script>
 <script src="/js/mobiscroll.js"></script>
-
 <script src="/js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/material.min.js"></script>
 <script type="text/javascript" src="/js/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap-material-datetimepicker.js"></script>
-
+<script src="/js/jquery.date.js"></script>
 <script>
     $(function () {
+
+        $.date('#birthday');
+        $.date('#birthday1');
+        $("#date-wrapper h3").css("background","#333");
+        $("#d-confirm").css("background","#333");
+
+
 
         $('#date').bootstrapMaterialDatePicker
         ({
@@ -221,13 +213,15 @@
         var bonus=$("#priceInp").val();
         var start=$("#date-start").val();
         var end=$("#date-end").val();
+        var content1=getContent();
+        console.log(content1)
             $.ajax({
                 type: "post",
                 url: "/addDemand",
                 data: {
                     "demand_url":url,
                     "title":title,
-                    "content":content,
+                    "content":content1,
                     "bonus":bonus,
                     "start_time":"2019-01-20 13:50:00",
                     "end_time":"2019-01-21 13:50:00"
@@ -251,6 +245,10 @@
         arr.push("内容为：");
         arr.push(UE.getEditor('editor').getContent());
         alert(arr.join("\n"));
+        var p=arr.join("\n");
+        console.log(p);
+        return p;
     }
+
 </script>
 </html>

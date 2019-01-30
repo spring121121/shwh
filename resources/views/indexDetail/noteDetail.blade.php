@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/styles/common.css">
     <link rel="stylesheet" href="/styles/personal.css">
     <link rel="stylesheet" type="text/css" href="/font/iconfont3.css"/>
+    <link rel="stylesheet" href="/styles/base.css">
     <style>
         .pl-content ul li .pl-cont h3 .dianzan{
             position: absolute;
@@ -19,7 +20,7 @@
             top: 0;
             width: 20px;
             height: 20px;
-            background: url("/images/dz-icon.png");
+            /*background: url("/images/dz-icon.png");*/
             background-size: 100%;
             text-align: center;
             line-height: 20px;
@@ -33,7 +34,7 @@
             top: 0;
             width: 20px;
             height: 20px;
-            background: url("/images/pl-icon.png");
+            /*background: url("/images/pl-icon.png");*/
             background-size: 100%;
             text-align: center;
             line-height: 20px;
@@ -42,17 +43,17 @@
         }
 
         .btn-list-icon #pinglun{
-            background-image: url("/images/pl-icon.png");
+            /*background-image: url("/images/pl-icon.png");*/
             width: 20px;
             height: 20px;
         }
         .btn-list-icon #shoucang{
-            background-image: url("/images/zf-icon.png");
+            /*background-image: url("/images/zf-icon.png");*/
             width: 20px;
             height: 20px;
         }
         .btn-list-icon #dianzan{
-            background-image: url("/images/dz-icon.png");
+            /*background-image: url("/images/dz-icon.png");*/
             width: 20px;
             height: 20px;
         }
@@ -76,9 +77,9 @@
         </div>
     </div>
     <div class="tuijian-cont-box">
-        <div class="head-img"><img style="border-radius: 50%" class="common-img" src="{{$noteDetail['photo']}}"
+        <div class="head-img" onclick="toOther()"><img style="border-radius: 50%" class="common-img" src="{{$noteDetail['photo']}}"
                                    onerror="this.src='/images/portrait.png'"/></div>
-        <h4>{{$noteDetail['nickname']}}<i></i>
+        <h4>{{$noteDetail['nickname']}}
             <span id="focus">
                 @if($noteDetail['is_foucus'])
                     <div class="btn-gz" onclick="cancelFocus({{$noteDetail['uid']}})">取关</div>
@@ -90,19 +91,24 @@
         <p style="font-weight: bold">{{$noteDetail['title']}}</p>
         <p>{{$noteDetail['content']}}</p>
     </div>
-    <ul class="btn-list-icon">
-        <li id="pinglun" onclick="pinglun(0,'')"></li>
-        <li id="shoucang" onclick="addForward({{$noteDetail['uid']}},{{$noteDetail['id']}})"></li>
+    <ul class="btn-list-icon guHeight clearfix">
+        <li id="pinglun" onclick="pinglun(0,'')">
+            <span class="iconfont icon-pinglun"></span>
+        </li>
+        <li id="shoucang" onclick="addForward({{$noteDetail['uid']}},{{$noteDetail['id']}})">
+            <span class="iconfont icon-shoucang"></span>
+        </li>
         <li><em  id="dianzan-{{$noteDetail['id']}}" class="iconfont icon-dianzan" onclick="addLikes({{$noteDetail['id']}})"></em></li>
     </ul>
     <div class="more-pl-title" style="width: 100%;">
         <div class="note-cont" style="width:100%">
             <textarea placeholder="输入评论内容" rows="3" id="content" style="width: 90%;resize: none"></textarea>
-            <button id="reply-btn" style="width: 20%">回复</button>
+            <button id="reply-btn" style="width: 20%" class="huif">回复</span>
+            </button>
         </div>
     </div>
     <div class="more-pl-title" style="margin-top: 30px">
-        <span>七嘴八舌的探宝者</span>
+        <span></span>
         <a class="btn-more-pl" href="#">查看更多评论<i></i></a>
     </div>
     <div class="pl-content">
@@ -116,7 +122,9 @@
 
                         <h3>{{$li['nickname']}}<i></i><span>{{$li['created_at']}}</span>
                             {{--<div class="dianzan"></div>--}}
-                            <div class="pinglun" onclick="pinglun({{$li['id']}},'{{$li['nickname']}}')"></div>
+                            <div class="pinglun" onclick="pinglun({{$li['id']}},'{{$li['nickname']}}')">
+                                <span class="iconfont icon-pinglun"></span>
+                            </div>
                         </h3>
                         <p>{{$li['content']}}</p>
                     </div>
@@ -132,7 +140,9 @@
                                     <div class="pl-cont">
                                         <h3>{{$lii['nickname']}}<i></i><span>@<b>{{$lii['to_nickname']}}</b></span>
                                             {{--<div class="dianzan"></div>--}}
-                                            <div class="pinglun" onclick="pinglun({{$lii['id']}},'{{$lii['nickname']}}')"></div>
+                                            <div class="pinglun" onclick="pinglun({{$lii['id']}},'{{$lii['nickname']}}')">
+                                                <span class="iconfont icon-pinglun"></span>
+                                            </div>
                                         </h3>
                                         <p>{{$lii['content']}}</p>
                                     </div>
@@ -269,7 +279,9 @@
 
         })
 
-
+     function toOther() {
+         window.location.href = "/wap/noteDetail";
+     }
 
 </script>
 </html>

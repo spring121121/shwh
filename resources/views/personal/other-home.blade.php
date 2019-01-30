@@ -22,43 +22,16 @@
                 <p ><span id="other-role">地区</span><span id="other-grade">等级</span></p>
             </div>
             <ul class="flex-box other-switch">
-                <li>探宝笔记</li>
-                <li>点赞痕迹</li>
-                <li>笔记收藏</li>
-                <li>个人需求</li>
+
             </ul>
         </div>
         <div class="content-box">
-            <!--探宝笔记-->
-            <div class="note-list-box other-content other-note">
-                <ul>
-
-                </ul>
-            </div>
-
-            <!--笔记收藏-->
-            <div class="note-list-box other-content other-shoucang">
-                <ul>
-
-                </ul>
-            </div>
-
-
-            <!--点赞痕迹-->
-            <div class="note-list-box other-content other-dzhj">
+            <!--内容展示-->
+            <div class="note-list-box other-content">
                 <ul>
                 </ul>
             </div>
-            <div class="other-home-bottom">
-                <div class="btn-other btn-follow">
-                    <div class="icon-box"><img src="/images/jiahao-fff.png" class="common-img"></div>
-                    <span>关注</span>
-                </div>
-                <div class="btn-other btn-chat">
-                    <div class="icon-box"><img src="/images/message.png" class="common-img"></div>
-                    <span>私聊</span>
-                </div>
-            </div>
+
         </div>
 
         <!--引入footer-->
@@ -90,14 +63,20 @@
                             $("#other-role").html("管理员");
                         }else if (data.data.role == 1){
                             $("#other-role").html("普通用户");
+                            console.log(666+444+"666")
+                            changeLi2();
                         }else if (data.data.role == 2){
                             $("#other-role").html("博物馆");
+                            changeLi2();
                         }else if (data.data.role == 3){
                             $("#other-role").html("设计师");
+                            changeLi();
                         }else if (data.data.role == 4){
                             $("#other-role").html("文创机构");
+                            changeLi2();
                         }else if (data.data.role == 5){
                             $("#other-role").html("工厂");
+                            changeLi2();
                         }
                     }else {
                         alert("哎呀！出错了")
@@ -143,6 +122,23 @@
                     }
                 }
             });
+        }
+
+        // 根据身份展示功能
+        function changeLi() {
+            var gongList="";
+            gongList+='<li class="click-change">探宝笔记</li>'
+            gongList+=' <li>点赞痕迹</li>'
+            gongList+='<li>作品展示</li>'
+            gongList+='<li>个人需求</li>'
+            $(".other-content").html(gongList)
+        }
+        function changeLi2() {
+            var gongList="";
+            gongList+='<li class="click-change">探宝笔记</li>'
+            gongList+=' <li>点赞痕迹</li>'
+            gongList+='<li>个人需求</li>'
+            $(".other-content").html(gongList)
         }
     </script>
 </html>

@@ -37,7 +37,6 @@ class UserController extends BaseController
         $birthday = $request->input('birthday');
         $photo = $request->input('photo');
 
-
         $updateArr = [
             'nickname' => $nickname,
             'sex' => $sex,
@@ -46,14 +45,32 @@ class UserController extends BaseController
 
         ];
         $result = $userModel::where('id', $uid)->update($updateArr);
-
         if ($result) {
             return $this->success();
         } else {
             return $this->fail();
         }
+    }
 
-
+    //修改头像
+    public function updatePhoto(Request $request){
+        $data = [];
+        $photo = $request->input('photo');
+        $rules = [
+            'photo' => 'required'
+        ];
+        $data['photo'] = $photo;
+        $validator = Validator::make($data,$rules);
+        if($validator->fails()){
+            return $this->fail(50001,$validator->errors()->all());
+        }
+        $uid = UserService::getUid($request);
+        $result = UserModel::where('id', $uid)->update($data);
+        if ($result) {
+            return $this->success();
+        } else {
+            return $this->fail('300');
+        }
     }
 
     /**
@@ -90,6 +107,4 @@ class UserController extends BaseController
         }
         return $this->success($result);
     }
-
-
 }

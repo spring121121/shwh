@@ -246,24 +246,9 @@ $(function () {
 
 
     // 别人的主页
-    $(".other-note").css("display", "block");
-    $('.other-switch li').eq(0).addClass('click-change');
-    $(".other-switch li").click(function () {
+    $(".other-switch").on('click','li',function () {
         $(this).addClass("click-change");
         $(this).siblings().removeClass("click-change");
-        // 0代表探宝笔记，1代表点赞痕迹,2代表笔记收藏
-        if ($(this).index() == 0) {
-            $(".other-note").css("display", "block");
-            $(".other-note").siblings(".other-content").css("display", "none");
-        }
-        if ($(this).index() == 1) {
-            $(".other-dzhj").css("display", "block");
-            $(".other-dzhj").siblings(".other-content").css("display", "none");
-        }
-        if ($(this).index() == 2) {
-            $(".other-shoucang").css("display", "block");
-            $(".other-shoucang").siblings(".other-content").css("display", "none");
-        }
     });
 
     var address_height = $(window).height() - 300;

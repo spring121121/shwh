@@ -3,14 +3,14 @@
 	flex-direction: column;
 	width: 100%;
 	height: auto;
-	background: #e5e5e5;
+	background: url("/images/backggg.jpg");
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
 }
 .nameHead>span{
 	position: absolute;
-	top: 14px;
-	left: 24px;
+	top: 10px;
+	left: 18px;
 	font-size: 25px;
     width: 30px;
     height: 30px;
@@ -19,8 +19,8 @@
 	margin-top: 40px;
 }
 .museumImg{
-	width: 90px;
-	height: 90px;
+	width: 80px;
+	height: 80px;
 	float: left;
 	margin-top: 10px;
 	margin-left: 30px;
@@ -45,7 +45,9 @@
 .introduce>p{
 	font-size: 20px;
 	line-height: 40px;
+	color: #fff;
 	margin: 0;
+	font-weight: bold;
 }
 .introduce>span{
 	font-size: 20px;
@@ -63,21 +65,26 @@
 .fansCourse>p{
 	font-size: 15px;
 	margin: 0;
-	/*padding-left: 5px;*/
+	color: #fff;
 }
 .fansCourse>div{
 	font-size: 14px;
 	margin: 0 5px;
+	color: #fff;
 }
 .followBtn{
 	display: flex;
 	flex-direction: row;
-	width: 70px;
+	 width: 70px;
 	height: 25px;
-	margin: 5px 0 0 16px;
+	margin: 10px 0 0 16px;
 	background: #818181;
 	border-radius: 15px;
 	text-align: center;
+	color: #fff;
+}
+.followBtn>span{
+	color: #fff;
 }
 .followBtn>span:nth-child(1){
 	font-size: 30px;
@@ -87,7 +94,7 @@
 }
 .followBtn>span:nth-child(2){
 	font-size: 16px;
-	color: #000000;
+
 	margin-right: 3px;
 	line-height: 30px;
 }
@@ -99,6 +106,8 @@
 	text-align: justify;
 	text-indent: 2em;
 	overflow: hidden;
+	font-size: 12px;
+	color: #fff;
 }
 .icon-xiala{
 	float: right;
@@ -125,6 +134,8 @@
 	width: 100%;
 	/*height: 60px;*/
 	margin: 0 auto;
+	font-size: 16px;
+	font-weight: bold;
 }
 .navboder{
 	border-bottom: 5px solid #ff9a66;
@@ -174,24 +185,24 @@
    
 }
 .museum_shop_pic div:nth-child(2) h3{
-	padding: 10px;
+	padding: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 3px;
 }
 .museum_shop_pic div:nth-child(2) h4{
     margin: 0 10px;
-    height:50px;
+	height: 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 	padding-bottom: 10px;
 }
 .museum_shop_pic div:nth-child(2) h4 span{
-   width:45px;
-   height:45px;
+	width: 35px;
+	height: 35px;
    border-radius: 50%;
    background: blueviolet;
    display: block;

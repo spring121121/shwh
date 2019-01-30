@@ -142,6 +142,8 @@ class ShopController extends BaseController
     public function getGoodsList(Request $request){
         $category_id = $request->input('id');
         $pid = $request->input('pid');
+        $store_id = $request->input('store_id');//进入其他人店铺需要传递此参数
+        //所有商品
         if($category_id == CategorygoodsModel::GOODS_ALL){
             $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)
                 ->get()->toArray();
@@ -152,7 +154,8 @@ class ShopController extends BaseController
             $data['category_id'] = $category_id;
             return $this->success($data);
         }
-        if($pid == CategorygoodsModel::ONE_CATEGORY){//一级分类
+        //指定分类下的商品
+        if(empty($pid)){//一级分类
             $pids = CategoryModel::where('pid',$category_id)
                 ->select('id')
                 ->get()->toArray();
@@ -165,9 +168,16 @@ class ShopController extends BaseController
                 ->select('goods_id')
                 ->get()->toArray();
         }
+        //获取分类的商品id
         $goodsIds = array_column($categoryIds, 'goods_id')?array_column($categoryIds, 'goods_id'):'';
-        $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)->whereIn('id',$goodsIds)
-            ->get()->toArray();
+        if(empty($store_id)){
+            $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)->whereIn('id',$goodsIds)
+                ->get()->toArray();
+        }else{
+            //其他店铺下的商品列表
+            $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)->where('store_id',$store_id)->whereIn('id',$goodsIds)
+                ->get()->toArray();
+        }
         foreach($goodsList as &$item){
             $item['image_url'] = unserialize($item['image_url']);
         }
@@ -233,6 +243,22 @@ class ShopController extends BaseController
                 ->orderBy(DB::raw('RAND()'))
                 ->take(GoodsModel::RELATE_GOODS)
                 ->get()->toArray();
+        return $this->success($goodsList);
+    }
+
+    /**
+     * 为你推荐商品
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function recommendGoodsList(Request $request){
+        $goodsList = GoodsModel::where('status',GoodsModel::NORMAL)
+            ->orderBy(DB::raw('RAND()'))
+            ->take(GoodsModel::RELATE_GOODS)
+            ->get()->toArray();
+        foreach($goodsList as &$item){
+            $item['image_url'] = unserialize($item['image_url']);
+        }
         return $this->success($goodsList);
     }
 
@@ -342,6 +368,9 @@ class ShopController extends BaseController
             ->join('goods','car.goods_id','=','goods.id')
             ->select('goods.*')
             ->get()->toArray();
+        if(!$myGoodsList){
+            return $this->success([]);
+        }
         $resStore = $this->getMyOrderList($myGoodsList);
         return $this->success($resStore);
     }

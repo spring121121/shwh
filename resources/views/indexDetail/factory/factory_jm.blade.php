@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=devic-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>山洞-工厂_精美文具</title>
     <link rel="stylesheet" href="/styles/factory.css">
@@ -21,7 +21,7 @@
                 </li>
             </ul>
         </header>
-        <section>
+        <div class="bigContainer">
             <ul id="factory_exhibition">
                 <li>
                     <div class="factory_exhibition_pic">
@@ -57,7 +57,7 @@
                     <div>进入工厂</div>
                 </li>
             </ul>
-        </section>
+        </div>
     </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>首页-商城首页</title>
+		<title>首页-商城购物车</title>
 
 		<link rel="stylesheet" href="/styles/swiper.min.css">
 		<link rel="stylesheet" href="/styles/common.css">
@@ -82,7 +82,6 @@
 			}
 			.select{
 				background: #F2F2F2;
-                margin-bottom:100px;
 			}
 			.payment{
 				margin-left:20px;
@@ -127,6 +126,30 @@
 				border:1px solid #DD0E44;
 				width:50px;
 			}
+			.car_empty{
+				height:70px;
+				margin-top:20%;
+				margin-left:30%;
+			}
+			.car_empty img{
+				width:45px;
+				height:45px;
+			}
+			.car_font{
+				float:left;
+				margin-top:10px;
+				margin-left:10px;
+				color:#dbdbdb;
+				letter-spacing: 2px;
+			}
+			.classify-all{
+				display:flex;
+			}
+			.recommend{
+				text-align: center;
+				margin-bottom:10px;
+				color:#ffaa00;
+			}
 		</style>
 	</head>
 	<body>
@@ -150,6 +173,14 @@
 			<div class="zc_carGoods">
 			</div>
 		</section>
+
+		<div class="classify-display">
+			<h2 class="recommend">为&nbsp;你&nbsp;推&nbsp;荐</h2>
+			<ul class="classify-all">
+
+			</ul>
+		</div>
+
 		<!--购物车底部-->
 		<div class="zc_cartbottom">
 			<div>
@@ -191,6 +222,13 @@
                 data:{},
                 success : function(data){//回调函数 和 后台返回的 数据
                     console.log(data.data);
+                    if(data.data == ''){
+                        $('.select').html('<div class="car_empty"><div style="float:left;"><img src="/images/shop/gouwuche.png"></div><div class="car_font">购物车空空如也！</div></div>');
+                        $('.select').css('background','#f0f0f0');
+                        $('.zc_cartbottom').hide();
+                    	$('.classify-display').css('margin-bottom','55px');
+                        return false;
+					}
                     $.each(data.data, function (k, v) {
                         car += '<div class="store_parent">';
                         car += '<div class="store_div">';
@@ -230,9 +268,11 @@
 						});
                         car += '</div></div>';
                     });
+                    $('.classify-display').css('margin-bottom','105px');
                     $('.zc_carGoods').html(car);
                 }
             });
+            goodsList("/recommendGoodsList");
 			//结算
             $('.payment').on('click',function(){
  				var goods_ids = [];
@@ -287,7 +327,7 @@
 			});
                 //返回
             $('.back').on('click',function(){
-                window.history.go(-1);
+                window.location.href="/wap/shop"
             });
             var n=1;
 			$(".zc_btnright").click(function(){
@@ -380,6 +420,16 @@
                 all();
                 price();
 			});
+            //详情
+            $(".detail").on("click",function () {
+                var id = $(this).next().val();
+                window.location.href = "/wap/shop_detail?id="+id;
+            });
+
+            $(".agent").on("click",function () {
+                var goodsId = $(this).attr('id');
+                window.location.href = "/wap/shop_share?goods_id="+goodsId;
+            });
             //店铺，商品都选中
 			function all(){
                 var allStore_id = $("input[name='store_id']").length;//所有个数
@@ -407,6 +457,38 @@
                 $('.settle_price').text(total.toFixed(2));
                 $('.settle_num').text(settle_num);
 			}
+            function goodsList(url){
+                var goodsList = '';
+                $.ajax({
+                    url : url,	//请求url 商城分类
+                    type : "get",	//请求类型  post|get
+                    async: false,
+                    dataType : "json",  //返回数据的 类型 text|json|html--
+                    data:{},
+                    success : function(data){//回调函数 和 后台返回的 数据
+                        console.log(data);
+                        $.each(data.data, function (k, v) {
+                            var image = v['image_url'][0];
+                            if(image == ''){
+                                image = '/images/shop/default.jpg'
+                            }
+                            goodsList += '<li>';
+                            goodsList += '<div class="shop-list-box">';
+                            goodsList += '<div class="shop-img-box">';
+                            goodsList += '<img src="'+image+'" class="common-img1 detail"><input type="hidden" value="'+v['id']+'">';
+                            goodsList += '</div>';
+                            goodsList += '<p><strong>'+v['goods_name']+'</strong><span>'+v['goods_info']+'</span></p>';
+                            // goodsList += '<h3><i></i><span>用户名称</span></h3>';
+                            goodsList += '<div class="price-box"><span>￥ '+v['price']+'</span>';
+                            if(v['be_agent']==0){
+                                goodsList += '<div class="distribution-icon agent" id="'+v.id+'"></div></div></div></li>';
+                            }
+
+                        });
+                        $('.classify-all').html(goodsList);
+                    }
+                });
+            }
 		});
 	</script>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=devic-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>商城-订单</title>
     <link rel="stylesheet" href="/styles/museum.css">
@@ -201,7 +201,7 @@
             {{--<div style="margin-top:10px;">运费</div>--}}
             {{--<div class="price post">+&nbsp;￥6.00</div>--}}
         </div>
-        <div class="hr" style="width:100%;"></div>
+        <div class="hr" style="width:100%;background: #f0f0f0"></div>
     </section>
     <footer class="select_submit">
         {{--<div class="total_price t_price">￥228.00</div>--}}
