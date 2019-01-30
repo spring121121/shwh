@@ -21,7 +21,7 @@ class WxpayController extends BaseController {
             if(!isset($_GET['pay_order_sn'])) {
                 exit('<script>alert("请选择要支付的订单");document.addEventListener("WeixinJSBridgeReady", function(){ WeixinJSBridge.call("closeWindow"); }, false);</script>');
             }
-            $redirect_uri=urlencode("http://".$_SERVER['HTTP_HOST']."/wx/pay?pay_order_sn=" . $_GET['pay_order_sn']);
+            $redirect_uri=urlencode($_SERVER['REQUEST_SCHEME'] . "://".$_SERVER['HTTP_HOST']."/wx/pay?pay_order_sn=" . $_GET['pay_order_sn']);
             $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$appid."&redirect_uri=".$redirect_uri."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
             header("Location:".$url);
             exit();
@@ -69,7 +69,7 @@ class WxpayController extends BaseController {
                 'total_fee' => 1,
 //                'total_fee' => floatval($total_price)*100,
                 'spbill_create_ip' => $_SERVER['REMOTE_ADDR'],
-                'notify_url' => "http://" . $_SERVER['HTTP_HOST'] . "/notify",
+                'notify_url' => $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] . "/notify",
                 'trade_type' => 'JSAPI',
                 'openid' => $openid
             ];
@@ -101,23 +101,26 @@ class WxpayController extends BaseController {
     }
 
     public function weixinRefund() {
+
         $arr = [
             'appid' => $this->config['appid'],
             'mch_id'=> $this->config['mch_id'],
             'nonce_str'=>$this->randomkeys(32),
             'sign_type'=>'MD5',
-            'transaction_id'=> '4200000253201901120328912492',
-            'out_trade_no'=> '154727325783479000',
-            'out_refund_no'=> $this->genOrderSn(),
-            'total_fee'=> 3,
+            'transaction_id'=> '4200000258201901302138785052',
+            'out_trade_no'=> '154881249739977500260',
+            'out_refund_no'=> 'sd_154881249747879700',
+            'total_fee'=> 1,
             'refund_fee'=> 1,
             'refund_fee_type'=> 'CNY',
             'refund_desc'=> '退款',
-            'notify_url'=> 'http://'.$_SERVER['HTTP_HOST'].'/refundNotify',
+            'notify_url'=> $_SERVER['REQUEST_SCHEME'] . '://'.$_SERVER['HTTP_HOST'].'/wx/refundNotify',
         ];
         $arr['sign'] = $this->getSign($arr);
+
         $url = 'https://api.mch.weixin.qq.com/secapi/pay/refund';
         $res = $this->curl_post_datas($url,$this->array2xml($arr),true);
+        halt($res);
         if($res['return_code'] == 'SUCCESS') {
             if($res['result_code'] == 'SUCCESS') {
                 halt($res);
@@ -125,7 +128,7 @@ class WxpayController extends BaseController {
                 halt($res);
             }
         }else {
-            die('退款通知失败');
+            echo('退款通知失败<br>');
         }
     }
 
