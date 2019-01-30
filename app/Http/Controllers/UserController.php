@@ -14,6 +14,7 @@ use App\Http\Services\UserService;
 use App\models\StoreModel;
 use Illuminate\Http\Request;
 use App\models\UserModel;
+use Validator;
 
 class UserController extends BaseController
 {
