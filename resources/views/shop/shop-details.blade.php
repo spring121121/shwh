@@ -178,7 +178,7 @@
                         store += '<img src="'+v['logo_pic_url']+'" />';
                         store += '<div class="zc_businRank">';
                         store += '<p>'+v['name']+'</p>';
-                        store += '</div><div class="store_all"><div onclick="goToStore('+storeId+');" class="zc_allbusi">全部商品</div><div onclick="goToStore('+storeId+');" class="zc_all">进店逛逛</div></div>';
+                        store += '</div><div class="store_all"><div onclick="goToStore('+id+","+storeId+');" class="zc_allbusi">全部商品</div><div onclick="goToStore('+id+","+storeId+');" class="zc_all">进店逛逛</div></div>';
 
                         $('.zc_bussimg').attr('src',v['logo_pic_url']);
                     });
@@ -187,7 +187,7 @@
             });
 
             $(".zc_bussimg").click(function () {
-				goToStore(storeId);
+				goToStore(id,storeId);
 			});
 			var swiper_shop = new Swiper('.shop-index', {
 				autoplay: 3000,
@@ -269,8 +269,8 @@
 			window.location.href = "/wap/shop_cart";
 		}
 		//进店逛逛
-		function goToStore(id){
-			window.location.href = "/wap/other_store?store_id="+id;
+		function goToStore(id,store_id){
+			window.location.href = "/wap/other_store?id="+id+"&store_id="+store_id;
 		}
 	</script>
 

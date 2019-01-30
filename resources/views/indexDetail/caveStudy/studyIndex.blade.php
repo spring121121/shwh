@@ -82,7 +82,7 @@
 <script src="/js/common.js"></script>
 <script>
     $(function () {
-        var limit =5;
+        var limit =10;
         // getNote();
         getNote(1, limit);
 
@@ -98,8 +98,8 @@
             if ($(document).scrollTop() + $(window).height() >= $(document).height()) {
                 var page = parseInt($(".caseud").attr('page'))
                 var total = parseInt($(".caseud").attr('total'))
-                var pages = (total / limit).toFixed(2);
-                if (page < pages) {
+                var pages = Math.ceil(total / limit);
+                if (page <=pages) {
                     getNote(page, limit)
                 }
 
@@ -181,6 +181,7 @@
                 $(".noteList").append(liList);
 
                 $(".caseud").attr('page', parseInt(page) + 1)
+                $(".caseud").attr('total', parseInt(data.total) + 1)
             }
         });
     }

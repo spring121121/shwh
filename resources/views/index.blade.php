@@ -39,7 +39,9 @@
     <!--<header>        
     </header>-->
     <!--中间部分-->
+
     <section >
+
         <div class="searchContainer">
             <div id="search">
                 <button onclick="contentList();"></button>
@@ -241,7 +243,8 @@
             </div>
         </div>
 
-    </section >
+    </section>
+
 </div>
 <!--引入footer-->
 @extends('layout.footer')

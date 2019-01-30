@@ -14,7 +14,7 @@
     <body>
         <div class="header store-header other-store-header">
             <div>
-                <div class="header-left"><a href="/wap/shop_detail"></a></div>
+                <div class="header-left"><a id="return-shop-details" href="javascript:void(0);"></a></div>
                 <h3 class="other-store-title">店铺首页</h3>
             </div>
             <div class="store-message-box other-store-box">
@@ -48,7 +48,11 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            var store_id = getUrlParam("store_id"),category = '';
+            var store_id = getUrlParam("store_id"),category = '',id = getUrlParam("id");
+
+            $("#return-shop-details").click(function () {
+               window.location.href = "/wap/shop_detail?id="+id;
+            });
             $.ajax({
                 url : "/otherStoreDetail",	//请求url
                 type : "get",	//请求类型  post|get
