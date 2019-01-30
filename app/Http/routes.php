@@ -52,6 +52,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('getMyDemandList','DemandController@getMyDemandList');//获取我的需求列表
     Route::post('addCreation','CreationController@addCreation');//上传作品
     Route::get('getMyCreationList','CreationController@getMyCreationList');//获取我的作品
+    Route::get('getDemandCreationList/{demandId}','CreationController@getDemandCreationList');//获取某个需求的参赛作品
 
 
 

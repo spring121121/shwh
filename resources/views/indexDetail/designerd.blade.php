@@ -52,14 +52,24 @@
 
     $(function () {
         var limit = 10;
-        getCreationList(1, limit);
+        var demand_id = GetUrlParam("demand_id")
+        if (demand_id) {
+            getDemandCreation(demand_id)
+        }else{
+            getCreationList(1, limit);
+        }
+
         $(window).scroll(function () {
             if ($(document).scrollTop() + $(window).height() >= $(document).height()) {
                 var page = parseInt($(".caseud").attr('page'))
                 var total = parseInt($(".caseud").attr('total'))
                 var pages = Math.ceil(total / limit);
                 if (page <= pages) {
-                    getNote(page, limit)
+                    if (demand_id) {
+                        getDemandCreation(demand_id,page, limit)
+                    }else{
+                        getCreationList(page, limit);
+                    }
                 } else {
                     $(".caseud a").html("没有更多了。。。")
                 }
@@ -84,6 +94,51 @@
         });
     });
 
+    function getDemandCreation(demand_id,page, limit) {
+        var searchContent = $("#searchContent").val()
+        $.get("/getDemandCreationList/"+demand_id, {'searchContent': searchContent, 'page': page, 'limit': limit}, function (data) {
+            var html = '';
+            if (data.code == 200) {
+                data.data.forEach(function (v) {
+                    html +=getHtml(v,html)
+
+                })
+                $(".caseud").attr('page', parseInt(page) + 1)
+                $(".caseud").attr('total', parseInt(data.total))
+                $("#designList").html(html)
+            } else {
+                alert(data.message);
+            }
+        })
+    }
+
+    function getHtml(v,html) {
+        var creation_urls_arr = [];
+        html += '<li class="listContent">'
+        html += '<div class="listPeople">'
+        html += '<div class="peopleImg" onclick="toOtherHome(' + v.uid + ')">'
+        html += '<img  src="' + v.photo + '"/>'
+        html += '</div>'
+        html += '<div class="peopleText" id="div-focus">'
+        html += '<p class="peopleName">' + v.nickname + '</p>'
+        html += '<p class="peopleDetail">设计师•粉丝:<span>' + v.num + '</span></p>'
+        html += '</div>'
+        if (v.is_focus) {
+            html += '<div class="peopleBtn" onclick="cancelFocus(' + v.uid + ')" id="focus-' + v.uid + '">取关</div>'
+        } else {
+            html += '<div class="peopleBtn" onclick="addFocus(' + v.uid + ')" id="focus-' + v.uid + '">关注</div>'
+        }
+
+        html += '</div>'
+        html += '<div class="workShow">'
+        creation_urls_arr = v.creation_urls.split(';')
+        $.each(creation_urls_arr, function (i, v) {
+            html += '<img src="' + v + '"/>'
+        })
+        html += '</div>'
+        html += '</li>'
+        return html;
+    }
 
     function getCreationList(page, limit) {
         var searchContent = $("#searchContent").val()
@@ -91,30 +146,7 @@
             var html = '';
             if (data.code == 200) {
                 data.data.forEach(function (v) {
-                    var creation_urls_arr = [];
-                    html += '<li class="listContent">'
-                    html += '<div class="listPeople">'
-                    html += '<div class="peopleImg" onclick="toOtherHome(' + v.uid + ')">'
-                    html += '<img  src="' + v.photo + '"/>'
-                    html += '</div>'
-                    html += '<div class="peopleText" id="div-focus">'
-                    html += '<p class="peopleName">' + v.nickname + '</p>'
-                    html += '<p class="peopleDetail">设计师•粉丝:<span>' + v.num + '</span></p>'
-                    html += '</div>'
-                    if (v.is_focus) {
-                        html += '<div class="peopleBtn" onclick="cancelFocus(' + v.uid + ')" id="focus-' + v.uid + '">取关</div>'
-                    } else {
-                        html += '<div class="peopleBtn" onclick="addFocus(' + v.uid + ')" id="focus-' + v.uid + '">关注</div>'
-                    }
-
-                    html += '</div>'
-                    html += '<div class="workShow">'
-                    creation_urls_arr = v.creation_urls.split(';')
-                    $.each(creation_urls_arr, function (i, v) {
-                        html += '<img src="' + v + '"/>'
-                    })
-                    html += '</div>'
-                    html += '</li>'
+                    getHtml(v,html)
 
                 })
                 $(".caseud").attr('page', parseInt(page) + 1)
@@ -132,7 +164,7 @@
             if (data.status) {
                 alert("关注成功");
                 $("#focus-" + uid).html("取关")
-                $("#focus-" + uid).attr('onclick',"cancelFocus("+uid+")")
+                $("#focus-" + uid).attr('onclick', "cancelFocus(" + uid + ")")
 
             } else {
                 alert("哎呀！出错了")
@@ -146,7 +178,7 @@
             if (data.status) {
                 alert("取关成功");
                 $("#focus-" + uid).html("关注")
-                $("#focus-" + uid).attr('onclick',"addFocus("+uid+")")
+                $("#focus-" + uid).attr('onclick', "addFocus(" + uid + ")")
 
             } else {
                 alert("哎呀！出错了")
