@@ -45,31 +45,9 @@
 
     </header>
     <div class="noteList">
-        {{--<div id="bander">--}}
-        {{--<div class="swiper-container swiper-addthree">--}}
-        {{--<div class="swiper-wrapper">--}}
-        {{--<div class="swiper-slide"><img src="/images/banner1.jpg" alt=""></div>--}}
-        {{--<div class="swiper-slide"><img src="/images/banner2.jpg" alt=""></div>--}}
-        {{--<div class="swiper-slide"><img src="/images/banner3.jpg" alt=""></div>--}}
-        {{--</div>--}}
-        {{--<div class="swiper-pagination"></div>--}}
-        {{--</div>--}}
-        {{--<p class="bannerTitle">"苍茫宇宙&nbsp无边无际"</p>--}}
-        {{--<div class="studyPeople">--}}
-        {{--<img src="/images/people.jpg" alt="">--}}
-        {{--<p class="bannerName">约翰</p>--}}
-        {{--<div class="studyDz">--}}
-        {{--<div class="dzimg"  >--}}
-        {{--<img src="/images/dz-icon.png" alt="">--}}
-        {{--<img src="/images/dz-icon-red.png" alt="" class="redDz">--}}
-        {{--</div>--}}
-        {{--<p>65656</p>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
     </div>
     <div class="caseud" page="1" total="10">
-        <a href="javascript:void(0);">加载更多</a>
+        <a href="javascript:void(0);" >加载更多</a>
     </div>
     <div class="addhight"></div>
     <!--引入footer-->
@@ -82,7 +60,7 @@
 <script src="/js/common.js"></script>
 <script>
     $(function () {
-        var limit =10;
+        var limit =3;
         // getNote();
         getNote(1, limit);
 
@@ -101,6 +79,8 @@
                 var pages = Math.ceil(total / limit);
                 if (page <=pages) {
                     getNote(page, limit)
+                }else{
+                    $(".caseud a").html("没有更多了。。。")
                 }
 
             }
@@ -144,9 +124,6 @@
         $("header").html(headList)
     }
 
-    function getMore() {
-
-    }
 
     // 笔记列表
     function getNote(page, limit) {
@@ -181,7 +158,7 @@
                 $(".noteList").append(liList);
 
                 $(".caseud").attr('page', parseInt(page) + 1)
-                $(".caseud").attr('total', parseInt(data.total) + 1)
+                $(".caseud").attr('total', parseInt(data.total))
             }
         });
     }
