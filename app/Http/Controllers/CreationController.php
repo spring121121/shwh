@@ -129,9 +129,10 @@ class CreationController extends BaseController
      */
     public function getDemandCreationList(Request $request,$demandId){
         $creationService = new CreationService();
+        $total = DB::table('creation')->where("demand_id",$demandId)->count();
         $creationInfo = $creationService->getDemandCreationList($request,$demandId);
 
-        return $this->success($creationInfo);
+        return $this->success($creationInfo,$total);
     }
 
     /**

@@ -74,6 +74,7 @@ class LoginController extends BaseController
     {
         $re = $request->session()->forget('userInfo');
         Cookie::queue(Cookie::forget("info"));
+        Cookie::queue(Cookie::forget("uid"));
         if ($re) {
             return $this->success();
         } else {

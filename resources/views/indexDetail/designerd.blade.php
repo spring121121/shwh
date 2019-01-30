@@ -53,8 +53,9 @@
     $(function () {
         var limit = 10;
         var demand_id = GetUrlParam("demand_id")
+
         if (demand_id) {
-            getDemandCreation(demand_id)
+            getDemandCreation(demand_id,1,limit)
         }else{
             getCreationList(1, limit);
         }
@@ -89,18 +90,18 @@
         // 输入框失去焦点时的事件
         $("#searchContent").blur(function () {
             $(".sjs-search-box").animate({"width":"0"},100);
-            console.log(111)
             getCreationList(1, 10);
         });
     });
 
     function getDemandCreation(demand_id,page, limit) {
+
         var searchContent = $("#searchContent").val()
         $.get("/getDemandCreationList/"+demand_id, {'searchContent': searchContent, 'page': page, 'limit': limit}, function (data) {
             var html = '';
             if (data.code == 200) {
                 data.data.forEach(function (v) {
-                    html +=getHtml(v,html)
+                    html =getHtml(v,html)
 
                 })
                 $(".caseud").attr('page', parseInt(page) + 1)
@@ -112,6 +113,7 @@
         })
     }
 
+    //公用的
     function getHtml(v,html) {
         var creation_urls_arr = [];
         html += '<li class="listContent">'
@@ -143,15 +145,16 @@
     function getCreationList(page, limit) {
         var searchContent = $("#searchContent").val()
         $.get("/getCreationList", {'searchContent': searchContent, 'page': page, 'limit': limit}, function (data) {
-            var html = '';
+            var html2 = '';
+            console.log(data.data)
             if (data.code == 200) {
                 data.data.forEach(function (v) {
-                    getHtml(v,html)
+                    html2 = getHtml(v,html2)
 
                 })
                 $(".caseud").attr('page', parseInt(page) + 1)
                 $(".caseud").attr('total', parseInt(data.total))
-                $("#designList").html(html)
+                $("#designList").html(html2)
             } else {
                 alert(data.message);
             }
