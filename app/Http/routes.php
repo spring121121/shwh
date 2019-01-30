@@ -240,6 +240,9 @@ Route::get('wap/designSerch', function () {//设计搜索
 Route::get('wap/designW', function () {//设计详情
     return view('indexDetail/designerd/designerd_works');
 });
+Route::get('wap/upDesign', function () {//设计上传作品
+    return view('indexDetail/designerd/upDesignImg');
+});
 Route::get('wap/factoryJm', function () {//工厂二级
     return view('indexDetail/factory/factory_jm');
 });
