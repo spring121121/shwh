@@ -38,6 +38,11 @@ Route::get('getDemandListByUid/{uid}','DemandController@getDemandListByUid');//�
 Route::get('getDemandDetail/{demandId}','DemandController@getDemandDetail');//获取某个需求详情
 Route::get('getDemandList','DemandController@getDemandList');//获取需求列表
 
+Route::get('getCreationList','CreationController@getCreationList');//获取作品列表
+Route::get('getOtherCreationList','CreationController@getOtherCreationList');//获取别人的作品
+Route::get('getChoiceCreationList/{demandId}','CreationController@getChoiceCreationList');//获取入围作品
+Route::get('getCreationDetail/{creationId}','CreationController@getCreationDetail');//获取某个作品的详细信息
+
 /**
  * 如果该接口是需要在登录的状态下才能获取的，请把路由写在checkLogin组里
  */
@@ -45,8 +50,8 @@ Route::group(['middleware'=>'checkLogin'],function(){
     //需求相关功能
     Route::post('addDemand','DemandController@addDemand');//发布需求
     Route::get('getMyDemandList','DemandController@getMyDemandList');//获取我的需求列表
-    Route::post('addDemandCreation','DemandCreationController@addDemandCreation');//获取我的需求列表
-
+    Route::post('addCreation','CreationController@addCreation');//上传作品
+    Route::get('getMyCreationList','CreationController@getMyCreationList');//获取我的作品
 
 
 
@@ -239,6 +244,9 @@ Route::get('wap/designSerch', function () {//设计搜索
 });
 Route::get('wap/designW', function () {//设计详情
     return view('indexDetail/designerd/designerd_works');
+});
+Route::get('wap/upDesign', function () {//设计上传作品
+    return view('indexDetail/designerd/upDesignImg');
 });
 Route::get('wap/factoryJm', function () {//工厂二级
     return view('indexDetail/factory/factory_jm');

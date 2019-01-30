@@ -39,7 +39,9 @@
     <!--<header>        
     </header>-->
     <!--中间部分-->
-    <div class="bigContainer">
+
+    <section >
+
         <div class="searchContainer">
             <div id="search">
                 <button onclick="contentList();"></button>
@@ -94,14 +96,18 @@
 
         <div class="culture">
             <p>文创故事</p>
-            <video id="video" src="/images/viode.mp4" loop controls="controls" width="100%" height="100%">
-                your browser does not support the video tag
+            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+                <source src="/images/viode.mp4">
+                你的浏览器不支持HTML5视频。
             </video>
+
         </div>
         <div class="culture">
             <p>宗教</p>
-            <video src="/video/ren.mp4" controls="controls" width="100%" height="100%">
-                your browser does not support the video tag
+
+            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+                <source src="/video/ren.mp4">
+                你的浏览器不支持HTML5视频。
             </video>
         </div>
 
@@ -118,14 +124,17 @@
 
         <div class="culture">
             <p>生活故事</p>
-            <video src="/video/tong.mp4" controls="controls" width="100%" height="100%">
-                your browser does not support the video tag
+            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+                <source src="/video/tong.mp4">
+                你的浏览器不支持HTML5视频。
             </video>
         </div>
         <div class="culture">
             <p>地标建筑</p>
-            <video src="/video/jianzhu.mp4" controls="controls" width="100%" height="100%">
-                your browser does not support the video tag
+
+            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+                <source src="/video/jianzhu.mp4">
+                你的浏览器不支持HTML5视频。
             </video>
         </div>
 
@@ -183,14 +192,18 @@
 
         <div class="culture">
             <p>风车</p>
-            <video src="/video/fen.mp4" controls="controls" width="100%" height="100%">
-                your browser does not support the video tag
+
+            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+                <source src="/video/fen.mp4">
+                你的浏览器不支持HTML5视频。
             </video>
         </div>
         <div class="culture">
             <p>生活故事</p>
-            <video src="/video/phone.mp4" controls="controls" width="100%" height="100%">
-                your browser does not support the video tag
+
+            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+                <source src="/video/phone.mp4">
+                你的浏览器不支持HTML5视频。
             </video>
         </div>
 
@@ -206,14 +219,17 @@
 
         <div class="culture">
             <p>工厂故事</p>
-            <video src="/video/huo.mp4" controls="controls" width="100%" height="100%">
-                your browser does not support the video tag
+            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+                <source src="/video/huo.mp4">
+                你的浏览器不支持HTML5视频。
             </video>
         </div>
         <div class="culture">
             <p>动物世界</p>
-            <video src="/video/bird.mp4" controls="controls" width="100%" height="100%">
-                your browser does not support the video tag
+
+            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt; loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+                <source src="/video/bird.mp4">
+                你的浏览器不支持HTML5视频。
             </video>
         </div>
 
@@ -227,7 +243,8 @@
             </div>
         </div>
 
-    </div>
+    </section>
+
 </div>
 <!--引入footer-->
 @extends('layout.footer')
