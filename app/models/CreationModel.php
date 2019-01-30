@@ -5,9 +5,18 @@ namespace App\models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DemandCreationModel extends Model
+class CreationModel extends Model
 {
+    /**
+     * 入围
+     */
+    const IS_CHOICE_1 = 1;
+    /**
+     * 没入围
+     */
+    const IS_CHOICE_0 = 0;
     //软删除 通过 deleted_at 字段区分是否删除，删除时调用 $table->softDeletes();
+
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     /**
@@ -15,7 +24,7 @@ class DemandCreationModel extends Model
      *
      * @var string
      */
-    protected $table = 'demand_creation';
+    protected $table = 'creation';
     protected $primaryKey = 'id';
     /**
      * 指定是否模型应该被戳记时间。
