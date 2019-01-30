@@ -145,8 +145,8 @@
                     var v = data.data;
                         //轮播图
                     $.each(v.image_url, function (k, v) {
-                        splideImg += '<div class="swiper-slide"><img class="common-img" src="' + v + '"></div>';
-                        detailImg += '<img style="height:250px;" src="'+v+'" />';
+                        splideImg += '<div class="swiper-slide img-flex"><img class="common-img" src="' + v + '"></div>';
+                        detailImg += '<img src="'+v+'" />';
                     });
 					//详情
 					categoryDetail += '<input type="hidden" id="goods_id" value="'+v['id']+'">';
@@ -252,7 +252,7 @@
                 window.location.href = '/wap/shop_purchase?goods_id='+goods_id+'&num=1&detail=1';
             });
             $('.back').on('click',function(){
-                window.location.href = '/wap/shop';
+                window.location.href = 'javascript:history.back();';
             });
 
 		});

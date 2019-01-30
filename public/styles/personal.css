@@ -1537,6 +1537,7 @@ ul,li{
     margin: 10px 5px 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .flex-box li .btn-flex-box span{
     position: relative;
@@ -1562,6 +1563,14 @@ ul,li{
 }
 .flex-box li .btn-flex-box .zan-icon i{
     background-image: url("../images/dz-icon.png");
+}
+.distribution-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ffaa00;
+    background: url(../images/shop/jiahao-fa0.png) no-repeat center;
+    background-size: 70%;
 }
 
 /*店铺状态显示页面*/
@@ -1935,6 +1944,7 @@ ul,li{
 }
 .store-switch li,.other-switch li,
 .other-shop-classify li{
+    font-size: 14px;
     border: none;
     box-shadow: unset;
     background: unset;

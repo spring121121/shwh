@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="index-header header">
-    <div class="common-header-left share-title-text"><a href="/wap/shop">取消</a></div>
+    <div class="common-header-left share-title-text"><a href="javascript:history.back();">取消</a></div>
     <div class="common-header-right share-title-text" onclick="addAgent()">确定</div>
     <h3>上货</h3>
 </div>
@@ -88,6 +88,7 @@
         $.post("/addAgentGoods",{'goods_id':goods_id,'goods_name':goods_name,'price':price},function (data) {
             if(data.code==200){
                 alert("代理成功")
+                browseNum("/createRecord",goods_id,"post");
                 window.location.href="/wap/shop_detail?id="+goods_id
             }else if(data.code==50010){
                 alert(data.message)

@@ -115,7 +115,7 @@
                                 alert("店铺信息修改成功");
                                 window.location.href = "/wap/store";
                             }else {
-                                alert("店铺信息失败，请重试");
+                                alert(data.message);
                             }
                         }
                     });

@@ -397,3 +397,23 @@ function addForward(uid, note_id) {
     })
 }
 
+// 获取和增加浏览数量
+function browseNum(url,id,type){
+    var num;
+    $.ajax({
+        url : url,	//请求url 商城分类
+        type : type,	//请求类型  post|get
+        dataType : "json",  //返回数据的 类型 text|json|html--
+        data:{browse_id:id,type:1},
+        async: false,
+        success : function(data){//回调函数 和 后台返回的 数据
+            if (url == "/browseCount"){
+                num = data.data.count;
+            }else if (url == "/createRecord") {
+                console.log(data)
+            }
+        }
+    });
+    return num;
+}
+
