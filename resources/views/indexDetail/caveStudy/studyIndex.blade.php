@@ -97,7 +97,7 @@
         titleList += '<div class="styleSou">',
             titleList += ' <div class="souinp">',
             titleList += '<img src="/images/serch.png" alt="">',
-            titleList += ' <input type="text" placeholder="请输入作品,店铺">',
+            titleList += ' <input type="text" placeholder="请输入关键词">',
             titleList += '</div>',
             titleList += '<p onclick="changeHead2()">取消</p>',
             titleList += '</div>'

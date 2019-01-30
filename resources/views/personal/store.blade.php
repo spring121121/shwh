@@ -138,7 +138,7 @@
                 data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
                     //alert(JSON.stringify(data));
-                    console.log(data)
+                    //console.log(data)
                     if (data.status){
                         store_id = data.data[0].id;
                         user_id = data.data[0].uid;
@@ -146,7 +146,7 @@
                         $("#store-index-name").html(data.data[0].name+'<span>已认证</span>');
                         $("#store-index-brief").html(data.data[0].introduction);
                     }else {
-                        alert(data.message);
+                        layer.msg(data.message);
                     }
                 }
             });
@@ -159,11 +159,11 @@
                 data: {uid:user_id},
                 success : function(data){//回调函数 和 后台返回的 数据
                     //alert(JSON.stringify(data));
-                    console.log(data)
+                    //console.log(data)
                     if (data.status){
                         $("#store-fans").html('<i><img src="/images/fans-num.png" class="common-img"></i>有'+data.data.count+'人关注了店主');
                     }else {
-                        alert(data.message);
+                        layer.msg(data.message);
                     }
                 }
             });
@@ -175,7 +175,7 @@
                 data: {id:store_id},
                 success : function(data){//回调函数 和 后台返回的 数据
                     //alert(JSON.stringify(data));
-                    console.log(data);
+                    //console.log(data);
                     var rightHtml = "",leftHtml = "";
                     if (data.status){
                         $.each(data.data, function (k, v) {
@@ -188,7 +188,7 @@
                         $(".flex-left").html(leftHtml);
                         $(".flex-right").html(rightHtml);
                     }else {
-                        alert(data.message);
+                        layer.msg(data.message);
                     }
                 }
             });

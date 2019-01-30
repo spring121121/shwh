@@ -69,7 +69,7 @@
             // var address_url = window.location.search;
             var address_id = getUrlParam('id');
             var province_id,city_id,area_id;
-            console.log(address_id);
+            //console.log(address_id);
             choice_address();
             $.ajax({
                 url : "/addressDetail",	//请求url
@@ -77,7 +77,7 @@
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {id:address_id},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    console.log(data)
+                    //console.log(data)
                     if (data.status){
                         $("#shr-name").val(data.data[0].name);
                         $("#shr-phone").val(data.data[0].mobile);
@@ -91,7 +91,7 @@
                             $("#default").removeAttr("checked");
                         }
                     }else {
-                        alert(data.message)
+                        layer.msg(data.message)
                     }
                 }
             });
@@ -122,11 +122,17 @@
                     is_default = 0;
                 }
                 if(shr_name == ""){
-                    alert("请填写收货人姓名");
+                    layer.tips("请填写收货人姓名", '#shr-name', {
+                        tips: 3
+                    });
                 }else if (shr_phone == "") {
-                    alert("请填写收货人手机号码");
+                    layer.tips("请填写收货人手机号码", '#shr-phone', {
+                        tips: 3
+                    });
                 }else if (shr_xxdz == "") {
-                    alert("请填写详细地址");
+                    layer.tips("请填写详细地址", '#xxdz', {
+                        tips: 3
+                    });
                 }else {
                     $.ajax({
                         url : "/updateAddress",	//请求url

@@ -24,7 +24,7 @@
                 <div class="ipt-cont">
                     <div class="btn-box">
                         {{--<a href="/wap/login" class="login">手机号登录</a>--}}
-                        <a href="http://shwh.jianghairui.com/wx/auth" class="register weChat-login">微信登录</a>
+                        <a href="/wx/auth" class="register weChat-login">微信登录</a>
                     </div>
                 </div>
             </div>

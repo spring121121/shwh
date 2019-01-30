@@ -377,7 +377,7 @@ function addLikes(note_id) {
             $("#dianzan-"+note_id).css("color","red");
             $("#likeNum-"+note_id).html(likeNum+1);
         } else {
-            alert(data.message)
+            layer.msg(data.message)
             window.location.href = "/wap/login_index"
         }
     })
@@ -388,10 +388,10 @@ function addForward(uid, note_id) {
     var forwardNum = parseInt($("#forward-"+note_id).html());
     $.post("/forwardNote", {'beuid': uid, 'note_id': note_id}, function (data) {
         if (data.status) {
-            alert("转发成功");
+            layer.msg("转发成功");
             $("#forward-"+note_id).html(forwardNum+1);
         } else {
-            alert(data.message)
+            layer.msg(data.message)
             window.location.href = "/wap/login_index"
         }
     })

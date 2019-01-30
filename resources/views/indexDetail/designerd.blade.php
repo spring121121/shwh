@@ -22,11 +22,14 @@
                 <span onclick="history.back()" class="iconfont icon-ffanhui-"></span>
             </li>
             <li>设计师</li>
-            <li>
-                <span class="iconfont icon-sousuo" onclick="getCreationList(1,10)"></span>
-                <input type="text" value="" id="searchContent">
+            <li id="btn-search">
+                <span class="iconfont icon-sousuo"></span>
             </li>
         </ul>
+        <div class="sjs-search-box">
+            <span id="search-back">取消</span>
+            <div class="sjs-search"><i></i><input type="text" placeholder="请输入关键词" value="" id="searchContent"></div>
+        </div>
     </header>
     <div class="bigContainer">
         <div id="museum_shop">
@@ -63,7 +66,23 @@
 
             }
         });
-    })
+
+        // 点击搜索按钮的事件
+        $("#btn-search").click(function () {
+            $(".sjs-search-box").animate({"width":"100%"},100);
+        });
+        $("#search-back").click(function () {
+            $(".sjs-search-box").animate({"width":"0"},100);
+        });
+
+
+        // 输入框失去焦点时的事件
+        $("#searchContent").blur(function () {
+            $(".sjs-search-box").animate({"width":"0"},100);
+            console.log(111)
+            getCreationList(1, 10);
+        });
+    });
 
 
     function getCreationList(page, limit) {
