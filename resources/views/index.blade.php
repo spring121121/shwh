@@ -39,7 +39,7 @@
     <!--<header>        
     </header>-->
     <!--中间部分-->
-    <div class="bigContainer">
+    <section>
         <div class="searchContainer">
             <div id="search">
                 <button onclick="contentList();"></button>
@@ -226,8 +226,7 @@
             <div class="groomContent clearfix" id="factory">
             </div>
         </div>
-
-    </div>
+    </section>
 </div>
 <!--引入footer-->
 @extends('layout.footer')
