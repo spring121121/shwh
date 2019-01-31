@@ -72,12 +72,14 @@ class WxAuthController extends BaseController {
                 }
 
             }else {
-                $info = UserModel::create(['openid'=>$openid,'photo'=>$data_all['headimgurl'],'nickname'=>$data_all['nickname']]);
+                $info = UserModel::create([
+                    'openid'=>$openid,
+                    'photo'=>$data_all['headimgurl'],
+                    'nickname'=>$data_all['nickname'],
+                    'sex'=>$data_all['gender'],
+                    'unionid'=>$data_all['unionid']
+                ]);
                 $data_all['id'] = $info->id;
-//                $user = new UserModel();
-//                $user->openid = $openid;
-//                $user->save();
-//                $data_all['uid'] = $user->id;
                 $data_all['grade_name'] = UserService::getGrade(0);
                 $store_id = StoreModel::where('uid', $data_all['id'])->select('id', 'status')->first();
                 if ($store_id) {
