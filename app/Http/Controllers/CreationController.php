@@ -68,7 +68,7 @@ class CreationController extends BaseController
         $page = $request->input('page', 1);
         $limit = $request->input('limit', 10);
         $total = DB::table('creation')->count();
-        $creationList = $creationService->getCreationList('', $searchContent, $page, $limit);
+        $creationList = $creationService->getCreationList($request,'', $searchContent, $page, $limit);
 
         return $this->success($creationList,$total);
     }
@@ -86,7 +86,7 @@ class CreationController extends BaseController
         $page = $request->input('page', 1);
         $limit = $request->input('limit', 10);
         $total = DB::table('creation')->where("uid",$uid)->count();
-        $creationList = $creationService->getCreationList($uid, $searchContent, $page, $limit);
+        $creationList = $creationService->getCreationList($request,$uid, $searchContent, $page, $limit);
 
         return $this->success($creationList,$total);
     }
@@ -104,7 +104,7 @@ class CreationController extends BaseController
         $limit = $request->input('limit', 10);
         $uid = $request->input('uid');
         $total = DB::table('creation')->where("uid",$uid)->count();
-        $creationList = $creationService->getCreationList($uid, $searchContent, $page, $limit);
+        $creationList = $creationService->getCreationList($request,$uid, $searchContent, $page, $limit);
 
         return $this->success($creationList,$total);
     }
@@ -119,6 +119,20 @@ class CreationController extends BaseController
         $creationInfo = $creationService->getChoiceCreationList($demandId);
 
         return $this->success($creationInfo);
+    }
+
+    /**
+     * 获取某个需求的参赛作品
+     * @param Request $request
+     * @param $demandId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getDemandCreationList(Request $request,$demandId){
+        $creationService = new CreationService();
+        $total = DB::table('creation')->where("demand_id",$demandId)->count();
+        $creationInfo = $creationService->getDemandCreationList($request,$demandId);
+
+        return $this->success($creationInfo,$total);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use App\models\CreationModel;
 use Illuminate\Support\Facades\DB;
 use App\models\FocusModel;
+use App\Http\Services\FocusService;
 
 class CreationService
 {
@@ -17,7 +18,7 @@ class CreationService
      * @param int $take
      * @return mixed
      */
-    public function getCreationList($uid = '', $searchContent = '', $page = 1, $take = 10)
+    public function getCreationList($request, $uid = '', $searchContent = '', $page = 1, $take = 10)
     {
         $skip = ($page - 1) * $take;
 
@@ -36,17 +37,11 @@ class CreationService
             ->groupBy("focus.beuid")->orderBy('num', 'desc')->skip($skip)->take($take)->get();
 
 
-
-            $beFocusArr = FocusModel::where('uid', $uid)->get()->toArray();
-            foreach ($creationList as $info){
-                if (!empty($uid)&&in_array($info.uid,$beFocusArr)) {
-                    //查询登录的用户是否关注了这个设计师
-                    $info->is_focus = true;
-                }else{
-                    $info->is_focus = false;
-                }
-
-            }
+        $loginUid = UserService::getUid($request);
+        $focusService = new FocusService();
+        foreach ($creationList as $info) {
+            $info->is_focus = $focusService->judgeIsFocus($loginUid, $info->uid);
+        }
 
 
         return $creationList;
@@ -74,9 +69,31 @@ class CreationService
     public function getChoiceCreationList($demandId)
     {
         $creationModel = new CreationModel();
-        $creationInfo = $creationModel::where('demand_id', $demandId)->where('is_choice', CreationModel::IS_CHOICE_1)->get();
+        $creationInfo = $creationModel::where('demand_id', $demandId)
+            ->where('is_choice', CreationModel::IS_CHOICE_1)
+            ->join("user", "user.id", "=", "creation.uid")
+            ->select("creation.*", "user.photo", "user.nickname")->get();
 
         return $creationInfo;
+    }
+
+    /**
+     * 获取某个需求的作品
+     * @param $request
+     * @param $demandId
+     * @return mixed
+     */
+    public function getDemandCreationList($request,$demandId)
+    {
+        $creationModel = new CreationModel();
+        $creationList = $creationModel::where('demand_id', $demandId)->join("user", "user.id", "=", "creation.uid")
+            ->select("creation.*", "user.photo", "user.nickname")->get();
+        $focusService = new FocusService();
+        $loginUid = UserService::getUid($request);
+        foreach ($creationList as $info) {
+            $info->is_focus = $focusService->judgeIsFocus($loginUid, $info->uid);
+        }
+        return $creationList;
     }
 
 
