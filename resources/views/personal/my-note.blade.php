@@ -79,10 +79,13 @@
             $("#del-note-true").click(function () {
                 $.post("/deleteNote", {'note_id': id}, function (data) {
                     if (data.status) {
-                        alert('删除成功')
-                        window.location.reload()
+                        layer.msg('删除成功', {
+                            time: 3000 //不自动关闭
+                        }, function(){
+                            window.location.reload();
+                        });
                     } else {
-                        alert(data.message)
+                        layer.msg(data.message);
                     }
                 });
             });
@@ -101,10 +104,13 @@
                     });
                     $.post("/deleteNoteNotOnly", {'note_ids': ids}, function (data) {
                         if (data.status) {
-                            alert('删除成功')
-                            window.location.reload()
+                            layer.msg('删除成功', {
+                                time: 3000 //不自动关闭
+                            }, function(){
+                                window.location.reload();
+                            });
                         } else {
-                            alert(data.message)
+                            layer.msg(data.message)
                         }
                     });
                 });

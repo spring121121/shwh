@@ -97,8 +97,6 @@
         });
         $("#source").on("change",function(){
             var img_size = $("input[type=file]").get(0).files[0].size;
-            console.log(img_size);
-            //alert(img_size);
             if (img_size > 1000000){
                 layer.tips("上传图片过大，请上传小于1M的图片", '.tx-icon-box', {
                     tips: 4
@@ -122,7 +120,6 @@
             var img_url = $('#btn-my-header').attr('src'),
                 user_name = $('#username').val(), sex,
                 birthday = $('#birthday').val();
-            //console.log($(':radio:checked').attr("id"))
             if ($(':radio:checked').attr("id") == 1){
                 sex = 1;
             }
@@ -143,8 +140,11 @@
                 success : function(data){//回调函数 和 后台返回的 数据
                     //console.log(data)
                     if (data.status){
-                        alert("修改成功");
-                        window.location.href = "/wap/personal";
+                        layer.msg('修改成功', {
+                            time: 3000 //不自动关闭
+                        },function () {
+                            window.location.href = "/wap/personal";
+                        });
                     }else {
                         layer.msg(data.message);
                     }

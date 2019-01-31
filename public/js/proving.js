@@ -8,7 +8,7 @@ $(function () {
     blur_yanzheng("#store-id-card",reg_card,"请输入有效的身份证号码");
     blur_yanzheng(".password",reg_pass,"请输入8-16位数的英文和数字组合密码");
     blur_yanzheng("#shop-price",reg_num,"输入的价格不能以0开头");
-    blur_yanzheng("#shop-freight",reg_num,"输入的运费不能以0开头");
+    // blur_yanzheng("#shop-freight",reg_num,"输入的运费不能以0开头");
     blur_yanzheng("#shop-stock",reg_num,"输入的库存数量不能以0开头");
     $(".password-again").blur(function () {
         if ($(".password").val() === $(this).val()){

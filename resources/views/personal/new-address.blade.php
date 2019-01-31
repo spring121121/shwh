@@ -29,7 +29,6 @@
                 wx.openAddress({
                     success: function (res) {
                         // 用户成功拉出地址
-                        //alert(JSON.stringify(res));
                         document.getElementById("shr-name").value=   res.userName;
                         document.getElementById("shr-address-info").value = res.provinceName + res.cityName + res.countryName + res.detailInfo;
                         document.getElementById("shr-phone").value = res.telNumber;
@@ -39,7 +38,7 @@
                     },
                     cancel: function (errMsg) {
                         // 用户取消拉出地址 //
-                        alert(JSON.stringify(errMsg));
+                        layer.msg(JSON.stringify(errMsg));
                     }
                 });
             }
@@ -86,7 +85,6 @@
     <script src="/js/common.js"></script>
     <script>
         $(function () {
-            //alert(decodeURIComponent("{{$origin}}"))
             choice_address();
             $("#btn-new-keep").click(function () {
                 var shr_name = $("#shr-name").val(),
@@ -103,19 +101,30 @@
                     is_default = 0;
                 }
                 if(shr_name == ""){
-                    alert("请填写收货人姓名");
+                    layer.tips("请填写收货人姓名", '#shr-name', {
+                        tips: 3
+                    });
                 }else if (shr_phone == "") {
-                    alert("请填写收货人手机号码");
+                    layer.tips("请填写收货人手机号码", '#shr-phone', {
+                        tips: 3
+                    });
                 }else if ($("#province option:checked").text() == "请选择省份") {
-                    alert("请选择省份");
+                    layer.tips("请选择省份", '#province', {
+                        tips: 3
+                    });
                 }else if ($("#city option:checked").text() == "请选择城市") {
-                    alert("请选择城市");
+                    layer.tips("请选择城市", '#city', {
+                        tips: 3
+                    });
                 }else if ($("#area option:checked").text() == "请选择地区") {
-                    alert("请选择地区");
+                    layer.tips("请选择地区", '#area', {
+                        tips: 3
+                    });
                 }else if (shr_xxdz == "") {
-                    alert("请填写详细地址");
+                    layer.tips("请填写详细地址", '#shr-address-info', {
+                        tips: 3
+                    });
                 }else {
-                    console.log(shr_name,shr_phone,shr_province,shr_city,shr_area,shr_xxdz,is_default,default_address);
                     $.ajax({
                         url : "/addAddress",	//请求url
                         type : "post",	//请求类型  post|get
@@ -131,10 +140,13 @@
                         },
                         success : function(data){//回调函数 和 后台返回的 数据
                             if (data.status){
-                                alert("添加成功");
-                                window.location.href = decodeURIComponent("{{$origin}}");
+                                layer.msg('添加成功', {
+                                    time: 3000 //不自动关闭
+                                }, function(){
+                                    window.location.href = decodeURIComponent("{{$origin}}");
+                                });
                             }else {
-                                alert(data.message);
+                                layer.msg(data.message);
                             }
                         }
                     });

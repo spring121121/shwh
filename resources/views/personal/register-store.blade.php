@@ -65,46 +65,42 @@
         $(function () {
             var store_status = getUrlParam('store_status');
             var role_id = getUrlParam('role_id');
-            // alert(store_status);
-            // alert(role_id);
 
             //上传图片
             $("#store-logo").on("change",function(){
                 var img_size_one = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size_one);
-                //alert(img_size);
                 if (img_size_one > 1000000){
-                    alert("上传图片过大，请上传小于1M的图片")
+                    layer.tips("上传图片过大，请上传小于1M的图片", '#store-logo-box');
                 }else {
                     store_upload("store-logo");
                 }
             });
             $("#sfz-just").on("change",function(){
                 var img_size_two = $("input[type=file]").get(1).files[0].size;
-                console.log(img_size_two);
-                //alert(img_size);
                 if (img_size_two > 1000000){
-                    alert("上传图片过大，请上传小于1M的图片")
+                    layer.tips("上传图片过大，请上传小于1M的图片", '#sfz-just',{
+                        tips: 1
+                    });
                 }else {
                     store_upload("sfz-just");
                 }
             });
             $("#sfz-back").on("change",function(){
                 var img_size_three = $("input[type=file]").get(2).files[0].size;
-                console.log(img_size_three);
-                //alert(img_size);
                 if (img_size_three > 1000000){
-                    alert("上传图片过大，请上传小于1M的图片")
+                    layer.tips("上传图片过大，请上传小于1M的图片", '#sfz-back',{
+                        tips: 1
+                    });
                 }else {
                     store_upload("sfz-back");
                 }
             });
             $("#store-prove").on("change",function(){
                 var img_size_four = $("input[type=file]").get(3).files[0].size;
-                console.log(img_size_four);
-                //alert(img_size);
                 if (img_size_four > 1000000){
-                    alert("上传图片过大，请上传小于1M的图片")
+                    layer.tips("上传图片过大，请上传小于1M的图片", '#store-prove',{
+                        tips: 1
+                    });
                 }else {
                     store_upload("store-prove");
                 }
@@ -120,7 +116,6 @@
                     dataType : "json",  //返回数据的 类型 text|json|html--
                     data: {},
                     success : function(data){//回调函数 和 后台返回的 数据
-                        alert(JSON.stringify(data))
                         if (data.status){
                             role_id = data.data[0].role;
                             $(".reason-tip").html(data.data[0].reject_reason);
@@ -139,7 +134,7 @@
                                 $("#store-prove-box").css("display","none");
                             }
                         }else {
-                            alert(data.message);
+                            layer.msg(data.message);
                         }
                     }
                 });
@@ -157,21 +152,21 @@
                         store_prove = $("#store-prove-box").find("img").attr("src")
                     }
                     if (store_name == ""){
-                        alert("店铺名不能为空")
+                        layer.msg("店铺名不能为空");
                     }else if (store_brief == ""){
-                        alert("请简单介绍一下自己的店铺吧")
+                        layer.msg("请简单介绍一下自己的店铺吧");
                     }else if ($("#store-logo-box").find("img").length == 0) {
-                        alert("请上传店铺logo")
+                        layer.msg("请上传店铺logo")
                     }else if (store_id_name == "") {
-                        alert("请输入您的真实姓名")
+                        layer.msg("请输入您的真实姓名")
                     }else if (store_id_card == "") {
-                        alert("请输入您的身份证号")
+                        layer.msg("请输入您的身份证号")
                     }else if ($("#sfz-just-box").find("img").length == 0) {
-                        alert("请上传您的身份证正面")
+                        layer.msg("请上传您的身份证正面")
                     }else if ($("#sfz-back-box").find("img").length == 0) {
-                        alert("请上传您的身份证反面")
+                        layer.msg("请上传您的身份证反面")
                     }else if ($("#store-prove-box").find("img").length == 0 && role_id != 3){
-                        alert("请上传营业执照")
+                        layer.msg("请上传营业执照")
                     }else {
                         $.ajax({
                             url : "/updateStore",	//请求url
@@ -190,10 +185,13 @@
                             success : function(data){//回调函数 和 后台返回的 数据
                                 console.log(data)
                                 if (data.status){
-                                    alert("店铺信息重新提交成功");
-                                    window.location.href = "/wap/personal";
+                                    layer.msg("店铺信息重新提交成功",{
+                                        time: 3000
+                                    },function () {
+                                        window.location.href = "/wap/personal";
+                                    });
                                 }else {
-                                    alert(data.message);
+                                    layer.msg(data.message);
                                 }
                             }
                         });
@@ -218,21 +216,21 @@
                         store_prove = $("#store-prove-box").find("img").attr("src")
                     }
                     if (store_name == ""){
-                        alert("店铺名不能为空")
+                        layer.msg("店铺名不能为空")
                     }else if (store_brief == ""){
-                        alert("请简单介绍一下自己的店铺吧")
+                        layer.msg("请简单介绍一下自己的店铺吧")
                     }else if ($("#store-logo-box").find("img").length == 0) {
-                        alert("请上传店铺logo")
+                        layer.msg("请上传店铺logo")
                     }else if (store_id_name == "") {
-                        alert("请输入您的真实姓名")
+                        layer.msg("请输入您的真实姓名")
                     }else if (store_id_card == "") {
-                        alert("请输入您的身份证号")
+                        layer.msg("请输入您的身份证号")
                     }else if ($("#sfz-just-box").find("img").length == 0) {
-                        alert("请上传您的身份证正面")
+                        layer.msg("请上传您的身份证正面")
                     }else if ($("#sfz-back-box").find("img").length == 0) {
-                        alert("请上传您的身份证反面")
+                        layer.msg("请上传您的身份证反面")
                     }else if ($("#store-prove-box").find("img").length == 0 && role_id != 3){
-                        alert("请上传营业执照")
+                        layer.msg("请上传营业执照")
                     }else {
                         console.log(store_name,store_brief,store_logo,store_id_name,store_id_card,store_id_just,store_id_back,store_prove)
                         $.ajax({
@@ -252,10 +250,13 @@
                             },
                             success : function(data){//回调函数 和 后台返回的 数据
                                 if (data.status){
-                                    alert("信息提交成功，请静心等待3-5个工作日");
-                                    window.location.href = "/wap/personal";
+                                    layer.msg("信息提交成功，请静心等待3-5个工作日",{
+                                        time: 3000 //不自动关闭
+                                    },function () {
+                                        window.location.href = "/wap/personal";
+                                    });
                                 }else {
-                                    alert(data.message);
+                                    layer.msg(data.message);
                                 }
                             }
                         });
@@ -278,7 +279,6 @@
                 fileElementId: id, //文件上传域的ID
                 dataType: 'json', //返回值类型 一般设置为json
                 success: function (data){  //服务器成功响应处理函数
-                    // console.log(data)
                     $("#" + id).parent().find("img").remove();
                     $("#" + id).parent().append('<img class="common-img" src="'+data.data.url+'">');
                 },

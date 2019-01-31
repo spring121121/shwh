@@ -248,8 +248,8 @@
                 async: true,
                 success: function(data) {
                     console.log(data)
-                    if(data.message==="成功"){
-                        alert("发布成功")
+                    if(data.status){
+                        layer.msg("发布成功")
                     }
                 }
             });
