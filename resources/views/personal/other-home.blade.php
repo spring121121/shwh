@@ -82,7 +82,7 @@
                             changeLi2();
                         }
                     }else {
-                        alert("哎呀！出错了")
+                        layer.msg("哎呀！出错了");
                     }
                     if (data.data.is_focus == 1){
                         $(".btn-follow").html('<span>已关注</span>')
@@ -121,7 +121,7 @@
                             $(cont_box).html(noteHtml)
                         }
                     }else {
-                        alert("哎呀！出错了")
+                        layer.msg("哎呀！出错了");
                     }
                 }
             });

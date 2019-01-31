@@ -56,7 +56,7 @@
                         });
                         $("#dianzan-box").html(noteHtml);
                     }else {
-                        alert("哎呀！出错了")
+                        layer.msg("哎呀！出错了");
                     }
                 }
             });

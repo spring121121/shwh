@@ -88,10 +88,10 @@
             }
             $("#add-photo").on("change",function(){
                 var img_size = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size);
-                //alert(img_size);
                 if (img_size > 1000000){
-                    alert("上传图片过大，请上传小于1M的图片")
+                    layer.tips("上传图片过大，请上传小于1M的图片", '.btn-add-photo',{
+                        tips: 3
+                    });
                 } else {
                     $.ajaxFileUpload({
                         url: '/upload', //用于文件上传的服务器端请求地址
@@ -180,21 +180,21 @@
                     free_shipping = 1;
                 }
                 if (array_img_url == ""){
-                    alert("请上传至少一张商品的照片")
+                    layer.msg("请上传至少一张商品的照片")
                 } else if (shop_title == "") {
-                    alert("请输入商品名称")
+                    layer.msg("请输入商品名称")
                 }else if (shop_brief == ""){
-                    alert("请输入商品简介")
+                    layer.msg("请输入商品简介")
                 }else if ($("#classify-name").find("span").length == 0){
-                    alert("请选择商品分类")
+                    layer.msg("请选择商品分类")
                 }else if (shop_price == ""){
-                    alert("请输入商品售价")
+                    layer.msg("请输入商品售价")
                 }else if (shop_freight == ""){
-                    alert("请输入运费")
+                    layer.msg("请输入运费")
                 }else if (shop_stock == ""){
-                    alert("请输入商品的库存数量")
+                    layer.msg("请输入商品的库存数量")
                 }else if (shop_stock < 1){
-                    alert("商品的库存数量至少为1")
+                    layer.msg("商品的库存数量至少为1")
                 }else {
                     $.ajax({
                         url : "/addGoods",	//请求url 商城分类
@@ -213,10 +213,13 @@
                         },
                         success : function(data){//回调函数 和 后台返回的 数据
                             if (data.status){
-                                alert(data.message);
-                                window.location.href = "/wap/store";
+                                layer.msg(data.message,{
+                                    time: 3000
+                                },function () {
+                                    window.location.href = "/wap/store";
+                                });
                             }else {
-                                alert(data.message);
+                                layer.msg(data.message);
                             }
                         }
                     });
@@ -227,7 +230,6 @@
             // 点击返回按钮触发的事件
             $("#upper-return").click(function () {
                 var z_index = $(".upper-classify").css("z-index");
-                console.log(z_index);
                 if (z_index == 2){
                     $("#upper-title").html("商品上架");
                     $(".upper-classify").css({"z-index":"0"});

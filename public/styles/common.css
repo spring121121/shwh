@@ -165,9 +165,9 @@ input[type=file]{
     margin: 0;
     border-radius: 50%;
 }
-/*.store-name{*/
-    /*margin-left: 75px;*/
-/*}*/
+.store-name{
+    margin-left: 75px;
+}
 .other-store-box .store-name{
     display: flex;
     flex-direction: row;

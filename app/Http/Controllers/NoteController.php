@@ -37,8 +37,6 @@ class NoteController extends BaseController
             'title' => 'required',
             'content' => 'required',
             'image_one_url' => 'required',
-            'image_two_url' => 'required',
-            'image_three_url' => 'required',
             'goods_id' => 'required'
         ];
 

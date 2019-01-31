@@ -211,8 +211,6 @@
 
             $("#personal-photo").on("change",function(){
                 var img_size = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size);
-                //alert(img_size);
                 if (img_size > 1000000){
                     layer.tips("上传图片过大，请上传小于1M的图片", '.portrait-box');
                 }else {
@@ -252,7 +250,6 @@
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    //alert(JSON.stringify(data))
                     if (data.status){
                         store_id = data.data.store_id;
                         store_status = data.data.store_status;
@@ -287,7 +284,7 @@
                         }
                         $("#grade").html(data.data.grade);
                     }else {
-                        alert("哎呀！出错了")
+                        layer.msg("哎呀！出错了");
                     }
                 }
             });
@@ -328,7 +325,6 @@
                             dataType : "json",  //返回数据的 类型 text|json|html--
                             data: {tel:mobile},
                             success : function(data){//回调函数 和 后台返回的 数据
-                                //alert(JSON.stringify(data))
                                 if (data.code == 200){
                                     settime();
                                     layer.msg(data.message);
@@ -360,7 +356,6 @@
                         dataType : "json",  //返回数据的 类型 text|json|html--
                         data: {tel:mobile,code:code},
                         success : function(data){//回调函数 和 后台返回的 数据
-                            //alert(JSON.stringify(data))
                             if (data.code == 200){
                                 layer.msg(data.message);
                                 $(".bind-mobile").animate({"height":"0"},200);
@@ -394,7 +389,7 @@
             //                 });
             //                 $("#province").html(noteHtml);
             //             }else {
-            //                 alert("哎呀！出错了")
+            //                 layer.msg("哎呀！出错了");
             //             }
             //         }
             //     });
@@ -418,7 +413,7 @@
             //                 });
             //                 $("#city").html(noteHtml);
             //             }else {
-            //                 alert("哎呀！出错了")
+            //                 layer.msg("哎呀！出错了");
             //             }
             //         }
             //     });
@@ -440,7 +435,7 @@
             //                 });
             //                 $("#area").html(noteHtml);
             //             }else {
-            //                 alert("哎呀！出错了")
+            //                 layer.msg("哎呀！出错了");
             //             }
             //         }
             //     });

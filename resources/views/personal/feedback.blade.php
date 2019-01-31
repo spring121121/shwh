@@ -41,7 +41,7 @@
             $("#btn-submit").click(function () {
                 var feedback = $("#feedback").val();
                 if (feedback == ""){
-                    alert("请输入你想要反馈的问题和建议");
+                    layer.msg("请输入你想要反馈的问题和建议");
                 }else {
                     $.ajax({
                         url : "/feedback",	//请求url
@@ -52,10 +52,13 @@
                         },
                         success : function(data){//回调函数 和 后台返回的 数据
                             if (data.status){
-                                alert("提交成功");
-                                window.location.href = "/wap/personal";
+                                layer.msg("提交成功",{
+                                    time: 3000 //不自动关闭
+                                },function () {
+                                    window.location.href = "/wap/personal";
+                                });
                             }else {
-                                alert("哎呀！出错了");
+                                layer.msg(data.message);
                             }
                         }
                     });
