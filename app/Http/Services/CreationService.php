@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\models\CreationModel;
+use App\models\DemandModel;
 use Illuminate\Support\Facades\DB;
 use App\models\FocusModel;
 use App\Http\Services\FocusService;
@@ -94,6 +95,40 @@ class CreationService
             $info->is_focus = $focusService->judgeIsFocus($loginUid, $info->uid);
         }
         return $creationList;
+    }
+
+    /**
+     * 判断当前登录用户和需求的发表人uid是否一致
+     * @param $loginUid
+     * @param $demandId
+     * @return bool
+     */
+    public function judgeLoginIsDemandUid($loginUid,$demandId){
+         $demandInfo = DemandModel::find($demandId);
+         $uid = $demandInfo->uid;
+         if($loginUid == $uid){
+             return true;
+         }else{
+             return false;
+         }
+    }
+
+    /**
+     * 切换入围还是不入围
+     * @param $creationId
+     * @return mixed
+     */
+    public function changeChoice($creationId){
+        $info = CreationModel::find($creationId);
+        if($info['is_choice']==CreationModel::IS_CHOICE_1){
+            $updateArr['is_choice'] =  CreationModel::IS_CHOICE_0;
+        }else{
+            $updateArr['is_choice'] =  CreationModel::IS_CHOICE_1;
+        }
+
+        $re = CreationModel::where("id",$creationId)->update($updateArr);
+
+        return $re;
     }
 
 
