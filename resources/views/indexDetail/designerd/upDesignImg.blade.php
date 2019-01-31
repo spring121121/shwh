@@ -37,7 +37,7 @@
 </style>
 <body>
 <div class="header">
-    <div class="header-left" id="upper-return"></div>
+    <div class="header-left" id="upper-return" onclick="history.back()" ></div>
     <h3 class="top-title" id="upper-title">上传作品</h3>
 </div>
 <div class="content-box upper-content">
@@ -108,6 +108,7 @@
  })
 
      function publishImg() {
+  var id=GetUrlParam('demoId')
          var mli=$("#shop-img-list>li").length;
          console.log(mli);
           var arr=[];
@@ -125,12 +126,14 @@
              url:"/addCreation",
              data: {
                "introduction" : text,
-                 "creation_urls":arrS
+                 "creation_urls":arrS,
+                 "demand_id":id
+
              },
              async: true,
              success: function(data) {
                  console.log(data)
-
+                alert("提交成功")
              },
              error: function(data) {
 

@@ -83,7 +83,7 @@
 <script>
     $(function () {
         var limit =10;
-        // getNote();
+
         getNote(1, limit);
 
 
@@ -144,9 +144,7 @@
         $("header").html(headList)
     }
 
-    function getMore() {
 
-    }
 
     // 笔记列表
     function getNote(page, limit) {

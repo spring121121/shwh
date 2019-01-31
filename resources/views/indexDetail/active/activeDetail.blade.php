@@ -108,6 +108,10 @@
     @endforeach
     </div>
 
+        <div class="gopuilsh" onclick="gopulish({{$active['id']}})">
+            <img src="/images/baoming.png" alt="">
+            <p>参加活动</p>
+        </div>
         <div class="de_addheight"></div>
     <!--引入footer-->
     @extends('layout.footer')
@@ -121,29 +125,32 @@
     $(function(){
         getPeopleList();
         // 滚轴时间
-        $(document).scroll(function(){
-            var wheight=$(window).height();
-            var stop=$(document).scrollTop();
-            var m=$("#activeRule").offset().top;
+        // $(document).scroll(function(){
+        //     var wheight=$(window).height();
+        //     var stop=$(document).scrollTop();
+        //     var m=$("#activeRule").offset().top;
+        //
+        //
+        //     var n=$("#activeGold").offset().top
+        //     var k=$("#activeList").offset().top
+        //   console.log(m+100+"px")
+        //     if (stop>(m-200)) {
+        //         $(".c").addClass("addcolor").siblings().removeClass("addcolor");
+        //     }
+        //     if (stop>(n-200)) {
+        //         $(".d").addClass("addcolor").siblings().removeClass("addcolor");
+        //     }
+        //     if (stop>(k-200)) {
+        //         $(".e").addClass("addcolor").siblings().removeClass("addcolor");
+        //     }
+        // })
 
-
-            var n=$("#activeGold").offset().top
-            var k=$("#activeList").offset().top
-          console.log(m+100+"px")
-            if (stop>(m-200)) {
-                $(".c").addClass("addcolor").siblings().removeClass("addcolor");
-            }
-            if (stop>(n-200)) {
-                $(".d").addClass("addcolor").siblings().removeClass("addcolor");
-            }
-            if (stop>(k-200)) {
-                $(".e").addClass("addcolor").siblings().removeClass("addcolor");
-            }
-        })
     })
     var isclick = true,activeId = "{{$active['id']}}",to_cid=0;
 
+
     $("#reply-btn").click(function () {
+
         var content = $("#textar").val();
         if(content.length === 0) {
             alert('请输入回复内容');
@@ -178,10 +185,14 @@
         }
 
     })
-
+    // 去首页
     function toIndex() {
         window.location.href = "/wap/activeList";
     }
+   //去发布
+   function gopulish(demoId) {
+       window.location.href = "/wap/upDesign?demoId="+demoId;
+   }
 
     function pinglun(cid,to_nickname) {
         // alert(cid);
