@@ -66,6 +66,12 @@
                 float:left;
                 margin-left:1%;
             }
+            .order-right {
+                height: 110px;
+            }
+            .order-left {
+                height: 110px;
+            }
         </style>
     </head>
     <body>
@@ -139,7 +145,7 @@
                         myOrder += '<div class="order-left" id="'+v['goods_id']+'">';
                         myOrder += '<div class="order-img-box"><img src="'+image+'" class="common-img"></div></div>';
                         myOrder += '<div class="order-right" id="'+v['goods_id']+'">';
-                        myOrder += '<p class="order-p1">1111</p>';
+                        myOrder += '<p class="order-p1"></p>';
                         myOrder += '<p class="order-p2">'+goods_name+'<span>￥'+v['unit_price']+'</span></p>';
                         myOrder += '<p class="order-p3">'+goods_info+'<span>*'+v['num']+'</span></p></div>';
                         myOrder += '<div class="order-bottom">';
