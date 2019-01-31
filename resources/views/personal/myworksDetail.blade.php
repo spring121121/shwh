@@ -213,15 +213,15 @@
         var bonus=$("#priceInp").val();
         var start=$("#date-start").val();
         var end=$("#date-end").val();
-        var content1=getContent();
-        console.log(content1)
+        // var content1=getContent();
+        // console.log(content1)
             $.ajax({
                 type: "post",
                 url: "/addDemand",
                 data: {
                     "demand_url":url,
                     "title":title,
-                    "content":content1,
+                    "content":content,
                     "bonus":bonus,
                     "start_time":"2019-01-20 13:50:00",
                     "end_time":"2019-01-21 13:50:00"
@@ -235,9 +235,9 @@
                 }
             });
     }
-    
-   //  //实例化编辑器
-   //  //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
    //  var ue = UE.getEditor('editor');
    // function getContent() {
    //      var arr = [];

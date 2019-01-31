@@ -582,21 +582,43 @@ class ShopController extends BaseController
         $uid = UserService::getUid($request);
         $type = $request->input('type');
         if($type == OrdersModel::IS_ALL){//所有
-            $where = ['orders.uid'=>$uid,'orders.refund_apply'=>OrdersModel::NOT_REFUND_APPLY];
+            $where = ['orders.uid'=>$uid];
             $res = OrdersModel::where($where);
         }else if($type == OrdersModel::IS_PAY){//已支付（支付成功，支付失败）
             $res = OrdersModel::where('orders.uid',$uid)->whereIn('orders.status',[OrdersModel::IS_PAY,OrdersModel::IS_PAYMENT]);
         }else{//已发货，已签收
-            $where = ['orders.uid'=>$uid,'orders.refund_apply'=>OrdersModel::NOT_REFUND_APPLY,'orders.status'=>$type];
+            $where = ['orders.uid'=>$uid,'orders.status'=>$type];
             $res = OrdersModel::where($where);
         }
         $orderList = $res->leftJoin('store','orders.store_id','=','store.id')
             ->leftJoin('goods','orders.goods_id','=','goods.id')
-            ->select('store.name as store_name','goods.image_url','goods.goods_name','goods.goods_info','orders.id','orders.num','orders.unit_price','orders.status','orders.store_id','orders.goods_id')
+            ->select('store.name as store_name','goods.image_url','goods.goods_name','goods.goods_info','orders.id','orders.num','orders.unit_price','orders.status','orders.store_id','orders.goods_id','orders.refund_apply')
             ->get()->toArray();
         foreach($orderList as &$item){
             $item['image_url'] = unserialize($item['image_url']);
             $item['total'] = sprintf('%.2f',$item['unit_price']*$item['num']);
+            $pay_status = '未支付';
+            switch ($item['status']) {
+                case OrdersModel::IS_REFUND:
+                    $pay_status = '已退款';
+                    break;
+                case OrdersModel::NOT_PAY:
+                    $pay_status = '待支付';
+                    break;
+                case OrdersModel::IS_PAY:
+                    $pay_status = '支付成功';
+                    break;
+                case OrdersModel::IS_PAYMENT:
+                    $pay_status = '支付失败';
+                    break;
+                case OrdersModel::IS_DELIVER:
+                    $pay_status = '已发货';
+                    break;
+                case OrdersModel::IS_RECEIVE:
+                    $pay_status = '已签收';
+                    break;
+            };
+            $item['pay_status'] = $pay_status;
         }
         return $this->success($orderList);
     }

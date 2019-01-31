@@ -113,6 +113,10 @@
                     <span>个人需求</span>
                     <i></i>
                 </div>
+                <div class="list-cont" onclick="gopulish(0)">
+                    <span>我的作品</span>
+                    <i></i>
+                </div>
             </div>
             <div class="list-box">
                 <div class="list-cont">
@@ -487,6 +491,10 @@
 
         function toworksDetail() {
             window.location.href = "/wap/myActiveList";
+        }
+        //去我的作品
+        function gopulish(demoId) {
+            window.location.href = "/wap/designW?demoId="+demoId;
         }
     </script>
 </html>

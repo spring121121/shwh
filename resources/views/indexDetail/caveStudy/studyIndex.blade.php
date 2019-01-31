@@ -60,8 +60,13 @@
 <script src="/js/common.js"></script>
 <script>
     $(function () {
+<<<<<<< HEAD
+        var limit =10;
+
+=======
         var limit =3;
         // getNote();
+>>>>>>> 8635481289f9cc77d8a02817f07cbd68afc9f7e4
         getNote(1, limit);
 
 
@@ -124,6 +129,10 @@
         $("header").html(headList)
     }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8635481289f9cc77d8a02817f07cbd68afc9f7e4
 
     // 笔记列表
     function getNote(page, limit) {
