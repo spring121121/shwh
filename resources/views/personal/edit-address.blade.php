@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/my_address"></a></div>
+            <div class="header-left"><a class="common-a" href="/wap/my_address"></a></div>
             <h3 class="top-title">编辑收货地址</h3>
         </div>
         <div class="content-box">
@@ -40,8 +40,8 @@
                     <div class="ipt-box default-box"><input type="checkbox" id="default">设置为默认<label for="default"><em></em></label></div>
                 </form>
                 <div class="btn-write-note">
-                    <a href="#" id="btn-keep">保存</a>
-                    <a class="other-color btn-delete" href="javascript:void(0)">删除</a>
+                    <a class="common-a" href="javascript:void(0);" id="btn-keep">保存</a>
+                    <a class="common-a other-color btn-delete" href="javascript:void(0)">删除</a>
                 </div>
             </div>
         </div>
@@ -66,10 +66,8 @@
             var num = getUrlParam('num');
             var flag = getUrlParam('flag');
             var detail = getUrlParam('detail');
-            // var address_url = window.location.search;
             var address_id = getUrlParam('id');
             var province_id,city_id,area_id;
-            console.log(address_id);
             choice_address();
             $.ajax({
                 url : "/addressDetail",	//请求url
@@ -77,7 +75,7 @@
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {id:address_id},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    console.log(data)
+                    //console.log(data)
                     if (data.status){
                         $("#shr-name").val(data.data[0].name);
                         $("#shr-phone").val(data.data[0].mobile);
@@ -91,7 +89,7 @@
                             $("#default").removeAttr("checked");
                         }
                     }else {
-                        alert(data.message)
+                        layer.msg(data.message)
                     }
                 }
             });
@@ -122,11 +120,17 @@
                     is_default = 0;
                 }
                 if(shr_name == ""){
-                    alert("请填写收货人姓名");
+                    layer.tips("请填写收货人姓名", '#shr-name', {
+                        tips: 3
+                    });
                 }else if (shr_phone == "") {
-                    alert("请填写收货人手机号码");
+                    layer.tips("请填写收货人手机号码", '#shr-phone', {
+                        tips: 3
+                    });
                 }else if (shr_xxdz == "") {
-                    alert("请填写详细地址");
+                    layer.tips("请填写详细地址", '#xxdz', {
+                        tips: 3
+                    });
                 }else {
                     $.ajax({
                         url : "/updateAddress",	//请求url
@@ -144,19 +148,23 @@
                         },
                         success : function(data){//回调函数 和 后台返回的 数据
                             if (data.status){
-                                alert("修改成功");
-                                if(flag != null){
-                                    if(detail !=null){
-                                        window.location.href = "/wap/my_address?flag=1&"+com_url+'&detail=1';
-                                        return false;
-                                    }else{
-                                        window.location.href = "/wap/my_address?flag=1&"+com_url;
-                                        return false;
+                                layer.confirm('修改成功', {
+                                    btn: ['确定'] //按钮
+                                }, function(){
+                                    if(flag != null){
+                                        if(detail !=null){
+                                            window.location.href = "/wap/my_address?flag=1&"+com_url+'&detail=1';
+                                            return false;
+                                        }else{
+                                            window.location.href = "/wap/my_address?flag=1&"+com_url;
+                                            return false;
+                                        }
                                     }
-                                }
-                                window.location.href = "/wap/my_address";
+                                    window.location.href = "/wap/my_address";
+                                });
+                                //layer.msg("修改成功");
                             }else {
-                                alert(data.message);
+                                layer.msg(data.message);
                             }
                         }
                     });
@@ -170,7 +178,7 @@
                     data: {},
                     success : function(data){//回调函数 和 后台返回的 数据
                         if (data.status){
-                            alert("删除成功");
+                            layer.msg("删除成功");
                             if(flag != null){
                                 if(detail !=null){
                                     window.location.href = "/wap/my_address?flag=1&"+com_url+'&detail=1';
@@ -182,7 +190,7 @@
                             }
                             window.location.href = "/wap/my_address";
                         } else {
-                            alert("删除失败");
+                            layer.msg("删除失败");
                         }
                     }
                 });

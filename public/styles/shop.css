@@ -113,6 +113,7 @@
     background-color: #333333;
 }
 .price-box{
+	height: 27px;
     margin: 0 5px;
     font-size: 14px;
 }
@@ -262,7 +263,7 @@
 	width: 55px;
 	height: 25px;
 	border-radius: 20px;
-	line-height: 23px;
+	line-height: 25px;
 	text-align: center;
 	color: #fff;
 	font-size: 12px;
@@ -275,6 +276,7 @@
 .zc_allbusi{
 	border:1px #DD0E44 solid;
 	height: 23px;
+	line-height: 23px;
 	color:red;
 	float:left;
 }

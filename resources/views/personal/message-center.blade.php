@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/personal"></a></div>
+            <div class="header-left"><a class="common-a" href="/wap/personal"></a></div>
             <h3>消息中心</h3>
         </div>
         <div class="massage-category">
@@ -33,7 +33,7 @@
         <div class="massage-cont recommend">
             <ul>
                 <li>
-                    <a href="#">
+                    <a class="common-a" href="javascript:void(0);">
                         <div class="recommend-banner-box">
                             <img class="common-img" src="/images/test.jpg" alt="banner图">
                             <div class="re-title">
@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="common-a" href="javascript:void(0);">
                         <div class="recommend-banner-box">
                             <img class="common-img" src="/images/test1.jpg" alt="banner图">
                             <div class="re-title">
@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="common-a" href="javascript:void(0);">
                         <div class="recommend-banner-box">
                             <img class="common-img" src="/images/test2.jpg" alt="banner图">
                             <div class="re-title">
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="common-a" href="javascript:void(0);">
                         <div class="recommend-banner-box">
                             <img class="common-img" src="/images/test3.jpg" alt="banner图">
                             <div class="re-title">
@@ -95,10 +95,10 @@
                         noteHtml += '<li>';
                         noteHtml += '<div class="massage-cont-left"><div class="icon-box"><img class="common-img" onerror="this.onerror=\'\';this.src=\'/images/portrait.png\'" src="'+ v.photo +'" alt="头像"></div></div>';
                         noteHtml += '<div class="massage-cont-right">';
-                        noteHtml += '<a class="btn btn-reply" href="/wap/reply_comment">回复</a>';
+                        noteHtml += '<a class="common-a btn btn-reply" href="/wap/reply_comment">回复</a>';
                         noteHtml += '<h3>' + v.nickname + '<i></i><span>' + v.created_at + '</span></h3>';
                         noteHtml += '<p>' + v.content + '</p>';
-                        noteHtml += '<div class="us-massage"><a href="#">';
+                        noteHtml += '<div class="us-massage"><a class="common-a" href="javascript:void(0);">';
                         noteHtml += '<div class="picture-box"><img class="common-img" src="' + v.image_one_url + '" alt="图片"></div>';
                         noteHtml += '<span>' + v.title + '</span>';
                         noteHtml += '<p class="us-text">' + v.note_content + '</p>'
@@ -116,7 +116,7 @@
                         }else {
                             photo = v.photo;
                         }
-                        noteHtml += '<li onclick="read_sys_message(' + v.id+ ')"><a href="#">';
+                        noteHtml += '<li onclick="read_sys_message(' + v.id+ ')"><a class="common-a" href="javascript:void(0);">';
                         noteHtml += '<div class="massage-cont-left">';
                         noteHtml += '<div class="icon-box"><img class="common-img" src="'+ photo +'" alt="头像"></div></div>';
                         noteHtml += '<div class="massage-cont-right">';

@@ -52,6 +52,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('getMyDemandList','DemandController@getMyDemandList');//获取我的需求列表
     Route::post('addCreation','CreationController@addCreation');//上传作品
     Route::get('getMyCreationList','CreationController@getMyCreationList');//获取我的作品
+    Route::get('getDemandCreationList/{demandId}','CreationController@getDemandCreationList');//获取某个需求的参赛作品
 
 
 
@@ -139,6 +140,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('myOrderList','ShopController@myOrderList');//我的购物车列表
     Route::post('createRecord','ShopController@createRecord');//新增浏览记录信息
     Route::get('browseCount','ShopController@browseCount');//浏览记录统计数量
+    Route::get('orderList','ShopController@orderList');//我的订单列表
 
 
 
@@ -194,8 +196,8 @@ Route::get('wx/pay','WxpayController@pay');//支付
 Route::get('wx/test','WxpayController@test');//微信
 Route::post('notify','WxpayController@notify');//支付回调
 
-Route::get('refund','WxpayController@weixinRefund');//支付
-Route::post('refundNotify','WxpayController@refundNotify');//支付回调
+Route::get('wx/refund','WxpayController@weixinRefund');//支付
+Route::post('wx/refundNotify','WxpayController@refundNotify');//支付回调
 
 Route::get('wx/auth','WxAuthController@auth');//微信授权登录
 Route::get('wx/ad','WxAuthController@getAddress');//获取微信共享地址
@@ -239,9 +241,9 @@ Route::get('wap/museumed', function () {//博物馆展示
 Route::get('wap/design', function () {//设计展示
     return view('indexDetail/designerd');
 });
-Route::get('wap/designSerch', function () {//设计搜索
-    return view('indexDetail/designerd/designerd_serch');
-});
+//Route::get('wap/designSerch', function () {//设计搜索
+//    return view('indexDetail/designerd/designerd_serch');
+//});
 Route::get('wap/designW', function () {//设计详情
     return view('indexDetail/designerd/designerd_works');
 });

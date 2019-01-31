@@ -25,12 +25,12 @@ class WxAuthController extends BaseController {
         $param = $request->all();
         if(isset($param['goods_id']) && isset($param['num'])) {
             $query = http_build_query($param);
-            $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/shop_purchase?' . $query;
+            $url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/wap/shop_purchase?' . $query;
             if(isset($param['flag'])) {
-                $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/my_address?' . $query;
+                $url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/wap/my_address?' . $query;
             }
         }else {
-            $url = 'http://' . $_SERVER['HTTP_HOST'] . '/wap/my_address';
+            $url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/wap/my_address';
         }
         $jssdk = new Jssdk($this->config['appid'], $this->config['app_secret']);
         $data = $jssdk->getSignPackage();
@@ -49,7 +49,7 @@ class WxAuthController extends BaseController {
      */
     public function auth(Request $request){
         if (!isset($_GET['code'])){ //没有code，去微信接口获取code码
-            $callback = 'http://'.$_SERVER['HTTP_HOST'] . '/wx/auth';//微信服务器回调url
+            $callback = $_SERVER['REQUEST_SCHEME'] . '://'.$_SERVER['HTTP_HOST'] . '/wx/auth';//微信服务器回调url
             $this->get_code($callback);
         } else {    //获取code后跳转回来到这里了
             $code = $_GET['code'];

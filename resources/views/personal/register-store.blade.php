@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/store_status"></a></div>
+            <div class="header-left"><a class="common-a" href="/wap/store_status"></a></div>
             <h3 id="store-title">店铺注册</h3>
         </div>
         <div class="content-box">
@@ -49,7 +49,7 @@
                     <label id="store-prove-tip">资质证件照</label>
                     <div class="ipt-logo-box prove-box" id="store-prove-box"><input class="ipt-file" type="file" id="store-prove" name="source"></div>
                 </div>
-                <div class="btn-store-register"><a href="javascript:void(0);">提交信息</a></div>
+                <div class="btn-store-register"><a class="common-a" href="javascript:void(0);">提交信息</a></div>
             </div>
         </div>
 
@@ -70,40 +70,40 @@
 
             //上传图片
             $("#store-logo").on("change",function(){
-                var img_size = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size);
+                var img_size_one = $("input[type=file]").get(0).files[0].size;
+                console.log(img_size_one);
                 //alert(img_size);
-                if (img_size > 1000000){
+                if (img_size_one > 1000000){
                     alert("上传图片过大，请上传小于1M的图片")
                 }else {
                     store_upload("store-logo");
                 }
             });
             $("#sfz-just").on("change",function(){
-                var img_size = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size);
+                var img_size_two = $("input[type=file]").get(1).files[0].size;
+                console.log(img_size_two);
                 //alert(img_size);
-                if (img_size > 1000000){
+                if (img_size_two > 1000000){
                     alert("上传图片过大，请上传小于1M的图片")
                 }else {
                     store_upload("sfz-just");
                 }
             });
             $("#sfz-back").on("change",function(){
-                var img_size = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size);
+                var img_size_three = $("input[type=file]").get(2).files[0].size;
+                console.log(img_size_three);
                 //alert(img_size);
-                if (img_size > 1000000){
+                if (img_size_three > 1000000){
                     alert("上传图片过大，请上传小于1M的图片")
                 }else {
                     store_upload("sfz-back");
                 }
             });
             $("#store-prove").on("change",function(){
-                var img_size = $("input[type=file]").get(0).files[0].size;
-                console.log(img_size);
+                var img_size_four = $("input[type=file]").get(3).files[0].size;
+                console.log(img_size_four);
                 //alert(img_size);
-                if (img_size > 1000000){
+                if (img_size_four > 1000000){
                     alert("上传图片过大，请上传小于1M的图片")
                 }else {
                     store_upload("store-prove");

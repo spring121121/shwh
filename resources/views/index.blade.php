@@ -272,7 +272,7 @@
             link = "/searchNote/" + searchContent;
         }
         $.get(link, {}, function (data) {
-            console.log(data)
+            //console.log(data)
             if (data.status) {
                 $.each(data.data, function (k, v) {
                     if (v.id % 2 == 0) {
@@ -284,7 +284,7 @@
                 $(".exhibition_left>ul").html(leftHtml);
                 $(".exhibition_right>ul").html(rightHtml);
             } else {
-                alert(data.message);
+                layer.msg(data.message);
             }
         });
     }

@@ -13,14 +13,14 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/recommend"></a></div>
+            <div class="header-left"><a class="common-a" href="/wap/recommend"></a></div>
             <h3 class="top-title" id="pl-title-text"></h3>
         </div>
         <div class="content-box">
             <div class="pl-content">
                 <ul id="pl-cont-list">
                     <li>
-                        <a href="#">
+                        <a class="common-a" href="javascript:void(0);">
                             <div class="pl-icon-box">
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
@@ -31,7 +31,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a class="common-a" href="javascript:void(0);">
                             <div class="pl-icon-box">
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a class="common-a" href="javascript:void(0);">
                             <div class="pl-icon-box">
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
@@ -53,7 +53,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a class="common-a" href="javascript:void(0);">
                             <div class="pl-icon-box">
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
@@ -64,7 +64,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a class="common-a" href="javascript:void(0);">
                             <div class="pl-icon-box">
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a class="common-a" href="javascript:void(0);">
                             <div class="pl-icon-box">
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>

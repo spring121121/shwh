@@ -81,9 +81,9 @@
             <div class="ipt-box default-box"><input type="checkbox" id="default">设置为默认<label for="default"><em></em></label></div>
         </form>
     </div>
-    <div class="btn-new-address"><a href="#" id="btn-new-keep">保存</a></div>
+    <div class="btn-new-address"><a class="common-a" href="#" id="btn-new-keep">保存</a></div>
     <div onclick="getaddr()"  class="btn-new-address">
-        <a href="#" id="btn-new-keep">点击获取微信地址</a>
+        <a class="common-a" href="#" id="btn-new-keep">点击获取微信地址</a>
     </div>
 </div>
 </body>

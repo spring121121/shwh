@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="header">
-    <div class="header-left qx-write"><a href="/wap/my_note">取消</a></div>
+    <div class="header-left qx-write"><a class="common-a" href="/wap/my_note">取消</a></div>
     <h3>发布探宝笔记</h3>
 </div>
 <div class="content-box">
@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="btn-release">
-        <a href="#" onclick="addNote()">发布</a>
+        <a class="common-a" href="javascript:void(0);" onclick="addNote()">发布</a>
     </div>
 </div>
 

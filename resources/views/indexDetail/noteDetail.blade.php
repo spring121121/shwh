@@ -109,7 +109,7 @@
     </div>
     <div class="more-pl-title" style="margin-top: 30px">
         <span></span>
-        <a class="btn-more-pl" href="#">查看更多评论<i></i></a>
+        <a class="common-a btn-more-pl" href="#">查看更多评论<i></i></a>
     </div>
     <div class="pl-content">
         <ul>

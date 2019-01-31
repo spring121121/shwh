@@ -20,9 +20,9 @@
                     <input type="file" id="personal-photo" name="source">
                 </div>
                 <div class="edit-personal">
-                    <a class="btn-edit" href="/wap/message_center"></a>
+                    <a class="common-a btn-edit" href="/wap/message_center"></a>
                     <h3 id="nickname">输入你的昵称</h3>
-                    <a class="edit-your-data" href="/wap/personal_data"><span>编辑资料 <i></i></span></a>
+                    <a class="common-a edit-your-data" href="/wap/personal_data"><span>编辑资料 <i></i></span></a>
                 </div>
                 <ul class="address-grade">
                     <li>
@@ -58,25 +58,25 @@
         <div class="personal-cont">
             <ul>
                 <li>
-                    <a href="/wap/my_note">
+                    <a class="common-a" href="/wap/my_note">
                         <div class="icon-img"><img class="common-img" src="../images/note.png" alt="笔记"></div>
                         <p>笔记</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/wap/collection">
+                    <a class="common-a" href="/wap/collection">
                         <div class="icon-img"><img class="common-img" src="../images/collection.png" alt="收藏"></div>
                         <p>收藏</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/wap/follow_interest">
+                    <a class="common-a" href="/wap/follow_interest">
                         <div class="icon-img"><img class="common-img" src="../images/follow.png" alt="关注"></div>
                         <p>关注</p>
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)">
+                    <a class="common-a" href="javascript:void(0)">
                         <div class="icon-img"><img class="common-img" src="../images/refund.png" alt="退款"></div>
                         <p>退款</p>
                     </a>
@@ -92,19 +92,19 @@
                     <i></i>
                 </div>
                 <div class="list-cont">
-                    <a href="/wap/my_order">
+                    <a class="common-a" href="/wap/my_order">
                         <span>订单详情</span>
                         <i></i>
                     </a>
                 </div>
                 <div class="list-cont">
-                    <a href="#">
+                    <a class="common-a" href="javascript:void(0);">
                         <span style="color: #f00;">我的足迹</span>
                         <i></i>
                     </a>
                 </div>
                 <div class="list-cont">
-                    <a href="/wap/my_address">
+                    <a class="common-a" href="/wap/my_address">
                         <span>收货地址</span>
                         <i></i>
                     </a>
@@ -130,13 +130,13 @@
             </div>
             <div class="list-box">
                 <div class="list-cont">
-                    <a href="#">
+                    <a class="common-a" href="javascript:void(0);">
                         <span style="color: #f00;">客服与帮助</span>
                         <i></i>
                     </a>
                 </div>
                 <div class="list-cont">
-                    <a href="/wap/feedback">
+                    <a class="common-a" href="/wap/feedback">
                         <span>意见反馈</span>
                         <i></i>
                     </a>

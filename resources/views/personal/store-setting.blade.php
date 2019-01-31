@@ -14,8 +14,8 @@
     <body>
         <div class="header">
             <div>
-                <div class="header-left"><a href="/wap/store"></a></div>
-                <div class="header-right"><a href="javascript:void(0);" id="finish-set-store">完成</a></div>
+                <div class="header-left"><a class="common-a" href="/wap/store"></a></div>
+                <div class="header-right"><a class="common-a" href="javascript:void(0);" id="finish-set-store">完成</a></div>
                 <h3 class="top-title">店铺信息修改</h3>
             </div>
         </div>
@@ -115,7 +115,7 @@
                                 alert("店铺信息修改成功");
                                 window.location.href = "/wap/store";
                             }else {
-                                alert("店铺信息失败，请重试");
+                                alert(data.message);
                             }
                         }
                     });

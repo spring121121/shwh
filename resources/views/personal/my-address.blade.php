@@ -26,8 +26,8 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="goback"></a></div>
-            <div class="header-right bg-add"><a class="add_address" href="javascript:void(0);"></a></div>
+            <div class="header-left"><a class="common-a goback"></a></div>
+            <div class="header-right bg-add"><a class="common-a add_address" href="javascript:void(0);"></a></div>
             <h3 class="top-title">收货地址</h3>
         </div>
         <div class="content-box">
@@ -61,7 +61,7 @@
                                                 noteHtml += '<span>默认</span>';
                                             }
                             noteHtml += v.province+' '+v.city+' '+v.area+' '+v.address_info+'</p>';
-                            noteHtml += '</div><a href="javascript:void(0)" id="'+v.id+'" class="edit-address btn-bjdz">编辑</a></li>';
+                            noteHtml += '</div><a class="common-a edit-address btn-bjdz" href="javascript:void(0)" id="'+v.id+'">编辑</a></li>';
                         });
                         $(".my-address-box ul").html(noteHtml);
                     }else {

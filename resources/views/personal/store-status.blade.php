@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/personal"></a></div>
+            <div class="header-left"><a class="common-a" href="/wap/personal"></a></div>
             <h3 id="apply-title">店铺申请说明</h3>
         </div>
 
@@ -93,7 +93,7 @@
             <div class="store-first-tip">
                 <div class="tip-content">
                     <span id="tip-text">你好{{$nickname}}，您还没有店铺。<br />请您先申请开店</span>
-                    <a id="register-store" href="/wap/register_store">去注册</a>
+                    <a class="common-a" id="register-store" href="/wap/register_store">去注册</a>
                 </div>
             </div>
             {{--<div class="btn-next-page">店铺入驻</div>--}}

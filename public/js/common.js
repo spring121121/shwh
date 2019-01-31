@@ -377,7 +377,7 @@ function addLikes(note_id) {
             $("#dianzan-"+note_id).css("color","red");
             $("#likeNum-"+note_id).html(likeNum+1);
         } else {
-            alert(data.message)
+            layer.msg(data.message)
             window.location.href = "/wap/login_index"
         }
     })
@@ -388,12 +388,32 @@ function addForward(uid, note_id) {
     var forwardNum = parseInt($("#forward-"+note_id).html());
     $.post("/forwardNote", {'beuid': uid, 'note_id': note_id}, function (data) {
         if (data.status) {
-            alert("转发成功");
+            layer.msg("转发成功");
             $("#forward-"+note_id).html(forwardNum+1);
         } else {
-            alert(data.message)
+            layer.msg(data.message)
             window.location.href = "/wap/login_index"
         }
     })
+}
+
+// 获取和增加浏览数量
+function browseNum(url,id,type){
+    var num;
+    $.ajax({
+        url : url,	//请求url 商城分类
+        type : type,	//请求类型  post|get
+        dataType : "json",  //返回数据的 类型 text|json|html--
+        data:{browse_id:id,type:1},
+        async: false,
+        success : function(data){//回调函数 和 后台返回的 数据
+            if (url == "/browseCount"){
+                num = data.data.count;
+            }else if (url == "/createRecord") {
+                console.log(data)
+            }
+        }
+    });
+    return num;
 }
 

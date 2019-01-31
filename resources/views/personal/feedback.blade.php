@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left qx-write"><a href="/wap/personal">取消</a></div>
+            <div class="header-left qx-write"><a class="common-a" href="/wap/personal">取消</a></div>
             <h3>意见反馈</h3>
         </div>
         <div class="content-box">
@@ -26,8 +26,8 @@
                 </form>
             </div>
             <div class="btn-write-note">
-                <a href="#" id="btn-submit">提交</a>
-                <a class="other-color" href="/wap/personal">取消</a>
+                <a class="common-a" href="javascript:void(0);" id="btn-submit">提交</a>
+                <a class="common-a other-color" href="/wap/personal">取消</a>
             </div>
         </div>
 

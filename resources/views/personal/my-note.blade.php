@@ -13,9 +13,9 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/personal"></a></div>
+            <div class="header-left"><a class="common-a" href="/wap/personal"></a></div>
             <div class="header-right btn-title-text" id="edit-del"></div>
-            <div class="header-right" id="btn-dz-link"><a href="/wap/thumbs_up">点赞</a></div>
+            <div class="header-right" id="btn-dz-link"><a class="common-a" href="/wap/thumbs_up">点赞</a></div>
             <h3>探宝笔记</h3>
         </div>
         <div class="content-box">
@@ -23,7 +23,7 @@
             </ul>
         </div>
         <div class="write-note">
-            <a href="/wap/write_note">
+            <a class="common-a" href="/wap/write_note">
                 <div class="write-img-box"></div>
             </a>
         </div>

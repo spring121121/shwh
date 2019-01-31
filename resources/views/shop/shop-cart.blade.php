@@ -423,6 +423,7 @@
             //详情
             $(".detail").on("click",function () {
                 var id = $(this).next().val();
+				browseNum("/createRecord",id,"post");
                 window.location.href = "/wap/shop_detail?id="+id;
             });
 
@@ -475,7 +476,7 @@
                             goodsList += '<li>';
                             goodsList += '<div class="shop-list-box">';
                             goodsList += '<div class="shop-img-box">';
-                            goodsList += '<img src="'+image+'" class="common-img1 detail"><input type="hidden" value="'+v['id']+'">';
+                            goodsList += '<img src="'+image+'" class="common-img detail"><input type="hidden" value="'+v['id']+'">';
                             goodsList += '</div>';
                             goodsList += '<p><strong>'+v['goods_name']+'</strong><span>'+v['goods_info']+'</span></p>';
                             // goodsList += '<h3><i></i><span>用户名称</span></h3>';

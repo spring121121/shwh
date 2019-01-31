@@ -56,6 +56,7 @@ class LoginController extends BaseController
             $request->session()->put('userInfo', $data);
             //登录成功之后把用户信息存入cookie
             Cookie::queue('info', $data);
+            Cookie::queue('uid', $data['id'],$minutes = 5*86400, $path = null, $domain = null, $secure = false, $httpOnly = false);
             return $this->success();
         } else {
             return $this->fail(50001);
@@ -73,6 +74,7 @@ class LoginController extends BaseController
     {
         $re = $request->session()->forget('userInfo');
         Cookie::queue(Cookie::forget("info"));
+        Cookie::queue(Cookie::forget("uid"));
         if ($re) {
             return $this->success();
         } else {
