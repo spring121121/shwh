@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="/styles/active.css">
     <link rel="stylesheet" href="/styles/base.css">
 </head>
+<style>
+    a{
+        display: block;
+        color: #000;
+        width: 100%;
+        height: 100%;
+        font-size: 12px;
+        text-align: center;
+    }
+</style>
 <body>
 <div class="container">
     <header>

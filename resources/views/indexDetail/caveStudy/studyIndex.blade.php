@@ -157,6 +157,14 @@
 
                 $(".caseud").attr('page', parseInt(page) + 1)
                 $(".caseud").attr('total', parseInt(data.total))
+
+                var swiper = new Swiper('.swiper-addone', {
+                    loop : true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    }
+                });
             }
         });
     }
