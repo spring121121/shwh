@@ -44,12 +44,15 @@
     </header>
     <div class="zc_addheight"></div>
      <div class="zc_upImg">
-         <form name="form0" id="form0">
-             <div class="zc_upinp">
-             <input type="file" name="file0" id="file0" multiple="multiple" />
-             </div>
-             <img src="/images/jia.png" id="img0" style="width: 200px;height: 150px;">
-         </form>
+
+         <div class="add-photo-box">
+             <ul id="shop-img-list">
+                 <li class="btn-add-photo">
+                     <input type="file" id="add-photo" name="source">
+                     <span>添加照片</span>
+                 </li>
+             </ul>
+         </div>
      </div>
     <div class="zc_worksText">
         <input type="text" placeholder="需求标题" id="worksTitle"></input>
@@ -105,21 +108,54 @@
 <script type="text/javascript" src="/js/moment-with-locales.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap-material-datetimepicker.js"></script>
 <script src="/js/jquery.date.js"></script>
+<script src="/js/uploadfile.js"></script>
+<script src="/js/common.js"></script>
 <script>
     $(function () {
+        //上传图片
+        var photo_list = $("#shop-img-list li").length;
+        if (photo_list == 1){
+            $("#shop-img-list").css({"justify-content":"center","width":"auto"});
+            $(".btn-add-photo").css({"background-color":"transparent"});
+        }
+        $("#add-photo").on("change",function(){
+            var img_size = $("input[type=file]").get(0).files[0].size;
+            console.log(img_size);
+            //alert(img_size);
+            if (img_size > 1000000){
+                alert("上传图片过大，请上传小于1M的图片")
+            } else {
+                $.ajaxFileUpload({
+                    url: '/upload', //用于文件上传的服务器端请求地址0
+                    secureuri: false, //是否需要安全协议，一般设置为false
+                    fileElementId: 'add-photo', //文件上传域的ID
+                    dataType: 'json', //返回值类型 一般设置为json
+                    success: function (data){  //服务器成功响应处理函数
+                        console.log(data.data.url);
 
+                        $('#shop-img-list').append('<li><div class="del-photo-list"></div><img src="'+data.data.url+'" class="common-img"></li>');
+                        $("#shop-img-list").css({"justify-content":"unset","width":"max-content"});
+                        $(".btn-add-photo").css({"background-color":"#eee"});
+                    },
+                    error: function (data, status, e){//服务器响应失败处理函数
+
+                    }
+                });
+            }
+        });
+        $('#shop-img-list').on("click",".del-photo-list",function () {
+            $(this).parent().remove();
+        });
+
+    //时间
         $.date('#birthday');
         $.date('#birthday1');
         $("#date-wrapper h3").css("background","#333");
-        $("#d-confirm").css("background","#333");
-
-
-
+        $("#d-confirm").css("background","#333")
         $('#date').bootstrapMaterialDatePicker
         ({
             time: false
         });
-
         $('#time').bootstrapMaterialDatePicker
         ({
             date: false,
@@ -154,44 +190,16 @@
         $('#min-date').bootstrapMaterialDatePicker({ format : 'DD/MM/YYYY HH:mm', minDate : new Date() });
 
         $.material.init()
-
-        //上传图片
-        $("#file0").change(function(){
-            var objUrl = getObjectURL(this.files[0]) ;//获取文件信息
-            console.log("objUrl = "+objUrl);
-
-            // 放在全局
-            window.url = objUrl;
-            if (objUrl) {
-                $("#img0").attr("src", objUrl);
-            }
-        }) ;
-
-          // 选择日期
-
     })
-    //获取地址
-    function getObjectURL(file) {
-        console.log(666)
-        var url = null;
-        if (window.createObjectURL!=undefined) {
-            url = window.createObjectURL(file) ;
-        } else if (window.URL!=undefined) { // mozilla(firefox)
-            url = window.URL.createObjectURL(file) ;
-        } else if (window.webkitURL!=undefined) { // webkit or chrome
-            url = window.webkitURL.createObjectURL(file) ;
-        }
-        return url ;
-    }
 
-
+    //跳转开始
     function toworksDetail() {
         window.location.href = "/wap/activeList";
     }
     function handlePersonal() {
         window.location.href = "/wap/personal";
     }
-
+    //跳转结束
     function  zc_wind() {
         $(".zc_windDet").show()
     }
@@ -207,7 +215,18 @@
 
    // 发布需求
     function postWorks() {
-        console.log(url)
+        // 获取图片
+        var mli=$("#shop-img-list>li").length;
+        console.log(mli);
+        var arr=[];
+        for(var i=1;i<mli;i++){
+            var imgurl=$("#shop-img-list>li").eq(i).find("img").attr("src")
+            console.log(imgurl);
+            arr.push(imgurl)
+        }
+        var arrS=arr.join(";");
+        console.log(arrS)
+      //获取图片结束
         var title= $("#worksTitle").val();
         var content=$("#worksTexar").val();
         var bonus=$("#priceInp").val();
@@ -219,7 +238,7 @@
                 type: "post",
                 url: "/addDemand",
                 data: {
-                    "demand_url":url,
+                    "demand_url":arrS,
                     "title":title,
                     "content":content,
                     "bonus":bonus,
@@ -235,7 +254,7 @@
                 }
             });
     }
-    
+
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
    //  var ue = UE.getEditor('editor');

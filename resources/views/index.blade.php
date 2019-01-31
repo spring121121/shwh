@@ -59,9 +59,7 @@
                     <div class="swiper-slide" style="overflow: hidden"><img src="/images/banner2.jpg" alt=""></div>
                     <div class="swiper-slide" style="overflow: hidden"><img src="/images/004.jpg" alt=""></div>
                 </div>
-
                 <div class="swiper-pagination"></div>
-
             </div>
         </div>
         <div id="list">
@@ -253,7 +251,7 @@
 
 </html>
 <script type="text/javascript" src="/js/jquery-1.11.0.js"></script>
-<script type="text/javascript" src="/js/common.js"></script>
+
 <script src="/js/swiper/swiper.min.js"></script>
 <script src="/js/swiper/swiper.js"></script>
 <script>

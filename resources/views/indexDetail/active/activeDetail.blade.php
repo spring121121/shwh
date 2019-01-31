@@ -129,7 +129,7 @@
 <script>
     $(function () {
         getPeopleList();
-<<<<<<< HEAD
+
         // 滚轴时间
         // $(document).scroll(function(){
         //     var wheight=$(window).height();

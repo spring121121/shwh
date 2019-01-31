@@ -2636,7 +2636,7 @@ header>ul>li>p{
     height: 45px;
 }
 .zc_upImg{
-    width: 55%;
+    width: 100%;
     height: auto;
     margin: 0 auto;
     position: relative;
@@ -2663,6 +2663,7 @@ header>ul>li>p{
     background: transparent;
     border: none;
     outline: none;
+    margin-top: 10px;
 }
 .zc_line{
     width: 100%;
@@ -2711,7 +2712,7 @@ header>ul>li>p{
 }
 .zc_contentList>span{
     width: 60px;
-    height: 25px;
+    height: 35px;
     line-height: 30px;
     text-align: center;
     font-size: 15px;
