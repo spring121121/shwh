@@ -54,7 +54,7 @@
     </div>
     <div class="addhight"></div>
     <div class="write-note">
-        <a href="/wap/myworksDetail">
+        <a class="common-a" href="/wap/myworksDetail">
             <div class="write-img-box"></div>
         </a>
     </div>

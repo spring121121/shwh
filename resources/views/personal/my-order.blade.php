@@ -13,13 +13,13 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/personal"></a></div>
+            <div class="header-left"><a class="common-a" href="/wap/personal"></a></div>
             <h3 class="top-title">我的订单</h3>
         </div>
         <div class="content-box">
             <ul class="order-cont">
                 <li>
-                    <a href="javascript:void(0);">
+                    <a class="common-a" href="javascript:void(0);">
                         <div class="order-left">
                             <p><i><img src="/images/id-card.png" class="common-img"></i>商品的源头<i></i></p>
                             <div class="order-img-box"><img src="/images/collection-img1.jpg" class="common-img"></div>
@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);">
+                    <a class="common-a" href="javascript:void(0);">
                         <div class="order-left">
                             <p><i><img src="/images/shop.png" class="common-img"></i>商品的源头<i></i></p>
                             <div class="order-img-box"><img src="/images/collection-img6.jpg" class="common-img"></div>
@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);">
+                    <a class="common-a" href="javascript:void(0);">
                         <div class="order-left">
                             <p><i><img src="/images/factory.png" class="common-img"></i>商品的源头<i></i></p>
                             <div class="order-img-box"><img src="/images/collection-img4.jpg" class="common-img"></div>

@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/store_status"></a></div>
+            <div class="header-left"><a class="common-a" href="/wap/store_status"></a></div>
             <h3 id="store-title">店铺注册</h3>
         </div>
         <div class="content-box">
@@ -49,7 +49,7 @@
                     <label id="store-prove-tip">资质证件照</label>
                     <div class="ipt-logo-box prove-box" id="store-prove-box"><input class="ipt-file" type="file" id="store-prove" name="source"></div>
                 </div>
-                <div class="btn-store-register"><a href="javascript:void(0);">提交信息</a></div>
+                <div class="btn-store-register"><a class="common-a" href="javascript:void(0);">提交信息</a></div>
             </div>
         </div>
 

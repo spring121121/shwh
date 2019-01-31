@@ -13,8 +13,8 @@
     </head>
     <body>
         <div class="header header-bottom">
-            <div class="header-left header-reply"><a class="btn" id="btn-pl-return" href="/wap/collection">取消</a></div>
-            <div class="header-right header-reply"><a class="btn" id="btn-pl-send" href="#">发送</a></div>
+            <div class="header-left header-reply"><a class="common-a btn" id="btn-pl-return" href="/wap/collection">取消</a></div>
+            <div class="header-right header-reply"><a class="common-a btn" id="btn-pl-send" href="javascript:void(0);">发送</a></div>
             <h3 class="header-hf">评论<span>{{$nickname}}}</span></h3>
         </div>
         <div class="reply-cont">

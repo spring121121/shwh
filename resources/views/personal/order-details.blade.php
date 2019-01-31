@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/my_order"></a></div>
+            <div class="header-left"><a class="common-a" href="/wap/my_order"></a></div>
             <h3 class="top-title">订单详情</h3>
         </div>
         <div class="content-box">

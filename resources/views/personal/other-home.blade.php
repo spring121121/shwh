@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="header other-header">
-            <div class="header-left"><a onclick="history.back()"></a></div>
+            <div class="header-left"><a class="common-a" onclick="history.back()"></a></div>
             <div class="other-box">
                 <div class="other-icon-box" id="other-header">
                     <img src="/images/portrait.png" onerror="this.onerror='';this.src='/images/portrait.png'"  class="common-img">

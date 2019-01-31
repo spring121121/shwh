@@ -13,8 +13,8 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a class="btn-title-text" href="/wap/apply_certification">返回</a></div>
-            <div class="header-right renzheng"><a class="btn-title-text" href="#">完成</a></div>
+            <div class="header-left"><a class="common-a btn-title-text" href="/wap/apply_certification">返回</a></div>
+            <div class="header-right renzheng"><a class="common-a btn-title-text" href="javascript:void(0);">完成</a></div>
             <h3 class="top-title">博物馆认证</h3>
         </div>
         <div class="content-box">

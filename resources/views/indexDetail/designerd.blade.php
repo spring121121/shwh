@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="caseud" page="1" total="">
-        <a href="javascript:void(0);">加载更多</a>
+        <a class="common-a" href="javascript:void(0);">加载更多</a>
     </div>
     <div class="addhight"></div>
 

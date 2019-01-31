@@ -23,7 +23,7 @@
     </header>
     <div class="de_navActive">
         <ul>
-            <li class="addcolor c"><a href="#activeRule">需求说明</a></li>
+            <li class="addcolor c"><a class="common-a" href="#activeRule">需求说明</a></li>
             <li style="font-size: 12px;" id="creation"></li>
             <li class="e"><a href="#activeList">获奖作品</a></li>
             <input type="hidden" id="decomand_uid" value="{{$active['uid']}}">

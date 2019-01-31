@@ -14,14 +14,14 @@
     <body>
         <div class="header store-header">
             <div>
-                <div class="header-left"><a href="/wap/personal"></a></div>
-                <div class="header-right renzheng"><a href="/wap/upper_shelf">商品上架</a></div>
+                <div class="header-left"><a class="common-a" href="/wap/personal"></a></div>
+                <div class="header-right renzheng"><a class="common-a" href="/wap/upper_shelf">商品上架</a></div>
                 <h3 class="top-title">店铺首页</h3>
             </div>
             <div class="store-message-box">
                 <div class="icon-box" id="store-index-logo"><img src="/images/portrait.png" onerror="this.src='/images/portrait.png'" class="common-img"></div>
                 <div class="store-name">
-                    <div class="setting"><a href="/wap/store_setting"></a></div>
+                    <div class="setting"><a class="common-a" href="/wap/store_setting"></a></div>
                     <h2 id="store-index-name">店铺名称<span>已认证</span></h2>
                     <span id="store-grade"><i><img src="/images/grade.png" class="common-img"></i>等级</span>
                     <span id="store-fans"><i><img src="/images/fans-num.png" class="common-img"></i>粉丝人数</span>

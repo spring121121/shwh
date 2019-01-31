@@ -35,8 +35,8 @@
                         </div>
                     </form>
                     <div class="btn-box">
-                        <a id="login" href="javascript:void(0);">登录</a>
-                        <a id="register" href="/wap/register">注册</a>
+                        <a class="common-a" id="login" href="javascript:void(0);">登录</a>
+                        <a class="common-a" id="register" href="/wap/register">注册</a>
                     </div>
                 </div>
             </div>

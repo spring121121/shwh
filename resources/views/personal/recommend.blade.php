@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/message_center?index=2"></a></div>
+            <div class="header-left"><a class="common-a" href="/wap/message_center?index=2"></a></div>
             <div class="header-right btn-title-text btn-zf"></div>
             <h3 class="top-title">推荐消息的标题</h3>
         </div>
@@ -34,18 +34,18 @@
                 <p>消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现消息的内容展现</p>
             </div>
             <ul class="btn-list-icon">
-                <li id="pinglun"><a class="pl-text" href="#"></a></li>
+                <li id="pinglun"><a class="common-a pl-text" href="javascript:void(0);"></a></li>
                 <li id="shoucang"></li>
                 <li id="dianzan"></li>
             </ul>
             <div class="more-pl-title">
                 <span>七嘴八舌的探宝者</span>
-                <a class="btn-more-pl" href="#">查看更多评论<i></i></a>
+                <a class="common-a btn-more-pl" href="javascript:void(0);">查看更多评论<i></i></a>
             </div>
             <div class="pl-content">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a class="common-a" href="javascript:void(0);">
                             <div class="pl-icon-box">
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
@@ -56,7 +56,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a class="common-a" href="javascript:void(0);">
                             <div class="pl-icon-box">
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a class="common-a" href="javascript:void(0);">
                             <div class="pl-icon-box">
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>
@@ -78,7 +78,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a class="common-a" href="javascript:void(0);">
                             <div class="pl-icon-box">
                                 <img class="common-img" src="/images/weChat-2x.png" alt="头像">
                             </div>

@@ -13,8 +13,8 @@
     </head>
     <body>
         <div class="header">
-            <div class="header-left"><a href="/wap/my_note"></a></div>
-            <div class="header-right"><a href="/wap/personal">我的</a></div>
+            <div class="header-left"><a class="common-a" href="/wap/my_note"></a></div>
+            <div class="header-right"><a class="common-a" href="/wap/personal">我的</a></div>
             <div class="header-right"></div>
             <h3>点赞笔记</h3>
         </div>
