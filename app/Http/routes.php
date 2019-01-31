@@ -134,6 +134,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::get('myOrderList','ShopController@myOrderList');//我的购物车列表
     Route::post('createRecord','ShopController@createRecord');//新增浏览记录信息
     Route::get('browseCount','ShopController@browseCount');//浏览记录统计数量
+    Route::get('orderList','ShopController@orderList');//我的订单列表
 
 
 

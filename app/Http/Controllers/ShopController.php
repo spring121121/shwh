@@ -565,4 +565,32 @@ class ShopController extends BaseController
         $count = BrowseModel::where(['type'=>$type,'browse_id'=>$browse_id])->count();
         return $this->success(['count'=>$count]);
     }
+
+    /**
+     * 我的订单列表
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function orderList(Request $request){
+        $uid = UserService::getUid($request);
+        $type = $request->input('type');
+        if($type == OrdersModel::IS_ALL){//所有
+            $where = ['orders.uid'=>$uid,'orders.refund_apply'=>OrdersModel::NOT_REFUND_APPLY];
+            $res = OrdersModel::where($where);
+        }else if($type == OrdersModel::IS_PAY){//已支付（支付成功，支付失败）
+            $res = OrdersModel::where('orders.uid',$uid)->whereIn('orders.status',[OrdersModel::IS_PAY,OrdersModel::IS_PAYMENT]);
+        }else{//已发货，已签收
+            $where = ['orders.uid'=>$uid,'orders.refund_apply'=>OrdersModel::NOT_REFUND_APPLY,'orders.status'=>$type];
+            $res = OrdersModel::where($where);
+        }
+        $orderList = $res->leftJoin('store','orders.store_id','=','store.id')
+            ->leftJoin('goods','orders.goods_id','=','goods.id')
+            ->select('store.name as store_name','goods.image_url','goods.goods_name','goods.goods_info','orders.id','orders.num','orders.unit_price','orders.status','orders.store_id','orders.goods_id')
+            ->get()->toArray();
+        foreach($orderList as &$item){
+            $item['image_url'] = unserialize($item['image_url']);
+            $item['total'] = sprintf('%.2f',$item['unit_price']*$item['num']);
+        }
+        return $this->success($orderList);
+    }
 }
