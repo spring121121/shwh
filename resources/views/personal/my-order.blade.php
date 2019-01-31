@@ -66,6 +66,13 @@
                 float:left;
                 margin-left:1%;
             }
+            .sh_status{
+                width:auto;
+                height:20px;
+                float:right;
+                color:#ffaa00;
+                font-size:12px;
+            }
             .order-right {
                 height: 110px;
             }
@@ -126,6 +133,8 @@
                     $.each(data.data, function (k, v) {
                         var goods_name = v['goods_name'];
                         var goods_info = v['goods_info'];
+                        var status = v['status'];
+                        var refund_apply = v['refund_apply'];
                         if(goods_name.length>5){
                             goods_name = goods_name.substr(0,5)+'...';
                         }
@@ -140,8 +149,9 @@
                             '<li>';
                         myOrder += '<div class="sh" id="'+v['store_id']+'"><div class="sh_img"><img src="/images/index-icon.png" class="common-img"></div>';
                         myOrder += '<div class="sh_s_name">'+v['store_name']+'</div>';
-                        myOrder += '<div class="sh_img"><img src="/images/right.png" class="common-img"></div></div>';
-
+                        myOrder += '<div class="sh_img"><img src="/images/right.png" class="common-img"></div>';
+                        myOrder += '<div class="sh_status">'+v['pay_status']+'</div>';
+                        myOrder += '</div>';
                         myOrder += '<div class="order-left" id="'+v['goods_id']+'">';
                         myOrder += '<div class="order-img-box"><img src="'+image+'" class="common-img"></div></div>';
                         myOrder += '<div class="order-right" id="'+v['goods_id']+'">';
@@ -150,9 +160,25 @@
                         myOrder += '<p class="order-p3">'+goods_info+'<span>*'+v['num']+'</span></p></div>';
                         myOrder += '<div class="order-bottom">';
                         myOrder += '<p><span>共'+v['num']+'件商品</span><span>合计：</span><span>￥'+v['total']+'</span></p><ul>';
-                        myOrder += '<li>评价</li>';
-                        myOrder += '<li>查看物流</li>';
-                        myOrder += '<li class="btn-del-order">删除订单</li>';
+                        if(status == 4 || status == 5){//已签收，已结算
+                            myOrder += '<li>评价</li>';
+                        }
+                        if(status == 1 || status == 3 || status == 4){//支付成功，已发货,已签收
+                            if(refund_apply == 0){
+                                myOrder += '<li>退款</li>';
+                            }else if(refund_apply == 1){
+                                myOrder += '<li>退款中</li>';
+                            }
+                        }
+                        if(status == 3 || status == 4 || status == 5){//已发货，已签收，已结算
+                            myOrder += '<li>查看物流</li>';
+                        }
+                        if(status == 4 || status == 5){//未支付，支付失败，已签收，已结算
+                            myOrder += '<li class="btn-del-order">删除订单</li>';
+                        }
+                        if(status == 0 || status == 2){//未支付，支付失败
+                            myOrder += '<li class="btn-del-order">取消订单</li>';
+                        }
                         myOrder += '</ul></div></li></ul>';
                     });
                     $('.content-box').html(myOrder);

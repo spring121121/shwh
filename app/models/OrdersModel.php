@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class OrdersModel extends Model
 {
     CONST IS_ALL = -2;//所有
+    CONST IS_REFUND = -1;//已退款
     CONST NOT_PAY = 0;//待支付
-    CONST IS_PAY = 1;//已支付（支付成功，支付失败）
+    CONST IS_PAY = 1;//已支付（支付成功，支付失败）或者 支付成功
     CONST IS_DELIVER = 3;//已发货
     CONST NOT_COMMENT = 6;//待评价
 
-    CONST IS_PAYMENT = 2;//支付成功
+    CONST IS_PAYMENT = 2;//支付失敗
     CONST IS_RECEIVE = 4;//已签收
 
     CONST NOT_REFUND_APPLY = 0;//未申请退款
