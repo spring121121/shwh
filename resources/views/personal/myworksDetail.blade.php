@@ -234,6 +234,7 @@
         var end=$("#date-end").val();
         // var content1=getContent();
         // console.log(content1)
+
             $.ajax({
                 type: "post",
                 url: "/addDemand",
@@ -250,6 +251,7 @@
                     console.log(data)
                     if(data.status){
                         layer.msg("发布成功")
+                        alert("我是测试的")
                     }
                 }
             });
