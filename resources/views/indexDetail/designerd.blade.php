@@ -52,11 +52,13 @@
 
     $(function () {
         var limit = 10;
-        var demand_id = GetUrlParam("demand_id")
+        demand_uid = GetUrlParam("demand_uid");
+        login_uid = getCookie("uid");
+        demand_id = GetUrlParam("demand_id")
 
         if (demand_id) {
-            getDemandCreation(demand_id,1,limit)
-        }else{
+            getDemandCreation(demand_id, 1, limit)
+        } else {
             getCreationList(1, limit);
         }
 
@@ -67,8 +69,8 @@
                 var pages = Math.ceil(total / limit);
                 if (page <= pages) {
                     if (demand_id) {
-                        getDemandCreation(demand_id,page, limit)
-                    }else{
+                        getDemandCreation(demand_id, page, limit)
+                    } else {
                         getCreationList(page, limit);
                     }
                 } else {
@@ -80,28 +82,32 @@
 
         // 点击搜索按钮的事件
         $("#btn-search").click(function () {
-            $(".sjs-search-box").animate({"width":"100%"},100);
+            $(".sjs-search-box").animate({"width": "100%"}, 100);
         });
         $("#search-back").click(function () {
-            $(".sjs-search-box").animate({"width":"0"},100);
+            $(".sjs-search-box").animate({"width": "0"}, 100);
         });
 
 
         // 输入框失去焦点时的事件
         $("#searchContent").blur(function () {
-            $(".sjs-search-box").animate({"width":"0"},100);
+            $(".sjs-search-box").animate({"width": "0"}, 100);
             getCreationList(1, 10);
         });
     });
 
-    function getDemandCreation(demand_id,page, limit) {
+    function getDemandCreation(demand_id, page, limit) {
 
         var searchContent = $("#searchContent").val()
-        $.get("/getDemandCreationList/"+demand_id, {'searchContent': searchContent, 'page': page, 'limit': limit}, function (data) {
+        $.get("/getDemandCreationList/" + demand_id, {
+            'searchContent': searchContent,
+            'page': page,
+            'limit': limit
+        }, function (data) {
             var html = '';
             if (data.code == 200) {
                 data.data.forEach(function (v) {
-                    html =getHtml(v,html)
+                    html = getHtml(v, html)
 
                 })
                 $(".caseud").attr('page', parseInt(page) + 1)
@@ -114,7 +120,7 @@
     }
 
     //公用的
-    function getHtml(v,html) {
+    function getHtml(v, html) {
         var creation_urls_arr = [];
         html += '<li class="listContent">'
         html += '<div class="listPeople">'
@@ -131,6 +137,18 @@
             html += '<div class="peopleBtn" onclick="addFocus(' + v.uid + ')" id="focus-' + v.uid + '">关注</div>'
         }
 
+        if (demand_uid == login_uid) {
+
+            if (v.is_choice == 0) {
+                html += '<div class="peopleBtn" id="cre-'+v.id+'" onclick="changeChoice(' + v.id + ',0)">入围</div>'
+            } else {
+                html += '<div class="peopleBtn" id="cre-'+v.id+'" onclick="changeChoice(' + v.id + ',1)">取消</div>'
+            }
+
+
+
+        }
+
         html += '</div>'
         html += '<div class="workShow">'
         creation_urls_arr = v.creation_urls.split(';')
@@ -142,6 +160,22 @@
         return html;
     }
 
+    function changeChoice(creation_id,is_choice) {
+        $.post("/changeChoice", {'creation_id':creation_id,'demand_id':demand_id}, function (data) {
+            if (data.code == 200) {
+                alert("成功")
+                if(is_choice==0){
+                    $("#cre-"+creation_id).html("取消")
+                }else{
+                    $("#cre-"+creation_id).html("入围")
+                }
+
+            } else {
+                alert("失败")
+            }
+        })
+    }
+
     function getCreationList(page, limit) {
         var searchContent = $("#searchContent").val()
         $.get("/getCreationList", {'searchContent': searchContent, 'page': page, 'limit': limit}, function (data) {
@@ -149,7 +183,7 @@
             console.log(data.data)
             if (data.code == 200) {
                 data.data.forEach(function (v) {
-                    html2 = getHtml(v,html2)
+                    html2 = getHtml(v, html2)
 
                 })
                 $(".caseud").attr('page', parseInt(page) + 1)

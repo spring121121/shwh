@@ -148,8 +148,8 @@
                         },
                         success : function(data){//回调函数 和 后台返回的 数据
                             if (data.status){
-                                layer.confirm('修改成功', {
-                                    btn: ['确定'] //按钮
+                                layer.msg('修改成功', {
+                                    time: 3000 //不自动关闭
                                 }, function(){
                                     if(flag != null){
                                         if(detail !=null){
@@ -162,7 +162,6 @@
                                     }
                                     window.location.href = "/wap/my_address";
                                 });
-                                //layer.msg("修改成功");
                             }else {
                                 layer.msg(data.message);
                             }
@@ -178,19 +177,22 @@
                     data: {},
                     success : function(data){//回调函数 和 后台返回的 数据
                         if (data.status){
-                            layer.msg("删除成功");
-                            if(flag != null){
-                                if(detail !=null){
-                                    window.location.href = "/wap/my_address?flag=1&"+com_url+'&detail=1';
-                                    return false;
-                                }else{
-                                    window.location.href = "/wap/my_address?flag=1&"+com_url;
-                                    return false;
+                            layer.msg('删除成功', {
+                                time: 3000 //不自动关闭
+                            }, function(){
+                                if(flag != null){
+                                    if(detail !=null){
+                                        window.location.href = "/wap/my_address?flag=1&"+com_url+'&detail=1';
+                                        return false;
+                                    }else{
+                                        window.location.href = "/wap/my_address?flag=1&"+com_url;
+                                        return false;
+                                    }
                                 }
-                            }
-                            window.location.href = "/wap/my_address";
-                        } else {
-                            layer.msg("删除失败");
+                                window.location.href = "/wap/my_address";
+                            });
+                        }else {
+                            layer.msg(data.message);
                         }
                     }
                 });

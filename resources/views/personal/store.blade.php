@@ -137,8 +137,6 @@
                 async: false,
                 data: {},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    //alert(JSON.stringify(data));
-                    //console.log(data)
                     if (data.status){
                         store_id = data.data[0].id;
                         user_id = data.data[0].uid;
@@ -158,8 +156,6 @@
                 async: false,
                 data: {uid:user_id},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    //alert(JSON.stringify(data));
-                    //console.log(data)
                     if (data.status){
                         $("#store-fans").html('<i><img src="/images/fans-num.png" class="common-img"></i>有'+data.data.count+'人关注了店主');
                     }else {
@@ -174,8 +170,6 @@
                 dataType : "json",  //返回数据的 类型 text|json|html--
                 data: {id:store_id},
                 success : function(data){//回调函数 和 后台返回的 数据
-                    //alert(JSON.stringify(data));
-                    //console.log(data);
                     var rightHtml = "",leftHtml = "";
                     if (data.status){
                         $.each(data.data, function (k, v) {

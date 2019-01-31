@@ -29,9 +29,6 @@
                     <input type="file" id="add-photo" name="source">
                     <span>添加照片</span>
                 </li>
-                {{--<li>--}}
-                {{--<img src="/images/2.jpg" class="common-img">--}}
-                {{--</li>--}}
             </ul>
         </div>
     </div>
@@ -50,15 +47,8 @@
 
 <script>
     $(function () {
-        // var photo_list = $("#shop-img-list li").length;
-        // if (photo_list == 1) {
-        //     $("#shop-img-list").css({"justify-content": "center", "width": "auto"});
-        //     $(".btn-add-photo").css({"background-color": "transparent"});
-        // }
         $("#add-photo").on("change", function () {
             var img_size = $("input[type=file]").get(0).files[0].size;
-            //console.log(img_size);
-            //alert(img_size);
             if (img_size > 1000000){
                 layer.tips("上传图片过大，请上传小于1M的图片", '.write-note-photo', {
                     tips: 3
@@ -102,10 +92,13 @@
             'goods_id': 0
         }, function (data) {
             if (data.code==200) {
-                alert("发布成功")
-                window.location.href="/wap/index"
+                layer.msg('发布成功', {
+                    time: 3000 //不自动关闭
+                },function () {
+                    window.location.href="/wap/index"
+                });
             }else{
-                alert(data.message)
+                layer.msg(data.message)
             }
         })
     }

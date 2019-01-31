@@ -70,27 +70,6 @@
                     num = -1;
                 }
             });
-            // $(".gz-common").on("click",".btn-focus",function () {
-            //     var user_id = $(this).attr("id");
-            //     // $(this).html("已关注").attr("disabled","disabled");
-            //     $.ajax({
-            //         url : "/focus",	//请求url
-            //         type : "post",	//请求类型  post|get
-            //         dataType : "json",  //返回数据的 类型 text|json|html--
-            //         data: {
-            //             uid:user_id
-            //         },
-            //         success : function(data){//回调函数 和 后台返回的 数据
-            //             if (data.status){
-            //                 alert("关注成功");
-            //                 window.location.reload();
-            //             }else {
-            //                 alert("哎呀！出错了")
-            //             }
-            //         }
-            //     });
-            // });
-
         });
 
 
@@ -181,15 +160,18 @@
         function cancelFocus(uid) {
             $.post("/cancelFocus",{'uid':uid},function(data){
                 if (data.status){
-                    alert("已取消关注");
-                    window.location.reload();
+                    layer.msg('已取消关注', {
+                        time: 3000 //不自动关闭
+                    },function () {
+                        window.location.reload();
+                    });
                     $("#"+uid).bind('click',function(){
                         addFocus(uid);
                     });
                     $("#"+uid).html("关注")
 
                 }else {
-                    alert(data.message)
+                    layer.msg(data.message)
                 }
             })
         }
@@ -198,14 +180,17 @@
         function addFocus(uid) {
             $.post("/focus",{'uid':uid},function(data){
                 if (data.status){
-                    alert("关注成功");
-                    window.location.reload();
+                    layer.msg('关注成功', {
+                        time: 3000 //不自动关闭
+                    },function () {
+                        window.location.reload();
+                    });
                     $("#"+uid).bind('click',function(){
                         cancelFocus(uid);
                     });
                     $("#"+uid).html("取关")
                 }else {
-                    alert(data.message)
+                    layer.msg(data.message)
                 }
             })
         }

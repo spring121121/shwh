@@ -49,7 +49,7 @@
                         $(".flex-left").html(leftHtml);
                         $(".flex-right").html(rightHtml);
                     }else {
-                        alert("哎呀！出错了")
+                        lay.msg("哎呀！出错了")
                     }
                 }
             });

@@ -51,13 +51,21 @@
                 var passAgain = $(".password-again").val();
                 var code = $("#code").val();
                 if (phone == ""){
-                    alert("请输入手机号码")
+                    layer.tips("请输入手机号码", '.phone', {
+                        tips: 3
+                    });
                 }else if (pass == ""){
-                    alert("请输入密码")
+                    layer.tips("请输入密码", '.password', {
+                        tips: 3
+                    });
                 }else if (passAgain == ""){
-                    alert("请再次输入密码")
+                    layer.tips("请再次输入密码", '.password-again', {
+                        tips: 3
+                    });
                 }else if (code == ""){
-                    alert("请输入验证码")
+                    layer.tips("请输入验证码", '#code', {
+                        tips: 3
+                    });
                 }else {
                     $.ajax({
                         url : "/register",	//请求url
@@ -71,10 +79,13 @@
                         },
                         success : function(data){//回调函数 和 后台返回的数据
                             if (data.code == 200){
-                                alert('注册成功,去登录');
-                                window.location.href = "/wap/login";
+                                layer.msg('注册成功,正在前往登录...', {
+                                    time: 3000 //不自动关闭
+                                },function () {
+                                    window.location.href = "/wap/login";
+                                });
                             } else {
-                                alert("注册失败," + data.message);
+                                layer.msg("注册失败," + data.message);
                             }
                         }
                     });

@@ -64,13 +64,13 @@ class CreationController extends BaseController
     public function getCreationList(Request $request)
     {
         $creationService = new CreationService();
-        $searchContent = $request->input('searchContent','');
+        $searchContent = $request->input('searchContent', '');
         $page = $request->input('page', 1);
         $limit = $request->input('limit', 10);
         $total = DB::table('creation')->count();
-        $creationList = $creationService->getCreationList($request,'', $searchContent, $page, $limit);
+        $creationList = $creationService->getCreationList($request, '', $searchContent, $page, $limit);
 
-        return $this->success($creationList,$total);
+        return $this->success($creationList, $total);
     }
 
     /**
@@ -85,10 +85,10 @@ class CreationController extends BaseController
         $searchContent = $request->input('searchContent');
         $page = $request->input('page', 1);
         $limit = $request->input('limit', 10);
-        $total = DB::table('creation')->where("uid",$uid)->count();
-        $creationList = $creationService->getCreationList($request,$uid, $searchContent, $page, $limit);
+        $total = DB::table('creation')->where("uid", $uid)->count();
+        $creationList = $creationService->getCreationList($request, $uid, $searchContent, $page, $limit);
 
-        return $this->success($creationList,$total);
+        return $this->success($creationList, $total);
     }
 
     /**
@@ -103,10 +103,10 @@ class CreationController extends BaseController
         $page = $request->input('page', 1);
         $limit = $request->input('limit', 10);
         $uid = $request->input('uid');
-        $total = DB::table('creation')->where("uid",$uid)->count();
-        $creationList = $creationService->getCreationList($request,$uid, $searchContent, $page, $limit);
+        $total = DB::table('creation')->where("uid", $uid)->count();
+        $creationList = $creationService->getCreationList($request, $uid, $searchContent, $page, $limit);
 
-        return $this->success($creationList,$total);
+        return $this->success($creationList, $total);
     }
 
     /**
@@ -114,7 +114,8 @@ class CreationController extends BaseController
      * @param $demandId
      * @return mixed
      */
-    public function getChoiceCreationList($demandId){
+    public function getChoiceCreationList($demandId)
+    {
         $creationService = new CreationService();
         $creationInfo = $creationService->getChoiceCreationList($demandId);
 
@@ -127,12 +128,13 @@ class CreationController extends BaseController
      * @param $demandId
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getDemandCreationList(Request $request,$demandId){
+    public function getDemandCreationList(Request $request, $demandId)
+    {
         $creationService = new CreationService();
-        $total = DB::table('creation')->where("demand_id",$demandId)->count();
-        $creationInfo = $creationService->getDemandCreationList($request,$demandId);
+        $total = DB::table('creation')->where("demand_id", $demandId)->count();
+        $creationInfo = $creationService->getDemandCreationList($request, $demandId);
 
-        return $this->success($creationInfo,$total);
+        return $this->success($creationInfo, $total);
     }
 
     /**
@@ -146,6 +148,32 @@ class CreationController extends BaseController
         $creationInfo = $creationService->getCreationDetail($creationId);
 
         return $this->success($creationInfo);
+    }
+
+    /**
+     * 切换入选还是不入选
+     * @param $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function changeChoice(Request $request)
+    {
+        $uid = UserService::getUid($request);
+        $demandId = $request->input("demand_id");
+        $creationId = $request->input("creation_id");
+
+        $creationService = new CreationService();
+        $flag = $creationService->judgeLoginIsDemandUid($uid,$demandId);
+        if(empty($flag)){
+            return $this->fail(50011);
+        }
+
+        $re = $creationService->changeChoice($creationId);
+
+        if (!empty($re)) {
+            return $this->success();
+        } else {
+            return $this->fail(300);
+        }
     }
 
 

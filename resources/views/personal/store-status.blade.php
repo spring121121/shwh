@@ -123,12 +123,13 @@
         </div>
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/layer/layer.js"></script>
     <script src="/js/common.js"></script>
     <script>
         $(function () {
             var store_status = getUrlParam("store_status");
             var role_id;
-            // alert(store_status)
+
             //判断当前的店铺处于什么阶段的状态
             if(store_status == 0){
                 $("#tip-text").html("你好{{$nickname}}，您的申请正在审核。<br />请您耐心等待")
@@ -186,7 +187,9 @@
                         $(".btn-is-Agree").animate({"height":"50px"},250);
                     });
                 }else {
-                    alert("请选择您想入驻的角色");
+                    layer.tips("请选择您想入驻的角色", '.role-classify h4', {
+                        tips: 1
+                    });
                 }
             });
             $("#not-agree").click(function () {
@@ -195,7 +198,6 @@
                 $(".btn-is-Agree").css({"height":"0"});
             });
             $("#btn-agree").click(function () {
-                console.log(role_id)
                 window.location.href = "/wap/register_store?role_id="+role_id;
                 $(".protocol-box").css("display","none");
                 $(".protocol").css({"height":"0"});
