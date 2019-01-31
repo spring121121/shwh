@@ -40,7 +40,8 @@
     </header>-->
     <!--中间部分-->
 
-    <section >
+    {{--<section >--}}
+        <div class="bigContainer">
 
         <div class="searchContainer">
             <div id="search">
@@ -94,7 +95,9 @@
 
         <div class="culture">
             <p>文创故事</p>
-            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+            <video id="video" poster="/images/story1.png" style="object-fit:cover" &gt; loop controls="controls"
+                   width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster=""
+                   preload="auto">
                 <source src="/images/viode.mp4">
                 你的浏览器不支持HTML5视频。
             </video>
@@ -103,7 +106,9 @@
         <div class="culture">
             <p>宗教</p>
 
-            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+            <video id="video" poster="/images/ren.png" style="object-fit:cover" &gt; loop controls="controls"
+                   width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster=""
+                   preload="auto">
                 <source src="/video/ren.mp4">
                 你的浏览器不支持HTML5视频。
             </video>
@@ -122,7 +127,9 @@
 
         <div class="culture">
             <p>生活故事</p>
-            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+            <video id="video" poster="/images/tong.png" style="object-fit:cover" &gt; loop controls="controls"
+                   width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster=""
+                   preload="auto">
                 <source src="/video/tong.mp4">
                 你的浏览器不支持HTML5视频。
             </video>
@@ -130,7 +137,9 @@
         <div class="culture">
             <p>地标建筑</p>
 
-            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+            <video id="video" poster="/images/jianzhu.png" style="object-fit:cover" &gt; loop controls="controls"
+                   width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster=""
+                   preload="auto">
                 <source src="/video/jianzhu.mp4">
                 你的浏览器不支持HTML5视频。
             </video>
@@ -142,48 +151,21 @@
             <a href="/wap/design">查看更多</a>
         </div>
         <div class="swiper-container swiper-addList">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide addbox">
-                    <div class="wrapDiv">
-                        <img src="/images/people.jpg" alt="">
-                        <div class="wrapTitle">
-                            <p>一程贰清</p>
-                            <p>设计·天津</p>
-                        </div>
+            <div class="swiper-wrapper" id="designerd">
 
-                    </div>
-                    <div class="wrapImg">
-                        <img src="/images/haibao2.jpg" alt="">
-                        <img src="/images/haibao3.jpg" alt="">
-                    </div>
-                </div>
-                <div class="swiper-slide addbox">
-                    <div class="wrapDiv">
-                        <img src="/images/people.jpg" alt="">
-                        <div class="wrapTitle">
-                            <p>一程贰清</p>
-                            <p>设计·天津</p>
-                        </div>
-
-                    </div>
-                    <div class="wrapImg">
-                        <img src="/images/haibao2.jpg" alt="">
-                        <img src="/images/haibao3.jpg" alt="">
-                    </div>
-                </div>
-                <div class="swiper-slide addbox">
-                    <div class="wrapDiv">
-                        <img src="/images/people.jpg" alt="">
-                        <div class="wrapTitle">
-                            <p>一程贰清</p>
-                            <p>设计·天津</p>
-                        </div>
-                    </div>
-                    <div class="wrapImg">
-                        <img src="/images/haibao2.jpg" alt="">
-                        <img src="/images/haibao3.jpg" alt="">
-                    </div>
-                </div>
+                {{--<div class="swiper-slide addbox">--}}
+                    {{--<div class="wrapDiv">--}}
+                        {{--<img src="/images/people.jpg" alt="">--}}
+                        {{--<div class="wrapTitle">--}}
+                            {{--<p>一程贰清</p>--}}
+                            {{--<p>设计·天津</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="wrapImg">--}}
+                        {{--<img src="/images/haibao2.jpg" alt="">--}}
+                        {{--<img src="/images/haibao3.jpg" alt="">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
 
         </div>
@@ -191,7 +173,9 @@
         <div class="culture">
             <p>风车</p>
 
-            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+            <video id="video" poster="/images/fen.png" style="object-fit:cover" &gt; loop controls="controls"
+                   width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster=""
+                   preload="auto">
                 <source src="/video/fen.mp4">
                 你的浏览器不支持HTML5视频。
             </video>
@@ -199,7 +183,9 @@
         <div class="culture">
             <p>生活故事</p>
 
-            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+            <video id="video" poster="/images/phone.png" style="object-fit:cover" &gt; loop controls="controls"
+                   width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster=""
+                   preload="auto">
                 <source src="/video/phone.mp4">
                 你的浏览器不支持HTML5视频。
             </video>
@@ -217,7 +203,9 @@
 
         <div class="culture">
             <p>工厂故事</p>
-            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt;  loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+            <video id="video" poster="/images/huo.png" style="object-fit:cover" &gt; loop controls="controls"
+                   width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster=""
+                   preload="auto">
                 <source src="/video/huo.mp4">
                 你的浏览器不支持HTML5视频。
             </video>
@@ -225,7 +213,9 @@
         <div class="culture">
             <p>动物世界</p>
 
-            <video id="video" poster="/images/banner1.jpg" style="object-fit:cover"&gt; loop controls="controls" width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto">
+            <video id="video" poster="/images/bird.png" style="object-fit:cover" &gt; loop controls="controls"
+                   width="100%" height="100%" x5-playsinline="" playsinline="" webkit-playsinline="" poster=""
+                   preload="auto">
                 <source src="/video/bird.mp4">
                 你的浏览器不支持HTML5视频。
             </video>
@@ -241,8 +231,8 @@
             </div>
         </div>
 
-    </section>
-
+    {{--</section>--}}
+        </div>
 </div>
 <!--引入footer-->
 @extends('layout.footer')
@@ -257,9 +247,10 @@
 <script>
 
     $(function () {
-        getTuijian(2,"museum")
-        getTuijian(4,"wenchuan")
-        getTuijian(5,"factory")
+        getTuijian(2, "museum")
+        getTuijian(4, "wenchuan")
+        getTuijian(5, "factory")
+        getTuijianDesigner();
     });
 
     function contentList() {
@@ -316,22 +307,51 @@
         $.get('/getStoreListBySearch', {'roleId': role_id, 'page': 1, 'limit': 4}, function (data) {
             var html = '';
             if (data.code == 200) {
-                $.each(data.data,function (i,v) {
+                $.each(data.data, function (i, v) {
                     html += '<div class="groomList ">'
-                    html += '<img src="'+v.logo_pic_url+'" alt="" onclick="storeDetail('+v.id+')">'
+                    html += '<img src="' + v.logo_pic_url + '" alt="" onclick="storeDetail(' + v.id + ')">'
                     html += '<div class="groomInfo">'
-                    html += '<img src="'+v.photo+'" alt="" onclick="toOtherHome('+v.uid+')">'
-                    html += '<p>'+v.nickname+'</p>'
+                    html += '<img src="' + v.photo + '" alt="" onclick="toOtherHome(' + v.uid + ')">'
+                    html += '<p>' + v.nickname + '</p>'
                     html += '</div>'
                     html += '</div>'
                 })
-                $("#"+div_id).html(html)
+                $("#" + div_id).html(html)
             }
 
         })
     }
+
+    function getTuijianDesigner() {
+
+        $.get("/getCreationList", {'page':1,'limit':4}, function (data) {
+            var creation_urls_arr = [];
+            var html = '';
+            if (data.code == 200) {
+                $.each(data.data, function (i, v) {
+                    html += '<div class="swiper-slide addbox">'
+                    html += '<div class="wrapDiv">'
+                    html += '<img src="'+v.photo+'" onclick="toOtherHome('+v.uid+')" alt="">'
+                    html += '<div class="wrapTitle">'
+                    html += '<p>'+v.nickname+'</p>'
+                    html += '<p>粉丝·'+v.num+'</p>'
+                    html += '</div>'
+                    html += '</div>'
+                    html += '<div class="wrapImg">'
+                    creation_urls_arr = v.creation_urls.split(';')
+                    $.each(creation_urls_arr, function (i, v) {
+                        html += '<img src="' + v + '"/>'
+                    })
+                    html += '</div>'
+                    html += '</div>';
+                })
+                $("#designerd").html(html)
+            }
+        })
+    }
+
     function storeDetail(store_id) {
-        window.location.href="/wap/musename?store_id="+store_id
+        window.location.href = "/wap/musename?store_id=" + store_id
     }
 
 </script>

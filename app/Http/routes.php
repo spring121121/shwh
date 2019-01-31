@@ -53,6 +53,7 @@ Route::group(['middleware'=>'checkLogin'],function(){
     Route::post('addCreation','CreationController@addCreation');//上传作品
     Route::get('getMyCreationList','CreationController@getMyCreationList');//获取我的作品
     Route::get('getDemandCreationList/{demandId}','CreationController@getDemandCreationList');//获取某个需求的参赛作品
+    Route::post('changeChoice','CreationController@changeChoice');//获取某个需求的参赛作品
 
 
 

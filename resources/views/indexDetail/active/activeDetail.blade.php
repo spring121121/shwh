@@ -33,9 +33,9 @@
     </div>
     <div class="addtTopheight"></div>
     <div class="de_activeRule" id="activeRule">
-        <p class="de_ruleOne">需求说明</p>
+        <p class="de_ruleOne">需求说明2</p>
         <p class="de_ruleTwo">
-            {{$active['content']}}
+            {!!$active['content']!!}
         </p>
     </div>
 
@@ -155,7 +155,7 @@
         var decomand_uid = $("#decomand_uid").val()
         var decomand_id = $("#decomand_id").val()
         if (login_uid == decomand_uid) {
-            $("#creation").html("<a href='/wap/design?demand_id="+decomand_id+"'>参与作品</a>")
+            $("#creation").html("<a href='/wap/design?demand_id="+decomand_id+"&demand_uid="+decomand_uid+"'>参与作品</a>")
         }
 
     })
@@ -175,7 +175,7 @@
                 url: "/active/reply",
                 // url:"http://f.jianghairui.com/index/test/test",
                 type: "POST", dataType: "json",
-                data: {note_id: activeId, to_cid: to_cid, content: content},
+                data: {note_id: acNtiveId, to_cid: to_cid, content: content},
                 success: function (res) {
                     // alert(JSON.stringify(res));
                     if (res.code == 200) {

@@ -73,6 +73,7 @@
             </ul>
             <ul class="second-class"></ul>
         </div>
+        @extends('layout.footer')
     </body>
     <script src="/js/jquery-3.0.0.min.js"></script>
     <script src="/layer/layer.js"></script>
